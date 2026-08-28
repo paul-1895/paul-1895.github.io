@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MACD + 50 EMA — All Stocks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="macd-strategy1.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>MACD + 50 EMA</h1>
+        <p>Backtested across every listed stock</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">LAST SCAN</span>
+        <span class="meta-value" id="ms1-generated">—</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">STOCKS</span>
+        <span class="meta-value" id="ms1-count">—</span>
+      </div>
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>
+        <span>Home</span>
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="ms1-page">
+
+  <!-- The rules, stated up front — the numbers below mean nothing without them -->
+  <div class="ms1-rules" id="ms1-rules">
+    <strong>Buy</strong> when MACD crosses above its signal line <em>and</em> the bar closes above the 50-EMA
+    → filled at the next bar's open. <strong>Stop</strong> = lowest low of the last 10 bars.
+    <strong>Target</strong> = 2× that risk. <strong>Exit</strong> on stop, target, or a bearish MACD cross —
+    whichever comes first. Long only, daily candles, 0.4% commission each side.
+  </div>
+
+  <div id="ms1-empty" class="ms1-empty" style="display:none;">
+    <p>No scan has been stored yet.</p>
+    <button class="ms1-run-btn" id="ms1-run-empty">▶ Run the scan</button>
+  </div>
+
+  <div id="ms1-content" style="display:none;">
+
+    <!-- Market-wide roll-up -->
+    <section class="ms1-kpis" id="ms1-kpis"></section>
+
+    <!-- Controls -->
+    <div class="ms1-controls">
+      <div class="ms1-search-wrap">
+        <svg class="ms1-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" id="ms1-search" placeholder="Filter by code, name or sector…" autocomplete="off" spellcheck="false" />
+      </div>
+      <div class="ms1-seg" id="ms1-filter">
+        <button type="button" class="ms1-seg-btn active" data-filter="all">All</button>
+        <button type="button" class="ms1-seg-btn" data-filter="profitable">Profitable</button>
+        <button type="button" class="ms1-seg-btn" data-filter="beat">Beat buy &amp; hold</button>
+        <button type="button" class="ms1-seg-btn" data-filter="open">Holding now</button>
+      </div>
+      <button class="ms1-run-btn" id="ms1-run">↻ Re-run scan</button>
+    </div>
+
+    <div class="ms1-count-line" id="ms1-count-line"></div>
+
+    <div class="ms1-table-wrap">
+      <table class="ms1-table" id="ms1-table">
+        <thead><tr id="ms1-head"></tr></thead>
+        <tbody id="ms1-body"></tbody>
+      </table>
+    </div>
+
+    <div class="ms1-note" id="ms1-skipped"></div>
+
+    <div class="ms1-disclaimer">
+      ⚠️ A mechanical replay of past daily candles, not a forecast. Entries fill at the next bar's open; stop and target fill at
+      their exact levels with no allowance for a gap through them, and when one bar's range covers both, the <strong>stop is
+      assumed to have hit first</strong> — daily bars don't record the intrabar path. Commission is charged on both legs, and the
+      buy &amp; hold column is charged the same once each way. Tax, slippage and liquidity limits are not modelled, so real
+      results would be worse. Figures here can differ slightly from the same stock's in-chart panel: this scan drops scrape-gap
+      placeholder rows (~1.7% of the archive) that the chart substitutes a closing price for. Not financial advice.
+    </div>
+  </div>
+
+  <div id="ms1-loading" class="ms1-loading">Loading stored scan…</div>
+</main>
+
+<script type="module" src="macd-strategy1.js"></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

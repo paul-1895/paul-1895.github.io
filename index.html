@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DSE Live Market — Dhaka Stock Exchange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="homepage/index.css" />
+<link rel="stylesheet" href="watchlist/watchlist.css" />
+<link rel="stylesheet" href="notifications.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Live Market</h1>
+        <p>Dhaka Stock Exchange — All Listed Securities</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">LAST UPDATED</span>
+        <span class="meta-value" id="last-updated">—</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">TOTAL LISTED</span>
+        <span class="meta-value" id="total-count">—</span>
+      </div>
+
+      <!-- Watchlist toggle -->
+      <button class="wl-toggle-btn has-tooltip" id="wl-toggle-btn" onclick="openWatchlistPanel()" data-tooltip="Watchlists" aria-label="Watchlists">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        
+        <span class="wl-count-badge" id="wl-count-badge">0</span>
+      </button>
+
+      <!-- Consolidated navigation menu -->
+      <div class="nav-menu-wrap">
+        <button class="wl-toggle-btn has-tooltip" id="nav-menu-btn" data-tooltip="Menu" aria-label="Menu" aria-haspopup="true" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <span>Menu</span>
+          <svg class="nav-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="nav-menu-panel" id="nav-menu-panel">
+          <div class="nav-menu-section-title">Markets</div>
+          <a href="/candlestick_chart/candlestick.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="4" height="14" rx="1"/><rect x="10" y="3" width="4" height="16" rx="1"/><rect x="17" y="7" width="4" height="12" rx="1"/></svg></span>
+            <span>Candlestick</span>
+          </a>
+          <a href="screener/screener.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v3h3"/></svg></span>
+            <span>Screener</span>
+          </a>
+          <a href="newspaper/newspaper.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h13a2 2 0 0 1 2 2v13a1 1 0 0 0 1 1"/><path d="M4 4v15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9h-3"/><line x1="8" y1="8" x2="15" y2="8"/><line x1="8" y1="12" x2="15" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg></span>
+            <span>Newspaper</span>
+          </a>
+          <a href="economic-impact/economic-impact.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="21" x2="21" y2="21"/><line x1="5" y1="21" x2="5" y2="10"/><line x1="10" y1="21" x2="10" y2="10"/><line x1="14" y1="21" x2="14" y2="10"/><line x1="19" y1="21" x2="19" y2="10"/><path d="M3 10l9-6 9 6"/></svg></span>
+            <span>Economic Impact</span>
+          </a>
+
+          <div class="nav-menu-section-title">Strategy</div>
+          <a href="/super_model/super-model.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg></span>
+            <span>Super Model</span>
+          </a>
+          <a href="/minervini_model/minervini.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg></span>
+            <span>Minervini Model</span>
+          </a>
+          <a href="/macd_strategy1/macd-strategy1.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 15l4-5 4 3 3-6 4 5"/><path d="M3 20h18"/><circle cx="7" cy="10" r="1.6"/><circle cx="14" cy="7" r="1.6"/></svg></span>
+            <span>MACD + 50 EMA</span>
+          </a>
+          <a href="/demo_trade/demo-trade.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span>
+            <span>Demo Trade</span>
+          </a>
+
+          <div class="nav-menu-section-title">Portfolio</div>
+          
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></span>
+            <span>Portfolio</span>
+          
+          
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
+            <span>Trades</span>
+          
+          
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 12l3-3 3 3 5-6"/><path d="M18 6h3v3" stroke-dasharray="2 2"/></svg></span>
+            <span>Gain Projection</span>
+          
+          
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></span>
+            <span>Closet</span>
+          
+          <a href="/ultimate_report/ultimate-report.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg></span>
+            <span>Ultimate Report</span>
+          </a>
+
+          <div class="nav-menu-section-title">Tools</div>
+          <a href="/calculator/calculator.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="9" y2="11"/><line x1="12" y1="11" x2="13" y2="11"/><line x1="16" y1="11" x2="17" y2="11"/><line x1="8" y1="15" x2="9" y2="15"/><line x1="12" y1="15" x2="13" y2="15"/><line x1="16" y1="15" x2="17" y2="15"/><line x1="8" y1="19" x2="9" y2="19"/><line x1="12" y1="19" x2="13" y2="19"/><line x1="16" y1="19" x2="17" y2="19"/></svg></span>
+            <span>Calculator</span>
+          </a>
+          <a href="/tasks/tasks.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span>Tasks</span>
+          </a>
+          
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/><path d="M12 3V1"/><path d="M21 12h2"/></svg></span>
+            <span>Dream Goals</span>
+          
+          
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></span>
+            <span>Startup Plan</span>
+          
+          <a href="/investment-process/investment-process.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+            <span>Investment Process</span>
+          </a>
+          
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/><path d="M5 10.5h4"/><path d="M7 8.5v4"/></svg></span>
+            <span>Adelaide Food Review</span>
+          
+          <a href="learning/learning.html" class="nav-menu-item">
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+            <span>Learning</span>
+          </a>
+          
+            <span class="nav-menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span>
+            <span>Big Data</span>
+          
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <a href="/settings/settings.html" target="_blank" rel="noopener" class="wl-toggle-btn has-tooltip" id="settings-btn" data-tooltip="Settings" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.2.61.78 1.03 1.42 1.03H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span>Settings</span>
+      </a>
+
+      <button class="refresh-btn has-tooltip" id="refresh-btn" onclick="loadData()" data-tooltip="Refresh" aria-label="Refresh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+      </button>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER TAPE -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-loading">Loading market data…</span>
+  </div>
+</div>
+
+<!-- SUMMARY CARDS -->
+<div class="summary-row" id="summary-row">
+  <div class="summary-card">
+    <div class="sc-label">Total Gainers</div>
+    <div class="sc-value gain" id="sc-gainers">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Total Losers</div>
+    <div class="sc-value loss" id="sc-losers">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Unchanged</div>
+    <div class="sc-value" id="sc-unchanged">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Highest Price</div>
+    <div class="sc-value" id="sc-highest">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Lowest Price</div>
+    <div class="sc-value" id="sc-lowest">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Total Turnover</div>
+    <div class="sc-value" id="sc-turnover">—</div>
+  </div>
+</div>
+
+<!-- RANKING CARDS: Top Volume / Top Gainers / Top Losers -->
+<div class="rank-row" id="rank-row">
+
+  <div class="rank-card" id="rank-card-volume">
+    <div class="rank-card-hd">
+      <span class="rank-card-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        Top by Volume
+      </span>
+    </div>
+    <div class="rank-list" id="rank-list-volume">
+      <div class="rank-empty">Loading…</div>
+    </div>
+    <button class="rank-seeall-btn" data-rank="volume" onclick="openRankModal('volume')">See All</button>
+  </div>
+
+  <div class="rank-card" id="rank-card-gainers">
+    <div class="rank-card-hd">
+      <span class="rank-card-title rank-title-gain">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+        Top Gainers
+      </span>
+    </div>
+    <div class="rank-list" id="rank-list-gainers">
+      <div class="rank-empty">Loading…</div>
+    </div>
+    <button class="rank-seeall-btn" data-rank="gainers" onclick="openRankModal('gainers')">See All</button>
+  </div>
+
+  <div class="rank-card" id="rank-card-losers">
+    <div class="rank-card-hd">
+      <span class="rank-card-title rank-title-loss">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg>
+        Top Losers
+      </span>
+    </div>
+    <div class="rank-list" id="rank-list-losers">
+      <div class="rank-empty">Loading…</div>
+    </div>
+    <button class="rank-seeall-btn" data-rank="losers" onclick="openRankModal('losers')">See All</button>
+  </div>
+
+  <div class="rank-card" id="rank-card-volatile">
+    <div class="rank-card-hd">
+      <span class="rank-card-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Top Volatile
+      </span>
+    </div>
+    <div class="rank-list" id="rank-list-volatile">
+      <div class="rank-empty">Loading…</div>
+    </div>
+    <button class="rank-seeall-btn" data-rank="volatile" onclick="openRankModal('volatile')">See All</button>
+  </div>
+
+</div>
+
+<!-- CONTROLS -->
+<div class="controls-bar">
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="search-input" placeholder="Search by code or company…"/>
+  </div>
+  <div class="filter-group">
+    <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" data-filter="gainer" onclick="setFilter('gainer', this)">↑ Gainers</button>
+    <button class="filter-btn" data-filter="loser" onclick="setFilter('loser', this)">↓ Losers</button>
+    <button class="filter-btn" data-filter="neutral" onclick="setFilter('neutral', this)">— Unchanged</button>
+  </div>
+
+  <div class="filter-select-wrap">
+    <label for="category-filter-select">Category</label>
+    <select id="category-filter-select" onchange="setCategoryFilter(this.value)">
+      <option value="">All</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="N">N</option>
+      <option value="Z">Z</option>
+    </select>
+  </div>
+
+  <div class="filter-select-wrap">
+    <label for="watchlist-filter-select">Watchlist</label>
+    <select id="watchlist-filter-select" onchange="setWatchlistFilter(this.value)">
+      <option value="">All Watchlists</option>
+    </select>
+  </div>
+
+  <div class="filter-select-wrap">
+    <label for="sector-filter-select">Sector</label>
+    <select id="sector-filter-select" onchange="setSectorFilter(this.value)">
+      <option value="">All Sectors</option>
+    </select>
+  </div>
+  <div class="sort-wrap">
+    <label for="sort-select">Sort by</label>
+    <select id="sort-select" onchange="sortTable()">
+      <option value="code-asc">Code A→Z</option>
+      <option value="code-desc">Code Z→A</option>
+      <option value="ltp-desc">Price High→Low</option>
+      <option value="ltp-asc">Price Low→High</option>
+      <option value="change-desc">Change High→Low</option>
+      <option value="change-asc">Change Low→High</option>
+    </select>
+  </div>
+
+  <!-- Column visibility picker button -->
+  <div class="mkt-col-picker-wrap" id="mkt-col-picker-wrap">
+    <button id="mkt-col-picker-btn" class="mkt-col-picker-btn" onclick="toggleMktColPicker(event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      Columns
+    </button>
+  </div>
+</div>
+
+<!-- RANKING "SEE ALL" MODAL (shared by all 3 cards) -->
+<div class="rank-modal-backdrop" id="rank-modal-backdrop" onclick="closeRankModal(event)">
+  <div class="rank-modal" id="rank-modal" onclick="event.stopPropagation()">
+    <div class="rank-modal-hd">
+      <span class="rank-modal-title" id="rank-modal-title">Top Stocks</span>
+      <button class="rank-modal-close" onclick="closeRankModal()">✕</button>
+    </div>
+    <div class="rank-modal-body">
+      <table class="rank-modal-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Code</th>
+            <th class="rmt-num">LTP (৳)</th>
+            <th class="rmt-num">Change</th>
+            <th class="rmt-num">Range %</th>
+            <th class="rmt-num">Day Range (৳)</th>
+            <th class="rmt-num">Volume</th>
+          </tr>
+        </thead>
+        <tbody id="rank-modal-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- TABLE AREA -->
+<main class="table-container">
+  <div id="loading-state" class="state-overlay">
+    <div class="spinner"></div>
+    <p>Fetching live market data from DSE…</p>
+  </div>
+  <div id="error-state" class="state-overlay hidden">
+    <div class="error-icon">!</div>
+    <p id="error-msg">Failed to load data.</p>
+    <button onclick="loadData()" class="retry-btn">Retry</button>
+  </div>
+  <div class="table-scroll">
+  <table id="stocks-table" class="hidden">
+    <thead>
+      <tr>
+        <th style="width:36px;"></th>
+        <th data-col="rank"     class="th-rank">#</th>
+        <th data-col="category" class="th-cat" onclick="toggleSort('category')" title="DSE Category (A/B/Z)">Cat <span class="sort-arrow" id="sort-category"></span></th>
+        <th data-col="code"     class="th-code" onclick="toggleSort('code')">Code <span class="sort-arrow" id="sort-code"></span></th>
+        <th data-col="sector"   class="th-sector" onclick="toggleSort('sector')">Sector <span class="sort-arrow" id="sort-sector"></span></th>
+        <th data-col="ltp"      onclick="toggleSort('ltp')" class="th-num">LTP (৳) <span class="sort-arrow" id="sort-ltp"></span></th>
+        <th data-col="high"     onclick="toggleSort('high')" class="th-num">High <span class="sort-arrow" id="sort-high"></span></th>
+        <th data-col="low"      onclick="toggleSort('low')" class="th-num">Low <span class="sort-arrow" id="sort-low"></span></th>
+        <th data-col="close"    onclick="toggleSort('close')" class="th-num">Close <span class="sort-arrow" id="sort-close"></span></th>
+        <th data-col="ycp"      onclick="toggleSort('ycp')" class="th-num">YCP <span class="sort-arrow" id="sort-ycp"></span></th>
+        <th data-col="change"   onclick="toggleSort('change')" class="th-num">Change <span class="sort-arrow" id="sort-change"></span></th>
+        <th data-col="trade"    onclick="toggleSort('trade')" class="th-num">Trades <span class="sort-arrow" id="sort-trade"></span></th>
+        <th data-col="value"    onclick="toggleSort('value')" class="th-num">Turnover <span class="sort-arrow" id="sort-value"></span></th>
+        <th data-col="volume"   onclick="toggleSort('volume')" class="th-num">Volume <span class="sort-arrow" id="sort-volume"></span></th>
+      </tr>
+    </thead>
+    <tbody id="stocks-tbody"></tbody>
+  </table>
+  </div>
+  <div class="table-footer" id="table-footer"></div>
+</main>
+
+<footer class="site-footer">
+  <p>Data sourced from <strong>dsebd.org</strong> · Prices in BDT (Taka) · For informational purposes only</p>
+</footer>
+
+<!-- WATCHLIST PANEL -->
+<div class="wl-overlay" id="wl-overlay" onclick="closeWatchlistPanel()"></div>
+
+<div class="wl-panel" id="wl-panel">
+  <div class="wl-panel-header">
+    <div class="wl-panel-title">⭐ My Watchlists</div>
+    <button class="wl-close-btn" onclick="closeWatchlistPanel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <!-- New watchlist -->
+  <button class="wl-new-btn" id="wl-new-btn" onclick="showCreateInput()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+    New Watchlist
+  </button>
+  <div class="wl-name-input" id="wl-create-input" style="display:none;">
+    <input type="text" id="wl-create-name" placeholder="Watchlist name…" onkeydown="if(event.key==='Enter')confirmCreate()" />
+    <button onclick="confirmCreate()">Create</button>
+    <button class="wl-cancel-btn" onclick="hideCreateInput()">✕</button>
+  </div>
+
+  <!-- List of watchlists -->
+  <div class="wl-lists" id="wl-lists"></div>
+</div>
+
+<div class="mkt-col-picker-backdrop" id="mkt-col-picker-backdrop" onclick="closeMktColModal(event)">
+  <div class="mkt-col-picker-modal" id="mkt-col-picker-modal" onclick="event.stopPropagation()">
+    <div class="mkt-cp-modal-hd">
+      <span class="mkt-cp-modal-title">Toggle Columns</span>
+      <button class="mkt-cp-modal-close" onclick="closeMktColModal()">✕</button>
+    </div>
+    <div class="mkt-cp-modal-body">
+      <div class="mkt-cpitem-grid" id="mkt-col-picker-body"></div>
+    </div>
+    <div class="mkt-cp-modal-ft">
+      <button class="mkt-cp-reset" onclick="resetMktColVis()">Show all</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+<script type="module" src="watchlist/watchlist.js"></script>
+<script src="notifications.js" defer></script>
+</body>
+</html>

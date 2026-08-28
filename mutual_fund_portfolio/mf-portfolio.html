@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MF Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/style.css"/>
+<link rel="stylesheet" href="mf-portfolio.css"/>
+<style>
+.mf-stock-picker-wrap { position: relative; }
+.mf-stock-search {
+  width: 100%;
+  padding: 9px 12px;
+  background: var(--bg-input, #1a2233);
+  border: 1px solid var(--border-glow, rgba(255,255,255,.15));
+  border-radius: 6px;
+  color: var(--text-primary, #e2eaf6);
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+  outline: none;
+  transition: border-color .2s;
+  box-sizing: border-box;
+}
+.mf-stock-search:focus { border-color: var(--accent, #00f5c4); }
+.mf-stock-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0; right: 0;
+  background: var(--bg-card, #161b22);
+  border: 1px solid var(--border-glow, rgba(255,255,255,.15));
+  border-radius: 8px;
+  z-index: 200;
+  max-height: 220px;
+  overflow-y: auto;
+  box-shadow: 0 12px 40px rgba(0,0,0,.55);
+}
+.mf-stock-dropdown.open { display: block; }
+.mf-stock-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 14px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  transition: background .1s;
+  gap: 10px;
+}
+.mf-stock-option:last-child { border-bottom: none; }
+.mf-stock-option:hover, .mf-stock-option.active { background: rgba(0,245,196,.07); }
+.mf-stock-option-code {
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent, #00f5c4);
+  flex-shrink: 0;
+  min-width: 80px;
+}
+.mf-stock-option-sector {
+  font-family: var(--mono, monospace);
+  font-size: 9px;
+  color: var(--text-muted, #4d6480);
+  text-align: right;
+  flex-shrink: 0;
+}
+.mf-stock-option-empty {
+  padding: 16px;
+  text-align: center;
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  color: var(--text-muted, #4d6480);
+}
+.ah-metric-btn {
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  padding: 5px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--border-glow, rgba(255,255,255,.15));
+  background: transparent;
+  color: var(--text-muted, #4d6480);
+  cursor: pointer;
+  transition: all .18s;
+  white-space: nowrap;
+}
+.ah-metric-btn:hover { color: var(--text-primary, #e2eaf6); border-color: rgba(255,255,255,.25); }
+.ah-metric-btn.active {
+  background: rgba(0,245,196,.12);
+  border-color: rgba(0,245,196,.45);
+  color: var(--accent, #00f5c4);
+}
+</style>
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1 id="fund-name-header">Mutual Fund Portfolio</h1>
+        <p id="fund-code-header">Loading…</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="#" id="back-to-company" class="back-link-btn">← Back to Profile</a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle theme">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mf-page">
+
+  <!-- ── QUARTER SELECTOR ─────────────────────────────────── -->
+  <div class="quarter-bar">
+    <div class="qb-left">
+      <label class="qb-label">YEAR</label>
+      <select id="sel-year" class="qb-select"></select>
+      <label class="qb-label">QUARTER</label>
+      <select id="sel-quarter" class="qb-select">
+        <option value="Q1">Q1</option>
+        <option value="Q2">Q2</option>
+        <option value="Q3">Q3</option>
+        <option value="Q4">Q4</option>
+      </select>
+      <button class="qb-btn" id="load-btn" onclick="loadPortfolio()">Load</button>
+    </div>
+    <div class="qb-right">
+      <button class="qb-btn qb-btn-del" id="delete-quarter-btn" onclick="deleteQuarter()" style="display:none">🗑 Delete Quarter</button>
+      <button class="qb-btn qb-btn-add" onclick="openAddModal()">＋ Add Holding</button>
+      <button class="qb-btn qb-btn-meta" onclick="openMetaModal()">⚙ Fund Meta</button>
+      <button class="qb-btn qb-btn-compare" id="compare-btn" onclick="goToCompare()">⇄ Compare Quarters</button>
+    </div>
+  </div>
+
+  <!-- ── SUMMARY CARDS ─────────────────────────────────────── -->
+  <div class="mf-summary-row" id="summary-row" style="display:none">
+    <div class="mf-stat-card">
+      <div class="mf-stat-lbl">Total Holdings</div>
+      <div class="mf-stat-val" id="s-holdings">—</div>
+    </div>
+    <div class="mf-stat-card">
+      <div class="mf-stat-lbl">Total Buying Value</div>
+      <div class="mf-stat-val accent" id="s-cost">—</div>
+    </div>
+    <div class="mf-stat-card">
+      <div class="mf-stat-lbl">Total Market Value</div>
+      <div class="mf-stat-val gain" id="s-mkt">—</div>
+    </div>
+    <div class="mf-stat-card">
+      <div class="mf-stat-lbl">Unrealized P&amp;L</div>
+      <div class="mf-stat-val" id="s-pl">—</div>
+    </div>
+    <div class="mf-stat-card">
+      <div class="mf-stat-lbl">NAV / Unit</div>
+      <div class="mf-stat-val" id="s-nav">—</div>
+    </div>
+    <div class="mf-stat-card">
+      <div class="mf-stat-lbl">Report Date</div>
+      <div class="mf-stat-val" id="s-date">—</div>
+    </div>
+  </div>
+
+  <!-- ── CHARTS ROW ─────────────────────────────────────────── -->
+  <div class="mf-charts-row" id="charts-row" style="display:none">
+    <div class="mf-chart-card">
+      <div class="mf-chart-title">Sector Allocation (Market Value %)</div>
+      <div style="position:relative;height:260px;width:100%">
+        <canvas id="chart-sector"></canvas>
+      </div>
+    </div>
+    <div class="mf-chart-card">
+      <div class="mf-chart-title" style="display:flex;align-items:center;justify-content:space-between">
+        <span>Top 10 Holdings (% of Market Value)</span>
+        <button class="mf-btn mf-btn-ghost mf-btn-sm" onclick="openAllHoldingsModal()" title="View all holdings ranked by market value">
+          See all ↗
+        </button>
+      </div>
+      <div style="position:relative;height:260px;width:100%">
+        <canvas id="chart-top10"></canvas>
+      </div>
+    </div>
+    <div class="mf-chart-card">
+      <div class="mf-chart-title">Cost vs Market Value by Sector</div>
+      <div style="position:relative;height:260px;width:100%">
+        <canvas id="chart-costmkt"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ANALYSIS ROW: Concentration + Gainers/Losers ───────── -->
+  <div class="mf-analysis-row" id="analysis-row" style="display:none">
+    <div class="mf-chart-card">
+      <div class="mf-chart-title">Concentration Risk</div>
+      <div class="mf-conc-grid" id="conc-grid"></div>
+    </div>
+    <div class="mf-chart-card">
+      <div class="mf-chart-title" style="display:flex;align-items:center;justify-content:space-between">
+        <span>Gainers &amp; Losers <small style="color:var(--text-muted);font-weight:400">(by live % change)</small></span>
+      </div>
+      <div class="mf-leaders-wrap">
+        <div class="mf-leaders-col">
+          <div class="mf-leaders-hd gain">▲ Top Gainers</div>
+          <div id="leaders-gainers"></div>
+        </div>
+        <div class="mf-leaders-col">
+          <div class="mf-leaders-hd loss">▼ Top Losers</div>
+          <div id="leaders-losers"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COMBINED HISTORY CHART ───────────────────────────── -->
+  <div class="mf-chart-card mf-history-card" id="history-row" style="display:none;margin-bottom:16px">
+
+    <!-- Header: tab switcher left, range buttons right -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+
+      <!-- View tabs -->
+      <div class="mf-history-tabs">
+        <button class="mf-history-tab" data-view="portfolio" onclick="setHistoryView(this)">Portfolio Value</button>
+        <button class="mf-history-tab"        data-view="fund"      onclick="setHistoryView(this)" id="fund-tab-btn">Fund Price</button>
+        <button class="mf-history-tab active" data-view="ratio"     onclick="setHistoryView(this)">Ratio</button>
+        <button class="mf-history-tab"        data-view="compare"   onclick="setHistoryView(this)">Compare</button>
+      </div>
+
+      <!-- Right side: status + range -->
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+        <span id="history-status" style="font-size:10px;color:var(--text-muted)"></span>
+        <button class="ah-metric-btn active" data-hrange="all" onclick="setHistoryRange(this)">All</button>
+        <button class="ah-metric-btn"        data-hrange="365" onclick="setHistoryRange(this)">1Y</button>
+        <button class="ah-metric-btn"        data-hrange="ytd" onclick="setHistoryRange(this)">YTD</button>
+        <button class="ah-metric-btn"        data-hrange="180" onclick="setHistoryRange(this)">6M</button>
+        <button class="ah-metric-btn"        data-hrange="90"  onclick="setHistoryRange(this)">3M</button>
+        <button class="ah-metric-btn"        data-hrange="30"  onclick="setHistoryRange(this)">1M</button>
+        <button class="ah-metric-btn"        data-hrange="7"   onclick="setHistoryRange(this)">1W</button>
+      </div>
+    </div>
+
+    <!-- Subtitle row -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+      <span id="history-subtitle" style="font-size:11px;color:var(--text-muted)"></span>
+      <span id="history-range-label" style="font-size:10px;color:var(--text-muted)"></span>
+    </div>
+    <div id="history-ratio-note" style="font-size:11px;color:var(--text-muted);font-style:italic;margin-bottom:6px;display:none"></div>
+
+    <!-- Single canvas — reused across all three views -->
+    <div style="position:relative;height:300px;width:100%">
+      <canvas id="chart-history"></canvas>
+    </div>
+
+    <!-- Stat strip -->
+    <div id="history-stats" style="display:flex;gap:0;border-top:1px solid var(--border);margin-top:12px;flex-wrap:wrap"></div>
+
+  </div>
+
+  <!-- ── PORTFOLIO TABLE ────────────────────────────────────── -->
+  <div class="mf-table-card" id="table-card" style="display:none">
+    <div class="mf-table-hd">
+      <div class="mf-table-title">Holdings — <span id="quarter-label">—</span></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <input class="mf-search" id="holding-search" placeholder="Search stock or sector…" oninput="renderTable()"/>
+        <button class="mf-btn mf-btn-ghost mf-btn-sm" onclick="exportHoldingsCSV()" title="Export current holdings to CSV">⬇ CSV</button>
+        <!-- Column picker -->
+        <div class="mf-col-picker-wrap" id="mf-col-picker-wrap">
+          <button class="mf-btn mf-btn-ghost mf-btn-sm" id="mf-col-picker-btn" onclick="toggleMfColPicker(event)" title="Show / hide columns">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" style="margin-right:4px">
+              <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+            </svg>Columns
+          </button>
+          <div class="mf-col-picker-dropdown" id="mf-col-picker-dropdown">
+            <div class="mf-col-picker-hd">
+              <span>Toggle Columns</span>
+              <button class="mf-col-picker-reset" onclick="resetMfColVis()">Show all</button>
+            </div>
+            <div class="mf-col-picker-body" id="mf-col-picker-body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tbl-scroll">
+      <table class="mf-table" id="holdings-table">
+        <thead>
+          <tr>
+            <th class="th-sl"   data-col="sl">#</th>
+            <th                 data-col="sector">Sector</th>
+            <th                 data-col="company">Company</th>
+            <th                 data-col="code">Code</th>
+            <th class="th-num"  data-col="shares">Shares</th>
+            <th class="th-num"  data-col="costValue">Buying Value <small>(M)</small></th>
+            <th class="th-num"  data-col="avgBuy">Avg Buy (৳)</th>
+            <th class="th-num"  data-col="reportMkt" title="Market value as stored in the report (JSON)">Quarterly Value <small>(M)</small></th>
+            <th class="th-num"  data-col="ltp">LTP (৳)</th>
+            <th class="th-num"  data-col="liveMkt" title="Live market value = LTP × Shares">Live Mkt <small>(M)</small></th>
+            <th class="th-num"  data-col="gap" title="Difference between Live Mkt and Quarterly Value">Gap <small>(M)</small></th>
+            <th class="th-num"  data-col="gapPct" title="Percentage change from Quarterly Value to Live Mkt">Gap <small>%</small></th>
+            <th class="th-num"  data-col="apprec">Live Gain <small>(M)</small></th>
+            <th class="th-num"  data-col="pctChange">% Live Change</th>
+            <th class="th-num"  data-col="pctTotal">% of Total</th>
+            <th class="th-act"  data-col="actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="holdings-tbody"></tbody>
+        <tfoot id="holdings-tfoot"></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="mf-empty" id="mf-empty">
+    <div class="mf-empty-icon">📊</div>
+    <p>Select a year &amp; quarter, then click <strong>Load</strong> to view or start adding holdings.</p>
+  </div>
+
+</div><!-- .mf-page -->
+
+<!-- ── ADD / EDIT HOLDING MODAL ─────────────────────────────── -->
+<div class="mf-backdrop hidden" id="holding-modal">
+  <div class="mf-modal">
+    <div class="mf-modal-hd">
+      <span id="modal-title">Add Holding</span>
+      <button class="mf-modal-close" onclick="closeModal('holding-modal')">✕</button>
+    </div>
+    <div class="mf-modal-body">
+      <input type="hidden" id="h-id"/>
+      <div class="mf-form-row">
+        <div class="mf-field" style="flex:2">
+          <label>Stock Code *</label>
+          <div class="mf-stock-picker-wrap">
+            <input id="h-code-search" type="text" class="mf-stock-search" placeholder="Search code or name…" oninput="filterStockPicker()" autocomplete="off"/>
+            <div class="mf-stock-dropdown" id="h-stock-dropdown"></div>
+            <input type="hidden" id="h-code"/>
+          </div>
+        </div>
+        <div class="mf-field" style="flex:1">
+          <label>Sector</label>
+          <input id="h-sector" type="text" placeholder="Auto-filled" readonly style="opacity:.7;cursor:default"/>
+        </div>
+      </div>
+      <div class="mf-form-row">
+        <div class="mf-field">
+          <label>No. of Shares / Units</label>
+          <input id="h-shares" type="number" step="1" placeholder="e.g. 166452" oninput="updatePreview()"/>
+        </div>
+        <div class="mf-field">
+          <label>Buying Value (M BDT)</label>
+          <input id="h-cost" type="number" step="0.01" placeholder="e.g. 76.91" oninput="updatePreview()"/>
+        </div>
+        <div class="mf-field">
+          <label>Market Value (M BDT)</label>
+          <input id="h-mkt" type="number" step="0.01" placeholder="e.g. 41.30" oninput="updatePreview()"/>
+        </div>
+      </div>
+      <div class="mf-preview" id="h-preview"></div>
+      <div class="mf-error" id="h-error"></div>
+    </div>
+    <div class="mf-modal-ft">
+      <button class="mf-btn mf-btn-ghost" onclick="closeModal('holding-modal')">Cancel</button>
+      <button class="mf-btn mf-btn-primary" onclick="saveHolding()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FUND META MODAL ───────────────────────────────────────── -->
+<div class="mf-backdrop hidden" id="meta-modal">
+  <div class="mf-modal" style="max-width:380px">
+    <div class="mf-modal-hd">
+      <span>Fund Meta</span>
+      <button class="mf-modal-close" onclick="closeModal('meta-modal')">✕</button>
+    </div>
+    <div class="mf-modal-body">
+      <div class="mf-field"><label>Report Date</label><input id="m-date" type="date"/></div>
+      <div class="mf-field"><label>NAV per Unit (BDT)</label><input id="m-nav" type="number" step="0.01" placeholder="e.g. 10.50"/></div>
+      <div class="mf-field"><label>Total Units</label><input id="m-units" type="number" step="1" placeholder="e.g. 1000000"/></div>
+      <div class="mf-error" id="m-error"></div>
+    </div>
+    <div class="mf-modal-ft">
+      <button class="mf-btn mf-btn-ghost" onclick="closeModal('meta-modal')">Cancel</button>
+      <button class="mf-btn mf-btn-primary" onclick="saveMeta()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONFIRM MODAL ─────────────────────────────────────────── -->
+<div class="mf-backdrop hidden" id="confirm-modal">
+  <div class="mf-modal" style="max-width:360px">
+    <div class="mf-modal-hd"><span id="confirm-title">Confirm</span>
+      <button class="mf-modal-close" onclick="closeModal('confirm-modal')">✕</button>
+    </div>
+    <div class="mf-modal-body">
+      <p id="confirm-msg" style="color:var(--text-secondary);font-size:13px;line-height:1.6"></p>
+    </div>
+    <div class="mf-modal-ft">
+      <button class="mf-btn mf-btn-ghost" onclick="closeModal('confirm-modal')">Cancel</button>
+      <button class="mf-btn mf-btn-danger" id="confirm-ok">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── ALL HOLDINGS MODAL ─────────────────────────────────────── -->
+<div class="mf-backdrop hidden" id="all-holdings-modal" onclick="handleAllHoldingsBackdrop(event)">
+  <div class="mf-modal" style="max-width:860px;max-height:92vh;display:flex;flex-direction:column">
+    <div class="mf-modal-hd">
+      <span>All Holdings — sorted by Market Value</span>
+      <button class="mf-modal-close" onclick="closeModal('all-holdings-modal')">✕</button>
+    </div>
+    <!-- toolbar -->
+    <div style="padding:12px 22px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:rgba(0,0,0,.1)">
+      <input id="ah-search" class="mf-stock-search" style="max-width:200px" placeholder="Search code or sector…" oninput="renderAllHoldingsModal()"/>
+      <!-- metric selector -->
+      <div style="display:flex;gap:4px;flex-wrap:wrap">
+        <button class="ah-metric-btn active" data-metric="pctTotal"  onclick="setAhMetric(this)">% of Total</button>
+        <button class="ah-metric-btn"        data-metric="liveMkt"   onclick="setAhMetric(this)">Live Mkt (M)</button>
+        <button class="ah-metric-btn"        data-metric="reportMkt" onclick="setAhMetric(this)">Quarterly Value (M)</button>
+        <button class="ah-metric-btn"        data-metric="pctChange" onclick="setAhMetric(this)">% Live Change</button>
+      </div>
+      <span id="ah-count" style="font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-left:auto"></span>
+    </div>
+    <!-- chart container — height grows with data, scrollable -->
+    <div style="overflow-y:auto;flex:1;padding:20px 22px">
+      <div style="position:relative" id="ah-chart-wrap">
+        <canvas id="ah-chart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mf-toast-wrap" id="toast-wrap"></div>
+<div id="mf-history-tooltip" class="mf-htt"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script type="module" src="mf-portfolio.js"></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

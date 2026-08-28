@@ -1,0 +1,311 @@
+/* ═══════════════════════════════════════════════════════════════════
+   DSE — PHONE LAYOUT CORRECTIONS
+   Loaded last on every page, so it settles specificity ties with each
+   page's own stylesheet rather than fighting it.
+
+   Scope is deliberately narrow. These are not new mobile designs —
+   they are the specific containers that were forcing the layout
+   viewport wider than the screen, which makes a phone browser zoom the
+   whole page out until the text is unreadable. Each block below names
+   the pages it was measured against.
+
+   The rule of thumb for every fix here: a flex row that can't wrap, or
+   a grid track sized by `auto`/a fixed px minimum, will happily grow
+   past the viewport. Wrapping the row or swapping the track for
+   minmax(0, 1fr) lets it shrink instead.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 780px) {
+
+  /* ─── Page header bars ──────────────────────────────────────────
+     company, minervini, super-model, macd-strategy1, tasks, history,
+     closet. The logo block and the button cluster sit in one flex row
+     that had no wrap, so the theme toggle hung off the right edge and
+     dragged the viewport with it. */
+  .header-meta,
+  .header-actions,
+  .closet-header-actions,
+  .closet-brand,
+  .hdr-actions {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  /* .header-inner needs the opposite treatment, and it is worth spelling
+     out why. Two existing stylesheets disagree about it on small screens:
+     candlestick-chart.css turns it into a column at 768px, style.css
+     turns on flex-wrap at 600px. A *wrapping column* flex box wraps into
+     side-by-side columns, so on any page loading both (company,
+     minervini, super-model) the button cluster landed in a second column
+     off the right-hand edge of the screen.
+
+     Rather than patch the collision, settle it: below 780px every page
+     header is one stacked column, full width, no wrapping. That is what
+     homepage/responsive.css and candlestick-chart.css were each reaching
+     for separately. The button cluster then wraps onto as many rows as it
+     needs, inside the width it actually has. */
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    /* style.css pins this to height:56px, which is right for a single row
+       and wrong the moment the header stacks — the extra rows spilled out
+       of the box and printed on top of the page content below. */
+    height: auto;
+    min-height: 56px;
+    padding-block: 10px;
+  }
+  .header-meta {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* ─── Wide tables ───────────────────────────────────────────────
+     trades. Most tables in the project already sit in a scroll box;
+     this one didn't, so all 1280px of it pushed the page sideways. */
+  .tr-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ─── Screener master-detail ────────────────────────────────────
+     .scr-shell keeps align-items:flex-start, which in the stacked
+     (column) layout means the main pane is sized to its own content
+     instead of the screen. The table inside already scrolls on its
+     own once the pane stops growing. */
+  .scr-shell { align-items: stretch; }
+  .scr-main  { width: 100%; }
+
+  /* ─── Learning guides ───────────────────────────────────────────
+     heikin-ashi, bollinger-bands, hilega-milega, macd-ema, fibonacci.
+     The wide card grid asks for 560px tracks, and the diagram figures
+     refuse to shrink. Give the grid one flexible track and let each
+     diagram scroll inside its own box at full detail. */
+  .cd-grid--wide { grid-template-columns: minmax(0, 1fr); }
+  .cd-anatomy-fig {
+    flex-shrink: 1;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  /* ─── Calculators ───────────────────────────────────────────────
+     calculator, dps, grid-buy. Two problems stacked: the panel grid
+     collapses to `1fr`, which still floors at min-content, and each
+     field label is a space-between row whose two halves can't wrap
+     onto separate lines. */
+  .calc-grid { grid-template-columns: minmax(0, 1fr); }
+  .calc-label {
+    flex-wrap: wrap;
+    column-gap: 8px;
+  }
+
+  /* ─── Realised gain chart ───────────────────────────────────────
+     The chart title, its controls and the four-item legend shared one
+     unwrappable row. */
+  .calc-chart-controls,
+  .calc-chart-legend { flex-wrap: wrap; }
+
+  /* ─── Company profile ───────────────────────────────────────────
+     The stock-search / section-nav button strip scrolls sideways in
+     its own lane rather than widening the page. */
+  .fund-nav-row {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  /* ─── Theme toggle with a text label ────────────────────────────
+     minervini, super-model, macd-strategy1. candlestick-chart.css
+     pins .theme-toggle to a 40x40 icon square, but these pages put a
+     "Light"/"Dark" word inside it, which then hangs out of the box and
+     drags the page with it. Let the button size to whatever it holds. */
+  .theme-toggle {
+    width: auto;
+    min-width: 40px;
+  }
+
+  /* ─── Company profile header ────────────────────────────────────
+     The icon cluster and the section-nav buttons are separate flex
+     rows inside .header-meta; both needed permission to wrap, and the
+     children needed a ceiling so none can outgrow the screen. */
+  .gnav-cluster { flex-wrap: wrap; }
+  .header-meta > * { max-width: 100%; }
+
+  /* ─── Learning diagrams ─────────────────────────────────────────
+     The candle diagrams carry a hard width="300" attribute alongside
+     their viewBox. The viewBox means they scale perfectly once the
+     attribute stops winning. The notes column's 280px floor has to go
+     too, or it keeps the pair of diagrams wider than the screen. */
+  .cd-anatomy-notes { min-width: 0; }
+  .cd-svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ─── Minervini filter bar ──────────────────────────────────────
+     The timeframe segmented control is an inline-flex strip of five
+     buttons. As a flex item it floors at min-content, so it stayed
+     ~16px wider than the row it sits in. Let the wrapper shrink, and
+     let the strip itself scroll rather than clip (it was overflow:
+     hidden, which would have hidden the last button outright). */
+  .mv-filter-bar .filter-select-wrap {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .mv-seg {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   READ-ONLY SNAPSHOT — appended by scripts/build-static.js
+   ═══════════════════════════════════════════════════════════════════ */
+
+[data-readonly] .news-add-btn,
+[data-readonly] .sr-add-btn,
+[data-readonly] .sr-edit-btn,
+[data-readonly] .sr-del-btn,
+[data-readonly] .ar-add-btn,
+[data-readonly] .ar-edit-btn,
+[data-readonly] .ar-del-btn,
+[data-readonly] #np-scan-btn,
+[data-readonly] #np-compose-toggle,
+[data-readonly] #np-ed-publish,
+[data-readonly] #ms1-run,
+[data-readonly] #ms1-run-empty,
+[data-readonly] #delete-quarter-btn,
+[data-readonly] .mf-btn-danger,
+[data-readonly] .qb-btn-add,
+[data-readonly] .qb-btn-del,
+[data-readonly] #wl-new-btn,
+[data-readonly] #wl-toggle-btn,
+[data-readonly] .wl-toggle-btn,
+[data-readonly] #lang-toggle-btn,
+[data-readonly] #refresh-btn,
+[data-readonly] [data-write] {
+  display: none !important;
+}
+
+/* Grids that are edited in place rather than through a button. */
+[data-readonly] [contenteditable="true"] {
+  pointer-events: none;
+  -webkit-user-modify: read-only;
+}
+[data-readonly] input:not([type="search"]):not([type="checkbox"]):not([type="radio"]),
+[data-readonly] textarea {
+  /* Search and filters still work — they are local. Anything that would be
+     submitted somewhere is not. */
+}
+
+/* ── banner ─────────────────────────────────────────────────────── */
+#dse-readonly-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 9px 16px;
+  background: #14262c;
+  color: #dde9ea;
+  font: 500 13px/1.45 ui-sans-serif, system-ui, sans-serif;
+  text-align: center;
+}
+#dse-readonly-banner strong { font-weight: 650; color: #4ec5d0; }
+#dse-readonly-banner button {
+  background: none;
+  border: 1px solid #3a5058;
+  border-radius: 4px;
+  color: inherit;
+  font-size: 15px;
+  line-height: 1;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+#dse-readonly-banner button:hover { background: #1f3a42; }
+
+/* ── the unlock gate ─────────────────────────────────────────────── */
+#dse-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #0d191d;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.dse-gate-card {
+  width: 100%;
+  max-width: 22rem;
+  background: #152429;
+  border: 1px solid #2a3e45;
+  border-radius: 12px;
+  padding: 30px 26px 24px;
+  color: #dde9ea;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .45);
+}
+.dse-gate-tag {
+  display: inline-block;
+  font: 700 11px ui-monospace, Menlo, monospace;
+  letter-spacing: .1em;
+  background: #4ec5d0;
+  color: #06212a;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin-bottom: 16px;
+}
+.dse-gate-card h1 { font-size: 1.16rem; font-weight: 650; margin: 0 0 8px; }
+.dse-gate-card p  { font-size: .88rem; line-height: 1.5; color: #96aaaf; margin: 0 0 18px; }
+.dse-gate-card form { display: flex; flex-direction: column; gap: 10px; }
+.dse-gate-card input {
+  /* 16px minimum or iOS zooms the page on focus */
+  font: 400 16px/1.4 inherit;
+  color: #dde9ea;
+  background: #0d191d;
+  border: 1px solid #2a3e45;
+  border-radius: 8px;
+  padding: 12px 13px;
+  width: 100%;
+}
+.dse-gate-card input:focus {
+  outline: none;
+  border-color: #4ec5d0;
+  box-shadow: 0 0 0 3px rgba(78, 197, 208, .18);
+}
+.dse-gate-card button {
+  font: 650 .95rem inherit;
+  color: #06212a;
+  background: #4ec5d0;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 46px;
+  cursor: pointer;
+}
+.dse-gate-card button:disabled { opacity: .6; cursor: progress; }
+.dse-gate-msg { font-size: .84rem; color: #ff8f8f; min-height: 1.2em; margin-top: 10px; }
+.dse-gate-card small { display: block; margin-top: 14px; font-size: .76rem; color: #74898f; }
+
+/* ── toast, for a write that somehow got clicked ─────────────────── */
+#dse-readonly-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translate(-50%, 12px);
+  z-index: 99999;
+  padding: 11px 18px;
+  border-radius: 6px;
+  background: #14262c;
+  color: #dde9ea;
+  font: 500 13px ui-sans-serif, system-ui, sans-serif;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+#dse-readonly-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  #dse-readonly-toast { transition: none; }
+}

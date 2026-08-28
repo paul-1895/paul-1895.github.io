@@ -1,0 +1,27 @@
+/* ─── RESPONSIVE ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .summary-row { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .summary-row { grid-template-columns: repeat(2, 1fr); }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .header-meta { width: 100%; justify-content: flex-start; }
+  .controls-bar { flex-direction: column; align-items: stretch; }
+
+  /* Trim the table to its most essential columns by default; the rest
+     stay reachable via the Columns picker + horizontal scroll above.
+     Note: if a user re-enables one of these via the picker, it stays
+     visually hidden here — a deliberate simplification rather than
+     teaching the picker about viewport width. */
+  #stocks-table th[data-col="sector"],
+  #stocks-table td[data-col="sector"],
+  #stocks-table th[data-col="ycp"],
+  #stocks-table td[data-col="ycp"],
+  #stocks-table th[data-col="close"],
+  #stocks-table td[data-col="close"],
+  #stocks-table th[data-col="trade"],
+  #stocks-table td[data-col="trade"] {
+    display: none;
+  }
+}

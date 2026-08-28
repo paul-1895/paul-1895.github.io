@@ -1,0 +1,476 @@
+/* ================================================================
+   fundamentals.css  —  Quarterly Fundamentals Spreadsheet
+   ================================================================ */
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+/* ── Page shell ─────────────────────────────────────────────── */
+.fund-page {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 24px 24px 60px;
+  animation: fadeUp .4s ease both;
+}
+
+/* ── Top bar ─────────────────────────────────────────────────── */
+.fund-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.fund-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--border-glow, #2d3748);
+  color: var(--text-secondary, #94a3b8);
+  border-radius: 6px;
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  text-decoration: none;
+  transition: all .2s;
+}
+.fund-back:hover {
+  border-color: var(--accent, #00f5c4);
+  color: var(--accent, #00f5c4);
+}
+.fund-back svg { width:14px; height:14px; }
+
+.fund-title-block h1 {
+  font-family: var(--mono, monospace);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary, #e2eaf6);
+  letter-spacing: -0.3px;
+}
+.fund-title-block p {
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  color: var(--text-muted, #64748b);
+  margin-top: 3px;
+}
+
+.fund-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.fund-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all .2s cubic-bezier(.34,1.56,.64,1);
+}
+.fund-btn svg { width:13px; height:13px; flex-shrink:0; }
+.fund-btn:disabled { opacity:.4; cursor:not-allowed; transform:none !important; }
+
+.fund-btn--primary {
+  background: var(--accent-dim, rgba(0,245,196,.1));
+  border-color: var(--accent, #00f5c4);
+  color: var(--accent, #00f5c4);
+}
+.fund-btn--primary:hover:not(:disabled) {
+  background: var(--accent, #00f5c4);
+  color: #000;
+  box-shadow: 0 0 18px rgba(0,245,196,.3);
+  transform: translateY(-1px);
+}
+.fund-btn--ghost {
+  background: transparent;
+  border-color: var(--border-glow, #2d3748);
+  color: var(--text-secondary, #94a3b8);
+}
+.fund-btn--ghost:hover:not(:disabled) {
+  border-color: var(--text-secondary, #94a3b8);
+  color: var(--text-primary, #e2eaf6);
+}
+.fund-btn--danger {
+  background: transparent;
+  border-color: rgba(255,64,96,.4);
+  color: var(--loss, #ff4060);
+}
+.fund-btn--danger:hover:not(:disabled) {
+  background: rgba(255,64,96,.1);
+}
+.fund-btn--edit-active {
+  background: rgba(99,102,241,.15);
+  border-color: #6366f1;
+  color: #818cf8;
+}
+
+/* ── Mode badge ─────────────────────────────────────────────── */
+.fund-mode-badge {
+  font-family: var(--mono, monospace);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+.fund-mode-badge--view {
+  background: rgba(0,245,196,.08);
+  border-color: rgba(0,245,196,.3);
+  color: var(--accent, #00f5c4);
+}
+.fund-mode-badge--edit {
+  background: rgba(99,102,241,.1);
+  border-color: rgba(99,102,241,.4);
+  color: #818cf8;
+  animation: editPulse 2s ease-in-out infinite;
+}
+@keyframes editPulse { 0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.3)} 50%{box-shadow:0 0 0 4px rgba(99,102,241,.1)} }
+
+/* ── Table container ─────────────────────────────────────────── */
+.fund-table-wrap {
+  background: var(--bg-card, #161b22);
+  border: 1px solid var(--border, rgba(255,255,255,.07));
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0,0,0,.3);
+}
+.fund-scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-glow, #2d3748) transparent;
+}
+.fund-scroll::-webkit-scrollbar { height: 5px; }
+.fund-scroll::-webkit-scrollbar-thumb { background: var(--border-glow, #2d3748); border-radius: 3px; }
+
+/* ── Table ───────────────────────────────────────────────────── */
+.fund-table {
+  border-collapse: collapse;
+  width: auto;        /* don't stretch; grow only as wide as content */
+  min-width: 100%;    /* but still fill container when many columns  */
+  table-layout: fixed;
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+}
+
+/* Header row */
+.fund-table thead tr {
+  background: rgba(0,0,0,.25);
+  border-bottom: 2px solid var(--border-glow, #2d3748);
+}
+.fund-table thead th {
+  padding: 0;
+  white-space: nowrap;
+  position: relative;
+}
+/* First header cell (metric label col) */
+.fund-table thead th:first-child {
+  min-width: 160px;
+  width: 160px;
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background: rgba(12,18,30,.98);
+}
+/* Quarter / Year header cells — fixed width, no stretch */
+.fund-table thead th:not(:first-child) {
+  width: 140px;
+  min-width: 140px;
+  max-width: 140px;
+}
+
+.fund-th-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 14px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted, #64748b);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.fund-table thead th:first-child .fund-th-inner {
+  justify-content: flex-start;
+}
+
+.fund-th-del {
+  width: 18px;
+  height: 18px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,64,96,.1);
+  border: 1px solid rgba(255,64,96,.3);
+  border-radius: 4px;
+  color: var(--loss, #ff4060);
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 1;
+  transition: all .15s;
+  padding: 0;
+  flex-shrink: 0;
+}
+.fund-th-del:hover { background: rgba(255,64,96,.2); }
+.fund-edit-mode .fund-th-del { display: flex; }
+
+/* Body rows */
+.fund-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  transition: background .1s;
+}
+.fund-table tbody tr:last-child { border-bottom: none; }
+.fund-table tbody tr:hover { background: rgba(255,255,255,.025); }
+
+/* First column (metric name) */
+.fund-table tbody td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: rgba(12,18,30,.98);
+  border-right: 1px solid var(--border-glow, #2d3748);
+  padding: 0;
+}
+.fund-row-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+}
+.fund-row-del {
+  width: 18px;
+  height: 18px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,64,96,.1);
+  border: 1px solid rgba(255,64,96,.3);
+  border-radius: 4px;
+  color: var(--loss, #ff4060);
+  cursor: pointer;
+  font-size: 10px;
+  flex-shrink: 0;
+  transition: all .15s;
+  padding: 0;
+}
+.fund-row-del:hover { background: rgba(255,64,96,.25); }
+.fund-edit-mode .fund-row-del { display: flex; }
+
+/* Data cells */
+.fund-table tbody td {
+  padding: 10px 14px;
+  text-align: right;
+  color: var(--text-secondary, #94a3b8);
+  vertical-align: middle;
+  width: 140px;
+  max-width: 140px;
+  overflow: hidden;
+}
+
+/* ── Cell input (edit mode) ──────────────────────────────────── */
+.fund-cell {
+  width: 100%;
+  text-align: right;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary, #94a3b8);
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+  padding: 0;
+  cursor: default;
+  outline: none;
+}
+.fund-edit-mode .fund-cell {
+  cursor: text;
+  border-bottom: 1px dashed var(--border-glow, #2d3748);
+  transition: border-color .15s;
+}
+.fund-edit-mode .fund-cell:focus {
+  border-bottom-color: var(--accent, #00f5c4);
+  color: var(--text-primary, #e2eaf6);
+  background: rgba(0,245,196,.04);
+  outline: none;
+}
+.fund-edit-mode .fund-cell:hover {
+  border-bottom-color: rgba(255,255,255,.2);
+}
+
+/* Metric label select (edit mode) */
+.fund-metric-sel {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary, #94a3b8);
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: default;
+  outline: none;
+  pointer-events: none;
+  width: 100%;
+  -webkit-appearance: none;
+  padding: 0;
+}
+.fund-edit-mode .fund-metric-sel {
+  cursor: pointer;
+  pointer-events: auto;
+  border-bottom: 1px dashed var(--border-glow, #2d3748);
+}
+.fund-edit-mode .fund-metric-sel:focus {
+  border-bottom-color: var(--accent, #00f5c4);
+  color: var(--accent, #00f5c4);
+}
+.fund-metric-sel option { background: #0c1220; color: #e2eaf6; }
+
+/* Quarter header input (edit mode) */
+.fund-qtr-input {
+  background: transparent;
+  border: none;
+  color: var(--text-muted, #64748b);
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: default;
+  outline: none;
+  pointer-events: none;
+  width: 72px;
+}
+.fund-edit-mode .fund-qtr-input {
+  cursor: text;
+  pointer-events: auto;
+  border-bottom: 1px dashed var(--border-glow, #2d3748);
+}
+.fund-edit-mode .fund-qtr-input:focus {
+  border-bottom-color: #818cf8;
+  color: #818cf8;
+}
+
+/* ── Add row / col toolbar ───────────────────────────────────── */
+.fund-toolbar {
+  display: none;
+  gap: 8px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--border, rgba(255,255,255,.07));
+  background: rgba(0,0,0,.15);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.fund-edit-mode .fund-toolbar { display: flex; }
+.fund-toolbar-label {
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  color: var(--text-muted, #64748b);
+  letter-spacing: .5px;
+  margin-right: 4px;
+}
+
+/* ── Empty state ─────────────────────────────────────────────── */
+.fund-empty {
+  padding: 60px 20px;
+  text-align: center;
+  font-family: var(--mono, monospace);
+  color: var(--text-muted, #64748b);
+  font-size: 12px;
+}
+.fund-empty svg { width:40px; height:40px; opacity:.2; margin: 0 auto 14px; display:block; }
+
+/* ── Toast ───────────────────────────────────────────────────── */
+.fund-toast-wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.fund-toast {
+  background: var(--bg-card, #161b22);
+  border: 1px solid var(--border-glow, #2d3748);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  color: var(--text-secondary, #94a3b8);
+  animation: fadeUp .2s ease;
+  box-shadow: 0 6px 24px rgba(0,0,0,.4);
+}
+.fund-toast--success { border-left: 2px solid var(--gain, #22d47a); color: var(--gain, #22d47a); }
+.fund-toast--error   { border-left: 2px solid var(--loss, #ff4060); color: var(--loss, #ff4060); }
+
+/* ── Loading skeleton ────────────────────────────────────────── */
+.fund-skeleton {
+  height: 14px;
+  width: 80%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--border,rgba(255,255,255,.07)) 25%, rgba(255,255,255,.1) 50%, var(--border,rgba(255,255,255,.07)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  margin: auto;
+}
+
+/* ── Drag handles ─────────────────────────────────────────────── */
+.fund-drag-handle {
+  display: none;
+  cursor: grab;
+  color: var(--text-muted, #64748b);
+  font-size: 13px;
+  line-height: 1;
+  padding: 2px 3px;
+  border-radius: 3px;
+  user-select: none;
+  flex-shrink: 0;
+  transition: color .15s, background .15s;
+}
+.fund-drag-handle:hover {
+  color: var(--accent, #00f5c4);
+  background: rgba(0,245,196,.08);
+}
+.fund-drag-handle:active { cursor: grabbing; }
+.fund-edit-mode .fund-drag-handle { display: inline-flex; align-items: center; }
+
+/* ── Drag in-flight / over states ────────────────────────────── */
+.fund-dragging {
+  opacity: .45;
+  outline: 1px dashed var(--accent, #00f5c4);
+  outline-offset: -1px;
+}
+.fund-drag-over {
+  background: rgba(0,245,196,.06) !important;
+  outline: 1px solid rgba(0,245,196,.35);
+  outline-offset: -1px;
+}
+/* column drag-over: highlight entire column via th */
+thead .fund-drag-over { border-top: 2px solid var(--accent, #00f5c4); }
+/* row drag-over: highlight entire row */
+tbody .fund-drag-over td { border-top: 2px solid var(--accent, #00f5c4); }
+
+/* ── Toolbar hint ────────────────────────────────────────────── */
+.fund-toolbar-hint {
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  color: var(--text-muted, #64748b);
+  margin-left: 8px;
+  letter-spacing: .3px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .fund-page { padding: 14px 12px 48px; }
+  .fund-topbar { flex-direction: column; align-items: flex-start; }
+}

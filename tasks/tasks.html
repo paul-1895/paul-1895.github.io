@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Task Board — DSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="tasks.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <a href="../index.html" class="logo-back" title="Back to Market">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </a>
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Task Board</h1>
+        <p>Personal notes &amp; task manager</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="hdr-btn" id="add-group-btn" title="New Group">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        New Group
+      </button>
+      <button class="hdr-btn hdr-btn-accent" id="add-task-btn" title="New Task">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        New Task
+      </button>
+      <button class="hdr-icon-btn has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle theme">
+        <span id="theme-icon">☀️</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- STATS BAR -->
+<div class="stats-bar" id="stats-bar">
+  <div class="stat-chip"><span class="stat-val" id="stat-total">0</span><span class="stat-lbl">Total</span></div>
+  <div class="stat-chip"><span class="stat-val" id="stat-open">0</span><span class="stat-lbl">Open</span></div>
+  <div class="stat-chip stat-chip-done"><span class="stat-val" id="stat-done">0</span><span class="stat-lbl">Done</span></div>
+  <div class="stat-chip stat-chip-high"><span class="stat-val" id="stat-high">0</span><span class="stat-lbl">High Pri</span></div>
+  <div class="stat-divider"></div>
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="task-search" placeholder="Search tasks…" autocomplete="off" />
+  </div>
+  <div class="filter-pills">
+    <button class="fpill active" data-filter="all">All</button>
+    <button class="fpill" data-filter="open">Open</button>
+    <button class="fpill" data-filter="done">Done</button>
+    <button class="fpill" data-filter="high">High</button>
+  </div>
+</div>
+
+<!-- BOARD -->
+<main class="board" id="board">
+  <div class="board-empty" id="board-empty" style="display:none;">
+    <div class="empty-icon">📋</div>
+    <p>No groups yet. Create one to get started.</p>
+    <button class="hdr-btn hdr-btn-accent" onclick="document.getElementById('add-group-btn').click()">Create Group</button>
+  </div>
+</main>
+
+<!-- ── MODALS ── -->
+
+<!-- Task Modal -->
+<div class="modal-backdrop hidden" id="task-modal-backdrop">
+  <div class="modal" id="task-modal" role="dialog" aria-modal="true" aria-labelledby="task-modal-title">
+    <div class="modal-hd">
+      <span class="modal-title" id="task-modal-title">New Task</span>
+      <button class="modal-close" id="task-modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label for="task-title-inp">Title <span class="req">*</span></label>
+        <input type="text" id="task-title-inp" placeholder="What needs to be done?" maxlength="120" />
+      </div>
+      <div class="field">
+        <label for="task-desc-inp">Notes</label>
+        <textarea id="task-desc-inp" placeholder="Details, links, context…" rows="4" maxlength="1000"></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="task-priority-sel">Priority</label>
+          <select id="task-priority-sel">
+            <option value="normal">Normal</option>
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="task-color-sel">Note Color</label>
+          <div class="color-row" id="task-color-row">
+            <button class="clr-swatch active" data-color="default" style="--c:#1e2330" title="Default"></button>
+            <button class="clr-swatch" data-color="amber"   style="--c:#7a5a00" title="Amber"></button>
+            <button class="clr-swatch" data-color="teal"    style="--c:#004d40" title="Teal"></button>
+            <button class="clr-swatch" data-color="rose"    style="--c:#6d1a2e" title="Rose"></button>
+            <button class="clr-swatch" data-color="indigo"  style="--c:#1a237e" title="Indigo"></button>
+            <button class="clr-swatch" data-color="slate"   style="--c:#263040" title="Slate"></button>
+          </div>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="task-due-inp">Due Date</label>
+          <input type="date" id="task-due-inp" />
+        </div>
+        <div class="field">
+          <label for="task-group-sel">Group</label>
+          <select id="task-group-sel"></select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-ft">
+      <button class="btn-ghost" id="task-modal-cancel">Cancel</button>
+      <button class="btn-accent" id="task-modal-save">Save Task</button>
+    </div>
+  </div>
+</div>
+
+<!-- Group Modal -->
+<div class="modal-backdrop hidden" id="group-modal-backdrop">
+  <div class="modal" id="group-modal" role="dialog" aria-modal="true">
+    <div class="modal-hd">
+      <span class="modal-title" id="group-modal-title">New Group</span>
+      <button class="modal-close" id="group-modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label for="group-name-inp">Group Name <span class="req">*</span></label>
+        <input type="text" id="group-name-inp" placeholder="e.g. Research, Portfolio, Watchlist ideas…" maxlength="60" />
+      </div>
+      <div class="field">
+        <label>Accent Color</label>
+        <div class="color-row" id="group-color-row">
+          <button class="clr-swatch active" data-color="cyan"   style="--c:#00bcd4" title="Cyan"></button>
+          <button class="clr-swatch" data-color="green"  style="--c:#22c47e" title="Green"></button>
+          <button class="clr-swatch" data-color="amber"  style="--c:#f59e0b" title="Amber"></button>
+          <button class="clr-swatch" data-color="rose"   style="--c:#e05c5c" title="Rose"></button>
+          <button class="clr-swatch" data-color="purple" style="--c:#9c6fde" title="Purple"></button>
+          <button class="clr-swatch" data-color="slate"  style="--c:#7b8fa1" title="Slate"></button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-ft">
+      <button class="btn-ghost" id="group-modal-cancel">Cancel</button>
+      <button class="btn-accent" id="group-modal-save">Create Group</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="modal-backdrop hidden" id="confirm-modal-backdrop">
+  <div class="modal modal-sm" id="confirm-modal" role="dialog" aria-modal="true">
+    <div class="modal-hd">
+      <span class="modal-title">Confirm Delete</span>
+      <button class="modal-close" id="confirm-modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <p id="confirm-msg" style="color:var(--text-secondary);line-height:1.6;"></p>
+    </div>
+    <div class="modal-ft">
+      <button class="btn-ghost" id="confirm-cancel">Cancel</button>
+      <button class="btn-danger" id="confirm-ok">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="tasks.js"></script>
+<script type="module">
+  // Shared theme module — the one `dse-theme` key and [data-theme] contract
+  // every page uses. This page used to keep its own copy keyed on `dse_theme`,
+  // which also defaulted to dark instead of following the system preference.
+  import { initTheme, toggleTheme } from '/theme/theme.js';
+  initTheme();
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => toggleTheme());
+</script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

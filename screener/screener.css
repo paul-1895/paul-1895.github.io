@@ -1,0 +1,719 @@
+/* ═══════════════════════════════════════════════════════════
+   SCREENER — Standalone page (screener.html)
+   Master-detail layout: a persistent sidebar (status + search +
+   pattern nav) on the left, a full-width sortable table for
+   whichever pattern is selected on the right. Per-pattern color
+   is injected once as a --rgb custom property on the row/nav/
+   header element (see PATTERN_RGB in screener.js) instead of one
+   CSS block per pattern key.
+═══════════════════════════════════════════════════════════ */
+
+.screener-page-root {
+  display: block;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 24px 24px 60px;
+}
+
+.scr-shell {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* ─── Sidebar ────────────────────────────────────────────── */
+.scr-sidebar {
+  flex: 0 0 300px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  position: sticky;
+  top: 76px;
+  max-height: calc(100vh - 96px);
+  display: flex;
+  flex-direction: column;
+}
+
+.scr-sidebar-status {
+  padding: 16px 16px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.scr-live-row {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  line-height: 1.7;
+}
+.scr-live-row span { color: var(--accent); }
+
+.scr-rescan-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 8px 10px;
+  background: transparent;
+  border: 1px solid var(--border-glow, var(--border));
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.scr-rescan-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.scr-rescan-btn svg { width: 12px; height: 12px; }
+.scr-rescan-btn.spinning svg { animation: screenerSpin 0.7s linear infinite; }
+@keyframes screenerSpin { to { transform: rotate(360deg); } }
+/* A brief ring-flash the moment a scan finishes — quiet confirmation that
+   fresh data landed, without a toast/notification that'd need dismissing. */
+.scr-rescan-btn.sc-rescan-done { animation: sc-rescan-flash 0.7s ease-out; }
+@keyframes sc-rescan-flash {
+  0%   { box-shadow: 0 0 0 0 var(--accent-dim); border-color: var(--accent); }
+  70%  { box-shadow: 0 0 0 7px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* ─── Search row ─────────────────────────────────────────── */
+.sc-search-row {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.sc-search-wrap { position: relative; display: flex; align-items: center; }
+.sc-search-icon {
+  position: absolute;
+  left: 10px;
+  width: 13px;
+  height: 13px;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+.sc-search-input {
+  width: 100%;
+  padding: 9px 32px 9px 32px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.sc-search-input::placeholder { color: var(--text-muted); }
+.sc-search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+.sc-search-input:focus + .sc-search-icon,
+.sc-search-wrap:focus-within .sc-search-icon { color: var(--accent); }
+.sc-search-clear {
+  position: absolute;
+  right: 7px;
+  width: 19px;
+  height: 19px;
+  border-radius: 4px;
+  border: none;
+  background: var(--border-glow, rgba(120,130,150,0.16));
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+.sc-search-clear:hover { background: rgba(224,92,92,0.14); color: var(--loss); }
+.sc-search-clear svg { width: 9px; height: 9px; }
+
+.sc-search-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 16px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+.sc-search-empty svg { opacity: 0.3; }
+.sc-search-empty strong { color: var(--text-secondary); font-weight: 600; }
+
+/* ─── Pattern nav ────────────────────────────────────────── */
+.scr-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px;
+  overflow-y: auto;
+  flex: 1;
+}
+.scr-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 9px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+}
+.scr-nav-item:hover { background: var(--bg-row-hover); }
+.scr-nav-item.active {
+  background: rgba(var(--rgb), 0.1);
+  border-color: rgba(var(--rgb), 0.32);
+}
+.scr-nav-item.sc-loading { opacity: 0.75; }
+.scr-nav-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgb(var(--rgb));
+  background: rgba(var(--rgb), 0.12);
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s;
+}
+.scr-nav-icon svg { width: 15px; height: 15px; }
+.scr-nav-item:hover .scr-nav-icon { transform: scale(1.1) rotate(-4deg); }
+.scr-nav-item.active .scr-nav-icon { background: rgba(var(--rgb), 0.22); }
+/* Fresh counts get a quick pop so an in-place update (no full re-render)
+   still reads as "this just changed" instead of silently mutating. */
+.scr-nav-count.sc-count-pop { animation: sc-count-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes sc-count-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+.scr-nav-name {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.2px;
+  line-height: 1.35;
+}
+.scr-nav-item.active .scr-nav-name { color: var(--text-primary); }
+.scr-nav-count {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(var(--rgb));
+  min-width: 18px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ─── Favorites ──────────────────────────────────────────── */
+.scr-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.scr-nav-group[data-group="fav"] {
+  padding-bottom: 6px;
+  margin-bottom: 5px;
+  border-bottom: 1px dashed var(--border);
+}
+.scr-nav-section-label {
+  padding: 6px 9px 3px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.scr-nav-fav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.15s, color 0.15s, background 0.15s;
+}
+.scr-nav-fav-btn svg { width: 15px; height: 15px; }
+.scr-nav-fav-btn:hover { background: rgba(234,179,8,0.16); color: #eab308; }
+.scr-nav-fav-btn.is-fav { color: #eab308; }
+/* Hover-to-reveal only on pointers that actually support hover (a mouse) —
+   on touch, there's no hover gesture at all, so gating on it would make an
+   un-favorited row's star permanently unreachable and the feature
+   effectively unusable on mobile. Desktop still gets the decluttered look;
+   touch always shows the star, which is the safer default anyway. */
+@media (hover: hover) and (pointer: fine) {
+  .scr-nav-fav-btn { opacity: 0; }
+  .scr-nav-item:hover .scr-nav-fav-btn,
+  .scr-nav-item:focus-visible .scr-nav-fav-btn,
+  .scr-nav-fav-btn.is-fav { opacity: 1; }
+}
+
+/* ─── Main pane ──────────────────────────────────────────── */
+.scr-main {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.scr-main-hd {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  row-gap: 12px;
+  animation: scr-fade-in 0.28s ease both;
+}
+@keyframes scr-fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.scr-main-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgb(var(--rgb));
+  background: rgba(var(--rgb), 0.12);
+  border: 1px solid rgba(var(--rgb), 0.3);
+}
+.scr-main-icon svg { width: 21px; height: 21px; }
+.scr-main-title-wrap { flex: 1; min-width: 160px; }
+.scr-main-title {
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+}
+.scr-main-desc {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.scr-main-pill {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: rgb(var(--rgb));
+  background: rgba(var(--rgb), 0.12);
+  border: 1px solid rgba(var(--rgb), 0.25);
+  padding: 5px 13px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* MACD timeframe selector — only rendered when the active pattern isMacd */
+.scr-tf-row {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  flex-shrink: 0;
+}
+.scr-tf-btn {
+  padding: 5px 11px;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.scr-tf-btn:hover { color: var(--text-secondary); }
+.scr-tf-btn.active {
+  background: rgb(var(--rgb));
+  color: #fff;
+}
+
+.scr-note {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 22px;
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+.scr-note svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+/* ─── Legend (candlestick patterns) ─────────────────────── */
+.scr-legend {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(245, 158, 11, 0.04);
+}
+.scr-legend-candle { display: flex; flex-direction: column; align-items: center; gap: 0; flex-shrink: 0; min-width: 18px; }
+.slc-wick { width: 2px; border-radius: 1px; }
+.slc-body { width: 14px; border-radius: 2px; }
+.scr-legend-labels { display: flex; flex-direction: column; gap: 6px; }
+.scr-legend-row {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  letter-spacing: 0.3px;
+}
+.scr-legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* ─── Table ──────────────────────────────────────────────── */
+.scr-table-wrap { overflow-x: auto; }
+.scr-table { width: 100%; border-collapse: collapse; }
+.scr-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 22px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+.scr-table thead th:hover { color: var(--accent); }
+.scr-th-num { text-align: right; }
+.scr-table tbody td {
+  padding: 12px 22px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.scr-table tbody tr:last-child td { border-bottom: none; }
+.scr-row {
+  cursor: pointer;
+  transition: background 0.12s;
+  animation: scr-row-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.scr-row:hover { background: var(--bg-row-hover); }
+@keyframes scr-row-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* Staggered entrance for the first screenful of rows — beyond that the
+   delay is capped so a 200-row list doesn't take seconds to finish
+   animating in (and rows that far down are below the fold anyway). */
+.scr-row:nth-child(n+1)  { animation-delay: 0ms; }
+.scr-row:nth-child(n+2)  { animation-delay: 22ms; }
+.scr-row:nth-child(n+3)  { animation-delay: 44ms; }
+.scr-row:nth-child(n+4)  { animation-delay: 66ms; }
+.scr-row:nth-child(n+5)  { animation-delay: 88ms; }
+.scr-row:nth-child(n+6)  { animation-delay: 110ms; }
+.scr-row:nth-child(n+7)  { animation-delay: 132ms; }
+.scr-row:nth-child(n+8)  { animation-delay: 154ms; }
+.scr-row:nth-child(n+9)  { animation-delay: 176ms; }
+.scr-row:nth-child(n+10) { animation-delay: 198ms; }
+.scr-row:nth-child(n+11) { animation-delay: 220ms; }
+.scr-row:nth-child(n+12) { animation-delay: 240ms; }
+@media (prefers-reduced-motion: reduce) {
+  .scr-row, .scr-main-hd { animation: none; }
+}
+
+.scr-td-code {
+  position: relative;
+  font-family: var(--mono);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+/* Pattern-colored accent bar that slides in from the row's left edge on
+   hover — a quiet callback to which list this row belongs to, using the
+   same --rgb custom property the badge/signal colors already read from. */
+.scr-td-code::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgb(var(--rgb));
+  border-radius: 0 2px 2px 0;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.16s ease-out;
+}
+.scr-row:hover .scr-td-code::before { transform: scaleY(1); }
+.scr-td-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-primary);
+  text-align: right;
+  white-space: nowrap;
+}
+.scr-change.up { color: var(--gain); }
+.scr-change.dn { color: var(--loss); }
+.scr-change.fl { color: var(--text-muted); }
+.scr-change small { opacity: 0.75; margin-left: 3px; font-size: 0.85em; }
+
+.scr-td-signal { text-align: right; min-width: 180px; }
+.scr-signal-main {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: rgb(var(--rgb));
+  white-space: nowrap;
+}
+.scr-signal-sub { font-family: var(--mono); font-size: 10.5px; color: var(--text-muted); margin-top: 3px; white-space: nowrap; }
+.scr-signal-label { font-size: 9.5px; color: var(--text-muted); font-weight: 400; margin-left: 3px; }
+
+/* Breakout retest: the level is only meaningful while it holds, so a row
+   whose latest close has slipped back through it drops the pattern colour
+   and shows the loss colour instead — it reads as a warning, not a setup. */
+.scr-signal-main.scr-retest-risk { color: var(--loss); }
+.scr-retest-flag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 5px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--loss);
+  background: color-mix(in srgb, var(--loss) 14%, transparent);
+  vertical-align: middle;
+}
+/* MACD + 50 EMA: each row carries the strategy's own record on that stock.
+   Edge is strategy return minus buy & hold, so a negative one means the rules
+   underperformed simply holding the share — coloured, not hidden, because it
+   is the reason to pass on an otherwise valid-looking signal. */
+.scr-s1-edge-pos { color: var(--gain); font-weight: 600; }
+.scr-s1-edge-neg { color: var(--loss); font-weight: 600; }
+
+.scr-wick-bar {
+  width: 76px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-top: 6px;
+}
+.scr-wick-fill { height: 100%; background: rgb(var(--rgb)); border-radius: 2px; transition: width 0.5s cubic-bezier(0.16,1,0.3,1); }
+
+/* ─── Skeleton loading ───────────────────────────────────── */
+.sc-skel-bar {
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--border) 25%, var(--border-glow, rgba(120,130,150,0.18)) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: sc-shimmer 1.4s infinite;
+  display: inline-block;
+}
+.sc-skeleton-count {
+  display: inline-block;
+  width: 32px;
+  height: 24px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--border) 25%, var(--border-glow, rgba(120,130,150,0.18)) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: sc-shimmer 1.4s infinite;
+  vertical-align: middle;
+}
+.sc-skeleton-count--sm { width: 22px; height: 16px; border-radius: 4px; }
+.sc-stat-skeleton {
+  display: inline-block;
+  width: 80px;
+  height: 10px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--border) 25%, var(--border-glow, rgba(120,130,150,0.18)) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: sc-shimmer 1.4s infinite;
+  vertical-align: middle;
+}
+@keyframes sc-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.sc-chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+  animation: sc-pulse 1.2s ease-in-out infinite;
+}
+@keyframes sc-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+.scr-skel-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.screener-scanning-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: screenerSpin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ─── Empty state ────────────────────────────────────────── */
+.scr-empty {
+  padding: 60px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.scr-empty { animation: scr-fade-in 0.3s ease both; }
+.scr-empty-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  position: relative;
+  animation: scr-empty-float 3.2s ease-in-out infinite;
+}
+.scr-empty-icon::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 18px;
+  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+  opacity: 0;
+  animation: scr-empty-glow 3.2s ease-in-out infinite;
+  z-index: -1;
+}
+.scr-empty-icon svg { width: 24px; height: 24px; }
+@keyframes scr-empty-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+@keyframes scr-empty-glow {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 0.6; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scr-empty-icon, .scr-empty-icon::after, .scr-empty { animation: none; }
+}
+.scr-empty h3 { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--text-secondary); letter-spacing: 0.5px; }
+.scr-empty p { font-family: var(--mono); font-size: 11px; color: var(--text-muted); max-width: 340px; line-height: 1.6; }
+
+/* ─── Live pulsing dot ───────────────────────────────────── */
+.screener-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+  position: relative;
+  margin-right: 4px;
+}
+.screener-live-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.3;
+  animation: screenerPulse 1.8s ease-in-out infinite;
+}
+@keyframes screenerPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50%       { transform: scale(2); opacity: 0;   }
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .scr-shell { flex-direction: column; }
+  .scr-sidebar {
+    position: static;
+    flex: none;
+    width: 100%;
+    max-height: none;
+  }
+  .scr-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+    flex-wrap: nowrap;
+  }
+  .scr-nav-item { flex: 0 0 auto; white-space: nowrap; }
+  /* .scr-nav-item is no longer a direct child of .scr-nav (it's one level
+     down, inside .scr-nav-group) now that favorites got their own group —
+     without this, .scr-nav-group's default column direction would stack
+     each group as one tall block instead of continuing the horizontal
+     strip of individual items this layout depends on below 860px. */
+  .scr-nav-group {
+    flex-direction: row;
+    flex: 0 0 auto;
+  }
+  .scr-nav-group[data-group="fav"] {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    padding-right: 8px;
+    margin-right: 5px;
+    border-bottom: none;
+    border-right: 1px dashed var(--border);
+  }
+  .scr-nav-section-label { display: none; }
+  .screener-page-root { padding: 16px 12px 40px; }
+}

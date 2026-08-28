@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pharmaceuticals Sector — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Pharmaceuticals &amp; Chemicals</h1>
+        <p>The country's strongest manufacturing story — and a listed sector that has not traded like one</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">The sector</a>
+    <a href="#economics">How the business works</a>
+    <a href="#patents">The patent question</a>
+    <a href="#numbers">The numbers</a>
+    <a href="#tension">Story versus price</a>
+    <a href="#ranking">Against other sectors</a>
+    <a href="#drivers">What moves it</a>
+    <a href="#honest">Reading it honestly</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">The sector</h2>
+      <p class="cd-lead">
+        Pharmaceuticals is the manufacturing sector Bangladesh is most often held up for. Domestic
+        producers supply the overwhelming majority of the country's medicine requirement — an
+        unusual achievement for a country at this income level, and one that took decades of
+        industrial policy to build. The larger companies also export to a wide range of markets.
+      </p>
+      <p class="cd-lead">
+        The DSE classifies this sector as <b>Pharmaceuticals &amp; Chemicals</b>, and the second
+        word matters. Alongside the drug makers sit chemical, agrochemical and consumer-products
+        businesses whose economics are quite different. It is a broader group than the sector name
+        suggests to most readers.
+      </p>
+      <div class="cd-callout">
+        <b>What this page is.</b> A description of the industry, plus real measurements of how
+        these shares have traded, computed from this app's own daily price archive. It carries no
+        revenue, margin, pipeline or export data, because none of that exists in this repository.
+      </div>
+    </section>
+
+    <!-- ─── Economics ─── -->
+    <section id="economics" class="cd-sec">
+      <h2 class="cd-h2">How the business works</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Element</th><th>What it means</th><th>Consequence</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Generic manufacturing</td>
+              <td>Producing off-patent formulations for the domestic market, branded and sold
+                  through a large field sales force.</td>
+              <td class="cd-t-why">Competition is on brand, distribution reach and doctor
+                  relationships rather than on molecule ownership — so selling and marketing cost
+                  is a permanent, large line item.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Imported active ingredients</td>
+              <td>Most active pharmaceutical ingredients (APIs) are imported, largely from India
+                  and China.</td>
+              <td class="cd-t-why">A structural foreign-currency cost against taka revenue.
+                  Currency moves and import-financing conditions feed straight into gross
+                  margin.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Domestic price regulation</td>
+              <td>Prices of a defined list of essential medicines are administered rather than
+                  set by the company.</td>
+              <td class="cd-t-why">Limits the ability to pass on input cost increases on part of
+                  the portfolio, which is why product mix shifts toward unregulated categories
+                  matter to margins.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Exports and accreditation</td>
+              <td>Selling abroad requires plants approved by the importing country's regulator,
+                  which is expensive and slow to obtain.</td>
+              <td class="cd-t-why">Separates a few large exporters from a long tail of
+                  domestic-only producers. The sector label covers both.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Capital cycle</td>
+              <td>New plants and accreditation programmes are large multi-year investments.</td>
+              <td class="cd-t-why">Cash flow can be materially weaker than reported profit during
+                  an expansion phase, without anything being wrong.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Demand character</td>
+              <td>Medicine consumption is comparatively insensitive to the economic cycle.</td>
+              <td class="cd-t-why">The reason this sector is usually described as defensive — a
+                  claim the volatility column in the table below lets you check rather than
+                  assume.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Patents ─── -->
+    <section id="patents" class="cd-sec">
+      <h2 class="cd-h2">The patent question</h2>
+      <p class="cd-lead">
+        Part of how the industry reached its present position is that least-developed countries
+        have been exempted, under WTO rules, from enforcing pharmaceutical product patents. That
+        exemption let domestic manufacturers produce generic versions of medicines still under
+        patent elsewhere, building scale and capability without licensing costs.
+      </p>
+      <div class="cd-callout cd-warn">
+        <b>That exemption is tied to LDC status, and Bangladesh is scheduled to graduate from it.</b>
+        What follows from graduation for pharmaceutical patents — how long any transitional
+        treatment lasts, and what it means in practice for particular products — is a live policy
+        question rather than a settled fact, and it is being negotiated rather than simply
+        applied. This page flags it because it is the single largest known structural uncertainty
+        over the sector, and deliberately does not predict the outcome: <b>this app holds no data
+        on it whatsoever.</b>
+      </div>
+      <p class="cd-lead" style="margin-top:18px">
+        The practical point for reading the tables below is that no amount of price history speaks
+        to this. A share price reflects what the market currently believes about it, and this
+        archive cannot separate that belief from anything else moving the price.
+      </p>
+    </section>
+
+    <!-- ─── Numbers ─── -->
+    <section id="numbers" class="cd-sec">
+      <h2 class="cd-h2">The numbers</h2>
+      <p class="cd-lead">
+        Every listed company in the sector, with median returns over one, three and five years,
+        annualised volatility, typical daily turnover, exchange category and the most recent
+        declared cash dividend.
+      </p>
+      <div class="cd-callout" id="sec-generated" style="margin-bottom:22px">Loading…</div>
+      <div id="sec-data">
+        <div class="cd-callout">Loading sector figures…</div>
+      </div>
+    </section>
+
+    <!-- ─── Tension ─── -->
+    <section id="tension" class="cd-sec">
+      <h2 class="cd-h2">Story versus price</h2>
+      <p class="cd-lead">
+        This sector presents the clearest example on the Hub of a gap between a strong industrial
+        narrative and how the corresponding shares have actually traded. Both are real, and the
+        honest thing is to hold them side by side rather than let one explain away the other.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>The narrative</th><th>What the price data shows</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>A defensive sector with steady, cycle-resistant demand.</td>
+              <td class="cd-t-why">Testable, and the volatility column above is where to test it.
+                  Low relative volatility would support the description; it would not make the
+                  sector safe.</td>
+            </tr>
+            <tr>
+              <td>A national success story with export growth ahead of it.</td>
+              <td class="cd-t-why">Nothing in this archive measures exports. Whether the market
+                  has priced that story is visible only as a return series, which is not the same
+                  evidence.</td>
+            </tr>
+            <tr>
+              <td>Quality companies with consistent dividend records.</td>
+              <td class="cd-t-why">The dividend and category columns speak to this directly, and
+                  are the most reliable part of the table for it.</td>
+            </tr>
+            <tr>
+              <td>A sector to hold through market weakness.</td>
+              <td class="cd-t-why">Compare the sector's medians with the market's in the snapshot
+                  table. Relative return over the specific window measured is what that reduces
+                  to — one window, on one market.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout" style="margin-top:16px">
+        <b>A weak return column does not refute the industrial story, and a strong one would not
+        confirm it.</b> Share prices reflect the price paid for those earnings as much as the
+        earnings themselves, and this archive contains no valuation input at all — no earnings, no
+        book value, nothing. A sector can execute well and still be a poor investment if it was
+        bought expensively, and this app cannot see which case applies.
+      </div>
+    </section>
+
+    <!-- ─── Ranking ─── -->
+    <section id="ranking" class="cd-sec">
+      <h2 class="cd-h2">Against every other sector</h2>
+      <p class="cd-lead">
+        Every operating sector, ranked by one-year median return, with this one highlighted. The
+        volatility column is the one to read here — it is the column that speaks to the
+        "defensive" description most directly.
+      </p>
+      <div id="sec-ranking">
+        <div class="cd-callout">Loading the ranking…</div>
+      </div>
+    </section>
+
+    <!-- ─── Drivers ─── -->
+    <section id="drivers" class="cd-sec">
+      <h2 class="cd-h2">What moves it</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Driver</th><th>Mechanism</th><th>Visible in this app?</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">API import costs</td>
+              <td>Active ingredient prices and the taka exchange rate together set a large part of
+                  cost of goods.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Administered price revisions</td>
+              <td>Changes to regulated medicine prices alter margins across the sector at
+                  once.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Patent and trade policy</td>
+              <td>The LDC graduation question above, plus any transitional arrangements that
+                  follow it.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Export approvals</td>
+              <td>A new regulatory accreditation opens a market; losing one closes it.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Healthcare spending</td>
+              <td>Household and public spending on medicine sets the size of the domestic
+                  market.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Market-wide flows</td>
+              <td>Large, liquid names in this sector are common institutional holdings and move
+                  with broad market sentiment.</td>
+              <td class="cd-t-why"><b>Partly.</b> Only as correlation with the market baseline
+                  in the snapshot table.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>"Pharmaceuticals &amp; Chemicals" is two industries under one label</h4>
+          <p>The sector list mixes drug manufacturers with chemical and agrochemical businesses
+          that have different customers, different regulation and different cost structures. Any
+          sector median across them is a weaker summary than the label implies, and the
+          constituent table is where the difference becomes visible.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Defensive is a claim about volatility, not about returns</h4>
+          <p>If the volatility column comes in below the market's, that supports the sector being
+          less jumpy — nothing more. Low volatility and poor returns coexist easily, and a
+          defensive sector that lags for years is a perfectly ordinary outcome rather than a
+          contradiction.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Price-only returns understate the consistent payers</h4>
+          <p>The larger companies in this sector are steady cash dividend payers, and no dividend
+          is added back in any return column here. The gap between the price return shown and a
+          holder's actual total return is real and, over five years, substantial.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The largest known risk to the sector is unmeasurable here</h4>
+          <p>The patent question set out above could matter more to these companies over the next
+          decade than anything in the price archive. This app has no data on it, no way to price
+          it, and no basis for a view. Its absence from the tables is a limitation of the tables,
+          not evidence that it is unimportant.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Only survivors are counted</h4>
+          <p>The archive holds tickers that exist today, so any company delisted along the way is
+          absent and every long-horizon median is flattered by an unmeasured amount.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>None of this is fundamental analysis</h4>
+          <p>No revenue, no margin, no capacity, no debt, no pipeline. The tables describe how a
+          group of shares traded. For a sector whose whole case rests on operating performance,
+          that is a particularly incomplete view, and it should not be mistaken for a judgement
+          about the companies.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        Related reading: <a href="insurance.html">Insurance</a>, <a href="textile.html">Textile</a>,
+        <a href="telecom.html">Telecommunication</a> and <a href="paper.html">Paper &amp; Printing</a>.
+        For individual companies, the fundamentals
+        and <a href="../company_profile/company.html">company profile</a> pages carry what this
+        archive does not.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  window.SECTOR_GUIDE = { sectors: ['Pharmaceuticals & Chemicals'] };
+</script>
+<script src="sector-guide.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

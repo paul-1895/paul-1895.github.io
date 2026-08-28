@@ -1,0 +1,18 @@
+/* ─── GLOBAL KEYFRAMES ───────────────────────────────────────────── */
+@keyframes spin         { to { transform: rotate(360deg); } }
+@keyframes ticker       { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes pulse-glow   { 0%,100% { box-shadow: 0 0 8px var(--accent-glow); } 50% { box-shadow: 0 0 24px var(--accent-glow), 0 0 48px var(--accent-glow); } }
+@keyframes fadeSlideUp  { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes gradShift    { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+@keyframes scanline     { 0% { transform: translateY(-100%); } 100% { transform: translateY(100vh); } }
+@keyframes numberFlash  { 0%,100% { opacity: 1; } 40% { opacity: 0.4; } }
+@keyframes borderFlow   {
+  0%   { border-color: var(--grad-a); }
+  33%  { border-color: var(--grad-b); }
+  66%  { border-color: var(--grad-c); }
+  100% { border-color: var(--grad-a); }
+}
+@keyframes dotPulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.6); opacity: 0.5; }
+}

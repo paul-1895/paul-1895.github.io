@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heikin-Ashi — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Heikin-Ashi</h1>
+        <p>The smoothed candle transform this app's chart page draws, and how it's normally paired with other indicators</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">What it is</a>
+    <a href="#build">How it's computed</a>
+    <a href="#reading">Reading the candles</a>
+    <a href="#strategies">Strategies with indicators</a>
+    <a href="#real-example">A real chart</a>
+    <a href="#detected">What this app actually does</a>
+    <a href="#honest">Reading it honestly</a>
+    <a href="#videos">Videos</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What it is ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">What it is</h2>
+      <p class="cd-lead">
+        Heikin-Ashi ("average bar" in Japanese) is not a new price series — it's a smoothing
+        transform applied on top of ordinary OHLC candles. Each Heikin-Ashi (HA) candle's open,
+        high, low and close are all built from averages of the real candle(s) around it, which
+        trades a bit of price precision for a much cleaner read on trend direction.
+      </p>
+      <div class="cd-callout">
+        <b>The core trade-off in one line:</b> HA candles make trends easier to see and choppy
+        periods easier to spot — at the cost of the candle no longer showing you a real price
+        anyone actually traded at. See <a href="#honest">Reading it honestly</a> for why that
+        matters.
+      </div>
+    </section>
+
+    <!-- ─── How computed ─── -->
+    <section id="build" class="cd-sec">
+      <h2 class="cd-h2">How it's computed</h2>
+      <p class="cd-lead">
+        Ported directly from this app's own <code>candlestick_chart/candlestick-data.js</code>,
+        function <code>calculateHeikinAshi()</code>.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Field</th><th>Formula</th><th>Consequence</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">HA Close</td>
+              <td>(Open + High + Low + Close) ÷ 4 — the average of all four real prices on that bar.</td>
+              <td class="cd-t-why">Always sits near the middle of the real bar's range, which is
+                  part of why HA closes lag real closes at sharp turns.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">HA Open</td>
+              <td>(previous HA Open + previous HA Close) ÷ 2. The very first bar falls back to
+                  (real Open + real Close) ÷ 2, since there's no prior HA bar to average.</td>
+              <td class="cd-t-why">This is the recursive part — every HA open carries a memory of
+                  every bar before it, which is what makes a run of same-color HA candles look so
+                  clean.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">HA High</td>
+              <td>max(real High, HA Open, HA Close)</td>
+              <td class="cd-t-why">Guarantees the HA body and its wick stay consistent with each
+                  other, even though neither endpoint is a real traded price.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">HA Low</td>
+              <td>min(real Low, HA Open, HA Close)</td>
+              <td class="cd-t-why">Same guarantee on the downside.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Reading the candles ─── -->
+    <section id="reading" class="cd-sec">
+      <h2 class="cd-h2">Reading the candles</h2>
+      <p class="cd-lead">
+        These three cases are hand-built OHLC runs, not sampled from a random series — chosen so
+        each one unambiguously shows the regime it's labelled as. Every HA candle drawn is the real
+        formula above run on the raw candles beside it.
+      </p>
+      <div class="cd-grid cd-grid--wide">
+        <div id="ha-uptrend"></div>
+        <div id="ha-downtrend"></div>
+        <div id="ha-chop"></div>
+      </div>
+      <div class="cd-callout" style="margin-top:16px">
+        <b>The pattern to look for is the wick, not just the color.</b> Long same-color bodies with
+        little or no wick on the "against trend" side signal conviction; small bodies with wicks on
+        both sides signal indecision — that second case is the closest thing HA has to its own
+        "reversal candle."
+      </div>
+    </section>
+
+    <!-- ─── Strategies with indicators ─── -->
+    <section id="strategies" class="cd-sec">
+      <h2 class="cd-h2">Strategies with different indicators</h2>
+      <p class="cd-lead">
+        Heikin-Ashi answers "what's the trend doing right now" — it doesn't by itself answer
+        "should I enter," "where's my stop," or "is this overextended." That's normally filled in
+        with a second indicator. These are widely used combinations, not claims about what this app
+        has tested (see <a href="#detected">what this app actually does</a> for that distinction).
+      </p>
+      <div class="cd-grid cd-grid--wide">
+        <article class="cd-card">
+          <div class="cd-card-body">
+            <header class="cd-card-head"><h3>HA + Moving Average</h3><span class="cd-chip">Trend filter</span></header>
+            <p class="cd-what"><span class="cd-lbl">The idea</span> Only act on an HA color flip
+            when it agrees with the slope of a longer moving average (e.g. 50 or 200 EMA) — the MA
+            answers "which direction should I even be looking," HA answers "is that direction still
+            intact right now."</p>
+            <p class="cd-read"><span class="cd-lbl">Why pair it</span> HA alone can stay green
+            through a shallow pullback in a strong downtrend; a trend filter stops that from reading
+            as a fresh buy signal.</p>
+            <p class="cd-test"><span class="cd-lbl">In this app</span> <code>Chart Type → Heikin-Ashi</code>
+            and the MA overlay are both available on the same chart and drawn independently — enabling
+            one doesn't disable the other.</p>
+          </div>
+        </article>
+        <article class="cd-card">
+          <div class="cd-card-body">
+            <header class="cd-card-head"><h3>HA + MACD</h3><span class="cd-chip">Momentum confirmation</span></header>
+            <p class="cd-what"><span class="cd-lbl">The idea</span> Wait for an HA color flip and a
+            MACD signal-line crossover in the same direction close together, rather than acting on
+            either alone.</p>
+            <p class="cd-read"><span class="cd-lbl">Why pair it</span> Both are lagging by
+            construction — HA from its recursive averaging, MACD from its own moving averages — so
+            this combination is deliberately built for confirmation, not for early entries.</p>
+            <p class="cd-test"><span class="cd-lbl">In this app</span> MACD is one of this chart's
+            default sub-panes (see the <a href="macd-ema.html">MACD + EMA</a> guide for how it's
+            actually computed and tested here).</p>
+          </div>
+        </article>
+        <article class="cd-card">
+          <div class="cd-card-body">
+            <header class="cd-card-head"><h3>HA + RSI</h3><span class="cd-chip">Overextension check</span></header>
+            <p class="cd-what"><span class="cd-lbl">The idea</span> Use RSI to avoid taking a fresh
+            HA trend signal when momentum is already extreme — e.g. skip a new HA-uptrend entry if
+            RSI is already deep into overbought territory.</p>
+            <p class="cd-read"><span class="cd-lbl">Why pair it</span> HA's smoothing can make a
+            trend look calm right up until it's exhausted; RSI is one of the few tools in this pairing
+            that's actually measuring how stretched the move already is.</p>
+            <p class="cd-test"><span class="cd-lbl">In this app</span> RSI is the other default
+            sub-pane alongside MACD, drawn from real closes regardless of which chart type is
+            selected — see <a href="#detected">what this app actually does</a> below.</p>
+          </div>
+        </article>
+        <article class="cd-card">
+          <div class="cd-card-body">
+            <header class="cd-card-head"><h3>HA + Supertrend</h3><span class="cd-chip">Stop placement</span></header>
+            <p class="cd-what"><span class="cd-lbl">The idea</span> Let HA's color decide direction
+            and use an ATR-based Supertrend line as the actual trailing stop — HA doesn't produce a
+            tradeable stop level on its own (see <a href="#honest">Reading it honestly</a>).</p>
+            <p class="cd-read"><span class="cd-lbl">Why pair it</span> Supertrend gives a concrete,
+            volatility-scaled number to act on, which is exactly what HA is missing by design.</p>
+            <p class="cd-test"><span class="cd-lbl">In this app</span> Supertrend is listed in this
+            chart's own indicator catalog (<code>AVAILABLE_INDICATORS</code> in
+            <code>candlestick-data.js</code>) as an "ATR-based trend indicator."</p>
+          </div>
+        </article>
+        <article class="cd-card">
+          <div class="cd-card-body">
+            <header class="cd-card-head"><h3>HA + Hilega-Milega</h3><span class="cd-chip">This app's own oscillator</span></header>
+            <p class="cd-what"><span class="cd-lbl">The idea</span> Use this app's RSI(9)/WMA(21)
+            oscillator pane the same way as RSI above — a momentum cross-check underneath an HA trend
+            read.</p>
+            <p class="cd-read"><span class="cd-lbl">Why mention it</span> It's not a textbook
+            pairing anywhere else — it exists because this app built it. See its own guide for what
+            a real backtest of it found.</p>
+            <p class="cd-test"><span class="cd-lbl">In this app</span> <a href="hilega-milega.html">Read the Hilega-Milega guide</a>
+            for the exact formula and the honest backtest result.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Real chart ─── -->
+    <section id="real-example" class="cd-sec">
+      <h2 class="cd-h2">A real chart</h2>
+      <p class="cd-lead">
+        The regime diagrams above are hand-built so they stay unambiguous. This card is the real
+        thing: genuine daily prices for a real DSE ticker, fetched from this app's own
+        <code>/historical_prices</code> archive, run through the exact formula above.
+      </p>
+      <div class="cd-grid cd-grid--wide" id="ha-real-example">
+        <div class="cd-callout">Loading a real example…</div>
+      </div>
+    </section>
+
+    <!-- ─── Detected ─── -->
+    <section id="detected" class="cd-sec">
+      <h2 class="cd-h2">What this app actually does</h2>
+      <p class="cd-lead">
+        Chart-type only. Confirmed by grepping <code>screener/screener.js</code>,
+        <code>routes/screener-technicals.js</code>, both Super Model source files, and
+        <code>demo_trade/demo-trade.js</code>: zero matches for "heikin" or "heiken" in any of them.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Where it appears</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Chart page</td>
+              <td>A chart-type option (<code>Chart Type → Heikin-Ashi</code>) that redraws the
+                  price pane. Purely visual — no click-to-scan, no alert.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Indicator sub-panes</td>
+              <td>MACD, RSI and every other overlay are computed from the real daily Open/High/Low/Close
+                  before the Heikin-Ashi transform runs (see <code>candlestick-draw.js</code>: the
+                  transform happens at draw time, after indicators are already attached). Switching to
+                  Heikin-Ashi changes the candles, not the indicator values plotted next to them.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Screener / Super Model</td>
+              <td>Not present in either. No "Heikin-Ashi flip" scan or signal exists.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>An HA candle's price is not a price anyone traded at</h4>
+          <p>The open, high, low and close on an HA candle are all averages. You cannot place a stop
+          or a limit order "at" an HA level, because that number was never quoted by the exchange —
+          this is the single most common mistake newcomers to HA make. Any stop or target still has
+          to reference the real candle underneath.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Gaps disappear</h4>
+          <p>Because HA Open is a running average of prior bars, a real overnight gap up or down gets
+          smoothed away rather than shown. If a strategy depends on spotting gaps, it has to be run
+          on the raw candles, not the HA ones.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>It's a lagging transform, not a leading one</h4>
+          <p>Both HA Open and HA Close are averages, and averages lag by construction. HA candles
+          tend to confirm a reversal a bar or two after the raw candles already show one — the same
+          trade-off every smoothing tool makes for a cleaner read.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The regime diagrams above are constructed, not sampled</h4>
+          <p>Same reasoning as every other guide on this Hub: the three OHLC runs under "Reading the
+          candles" were hand-built to each unambiguously show one regime, not picked at random from
+          a generated series. The real-chart card further up is the only genuinely real-stock diagram
+          on this page.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        See it live: open any stock on the <a href="../candlestick_chart/candlestick.html">chart
+        page</a> and switch chart type to Heikin-Ashi. Related reading: Renko
+        — this app's other chart-type transform — and <a href="macd-ema.html">MACD + EMA</a>,
+        <a href="hilega-milega.html">Hilega-Milega</a> for the indicators this guide pairs it with.
+      </p>
+    </section>
+
+    <!-- ─── Videos ─── -->
+    <section id="videos" class="cd-sec">
+      <h2 class="cd-h2">Videos</h2>
+      <p class="cd-lead">
+        Background viewing on Heikin-Ashi as a general concept. Nothing here reflects this app's own
+        (nonexistent) screener or Super Model testing of it.
+      </p>
+      <div class="cd-video-grid" id="ha-videos">
+        <div class="cd-callout">No videos added yet.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="heikin-ashi.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

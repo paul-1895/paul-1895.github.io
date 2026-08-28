@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bollinger Bands — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Bollinger Bands</h1>
+        <p>A volatility envelope around a moving average — and an honest note on what this app does and doesn't do with it</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">What it is</a>
+    <a href="#build">How it's computed</a>
+    <a href="#squeeze">Squeeze &amp; expansion</a>
+    <a href="#reading">How it's commonly read</a>
+    <a href="#real-example">A real chart</a>
+    <a href="#detected">What this app detects</a>
+    <a href="#honest">Reading it honestly</a>
+    <a href="#videos">Videos</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What it is ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">What it is</h2>
+      <p class="cd-lead">
+        Bollinger Bands are a volatility envelope: a moving average in the middle, and an upper
+        and lower band a fixed number of standard deviations away from it. Unlike MACD or RSI, the
+        bands don't produce a single "line crossed line" event — they describe a <i>range</i> price
+        has recently tended to stay inside, and how wide or narrow that range currently is.
+      </p>
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="bb-full"></div>
+      </div>
+      <div class="cd-anatomy" style="margin-top:16px">
+        <div class="cd-anatomy-notes">
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" style="color:#f57c00">Middle band</span>
+            <span>A 20-period SMA of closing price. The basis every other line is measured
+            against.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" style="color:#00d4ff">Upper / lower bands</span>
+            <span>The middle band ± 2 standard deviations of price over the same 20 bars. The
+            shaded region between them is the "normal" range for that stock's recent volatility —
+            it is not a fixed width, it moves with the stock.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── How computed ─── -->
+    <section id="build" class="cd-sec">
+      <h2 class="cd-h2">How it's computed</h2>
+      <p class="cd-lead">
+        Ported directly from this app's own <code>indicators/bollinger-bands.js</code> and
+        <code>indicators/ma.js</code>.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Step</th><th>Computed from</th><th>Consequence</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Middle band</td>
+              <td>SMA(20) of closing price.</td>
+              <td class="cd-t-why">A simple, equally-weighted average — no null-padding tricks,
+                  just no value for the first 19 bars.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Standard deviation</td>
+              <td>The same 20-bar window's <i>population</i> variance — divided by 20, not 19.</td>
+              <td class="cd-t-why">A common point of divergence between Bollinger implementations
+                  is population vs. sample variance; this app uses population (÷N). If you compare
+                  band width against another platform's default and it looks slightly different,
+                  this is a likely reason why.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Upper / lower band</td>
+              <td>Middle band ± (2 × that standard deviation).</td>
+              <td class="cd-t-why">The multiplier (2) and period (20) are both this app's fixed
+                  defaults — there is no settings panel to change them, unlike MACD's configurable
+                  fast/slow/signal lengths.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Squeeze & expansion ─── -->
+    <section id="squeeze" class="cd-sec">
+      <h2 class="cd-h2">Squeeze &amp; expansion</h2>
+      <p class="cd-lead">
+        Because the bands are built from a standard deviation, their width <i>is</i> a direct
+        reading of recent volatility. A "squeeze" — the bands pulling tight — means the stock has
+        been unusually quiet; an "expansion" right after means that quiet broke. The marked point
+        below is the single narrowest moment in this page's own generated series, found by
+        measuring every bar rather than picked by eye.
+      </p>
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="bb-squeeze"></div>
+      </div>
+      <div class="cd-callout">
+        <b>A squeeze says "something's coming," not which way.</b> The bands narrowing tells you
+        volatility has compressed and statistically tends to expand again — it says nothing about
+        direction. Traders who act on a squeeze alone are betting on a breakout, not picking a
+        side, and need a separate reason to guess which way it breaks.
+      </div>
+    </section>
+
+    <!-- ─── How commonly read ─── -->
+    <section id="reading" class="cd-sec">
+      <h2 class="cd-h2">How it's commonly read</h2>
+      <p class="cd-lead">
+        These are general, widely taught readings of Bollinger Bands — not claims about what this
+        app validates. See <a href="#detected">what this app actually does with it</a> below for
+        that distinction.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Reading</th><th>Idea</th><th>Common caveat</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Mean reversion</td>
+              <td>Price touching the upper/lower band is "stretched" and likely to pull back
+                  toward the middle band.</td>
+              <td class="cd-t-why">Works in range-bound conditions; fails outright in a strong
+                  trend (see "band walking" below).</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Band walking</td>
+              <td>In a strong trend, price can ride along the upper (or lower) band for many bars
+                  in a row rather than reverting.</td>
+              <td class="cd-t-why">This is the direct counter-case to mean reversion — the same
+                  touch means opposite things depending on the regime, and the bands alone don't
+                  tell you which regime you're in.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Squeeze breakout</td>
+              <td>A narrow-band period often precedes a bigger move; some traders position ahead
+                  of the expected expansion.</td>
+              <td class="cd-t-why">Timing which bar the breakout actually starts on, and which
+                  direction, is the hard part this reading doesn't solve.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Real chart ─── -->
+    <section id="real-example" class="cd-sec">
+      <h2 class="cd-h2">A real chart</h2>
+      <p class="cd-lead">
+        The diagrams above run on a deterministic generated series, kept stable so they don't
+        shift as the archive grows (same reasoning as the other guides on this Hub). This card is
+        the real thing: genuine daily closes for a real DSE ticker, fetched from this app's own
+        <code>/historical_prices</code> archive, with the same 20-period/2σ bands applied — the
+        most recent point where price actually touched a band, found by scanning the data.
+      </p>
+      <div class="cd-grid cd-grid--wide" id="bb-real-example">
+        <div class="cd-callout">Loading a real example…</div>
+      </div>
+    </section>
+
+    <!-- ─── Detected ─── -->
+    <section id="detected" class="cd-sec">
+      <h2 class="cd-h2">What this app actually detects</h2>
+      <p class="cd-lead">
+        Nothing, as a scannable signal — and this section says so plainly rather than implying
+        otherwise. Confirmed by grepping <code>screener/screener.js</code>,
+        <code>routes/screener-technicals.js</code>, and both Super Model source files: zero
+        matches for Bollinger Bands in any of them.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Where it appears</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Chart page overlay</td>
+              <td>Drawn on the price pane when enabled — purely visual, no click-to-scan, no
+                  alert.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Practice-trading game</td>
+              <td><code>demo_trade/demo-trade.js</code> uses it to generate one line of flavor
+                  text — e.g. "at or above its upper Bollinger Band" — while you guess the next
+                  candle. Descriptive only; the game doesn't score based on it.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Screener</td>
+              <td>Not present. No "Bollinger squeeze" or "band touch" list exists.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Super Model</td>
+              <td>Not present. It is not in <code>DEFAULT_WEIGHTS</code> or <code>SIGNAL_META</code>
+                  — not tested, not scored, not zeroed like MACD or Hilega-Milega were. It was
+                  simply never entered into that evaluation at all.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>There is nothing to report here — and that itself is worth saying</h4>
+          <p><a href="hilega-milega.html">Hilega-Milega</a> and <a href="macd-ema.html">MACD + EMA</a>
+          both have a section on this Hub showing a real, measured result — in both cases, an
+          unflattering one. This guide can't do that for Bollinger Bands, because nothing has ever
+          been run. "Untested" and "tested and found wanting" are different claims; don't read this
+          page as evidence either way.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>A band touch is a description, not an event</h4>
+          <p>MACD crossing its signal line is a single, well-defined bar you can point to. "Price
+          touched the upper band" is true on every bar it stays true for — there's no natural
+          single moment to test the way a crossover has one. That ambiguity is part of why no
+          screener list exists for it here.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Mean reversion and band-walking directly contradict each other</h4>
+          <p>Both are standard, widely taught readings of the same event (price at a band), and
+          they predict opposite outcomes. Which one applies depends on a trend judgment the bands
+          themselves don't make — so acting on a touch alone means silently picking one of two
+          contradictory rules and hoping the regime matches.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The anatomy diagrams here are synthetic — deliberately</h4>
+          <p>Same reasoning as every other guide on this Hub: the "What it is" and "Squeeze &amp;
+          expansion" figures run real Bollinger Band maths over a <i>generated</i> price series so
+          the shapes stay stable as the archive grows. The squeeze point marked above was found by
+          measuring every bar of that generated series, not picked by eye — the real-chart card
+          further up is the only genuinely real-stock diagram on this page.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        See it live: open any stock on the <a href="../candlestick_chart/candlestick.html">chart
+        page</a> and enable Bollinger Bands from the indicators panel. Related reading:
+        <a href="hilega-milega.html">Hilega-Milega</a>, <a href="macd-ema.html">MACD + EMA</a> —
+        both guides this Hub actually has evidence for.
+      </p>
+    </section>
+
+    <!-- ─── Videos ─── -->
+    <section id="videos" class="cd-sec">
+      <h2 class="cd-h2">Videos</h2>
+      <p class="cd-lead">
+        Background viewing on Bollinger Bands as a general concept — squeezes, band-walking, and
+        mean-reversion reads. Nothing here reflects this app's own (nonexistent) testing of it.
+      </p>
+      <div class="cd-video-grid" id="bb-videos">
+        <div class="cd-callout">No videos added yet.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="bollinger-bands.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+/* ═══════════════════════════════════════════════════════════
+   SUPER MODEL — Standalone page (super-model.html)
+   Two ranked card grids (Buy / Sell) fed by GET
+   /api/super-model/suggestions. Detail view reuses the
+   .an-panel modal chrome from candlestick-analysis.css.
+═══════════════════════════════════════════════════════════ */
+
+.sm-page-root {
+  display: block;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 24px 24px 60px;
+}
+
+.sm-disclaimer {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+}
+
+.sm-meta-row {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* ─── Filter bar ──────────────────────────────────────────────
+   The selects reuse .filter-select-wrap from ../style.css (already
+   linked by this page), the same class index.html and newspaper use,
+   so only the bar layout and the bespoke controls are defined here. */
+.sm-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-bottom: 24px;
+}
+
+/* Page-scoped bump of the shared .filter-select-wrap, whose 12px is out
+   of scale with this page's larger type. Two classes (0,2,0) outrank the
+   shared single-class rule without editing style.css. */
+.sm-filter-bar .filter-select-wrap,
+.sm-filter-bar .filter-select-wrap select { font-size: 14px; }
+
+.sm-filter-search-wrap { min-width: 240px; flex: 1 1 240px; }
+.sm-filter-search {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  transition: border-color var(--t);
+}
+.sm-filter-search:focus { border-color: var(--accent); outline: none; }
+.sm-filter-search::placeholder { color: var(--text-muted); }
+
+.sm-filter-label {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.sm-seg {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.sm-seg-btn {
+  padding: 6px 12px;
+  background: var(--bg-card);
+  border: none;
+  border-right: 1px solid var(--border);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--t);
+}
+.sm-seg-btn:last-child { border-right: none; }
+.sm-seg-btn:hover { color: var(--accent); }
+.sm-seg-btn.active { background: var(--accent); color: #fff; }
+
+.sm-filter-clear {
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--t);
+}
+.sm-filter-clear:hover { border-color: var(--loss); color: var(--loss); }
+
+.sm-filter-count {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+/* ─── Evidence panel (backtest / live record / model) ─────── */
+.sm-evidence {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.sm-evidence-tabs {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--border) 25%, transparent);
+}
+
+.sm-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 11px 18px;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--t);
+}
+.sm-tab:hover { color: var(--text-primary); }
+.sm-tab.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--bg-card); }
+
+.sm-pane { display: none; padding: 18px 20px 22px; }
+.sm-pane.active { display: block; }
+.sm-pane h4 {
+  margin: 20px 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+.sm-pane h4:first-child { margin-top: 0; }
+
+.sm-note { font-size: 14.5px; color: var(--text-secondary); line-height: 1.55; margin: 0 0 14px; }
+.sm-note-muted { color: var(--text-muted); font-size: 13.5px; }
+.sm-pane code {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: color-mix(in srgb, var(--border) 45%, transparent);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.sm-statgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(144px, 1fr));
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.sm-statcell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: color-mix(in srgb, var(--border) 25%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 9px 11px;
+}
+.sm-statlabel { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+.sm-statnum { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--text-primary); }
+.sm-statnum.sm-pos { color: var(--gain); }
+.sm-statnum.sm-neg { color: var(--loss); }
+
+.sm-split { display: grid; grid-template-columns: 1fr; gap: 18px; }
+@media (min-width: 720px) { .sm-split { grid-template-columns: 1fr 1fr; } }
+
+.sm-warn {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--loss);
+  background: color-mix(in srgb, var(--loss) 14%, transparent);
+  border-radius: 20px;
+  padding: 2px 7px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.sm-tablewrap { overflow-x: auto; }
+.sm-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.sm-table th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  padding: 6px 10px 6px 0;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.sm-table td { padding: 7px 10px 7px 0; border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent); }
+.sm-table .sm-mono { font-family: var(--mono); }
+.sm-table .sm-pos { color: var(--gain); }
+.sm-table .sm-neg { color: var(--loss); }
+
+/* ─── Ranking-edge-by-period chart ────────────────────────── */
+.sm-periods {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+.sm-period {
+  flex: 1 1 0;
+  min-width: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+/* Bars grow from a shared midline so positive and negative read at a glance.
+   The zero line is the middle of the track, not its bottom edge: anchoring
+   negatives to the top made a large negative render as a tall block sitting
+   above a small positive, which reads as the opposite of what it is. Bar
+   heights are therefore capped at 50% of the track by the caller. */
+.sm-period-track { width: 100%; height: 72px; position: relative; }
+.sm-period-track::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  border-top: 1px solid var(--border);
+}
+.sm-period-bar { position: absolute; left: 20%; width: 60%; }
+.sm-period-bar--pos { bottom: 50%; background: var(--gain); border-radius: 2px 2px 0 0; }
+.sm-period-bar--neg { top: 50%; background: var(--loss); border-radius: 0 0 2px 2px; }
+.sm-period-val { font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: var(--text-muted); }
+.sm-period-val.sm-pos { color: var(--gain); }
+.sm-period-val.sm-neg { color: var(--loss); }
+.sm-period-lbl { font-family: var(--mono); font-size: 11.5px; color: var(--text-muted); white-space: nowrap; }
+
+.sm-row-thin td { opacity: 0.6; }
+
+.sm-caveats { margin: 0; padding-left: 18px; }
+.sm-caveats li { font-size: 14px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 6px; }
+
+.sm-weightlist { list-style: none; margin: 0; padding: 0; }
+.sm-weightlist li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 45%, transparent);
+}
+.sm-wname { font-size: 14.5px; font-weight: 600; color: var(--text-primary); }
+.sm-wval { font-family: var(--mono); font-size: 14.5px; font-weight: 700; color: var(--text-muted); }
+.sm-wval.sm-pos { color: var(--gain); }
+.sm-wval.sm-neg { color: var(--loss); }
+.sm-wwhy { grid-column: 1 / -1; font-size: 13.5px; color: var(--text-muted); line-height: 1.45; }
+.sm-weightlist--muted .sm-wname { color: var(--text-secondary); font-weight: 500; }
+
+/* ─── Clickable evidence metrics ──────────────────────────────
+   Any stat cell, table row or weight row that has a detail panel
+   behind it gets this affordance. */
+.sm-statcell--clickable,
+.sm-row-clickable {
+  cursor: pointer;
+  transition: var(--t);
+}
+.sm-statcell--clickable:hover {
+  background: var(--accent-dim);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+.sm-statcell--clickable:focus-visible,
+.sm-row-clickable:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.sm-row-clickable:hover { background: var(--accent-dim); }
+.sm-table tbody tr.sm-row-clickable:hover td { color: var(--text-primary); }
+
+/* the "tap for detail" hint dot, top-right of a clickable stat cell */
+.sm-statcell--clickable { position: relative; }
+.sm-statcell--clickable::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.45;
+  transition: var(--t);
+}
+.sm-statcell--clickable:hover::after { background: var(--accent); opacity: 1; }
+
+.sm-hint {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0 0 12px;
+}
+
+/* ─── Metric detail modal body ────────────────────────────── */
+.sm-info-value {
+  font-family: var(--mono);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+.sm-info-value.sm-pos { color: var(--gain); }
+.sm-info-value.sm-neg { color: var(--loss); }
+.sm-info-sub {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  margin-bottom: 18px;
+}
+.sm-info-rows { list-style: none; margin: 0; padding: 0; }
+.sm-info-rows li {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 7px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+  font-size: 14px;
+}
+.sm-info-rows li:last-child { border-bottom: none; }
+.sm-info-rows .sm-info-k { color: var(--text-secondary); }
+.sm-info-rows .sm-info-v { font-family: var(--mono); font-weight: 700; color: var(--text-primary); white-space: nowrap; }
+.sm-info-rows .sm-info-v.sm-pos { color: var(--gain); }
+.sm-info-rows .sm-info-v.sm-neg { color: var(--loss); }
+
+/* The shared .an-panel-content is 460px — right for a column of prose, far
+   too narrow for a twelve-column trade table, which would push P&L out of
+   sight behind a horizontal scroll. Widened only while the trade browser is
+   mounted (class toggled in openSuperModelInfo), so every other detail panel
+   keeps its readable measure. */
+#sm-info-modal.sm-info-wide .an-panel-content { width: 1180px; max-width: 96vw; }
+
+/* ─── Trade browser (inside the "Simulated trades" panel) ──────
+   Every row behind the backtest aggregates, filtered and paged from
+   the server. Lives in a modal, so the table scrolls in both axes
+   inside its own box rather than growing the panel. */
+.sm-trade-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.sm-trade-search {
+  flex: 1 1 160px;
+  min-width: 140px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 5px 9px;
+  transition: border-color var(--t);
+}
+.sm-trade-search:focus { border-color: var(--accent); outline: none; }
+
+.sm-trade-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  background: color-mix(in srgb, var(--border) 25%, transparent);
+  border-radius: var(--radius-sm);
+}
+.sm-trade-stats strong { color: var(--text-primary); }
+
+/* Capped height: 100 rows would otherwise push the filters off-screen. */
+.sm-trade-scroll { max-height: 420px; overflow: auto; }
+.sm-trade-table { font-size: 13px; }
+.sm-trade-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg-card);
+  padding: 7px 10px 7px 0;
+}
+.sm-trade-table td { padding: 5px 10px 5px 0; white-space: nowrap; }
+.sm-trade-table tbody tr:hover td { background: var(--accent-dim); }
+.sm-trade-code { font-weight: 700; color: var(--text-primary); }
+
+.sm-th-sort { cursor: pointer; user-select: none; }
+.sm-th-sort:hover { color: var(--accent); }
+.sm-th-sort:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.sm-th-active { color: var(--accent); }
+.sm-sort-mark { font-size: 9px; }
+
+.sm-trade-side {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.sm-trade-side--buy  { color: var(--gain); background: color-mix(in srgb, var(--gain) 14%, transparent); }
+.sm-trade-side--sell { color: var(--loss); background: color-mix(in srgb, var(--loss) 14%, transparent); }
+.sm-trade-outcome { font-size: 12px; text-transform: capitalize; }
+
+.sm-trade-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.sm-trade-more {
+  padding: 5px 12px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--t);
+}
+.sm-trade-more:hover { border-color: var(--accent); color: var(--accent); }
+
+/* unscored signal rows inside the suggestion modal */
+.sm-sig-unscored { opacity: 0.62; }
+.sm-sig-note { font-style: italic; color: var(--text-muted) !important; }
+
+.sm-section { margin-bottom: 36px; }
+
+.sm-section-hd {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+.sm-section-hd h2 { margin: 0; font-size: 22px; font-weight: 700; }
+.sm-section-hd--buy h2 { color: var(--gain); }
+.sm-section-hd--sell h2 { color: var(--loss); }
+.sm-section-count {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.sm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(306px, 1fr));
+  gap: 14px;
+}
+
+.sm-empty {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  padding: 20px 0;
+}
+
+/* ─── Card ────────────────────────────────────────────────── */
+.sm-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: var(--t);
+}
+.sm-card:hover { border-color: var(--accent); transform: translateY(-1px); }
+.sm-card--buy { border-left-color: var(--gain); }
+.sm-card--sell { border-left-color: var(--loss); }
+
+.sm-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.sm-card-id { display: flex; flex-direction: column; min-width: 0; }
+.sm-card-code {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+.sm-card-name {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+}
+.sm-card-sector {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.sm-badge {
+  flex: none;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.sm-badge--buy        { color: var(--gain); background: color-mix(in srgb, var(--gain) 14%, transparent); border: 1px solid color-mix(in srgb, var(--gain) 35%, transparent); }
+.sm-badge--strong-buy  { color: #fff; background: var(--gain); border: 1px solid var(--gain); }
+.sm-badge--sell        { color: var(--loss); background: color-mix(in srgb, var(--loss) 14%, transparent); border: 1px solid color-mix(in srgb, var(--loss) 35%, transparent); }
+.sm-badge--strong-sell { color: #fff; background: var(--loss); border: 1px solid var(--loss); }
+
+.sm-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background: var(--bg-hover, color-mix(in srgb, var(--border) 40%, transparent));
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+.sm-stat-row--modal { grid-template-columns: repeat(2, 1fr); margin-bottom: 4px; }
+@media (min-width: 420px) { .sm-stat-row--modal { grid-template-columns: repeat(4, 1fr); } }
+
+.sm-stat { display: flex; flex-direction: column; gap: 2px; }
+.sm-stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+.sm-stat-value { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.sm-stat-value.sm-neg { color: var(--loss); }
+.sm-stat-value.sm-pos { color: var(--gain); }
+
+.sm-card-foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+}
+
+@media (max-width: 600px) {
+  .sm-page-root { padding: 16px 12px 40px; }
+  .sm-grid { grid-template-columns: 1fr; }
+  .sm-filter-search-wrap { flex-basis: 100%; }
+  .sm-filter-count { margin-left: 0; }
+}
+
+/* ─── Modal type scale ────────────────────────────────────────
+   The suggestion modal borrows .an-* chrome from
+   candlestick-analysis.css, which also drives candlestick.html and
+   research.html — so its sizes are raised here under #sm-modal rather
+   than edited at source, which would resize those pages too.
+   Scoped to #sm-modal (not .sm-page-root): the modal is a sibling of
+   <main>, not a descendant. */
+#sm-modal .an-panel-hd h2, #sm-info-modal .an-panel-hd h2 { font-size: 22px; }
+#sm-modal .an-verdict-label, #sm-info-modal .an-verdict-label { font-size: 22px; }
+#sm-modal .an-verdict-score, #sm-info-modal .an-verdict-score { font-size: 16px; }
+#sm-modal .an-verdict-tally, #sm-info-modal .an-verdict-tally { font-size: 14px; }
+#sm-modal .an-h3, #sm-info-modal .an-h3 { font-size: 15px; }
+#sm-modal .an-h3-badge, #sm-info-modal .an-h3-badge { font-size: 13px; }
+#sm-modal .an-signal-label, #sm-info-modal .an-signal-label { font-size: 14.5px; }
+#sm-modal .an-signal-detail, #sm-info-modal .an-signal-detail { font-size: 14px; }
+#sm-modal .an-note, #sm-info-modal .an-note { font-size: 14.5px; }
+/* Must stay AFTER the .an-note rule above. In the source stylesheet
+   .an-note-muted only beats .an-note on order, both being (0,1,0);
+   once #sm-modal .an-note exists at (1,1,0) it would otherwise win and
+   silently enlarge the muted paragraphs, which carry both classes. */
+#sm-modal .an-note-muted, #sm-info-modal .an-note-muted { font-size: 13.5px; }

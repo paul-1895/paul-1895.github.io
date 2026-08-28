@@ -1,0 +1,20 @@
+/* ─── RESPONSIVE ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .summary-row { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .summary-row { grid-template-columns: repeat(2, 1fr); }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .header-meta { width: 100%; justify-content: flex-start; }
+  .controls-bar { flex-direction: column; align-items: stretch; }
+  body::after { display: none; }
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  body::before, body::after { display: none; }
+}

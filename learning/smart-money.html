@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Money Concepts — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Smart Money Concepts</h1>
+        <p>The vocabulary, the one piece of it this app really detects, and why no footprint chart is possible here</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">What it is</a>
+    <a href="#vocabulary">The vocabulary</a>
+    <a href="#footprint">Footprint charts</a>
+    <a href="#data">What the archive carries</a>
+    <a href="#fvg">Fair value gaps, measured</a>
+    <a href="#sweep">The one signal coded here</a>
+    <a href="#blocks">Block trades</a>
+    <a href="#honest">Reading it honestly</a>
+    <a href="#videos">Videos</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What it is ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">What it is</h2>
+      <p class="cd-lead">
+        Smart Money Concepts (SMC) is a trading vocabulary built on one claim: that large
+        participants — funds, banks, institutional desks — cannot fill their orders without
+        moving price, and that the shapes left behind when they do are recognisable on a chart.
+        The names follow from that story. An <b>order block</b> is where the big order is
+        supposed to have been placed. A <b>liquidity sweep</b> is price reaching past an obvious
+        level to trigger other people's stops before reversing. A <b>fair value gap</b> is a
+        price band the market skipped through too fast to trade properly, and is expected to
+        revisit.
+      </p>
+      <p class="cd-lead">
+        It is worth separating the story from the patterns. The patterns are shapes on a chart
+        and can be defined, counted and tested. The story — that a specific institution placed a
+        specific order at a specific candle — is not something any chart can confirm, and
+        certainly not from the data this app has. This page keeps the two apart throughout: the
+        <a href="#fvg">measured section</a> tests a pattern, and never claims to have identified
+        who traded.
+      </p>
+      <div class="cd-callout" id="smc-generated">
+        Figures on this page are generated from this app's own archive by
+        <code>scripts/build-learning-stats.js</code>, not typed into the page.
+      </div>
+    </section>
+
+    <!-- ─── Vocabulary ─── -->
+    <section id="vocabulary" class="cd-sec">
+      <h2 class="cd-h2">The vocabulary</h2>
+      <p class="cd-lead">
+        The core terms, with a straight answer on each about whether anything in this app
+        detects it. Most of the answers are no — the point of the column is that the honest
+        answer is visible next to the definition rather than buried below it.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Term</th><th>What it means</th><th>Detected in this app?</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Order block</td>
+              <td>The last opposing candle before a strong directional move — read as the area
+                  where large orders were absorbed before the push.</td>
+              <td class="cd-t-why"><b>No.</b> "Last opposing candle before a strong move" needs a
+                  threshold for "strong" that nobody agrees on. Nothing here implements it.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Fair value gap</td>
+              <td>A three-bar sequence where bar 1 and bar 3 do not overlap, leaving a price band
+                  that never traded.</td>
+              <td class="cd-t-why"><b>Definable, and measured below.</b> This is the one SMC
+                  pattern with no discretionary step, so it is the one this Hub tests.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Liquidity sweep</td>
+              <td>Price pushes past an obvious high or low — where stop orders cluster — then
+                  closes back inside the range.</td>
+              <td class="cd-t-why"><b>Yes.</b> The Super Model engine detects it. What it does
+                  with it afterwards is <a href="#sweep">its own story</a>.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Break of structure (BOS)</td>
+              <td>Price closes beyond the prior swing point in the trend direction, said to
+                  confirm the trend continuing.</td>
+              <td class="cd-t-why"><b>No.</b> Depends entirely on which swings you mark, which
+                  is a human choice — the same problem the
+                  <a href="fibonacci.html">Fibonacci guide</a> runs into.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Change of character (CHoCH)</td>
+              <td>The first break of structure <i>against</i> the prevailing trend, read as an
+                  early reversal warning.</td>
+              <td class="cd-t-why"><b>No.</b> Inherits the swing-selection problem above.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Premium / discount</td>
+              <td>The upper and lower halves of a marked range — sell in premium, buy in
+                  discount.</td>
+              <td class="cd-t-why"><b>No</b>, though the chart's
+                  <a href="fibonacci.html">Fibonacci retracement tool</a> draws the same 50%
+                  midpoint the idea rests on.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Mitigation block</td>
+              <td>An order block price returns to so that trapped positions can exit at
+                  break-even.</td>
+              <td class="cd-t-why"><b>No.</b> Requires knowing someone was trapped, which no
+                  daily bar records.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Footprint ─── -->
+    <section id="footprint" class="cd-sec">
+      <h2 class="cd-h2">Footprint charts, and why there isn't one here</h2>
+      <p class="cd-lead">
+        A footprint chart (also called order-flow or cluster charting) is a different thing from
+        a candlestick chart. Instead of four numbers per bar, each bar is split into price
+        levels, and every level shows how much volume traded at the bid versus at the ask. From
+        that you get <b>delta</b> (ask volume minus bid volume), imbalance ratios between
+        diagonal levels, and the absorption patterns traders watch for.
+      </p>
+      <p class="cd-lead">
+        All of that needs one input: <b>a record of every individual trade, tagged with whether
+        it hit the bid or lifted the ask.</b> That is tick data with quote context. It is not
+        something you can reconstruct from a daily bar — a day's open, high, low, close and
+        total volume are compatible with an unlimited number of different order flows.
+      </p>
+      <div class="cd-callout cd-warn">
+        <b>There is no footprint chart in this app and there cannot be one from this data.</b>
+        Not "not yet" — the required inputs are absent, and no indicator setting recovers them.
+        Anything labelled a footprint built from daily OHLCV would be an invention.
+      </div>
+    </section>
+
+    <!-- ─── Data ─── -->
+    <section id="data" class="cd-sec">
+      <h2 class="cd-h2">What the archive actually carries</h2>
+      <p class="cd-lead">
+        The complete field list of one row in <code>historical_prices/json_files/&lt;CODE&gt;.json</code>
+        — the archive every chart, screener and backtest in this app reads. It is worth seeing in
+        full, because the gap between this and what order flow analysis needs is the whole
+        subject of this page.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Field</th><th>Meaning</th><th>Order-flow use</th></tr></thead>
+          <tbody>
+            <tr><td class="cd-t-name">Open / High / Low / Close</td><td>The day's four prices.</td>
+                <td class="cd-t-why">Shape only. No information about sequence within the day.</td></tr>
+            <tr><td class="cd-t-name">YCP</td><td>Yesterday's closing price.</td>
+                <td class="cd-t-why">Lets a gap-at-open be measured. Nothing more.</td></tr>
+            <tr><td class="cd-t-name">Volume</td><td>Total shares traded that day.</td>
+                <td class="cd-t-why">One number for the whole session — not split by price, not
+                    split by side.</td></tr>
+            <tr><td class="cd-t-name">Trade</td><td>Number of individual transactions.</td>
+                <td class="cd-t-why">Gives average trade size when divided into volume. Still
+                    says nothing about direction.</td></tr>
+            <tr><td class="cd-t-name">BlockTrades / BlockQuantity</td>
+                <td>Count and share quantity of negotiated block deals that day.</td>
+                <td class="cd-t-why">The closest thing here to a large-participant trace —
+                    with real limits, covered <a href="#blocks">below</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout" style="margin-top:16px">
+        <b>Missing, and needed for a footprint:</b> the time of each trade, the price of each
+        trade, the prevailing bid and ask at that moment, and which side the trade crossed.
+        None of these five exist in any file in this repository.
+      </div>
+    </section>
+
+    <!-- ─── FVG measured ─── -->
+    <section id="fvg" class="cd-sec">
+      <h2 class="cd-h2">Fair value gaps, measured</h2>
+      <p class="cd-lead">
+        Of everything in the vocabulary table, fair value gaps are the only pattern with a
+        definition mechanical enough to count without a judgement call. So they are the one
+        thing on this page that gets tested rather than described.
+      </p>
+
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="smc-fvg-fig"></div>
+        <div class="cd-anatomy-notes">
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Rule</span>
+            <span>A bullish gap exists when <b>bar 3's low is above bar 1's high</b>. A bearish
+            gap is the mirror. The shaded band is the price range those two bars never
+            shared.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Filter</span>
+            <span>Gaps smaller than <b>1% of price</b> are ignored. On thinly traded DSE names a
+            sub-1% gap is usually just a tick-size artefact rather than a fast move.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Filled</span>
+            <span>Counted as filled when a later bar trades back through the <b>far</b> edge of
+            the band. Gaps too recent to have a full forward window are excluded, not counted
+            as unfilled.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" id="smc-fvg-note-key">Example</span>
+            <span id="smc-fvg-note"></span>
+          </div>
+        </div>
+      </div>
+
+      <p class="cd-lead" style="margin-top:22px">
+        <b>The control column is the part that matters.</b> "Gaps get filled most of the time" is
+        not evidence of anything on its own — price wanders, and any level close enough to the
+        current price gets touched eventually. So for every real gap, the same question was asked
+        of a random <i>non-gap</i> bar in the same stock, using a level the same percentage away
+        in the same direction. That is the control. The difference between the two columns is the
+        only number here that says anything about gaps specifically.
+      </p>
+
+      <div id="smc-fvg-measured">
+        <div class="cd-callout">Loading measured figures…</div>
+      </div>
+
+      <div class="cd-callout" style="margin-top:18px">
+        <b>What this does and does not show.</b> Gaps are revisited more often than an
+        equally distant arbitrary level — that difference is real and it is the direction SMC
+        predicts. What it is <i>not</i> is a strategy result: there is no entry, no stop, no
+        target and no position sizing anywhere in this measurement. A gap that fills after price
+        first runs 20% the other way counts as "filled" here and would have been a painful trade.
+        See <a href="#honest">Reading it honestly</a>.
+      </div>
+    </section>
+
+    <!-- ─── Sweep ─── -->
+    <section id="sweep" class="cd-sec">
+      <h2 class="cd-h2">The one SMC signal actually coded here</h2>
+      <p class="cd-lead">
+        <code>routes/super-model-engine.js</code> contains a liquidity sweep detector, and it is
+        the only Smart Money Concept implemented anywhere in this codebase. The diagram below is
+        drawn by that same rule, ported into this page — the highlighted bar is highlighted
+        because the detector fired on it, not because it was drawn to look like it should.
+      </p>
+
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="smc-sweep-fig"></div>
+        <div class="cd-anatomy-notes">
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Lookback</span>
+            <span><b>20 bars.</b> The high and low of the previous 20 sessions define the range
+            being swept.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Threshold</span>
+            <span><b>0.1%.</b> The wick must exceed the range extreme by more than this, so a
+            bar that merely equals the old high does not qualify.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Close</span>
+            <span>Must come back <b>inside</b> the range. A bar that pushes through and holds is
+            a breakout, not a sweep — the rule separates the two.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">This bar</span>
+            <span id="smc-sweep-note"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cd-callout cd-warn" style="margin-top:18px">
+        <b>The Super Model detects this signal and deliberately scores it zero.</b> Its weights
+        come from <code>scripts/compare-candidates.js</code>, which tested candidate weight sets
+        across four independent time windows. Liquidity sweep <b>flipped sign depending on where
+        the data was split</b> — bullish in some windows, bearish in others — so no stable edge
+        could be demonstrated and its weight was set to <code>0</code>. The engine still surfaces
+        it in the UI, tagged <i>"Detected but not scored — this signal had no consistent edge in
+        backtesting."</i> That tag is not a placeholder; it is the finding.
+      </div>
+    </section>
+
+    <!-- ─── Blocks ─── -->
+    <section id="blocks" class="cd-sec">
+      <h2 class="cd-h2">Block trades — the closest thing to a real footprint</h2>
+      <p class="cd-lead">
+        A block trade on the DSE is a large negotiated deal crossed off the continuous order
+        book. If anything in this archive is a genuine institutional trace, it is this field —
+        it is the only one that records size deliberately kept out of the normal market. The
+        archive carries a daily count and quantity per stock.
+      </p>
+      <p class="cd-lead">
+        Before reading anything into it, look at the coverage. The table below is every year in
+        the archive, showing how many daily bars carry any block record at all.
+      </p>
+
+      <div id="smc-block-table">
+        <div class="cd-callout">Loading coverage…</div>
+      </div>
+
+      <div class="cd-callout cd-warn" style="margin-top:18px">
+        <b>2025 is empty.</b> Not "low" — zero bars in the entire year carry a block-trade record,
+        across every stock, while the same year has a full set of price bars. That is a data
+        source gap, not a year in which the DSE recorded no block deals. The
+        <a href="#honest">honesty section</a> explains why this matters more than it might look:
+        any study of block trades on this archive silently skips a year.
+      </div>
+
+      <div class="cd-callout" style="margin-top:14px">
+        <b>And even where it is populated, three things are missing:</b> the <i>price</i> the
+        block traded at, which <i>side</i> initiated it, and who the counterparty was. A block
+        can be an institution accumulating, an institution exiting, a sponsor transferring shares
+        to a family member, or a settlement of an off-market agreement. The field cannot tell
+        those apart, so neither can any reading of it.
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>A fill rate is not a strategy return</h4>
+          <p>The measured table says gaps are revisited more often than a matched arbitrary
+          level. It does not say a trade based on that makes money. There is no entry price, no
+          stop, no target and no cost assumption anywhere in it — and this app has already
+          learned once, on <a href="macd-ema.html">MACD + EMA</a>, that a real gross edge can be
+          entirely consumed by commission. Treat the difference as an observation about price
+          behaviour, not a signal.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The control is matched on distance, not on conditions</h4>
+          <p>Each control bar is drawn at random from anywhere in the same stock's history, while
+          real gaps cluster in volatile stretches — and price reaches any given level more easily
+          when it is moving more. So part of the difference between the two columns is probably
+          the volatility of the moment a gap forms rather than the gap itself. The comparison is
+          far better than no control at all, and it is still not a clean one. Treat the
+          difference as an upper bound on any gap-specific effect.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The naming implies knowledge the data does not contain</h4>
+          <p>Calling a candle an "order block" asserts that an institution placed an order
+          there. Nothing in a daily OHLCV row can support or refute that. The pattern may still
+          be useful; the explanation attached to it is untested and, with this data, untestable.
+          Those are two separate claims and only the first one is on the table.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Most of the vocabulary needs you to pick the swings first</h4>
+          <p>Break of structure, change of character, premium/discount zones and mitigation
+          blocks all start from a human marking which highs and lows count. Change the marking
+          and the signals change. That is the same objection the
+          <a href="fibonacci.html">Fibonacci guide</a> raises, and it is why none of those terms
+          are measured on this page — not because they are worthless, but because there is no
+          single version of them to test.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The one SMC signal that was tested here failed to hold up</h4>
+          <p>Liquidity sweep is coded, detected, displayed — and weighted zero, because its sign
+          flipped across data splits. That is the strongest statement this codebase can make
+          about any SMC idea, and it is a negative one. It applies to this market, this archive
+          and this definition of a sweep; it is not a claim about order flow trading everywhere.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>DSE market structure is not the market SMC was written for</h4>
+          <p>Most SMC material is built around 24-hour foreign exchange and index futures — deep,
+          continuous markets with no daily price limits. The DSE has circuit breakers, a fixed
+          session, wide spreads on small caps and far less institutional participation. A gap
+          here can be a limit move rather than an aggressive institutional fill, which is a
+          different phenomenon wearing the same shape.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>What would actually be needed to do this properly</h4>
+          <p>Tick-level trade records with timestamps, trade prices and the prevailing bid/ask
+          at each print. With those, delta, imbalance and absorption become computable and the
+          claims on this page become testable. Without them, order-flow analysis on this archive
+          is a vocabulary exercise, and the honest move is to say so rather than approximate it.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        Related reading: <a href="fibonacci.html">Fibonacci</a> — the other guide here whose
+        subject resists testing, for the same swing-selection reason.
+        <a href="rsi.html">RSI</a> and <a href="macd-ema.html">MACD + EMA</a> — two indicators
+        that <i>are</i> mechanical, and what testing them found.
+        <a href="../super_model/super-model.html">Super Model</a> — where the liquidity sweep
+        detector runs, and where its zero weight is applied.
+      </p>
+    </section>
+
+    <!-- ─── Videos ─── -->
+    <section id="videos" class="cd-sec">
+      <h2 class="cd-h2">Videos</h2>
+      <p class="cd-lead">
+        Background viewing on order flow and SMC as general concepts. Nothing here is endorsed by
+        this app, and nothing here has been tested against DSE data — most SMC material is built
+        on forex and futures markets, which behave differently from this one.
+      </p>
+      <!-- To add one, copy this block and fill in the id and title:
+           <a class="cd-video-card" href="https://www.youtube.com/watch?v=VIDEO_ID"
+              target="_blank" rel="noopener">
+             <div class="cd-video-thumb">
+               <img src="https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg" alt="" loading="lazy" />
+               <span class="cd-video-play">▶</span>
+             </div>
+             <div class="cd-video-body">
+               <h4>Video title</h4>
+               <p>Channel · why it's here</p>
+             </div>
+           </a> -->
+      <div class="cd-video-grid" id="smc-videos">
+        <div class="cd-callout">No videos added yet.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="smart-money.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

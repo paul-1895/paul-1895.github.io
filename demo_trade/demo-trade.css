@@ -1,0 +1,292 @@
+/* ═══════════════════════════════════════════════════════════════
+   DSE Demo Trade — demo-trade.css
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('../shared/tokens.css');
+
+[data-theme="dark"] {
+  --bg-card2: #1c1f2a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family:  var(--sans);
+  font-size:    14px;
+  line-height:  1.6;
+  background:   var(--bg-base);
+  color:        var(--text-primary);
+  min-height:   100vh;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: none; }
+button { cursor: pointer; }
+
+/* ── HEADER ────────────────────────────────────────────────── */
+.site-header {
+  background:    var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  position:      sticky;
+  top:           0;
+  z-index:       200;
+}
+.header-inner {
+  max-width:  1400px;
+  margin:     0 auto;
+  padding:    0 20px;
+  height:     56px;
+  display:    flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: all var(--t);
+}
+.logo-back:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+.logo-back svg { width: 14px; height: 14px; }
+.logo-tag {
+  background:    var(--accent);
+  color:         #fff;
+  font-family:   var(--mono);
+  font-size:     10px;
+  font-weight:   700;
+  letter-spacing: 0.08em;
+  padding:       3px 7px;
+  border-radius: 4px;
+}
+.logo-text h1 { font-size: 15px; font-weight: 700; line-height: 1.1; }
+.logo-text p  { font-size: 10px; color: var(--text-muted); }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hdr-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  transition: border-color var(--t);
+}
+.hdr-icon-btn:hover { border-color: var(--accent); }
+
+/* ── QUIZ PAGE ─────────────────────────────────────────────── */
+.dt-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dt-scorebar {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  flex-wrap: wrap;
+}
+.dt-score-item { display: flex; flex-direction: column; gap: 2px; }
+.dt-score-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.dt-score-value {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.dt-points-positive { color: var(--gain); }
+.dt-points-negative { color: var(--loss); }
+.dt-reset-btn {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  font-family: var(--sans);
+  font-size: 12px;
+  transition: all var(--t);
+}
+.dt-reset-btn:hover { border-color: var(--loss); color: var(--loss); }
+
+.dt-quiz-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+.dt-quiz-hd { margin-bottom: 14px; }
+.dt-quiz-title { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+.dt-quiz-sub { font-size: 12px; color: var(--text-muted); }
+
+.dt-indicator-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+.dt-legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+.dt-legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.dt-chart-wrap {
+  position: relative;
+  height: 340px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.dt-chart-wrap canvas { display: block; }
+
+.dt-guess-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.dt-guess-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 12px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--t);
+}
+.dt-guess-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+.dt-guess-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.dt-guess-btn:not(:disabled):hover.dt-guess-up      { border-color: var(--gain); color: var(--gain); background: color-mix(in srgb, var(--gain) 10%, transparent); }
+.dt-guess-btn:not(:disabled):hover.dt-guess-down    { border-color: var(--loss); color: var(--loss); background: color-mix(in srgb, var(--loss) 10%, transparent); }
+.dt-guess-btn:not(:disabled):hover.dt-guess-sideways { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.dt-guess-btn.selected.dt-guess-up      { border-color: var(--gain); color: var(--gain); background: color-mix(in srgb, var(--gain) 14%, transparent); }
+.dt-guess-btn.selected.dt-guess-down    { border-color: var(--loss); color: var(--loss); background: color-mix(in srgb, var(--loss) 14%, transparent); }
+.dt-guess-btn.selected.dt-guess-sideways { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+.dt-confidence-row { margin-top: 14px; }
+.dt-confidence-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+.dt-confidence-label #dt-confidence-direction { font-weight: 700; color: var(--text-primary); }
+.dt-confidence-btns { display: flex; gap: 10px; }
+.dt-conf-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--t);
+}
+.dt-conf-pts { font-family: var(--mono); font-size: 10px; color: var(--text-muted); font-weight: 400; }
+.dt-conf-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.dt-conf-btn:not(:disabled):hover.dt-conf-low    { border-color: var(--text-muted); color: var(--text-primary); }
+.dt-conf-btn:not(:disabled):hover.dt-conf-medium { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.dt-conf-btn:not(:disabled):hover.dt-conf-high   { border-color: #f0883e; color: #f0883e; background: color-mix(in srgb, #f0883e 10%, transparent); }
+
+.dt-result { margin-top: 16px; }
+.dt-result-banner {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+}
+.dt-result-correct { background: color-mix(in srgb, var(--gain) 14%, transparent); color: var(--gain); }
+.dt-result-wrong    { background: color-mix(in srgb, var(--loss) 14%, transparent); color: var(--loss); }
+.dt-result-detail {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.dt-explanation {
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.dt-next-btn {
+  display: block;
+  width: 100%;
+  padding: 11px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  transition: filter var(--t);
+}
+.dt-next-btn:hover { filter: brightness(1.1); }
+
+.dt-rule-note {
+  margin-top: 16px;
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: center;
+}

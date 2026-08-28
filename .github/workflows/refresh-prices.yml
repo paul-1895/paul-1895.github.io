@@ -1,0 +1,46 @@
+name: Refresh DSE prices
+
+on:
+  schedule:
+    - cron: '0 10 * * 0-4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-prices
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install scraper dependencies
+        working-directory: tools
+        run: npm install --omit=dev --no-audit --no-fund
+
+      - name: Scrape today's prices
+        env:
+          # Required whenever the site was published with a password. Without
+          # it the refresh would overwrite sealed data with plaintext.
+          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+        run: node tools/refresh-prices.js
+
+      - name: Commit if anything moved
+        run: |
+          if git diff --quiet -- api/stocks.json; then
+            echo "prices unchanged — nothing to commit"
+            exit 0
+          fi
+          git config user.name  "dse-refresh"
+          git config user.email "dse-refresh@users.noreply.github.com"
+          git add api/stocks.json
+          git commit -m "prices: $(date -u +%Y-%m-%d)"
+          git push

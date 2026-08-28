@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MF Compare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/style.css"/>
+<link rel="stylesheet" href="mf-portfolio.css"/>
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1 id="cmp-header-title">Quarter Comparison</h1>
+        <p id="cmp-header-sub">Loading…</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="#" id="back-to-portfolio" class="back-link-btn">← Back to Portfolio</a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle theme">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cmp-page">
+
+  <!-- ── QUARTER A / B SELECTOR ───────────────────────────────── -->
+  <div class="cmp-selector">
+    <div class="cmp-q-box a">
+      <div class="cmp-q-label">Quarter A</div>
+      <div class="cmp-q-fields">
+        <select id="a-year" class="qb-select"></select>
+        <select id="a-quarter" class="qb-select">
+          <option value="Q1">Q1</option>
+          <option value="Q2">Q2</option>
+          <option value="Q3">Q3</option>
+          <option value="Q4">Q4</option>
+        </select>
+      </div>
+      <button class="cmp-load-btn" onclick="loadQuarter('a')">Load Quarter A</button>
+      <div class="cmp-status" id="status-a"></div>
+    </div>
+
+    <div class="cmp-vs">VS</div>
+
+    <div class="cmp-q-box b">
+      <div class="cmp-q-label">Quarter B</div>
+      <div class="cmp-q-fields">
+        <select id="b-year" class="qb-select"></select>
+        <select id="b-quarter" class="qb-select">
+          <option value="Q1">Q1</option>
+          <option value="Q2">Q2</option>
+          <option value="Q3">Q3</option>
+          <option value="Q4">Q4</option>
+        </select>
+      </div>
+      <button class="cmp-load-btn" onclick="loadQuarter('b')">Load Quarter B</button>
+      <div class="cmp-status" id="status-b"></div>
+    </div>
+  </div>
+
+  <button class="cmp-load-all-btn" onclick="runCompare()">⇄ Compare Quarters</button>
+
+  <!-- ── EMPTY STATE ──────────────────────────────────────────── -->
+  <div class="cmp-empty" id="cmp-empty">
+    <div class="cmp-empty-icon">⇄</div>
+    <div>Pick Quarter A and Quarter B above, then click "Compare Quarters".</div>
+  </div>
+
+  <!-- ── RESULTS (hidden until a comparison has run) ─────────── -->
+  <div id="cmp-results" style="display:none">
+
+    <div class="cmp-summary-grid" id="cmp-summary-grid"></div>
+
+    <div class="cmp-charts-grid">
+      <div class="cmp-chart-card">
+        <div class="cmp-chart-title">Total Cost Comparison</div>
+        <div style="position:relative;height:240px;width:100%">
+          <canvas id="chart-cost"></canvas>
+        </div>
+      </div>
+      <div class="cmp-chart-card">
+        <div class="cmp-chart-title">Report Market Value Comparison</div>
+        <div style="position:relative;height:240px;width:100%">
+          <canvas id="chart-mkt"></canvas>
+        </div>
+      </div>
+      <div class="cmp-chart-card cmp-chart-full">
+        <div class="cmp-chart-title">Sector Allocation Comparison (% of Market Value)</div>
+        <div style="position:relative;height:320px;width:100%">
+          <canvas id="chart-sector-cmp"></canvas>
+        </div>
+      </div>
+      <div class="cmp-chart-card cmp-chart-full">
+        <div class="cmp-chart-title" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+          <span id="cmp-holdings-chart-title">Report Mkt Value Change (M) (A→B)</span>
+          <span style="display:flex;gap:6px">
+            <button class="cmp-filter-btn active" data-metric="reportMkt" onclick="setCmpChartMetric(this)">Mkt Value Δ</button>
+            <button class="cmp-filter-btn" data-metric="sharesDiff" onclick="setCmpChartMetric(this)">Shares Δ</button>
+          </span>
+        </div>
+        <div id="holdings-chart-wrap" style="position:relative;height:300px;width:100%">
+          <canvas id="chart-holdings-diff"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="cmp-table-card">
+      <div class="cmp-table-hd">
+        <div class="cmp-table-title">Holdings Detail</div>
+        <div class="cmp-filter-btns">
+          <button class="cmp-filter-btn active" data-f="all" onclick="setCmpFilter(this)">All</button>
+          <button class="cmp-filter-btn" data-f="new" onclick="setCmpFilter(this)">New</button>
+          <button class="cmp-filter-btn" data-f="exited" onclick="setCmpFilter(this)">Exited</button>
+          <button class="cmp-filter-btn" data-f="increased" onclick="setCmpFilter(this)">Increased</button>
+          <button class="cmp-filter-btn" data-f="decreased" onclick="setCmpFilter(this)">Decreased</button>
+          <button class="cmp-filter-btn" data-f="unchanged" onclick="setCmpFilter(this)">Unchanged</button>
+        </div>
+      </div>
+      <div class="cmp-tbl-wrap">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Company</th>
+              <th>Sector</th>
+              <th>Status</th>
+              <th class="r">Shares A</th>
+              <th class="r">Shares B</th>
+              <th class="r">Shares Δ</th>
+              <th class="r">Mkt A (M)</th>
+              <th class="r">Mkt B (M)</th>
+              <th class="r">Mkt Δ (M)</th>
+              <th class="r">Mkt Δ%</th>
+            </tr>
+          </thead>
+          <tbody id="cmp-tbody"></tbody>
+          <tfoot id="cmp-tfoot"></tfoot>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="mf-toast-wrap" id="toast-wrap"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script type="module" src="mf-compare.js"></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

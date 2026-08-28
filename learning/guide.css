@@ -1,0 +1,432 @@
+/* ═══════════════════════════════════════════════════════════
+   guide.css — shared stylesheet for the built-in study guides
+
+   Shared by candles.html and hilega-milega.html — one stylesheet so a
+   second guide inherits the layout instead of copying it, and restyling
+   one restyles all of them.
+
+   Layout is a sticky contents rail beside a single reading column.
+   Colours come from the shared tokens in style.css so the page
+   follows the light/dark toggle without a second palette. Diagram
+   stroke colours live in each guide's own JS instead, since they have
+   to be baked into the SVG attributes.
+═══════════════════════════════════════════════════════════ */
+
+.cd-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px 24px 80px;
+  display: grid;
+  grid-template-columns: 208px minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+
+/* ─── Contents rail ──────────────────────────────────────── */
+.cd-toc {
+  position: sticky;
+  top: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.cd-toc-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 2px 8px 8px;
+}
+.cd-toc a {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 7px 9px;
+  border-radius: 7px;
+  border-left: 2px solid transparent;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.cd-toc a:hover { background: var(--bg-row-hover); color: var(--text-primary); }
+.cd-toc a.active {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+/* ─── Sections ───────────────────────────────────────────── */
+.cd-main { min-width: 0; }
+.cd-sec { margin-bottom: 52px; scroll-margin-top: 84px; }
+
+.cd-h2 {
+  font-family: var(--mono);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+  margin: 0 0 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.cd-lead {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin: 0 0 22px;
+  max-width: 78ch;
+}
+.cd-lead a, .cd-foot a, .cd-honest-item a, .cd-callout a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.cd-lead a:hover, .cd-foot a:hover,
+.cd-honest-item a:hover, .cd-callout a:hover { border-bottom-color: var(--accent); }
+
+/* ─── Anatomy ────────────────────────────────────────────── */
+.cd-anatomy {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+.cd-anatomy-fig { flex-shrink: 0; }
+.cd-anatomy-notes {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+.cd-anat-row {
+  display: flex;
+  gap: 14px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.cd-anat-row b { color: var(--text-primary); font-weight: 600; }
+.cd-anat-key {
+  flex: 0 0 88px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: 2px;
+}
+
+/* ─── Callouts ───────────────────────────────────────────── */
+.cd-callout {
+  padding: 16px 18px;
+  background: var(--accent-dim);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.cd-callout b { color: var(--text-primary); }
+.cd-callout code {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--bg-base);
+  color: var(--accent);
+}
+/* Reserved for facts that will bite someone if skimmed past. */
+.cd-warn {
+  margin-top: 20px;
+  background: rgba(239, 83, 80, 0.08);
+  border-color: rgba(239, 83, 80, 0.3);
+  border-left-color: #ef5350;
+}
+.cd-warn code { color: #ef8a87; }
+
+/* ─── Pattern cards ──────────────────────────────────────── */
+.cd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
+  gap: 16px;
+}
+/* For cards whose figure is a wide plot rather than a candle or two — below
+   this width the diagram and its text start fighting for the same space. */
+.cd-grid--wide { grid-template-columns: repeat(auto-fill, minmax(560px, 1fr)); }
+.cd-card {
+  display: flex;
+  gap: 18px;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  scroll-margin-top: 84px;
+  transition: border-color 0.18s;
+}
+.cd-card:hover { border-color: var(--border-glow, var(--accent)); }
+.cd-card-fig {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+.cd-svg { display: block; overflow: visible; }
+.cd-fig-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  fill: var(--text-muted);
+}
+.cd-card-body { flex: 1; min-width: 0; }
+.cd-card-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 9px;
+}
+.cd-card-head h3 {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.2px;
+}
+.cd-chip {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  padding: 2px 7px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.cd-what, .cd-read, .cd-test {
+  margin: 0 0 9px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.cd-lbl {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.cd-test code {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--accent);
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 9px;
+  display: block;
+}
+
+/* Figures measured off the diagram's own OHLC (see metrics() in candles.js). */
+.cd-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 10px;
+}
+.cd-metrics span {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 3px 7px;
+}
+.cd-metrics b { color: var(--text-primary); font-weight: 700; }
+
+/* Gain/loss colouring, usable anywhere — the sector guides need it inside
+   table cells, not only in a .cd-metrics strip. */
+.cd-good { color: var(--gain) !important; }
+.cd-bad  { color: var(--loss) !important; }
+.cd-num {
+  font-family: var(--mono);
+  font-size: 12px !important;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.cd-chip--real {
+  color: var(--text-secondary);
+  background: var(--bg-base);
+  border-color: var(--border);
+}
+.cd-chip--warn {
+  color: #f57c00;
+  background: rgba(245,124,0,0.12);
+  border-color: rgba(245,124,0,0.35);
+}
+
+/* ─── Video cards ────────────────────────────────────────── */
+.cd-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.cd-video-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.18s;
+}
+.cd-video-card:hover { border-color: var(--border-glow, var(--accent)); }
+.cd-video-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-base);
+}
+.cd-video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cd-video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.15);
+  transition: background 0.18s;
+}
+.cd-video-card:hover .cd-video-play { background: rgba(0,0,0,0.32); }
+.cd-video-body { padding: 12px 14px; }
+.cd-video-body h4 {
+  margin: 0 0 3px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+.cd-video-body p {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* ─── Tables ─────────────────────────────────────────────── */
+.cd-table-wrap {
+  overflow-x: auto;                 /* wide tables scroll, the page never does */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+}
+.cd-table { width: 100%; border-collapse: collapse; min-width: 620px; }
+.cd-table th {
+  text-align: left;
+  padding: 12px 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.cd-table td {
+  padding: 13px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.cd-table tr:last-child td { border-bottom: none; }
+.cd-table td b { color: var(--text-primary); font-family: var(--mono); }
+.cd-t-name {
+  font-family: var(--mono);
+  font-size: 11.5px !important;
+  font-weight: 700;
+  color: var(--accent) !important;
+  white-space: nowrap;
+}
+.cd-t-why { color: var(--text-muted) !important; }
+
+/* ─── Honesty section ────────────────────────────────────── */
+.cd-honest {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+.cd-honest-item {
+  padding: 17px 19px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.cd-honest-item h4 {
+  margin: 0 0 7px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.2px;
+}
+.cd-honest-item p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.cd-honest-item code {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--accent);
+}
+.cd-foot {
+  margin: 22px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .cd-page { grid-template-columns: 1fr; gap: 22px; }
+  /* The rail stops being a rail — it becomes a wrapping chip row on top. */
+  .cd-toc { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .cd-toc-title { width: 100%; padding: 0 0 4px; }
+  .cd-toc a { border-left: none; border: 1px solid var(--border); }
+  .cd-toc a.active { border-color: var(--accent); }
+}
+@media (max-width: 620px) {
+  .cd-page { padding: 20px 14px 60px; }
+  .cd-grid { grid-template-columns: 1fr; }
+  .cd-card { flex-direction: column; gap: 12px; }
+  .cd-anatomy { gap: 20px; padding: 18px; }
+  .cd-anat-row { flex-direction: column; gap: 3px; }
+  .cd-anat-key { flex-basis: auto; }
+}

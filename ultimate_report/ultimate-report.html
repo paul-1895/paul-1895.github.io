@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ultimate Report — DSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="ultimate-report.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Ultimate Report</h1>
+        <p>Research prompts</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>
+        <span>Home</span>
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="ur-page">
+
+  <section class="ur-section">
+    <div class="ur-section-hd">
+      <h2>Prompt</h2>
+      <p>A full research brief for one stock. Pick a ticker, copy it, paste it into whichever model you're using.</p>
+    </div>
+
+    <div class="ur-controls">
+      <label class="ur-field" for="ur-symbol">
+        <span>Stock</span>
+        <input id="ur-symbol" list="ur-symbols" placeholder="e.g. OLYMPIC"
+               autocomplete="off" spellcheck="false" />
+        <datalist id="ur-symbols"></datalist>
+      </label>
+      <div class="ur-actions" id="ur-actions-view">
+        <button class="ur-btn" id="ur-copy">Copy prompt</button>
+        <button class="ur-btn ur-btn-ghost" id="ur-edit">Edit</button>
+      </div>
+
+      <div class="ur-actions" id="ur-actions-edit" hidden>
+        <button class="ur-btn" id="ur-save">Save</button>
+        <button class="ur-btn ur-btn-ghost" id="ur-cancel">Cancel</button>
+        <button class="ur-btn ur-btn-ghost" id="ur-reset">Reset to default</button>
+      </div>
+
+      <span class="ur-badge" id="ur-badge" hidden title="This prompt differs from the built-in default">Edited</span>
+    </div>
+
+    <p class="ur-edit-hint" id="ur-edit-hint" hidden>
+      <code>{{SYMBOL}}</code> is swapped for the ticker above — leave it in place to keep that working.
+      <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Enter</kbd> saves, <kbd>Esc</kbd> cancels. Saved in this browser only.
+    </p>
+
+    <pre class="ur-prompt" id="ur-prompt-text"></pre>
+    <textarea class="ur-prompt ur-prompt-edit" id="ur-prompt-edit" hidden
+              spellcheck="false" aria-label="Edit prompt"></textarea>
+  </section>
+
+</main>
+
+<script type="module" src="ultimate-report.js"></script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

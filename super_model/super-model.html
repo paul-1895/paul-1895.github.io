@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Super Model — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="../candlestick_chart/candlestick-chart.css" />
+<link rel="stylesheet" href="../candlestick_chart/candlestick-analysis.css" />
+<link rel="stylesheet" href="super-model.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Super Model</h1>
+        <p>Backtest-validated trend, seasonal &amp; mean-reversion signals</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="/minervini_model/minervini.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Minervini Trend Template model" aria-label="Minervini Model">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+        <span>Minervini</span>
+      </a>
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/>
+        </svg>
+      </a>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="sm-page-root">
+
+  <div class="sm-disclaimer">
+    ⚠️ Algorithmically generated from historical price data. Not financial advice — verify independently before trading.
+  </div>
+
+  <div class="sm-meta-row" id="sm-meta-row"></div>
+
+  <!-- Evidence: how this model has actually performed -->
+  <section class="sm-evidence" id="sm-evidence">
+    <div class="sm-evidence-tabs">
+      <button class="sm-tab active" data-pane="backtest" onclick="window.smShowPane(this)">Backtest</button>
+      <button class="sm-tab" data-pane="live" onclick="window.smShowPane(this)">Live record</button>
+      <button class="sm-tab" data-pane="model" onclick="window.smShowPane(this)">What's scored</button>
+    </div>
+    <div class="sm-pane active" id="sm-pane-backtest"></div>
+    <div class="sm-pane" id="sm-pane-live"></div>
+    <div class="sm-pane" id="sm-pane-model"></div>
+  </section>
+
+  <!-- FILTERS — apply to both the Buy and Sell grids at once -->
+  <div class="sm-filter-bar" id="sm-filter-bar">
+    <div class="filter-select-wrap sm-filter-search-wrap">
+      <label for="sm-filter-search">Search</label>
+      <input type="search" id="sm-filter-search" class="sm-filter-search"
+             placeholder="Code or company…" autocomplete="off" spellcheck="false" />
+    </div>
+
+    <div class="filter-select-wrap">
+      <label for="sm-filter-category">Category</label>
+      <!-- enabled once the code→category map loads (fetched after first paint) -->
+      <select id="sm-filter-category" disabled>
+        <option value="">All</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="Z">Z</option>
+        <option value="none">Uncategorised</option>
+      </select>
+    </div>
+
+    <div class="filter-select-wrap">
+      <label for="sm-filter-sector">Sector</label>
+      <select id="sm-filter-sector"><option value="">All Sectors</option></select>
+    </div>
+
+    <div class="filter-select-wrap">
+      <label for="sm-filter-signal">Signal</label>
+      <select id="sm-filter-signal"><option value="">Any Signal</option></select>
+    </div>
+
+    <div class="filter-select-wrap">
+      <span class="sm-filter-label">Strength</span>
+      <div class="sm-seg" id="sm-filter-strength">
+        <button type="button" class="sm-seg-btn active" data-strength="all">All</button>
+        <button type="button" class="sm-seg-btn" data-strength="strong">Strong only</button>
+      </div>
+    </div>
+
+    <button type="button" id="sm-filter-clear" class="sm-filter-clear">Clear filters</button>
+    <span class="sm-filter-count" id="sm-filter-count"></span>
+  </div>
+
+  <section class="sm-section">
+    <div class="sm-section-hd sm-section-hd--buy">
+      <h2>Buy</h2>
+      <span class="sm-section-count" id="sm-buy-count"></span>
+    </div>
+    <div class="sm-grid" id="sm-buy-grid"></div>
+    <div class="sm-empty" id="sm-buy-empty" style="display:none;">No high-conviction Buy setups right now.</div>
+  </section>
+
+  <section class="sm-section">
+    <div class="sm-section-hd sm-section-hd--sell">
+      <h2>Sell</h2>
+      <span class="sm-section-count" id="sm-sell-count"></span>
+    </div>
+    <div class="sm-grid" id="sm-sell-grid"></div>
+    <div class="sm-empty" id="sm-sell-empty" style="display:none;">No high-conviction Sell setups right now.</div>
+  </section>
+
+</main>
+
+<!-- Suggestion detail modal (reuses the an-panel slide-in pattern) -->
+<div id="sm-modal" class="an-panel" style="display:none;">
+  <div class="an-panel-overlay" onclick="window.closeSuperModelModal()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2 id="sm-modal-title">—</h2>
+      <button class="modal-close" onclick="window.closeSuperModelModal()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="sm-modal-body"></div>
+  </div>
+</div>
+
+<!-- Metric detail modal (evidence panel: what a number means and how it's computed) -->
+<div id="sm-info-modal" class="an-panel" style="display:none;">
+  <div class="an-panel-overlay" onclick="window.closeSuperModelInfo()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2 id="sm-info-title">—</h2>
+      <button class="modal-close" onclick="window.closeSuperModelInfo()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="sm-info-body"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>Read-only, algorithmic signal blend &middot; Prices in BDT (Taka) &middot; For informational purposes only</p>
+</footer>
+
+<script type="module" src="super-model.js"></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

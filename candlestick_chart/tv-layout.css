@@ -1,0 +1,1038 @@
+/* ================================================================
+   tv-layout.css — TradingView-style page chrome for the standalone
+   candlestick.html chart: left drawing-tools rail, right watchlist +
+   symbol-info sidebar, bottom range bar.
+
+   Scoped entirely under .tv-page-shell so none of it leaks into
+   company_profile/company.html, which loads the same base
+   candlestick-chart.css but has its own page layout and does not
+   include .tv-page-shell in its markup.
+
+   Reuses the --bg-card, --border, --text-primary, --text-secondary,
+   --text-muted, --accent, --gain, --loss, --radius-sm, --radius-lg,
+   --mono and --sans variables already defined in candlestick-chart.css's
+   :root — no new palette introduced.
+   ================================================================ */
+
+.tv-page-shell {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1800px;
+  margin: 0 auto;
+  --tv-sidebar-width: 344px;
+  /* .site-header's rendered height (20px padding + 40px tallest nav item +
+     20px padding + 1px border) — used to pin .tv-right-sidebar directly
+     below it and cap the sidebar's height to the remaining viewport. */
+  --tv-header-h: 81px;
+}
+
+/* Drag handle between .main-container and .tv-right-sidebar — see
+   .tv-right-sidebar's flex-basis below, which reads --tv-sidebar-width. */
+.tv-col-resizer {
+  flex: 0 0 8px;
+  width: 8px;
+  align-self: stretch;
+  position: relative;
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.tv-col-resizer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  border-radius: 1px;
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.tv-col-resizer:hover::after,
+.tv-col-resizer.dragging::after {
+  background: var(--accent);
+}
+
+/* The chart column keeps its own internal padding/negative-margin toolbar
+   bleed, it just no longer centers/caps itself — the shell does that. */
+.tv-page-shell .main-container {
+  max-width: none;
+  margin: 0;
+  min-width: 0; /* allow the flex child to shrink below its content's natural width */
+  flex: 1 1 auto;
+}
+
+/* ── Left drawing-tools rail ─────────────────────────────────── */
+.tv-left-rail {
+  flex: 0 0 52px;
+  width: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  position: sticky;
+  top: 16px;
+  align-self: stretch;
+}
+
+.tv-rail-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.tv-rail-btn svg { width: 18px; height: 18px; stroke-width: 2; }
+
+.tv-rail-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.tv-rail-btn.active {
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-color: var(--accent);
+}
+
+.tv-rail-btn--danger:hover {
+  color: var(--loss);
+  background: var(--bg-hover);
+}
+
+.tv-rail-sep {
+  width: 24px;
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+/* ── Rail tool groups (Lines / Fibonacci / Shapes) — the button shows the
+   last-picked tool in that family; a small caret in the corner opens a
+   flyout to pick a different variant. ─────────────────────────────── */
+.tv-rail-group { position: relative; flex-shrink: 0; }
+
+.tv-rail-group-btn { position: relative; }
+
+.tv-rail-caret {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 6px;
+  height: 6px;
+  opacity: 0.7;
+}
+
+/* Toggle buttons (magnet / stay-in-drawing-mode / lock / hide) use the same
+   .active styling as tool buttons, but their "active" state means "on",
+   not "currently selected tool". */
+.tv-toggle-btn.active {
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-color: var(--accent);
+}
+
+/* ── Flyout panels ───────────────────────────────────────────────────
+   Positioned in JS (fixed, next to the trigger button) so they escape the
+   rail's own overflow and sit above the chart canvas. */
+.tv-tool-flyout {
+  position: fixed;
+  z-index: 2000;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  min-width: 200px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.tv-tool-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tv-tool-option svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+.tv-tool-option:hover { background: var(--bg-hover); color: var(--text-primary); }
+
+.tv-tool-option.active { background: rgba(0,245,196,0.1); color: var(--accent); }
+
+.tv-tool-sep {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 6px;
+}
+
+
+/* ── Icon (emoji/symbol) picker flyout — category tabs, scrollable
+   labeled grid, and an Emojis/Icons tab bar along the bottom. ──────── */
+.tv-emoji-flyout {
+  position: fixed;
+  z-index: 2000;
+  width: 320px;
+  max-height: 420px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.tv-emoji-cattabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 6px;
+  border-bottom: 1px solid var(--border);
+  flex: none;
+}
+
+.tv-emoji-cattab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 15px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.tv-emoji-cattab:hover { background: var(--bg-hover); }
+.tv-emoji-cattab.active { background: rgba(0,245,196,0.15); color: var(--accent); }
+
+.tv-emoji-grid {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 8px 10px;
+}
+
+.tv-emoji-section-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 10px 0 6px;
+}
+.tv-emoji-section-label:first-child { margin-top: 0; }
+
+.tv-emoji-section-items {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+}
+
+.tv-emoji-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  font-size: 17px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.tv-emoji-item:hover { background: var(--bg-hover); }
+
+.tv-emoji-maintabs {
+  display: flex;
+  border-top: 1px solid var(--border);
+  flex: none;
+}
+
+.tv-emoji-maintab {
+  flex: 1;
+  padding: 9px 0;
+  background: transparent;
+  border: none;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tv-emoji-maintab:hover { color: var(--text-primary); }
+.tv-emoji-maintab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── Right sidebar: watchlist/symbol-info panels + outer icon rail ──────
+   Mirrors .tv-left-rail's TradingView-style icon strip, but docked to the
+   right edge of the panel column instead of the left edge of the chart.
+
+   The stacked panels (watchlist + symbol info + news + MF holders + …) are
+   taller than the viewport, and used to just make the whole document
+   scroll — dragging .main-container's chart along with them. Pinning the
+   sidebar below the header and capping its height turns it into its own
+   scroll container: .tv-sidebar-panels scrolls internally while the chart
+   column stays put. */
+.tv-right-sidebar {
+  flex: 0 0 var(--tv-sidebar-width, 344px);
+  width: var(--tv-sidebar-width, 344px);
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  position: sticky;
+  top: var(--tv-header-h);
+  max-height: calc(100vh - var(--tv-header-h) - 16px);
+}
+
+.tv-sidebar-panels {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 0 0 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.tv-sidebar-panels::-webkit-scrollbar { width: 6px; }
+.tv-sidebar-panels::-webkit-scrollbar-track { background: transparent; }
+.tv-sidebar-panels::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+.tv-sidebar-panels::-webkit-scrollbar-thumb:hover { background: var(--border-glow); }
+
+.tv-right-rail {
+  flex: 0 0 52px;
+  width: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  margin-left: 16px;
+  background: var(--bg-card);
+  border-left: 1px solid var(--border);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  align-self: stretch;
+}
+
+.tv-watchlist,
+.tv-symbol-info,
+.tv-news-panel,
+.tv-mf-holders,
+.tv-bank-details {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  /* .tv-sidebar-panels is a height-capped flex column (see .tv-right-sidebar
+     above) — without this, flex's default shrink:1 squashes every panel
+     to fit the cap instead of letting the column scroll past them. */
+  flex-shrink: 0;
+}
+
+/* "Not applicable to this symbol" — distinct from the rail buttons' inline
+   display toggle, which carries the user's own show/hide choice. Keeping the
+   two on separate channels means a sector-gated panel can be hidden and
+   re-shown without clobbering that choice. !important because the rail
+   toggle writes display straight onto the element's style attribute. */
+.tv-na { display: none !important; }
+
+/* Column widths for the watchlist table. Every row (and the header) is its
+   own independent CSS grid — a <div> per row, not shared rows of one grid —
+   so nothing forces their column boundaries to agree with each other unless
+   every track is a fixed size. Last/Chg/Chg%/Vol are therefore fixed pixel
+   widths, not "auto", so a row with a wide value (e.g. "232.29K") can't
+   auto-size its own columns differently from the header or from a row with
+   shorter values — that per-row drift is what breaks Vol-header alignment. */
+.tv-watchlist {
+  --tv-wl-col1: 92px;
+  --tv-wl-col-last: 44px;
+  --tv-wl-col-chg: 40px;
+  --tv-wl-col-pct: 46px;
+  --tv-wl-col-vol: 48px;
+}
+
+.tv-news-body {
+  padding: 12px 14px;
+  max-height: 340px;
+  overflow-y: auto;
+}
+
+.tv-news-body .an-news-list { gap: 12px; }
+
+/* Held by Mutual Funds */
+.tv-mf-holders-body {
+  padding: 10px 14px 14px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.tv-mf-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.tv-mf-row:last-child { border-bottom: none; }
+.tv-mf-row:hover .tv-mf-name { color: var(--accent); }
+
+.tv-mf-row-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tv-mf-name {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.tv-mf-value {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  flex: none;
+}
+
+.tv-mf-row-sub {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+
+/* Bank Details — a compact read-only view of the /bank-details grid, limited
+   to its two most recent year columns (see renderBankDetails in tv-sidebar.js). */
+.tv-bd-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tv-bd-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.tv-bd-open:hover { color: var(--accent); }
+.tv-bd-open svg { width: 11px; height: 11px; flex: none; }
+
+.tv-bd-body {
+  padding: 4px 14px 10px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+/* One grid per row, matching the watchlist's approach: fixed-width value
+   columns so a long figure in one row can't widen its own columns out of
+   alignment with the header or its neighbours. */
+.tv-bd-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) repeat(var(--tv-bd-years, 2), 56px);
+  gap: 8px;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.tv-bd-row:last-child { border-bottom: none; }
+
+.tv-bd-row--head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg-card);
+  padding-top: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* The unit is a sibling of the name, not part of it, so at sidebar widths the
+   NAME is what ellipsises. Truncating "Non Performing Loan %" down to
+   "Non Performing L…" is a readability cost; dropping the "%" would change
+   what the number means. */
+.tv-bd-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+}
+.tv-bd-mname {
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tv-bd-munit {
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--text-muted);
+  flex: none;
+}
+
+.tv-bd-val {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--text-primary);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tv-bd-empty {
+  padding: 18px 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.7;
+}
+.tv-bd-empty a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.tv-bd-empty a:hover { text-decoration: underline; }
+
+.tv-sidebar-loading {
+  padding: 20px 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Watchlist */
+.tv-watchlist-header {
+  padding: 12px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.tv-wl-header {
+  display: grid;
+  grid-template-columns: var(--tv-wl-col1, 92px) var(--tv-wl-col-last, 44px) var(--tv-wl-col-chg, 40px) var(--tv-wl-col-pct, 46px) var(--tv-wl-col-vol, 48px);
+  gap: 8px;
+  padding: 6px 14px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tv-wl-header span:not(:first-child) {
+  text-align: right;
+  min-width: 40px;
+}
+
+/* Drag handle to resize the (unlabeled) symbol column — width is stored
+   in --tv-wl-col1 on .tv-watchlist, which both the header and every row
+   read from, so a single drag keeps them in sync. */
+.tv-wl-col1-cell {
+  position: relative;
+}
+
+.tv-wl-col-resizer {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  right: -8px;
+  width: 8px;
+  cursor: col-resize;
+  z-index: 5;
+  touch-action: none;
+}
+
+.tv-wl-col-resizer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  border-radius: 1px;
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.tv-wl-col-resizer:hover::after,
+.tv-wl-col-resizer.dragging::after {
+  background: var(--accent);
+}
+
+.tv-watchlist-body {
+  max-height: 340px;
+  overflow-y: auto;
+  /* Explicit, not just "unset": leaving overflow-x out entirely means the
+     browser silently computes it as auto too (CSS overflow-3 spec — one
+     axis constrained forces the other off 'visible'), letting the rows
+     scroll horizontally independently of .tv-wl-header, which is a fixed
+     sibling outside this scroll container. Any stray horizontal scroll
+     (trackpad/touch, even during the vertical column-resize drag) then
+     shifts every row out of sync with the header. Pin it to hidden so
+     horizontal overflow clips instead of scrolling, keeping rows and
+     header always at the same X position. */
+  overflow-x: hidden;
+}
+
+.tv-wl-group-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  background: var(--bg-hover);
+  cursor: pointer;
+  user-select: none;
+}
+
+.tv-wl-group-header svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.15s;
+}
+
+.tv-wl-group-header.collapsed svg { transform: rotate(-90deg); }
+
+.tv-wl-group-body.collapsed { display: none; }
+
+.tv-wl-row {
+  display: grid;
+  grid-template-columns: var(--tv-wl-col1, 92px) var(--tv-wl-col-last, 44px) var(--tv-wl-col-chg, 40px) var(--tv-wl-col-pct, 46px) var(--tv-wl-col-vol, 48px);
+  gap: 8px;
+  align-items: center;
+  padding: 7px 14px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: background 0.12s;
+}
+
+.tv-wl-row:hover { background: var(--bg-hover); }
+
+.tv-wl-row.active {
+  background: var(--bg-hover);
+  border-left-color: var(--accent);
+}
+
+.tv-wl-symbol {
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tv-wl-last {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-primary);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tv-wl-chg-abs {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tv-wl-chg-abs.gain { color: var(--gain); }
+.tv-wl-chg-abs.loss { color: var(--loss); }
+.tv-wl-chg-abs.flat { color: var(--text-muted); }
+
+.tv-wl-chg {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tv-wl-chg.gain { color: var(--gain); }
+.tv-wl-chg.loss { color: var(--loss); }
+.tv-wl-chg.flat { color: var(--text-muted); }
+
+.tv-wl-vol {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Symbol info panel */
+.tv-si-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tv-si-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: var(--bg-hover);
+  flex-shrink: 0;
+}
+
+.tv-si-name-block { min-width: 0; }
+
+.tv-si-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tv-si-sector {
+  font-size: 11px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tv-si-price-block {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tv-si-price-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tv-si-wl-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.tv-si-wl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.tv-si-wl-btn svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.tv-si-wl-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-glow);
+  background: var(--bg-hover);
+}
+
+.tv-si-wl-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(0,245,196,0.08);
+}
+
+.tv-si-wl-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 200px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.tv-si-wl-dropdown.open { display: block; }
+
+.tv-si-wl-dropdown-hd {
+  padding: 10px 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.tv-si-wl-dropdown-list {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.tv-si-wl-empty {
+  padding: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.tv-si-wl-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+  color: var(--text-secondary);
+}
+
+.tv-si-wl-item:hover { background: var(--bg-hover); }
+
+.tv-si-wl-item.in-list { color: var(--accent); }
+
+.tv-si-wl-item-check {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.tv-si-wl-item-name {
+  flex: 1;
+  font-size: 12.5px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-primary);
+}
+
+.tv-si-wl-item small {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.tv-si-wl-dropdown-ft {
+  border-top: 1px solid var(--border);
+}
+
+.tv-si-wl-create {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.tv-si-wl-create:hover { background: var(--bg-hover); }
+
+.tv-si-wl-create svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.tv-si-price {
+  font-family: var(--mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.tv-si-change {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.tv-si-change.gain { color: var(--gain); }
+.tv-si-change.loss { color: var(--loss); }
+.tv-si-change.flat { color: var(--text-muted); }
+
+.tv-si-stats {
+  padding: 12px 14px;
+}
+
+.tv-si-stats-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.tv-si-stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 12px;
+}
+
+.tv-si-stat-label { color: var(--text-muted); }
+.tv-si-stat-value { color: var(--text-primary); font-family: var(--mono); }
+
+/* ── Bottom range bar ─────────────────────────────────────────── */
+.tv-range-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 4px;
+  border-top: 1px solid var(--border);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tv-range-buttons {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.tv-range-btn {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tv-range-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.tv-range-btn.active {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.tv-range-datetime {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .tv-right-sidebar { display: none; }
+  .tv-col-resizer { display: none; }
+}
+
+@media (max-width: 900px) {
+  .tv-left-rail { display: none; }
+}

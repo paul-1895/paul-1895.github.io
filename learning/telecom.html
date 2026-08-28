@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Telecommunication Sector — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Telecommunication Sector</h1>
+        <p>Three listed companies, the heaviest turnover per stock on the exchange, and the lowest volatility of any sector</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">The sector</a>
+    <a href="#three">The three companies</a>
+    <a href="#economics">How a mobile operator earns</a>
+    <a href="#numbers">The numbers</a>
+    <a href="#ranking">Against other sectors</a>
+    <a href="#drivers">What moves it</a>
+    <a href="#honest">Reading it honestly</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">The sector</h2>
+      <p class="cd-lead">
+        Telecommunication is the smallest sector on the DSE by company count and one of the
+        largest by market weight. It contains three listed companies: two mobile network
+        operators and one wholesale bandwidth provider. Everything about how this sector behaves
+        follows from that shape — a handful of very large, heavily traded, foreign-affiliated
+        businesses in a market where most sectors consist of dozens of small ones.
+      </p>
+      <p class="cd-lead">
+        Bangladesh's mobile market is a small number of operators serving a very large subscriber
+        base, regulated by the Bangladesh Telecommunication Regulatory Commission (BTRC). The
+        regulator controls spectrum allocation, tariff floors, licence conditions and — through a
+        significant-market-power framework — what the largest operator is permitted to do
+        competitively. Sector economics here are set in a regulator's office to an unusual degree.
+      </p>
+      <div class="cd-callout">
+        <b>Not every operator is listed.</b> The DSE carries two of the country's mobile
+        operators; others are not publicly traded here. So this sector is a partial view of the
+        industry, and market-share shifts toward an unlisted competitor are invisible in these
+        three price series.
+      </div>
+    </section>
+
+    <!-- ─── Three ─── -->
+    <section id="three" class="cd-sec">
+      <h2 class="cd-h2">The three companies</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Ticker</th><th>Business</th><th>What it depends on</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">GP</td>
+              <td>Grameenphone — the largest mobile operator, majority-controlled by Telenor
+                  Group.</td>
+              <td class="cd-t-why">Subscriber numbers, average revenue per user, spectrum costs,
+                  and the regulatory conditions attached to being the dominant operator.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">ROBI</td>
+              <td>Robi Axiata — mobile operator majority-owned by Malaysia's Axiata Group, with
+                  Bharti as the other large shareholder, running the Robi and Airtel brands.</td>
+              <td class="cd-t-why">The same drivers, from a smaller base — which makes subscriber
+                  and data growth matter proportionally more, and scale economics matter less
+                  favourably.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">BSCPLC</td>
+              <td>Bangladesh Submarine Cables — wholesale international bandwidth via submarine
+                  cable landing infrastructure.</td>
+              <td class="cd-t-why">A different business entirely: it sells capacity to internet
+                  providers and operators rather than to consumers. Its economics are
+                  infrastructure-like, and it competes with terrestrial cross-border routes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout cd-warn" style="margin-top:16px">
+        <b>A three-stock median is not a sector statistic.</b> Every "median" for this sector in
+        the tables below is the middle of three numbers. It carries none of the averaging that
+        makes a median meaningful in a sector of forty companies, and a single company's move can
+        become the sector's headline figure. Read the constituent rows here, not the summary
+        line.
+      </div>
+    </section>
+
+    <!-- ─── Economics ─── -->
+    <section id="economics" class="cd-sec">
+      <h2 class="cd-h2">How a mobile operator earns</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Element</th><th>What it means</th><th>Why it matters here</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">ARPU</td>
+              <td>Average revenue per user — total service revenue divided by subscribers.</td>
+              <td class="cd-t-why">In a market where nearly everyone already has a connection,
+                  growth has to come from ARPU rather than from adding people. That makes data
+                  usage and pricing the whole game.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Subscriber churn</td>
+              <td>The share of customers leaving each period.</td>
+              <td class="cd-t-why">Low switching costs and easy SIM replacement make churn a
+                  permanent operating cost rather than an occasional problem.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Spectrum and licence costs</td>
+              <td>Large, lumpy payments to the regulator for the right to operate on particular
+                  frequencies.</td>
+              <td class="cd-t-why">These land as big capital outflows in specific years and can
+                  reshape a year's cash flow and dividend capacity on their own.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Network capital expenditure</td>
+              <td>Continuous spending on towers, transmission and each generation of network
+                  technology.</td>
+              <td class="cd-t-why">The reason telecom operators can report solid operating profits
+                  and still have constrained free cash flow.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Taxes and levies</td>
+              <td>The sector carries a comparatively heavy tax and duty burden, including charges
+                  applied at the point of customer usage.</td>
+              <td class="cd-t-why">Changes here move sector economics without any change in
+                  operating performance — and they are decided in a national budget, not by the
+                  companies.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Dividend policy</td>
+              <td>Mature operators with limited growth outlets tend to return a high share of
+                  earnings as cash.</td>
+              <td class="cd-t-why">A large part of the total return from these shares has
+                  historically come as dividends — which the price-only columns below do not
+                  capture.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Numbers ─── -->
+    <section id="numbers" class="cd-sec">
+      <h2 class="cd-h2">The numbers</h2>
+      <p class="cd-lead">
+        All three companies, with median returns over one, three and five years, annualised
+        volatility, typical daily turnover, exchange category and the most recent declared cash
+        dividend — computed from this app's own daily price archive.
+      </p>
+      <div class="cd-callout" id="sec-generated" style="margin-bottom:22px">Loading…</div>
+      <div id="sec-data">
+        <div class="cd-callout">Loading sector figures…</div>
+      </div>
+      <div class="cd-callout" style="margin-top:18px">
+        <b>Read the dividend column with the return column.</b> These are among the highest cash
+        dividend payers on the exchange, and every return figure in the table above is price
+        only. A flat or negative price line for a share paying out a large annual cash dividend
+        describes a very different outcome for a holder than the same line on a non-payer.
+      </div>
+    </section>
+
+    <!-- ─── Ranking ─── -->
+    <section id="ranking" class="cd-sec">
+      <h2 class="cd-h2">Against every other sector</h2>
+      <p class="cd-lead">
+        Every operating sector, ranked by one-year median return, with this one highlighted. The
+        two columns worth reading here are volatility and turnover rather than return — this
+        sector's distinguishing feature is how it trades, not how it has performed.
+      </p>
+      <div id="sec-ranking">
+        <div class="cd-callout">Loading the ranking…</div>
+      </div>
+    </section>
+
+    <!-- ─── Drivers ─── -->
+    <section id="drivers" class="cd-sec">
+      <h2 class="cd-h2">What moves it</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Driver</th><th>Mechanism</th><th>Visible in this app?</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Regulatory decisions</td>
+              <td>Spectrum pricing, tariff floors, licence renewals and market-power rulings
+                  directly set what operators may charge and must pay.</td>
+              <td class="cd-t-why"><b>No.</b> Only as an unexplained move in the price series.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Taxes and duties on usage</td>
+              <td>Changes in sector-specific levies feed straight into effective prices for
+                  customers and into operator margins.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Data demand growth</td>
+              <td>Rising per-user data consumption is the main route to revenue growth in a
+                  saturated subscriber market.</td>
+              <td class="cd-t-why"><b>No.</b> No subscriber or usage data here.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Network investment cycles</td>
+              <td>Each technology generation requires a capital programme before it earns
+                  anything.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Foreign parent decisions</td>
+              <td>Both operators are majority foreign-owned; group-level strategy, repatriation
+                  and stake changes affect the listed entity.</td>
+              <td class="cd-t-why"><b>No.</b> Shareholding structure is not in the archive.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Index and institutional flows</td>
+              <td>Large weights make these shares a default holding for index-aware and
+                  institutional portfolios, so they move on flows unrelated to operations.</td>
+              <td class="cd-t-why"><b>Partly.</b> The turnover column shows the scale of activity,
+                  not who is behind it.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>Three companies is not a sample</h4>
+          <p>Every statistical convention on this Hub — medians, dispersion, comparison against a
+          market baseline — assumes enough constituents for the middle to mean something. With
+          three, the sector median is just the middle company. Treat the sector row in the ranking
+          table as a label for these three names, not as a measurement of an industry.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Low volatility is a description, not a safety rating</h4>
+          <p>Large, liquid, institutionally held shares move less day to day than small
+          speculative ones. That is a fact about trading behaviour. It says nothing about
+          regulatory risk, competitive risk or the risk of a large one-off levy — all of which
+          arrive as step changes rather than as daily volatility, and none of which this app can
+          see coming.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Price-only returns understate this sector more than most</h4>
+          <p>These are high-payout businesses. Excluding dividends from a return calculation is a
+          general limitation of these tables, but its size here is unusually large, and it is
+          concentrated in exactly the sector where holders have historically been paid to wait.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>One of the three isn't a mobile operator</h4>
+          <p>Grouping a wholesale bandwidth infrastructure business with two consumer mobile
+          operators is the exchange's classification, not an economic judgement. Their revenue
+          models, customers and competitive pressures differ substantially, which is another
+          reason a three-company median is a weak summary.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Short price history can mean a ticker change rather than a new listing</h4>
+          <p>Where the archive's history for a ticker starts recently, the cause may be a renamed
+          symbol, a recent listing, or a gap in the source feed — and this app cannot distinguish
+          them. That is why three- and five-year cells are left blank rather than computed from
+          whatever history is present.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Nothing here values these companies</h4>
+          <p>No subscriber count, no ARPU, no capital expenditure figure and no spectrum
+          liability appears anywhere in this app's price archive. The tables measure how three
+          shares traded. Any judgement about what they are worth needs the accounts and the
+          regulatory filings, neither of which is here.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        Related reading: <a href="insurance.html">Insurance</a>, <a href="textile.html">Textile</a>,
+        <a href="pharma.html">Pharmaceuticals</a> and <a href="paper.html">Paper &amp; Printing</a>.
+        For individual companies, the fundamentals
+        and <a href="../company_profile/company.html">company profile</a> pages carry what this
+        archive does not.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  window.SECTOR_GUIDE = { sectors: ['Telecommunication'] };
+</script>
+<script src="sector-guide.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+/* ════════════════════════════════════════════════════════════
+   support-resistance.css
+   Styles for the "Support & Resistance" panel (support-resistance.js).
+   Reuses the .an-panel* shell (candlestick-analysis.css) and the
+   .val-inputs/.val-input-row/.val-warn/.val-disclaimer classes
+   (valuation.css) already loaded on this page — this file only
+   adds the .sr-* level-list classes.
+   ════════════════════════════════════════════════════════════ */
+
+.sr-price-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-hover);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.sr-price-value {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.sr-section { margin-bottom: 18px; }
+
+.sr-section-hd {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+}
+
+.sr-section-hd--resistance { color: var(--loss); }
+.sr-section-hd--support    { color: var(--gain); }
+
+.sr-empty {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 6px 0;
+}
+
+.sr-level-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-left-width: 3px;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  background: var(--bg-hover);
+}
+
+.sr-level-row--resistance { border-left-color: var(--loss); }
+.sr-level-row--support    { border-left-color: var(--gain); }
+
+.sr-level-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sr-level-price {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.sr-level-dist {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.sr-level-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.sr-level-strength { font-weight: 600; color: var(--text-secondary); }
+
+.sr-settings {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+
+.sr-settings-hd {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}

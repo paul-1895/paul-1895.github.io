@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paper &amp; Printing Sector — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Paper &amp; Printing Sector</h1>
+        <p>Six companies, unusually heavy turnover for their size, and the highest volatility of any sector on the exchange</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">The sector</a>
+    <a href="#economics">How the business works</a>
+    <a href="#numbers">The numbers</a>
+    <a href="#tell">What the numbers suggest</a>
+    <a href="#ranking">Against other sectors</a>
+    <a href="#drivers">What moves it</a>
+    <a href="#honest">Reading it honestly</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">The sector</h2>
+      <p class="cd-lead">
+        Paper &amp; Printing is one of the smallest sectors on the DSE — a handful of companies
+        making paper, board and packaging materials, plus printing and converting operations.
+        Their end customers are mostly domestic: packaging for consumer goods and pharmaceuticals,
+        paper for education and government use, and printing for commercial buyers.
+      </p>
+      <p class="cd-lead">
+        As an industry it is unglamorous and quite stable in its demand drivers — packaging
+        consumption grows roughly with the consumer economy, and paper for the education system
+        is a large, predictable annual requirement. As a group of listed shares it behaves
+        nothing like that description, which is the most interesting thing about it and the
+        subject of the <a href="#tell">section below the tables</a>.
+      </p>
+      <div class="cd-callout">
+        <b>What this page is.</b> A description of the industry plus real measurements of how
+        these six shares have traded, computed from this app's own daily price archive. It holds
+        no production, cost or earnings data, because none of that exists in this repository.
+      </div>
+    </section>
+
+    <!-- ─── Economics ─── -->
+    <section id="economics" class="cd-sec">
+      <h2 class="cd-h2">How the business works</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Element</th><th>What it means</th><th>Consequence</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Inputs</td>
+              <td>Wood pulp, waste paper for recycling, chemicals — much of it imported.</td>
+              <td class="cd-t-why">Input costs are set in international markets and paid in
+                  foreign currency, while output is sold domestically in taka. A currency move
+                  squeezes the middle.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Energy intensity</td>
+              <td>Pulping, drying and finishing are heavy continuous consumers of gas and
+                  electricity.</td>
+              <td class="cd-t-why">Energy supply interruptions and tariff increases hit
+                  throughput and unit cost at the same time — the same constraint the
+                  <a href="textile.html">textile</a> mills face.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Capital intensity</td>
+              <td>A paper machine is a large fixed asset that wants to run continuously.</td>
+              <td class="cd-t-why">High operating leverage: profit swings far more than volume
+                  does, in both directions.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Import competition</td>
+              <td>Finished paper and board can be imported, so domestic pricing is capped by
+                  landed import cost.</td>
+              <td class="cd-t-why">Pricing power depends partly on trade policy and freight, not
+                  only on domestic demand.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Packaging demand</td>
+              <td>Driven by consumer goods, pharmaceuticals and e-commerce volumes.</td>
+              <td class="cd-t-why">The most structurally growing part of the sector, and the
+                  reason it is not simply a declining "paper" business.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Numbers ─── -->
+    <section id="numbers" class="cd-sec">
+      <h2 class="cd-h2">The numbers</h2>
+      <p class="cd-lead">
+        All six companies, with median returns over one, three and five years, annualised
+        volatility, typical daily turnover, exchange category and the most recent declared cash
+        dividend.
+      </p>
+      <div class="cd-callout" id="sec-generated" style="margin-bottom:22px">Loading…</div>
+      <div id="sec-data">
+        <div class="cd-callout">Loading sector figures…</div>
+      </div>
+    </section>
+
+    <!-- ─── Tell ─── -->
+    <section id="tell" class="cd-sec">
+      <h2 class="cd-h2">What the numbers suggest — and what they don't prove</h2>
+      <p class="cd-lead">
+        Three features of the table above are worth putting side by side, because individually
+        they mean little and together they describe a specific pattern.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Observation</th><th>Ordinary explanation</th><th>Alternative explanation</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Very high volatility</td>
+              <td>Small companies with high operating leverage genuinely have volatile
+                  earnings.</td>
+              <td class="cd-t-why">Small free floats amplify any buying or selling into large
+                  price moves.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Turnover well above what the sector's size implies</td>
+              <td>Genuine investor interest in a growing packaging market.</td>
+              <td class="cd-t-why">Concentrated speculative activity — heavy trading in a few
+                  small names, not broad participation.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Wide dispersion between constituents</td>
+              <td>Companies at different points in their capital cycles perform differently.</td>
+              <td class="cd-t-why">Individual names moving on stock-specific activity rather
+                  than on anything sector-wide.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout cd-warn" style="margin-top:16px">
+        <b>This app cannot choose between those columns.</b> Distinguishing genuine interest from
+        concentrated activity needs order-level data — who traded, in what size, against whom —
+        and this archive has daily bars only. The <a href="smart-money.html">Smart Money Concepts
+        guide</a> sets out exactly which fields exist and which do not. Both explanations are
+        listed because both remain open, and presenting either as the finding would overstate
+        what a price series can establish.
+      </div>
+    </section>
+
+    <!-- ─── Ranking ─── -->
+    <section id="ranking" class="cd-sec">
+      <h2 class="cd-h2">Against every other sector</h2>
+      <p class="cd-lead">
+        Every operating sector, ranked by one-year median return, with this one highlighted. Look
+        at the volatility and turnover columns relative to the stock count — that combination is
+        what makes this sector unusual, more than its position in the return ranking.
+      </p>
+      <div id="sec-ranking">
+        <div class="cd-callout">Loading the ranking…</div>
+      </div>
+    </section>
+
+    <!-- ─── Drivers ─── -->
+    <section id="drivers" class="cd-sec">
+      <h2 class="cd-h2">What moves it</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Driver</th><th>Mechanism</th><th>Visible in this app?</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Pulp and waste paper prices</td>
+              <td>The dominant raw material cost, set internationally.</td>
+              <td class="cd-t-why"><b>No.</b> No commodity data here.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Taka exchange rate</td>
+              <td>Inputs are largely imported and output is sold domestically, so a weaker taka
+                  compresses margins directly.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Energy supply and tariffs</td>
+              <td>Determines how much capacity can run, and at what cost.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Packaging demand</td>
+              <td>Follows consumer goods, pharmaceutical and e-commerce volumes.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Government and education paper orders</td>
+              <td>Large, lumpy annual procurement that can dominate a smaller producer's
+                  year.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Stock-specific trading activity</td>
+              <td>In a sector this small with floats this thin, activity in one name can set the
+                  sector's headline figures.</td>
+              <td class="cd-t-why"><b>Partly.</b> Turnover and volatility are the proxy — they
+                  show that something is happening, never what.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>Six companies cannot support a sector conclusion</h4>
+          <p>With this few constituents, the median is close to an arbitrary pick among them and
+          any sector-level statement is really a statement about two or three shares. The
+          constituent table is the substance of this page; the summary row is a convenience.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>High turnover in a small sector is not the same as liquidity</h4>
+          <p>A high median daily turnover here comes from heavy trading in a small number of
+          names. That is not the same as being able to buy or sell size without moving the price
+          — and it can reverse abruptly, since activity that arrived quickly can leave the same
+          way.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Z category matters more in a sector this concentrated</h4>
+          <p>One Z-category company among forty is a footnote. The same proportion among six is a
+          significant share of the sector not currently rewarding shareholders, and it should be
+          read directly off the constituent table rather than through the sector average.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Several of these histories are short</h4>
+          <p>Where a ticker's archive begins recently, the cause may be a recent listing, a symbol
+          change, or a gap in the price source — this app cannot tell which. Blank three- and
+          five-year cells mean "not measurable here", never "zero", and in a six-company sector a
+          couple of blanks materially thin the long-horizon comparison.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Returns exclude dividends</h4>
+          <p>Every return column is price only. For the companies here that do pay, the figures
+          understate what a holder actually received; for those that do not, the price line is the
+          whole story. The dividend column is the only place that distinction appears.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Nothing here is a view on any of these companies</h4>
+          <p>This page describes an industry and measures how six shares traded. It contains no
+          production volumes, no input costs, no debt and no margins, because the price archive
+          holds none of them. Anyone acting on these companies needs the accounts.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        Related reading: <a href="insurance.html">Insurance</a>, <a href="textile.html">Textile</a>,
+        <a href="telecom.html">Telecommunication</a> and <a href="pharma.html">Pharmaceuticals</a>.
+        For individual companies, the fundamentals
+        and <a href="../company_profile/company.html">company profile</a> pages carry what this
+        archive does not.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  window.SECTOR_GUIDE = { sectors: ['Paper & Printing'] };
+</script>
+<script src="sector-guide.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

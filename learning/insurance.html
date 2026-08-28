@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Insurance Sector — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Insurance Sector</h1>
+        <p>General and life insurers on the DSE — how they earn, and what this app's price archive can and cannot say about them</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">The sector</a>
+    <a href="#economics">How insurers earn</a>
+    <a href="#split">General vs life</a>
+    <a href="#numbers">The numbers</a>
+    <a href="#ranking">Against other sectors</a>
+    <a href="#drivers">What moves it</a>
+    <a href="#honest">Reading it honestly</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">The sector</h2>
+      <p class="cd-lead">
+        Insurance is one of the most heavily populated corners of the DSE — the exchange lists
+        dozens of insurers, far more than most comparable markets carry, and almost all of them
+        are small. The DSE classifies them into two separate sectors: <b>Insurance</b>, meaning
+        general (non-life) insurers, and <b>Life Insurance</b>. This guide covers both, because
+        they share a regulator and a listing history but almost nothing else about how they make
+        money.
+      </p>
+      <p class="cd-lead">
+        The sector is supervised by the Insurance Development and Regulatory Authority (IDRA),
+        which sets solvency, expense and product rules. The background fact worth carrying into
+        everything below is that insurance penetration in Bangladesh is very low by international
+        standards — a small share of national income is spent on premiums. That cuts two ways: it
+        is the entire growth case for the sector, and it is also why so many listed insurers are
+        competing hard for a small pool of business.
+      </p>
+      <div class="cd-callout">
+        <b>What this page is.</b> A description of how these businesses work, plus real
+        measurements of how their shares have traded, computed from this app's own daily price
+        archive. It is not a valuation of any of them: the archive holds prices, not premiums,
+        claims, reserves or solvency margins. Where the data cannot support a claim, the page
+        says so instead of estimating.
+      </div>
+    </section>
+
+    <!-- ─── Economics ─── -->
+    <section id="economics" class="cd-sec">
+      <h2 class="cd-h2">How insurers actually earn</h2>
+      <p class="cd-lead">
+        An insurer has two separate profit engines, and confusing them is the most common mistake
+        in reading one. Understanding the split explains why insurance shares often move with
+        interest rates rather than with anything insurance-specific.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Engine</th><th>What it is</th><th>What decides whether it works</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Underwriting result</td>
+              <td>Premiums earned, minus claims paid, minus the cost of acquiring and
+                  administering the business.</td>
+              <td class="cd-t-why">Pricing discipline and claims experience. In a crowded market
+                  with many similar competitors, price competition and distribution commissions
+                  are what erode this line.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Investment income</td>
+              <td>Return on the float — premiums collected now against claims paid later, held in
+                  deposits, bonds, and equities meanwhile.</td>
+              <td class="cd-t-why">Prevailing interest rates, above all. A rise in deposit rates
+                  lifts this line across the whole sector at once, regardless of how any
+                  individual insurer is underwriting.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Reinsurance</td>
+              <td>Passing on part of large risks to a reinsurer in exchange for part of the
+                  premium.</td>
+              <td class="cd-t-why">Caps the damage from a single catastrophic claim, at the cost
+                  of ceding premium. Terms tighten after bad loss years.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout" style="margin-top:16px">
+        <b>Why this matters for reading the tables below.</b> A sector-wide move in insurance
+        share prices is at least as likely to be about the rate environment, or about a
+        regulatory change affecting everyone, as about any insurer's own underwriting. Nothing in
+        this app can separate those, because none of the inputs are in the archive.
+      </div>
+    </section>
+
+    <!-- ─── Split ─── -->
+    <section id="split" class="cd-sec">
+      <h2 class="cd-h2">General versus life — two different businesses</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th></th><th>General (non-life)</th><th>Life</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Typical products</td>
+              <td>Fire, marine cargo, motor, engineering, miscellaneous.</td>
+              <td>Endowment and term policies, often long-dated, sold to individuals.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Policy length</td>
+              <td>Usually one year, repriced at renewal.</td>
+              <td>Many years — the liability is committed long before it is paid.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Main volume driver</td>
+              <td>Trade and economic activity. Marine cargo cover in particular follows import
+                  volumes and letters of credit, so it moves with the import cycle.</td>
+              <td>Household saving, agent recruitment, and public trust in whether claims get
+                  paid.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Characteristic risk</td>
+              <td>A bad loss year — a large fire or marine claim can erase a small insurer's
+                  annual profit.</td>
+              <td><b>Lapses and surrenders.</b> A policy abandoned early can leave the insurer
+                  having paid the acquisition cost without collecting the premiums that were
+                  meant to recover it.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Reputation sensitivity</td>
+              <td>Moderate — buyers are often businesses meeting a contractual requirement.</td>
+              <td><b>High.</b> Life insurance is sold on the promise of a payment decades away,
+                  and publicised claim-settlement failures at individual companies affect
+                  willingness to buy across the sector.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cd-lead" style="margin-top:18px">
+        The measured tables below keep the two sectors separate for exactly this reason. As you
+        will see, they have not behaved alike.
+      </p>
+    </section>
+
+    <!-- ─── Numbers ─── -->
+    <section id="numbers" class="cd-sec">
+      <h2 class="cd-h2">The numbers</h2>
+      <p class="cd-lead">
+        Everything here is computed from this app's own daily price archive by
+        <code>scripts/build-learning-stats.js</code> — median returns over one, three and five
+        years, annualised volatility, typical daily turnover, market category and the most recent
+        declared cash dividend, for every listed insurer.
+      </p>
+      <div class="cd-callout" id="sec-generated" style="margin-bottom:22px">Loading…</div>
+      <div id="sec-data">
+        <div class="cd-callout">Loading sector figures…</div>
+      </div>
+    </section>
+
+    <!-- ─── Ranking ─── -->
+    <section id="ranking" class="cd-sec">
+      <h2 class="cd-h2">Against every other sector</h2>
+      <p class="cd-lead">
+        The same measurements for every operating sector on the exchange, ranked by one-year
+        median return. The rows covered by this guide are highlighted. Mutual funds and corporate
+        bonds are excluded — they are not operating companies and including them would drag the
+        comparison toward instruments that do not trade on earnings at all.
+      </p>
+      <div id="sec-ranking">
+        <div class="cd-callout">Loading the ranking…</div>
+      </div>
+    </section>
+
+    <!-- ─── Drivers ─── -->
+    <section id="drivers" class="cd-sec">
+      <h2 class="cd-h2">What moves the sector</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Driver</th><th>Mechanism</th><th>Visible in this app?</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Interest rates</td>
+              <td>Higher deposit and bond yields lift investment income on the float across every
+                  insurer simultaneously.</td>
+              <td class="cd-t-why"><b>No.</b> No rate series is stored anywhere in this
+                  repository.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Import volumes</td>
+              <td>Marine cargo premiums follow trade finance activity, so an import squeeze feeds
+                  through to general insurers' top line.</td>
+              <td class="cd-t-why"><b>No.</b> No trade data here.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Regulatory change</td>
+              <td>Expense and commission limits, solvency rules, capital requirements and
+                  distribution reforms all reshape sector economics at once.</td>
+              <td class="cd-t-why"><b>No.</b> Only as an unexplained common move in the price
+                  series.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">New distribution channels</td>
+              <td>Selling insurance through bank branches reaches customers agents cannot, and
+                  changes who captures the commission.</td>
+              <td class="cd-t-why"><b>No.</b> Premium mix is not in the archive.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Catastrophe losses</td>
+              <td>Floods, cyclones and major fires hit general insurers' claims in concentrated
+                  bursts.</td>
+              <td class="cd-t-why"><b>No.</b> Claims are not in the archive.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Speculative flows</td>
+              <td>Small free floats and low prices make several of these shares easy to move,
+                  independent of any of the above.</td>
+              <td class="cd-t-why"><b>Partly.</b> Turnover and volatility in the tables above are
+                  the closest available proxy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout cd-warn" style="margin-top:16px">
+        <b>Five of the six drivers are invisible to this app.</b> That is the honest summary of
+        what a price archive can do. The tables measure how the shares traded; they do not
+        explain why, and any explanation offered for a sector-wide move on this page would be a
+        story rather than a finding.
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>A strong one-year median is not evidence of a strong sector</h4>
+          <p>When a large group of small stocks all rise together over a year while their
+          three- and five-year medians remain far weaker, the most economical description is a
+          re-rating episode rather than a change in the underlying businesses. This app cannot
+          confirm or refute that — it has no premium, claims or reserve data — but it is worth
+          holding the possibility in mind before reading a good year as a trend.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Returns here are price only</h4>
+          <p>No dividend is added back anywhere in these tables. Insurers are regular cash
+          payers, so their real total return to a holder has been higher than the price column
+          shows. The dividend column tells you the most recent declaration, not what
+          reinvesting it would have earned.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The median hides the range</h4>
+          <p>A sector median says what the middle stock did. In a group this size, the best and
+          worst performers over the same year can be tens of percentage points apart — the
+          constituent table is there precisely so the spread is visible rather than averaged
+          away.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Only currently listed companies are in here</h4>
+          <p>The archive is built from tickers that exist today. Anything delisted along the way
+          is simply absent, which biases every long-horizon figure upward by an amount this app
+          cannot measure. Treat the five-year column as the survivors' five years.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>A short history can mean several different things</h4>
+          <p>Where a stock's history starts late, the cause may be a recent listing, a ticker
+          change, or a gap in the price source — and this app cannot tell them apart. That is why
+          missing three- and five-year cells are left blank rather than filled from whatever
+          history happens to exist.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Category is a governance signal, not a quality score</h4>
+          <p>The A/B/N/Z categories reflect whether a company held its AGM and declared a
+          dividend, as classified by the exchange. Z is a genuine red flag about corporate
+          behaviour. But an A category is a low bar cleared, not a statement that the business is
+          sound, and nothing here assesses solvency — which for an insurer is the measure that
+          matters most.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        Related reading: <a href="textile.html">Textile</a>,
+        <a href="pharma.html">Pharmaceuticals</a>, <a href="telecom.html">Telecommunication</a> and
+        <a href="paper.html">Paper &amp; Printing</a> — the same measurements on four very
+        different sectors. For the individual companies, the
+        fundamentals and
+        <a href="../company_profile/company.html">company profile</a> pages carry what
+        this archive does not.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Declared before the shared renderer loads. This page is the one that
+  // covers two DSE sectors at once — they are regulated together and listed
+  // together, but they earn differently, so both are rendered separately
+  // rather than pooled into a single misleading median.
+  window.SECTOR_GUIDE = { sectors: ['Insurance', 'Life Insurance'] };
+</script>
+<script src="sector-guide.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

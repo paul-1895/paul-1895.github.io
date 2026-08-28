@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Timeline — DSE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/company_profile/company.css" />
+  <link rel="stylesheet" href="timeline.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Timeline</h1>
+        <p id="hdr-sub">Company milestones &amp; events</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a id="back-to-company-btn" href="#" class="fund-nav-btn" style="text-decoration:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        Back to Profile
+      </a>
+      <a href="/settings/settings.html" target="_blank" rel="noopener" class="wl-toggle-btn" id="settings-btn" title="Settings" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.2.61.78 1.03 1.42 1.03H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span>Settings</span>
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="tl-page">
+
+  <div class="tl-toolbar">
+    <div class="tl-toolbar-left">
+      <span class="tl-code-badge" id="tl-code">—</span>
+      <span class="tl-count" id="tl-count">0 events</span>
+    </div>
+    <div class="tl-toolbar-right">
+      <input type="file" id="tl-import-input" accept="application/json" style="display:none" />
+      <button class="tl-icon-only-btn" id="tl-import-btn" title="Import events from JSON">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </button>
+      <button class="tl-icon-only-btn" id="tl-export-btn" title="Export events as JSON">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </button>
+      <button class="tl-icon-only-btn" id="tl-sort-btn" title="Toggle sort order">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5h10M11 9h7M11 13h4M3 17l3 3 3-3M6 18V4"/></svg>
+        <span id="tl-sort-label">Newest</span>
+      </button>
+      <button class="tl-add-btn" id="tl-add-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        Add Event
+      </button>
+    </div>
+  </div>
+
+  <div class="tl-filters">
+    <div class="tl-search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="tl-search" class="tl-search-input" placeholder="Search title or description…" />
+    </div>
+    <div class="tl-tag-filters" id="tl-tag-filters"></div>
+  </div>
+
+  <div class="tl-stats-bar" id="tl-stats-bar"></div>
+
+  <div class="tl-status" id="tl-status"></div>
+
+  <!-- PINNED SECTION -->
+  <div class="tl-pinned-section" id="tl-pinned-section" style="display:none">
+    <div class="tl-section-label">📌 Pinned</div>
+    <div class="tl-stack" id="tl-pinned-stack"></div>
+  </div>
+
+  <!-- CARD STACK -->
+  <div class="tl-stack" id="tl-stack">
+    <div class="tl-empty" id="tl-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+      </svg>
+      No timeline events yet. Click "Add Event" to create the first one.
+    </div>
+  </div>
+
+</div>
+
+<!-- ADD / EDIT MODAL -->
+<div class="tl-modal-backdrop" id="tl-modal-backdrop">
+  <div class="tl-modal" onclick="event.stopPropagation()">
+    <div class="tl-modal-hd">
+      <h3 id="tl-modal-title">Add Event</h3>
+      <button class="tl-modal-close" id="tl-modal-close">✕</button>
+    </div>
+    <div class="tl-modal-body">
+      <input type="hidden" id="tl-form-id" />
+
+      <label class="tl-field-label">Title *</label>
+      <input type="text" id="tl-form-title" class="tl-input" placeholder="e.g. Q3 Earnings Release" />
+
+      <div class="tl-field-row">
+        <div>
+          <label class="tl-field-label">Date *</label>
+          <input type="date" id="tl-form-date" class="tl-input" />
+        </div>
+        <div>
+          <label class="tl-field-label">Category</label>
+          <select id="tl-form-tag" class="tl-input">
+            <option>Earnings</option>
+            <option>Dividend</option>
+            <option>Corporate Action</option>
+            <option>News</option>
+            <option>Price Alert</option>
+            <option>Management</option>
+            <option selected>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="tl-field-label">Sentiment</label>
+      <div class="tl-sentiment-picker" id="tl-sentiment-picker">
+        <button type="button" class="tl-sent-opt" data-val="bullish">📈 Bullish</button>
+        <button type="button" class="tl-sent-opt" data-val="neutral">➖ Neutral</button>
+        <button type="button" class="tl-sent-opt" data-val="bearish">📉 Bearish</button>
+        <button type="button" class="tl-sent-opt active" data-val="none">— None</button>
+      </div>
+
+      <label class="tl-pin-check">
+        <input type="checkbox" id="tl-form-pinned" />
+        <span>📌 Pin this event to the top</span>
+      </label>
+
+      <label class="tl-field-label">Description</label>
+      <textarea id="tl-form-desc" class="tl-textarea" rows="4" placeholder="Details about this event…"></textarea>
+
+      <label class="tl-field-label">Links</label>
+      <div id="tl-links-list" class="tl-dyn-list"></div>
+      <button type="button" class="tl-dyn-add" id="tl-add-link-row">+ Add link</button>
+
+      <label class="tl-field-label">Images (URLs)</label>
+      <div id="tl-images-list" class="tl-dyn-list"></div>
+      <button type="button" class="tl-dyn-add" id="tl-add-image-row">+ Add image URL</button>
+    </div>
+    <div class="tl-modal-ft">
+      <button class="tl-btn tl-btn-ghost" id="tl-cancel-btn">Cancel</button>
+      <button class="tl-btn tl-btn-primary" id="tl-save-btn">Save Event</button>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE LIGHTBOX -->
+<div class="tl-lightbox" id="tl-lightbox">
+  <img id="tl-lightbox-img" src="" alt="" />
+</div>
+
+<!-- UNDO TOAST -->
+<div class="tl-toast" id="tl-toast">
+  <span id="tl-toast-msg">Event deleted.</span>
+  <button id="tl-toast-undo">Undo</button>
+</div>
+
+<footer class="site-footer">
+  <p>Data sourced from <strong>dsebd.org</strong> · Prices in BDT (Taka) · For informational purposes only</p>
+</footer>
+
+<script type="module" src="timeline.js"></script>
+</body>
+</html>

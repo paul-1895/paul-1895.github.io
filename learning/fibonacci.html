@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fibonacci — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Fibonacci</h1>
+        <p>A manual ratio-projection tool — and why that means there's nothing here to backtest</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">What it is</a>
+    <a href="#ratios">The ratio sets</a>
+    <a href="#tools">The four tools</a>
+    <a href="#worked-example">A worked example</a>
+    <a href="#reading">How it's commonly read</a>
+    <a href="#honest">Reading it honestly</a>
+    <a href="#videos">Videos</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What it is ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">What it is</h2>
+      <p class="cd-lead">
+        Fibonacci retracement is not a computed indicator — it's a ruler. A trader picks two
+        points on a chart (usually a swing high and a swing low), and the tool projects a fixed
+        set of ratios between them as horizontal price levels. The idea is that pullbacks and
+        extensions often pause near these particular ratios, borrowed from the Fibonacci sequence
+        in mathematics. This app's chart page offers four such drawing tools — covered below —
+        but draws nothing automatically. Every level on every chart starts from two or three
+        clicks a person made.
+      </p>
+      <div class="cd-callout">
+        <b>This is the one guide on this Hub with no anatomy diagram of "the indicator computing
+        itself."</b> There's no ongoing calculation to show — only what happens once you've
+        already chosen two points, which the <a href="#worked-example">worked example</a> below
+        covers instead.
+      </div>
+    </section>
+
+    <!-- ─── Ratio sets ─── -->
+    <section id="ratios" class="cd-sec">
+      <h2 class="cd-h2">The ratio sets</h2>
+      <p class="cd-lead">
+        Ported directly from this app's own <code>candlestick_chart/tv-drawing-tools.js</code> —
+        the exact <code>fibLevels()</code> arrays and price formulas the drawing tools use.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Tool family</th><th>Ratios used</th><th>Price formula</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Retracement</td>
+              <td>0%, 23.6%, 38.2%, 50%, 61.8%, 78.6%, 100%</td>
+              <td class="cd-t-why"><code>p1 + (p2 − p1) × ratio</code>, where p1/p2 are the two
+                  clicked prices, in click order.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Extension / Channel / Trend-Based Extension</td>
+              <td>0%, 38.2%, 61.8%, 100%, 127.2%, 161.8%, 200%</td>
+              <td class="cd-t-why"><code>p3 + (p2 − p1) × ratio</code> — the size of the first
+                  leg (p2 − p1), projected forward from a third clicked point.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout">
+        <b>50% isn't actually a Fibonacci ratio.</b> It's included because it's the single most
+        widely watched retracement level in practice, not because it comes from the Fibonacci
+        sequence the way 23.6%/38.2%/61.8%/78.6% do (each derived from ratios between consecutive
+        or skip-one terms of the sequence). This app includes it because every major charting
+        platform does, not because there's a mathematical reason for it here.
+      </div>
+    </section>
+
+    <!-- ─── The four tools ─── -->
+    <section id="tools" class="cd-sec">
+      <h2 class="cd-h2">The four tools</h2>
+      <p class="cd-lead">
+        All four live in the chart page's drawing toolbar, all four are entirely mouse-driven, and
+        all four save to the same per-symbol drawing storage as trendlines and rectangles.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Tool</th><th>Clicks</th><th>Draws</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Fib Retracement</td>
+              <td>2</td>
+              <td class="cd-t-why">The 7 retracement levels between the two points, each labeled
+                  with its ratio and price.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Fib Extension</td>
+              <td>3</td>
+              <td class="cd-t-why">The 7 extension levels projected from the third point, sized by
+                  the distance between the first two.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Fib Channel</td>
+              <td>3</td>
+              <td class="cd-t-why">A parallel channel (like the plain Parallel Channel tool)
+                  with the retracement ratios drawn as dashed lines between the two channel
+                  boundaries, rather than as standalone horizontals.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Trend-Based Fib Extension</td>
+              <td>3</td>
+              <td class="cd-t-why">Same extension math as Fib Extension, plus the first leg (point
+                  1 to point 2) is drawn faintly on the chart as a visual reference trendline.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Worked example ─── -->
+    <section id="worked-example" class="cd-sec">
+      <h2 class="cd-h2">A worked example</h2>
+      <p class="cd-lead">
+        Real daily closes for a real DSE ticker, fetched from this app's own
+        <code>/historical_prices</code> archive, with the same retracement formula above applied.
+      </p>
+      <div class="cd-anatomy" id="fib-worked-example">
+        <div class="cd-callout">Loading a real example…</div>
+      </div>
+    </section>
+
+    <!-- ─── How commonly read ─── -->
+    <section id="reading" class="cd-sec">
+      <h2 class="cd-h2">How it's commonly read</h2>
+      <p class="cd-lead">
+        General, widely taught readings — not claims this app has validated. There is no
+        "what this app detects" section on this page, because nothing is detected; see
+        <a href="#honest">Reading it honestly</a> for why.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Level</th><th>Common reading</th></tr></thead>
+          <tbody>
+            <tr><td class="cd-t-name">38.2% – 61.8%</td>
+                <td>Often called the "golden pocket" — the zone many traders watch for a pullback
+                    to find support (in an uptrend) or resistance (in a downtrend) before the prior
+                    trend resumes.</td></tr>
+            <tr><td class="cd-t-name">78.6%</td>
+                <td>A "deep" retracement — some traders treat a pullback this far as a warning the
+                    original move may be failing rather than pausing.</td></tr>
+            <tr><td class="cd-t-name">127.2% / 161.8%</td>
+                <td>Common extension targets for where a move might reach after a retracement
+                    completes — frequently used to set take-profit levels.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>There is nothing here for this app to have tested</h4>
+          <p><a href="hilega-milega.html">Hilega-Milega</a> and <a href="macd-ema.html">MACD + EMA</a>
+          both report a real, measured backtest result — in both cases, an unflattering one. That
+          is only possible because both have a mechanical, repeatable rule for what counts as a
+          signal. Fibonacci levels start from a human choosing two points; there is no consistent
+          rule to replay across history, so there is nothing to score. "Untested" is the honest
+          and complete description here — not "unproven," not "disproven."</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Swing-point selection is where all the real judgment is</h4>
+          <p>The worked example above used the highest and lowest <i>closes</i> in a fixed
+          60-session window — one reasonable, disclosed choice. A different window length, using
+          intraday highs/lows instead of closes, or picking a different swing entirely, all
+          produce different levels from the same chart. The ratios are exact; the two points
+          feeding them are not.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Widely watched levels can matter for a reason unrelated to the ratios themselves</h4>
+          <p>If enough market participants place orders near the same well-known levels, those
+          levels can influence price simply through crowding — a self-fulfilling mechanism, not
+          evidence that 61.8% is mathematically special to markets. This app has no way to measure
+          how much of that crowding effect, if any, applies to DSE-listed stocks specifically.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>After-the-fact swing selection is close to unfalsifiable</h4>
+          <p>Because any two points can be chosen once a move is already known, it's easy to find
+          <i>some</i> swing whose retracement "explains" a reversal after it happened. That is a
+          different and much weaker claim than predicting the swing and the reaction to it in
+          advance — the distinction this whole page tries to keep clear.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        See it live: open the drawing toolbar on any stock's <a href="../candlestick_chart/candlestick.html">chart
+        page</a> and try any of the four tools above. Related reading:
+        <a href="hilega-milega.html">Hilega-Milega</a>, <a href="macd-ema.html">MACD + EMA</a>,
+        <a href="bollinger-bands.html">Bollinger Bands</a> — for contrast, two of those three
+        guides have real backtest evidence to show; this one, honestly, cannot.
+      </p>
+    </section>
+
+    <!-- ─── Videos ─── -->
+    <section id="videos" class="cd-sec">
+      <h2 class="cd-h2">Videos</h2>
+      <p class="cd-lead">
+        Background viewing on Fibonacci retracement/extension as a general concept and how traders
+        typically choose swing points. Nothing here reflects testing by this app, since none
+        exists.
+      </p>
+      <div class="cd-video-grid" id="fib-videos">
+        <div class="cd-callout">No videos added yet.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="fibonacci.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

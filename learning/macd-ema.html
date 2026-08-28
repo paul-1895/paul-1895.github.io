@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MACD + EMA — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>MACD + EMA</h1>
+        <p>A trend-filtered momentum crossover — and what a real market-wide backtest of it found</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">What it is</a>
+    <a href="#build">How it's computed</a>
+    <a href="#trend">The trend filter</a>
+    <a href="#crosses">The two triggers</a>
+    <a href="#real-examples">Real DSE examples</a>
+    <a href="#detected">What this app detects</a>
+    <a href="#evidence">What the backtest found</a>
+    <a href="#honest">Reading it honestly</a>
+    <a href="#videos">Videos</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What it is ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">What it is</h2>
+      <p class="cd-lead">
+        MACD (Moving Average Convergence Divergence) is the difference between two EMAs of price —
+        a fast one and a slow one. When the fast EMA pulls away from the slow one, momentum is
+        building; when they converge, it's fading. This app draws it with the standard 12/26/9
+        settings. "MACD + 50 EMA" is this app's own stricter variant: the plain crossover plus a
+        50-period EMA <b>trend filter</b> on price itself, so a signal only counts if the stock is
+        already trending the right way.
+      </p>
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="macd-full"></div>
+      </div>
+      <div class="cd-anatomy" style="margin-top:16px">
+        <div class="cd-anatomy-notes">
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" style="color:#26c6da">MACD line</span>
+            <span>EMA(12) of price minus EMA(26) of price. The fast line.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" style="color:#ef5350">Signal line</span>
+            <span>EMA(9) <b>of the MACD line</b> — a smoothing of a smoothing, same construction
+            principle as Hilega-Milega's WMA(21) of RSI. The slow reference the fast line is
+            measured against.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" style="color:#26a69a">Histogram</span>
+            <span>MACD line minus signal line, drawn as bars. Zero when they're equal — this is
+            what actually flips sign at a crossover.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── How computed ─── -->
+    <section id="build" class="cd-sec">
+      <h2 class="cd-h2">How it's computed</h2>
+      <p class="cd-lead">
+        Ported directly from this app's own <code>indicators/macd.js</code> and
+        <code>indicators/ma.js</code> — not reimplemented, so the numbers below match what the
+        live chart draws.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Step</th><th>Computed from</th><th>Consequence</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">EMA(12), EMA(26)</td>
+              <td>Closing price, two different lengths.</td>
+              <td class="cd-t-why">Unlike this app's RSI-based indicators, these EMAs have no
+                  null-padded warm-up — they seed from the very first price and are simply less
+                  accurate on the first few dozen bars.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">MACD line</td>
+              <td>EMA(12) − EMA(26).</td>
+              <td class="cd-t-why">Unbounded, unlike RSI — its scale depends entirely on the
+                  stock's own price level, which is why every diagram here is re-scaled per
+                  slice rather than fixed to 0–100.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Signal line</td>
+              <td><b>The MACD line</b>, EMA smoothed over 9 bars.</td>
+              <td class="cd-t-why">Lags the MACD line by construction — exactly what makes a
+                  crossover a well-defined, testable event.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout">
+        <b>Two different "MACD" things this app reports.</b> The Screener's plain "MACD Bullish /
+        Bearish Cross" lists are just this crossover, on its own, on the daily / weekly / monthly
+        timeframe. The stricter "MACD + 50 EMA — Buy / Exit" lists (this page's actual subject)
+        additionally require the trend filter below, plus a stop/target bracket once in a trade.
+        They are not the same signal, and — as the evidence section shows — they were tested
+        separately with two different results.
+      </div>
+    </section>
+
+    <!-- ─── Trend filter ─── -->
+    <section id="trend" class="cd-sec">
+      <h2 class="cd-h2">The trend filter</h2>
+      <p class="cd-lead">
+        A MACD crossover says nothing about the broader trend — it can fire during a downtrend's
+        dead-cat bounce just as easily as at the start of a real move. The "+ 50 EMA" strategy
+        filters that out: <b>a bullish cross only counts as an entry if the crossover bar's close
+        is above the 50-period EMA</b>. Below it, the cross is still detected and shown — but
+        rejected as a trade.
+      </p>
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="macd-trend"></div>
+      </div>
+      <div class="cd-callout">
+        <span style="color:#26a69a">▍</span> Green shading marks stretches where price sits above
+        its 50-EMA — the filter is open, new long entries are allowed.
+        <span style="color:#ef5350">▍</span> Red shading marks price below the EMA — any bullish
+        cross here gets rejected, not actioned.
+      </div>
+    </section>
+
+    <!-- ─── The two triggers ─── -->
+    <section id="crosses" class="cd-sec">
+      <h2 class="cd-h2">The two triggers</h2>
+      <p class="cd-lead">
+        Both diagrams below are genuine slices of the series plotted at the top of this page,
+        marked at bars where the real crossover test fires. The numbers beside them are the
+        actual MACD and signal values on those bars.
+      </p>
+      <div class="cd-grid cd-grid--wide" id="macd-crosses"></div>
+    </section>
+
+    <!-- ─── Real DSE examples ─── -->
+    <section id="real-examples" class="cd-sec">
+      <h2 class="cd-h2">Real DSE examples</h2>
+      <p class="cd-lead">
+        The diagrams above run on a deterministic generated series, kept stable so they don't
+        shift as the archive grows. These three cards are real daily closes for real DSE tickers,
+        fetched from this app's own <code>/historical_prices</code> archive, with the same
+        MACD(12,26,9) + 50-EMA test applied. Picked programmatically — largest same-direction
+        10-day move among a small sample of stocks, capped to exclude one genuine but extreme
+        outlier (a multi-day lower-circuit crash) that would have overstated the case — not
+        cherry-picked for a flattering result. One card is deliberately a <i>rejected</i> signal,
+        to show the filter actually doing something.
+      </p>
+      <div class="cd-grid cd-grid--wide" id="macd-real-examples">
+        <div class="cd-callout">Loading real examples…</div>
+      </div>
+    </section>
+
+    <!-- ─── Detected ─── -->
+    <section id="detected" class="cd-sec">
+      <h2 class="cd-h2">What this app actually detects</h2>
+      <p class="cd-lead">
+        Two independent code paths, both real, both live in the <a href="../screener/screener.html">Screener</a>:
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>List</th><th>Rule</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">MACD Bullish / Bearish Cross</td>
+              <td>Plain crossover on the most recently completed bar — daily, weekly, or monthly.
+                  No trend filter, no risk management.</td>
+              <td class="cd-t-why"><code>detectMacdCrossover()</code> in
+                  <code>routes/screener-technicals.js</code></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">MACD + 50 EMA — Buy / Exit</td>
+              <td>Crossover bar closes above the 50-EMA (buy) or a bearish cross while a position
+                  is open (exit) — the strategy this whole page is about.</td>
+              <td class="cd-t-why"><code>routes/macd-strategy1.js</code>, mirrored client-side in
+                  <code>candlestick_chart/macd-backtest.js</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout">
+        <b>The strategy is more than an entry rule.</b> Once filled (at the <i>next</i> bar's
+        open, to avoid look-ahead bias), it manages the position with a stop at the lowest low of
+        the last 10 bars, a target at 2× that risk, and an exit on the next bearish cross —
+        whichever comes first. Full rules are in the code comments at the top of
+        <code>candlestick_chart/macd-backtest.js</code>.
+      </div>
+    </section>
+
+    <!-- ─── Evidence ─── -->
+    <section id="evidence" class="cd-sec">
+      <h2 class="cd-h2">What the backtest found</h2>
+      <p class="cd-lead">
+        Unlike most signals on this app's Learning Hub, "MACD + 50 EMA" has already been replayed
+        across the <b>entire market</b> — every stock, every historical signal, real stop/target/
+        commission accounting — not just sampled. The results are stored in
+        <code>data/macd-strategy1.json</code> and power the <a href="../macd_strategy1/macd-strategy1.html">MACD + 50 EMA</a>
+        page directly. This is the real output of that run:
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Measure</th><th>Result</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td class="cd-t-name">Stocks scanned</td><td><b>396</b></td>
+                <td class="cd-t-why">392 had enough history to trade; 4 skipped.</td></tr>
+            <tr><td class="cd-t-name">Total trades</td><td><b>14,951</b></td>
+                <td class="cd-t-why">~38 trades per stock on average — this signal fires often.</td></tr>
+            <tr><td class="cd-t-name">Win rate</td><td><b>31.32%</b></td>
+                <td class="cd-t-why">4,683 wins vs 10,263 losses. The 2:1 reward/risk target is
+                    meant to make a sub-50% win rate still profitable — see below for whether it did.</td></tr>
+            <tr><td class="cd-t-name">How trades closed</td>
+                <td><b>2,722</b> hit target · <b>1,515</b> stopped out · <b>10,714</b> exited on a
+                    reverse MACD cross</td>
+                <td class="cd-t-why">Almost three-quarters of all trades ended on the reversal
+                    exit, not the stop or the target — winners rarely got to run to the 2R target.</td></tr>
+            <tr><td class="cd-t-name">Avg return per stock</td>
+                <td><b class="cd-bad">−13.49%</b></td>
+                <td class="cd-t-why">Median was worse: <b class="cd-bad">−25.13%</b> — more than
+                    half of all stocks lost over a quarter of their capital running this
+                    mechanically.</td></tr>
+            <tr><td class="cd-t-name">Avg buy &amp; hold, same period</td>
+                <td><b class="cd-good">+74.77%</b></td>
+                <td class="cd-t-why">Simply holding the stock beat actively trading this strategy
+                    by roughly <b>88 percentage points</b> on average.</td></tr>
+            <tr><td class="cd-t-name">Beat buy &amp; hold</td><td><b>158 of 392</b> stocks (~40%)</td>
+                <td class="cd-t-why">Trading it actively lost to doing nothing on 3 out of 5 stocks.</td></tr>
+            <tr><td class="cd-t-name">Profitable outright</td><td><b>103 of 392</b> stocks (~26%)</td>
+                <td class="cd-t-why">Most stocks lost money running this strategy in absolute terms,
+                    not just relative to holding.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout cd-warn">
+        <b>This is not a cherry-picked bad run.</b> It is every listed stock, every signal, the
+        exact rules described above, commission included on both legs. Simple buy-and-hold beat
+        it on 60% of stocks and by nearly 90 points on average.
+      </div>
+      <p class="cd-lead" style="margin-top:18px">
+        Separately, the <a href="../super_model/super-model.html">Super Model</a> also tested the
+        <i>plain</i> MACD crossover (no EMA filter, no risk management) as a candidate signal
+        against forward returns. It measured an edge of <b>+0.67</b> in the earlier half of its
+        sample and <b>−0.70</b> in the later half — the sign flipped, the signature of noise, not
+        edge — and gave it a model weight of <b>0</b>, the same treatment
+        <a href="hilega-milega.html">Hilega-Milega</a> received. Two independent tests, two
+        different methodologies, the same verdict: neither the raw crossover nor the fuller
+        managed strategy has demonstrated a durable edge on this data.
+      </p>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>The exit rule cuts winners short</h4>
+          <p>10,714 of 14,951 trades — almost three in four — closed on a reverse MACD cross, not
+          the 2R target. A strategy that lets losers run to a hard stop but exits winners on the
+          first sign of momentum cooling has an asymmetry working against it, regardless of how
+          good the entry timing is.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>~38 trades a stock is not a low-cost strategy</h4>
+          <p>At 0.4% commission per side, every round trip costs 0.8% before the trade even needs
+          to be right. Multiplied across an average 38 trades per stock, that is real, compounding
+          drag — a large part of why the average return sits so far below buy-and-hold even before
+          counting the losing trades themselves.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>It is one of the most widely taught strategies there is</h4>
+          <p>MACD crossed against price above a long moving average is a textbook trend-following
+          setup, not an obscure one. That popularity is exactly why it is worth testing rather than
+          trusting — and on this data, mechanically executed, it lost to doing nothing on most
+          stocks.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The diagrams here are synthetic — deliberately</h4>
+          <p>Every plot in the "What it is" / "How it's computed" / "The trend filter" / "The two
+          triggers" sections runs the indicator's real maths over a <i>generated</i> price series,
+          not a real stock, so the shapes stay stable as the archive grows — same reasoning as
+          <a href="hilega-milega.html">Hilega-Milega</a>'s guide. The real-examples section above,
+          and the backtest table, are both genuine.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        See it live: the <a href="../screener/screener.html">Screener</a> lists today's MACD
+        crosses and MACD + 50 EMA signals, the <a href="../macd_strategy1/macd-strategy1.html">MACD + 50 EMA</a>
+        page shows the full per-stock backtest results, and the
+        <a href="../candlestick_chart/candlestick.html">chart page</a> draws the live indicator and
+        lets you re-run the backtest on any symbol. Related reading:
+        <a href="hilega-milega.html">Hilega-Milega</a>.
+      </p>
+    </section>
+
+    <!-- ─── Videos ─── -->
+    <section id="videos" class="cd-sec">
+      <h2 class="cd-h2">Videos</h2>
+      <p class="cd-lead">
+        Background viewing on the underlying concepts — MACD, EMA trend filters, and reading a
+        mechanical backtest honestly. Nothing here is specific to this app's own +50-EMA variant
+        or its particular results above.
+      </p>
+      <div class="cd-video-grid" id="macd-videos">
+        <div class="cd-callout">No videos added yet.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="macd-ema.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

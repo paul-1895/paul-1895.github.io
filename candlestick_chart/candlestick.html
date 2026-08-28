@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BPML Candlestick Chart — Professional Trading View</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="candlestick-chart.css">
+  <link rel="stylesheet" href="stock-search.css">
+  <!-- TradingView-style layout: left drawing-tools rail, right watchlist/symbol-info
+       sidebar, bottom range bar. Scoped to .tv-page-shell so it never leaks into
+       company_profile/company.html, which reuses candlestick-chart.css's base
+       classes (.main-container/.tv-toolbar/.chart-container) for its own, unrelated
+       embedded-chart layout. -->
+  <link rel="stylesheet" href="tv-layout.css">
+  <!-- "Seasonals" year x month returns view -->
+  <link rel="stylesheet" href="tv-seasonals.css">
+  <!-- Rule-based "Analysis" panel (technical + fundamental + sector + news) -->
+  <link rel="stylesheet" href="candlestick-analysis.css">
+  <!-- "Intrinsic Value" panel (DCF / DDM / Residual Income / Graham / Payback) -->
+  <link rel="stylesheet" href="valuation.css">
+  <!-- "Support & Resistance" panel (auto-detected from weekly candles) -->
+  <link rel="stylesheet" href="support-resistance.css">
+  <!-- "MACD + 50 EMA" panel (replays every MACD cross as a trade) -->
+  <link rel="stylesheet" href="macd-backtest.css">
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<!-- Canvas charts can't read CSS variables; this resolves the settings
+     tokens (--gain/--loss/--sans/--mono) into strings for ctx.* -->
+<script src="/shared/chart-theme.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-tag" id="headerLogoTag">BPML</div>
+      <div class="logo-text">
+        <h1>Trading Chart</h1>
+        <p>Professional Analysis Platform</p>
+      </div>
+    </div>
+    <div class="tv-header-nav">
+      <a href="/company_profile/company.html?code=BPML" id="headerCompanyProfileLink" class="tv-header-nav-btn" title="Company Profile" aria-label="Company Profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+          <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+          <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+          <line x1="10" y1="6" x2="10" y2="6.01"/><line x1="14" y1="6" x2="14" y2="6.01"/>
+          <line x1="10" y1="10" x2="10" y2="10.01"/><line x1="14" y1="10" x2="14" y2="10.01"/>
+          <line x1="10" y1="14" x2="10" y2="14.01"/><line x1="14" y1="14" x2="14" y2="14.01"/>
+          <line x1="10" y1="18" x2="10" y2="18.01"/><line x1="14" y1="18" x2="14" y2="18.01"/>
+        </svg>
+      </a>
+      <a href="/learning/learning.html" class="tv-header-nav-btn" title="Learning" aria-label="Learning">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </a>
+      <a href="/newspaper/newspaper.html" class="tv-header-nav-btn" title="Newspaper" aria-label="Newspaper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h13a2 2 0 0 1 2 2v13a1 1 0 0 0 1 1"/>
+          <path d="M4 4v15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9h-3"/>
+          <line x1="8" y1="8" x2="15" y2="8"/>
+          <line x1="8" y1="12" x2="15" y2="12"/>
+          <line x1="8" y1="16" x2="12" y2="16"/>
+        </svg>
+      </a>
+      <a href="/demo_trade/demo-trade.html" class="tv-header-nav-btn" title="Demo Trade" aria-label="Demo Trade">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
+        </svg>
+      </a>
+    </div>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode" aria-label="Theme Toggle">
+      <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="tv-page-shell">
+
+  <!-- LEFT DRAWING-TOOLS RAIL -->
+  <aside class="tv-left-rail" id="tvLeftRail">
+    <button class="tv-rail-btn active" data-tool="cursor" title="Cursor" aria-label="Cursor">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 3l7 18 2.5-7.5L21 11 4 3z"/></svg>
+    </button>
+    <button class="tv-rail-btn" data-tool="crosshair" title="Crosshair" aria-label="Crosshair">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="9"/></svg>
+    </button>
+    <div class="tv-rail-sep"></div>
+
+    <!-- Lines group (flyout: trend line, ray, extended line, trend angle,
+         horizontal line, horizontal ray, vertical line, cross line, parallel channel) -->
+    <div class="tv-rail-group" data-group="lines">
+      <button class="tv-rail-btn tv-rail-group-btn" data-tool="trendline" data-flyout="tvFlyoutLines" title="Lines" aria-label="Lines">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="20" y2="4"/><circle cx="4" cy="20" r="1.6" fill="currentColor"/><circle cx="20" cy="4" r="1.6" fill="currentColor"/></svg>
+        <svg class="tv-rail-caret" viewBox="0 0 8 8" fill="currentColor"><path d="M0 0l8 8V0z"/></svg>
+      </button>
+    </div>
+
+    <!-- Fibonacci group (flyout: retracement, extension, channel, trend-based extension) -->
+    <div class="tv-rail-group" data-group="fib">
+      <button class="tv-rail-btn tv-rail-group-btn" data-tool="fibretracement" data-flyout="tvFlyoutFib" title="Fibonacci" aria-label="Fibonacci">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20h18M3 15h18M3 10h18M3 5h18" stroke-dasharray="1 0" opacity="0"/><path d="M3 4v16M21 4v16"/><path d="M3 8h18M3 12h18M3 16h18"/></svg>
+        <svg class="tv-rail-caret" viewBox="0 0 8 8" fill="currentColor"><path d="M0 0l8 8V0z"/></svg>
+      </button>
+    </div>
+
+    <!-- Shapes group (flyout: rectangle, rotated rectangle, circle, ellipse,
+         triangle, polyline, path, curve, double curve, brush, highlighter, arrows) -->
+    <div class="tv-rail-group" data-group="shapes">
+      <button class="tv-rail-btn tv-rail-group-btn" data-tool="rect" data-flyout="tvFlyoutShapes" title="Shapes" aria-label="Shapes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="12" rx="1"/></svg>
+        <svg class="tv-rail-caret" viewBox="0 0 8 8" fill="currentColor"><path d="M0 0l8 8V0z"/></svg>
+      </button>
+    </div>
+
+    <button class="tv-rail-btn" data-tool="text" title="Text" aria-label="Text">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h14M12 5v14"/></svg>
+    </button>
+    <button class="tv-rail-btn" data-tool="emoji" title="Icon" aria-label="Icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+    </button>
+    <div class="tv-rail-sep"></div>
+    <button class="tv-rail-btn" data-tool="measure" title="Measure" aria-label="Measure">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="8" rx="1" transform="rotate(-20 12 12)"/><path d="M7 10l1 1.5M10.5 9l1 1.5M14 8l1 1.5" transform="rotate(-20 12 12)"/></svg>
+    </button>
+    <button class="tv-rail-btn" data-tool="zoom" title="Zoom In (drag a box)" aria-label="Zoom">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>
+    </button>
+    <div class="tv-rail-sep"></div>
+    <button class="tv-rail-btn tv-toggle-btn" id="tvMagnetBtn" title="Magnet mode (snap to candles)" aria-label="Magnet mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><path d="M6 4H2v6h4M18 4h4v6h-4"/></svg>
+    </button>
+    <button class="tv-rail-btn tv-toggle-btn" id="tvStayModeBtn" title="Stay in drawing mode" aria-label="Stay in drawing mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+    </button>
+    <button class="tv-rail-btn tv-toggle-btn" id="tvLockBtn" title="Lock all drawings" aria-label="Lock all drawings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    </button>
+    <button class="tv-rail-btn tv-toggle-btn" id="tvHideBtn" title="Hide all drawings" aria-label="Hide all drawings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+    <button class="tv-rail-btn tv-rail-btn--danger" id="tvClearDrawings" title="Remove all drawings" aria-label="Remove all drawings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+    </button>
+
+    <!-- Flyout panels (positioned next to their trigger button by tv-drawing-tools.js) -->
+    <div class="tv-tool-flyout" id="tvFlyoutLines" style="display:none;">
+      <button class="tv-tool-option active" data-tool="trendline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="20" y2="4"/><circle cx="4" cy="20" r="1.6" fill="currentColor"/><circle cx="20" cy="4" r="1.6" fill="currentColor"/></svg>Trend Line</button>
+      <button class="tv-tool-option" data-tool="ray"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="22" y2="2"/><circle cx="4" cy="20" r="1.6" fill="currentColor"/></svg>Ray</button>
+      <button class="tv-tool-option" data-tool="extendedline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="1" y1="23" x2="23" y2="1"/></svg>Extended Line</button>
+      <button class="tv-tool-option" data-tool="trendangle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="20" y2="4"/><path d="M4 20h10"/></svg>Trend Angle</button>
+      <div class="tv-tool-sep"></div>
+      <button class="tv-tool-option" data-tool="hline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>Horizontal Line</button>
+      <button class="tv-tool-option" data-tool="hray"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="12" x2="21" y2="12"/><circle cx="9" cy="12" r="1.6" fill="currentColor"/></svg>Horizontal Ray</button>
+      <button class="tv-tool-option" data-tool="vline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="3" x2="12" y2="21"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>Vertical Line</button>
+      <button class="tv-tool-option" data-tool="crossline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>Cross Line</button>
+      <div class="tv-tool-sep"></div>
+      <button class="tv-tool-option" data-tool="parallelchannel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="18" x2="21" y2="6"/><line x1="3" y1="14" x2="21" y2="2" transform="translate(0,4)"/></svg>Parallel Channel</button>
+    </div>
+
+    <div class="tv-tool-flyout" id="tvFlyoutFib" style="display:none;">
+      <button class="tv-tool-option active" data-tool="fibretracement"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M3 9h18M3 13h18M3 19h18"/></svg>Fib Retracement</button>
+      <button class="tv-tool-option" data-tool="fibextension"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5l9 7-9 7M12 5l9 7-9 7" opacity="0"/><path d="M3 4h18M3 9h18M3 14h18M3 19h18"/><line x1="6" y1="2" x2="2" y2="6"/></svg>Fib Extension</button>
+      <button class="tv-tool-option" data-tool="fibchannel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="20" x2="21" y2="4"/><line x1="3" y1="14" x2="21" y2="-2" transform="translate(0,6)"/><line x1="3" y1="8" x2="21" y2="-8" transform="translate(0,12)"/></svg>Fib Channel</button>
+      <button class="tv-tool-option" data-tool="fibtrendext"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 19l6-6 4 4 8-8"/></svg>Trend-Based Fib Extension</button>
+    </div>
+
+    <div class="tv-tool-flyout" id="tvFlyoutShapes" style="display:none;">
+      <button class="tv-tool-option active" data-tool="rect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="12" rx="1"/></svg>Rectangle</button>
+      <button class="tv-tool-option" data-tool="rotatedrect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="6" width="16" height="12" rx="1" transform="rotate(-12 12 12)"/></svg>Rotated Rectangle</button>
+      <button class="tv-tool-option" data-tool="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/></svg>Circle</button>
+      <button class="tv-tool-option" data-tool="ellipse"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="9" ry="6"/></svg>Ellipse</button>
+      <button class="tv-tool-option" data-tool="triangle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4l9 16H3z"/></svg>Triangle</button>
+      <div class="tv-tool-sep"></div>
+      <button class="tv-tool-option" data-tool="polyline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18l6-9 5 5 7-10"/></svg>Polyline</button>
+      <button class="tv-tool-option" data-tool="path"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l5 12 4-9 4 6 5-9"/></svg>Path</button>
+      <button class="tv-tool-option" data-tool="curve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18C7 6 17 22 21 6"/></svg>Curve</button>
+      <button class="tv-tool-option" data-tool="doublecurve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16c4-10 7 2 11-8"/><path d="M11 8c4-10 7 2 11-8" transform="translate(0,14)"/></svg>Double Curve</button>
+      <div class="tv-tool-sep"></div>
+      <button class="tv-tool-option" data-tool="brush"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20c2-6 3-13 8-16 2 3-2 7-5 9 3-1 6 0 6 3s-4 4-9 4z"/></svg>Brush</button>
+      <button class="tv-tool-option" data-tool="highlighter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16"/><path d="M6 16l9-11 4 4-11 9-4 1z" fill="currentColor" opacity="0.35"/></svg>Highlighter</button>
+      <div class="tv-tool-sep"></div>
+      <button class="tv-tool-option" data-tool="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="20" y2="4"/><path d="M13 4h7v7"/></svg>Arrow</button>
+      <button class="tv-tool-option" data-tool="arrowmarker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2"/></svg>Arrow Marker</button>
+      <button class="tv-tool-option" data-tool="arrowup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="5"/><path d="M6 11l6-6 6 6"/></svg>Arrow Mark Up</button>
+      <button class="tv-tool-option" data-tool="arrowdown"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="4" x2="12" y2="19"/><path d="M6 13l6 6 6-6"/></svg>Arrow Mark Down</button>
+    </div>
+
+    <!-- Icon (emoji/symbol) picker — click the Icon rail button to open this
+         directly (no canvas click needed first), pick an item, then click
+         the chart to stamp it. Content (category tabs + grid) is rendered
+         by tv-drawing-tools.js from its EMOJI_DATA/ICON_DATA tables. -->
+    <div class="tv-emoji-flyout" id="tvEmojiFlyout" style="display:none;">
+      <div class="tv-emoji-cattabs" id="tvEmojiCatTabs"></div>
+      <div class="tv-emoji-grid" id="tvEmojiGrid"></div>
+      <div class="tv-emoji-maintabs">
+        <button type="button" class="tv-emoji-maintab active" data-maintab="emojis">Emojis</button>
+        <button type="button" class="tv-emoji-maintab" data-maintab="icons">Icons</button>
+      </div>
+    </div>
+  </aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-container">
+
+  <!-- TRADING VIEW TOOLBAR -->
+  <div class="tv-toolbar">
+    <!-- Left: Symbol -->
+    <div class="tv-symbol">
+      <span class="tv-ticker" id="tvTicker" style="cursor: pointer;" title="Click to search for a different stock">BPML</span>
+    </div>
+
+    <!-- Divider -->
+    <div class="tv-divider"></div>
+
+    <!-- Center Group: Timeframe (TradingView-style dropdown) -->
+    <div class="tv-group tv-timeframe-dropdown" id="tvTimeframeDropdown">
+      <button class="tv-tf-trigger" id="tvTfTrigger" type="button" onclick="toggleTimeframeMenu()" title="Time interval">
+        <span id="tvTfTriggerLabel">1D</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="tv-tf-menu" id="tvTfMenu" style="display:none;">
+        <button class="tv-tf-option tv-timeframe active" onclick="changeTimeframe('daily')" title="Daily">
+          <span class="tv-tf-option-code">1D</span><span class="tv-tf-option-name">Day</span>
+        </button>
+        <button class="tv-tf-option tv-timeframe" onclick="changeTimeframe('weekly')" title="Weekly">
+          <span class="tv-tf-option-code">1W</span><span class="tv-tf-option-name">Week</span>
+        </button>
+        <button class="tv-tf-option tv-timeframe" onclick="changeTimeframe('monthly')" title="Monthly">
+          <span class="tv-tf-option-code">1M</span><span class="tv-tf-option-name">Month</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="tv-divider"></div>
+
+    <!-- Center Group: Chart Type + Indicators + Replay -->
+    <div class="tv-group tv-chart-controls">
+      <button class="tv-btn tv-chart-type" id="chartTypeBtn" onclick="toggleChartTypeMenu()" title="Select Chart Type" aria-label="Chart Type">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 3v4M9 17v4M15 3v4M15 17v4"/>
+          <rect x="6" y="7" width="6" height="10" rx="1"/>
+          <rect x="12" y="5" width="6" height="14" rx="1"/>
+        </svg>
+      </button>
+      <button class="tv-btn" onclick="openIndicatorsModal()" title="Indicators" aria-label="Indicators">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <text x="2" y="20" font-size="18" font-weight="bold" font-family="Arial">ƒx</text>
+        </svg>
+      </button>
+      <!-- Replay button -->
+      <button class="tv-btn" id="replayBtn" onclick="enterReplayMode()" title="Chart Replay" aria-label="Replay">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="5,4 15,12 5,20" fill="none"/>
+          <line x1="19" y1="4" x2="19" y2="20" stroke-width="2.5"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Chart Type Dropdown Menu -->
+    <div class="chart-type-menu" id="chartTypeMenu" style="display:none;">
+      <button class="chart-type-option active" onclick="setChartType('candlestick')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+          <path d="M9 3v4M9 17v4M15 3v4M15 17v4"/>
+          <rect x="6" y="7" width="6" height="10" rx="1"/>
+          <rect x="12" y="5" width="6" height="14" rx="1"/>
+        </svg>
+        Candles
+      </button>
+      <button class="chart-type-option" onclick="setChartType('hollow')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+          <rect x="6" y="7" width="6" height="10" rx="1"/>
+          <rect x="12" y="5" width="6" height="14" rx="1"/>
+        </svg>
+        Hollow candles
+      </button>
+      <button class="chart-type-option" onclick="setChartType('bars')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <line x1="8" y1="5" x2="8" y2="19"/>
+          <line x1="5" y1="8" x2="8" y2="8"/>
+          <line x1="8" y1="16" x2="11" y2="16"/>
+          <line x1="16" y1="5" x2="16" y2="19"/>
+          <line x1="13" y1="9" x2="16" y2="9"/>
+          <line x1="16" y1="14" x2="19" y2="14"/>
+        </svg>
+        Bars
+      </button>
+      <button class="chart-type-option" onclick="setChartType('renko')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+          <rect x="3" y="3" width="6" height="6" rx="0.5"/>
+          <rect x="10" y="8" width="6" height="6" rx="0.5"/>
+          <rect x="17" y="13" width="6" height="6" rx="0.5"/>
+        </svg>
+        Renko
+      </button>
+      <button class="chart-type-option" onclick="setChartType('heikinashi')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+          <path d="M9 3v4M9 17v4M15 3v4M15 17v4"/>
+          <rect x="6" y="7" width="6" height="10" rx="1"/>
+          <rect x="12" y="5" width="6" height="14" rx="1"/>
+        </svg>
+        Heikin Ashi
+      </button>
+      <div class="chart-type-divider"></div>
+      <button class="chart-type-option" onclick="setChartType('line')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <polyline points="3 18 9 12 15 18 21 12"/>
+        </svg>
+        Line
+      </button>
+      <button class="chart-type-option" onclick="setChartType('area')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <polygon points="3 18 9 12 15 18 21 12 21 18 3 18"/>
+        </svg>
+        Area
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <div class="tv-divider"></div>
+
+    <!-- Right Group: Actions -->
+    <div class="tv-group tv-right">
+      <!-- Trade markers toggle (wired in tv-trade-markers.js) — shows/hides
+           this stock's recorded trades (from trades.html) as entry/exit
+           markers on the price pane. -->
+      <button class="tv-btn" id="tradeMarkersBtn" onclick="toggleTradeMarkers()" title="Show/hide your trades on this chart" aria-label="Toggle Trade Markers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="22" x2="4" y2="2"/>
+          <path d="M4 3h15l-3.5 5 3.5 5H4"/>
+        </svg>
+      </button>
+      <button class="tv-btn" title="Alert" aria-label="Alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+      </button>
+      <button class="tv-btn" title="Zoom in" onclick="zoomIn()" aria-label="Zoom In">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          <line x1="11" y1="8" x2="11" y2="14"/>
+          <line x1="8" y1="11" x2="14" y2="11"/>
+        </svg>
+      </button>
+      <button class="tv-btn" title="Zoom out" onclick="zoomOut()" aria-label="Zoom Out">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          <line x1="8" y1="11" x2="14" y2="11"/>
+        </svg>
+      </button>
+      <button class="tv-btn" title="Reset view" onclick="resetView()" aria-label="Reset">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 4v6h6"/>
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+        </svg>
+      </button>
+      <button class="tv-btn" title="Download" onclick="downloadChart()" aria-label="Download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </button>
+      <button class="tv-btn" title="Fullscreen" onclick="toggleFullscreen()" aria-label="Fullscreen" id="fullscreenBtn">
+        <svg class="fs-icon-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+        </svg>
+        <svg class="fs-icon-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+          <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 0 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- INDICATOR INSTANCE BAR (populated by indicator-settings-modal.js)
+       Replaces the old fixed MA20/MA50/MA200/EMA200 toggle pills —
+       every overlay indicator (EMA, SMA, Bollinger Bands, Ichimoku
+       Cloud, Supertrend) is now an independent instance shown here,
+       with its own settings/visibility/remove controls. -->
+  <div class="ind-bar" id="indicatorInstanceBar" style="display:none;"></div>
+
+  <!-- STRATEGY CONTROLS (buttons injected by strategies/strategy-engine.js) -->
+  <div class="strategy-controls">
+    <div class="strategy-controls-label">Strategy:</div>
+    <div id="strategyButtons" class="strategy-buttons"></div>
+  </div>
+
+  <!-- CHART CONTAINER -->
+  <div class="chart-container">
+    <div class="chart-loading" id="loadingState">
+      <div class="spinner"></div>
+      <span>Loading candlestick data…</span>
+    </div>
+    <canvas id="candleCanvas" style="display:none;"></canvas>
+    <div class="chart-legend" id="chartLegend" style="display:none;"></div>
+
+    <!-- PANE CONTROLS BAR — shown on hover over sub-panes -->
+    <div id="paneControlsBar" class="pane-controls-bar"
+         onmouseenter="_cancelPaneCtrlHide()" onmouseleave="_schedulePaneCtrlHide()">
+      <button class="pcb-btn pcb-up"       onclick="paneCtrlAction('up')"       title="Move pane up">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+      </button>
+      <button class="pcb-btn pcb-down"     onclick="paneCtrlAction('down')"     title="Move pane down">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="pcb-sep"></div>
+      <button class="pcb-btn pcb-collapse" onclick="paneCtrlAction('collapse')" title="Collapse pane">
+        <svg class="pcb-icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 8 12 16 20 8"/></svg>
+        <svg class="pcb-icon-expand"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><polyline points="4 16 12 8 20 16"/></svg>
+      </button>
+      <button class="pcb-btn pcb-maximize" onclick="paneCtrlAction('maximize')" title="Maximize pane">
+        <svg class="pcb-icon-max"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        <svg class="pcb-icon-restore" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 0 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/></svg>
+      </button>
+      <div class="pcb-sep"></div>
+      <button class="pcb-btn pcb-delete"   onclick="paneCtrlAction('delete')"   title="Remove indicator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- SEASONALS PANEL — year x month returns table/chart, populated by
+       tv-seasonals-ui.js. Hidden by default; toggled via #seasonalsToggleBtn,
+       which also hides the chart-container/range-bar/indicator-bar/strategy
+       controls/info-grid while this is open (restored exactly on "Back to chart"). -->
+  <div class="tv-seasonals-panel" id="tvSeasonalsPanel" style="display:none;"></div>
+
+  <!-- BOTTOM RANGE BAR — visible-window shortcuts (distinct from the top D/W/M
+       candle-interval toggle: these just move panOffset/zoomLevel to show the
+       last N calendar days of already-loaded data) + a live date/time readout. -->
+  <div class="tv-range-bar" id="tvRangeBar">
+    <div class="tv-range-buttons" id="tvRangeButtons">
+      <button class="tv-range-btn" data-range="1D">1D</button>
+      <button class="tv-range-btn" data-range="5D">5D</button>
+      <button class="tv-range-btn" data-range="1M">1M</button>
+      <button class="tv-range-btn" data-range="3M">3M</button>
+      <button class="tv-range-btn" data-range="6M">6M</button>
+      <button class="tv-range-btn" data-range="YTD">YTD</button>
+      <button class="tv-range-btn" data-range="1Y">1Y</button>
+      <button class="tv-range-btn" data-range="5Y">5Y</button>
+      <button class="tv-range-btn active" data-range="All">All</button>
+    </div>
+    <div class="tv-range-datetime" id="tvRangeDateTime">—</div>
+  </div>
+
+  <!-- STRATEGY RESULTS TABLE (populated by strategies/strategy-engine.js) -->
+  <div id="strategyTableWrap" class="strategy-table-wrap" style="display:none;"></div>
+
+  <!-- REPLAY BAR (shown only in replay mode) -->
+  <div class="replay-bar" id="replayBar" style="display:none;">
+    <div class="replay-bar-inner">
+      <!-- Left: Select button + Progress bar -->
+      <div class="replay-bar-left">
+        <button class="replay-btn replay-select-btn" id="replaySelectBtn"
+                onclick="startSelectingBar()" title="Click a bar on the chart to set the replay start">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h8M7 8l-4 4 4 4M21 5v14"/>
+          </svg>
+          <span>Select Bar</span>
+        </button>
+
+        <!-- Progress Bar -->
+        <div class="replay-progress-container">
+          <div class="replay-progress-bar">
+            <div class="replay-progress-fill" id="replayProgressFill"></div>
+            <div class="replay-progress-thumb" id="replayProgressThumb"></div>
+          </div>
+          <span class="replay-progress-label" id="replayProgressLabel">—</span>
+        </div>
+      </div>
+
+      <!-- Center: Playback controls -->
+      <div class="replay-bar-center">
+        <button class="replay-btn replay-play-btn" id="replayPlayBtn"
+                onclick="toggleReplayPlay()" title="Play / Pause (Space)" disabled>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="replay-icon-play">
+            <polygon points="5,4 19,12 5,20"/>
+          </svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="replay-icon-pause" style="display:none;">
+            <rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>
+          </svg>
+        </button>
+
+        <button class="replay-btn replay-step-btn" id="replayStepBtn"
+                onclick="stepReplay()" title="Step forward (→)" disabled>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="4,4 15,12 4,20"/><line x1="19" y1="4" x2="19" y2="20" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+        </button>
+
+        <div class="replay-speed-control">
+          <button class="replay-btn replay-speed-btn" id="replaySpeedBtn"
+                  onclick="toggleReplaySpeedMenu()" title="Playback speed">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              <text x="12" y="14" font-size="10" font-weight="bold" text-anchor="middle" fill="currentColor">1x</text>
+            </svg>
+            <span id="replaySpeedLabel">1x</span>
+          </button>
+        </div>
+
+        <div class="replay-status-container">
+          <span class="replay-status" id="replayStatus">Click chart to select start bar</span>
+        </div>
+      </div>
+
+      <!-- Right: Exit button -->
+      <div class="replay-bar-right">
+        <button class="replay-btn replay-exit-btn" onclick="exitReplayMode()" title="Exit replay mode (Esc)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+          <span>Exit</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFO CARDS -->
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-label">Current Price</div>
+      <div class="info-value" id="currentPrice">—</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">All-Time High</div>
+      <div class="info-value" id="highPrice">—</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">All-Time Low</div>
+      <div class="info-value" id="lowPrice">—</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">Period Change</div>
+      <div class="info-value" id="periodChange">—</div>
+    </div>
+  </div>
+
+</main>
+
+  <!-- Drag handle between the chart column and the right sidebar — resizes
+       .tv-right-sidebar (and .main-container shrinks/grows to match, since
+       it's the flexible column); wired in tv-sidebar.js. -->
+  <div class="tv-col-resizer" id="tvColResizer" title="Drag to resize"></div>
+
+  <!-- RIGHT SIDEBAR: watchlist/symbol-info panels (populated by tv-sidebar.js) +
+       a TradingView-style icon rail docked to the outer right edge. -->
+  <div class="tv-right-sidebar" id="tvRightSidebar">
+    <div class="tv-sidebar-panels">
+      <div class="tv-watchlist" id="tvWatchlist">
+        <div class="tv-watchlist-header">Watchlist</div>
+        <div class="tv-wl-header">
+          <span class="tv-wl-col1-cell"><span class="tv-wl-col-resizer" id="tvWlColResizer" title="Drag to resize"></span></span><span>Last</span><span>Chg</span><span>Chg%</span><span>Vol</span>
+        </div>
+        <div class="tv-watchlist-body" id="tvWatchlistBody">
+          <div class="tv-sidebar-loading">Loading…</div>
+        </div>
+      </div>
+      <div class="tv-symbol-info" id="tvSymbolInfo">
+        <div class="tv-sidebar-loading">Loading…</div>
+      </div>
+      <!-- Bank Details — the yearly grid kept at /bank-details, shown only
+           when the symbol is in the "Bank" sector. Starts hidden via
+           .tv-na (not applicable) and tv-sidebar.js clears that class per
+           symbol; the rail button toggles inline display instead, so the
+           two never fight over each other's state. -->
+      <div class="tv-bank-details tv-na" id="tvBankDetails">
+        <div class="tv-watchlist-header tv-bd-header">
+          <span>Bank Details</span>
+          <a class="tv-bd-open" id="tvBankDetailsOpen" href="#" target="_blank" rel="noopener" title="Open the full yearly grid">
+            Full grid
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+        <div class="tv-bd-body" id="tvBankDetailsBody">
+          <div class="tv-sidebar-loading">Loading…</div>
+        </div>
+      </div>
+      <div class="tv-news-panel" id="tvNewsPanel">
+        <div class="tv-watchlist-header">News</div>
+        <div class="tv-news-body" id="tvNewsBody">
+          <div class="tv-sidebar-loading">Loading…</div>
+        </div>
+      </div>
+      <div class="tv-mf-holders" id="tvMfHolders">
+        <div class="tv-watchlist-header">Held by Mutual Funds</div>
+        <div class="tv-mf-holders-body" id="tvMfHoldersBody">
+          <div class="tv-sidebar-loading">Loading…</div>
+        </div>
+      </div>
+      <!-- Volatility card + details modal (wired in tv-volatility.js) -->
+      <div class="tv-volatility-panel" id="tvVolatilityPanel">
+        <div class="tv-watchlist-header">Volatility</div>
+        <div class="tv-volatility-body" id="tvVolatilityBody">
+          <div class="tv-sidebar-loading">Loading…</div>
+        </div>
+      </div>
+    </div>
+    <aside class="tv-right-rail" id="tvRightRail">
+      <button class="tv-rail-btn active" id="railWatchlistBtn" title="Watchlist" aria-label="Toggle watchlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+      </button>
+      <button class="tv-rail-btn active" id="railDetailsBtn" title="Symbol details" aria-label="Toggle symbol details">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </button>
+      <!-- Hidden for every non-Bank symbol (tv-sidebar.js), so it never
+           offers a panel that has nothing to say. -->
+      <button class="tv-rail-btn active tv-na" id="railBankDetailsBtn" title="Bank Details" aria-label="Toggle bank details">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 10l9-6 9 6"/><path d="M4 10v9M9 10v9M15 10v9M20 10v9"/><line x1="2" y1="21" x2="22" y2="21"/>
+        </svg>
+      </button>
+      <button class="tv-rail-btn active" id="railNewsBtn" title="News" aria-label="Toggle news">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h13a2 2 0 0 1 2 2v13a1 1 0 0 0 1 1"/>
+          <path d="M4 4v15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9h-3"/>
+          <line x1="8" y1="8" x2="15" y2="8"/><line x1="8" y1="12" x2="15" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/>
+        </svg>
+      </button>
+      <button class="tv-rail-btn active" id="railMfHoldersBtn" title="Held by Mutual Funds" aria-label="Toggle mutual fund holders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2l9 4.5v11L12 22l-9-4.5v-11z"/>
+          <path d="M12 2v20M3 6.5l9 4.5 9-4.5"/>
+        </svg>
+      </button>
+      <button class="tv-rail-btn active" id="railVolatilityBtn" title="Volatility" aria-label="Toggle volatility">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </button>
+      <div class="tv-rail-sep"></div>
+      <!-- Analysis panel (wired in candlestick-analysis.js) -->
+      <button class="tv-rail-btn" id="analysisToggleBtn" onclick="openAnalysisModal()" title="Technical &amp; Fundamental Analysis" aria-label="Analysis">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+      </button>
+      <!-- Seasonals toggle (wired in tv-seasonals-ui.js) -->
+      <button class="tv-rail-btn" id="seasonalsToggleBtn" title="Seasonals" aria-label="Seasonals">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
+      </button>
+      <!-- Intrinsic Value panel (wired in valuation.js) -->
+      <button class="tv-rail-btn" id="valuationToggleBtn" onclick="openValuationModal()" title="Intrinsic Value (DCF / DDM / Residual Income / Graham / Payback Time)" aria-label="Intrinsic Value">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </button>
+      <!-- Support & Resistance panel (wired in support-resistance.js) -->
+      <button class="tv-rail-btn" id="srToggleBtn" onclick="openSRModal()" title="Support &amp; Resistance (auto-detected from weekly candles)" aria-label="Support &amp; Resistance">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M3 21h18"/></svg>
+      </button>
+      <!-- MACD + 50 EMA backtest panel (wired in macd-backtest.js) -->
+      <button class="tv-rail-btn" id="macdBtToggleBtn" onclick="openMACDBacktestModal()" title="MACD + 50 EMA — buy a bullish MACD cross that closes above the 50-EMA; exit on stop, target or a bearish cross" aria-label="MACD + 50 EMA">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 15l4-5 4 3 3-6 4 5"/>
+          <path d="M3 20h18"/>
+          <circle cx="7" cy="10" r="1.6"/><circle cx="14" cy="7" r="1.6"/>
+        </svg>
+      </button>
+      <!-- Research Report — full-page fundamentals + technicals + news
+           write-up (research/research.html), href filled in once the
+           symbol finishes loading (candlestick-data.js's processChartData) -->
+      
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>
+        </svg>
+      
+      <!-- Only shown when the current symbol is itself a tracked mutual
+           fund (candlestick-data.js / tv-sidebar.js checks
+           /api/mf-portfolio/:code/quarters and toggles this) — links to
+           that fund's own latest quarterly portfolio breakdown. -->
+      <a class="tv-rail-btn" id="mfPortfolioBtn" href="#" target="_blank" rel="noopener" title="View this fund's latest portfolio" aria-label="View Fund Portfolio" style="text-decoration:none; display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" opacity="0"/>
+          <path d="M11 2v9h9"/>
+          <path d="M20.49 15a9 9 0 1 1-2.12-9.36L11 11z"/>
+        </svg>
+      </a>
+    </aside>
+  </div>
+
+</div><!-- /.tv-page-shell -->
+
+<!-- MACD SETTINGS MODAL (Inputs / Style / Visibility) -->
+<div id="macdSettingsModal" class="modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeMACDSettings()"></div>
+  <div class="modal-content ind-set-modal">
+    <div class="modal-header">
+      <h2>MACD Settings</h2>
+      <button class="modal-close" onclick="closeMACDSettings()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body" id="macdSettingsBody"></div>
+    <div class="ind-set-footer">
+      <button class="ind-set-cancel" onclick="resetMACDSettings()">Reset</button>
+      <button class="ind-set-cancel" onclick="closeMACDSettings()">Cancel</button>
+      <button class="ind-set-ok" onclick="_commitMACDSettings()">Ok</button>
+    </div>
+  </div>
+</div>
+
+<!-- REPLAY SPEED DROPDOWN (positioned fixed via JS, outside main) -->
+<div class="replay-speed-menu" id="replaySpeedMenu" style="display:none;">
+  <div class="replay-speed-header">REPLAY SPEED</div>
+  <button class="replay-speed-option" data-speed="10"  onclick="setReplaySpeed(10)">  <span class="rsm-mult">10x</span>  <span class="rsm-desc">10 upd per 1 sec</span>  </button>
+  <button class="replay-speed-option" data-speed="7"   onclick="setReplaySpeed(7)">   <span class="rsm-mult">7x</span>   <span class="rsm-desc">7 upd per 1 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="5"   onclick="setReplaySpeed(5)">   <span class="rsm-mult">5x</span>   <span class="rsm-desc">5 upd per 1 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="3"   onclick="setReplaySpeed(3)">   <span class="rsm-mult">3x</span>   <span class="rsm-desc">3 upd per 1 sec</span>   </button>
+  <button class="replay-speed-option active" data-speed="1" onclick="setReplaySpeed(1)"><span class="rsm-mult">1x</span><span class="rsm-desc">1 upd per 1 sec</span></button>
+  <button class="replay-speed-option" data-speed="0.5" onclick="setReplaySpeed(0.5)"> <span class="rsm-mult">0.5x</span> <span class="rsm-desc">1 upd per 2 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="0.3" onclick="setReplaySpeed(0.3)"> <span class="rsm-mult">0.3x</span> <span class="rsm-desc">1 upd per 3 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="0.2" onclick="setReplaySpeed(0.2)"> <span class="rsm-mult">0.2x</span> <span class="rsm-desc">1 upd per 5 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="0.1" onclick="setReplaySpeed(0.1)"> <span class="rsm-mult">0.1x</span> <span class="rsm-desc">1 upd per 10 sec</span>  </button>
+</div>
+
+<!-- INDICATORS MODAL -->
+<div id="indicatorsModal" class="modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeIndicatorsModal()"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Indicators</h2>
+      <button class="modal-close" onclick="closeIndicatorsModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-search">
+      <input type="text" id="indicatorSearch" placeholder="Search indicators..." onkeyup="filterIndicators()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </div>
+    <div class="modal-body">
+      <div class="indicator-list" id="indicatorList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- INDICATOR SETTINGS MODAL (Inputs / Style / Visibility) — generic,
+     used by every multi-instance indicator (EMA, SMA, Bollinger Bands,
+     Ichimoku Cloud, Supertrend). Opened via the gear icon on each
+     pill in the indicator instance bar. -->
+<div id="indicatorSettingsModal" class="modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeIndicatorSettings()"></div>
+  <div class="modal-content ind-set-modal">
+    <div class="modal-header">
+      <h2 id="indicatorSettingsTitle">Indicator</h2>
+      <button class="modal-close" onclick="closeIndicatorSettings()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body" id="indicatorSettingsBody"></div>
+    <div class="ind-set-footer">
+      <button class="ind-set-cancel" onclick="closeIndicatorSettings()">Cancel</button>
+      <button class="ind-set-ok" onclick="_commitIndicatorSettings()">Ok</button>
+    </div>
+  </div>
+</div>
+
+<!-- ANALYSIS PANEL (slides in from the right edge, not a centered modal) -->
+<div id="analysisModal" class="an-panel" style="display:none;">
+  <div class="an-panel-overlay" onclick="closeAnalysisModal()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2>📊 Analysis</h2>
+      <button class="modal-close" onclick="closeAnalysisModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="analysisBody">
+      <div class="an-loading">Running analysis…</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTRINSIC VALUE PANEL (slides in from the right edge, same shell as Analysis) -->
+<div id="valuationModal" class="an-panel" style="display:none;">
+  <div class="an-panel-overlay" onclick="closeValuationModal()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2>💰 Intrinsic Value</h2>
+      <button class="modal-close" onclick="closeValuationModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="valuationBody">
+      <div class="val-loading">Loading fundamentals…</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUPPORT & RESISTANCE PANEL (slides in from the right edge, same shell as Analysis) -->
+<div id="srModal" class="an-panel" style="display:none;">
+  <div class="an-panel-overlay" onclick="closeSRModal()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2>📐 Support &amp; Resistance</h2>
+      <button class="modal-close" onclick="closeSRModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="srBody">
+      <div class="val-loading">Analyzing weekly candles…</div>
+    </div>
+  </div>
+</div>
+
+<!-- MACD CROSSOVER BACKTEST PANEL (slides in from the right edge, same shell as Analysis) -->
+<div id="macdBtModal" class="an-panel" style="display:none;">
+  <div class="an-panel-overlay" onclick="closeMACDBacktestModal()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2>🔁 MACD + 50 EMA</h2>
+      <button class="modal-close" onclick="closeMACDBacktestModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="macdBtBody">
+      <div class="val-loading">Replaying MACD crossovers…</div>
+    </div>
+  </div>
+</div>
+
+<!-- RENKO SETTINGS MODAL -->
+<div id="renkoSettingsModal" class="modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeRenkoSettings()"></div>
+  <div class="modal-content renko-modal">
+
+    <div class="modal-header">
+      <h2>Settings &mdash; Renko</h2>
+      <button class="modal-close" onclick="closeRenkoSettings()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal-body renko-modal-body">
+
+      <div class="rs-section-label">RENKO</div>
+
+      <!-- Up bars -->
+      <div class="rs-row">
+        <span class="rs-label">Up bars</span>
+        <div class="rs-color-pair">
+          <button id="rs-sw-up-fill" class="rs-swatch-btn" title="Fill color"
+                  onclick="_rsSwatchClick(this,'colorUpBars','opacityUpBars')">
+            <span class="rs-swatch-inner" style="background:#26a69a"></span>
+          </button>
+          <button id="rs-sw-up-line" class="rs-swatch-btn" title="Border color"
+                  onclick="_rsSwatchClick(this,'colorUpBarsLine','opacityUpBarsLine')">
+            <span class="rs-swatch-inner" style="background:#26a69a"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Down bars -->
+      <div class="rs-row">
+        <span class="rs-label">Down bars</span>
+        <div class="rs-color-pair">
+          <button id="rs-sw-dn-fill" class="rs-swatch-btn" title="Fill color"
+                  onclick="_rsSwatchClick(this,'colorDownBars','opacityDownBars')">
+            <span class="rs-swatch-inner" style="background:#ef5350"></span>
+          </button>
+          <button id="rs-sw-dn-line" class="rs-swatch-btn" title="Border color"
+                  onclick="_rsSwatchClick(this,'colorDownBarsLine','opacityDownBarsLine')">
+            <span class="rs-swatch-inner" style="background:#ef5350"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Projection up bars -->
+      <div class="rs-row">
+        <span class="rs-label">Projection up bars</span>
+        <div class="rs-color-pair">
+          <button id="rs-sw-pup-fill" class="rs-swatch-btn" title="Fill color"
+                  onclick="_rsSwatchClick(this,'colorProjUp','opacityProjUp')">
+            <span class="rs-swatch-inner" style="background:rgba(38,166,154,0.35)"></span>
+          </button>
+          <button id="rs-sw-pup-line" class="rs-swatch-btn" title="Border color"
+                  onclick="_rsSwatchClick(this,'colorProjUpLine','opacityProjUpLine')">
+            <span class="rs-swatch-inner" style="background:rgba(38,166,154,0.6)"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Projection down bars -->
+      <div class="rs-row">
+        <span class="rs-label">Projection down bars</span>
+        <div class="rs-color-pair">
+          <button id="rs-sw-pdn-fill" class="rs-swatch-btn" title="Fill color"
+                  onclick="_rsSwatchClick(this,'colorProjDown','opacityProjDown')">
+            <span class="rs-swatch-inner" style="background:rgba(239,83,80,0.35)"></span>
+          </button>
+          <button id="rs-sw-pdn-line" class="rs-swatch-btn" title="Border color"
+                  onclick="_rsSwatchClick(this,'colorProjDownLine','opacityProjDownLine')">
+            <span class="rs-swatch-inner" style="background:rgba(239,83,80,0.6)"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Wicks -->
+      <div class="rs-row">
+        <label class="rs-checkbox-label" for="rs-wicks">
+          <input type="checkbox" id="rs-wicks" checked>
+          <span>Wick</span>
+        </label>
+      </div>
+
+      <div class="rs-divider"></div>
+
+      <!-- Source -->
+      <div class="rs-row">
+        <span class="rs-label">Source</span>
+        <select id="rs-source" class="rs-select">
+          <option value="Close">Close</option>
+          <option value="Open">Open</option>
+          <option value="High">High</option>
+          <option value="Low">Low</option>
+          <option value="HL2">HL2</option>
+          <option value="HLC3">HLC3</option>
+          <option value="OHLC4">OHLC4</option>
+        </select>
+      </div>
+
+      <!-- Box size method -->
+      <div class="rs-row">
+        <span class="rs-label">Box size assignment method</span>
+        <select id="rs-method" class="rs-select" onchange="renkoMethodChanged()">
+          <option value="ATR">ATR</option>
+          <option value="fixed">Fixed</option>
+        </select>
+      </div>
+
+      <!-- ATR length -->
+      <div class="rs-row" id="rs-atr-row">
+        <span class="rs-label">ATR length</span>
+        <input type="number" id="rs-atr-length" class="rs-number" min="1" max="500" value="14">
+      </div>
+
+      <!-- Fixed box size -->
+      <div class="rs-row" id="rs-fixed-row" style="display:none;">
+        <span class="rs-label">Box size</span>
+        <input type="number" id="rs-fixed-size" class="rs-number" min="0.0001" step="0.01" value="1">
+      </div>
+
+    </div>
+
+    <div class="renko-modal-footer">
+      <button class="rs-btn rs-reset" onclick="resetRenkoSettings()">Reset to defaults</button>
+      <div class="rs-footer-right">
+        <button class="rs-btn rs-cancel" onclick="closeRenkoSettings()">Cancel</button>
+        <button class="rs-btn rs-ok"     onclick="applyRenkoSettings()">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>✅ MACD · RSI · Volume · Moving Averages · All Historical Data</p>
+  <p style="margin-top:6px;opacity:.7">🖱️ Scroll to zoom · Drag to pan · Ctrl/Shift+Scroll for vertical zoom · ⏵ Replay to practise reading charts · Click stock symbol to search</p>
+</footer>
+
+<!-- JS: load order -->
+<!-- 0. Reusable color picker component -->
+<script src="../color-picker/color-picker.js"></script>
+
+<!-- 1. Core state, parsing, aggregation, data loading -->
+<script src="candlestick-data.js"></script>
+
+<!-- 2. Indicator modules — each owns its own calc + draw + legend.
+        Load order doesn't matter for correctness (everything below
+        runs after window 'load', once all scripts are parsed), but
+        grouping them here keeps the dependency story readable. -->
+<script src="indicators/ma.js"></script>
+<script src="indicators/bollinger-bands.js"></script>
+<script src="indicators/ichimoku.js"></script>
+<script src="indicators/macd.js"></script>
+<script src="indicators/rsi.js"></script>
+<script src="indicators/supertrend.js"></script>
+<script src="indicators/hilega-milega.js"></script>
+
+<!-- 2b. Strategy engine MUST load before any strategies/*.js file,
+         since each strategy calls registerStrategy() immediately
+         at parse time, not deferred to window 'load'. -->
+<script src="strategies/strategy-engine.js"></script>
+<script src="strategies/supertrend-strategy.js"></script>
+
+<!-- 2c. Multi-instance indicator system (EMA/SMA/Bollinger Bands/
+         Ichimoku Cloud/Supertrend). Needs _loadPref/_savePref from
+         candlestick-data.js and calculateEMA/calculateSMA/etc. from
+         the indicator math files above, so it loads after those but
+         before candlestick-draw.js/-legend.js/-ui.js, which call
+         into it. -->
+<script src="indicator-instances.js"></script>
+<script src="indicator-settings-modal.js"></script>
+<script src="indicators/macd-settings-modal.js"></script>
+
+<!-- 3. Layout/rendering, legend, UI wiring -->
+<script src="candlestick-draw.js"></script>
+<script src="candlestick-legend.js"></script>
+<script src="candlestick-ui.js"></script>
+
+<!-- 4. Stock search modal — allows clicking symbol to search and load DSE stocks -->
+<script src="stock-search.js"></script>
+
+<!-- 5. TradingView-style layout pieces — standalone page only, not loaded by
+        company_profile/company.html's embedded chart. -->
+<script src="tv-range-bar.js"></script>
+<script src="tv-drawing-tools.js"></script>
+<script src="tv-trade-markers.js"></script>
+<script src="/shared/bank-rows.js"></script>
+<script src="tv-sidebar.js"></script>
+<script src="tv-volatility.js"></script>
+<script src="tv-seasonals.js"></script>
+<script src="tv-seasonals-ui.js"></script>
+
+<!-- 6. Analysis panel — technical + fundamental + sector + seasonal + news
+        read-out. Loads last since it only runs on demand (button click)
+        and reads globals/helpers everything above it already defines. -->
+<script src="candlestick-analysis.js"></script>
+<script src="valuation.js"></script>
+<script src="support-resistance.js"></script>
+<script src="macd-backtest.js"></script>
+
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

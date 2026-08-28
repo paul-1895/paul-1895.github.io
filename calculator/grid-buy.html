@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grid Buy Calculator — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<style>
+/* ── GRID BUY CALCULATOR PAGE ──────────────────────────── */
+.calc-shell {
+  max-width: 1100px;
+  margin: 28px auto 60px;
+  padding: 0 16px;
+}
+
+.calc-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 18px;
+  transition: color 0.15s;
+}
+.calc-back:hover { color: var(--accent); text-decoration: none; }
+.calc-back svg { width: 15px; height: 15px; }
+
+.calc-hero { margin-bottom: 24px; }
+.calc-hero h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+.calc-hero p {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+/* ── INPUT PANEL ── */
+.calc-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.calc-field { margin-bottom: 16px; }
+.calc-field:last-child { margin-bottom: 0; }
+
+.calc-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 7px;
+}
+.calc-label .calc-unit {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.calc-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.calc-input-prefix {
+  position: absolute;
+  left: 13px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.calc-input-suffix {
+  position: absolute;
+  right: 13px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.calc-field input[type="number"], .calc-field input[type="text"] {
+  width: 100%;
+  padding: 10px 13px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.calc-field input.has-prefix { padding-left: 30px; }
+.calc-field input.has-suffix { padding-right: 30px; }
+.calc-field input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+.calc-field input[type="number"]::-webkit-outer-spin-button,
+.calc-field input[type="number"]::-webkit-inner-spin-button { opacity: 0.6; }
+
+.calc-toggle-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.calc-toggle-btn {
+  flex: 1;
+  padding: 8px 6px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.calc-toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+.calc-toggle-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.calc-divider { height: 1px; background: var(--border); margin: 18px 0; }
+
+/* ── RESULTS SIDE ── */
+.calc-results { display: flex; flex-direction: column; gap: 14px; }
+
+.calc-summary-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.calc-summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.calc-summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+}
+.calc-summary-card.units::before { background: var(--text-muted); }
+.calc-summary-card.cost::before { background: var(--accent); }
+.calc-summary-card.avg::before { background: var(--gain); }
+.calc-summary-card.range::before { background: var(--text-muted); }
+
+.calc-summary-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.calc-summary-value {
+  font-family: var(--mono);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.4px;
+}
+.calc-summary-card.cost .calc-summary-value { color: var(--accent); }
+.calc-summary-card.avg .calc-summary-value { color: var(--gain); }
+
+.calc-table-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.calc-table-hd {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.calc-table-scroll { max-height: 460px; overflow-y: auto; }
+.calc-table { width: 100%; border-collapse: collapse; }
+.calc-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  padding: 10px 16px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.calc-table thead th:first-child { text-align: left; }
+.calc-table tbody td {
+  padding: 9px 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.calc-table tbody td:first-child {
+  text-align: left;
+  font-family: var(--sans);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.calc-table tbody tr:last-child td { border-bottom: none; }
+.calc-table tbody tr:hover { background: var(--bg-row-hover); }
+.calc-table .gb-avg { color: var(--gain); }
+
+/* ── PREDICTOR SECTION ── */
+.predictor-section { margin-top: 36px; }
+
+.calc-run-btn {
+  width: 100%;
+  padding: 11px;
+  margin-top: 4px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.calc-run-btn:hover { opacity: 0.88; }
+.calc-run-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.predictor-status {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.predictor-status.error { color: var(--loss, #d64545); }
+
+.calc-summary-card.reached::before { background: var(--gain); }
+.calc-summary-card.reached .calc-summary-value { color: var(--gain); }
+
+@media (max-width: 860px) {
+  .calc-grid { grid-template-columns: 1fr; }
+  .calc-summary-row { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Live Market</h1>
+        <p>Dhaka Stock Exchange — All Listed Securities</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="../index.html" class="wl-toggle-btn" style="text-decoration:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Home
+      </a>
+      <a href="calculator.html" class="wl-toggle-btn" style="text-decoration:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
+          <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+          <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+        </svg>
+        Compound Interest
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="calc-shell">
+  <a href="calculator.html" class="calc-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Calculator
+  </a>
+
+  <div class="calc-hero">
+    <h1>Grid Buy Calculator</h1>
+    <p>Buy a fixed number of units at every price interval and see your accumulated position, total cost, and average price.</p>
+  </div>
+
+  <div class="calc-grid">
+
+    <!-- INPUT PANEL -->
+    <div class="calc-panel">
+
+      <div class="calc-field">
+        <div class="calc-label">Ticker</div>
+        <input type="text" id="gb-ticker" value="UCB" />
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Units Per Level <span class="calc-unit">x</span></div>
+        <input type="number" id="gb-units" value="100" min="1" step="1" />
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Starting Price <span class="calc-unit">BDT</span></div>
+        <div class="calc-input-wrap">
+          <span class="calc-input-prefix">৳</span>
+          <input type="number" id="gb-start" class="has-prefix" value="7.00" min="0" step="0.10" />
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Interval <span class="calc-unit">BDT</span></div>
+        <div class="calc-input-wrap">
+          <span class="calc-input-prefix">৳</span>
+          <input type="number" id="gb-interval" class="has-prefix" value="0.10" min="0.01" step="0.01" />
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Number of Levels</div>
+        <input type="number" id="gb-levels" value="10" min="1" max="500" step="1" />
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Buy Commission <span class="calc-unit">%</span></div>
+        <div class="calc-input-wrap">
+          <input type="number" id="gb-commission" class="has-suffix" value="0.4" min="0" step="0.05" />
+          <span class="calc-input-suffix">%</span>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Sell Commission <span class="calc-unit">%</span></div>
+        <div class="calc-input-wrap">
+          <input type="number" id="gb-sell-commission" class="has-suffix" value="0.4" min="0" step="0.05" />
+          <span class="calc-input-suffix">%</span>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Direction</div>
+        <div class="calc-toggle-row">
+          <button class="calc-toggle-btn active" data-dir="down">Price Falling</button>
+          <button class="calc-toggle-btn" data-dir="up">Price Rising</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RESULTS -->
+    <div class="calc-results">
+
+      <div class="calc-summary-row">
+        <div class="calc-summary-card units">
+          <div class="calc-summary-label">Total Units</div>
+          <div class="calc-summary-value" id="gb-total-units">—</div>
+        </div>
+        <div class="calc-summary-card cost">
+          <div class="calc-summary-label">Total Investment <span style="font-weight:400;">(incl. commission)</span></div>
+          <div class="calc-summary-value" id="gb-total-cost">—</div>
+        </div>
+        <div class="calc-summary-card avg">
+          <div class="calc-summary-label">Average Price <span style="font-weight:400;">(incl. commission)</span></div>
+          <div class="calc-summary-value" id="gb-avg-price">—</div>
+        </div>
+        <div class="calc-summary-card range">
+          <div class="calc-summary-label">Price Range</div>
+          <div class="calc-summary-value" id="gb-range" style="font-size:15px;">—</div>
+        </div>
+      </div>
+      <div class="calc-summary-row" style="grid-template-columns: 1fr;">
+        <div class="calc-summary-card cost">
+          <div class="calc-summary-label">Total Commission Paid</div>
+          <div class="calc-summary-value" id="gb-total-commission">—</div>
+        </div>
+      </div>
+
+      <div class="calc-table-card">
+        <div class="calc-table-hd">Level-by-Level Breakdown</div>
+        <div class="calc-table-scroll">
+          <table class="calc-table">
+            <thead>
+              <tr>
+                <th>Level</th>
+                <th>Price</th>
+                <th>Units</th>
+                <th>Gross Cost</th>
+                <th>Commission</th>
+                <th>Cum. Units</th>
+                <th>Cum. Cost</th>
+                <th>Avg. Price</th>
+              </tr>
+            </thead>
+            <tbody id="gb-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="predictor-section">
+    <div class="calc-hero">
+      <h1 style="font-size:20px;">Take-Profit Predictor</h1>
+      <p>Replays this grid against <span id="gb-predictor-ticker-label">UCB</span>'s actual historical candles: a level buys the moment price reaches it, and that lot sells the moment it gains y% or more. See how many trades it takes to bank ৳z in realized profit.</p>
+    </div>
+
+    <div class="calc-grid">
+      <div class="calc-panel">
+
+        <div class="calc-field">
+          <div class="calc-label">Sell at Profit ≥ <span class="calc-unit">y%</span></div>
+          <div class="calc-input-wrap">
+            <input type="number" id="gb-takeprofit" class="has-suffix" value="5" min="0.1" step="0.5" />
+            <span class="calc-input-suffix">%</span>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-label">Target Profit <span class="calc-unit">z, BDT</span></div>
+          <div class="calc-input-wrap">
+            <span class="calc-input-prefix">৳</span>
+            <input type="number" id="gb-target-profit" class="has-prefix" value="10000" min="1" step="500" />
+          </div>
+        </div>
+
+        <button class="calc-run-btn" id="gb-run-predictor">Run Predictor on Historical Candles</button>
+        <div class="predictor-status" id="gb-predictor-status">Uses the ticker, unit size, price grid, direction, and commissions set above. Levels replenish — once a lot sells, that level can buy again the next time price revisits it.</div>
+
+      </div>
+
+      <div class="calc-results">
+
+        <div class="calc-summary-row">
+          <div class="calc-summary-card reached">
+            <div class="calc-summary-label">Trades Required</div>
+            <div class="calc-summary-value" id="gb-pred-trades">—</div>
+          </div>
+          <div class="calc-summary-card">
+            <div class="calc-summary-label">Target Reached On</div>
+            <div class="calc-summary-value" id="gb-pred-date" style="font-size:15px;">—</div>
+          </div>
+          <div class="calc-summary-card cost">
+            <div class="calc-summary-label">Realized Profit</div>
+            <div class="calc-summary-value" id="gb-pred-profit">—</div>
+          </div>
+          <div class="calc-summary-card">
+            <div class="calc-summary-label">Avg. Days Held</div>
+            <div class="calc-summary-value" id="gb-pred-days" style="font-size:15px;">—</div>
+          </div>
+        </div>
+
+        <div class="calc-table-card">
+          <div class="calc-table-hd">Trade Log</div>
+          <div class="calc-table-scroll">
+            <table class="calc-table">
+              <thead>
+                <tr>
+                  <th>Trade #</th>
+                  <th>Buy Date</th>
+                  <th>Buy Price</th>
+                  <th>Sell Date</th>
+                  <th>Sell Price</th>
+                  <th>Days Held</th>
+                  <th>Net Profit</th>
+                  <th>Cum. Profit</th>
+                </tr>
+              </thead>
+              <tbody id="gb-pred-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>For informational purposes only · Not financial advice</p>
+</footer>
+
+<script type="module">
+  import { initTheme, toggleTheme } from '../theme/theme.js';
+  initTheme();
+  document.getElementById('theme-toggle-btn').addEventListener('click', toggleTheme);
+</script>
+<script>
+(function () {
+  const tickerEl = document.getElementById('gb-ticker');
+  const unitsEl = document.getElementById('gb-units');
+  const startEl = document.getElementById('gb-start');
+  const intervalEl = document.getElementById('gb-interval');
+  const levelsEl = document.getElementById('gb-levels');
+  const commissionEl = document.getElementById('gb-commission');
+  const sellCommissionEl = document.getElementById('gb-sell-commission');
+  const dirBtns = document.querySelectorAll('[data-dir]');
+
+  // Seed both legs from the default commission set in /settings.
+  if (window.DSESettings) {
+    const rate = String(window.DSESettings.commission());
+    commissionEl.value = rate;
+    sellCommissionEl.value = rate;
+  }
+  const tbody = document.getElementById('gb-table-body');
+
+  let direction = 'down';
+
+  dirBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      dirBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      direction = btn.dataset.dir;
+      calculate();
+    });
+  });
+
+  function fmtBDT(n) {
+    return '৳' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function fmtUnits(n) {
+    return n.toLocaleString('en-US');
+  }
+
+  function calculate() {
+    const units = Math.max(1, parseInt(unitsEl.value) || 0);
+    const start = Math.max(0, parseFloat(startEl.value) || 0);
+    const interval = Math.max(0.01, parseFloat(intervalEl.value) || 0.10);
+    const levels = Math.min(500, Math.max(1, parseInt(levelsEl.value) || 1));
+    const commissionPct = Math.max(0, parseFloat(commissionEl.value) || 0) / 100;
+    const ticker = (tickerEl.value || 'STOCK').trim().toUpperCase();
+
+    let cumUnits = 0;
+    let cumCost = 0;
+    let cumCommission = 0;
+    let rows = '';
+    let minPrice = Infinity, maxPrice = -Infinity;
+
+    for (let i = 0; i < levels; i++) {
+      const price = direction === 'up' ? start + i * interval : Math.max(0, start - i * interval);
+      const grossCost = price * units;
+      const commission = grossCost * commissionPct;
+      const totalCost = grossCost + commission;
+      cumUnits += units;
+      cumCost += totalCost;
+      cumCommission += commission;
+      const avg = cumCost / cumUnits;
+      minPrice = Math.min(minPrice, price);
+      maxPrice = Math.max(maxPrice, price);
+
+      rows += `<tr>
+        <td>${ticker} #${i + 1}</td>
+        <td>${fmtBDT(price)}</td>
+        <td>${fmtUnits(units)}</td>
+        <td>${fmtBDT(grossCost)}</td>
+        <td>${fmtBDT(commission)}</td>
+        <td>${fmtUnits(cumUnits)}</td>
+        <td>${fmtBDT(cumCost)}</td>
+        <td class="gb-avg">${fmtBDT(avg)}</td>
+      </tr>`;
+    }
+
+    tbody.innerHTML = rows;
+    document.getElementById('gb-total-units').textContent = fmtUnits(cumUnits);
+    document.getElementById('gb-total-cost').textContent = fmtBDT(cumCost);
+    document.getElementById('gb-avg-price').textContent = fmtBDT(cumCost / cumUnits);
+    document.getElementById('gb-total-commission').textContent = fmtBDT(cumCommission);
+    document.getElementById('gb-range').textContent = fmtBDT(minPrice) + ' – ' + fmtBDT(maxPrice);
+  }
+
+  [unitsEl, startEl, intervalEl, levelsEl, commissionEl, tickerEl].forEach(el => {
+    el.addEventListener('input', calculate);
+  });
+
+  calculate();
+})();
+</script>
+<script>
+(function () {
+  const runBtn = document.getElementById('gb-run-predictor');
+  const statusEl = document.getElementById('gb-predictor-status');
+  const tickerLabelEl = document.getElementById('gb-predictor-ticker-label');
+  const tickerInput = document.getElementById('gb-ticker');
+
+  tickerInput.addEventListener('input', () => {
+    tickerLabelEl.textContent = (tickerInput.value || 'STOCK').trim().toUpperCase();
+  });
+
+  function fmtBDT(n) {
+    return '৳' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function parseDate(str) {
+    const [y, m, d] = str.split('/').map(Number);
+    return new Date(y, m - 1, d);
+  }
+
+  function loadCandles(ticker) {
+    const paths = [
+      `/historical_prices/json_files/${ticker}.json`,
+      `../historical_prices/json_files/${ticker}.json`,
+      `historical_prices/json_files/${ticker}.json`,
+    ];
+    let idx = 0;
+    return new Promise((resolve, reject) => {
+      function tryNext() {
+        if (idx >= paths.length) { reject(new Error(`Could not load candle data for ${ticker}. Expected historical_prices/json_files/${ticker}.json`)); return; }
+        const path = paths[idx++];
+        fetch(path)
+          .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+          .then(resolve)
+          .catch(tryNext);
+      }
+      tryNext();
+    });
+  }
+
+  function runPredictor() {
+    const ticker = (tickerInput.value || 'UCB').trim().toUpperCase();
+    const units = Math.max(1, parseInt(document.getElementById('gb-units').value) || 0);
+    const start = Math.max(0, parseFloat(document.getElementById('gb-start').value) || 0);
+    const interval = Math.max(0.01, parseFloat(document.getElementById('gb-interval').value) || 0.10);
+    const levelCount = Math.min(500, Math.max(1, parseInt(document.getElementById('gb-levels').value) || 1));
+    const buyCommissionPct = Math.max(0, parseFloat(document.getElementById('gb-commission').value) || 0) / 100;
+    const sellCommissionPct = Math.max(0, parseFloat(document.getElementById('gb-sell-commission').value) || 0) / 100;
+    const direction = document.querySelector('[data-dir].active').dataset.dir;
+    const takeProfitPct = Math.max(0.01, parseFloat(document.getElementById('gb-takeprofit').value) || 5) / 100;
+    const targetProfit = Math.max(1, parseFloat(document.getElementById('gb-target-profit').value) || 0);
+
+    runBtn.disabled = true;
+    statusEl.classList.remove('error');
+    statusEl.textContent = `Loading ${ticker} historical candles…`;
+
+    loadCandles(ticker).then(data => {
+      const candles = data
+        .map(r => ({ date: r.Date, high: parseFloat(r.High), low: parseFloat(r.Low) }))
+        .filter(r => typeof r.date === 'string' && Number.isFinite(r.high) && Number.isFinite(r.low) && r.high > 0 && r.low > 0)
+        .sort((a, b) => a.date.localeCompare(b.date));
+
+      if (!candles.length) throw new Error(`No usable candle data found for ${ticker}.`);
+
+      const levels = [];
+      for (let i = 0; i < levelCount; i++) {
+        const price = direction === 'up' ? start + i * interval : Math.max(0.01, start - i * interval);
+        levels.push({ price, open: false, buyDate: null, fillPrice: null });
+      }
+
+      let cumProfit = 0;
+      let tradeCount = 0;
+      let totalDaysHeld = 0;
+      let reachedAt = null;
+      const tradeLog = [];
+
+      outer:
+      for (const candle of candles) {
+        for (const level of levels) {
+          if (!level.open) continue;
+          const targetPrice = level.fillPrice * (1 + takeProfitPct);
+          if (candle.high >= targetPrice) {
+            const grossBuy = level.fillPrice * units;
+            const netBuy = grossBuy + grossBuy * buyCommissionPct;
+            const grossSell = targetPrice * units;
+            const netSell = grossSell - grossSell * sellCommissionPct;
+            const netProfit = netSell - netBuy;
+
+            cumProfit += netProfit;
+            tradeCount++;
+            const daysHeld = Math.max(0, Math.round((parseDate(candle.date) - parseDate(level.buyDate)) / 86400000));
+            totalDaysHeld += daysHeld;
+
+            tradeLog.push({
+              n: tradeCount, buyDate: level.buyDate, buyPrice: level.fillPrice,
+              sellDate: candle.date, sellPrice: targetPrice, daysHeld, netProfit, cumProfit,
+            });
+
+            level.open = false;
+            level.buyDate = null;
+            level.fillPrice = null;
+
+            if (!reachedAt && cumProfit >= targetProfit) {
+              reachedAt = { trades: tradeCount, date: candle.date, profit: cumProfit };
+              break outer;
+            }
+          }
+        }
+
+        for (const level of levels) {
+          if (level.open) continue;
+          // A limit buy below market (falling grid) fills at the level price or better;
+          // a stop buy above market (rising grid) can gap through the level on a big move,
+          // so it fills no better than the day's actual low — never at the stale level price.
+          if (direction === 'up') {
+            if (candle.high >= level.price) {
+              level.open = true;
+              level.buyDate = candle.date;
+              level.fillPrice = Math.max(level.price, candle.low);
+            }
+          } else if (candle.low <= level.price) {
+            level.open = true;
+            level.buyDate = candle.date;
+            level.fillPrice = level.price;
+          }
+        }
+      }
+
+      renderResults({ reachedAt, tradeCount, cumProfit, totalDaysHeld, tradeLog, candles, ticker });
+    }).catch(err => {
+      statusEl.classList.add('error');
+      statusEl.textContent = err.message;
+    }).finally(() => {
+      runBtn.disabled = false;
+    });
+  }
+
+  function renderResults({ reachedAt, tradeCount, cumProfit, totalDaysHeld, tradeLog, candles, ticker }) {
+    const tradesEl = document.getElementById('gb-pred-trades');
+    const dateEl = document.getElementById('gb-pred-date');
+    const profitEl = document.getElementById('gb-pred-profit');
+    const daysEl = document.getElementById('gb-pred-days');
+    const tbody = document.getElementById('gb-pred-table-body');
+    const avgDays = tradeCount ? Math.round(totalDaysHeld / tradeCount) : 0;
+
+    if (reachedAt) {
+      tradesEl.textContent = reachedAt.trades;
+      dateEl.textContent = reachedAt.date;
+      profitEl.textContent = fmtBDT(reachedAt.profit);
+      daysEl.textContent = avgDays + ' days';
+      statusEl.classList.remove('error');
+      statusEl.textContent = `Target reached after ${reachedAt.trades} trades, using ${ticker} candles from ${candles[0].date} to ${reachedAt.date}.`;
+    } else {
+      tradesEl.textContent = tradeCount ? tradeCount + '+' : '—';
+      dateEl.textContent = 'Not reached';
+      profitEl.textContent = fmtBDT(cumProfit);
+      daysEl.textContent = avgDays + ' days';
+      statusEl.classList.add('error');
+      statusEl.textContent = `Target not reached within available history (${candles[0].date} to ${candles[candles.length - 1].date}). Only ${fmtBDT(cumProfit)} realized across ${tradeCount} trades — try a lower target, a wider grid, or a lower take-profit trigger.`;
+    }
+
+    tbody.innerHTML = tradeLog.map(t => `
+      <tr>
+        <td>#${t.n}</td>
+        <td>${t.buyDate}</td>
+        <td>${fmtBDT(t.buyPrice)}</td>
+        <td>${t.sellDate}</td>
+        <td>${fmtBDT(t.sellPrice)}</td>
+        <td>${t.daysHeld}</td>
+        <td class="gb-avg">${fmtBDT(t.netProfit)}</td>
+        <td>${fmtBDT(t.cumProfit)}</td>
+      </tr>
+    `).join('');
+  }
+
+  runBtn.addEventListener('click', runPredictor);
+})();
+</script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

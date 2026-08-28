@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minervini Trend Template — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Minervini Trend Template</h1>
+        <p>The seven criteria, what this app does with them, and the backtest that found the opposite of the textbook</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">What it is</a>
+    <a href="#shape">The shape it describes</a>
+    <a href="#criteria">The seven criteria</a>
+    <a href="#timeframes">Three timeframes</a>
+    <a href="#today">Today's scan</a>
+    <a href="#evidence">What the backtest found</a>
+    <a href="#verdict">The verdict</a>
+    <a href="#caveats">Caveats</a>
+    <a href="#missing">What isn't implemented</a>
+    <a href="#honest">Reading it honestly</a>
+    <a href="#videos">Videos</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What it is ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">What it is</h2>
+      <p class="cd-lead">
+        Mark Minervini is a US equity trader known for a growth approach he calls SEPA — Specific
+        Entry Point Analysis — and for the two-time US Investing Championship results that made
+        it well known. The <b>Trend Template</b> is the first stage of that approach: a
+        seven-condition filter that a stock must satisfy before it is even considered. Its job is
+        to narrow thousands of stocks down to those already in a confirmed uptrend.
+      </p>
+      <div class="cd-callout">
+        <b>The Trend Template is a screen, not a strategy.</b> It has no entry, no stop, no target
+        and no position size. In Minervini's own method it is followed by fundamental screening, a
+        specific entry pattern and strict risk management — none of which this app implements.
+        That distinction is the single most important thing on this page, and
+        <a href="#missing">a section below</a> is devoted to it.
+      </div>
+      <p class="cd-lead" style="margin-top:20px">
+        This app implements the template in <code>routes/minervini-engine.js</code>, evaluates it
+        on every DSE stock on daily, weekly and monthly bars, and shows the results on the
+        <a href="../minervini_model/minervini.html">Minervini Model page</a>. It has also been
+        backtested properly, and <a href="#evidence">that result is not flattering</a>.
+      </p>
+      <div class="cd-callout" id="mv-generated" style="margin-top:16px">
+        Every number on this page is served by the app's own engine and backtest file — none of it
+        is written into this page.
+      </div>
+    </section>
+
+    <!-- ─── Shape ─── -->
+    <section id="shape" class="cd-sec">
+      <h2 class="cd-h2">The shape it describes</h2>
+      <p class="cd-lead">
+        Strip the seven conditions down and they describe one picture: a stock that has finished
+        basing, turned up, and now has price above a short average, above a medium average, above
+        a long average, with the averages themselves stacked in that same order and the long one
+        rising. The diagram below plots a price path with real moving averages computed from it —
+        the stacking is a consequence of the prices, not three lines drawn in a flattering order.
+      </p>
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="mv-shape-fig" style="flex:1;min-width:280px"></div>
+      </div>
+      <div class="cd-callout">
+        <b>What this picture cannot tell you</b> is what happens next. Every chart that later
+        doubled passed through this shape; so did every chart that topped out here and halved. The
+        template identifies a state, and states are not forecasts — a point the
+        <a href="#evidence">backtest</a> makes rather forcefully on this market.
+      </div>
+    </section>
+
+    <!-- ─── Criteria ─── -->
+    <section id="criteria" class="cd-sec">
+      <h2 class="cd-h2">The seven criteria</h2>
+      <p class="cd-lead">
+        Listed exactly as the engine defines them — this table is populated from
+        <code>CRITERIA_LABELS</code> in <code>routes/minervini-engine.js</code>, so it cannot drift
+        away from the rule the app actually evaluates.
+      </p>
+      <div id="mv-criteria">
+        <div class="cd-callout">Loading the criteria from the engine…</div>
+      </div>
+    </section>
+
+    <!-- ─── Timeframes ─── -->
+    <section id="timeframes" class="cd-sec">
+      <h2 class="cd-h2">Three timeframes</h2>
+      <p class="cd-lead">
+        The template is defined in trading days: 50/150/200-day averages, about a month of slope,
+        a 52-week range. Applying it to weekly and monthly bars means scaling those periods to
+        their calendar equivalents, which this app does explicitly rather than reusing the daily
+        numbers on different bars.
+      </p>
+      <div id="mv-timeframes">
+        <div class="cd-callout">Loading the timeframe configuration…</div>
+      </div>
+      <div class="cd-callout cd-warn" style="margin-top:16px">
+        <b>The monthly row is a compromise and the engine says so in its own source.</b> A true
+        200-day average needs roughly ten months of monthly bars, and only a handful of stocks in
+        this archive carry enough of them. Monthly results rest on about thirteen evaluable bars
+        per stock and should be read as indicative — which matters, because monthly is the one
+        timeframe whose backtest result comes out positive.
+      </div>
+    </section>
+
+    <!-- ─── Today ─── -->
+    <section id="today" class="cd-sec">
+      <h2 class="cd-h2">Today's scan</h2>
+      <p class="cd-lead">
+        Live from the engine: how much of the DSE passes the template right now, on each
+        timeframe, and the full criterion-by-criterion reading for whichever stock the engine
+        currently ranks first.
+      </p>
+      <div id="mv-today">
+        <div class="cd-callout">Scanning…</div>
+      </div>
+    </section>
+
+    <!-- ─── Evidence ─── -->
+    <section id="evidence" class="cd-sec">
+      <h2 class="cd-h2">What the backtest found</h2>
+      <p class="cd-lead">
+        For every bar where all seven criteria could be fully evaluated, the forward return over
+        the following period was recorded. "Spread" is the mean forward return of passing bars
+        minus that of non-passing bars, in percentage points. Positive means passing stocks went
+        on to do better. This is the same engine the live page runs, with no lookahead.
+      </p>
+      <div id="mv-evidence">
+        <div class="cd-callout">Loading the backtest…</div>
+      </div>
+    </section>
+
+    <!-- ─── Verdict ─── -->
+    <section id="verdict" class="cd-sec">
+      <h2 class="cd-h2">The verdict</h2>
+      <p class="cd-lead">
+        Served by the app itself, alongside the numbers, so that the summary and the data behind
+        it cannot be edited apart from each other.
+      </p>
+      <div id="mv-verdict">
+        <div class="cd-callout">Loading…</div>
+      </div>
+      <div class="cd-callout cd-warn" style="margin-top:18px">
+        <b>The Super Model reached the same conclusion independently.</b> When
+        <code>scripts/compare-candidates.js</code> fitted signal weights across four separate time
+        windows, a full Minervini pass came out with a weight of <b>−20</b> — the largest single
+        weight in the shipped model, and negative. It was the only finding that held at every
+        split. On this market and this sample, extended uptrends mean-reverted.
+      </div>
+    </section>
+
+    <!-- ─── Caveats ─── -->
+    <section id="caveats" class="cd-sec">
+      <h2 class="cd-h2">Caveats</h2>
+      <p class="cd-lead">
+        These come from the app's own API rather than this page, for the same reason the figures
+        do. They are deliberately unflattering to the result above — including the one that points
+        out most of the negative finding comes from a single two-month window.
+      </p>
+      <div id="mv-caveats">
+        <div class="cd-callout">Loading caveats…</div>
+      </div>
+    </section>
+
+    <!-- ─── Missing ─── -->
+    <section id="missing" class="cd-sec">
+      <h2 class="cd-h2">What isn't implemented — and why that limits the finding</h2>
+      <p class="cd-lead">
+        The backtest tests the Trend Template. Minervini's actual method is considerably more than
+        the Trend Template, and none of the rest of it exists in this codebase. Anyone reading the
+        negative result above as "Minervini's approach doesn't work on the DSE" is claiming more
+        than the evidence supports.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Part of the method</th><th>What it adds</th><th>In this app?</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Relative strength ranking</td>
+              <td>Minervini requires a stock to be in the top tier of performance <i>versus other
+                  stocks</i>, not merely rising on its own.</td>
+              <td class="cd-t-why"><b>No.</b> The template as coded here compares each stock only
+                  to its own history.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Fundamental screening</td>
+              <td>Accelerating earnings and sales growth, margin expansion — the "specific" part of
+                  Specific Entry Point Analysis.</td>
+              <td class="cd-t-why"><b>No.</b> The engine reads price bars only.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Volatility Contraction Pattern</td>
+              <td>The entry setup: successive tighter pullbacks on falling volume, bought on the
+                  breakout from the final contraction.</td>
+              <td class="cd-t-why"><b>No.</b> Nothing here detects contractions or volume dry-up.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Hard stop-loss discipline</td>
+              <td>Minervini's published approach cuts losses at a small fixed percentage, so the
+                  average loss stays far below the average gain.</td>
+              <td class="cd-t-why"><b>No — and this is the big one.</b> The backtest measures
+                  forward returns of a state. With no stop, the losing tail is carried in full,
+                  which is precisely what the risk rules exist to remove.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Position sizing and exits</td>
+              <td>How much to buy, when to add, when to take profit.</td>
+              <td class="cd-t-why"><b>No.</b> There is no portfolio being simulated anywhere in
+                  this backtest.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout" style="margin-top:16px">
+        <b>So what has been established?</b> That on this archive, being in the state the Trend
+        Template describes was not followed by better-than-average returns — and was more often
+        followed by worse. That is a real result about the screen. It is not a test of SEPA, and
+        this page should not be read as one.
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>A screen designed for one market was tested on another</h4>
+          <p>The template was developed on US equities — thousands of stocks, deep liquidity,
+          decades of history, and a market where sustained multi-year growth leaders are common.
+          The DSE has around 400 listings, many of them thinly traded, and this archive covers a
+          period dominated by a floor-price regime and its unwinding. Both the rule and the
+          market matter to the result, and only one of them was Minervini's.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The sample is much shorter than the observation count suggests</h4>
+          <p>Tens of thousands of observations sound decisive, but consecutive daily bars share
+          nearly all of their forward window, so they are not independent. The usable universe
+          only has broad price history from around May 2025. Read it as roughly a fourteen-month
+          test with heavy overlap, not as a decade of evidence.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>One two-month window carries most of the result</h4>
+          <p>The period breakdown is on the page above rather than buried, because it changes the
+          reading materially: exclude that single window and every timeframe sits within about
+          half a point of zero. The honest summary is "no demonstrated edge", which is weaker and
+          more accurate than "it works in reverse".</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Two negative results here are not two pieces of evidence</h4>
+          <p>The Super Model's −20 weight and this backtest lean on overlapping data and the same
+          episode. They agree because they are looking at much the same thing, which is a weaker
+          form of confirmation than two independent studies agreeing.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Do not invert it either</h4>
+          <p>A negative spread is not a shorting signal. The direction fitted on a training period
+          reversed depending on where the split fell, which is the signature of noise rather than
+          of an inverted edge — and short selling is not generally available on the DSE anyway.
+          "No demonstrated edge in either direction" is where this ends.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The template still describes something real</h4>
+          <p>A passing stock genuinely is above its averages, near its high and well off its low.
+          That is a useful factual description of where a stock sits, and it is a reasonable way
+          to sort a watchlist. What the evidence does not support is treating that description as
+          a prediction.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        See it live: the <a href="../minervini_model/minervini.html">Minervini Model page</a> shows
+        every passing stock, the training-run history, and the backtest in full. Related reading:
+        <a href="hilega-milega.html">Hilega-Milega</a> and <a href="macd-ema.html">MACD + EMA</a> —
+        two more strategies tested on this archive, with results just as unflattering;
+        <a href="rsi.html">RSI</a> — where "relative strength" means something entirely different
+        from the ranking Minervini's real method uses.
+      </p>
+    </section>
+
+    <!-- ─── Videos ─── -->
+    <section id="videos" class="cd-sec">
+      <h2 class="cd-h2">Videos</h2>
+      <p class="cd-lead">
+        Background viewing on the Trend Template and SEPA. Note that this material describes the
+        full method — fundamentals, entry pattern and stop-loss discipline included — while
+        everything measured on this page is the screen alone.
+      </p>
+      <div class="cd-video-grid" id="mv-videos">
+        <div class="cd-callout">No videos added yet.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="minervini.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

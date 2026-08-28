@@ -1,0 +1,170 @@
+/* ─── HEADER ─────────────────────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Gradient underline on header */
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--grad-a), var(--grad-b), var(--grad-c), var(--grad-d), var(--grad-a));
+  background-size: 300% 100%;
+  animation: gradShift 6s ease infinite;
+  opacity: 0.7;
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: fadeSlideUp 0.5s var(--ease-spring) both;
+}
+
+.logo-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  animation: pulse-glow 3s ease-in-out infinite;
+  position: relative;
+}
+
+/* Live dot */
+.logo-tag::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: 7px;
+  vertical-align: middle;
+  animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.logo-text h1 {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--text-primary) 40%, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-text p {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 0.5s 0.1s var(--ease-spring) both;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 6px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.meta-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.meta-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.meta-value {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, var(--accent-dim), transparent);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  transition: all 0.25s var(--ease-spring);
+  box-shadow: 0 0 12px rgba(0,245,196,0.1);
+}
+.refresh-btn:hover {
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 0 24px var(--accent-glow), 0 4px 20px rgba(0,0,0,0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+.refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.refresh-btn svg { width: 13px; height: 13px; }
+.refresh-btn:not(:disabled):active { transform: scale(0.97); }
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid var(--border-glow);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  transition: all 0.25s var(--ease-spring);
+}
+.theme-toggle:hover {
+  border-color: var(--grad-c);
+  color: var(--grad-c);
+  box-shadow: 0 0 16px rgba(244,114,182,0.25);
+  transform: translateY(-2px);
+}

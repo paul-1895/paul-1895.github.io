@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Company Profile — DSE</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="financials.css" />
+  <link rel="stylesheet" href="company.css" />
+  <link rel="stylesheet" href="financials-modal.css" />
+  <link rel="stylesheet" href="sr-levels.css" />
+  <link rel="stylesheet" href="../candlestick_chart/candlestick-chart.css" />
+  <link rel="stylesheet" href="ddm.css" />
+  <link rel="stylesheet" href="annual-reports.css" />
+  <link rel="stylesheet" href="bank-financials.css" />
+  <link rel="stylesheet" href="../notifications.css" />
+  <!-- NOTE: all .cds-* styles now live in company.css — no inline block needed -->
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<!-- Canvas charts can't read CSS variables; this resolves the settings
+     tokens (--gain/--loss/--sans/--mono) into strings for ctx.* -->
+<script src="/shared/chart-theme.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Company Profile</h1>
+        <p>Dhaka Stock Exchange — Security Detail</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a id="fund-nav-btn" href="#" class="fund-nav-btn" style="text-decoration:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18M9 3v18"/>
+        </svg>
+        Fundamentals
+      </a>
+      <a id="timeline-nav-btn" href="#" class="fund-nav-btn" style="text-decoration:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+        </svg>
+        Timeline
+      </a>
+      <a id="bank-details-btn" href="#" class="fund-nav-btn bank-details-btn" style="text-decoration:none;display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="13" rx="2"/>
+          <path d="M3 9h18M7 16v2M12 16v2M17 16v2"/>
+        </svg>
+        Bank Details
+      </a>
+      <button class="fund-nav-btn" id="stock-search-toggle-btn" title="Toggle stock search sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Search
+      </button>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     BACK BUTTON
+     ============================================================ -->
+<div class="profile-header">
+  <a href="/" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    Back to Market
+  </a>
+</div>
+
+<!-- ============================================================
+     LOADING STATE
+     ============================================================ -->
+<div id="profile-loading" class="profile-loading">
+  <div class="profile-spinner"></div>
+  <p>Loading company data…</p>
+</div>
+
+<!-- ============================================================
+     PROFILE BODY  (hidden until data loads)
+     ============================================================ -->
+<div id="profile-body" style="display:none">
+
+  <!-- HERO -->
+  <div class="profile-header">
+    <div class="company-hero">
+      <div class="company-identity">
+        <div class="company-badge" id="p-code">—</div>
+        <div class="company-fullname" id="p-name">—</div>
+        <div class="company-code-line">
+          Trading Code: <span id="p-code2">—</span> · Dhaka Stock Exchange · Category: <span id="p-category" style="font-weight:700"></span>
+        </div>
+        <div class="company-code-line">
+          Sector: <span id="p-sector" style="font-weight:600;color:var(--accent)">—</span>
+        </div>
+      </div>
+      <div class="company-price-block">
+        <div class="price-label">Last Traded Price</div>
+        <div class="price-big" id="p-ltp">—</div>
+        <span class="price-change-big" id="p-change">—</span>
+      </div>
+    </div>
+
+    <!-- QUICK STATS ROW — extra at-a-glance figures beyond LTP -->
+    <div class="hero-quick-stats">
+      <div class="hero-stat-chip">
+        <span class="hero-stat-chip-label">YCP</span>
+        <span class="hero-stat-chip-value" id="p-hero-ycp">—</span>
+      </div>
+      <div class="hero-stat-chip">
+        <span class="hero-stat-chip-label">Volume</span>
+        <span class="hero-stat-chip-value" id="p-hero-volume">—</span>
+      </div>
+      <div class="hero-stat-chip">
+        <span class="hero-stat-chip-label">Trades</span>
+        <span class="hero-stat-chip-value" id="p-hero-trade">—</span>
+      </div>
+      <div class="hero-stat-chip">
+        <span class="hero-stat-chip-label">Turnover</span>
+        <span class="hero-stat-chip-value" id="p-hero-value">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       3-COLUMN TERMINAL LAYOUT
+       Left: compact stat tiles.  Middle (widest): chart + key metrics.
+       Right: news / SR / annual reports / DDM side panels.
+       ============================================================ -->
+  <div class="profile-columns">
+
+    <!-- LEFT COLUMN — compact stat tiles -->
+    <div class="profile-col profile-col-left">
+
+      <!-- TODAY'S STATS GRID (High / Low / Close / Volume) -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Today's High</div>
+          <div class="stat-value" id="p-high">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Today's Low</div>
+          <div class="stat-value" id="p-low">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Close Price</div>
+          <div class="stat-value" id="p-close">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Volume</div>
+          <div class="stat-value" id="p-volume">—</div>
+        </div>
+      </div>
+
+      <!-- INTRADAY RANGE BAR -->
+      <div class="range-section">
+        <div class="range-card">
+          <div class="range-title">Intraday Price Range</div>
+          <div class="range-bar-wrap">
+            <div class="range-end" id="p-range-low">—</div>
+            <div class="range-bar">
+              <div class="range-fill" id="p-range-fill"></div>
+              <div class="range-dot"  id="p-range-dot"></div>
+            </div>
+            <div class="range-end right" id="p-range-high">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RETURNS — period-over-period % change, computed from price history -->
+      <div class="returns-section">
+        <div class="returns-card">
+          <div class="returns-title">Returns</div>
+          <div class="returns-grid" id="p-returns-grid">
+            <div class="returns-item"><span class="returns-period">1W</span><span class="returns-bar-track"><span class="returns-bar"></span></span><span class="returns-pct">—</span></div>
+            <div class="returns-item"><span class="returns-period">1M</span><span class="returns-bar-track"><span class="returns-bar"></span></span><span class="returns-pct">—</span></div>
+            <div class="returns-item"><span class="returns-period">3M</span><span class="returns-bar-track"><span class="returns-bar"></span></span><span class="returns-pct">—</span></div>
+            <div class="returns-item"><span class="returns-period">6M</span><span class="returns-bar-track"><span class="returns-bar"></span></span><span class="returns-pct">—</span></div>
+            <div class="returns-item"><span class="returns-period">1Y</span><span class="returns-bar-track"><span class="returns-bar"></span></span><span class="returns-pct">—</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VOLATILITY — annualized stdev of daily returns, computed from price history -->
+      <div class="volatility-section">
+        <div class="volatility-card volatility-card--clickable" onclick="openVolatilityModal(window.currentStockCode)" title="Click for volatility details">
+          <div class="volatility-title-row">
+            <div class="returns-title" style="margin-bottom:0">Volatility</div>
+            <span class="volatility-badge" id="p-volatility-badge" style="display:none">—</span>
+          </div>
+          <div class="returns-grid" id="p-volatility-grid">
+            <div class="returns-item"><span class="returns-period">1M</span><span class="returns-bar-track"><span class="returns-bar volatility-bar"></span></span><span class="returns-pct" id="vol-1m">—</span></div>
+            <div class="returns-item"><span class="returns-period">3M</span><span class="returns-bar-track"><span class="returns-bar volatility-bar"></span></span><span class="returns-pct" id="vol-3m">—</span></div>
+            <div class="returns-item"><span class="returns-period">6M</span><span class="returns-bar-track"><span class="returns-bar volatility-bar"></span></span><span class="returns-pct" id="vol-6m">—</span></div>
+            <div class="returns-item"><span class="returns-period">1Y</span><span class="returns-bar-track"><span class="returns-bar volatility-bar"></span></span><span class="returns-pct" id="vol-1y">—</span></div>
+          </div>
+          <div class="volatility-caption">Annualized standard deviation of daily returns — higher means larger, less predictable price swings.</div>
+        </div>
+      </div>
+
+      <!-- SECTOR PEER COMPARISON — 3M return vs. 3M annualized volatility against same-sector peers -->
+      <div class="sector-peer-section" id="sectorPeerSection" style="display:none">
+        <div class="sector-peer-card">
+          <div class="returns-title" style="margin-bottom:2px" id="sector-peer-title">Sector Peer Comparison</div>
+          <div class="sector-peer-sub" id="sector-peer-sub">Loading peers…</div>
+          <div class="sector-peer-verdict" id="sector-peer-verdict"></div>
+          <div class="sector-peer-stats" id="sector-peer-stats"></div>
+          <div id="sector-peer-chartwrap">
+            <div class="sector-peer-chart"><canvas id="sector-peer-canvas"></canvas></div>
+            <div class="sector-peer-caption">
+              Every dot is one stock in this sector: how far it moved over the last 3 months (up/down) against how bumpy the ride was (left/right).
+              <strong>Price swing</strong> is annualized volatility — a high number just means bigger day-to-day moves, not a worse stock.
+              The dashed lines are the peer medians, so the four corners tell you which half of the pack a stock falls in on each measure. Tap a dot for its name.
+            </div>
+          </div>
+          <button type="button" class="sector-peer-toggle" id="sector-peer-toggle" style="display:none">Show all stocks ▾</button>
+          <div class="sector-peer-table-wrap" id="sector-peer-table" hidden></div>
+          <div class="sector-peer-caption sector-peer-disclaimer">A relative snapshot of recent price behaviour only — not a valuation, and not investment advice.</div>
+        </div>
+      </div>
+
+      <!-- DETAIL TABLE (compact summary — YCP / change etc.) -->
+      <div class="detail-section">
+        <div class="detail-card">
+          <table class="detail-table">
+            <tr><td>Trading Code</td>                  <td id="d-code">—</td></tr>
+            <tr><td>Category</td>                      <td id="d-category">—</td></tr>
+            <tr><td>Sector</td>                        <td id="d-sector">—</td></tr>
+            <tr><td>Company Name</td>                  <td id="d-name">—</td></tr>
+            <tr><td>Last Traded Price (LTP)</td>       <td id="d-ltp">—</td></tr>
+            <tr><td>Yesterday's Close Price (YCP)</td> <td id="d-ycp">—</td></tr>
+            <tr><td>Change</td>                        <td id="d-change">—</td></tr>
+            <tr><td>Today's High</td>                  <td id="d-high">—</td></tr>
+            <tr><td>Today's Low</td>                   <td id="d-low">—</td></tr>
+            <tr><td>Close Price</td>                   <td id="d-close">—</td></tr>
+            <tr><td>Volume</td>                         <td id="d-volume">—</td></tr>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /.profile-col-left -->
+
+    <div class="col-resize-handle" data-target="left" title="Drag to resize"></div>
+
+    <!-- MIDDLE COLUMN (widest) — chart + key metrics -->
+    <div class="profile-col profile-col-middle">
+
+  <!-- CANDLESTICK CHART — full embed -->
+  <div id="candlestick-section" style="max-width:none;padding:0;margin:0 0 20px 0;">
+    <div class="main-container">
+
+      <!-- TRADING VIEW TOOLBAR -->
+      <div class="tv-toolbar">
+        <div class="tv-symbol">
+          <span class="tv-ticker" id="cs-embed-ticker">
+            <script>document.write((new URLSearchParams(location.search).get('code')||'—').toUpperCase())</script>
+          </span>
+        </div>
+        <div class="tv-divider"></div>
+        <div class="tv-group">
+          <button class="tv-btn" title="Pan chart" aria-label="Pan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 16V4m0 0L3 8m4-4l4 4M7 16l4-4m6 4v-8m0 8l-4-4m4 4l4-4m-8-8h8m0 0l4 4m-4-4l-4 4"/>
+            </svg>
+          </button>
+          <button class="tv-btn" title="Draw on chart" aria-label="Draw">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="tv-btn" title="Crosshair" aria-label="Crosshair">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="1"/><path d="M12 8v8M8 12h8"/><circle cx="12" cy="12" r="9"/>
+            </svg>
+          </button>
+        </div>
+        <div class="tv-divider"></div>
+        <div class="tv-group tv-timeframe-dropdown" id="tvTimeframeDropdown">
+          <button class="tv-tf-trigger" id="tvTfTrigger" type="button" onclick="toggleTimeframeMenu()" title="Time interval">
+            <span id="tvTfTriggerLabel">1D</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="tv-tf-menu" id="tvTfMenu" style="display:none;">
+            <button class="tv-tf-option tv-timeframe active" onclick="changeTimeframe('daily')" title="Daily">
+              <span class="tv-tf-option-code">1D</span><span class="tv-tf-option-name">Day</span>
+            </button>
+            <button class="tv-tf-option tv-timeframe" onclick="changeTimeframe('weekly')" title="Weekly">
+              <span class="tv-tf-option-code">1W</span><span class="tv-tf-option-name">Week</span>
+            </button>
+            <button class="tv-tf-option tv-timeframe" onclick="changeTimeframe('monthly')" title="Monthly">
+              <span class="tv-tf-option-code">1M</span><span class="tv-tf-option-name">Month</span>
+            </button>
+          </div>
+        </div>
+        <div class="tv-divider"></div>
+        <div class="tv-group tv-chart-controls">
+          <button class="tv-btn tv-chart-type" id="chartTypeBtn" onclick="toggleChartTypeMenu()" title="Select Chart Type" aria-label="Chart Type">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 3v4M9 17v4M15 3v4M15 17v4"/>
+              <rect x="6" y="7" width="6" height="10" rx="1"/>
+              <rect x="12" y="5" width="6" height="14" rx="1"/>
+            </svg>
+          </button>
+          <button class="tv-btn" onclick="openIndicatorsModal()" title="Indicators" aria-label="Indicators">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <text x="2" y="20" font-size="18" font-weight="bold" font-family="Arial">ƒx</text>
+            </svg>
+          </button>
+          <button class="tv-btn" id="replayBtn" onclick="enterReplayMode()" title="Chart Replay" aria-label="Replay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5,4 15,12 5,20" fill="none"/>
+              <line x1="19" y1="4" x2="19" y2="20" stroke-width="2.5"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Chart Type Dropdown -->
+        <div class="chart-type-menu" id="chartTypeMenu" style="display:none;">
+          <button class="chart-type-option active" onclick="setChartType('candlestick')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+              <path d="M9 3v4M9 17v4M15 3v4M15 17v4"/>
+              <rect x="6" y="7" width="6" height="10" rx="1"/><rect x="12" y="5" width="6" height="14" rx="1"/>
+            </svg>Candles
+          </button>
+          <button class="chart-type-option" onclick="setChartType('hollow')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+              <rect x="6" y="7" width="6" height="10" rx="1"/><rect x="12" y="5" width="6" height="14" rx="1"/>
+            </svg>Hollow candles
+          </button>
+          <button class="chart-type-option" onclick="setChartType('bars')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <line x1="8" y1="5" x2="8" y2="19"/><line x1="5" y1="8" x2="8" y2="8"/>
+              <line x1="8" y1="16" x2="11" y2="16"/><line x1="16" y1="5" x2="16" y2="19"/>
+              <line x1="13" y1="9" x2="16" y2="9"/><line x1="16" y1="14" x2="19" y2="14"/>
+            </svg>Bars
+          </button>
+          <button class="chart-type-option" onclick="setChartType('renko')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+              <rect x="3" y="3" width="6" height="6" rx="0.5"/><rect x="10" y="8" width="6" height="6" rx="0.5"/>
+              <rect x="17" y="13" width="6" height="6" rx="0.5"/>
+            </svg>Renko
+          </button>
+          <button class="chart-type-option" onclick="setChartType('heikinashi')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+              <path d="M9 3v4M9 17v4M15 3v4M15 17v4"/>
+              <rect x="6" y="7" width="6" height="10" rx="1"/><rect x="12" y="5" width="6" height="14" rx="1"/>
+            </svg>Heikin Ashi
+          </button>
+          <div class="chart-type-divider"></div>
+          <button class="chart-type-option" onclick="setChartType('line')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <polyline points="3 18 9 12 15 18 21 12"/>
+            </svg>Line
+          </button>
+          <button class="chart-type-option" onclick="setChartType('area')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+              <polygon points="3 18 9 12 15 18 21 12 21 18 3 18"/>
+            </svg>Area
+          </button>
+        </div>
+
+        <div class="tv-divider"></div>
+        <div class="tv-group tv-right">
+          <button class="tv-btn" title="Alert" aria-label="Alert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </button>
+          <button class="tv-btn" title="Zoom in" onclick="zoomIn()" aria-label="Zoom In">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </button>
+          <button class="tv-btn" title="Zoom out" onclick="zoomOut()" aria-label="Zoom Out">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </button>
+          <button class="tv-btn" title="Reset view" onclick="resetView()" aria-label="Reset">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+            </svg>
+          </button>
+          <button class="tv-btn" title="Download" onclick="downloadChart()" aria-label="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </button>
+          <button class="tv-btn" id="fullscreenBtn" title="Fullscreen" onclick="toggleFullscreen()" aria-label="Fullscreen">
+            <svg class="fs-icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+            <svg class="fs-icon-compress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 0 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/>
+            </svg>
+          </button>
+        </div>
+      </div><!-- /.tv-toolbar -->
+
+      <!-- MOVING AVERAGE TOGGLES -->
+      <div class="ma-controls">
+        <div class="ma-label">MAs:</div>
+        <button class="ma-btn active" style="--ma-color:#FFD700;" onclick="toggleMA(20, this)" title="Simple Moving Average 20">MA20</button>
+        <button class="ma-btn" style="--ma-color:#2E7FF6;" onclick="toggleMA(50, this)" title="Simple Moving Average 50">MA50</button>
+        <button class="ma-btn" style="--ma-color:#FF6B6B;" onclick="toggleMA(200, this)" title="Simple Moving Average 200">MA200</button>
+        <button class="ma-btn" style="--ma-color:#C77DFF;" onclick="toggleMA('ema200', this)" title="Exponential Moving Average 200">EMA200</button>
+      </div>
+
+      <!-- STRATEGY CONTROLS -->
+      <div class="strategy-controls">
+        <div class="strategy-controls-label">Strategy:</div>
+        <div id="strategyButtons" class="strategy-buttons"></div>
+      </div>
+
+      <!-- CHART CONTAINER -->
+      <div class="chart-container">
+        <div class="chart-loading" id="loadingState">
+          <div class="spinner"></div>
+          <span>Loading candlestick data…</span>
+        </div>
+        <canvas id="candleCanvas" style="display:none;"></canvas>
+        <div class="chart-legend" id="chartLegend" style="display:none;"></div>
+
+        <!-- PANE CONTROLS BAR — shown on hover over sub-panes -->
+        <div id="paneControlsBar" class="pane-controls-bar"
+             onmouseenter="_cancelPaneCtrlHide()" onmouseleave="_schedulePaneCtrlHide()">
+          <button class="pcb-btn pcb-up"       onclick="paneCtrlAction('up')"       title="Move pane up">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+          </button>
+          <button class="pcb-btn pcb-down"     onclick="paneCtrlAction('down')"     title="Move pane down">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="pcb-sep"></div>
+          <button class="pcb-btn pcb-collapse" onclick="paneCtrlAction('collapse')" title="Collapse pane">
+            <svg class="pcb-icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 8 12 16 20 8"/></svg>
+            <svg class="pcb-icon-expand"   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><polyline points="4 16 12 8 20 16"/></svg>
+          </button>
+          <button class="pcb-btn pcb-maximize" onclick="paneCtrlAction('maximize')" title="Maximize pane">
+            <svg class="pcb-icon-max"     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            <svg class="pcb-icon-restore" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 0 2-2h3M3 16h3a2 2 0 0 0 2 2v3"/></svg>
+          </button>
+          <div class="pcb-sep"></div>
+          <button class="pcb-btn pcb-delete"   onclick="paneCtrlAction('delete')"   title="Remove indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STRATEGY RESULTS TABLE -->
+      <div id="strategyTableWrap" class="strategy-table-wrap" style="display:none;"></div>
+
+      <!-- INFO CARDS -->
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-label">Current Price</div>
+          <div class="info-value" id="currentPrice">—</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">All-Time High</div>
+          <div class="info-value" id="highPrice">—</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">All-Time Low</div>
+          <div class="info-value" id="lowPrice">—</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">Period Change</div>
+          <div class="info-value" id="periodChange">—</div>
+        </div>
+      </div>
+
+    </div><!-- /.main-container -->
+  </div><!-- /#candlestick-section -->
+
+  <!-- ============================================================
+       COMPREHENSIVE DETAIL STATS GRID
+       Populated dynamically by company.js fetchAndRenderDetails()
+       5-column dense grid with section headers + quarterly rows.
+       ============================================================ -->
+  <div class="cds-section">
+    <div class="cds-header">
+      <div class="cds-header-title">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:5px">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+        Key Metrics &amp; Fundamentals
+      </div>
+      <span class="cds-header-badge">Live + Scraped</span>
+    </div>
+    <!-- Initial 10 skeleton cards fill the 5-col grid (2 rows) while JS loads -->
+    <div class="cds-grid" id="company-detail-stats">
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+      <div class="cds-card cds-card--loading"><div class="cds-skeleton cds-skeleton--label"></div><div class="cds-skeleton cds-skeleton--value"></div></div>
+    </div>
+  </div>
+
+  <!-- DSE EXTERNAL LINK -->
+  <div class="dse-link-section">
+    <div class="dse-link-card">
+      <div class="dse-link-text">
+        View full details, financials, and announcements on <strong>dsebd.org</strong>
+      </div>
+      <a id="p-dse-link" href="#" target="_blank" class="dse-ext-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        View on DSE
+      </a>
+    </div>
+  </div>
+
+    </div><!-- /.profile-col-middle -->
+
+    <div class="col-resize-handle" data-target="right" title="Drag to resize"></div>
+
+    <!-- RIGHT COLUMN — news / SR levels / annual reports / DDM -->
+    <div class="profile-col profile-col-right">
+
+  <!-- ============================================================
+       NEWS & ARTICLES
+       ============================================================ -->
+  <div class="news-section">
+    <div class="news-card">
+
+      <div class="news-header">
+        <div class="news-header-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+            <path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/>
+          </svg>
+          News &amp; Articles
+          <span class="news-count-badge" id="news-count">0</span>
+        </div>
+        <select class="news-sort-select" id="news-sort-select" onchange="setNewsSortMode(this.value)" title="Sort by date">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+        </select>
+      </div>
+
+      <div class="news-input-area">
+        <input
+          type="url"
+          id="news-url-input"
+          class="news-url-input"
+          placeholder="Paste a news article URL…"
+          autocomplete="off"
+        />
+        <button class="news-add-btn" id="news-add-btn" onclick="addNewsLink()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5"  y1="12" x2="19" y2="12"/>
+          </svg>
+          Add Link
+        </button>
+      </div>
+
+      <div class="news-status" id="news-status"></div>
+
+      <ul class="news-list" id="news-list">
+        <li class="news-empty" id="news-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+          </svg>
+          No news links yet. Paste a URL above to get started.
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- SUPPORT & RESISTANCE LEVELS -->
+  <div id="sr-levels-section"></div>
+
+  <!-- ANNUAL REPORTS -->
+  <div class="ar-section" id="ar-section"></div>
+
+  <!-- QUARTERLY BANK FINANCIALS (Bank sector only) -->
+  <div id="bank-fin-section"></div>
+
+  <!-- INTRINSIC VALUE — DDM -->
+  <div id="ddm-section"></div>
+
+    </div><!-- /.profile-col-right -->
+
+    <div class="col-resize-handle" data-target="search" title="Drag to resize"></div>
+
+    <!-- FAR RIGHT — search / browse other stocks -->
+    <div class="profile-col profile-col-search">
+      <div class="stock-search-card">
+        <div class="stock-search-hd">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Search Stocks
+        </div>
+        <input
+          type="text"
+          id="stock-search-input"
+          class="stock-search-input"
+          placeholder="Ticker or company name…"
+          autocomplete="off"
+        />
+        <div class="stock-search-results" id="stock-search-results">
+          <div class="stock-search-hint">Type to search across all listed stocks.</div>
+        </div>
+      </div>
+    </div><!-- /.profile-col-search -->
+
+  </div><!-- /.profile-columns -->
+
+  <!-- FINANCIALS SECTION -->
+  <div id="financials-section"></div>
+
+</div><!-- end #profile-body -->
+
+<!-- REPLAY BAR (fixed bottom — must be at body level) -->
+<div class="replay-bar" id="replayBar" style="display:none;">
+  <div class="replay-bar-inner">
+    <div class="replay-bar-left">
+      <button class="replay-btn replay-select-btn" id="replaySelectBtn"
+              onclick="startSelectingBar()" title="Click a bar on the chart to set the replay start">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h8M7 8l-4 4 4 4M21 5v14"/>
+        </svg>
+        <span>Select Bar</span>
+      </button>
+      <div class="replay-progress-container">
+        <div class="replay-progress-bar">
+          <div class="replay-progress-fill" id="replayProgressFill"></div>
+          <div class="replay-progress-thumb" id="replayProgressThumb"></div>
+        </div>
+        <span class="replay-progress-label" id="replayProgressLabel">—</span>
+      </div>
+    </div>
+    <div class="replay-bar-center">
+      <button class="replay-btn replay-play-btn" id="replayPlayBtn"
+              onclick="toggleReplayPlay()" title="Play / Pause (Space)" disabled>
+        <svg viewBox="0 0 24 24" fill="currentColor" class="replay-icon-play">
+          <polygon points="5,4 19,12 5,20"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" class="replay-icon-pause" style="display:none;">
+          <rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/>
+        </svg>
+      </button>
+      <button class="replay-btn replay-step-btn" id="replayStepBtn"
+              onclick="stepReplay()" title="Step forward (→)" disabled>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="4,4 15,12 4,20"/>
+          <line x1="19" y1="4" x2="19" y2="20" stroke="currentColor" stroke-width="2.5"/>
+        </svg>
+      </button>
+      <div class="replay-speed-control">
+        <button class="replay-btn replay-speed-btn" id="replaySpeedBtn"
+                onclick="toggleReplaySpeedMenu()" title="Playback speed">
+          <span id="replaySpeedLabel">1x</span>
+        </button>
+      </div>
+      <div class="replay-status-container">
+        <span class="replay-status" id="replayStatus">Click chart to select start bar</span>
+      </div>
+    </div>
+    <div class="replay-bar-right">
+      <button class="replay-btn replay-exit-btn" onclick="exitReplayMode()" title="Exit replay mode (Esc)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+        <span>Exit</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- REPLAY SPEED DROPDOWN -->
+<div class="replay-speed-menu" id="replaySpeedMenu" style="display:none;">
+  <div class="replay-speed-header">REPLAY SPEED</div>
+  <button class="replay-speed-option" data-speed="10"  onclick="setReplaySpeed(10)">  <span class="rsm-mult">10x</span>  <span class="rsm-desc">10 upd per 1 sec</span>  </button>
+  <button class="replay-speed-option" data-speed="7"   onclick="setReplaySpeed(7)">   <span class="rsm-mult">7x</span>   <span class="rsm-desc">7 upd per 1 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="5"   onclick="setReplaySpeed(5)">   <span class="rsm-mult">5x</span>   <span class="rsm-desc">5 upd per 1 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="3"   onclick="setReplaySpeed(3)">   <span class="rsm-mult">3x</span>   <span class="rsm-desc">3 upd per 1 sec</span>   </button>
+  <button class="replay-speed-option active" data-speed="1" onclick="setReplaySpeed(1)"><span class="rsm-mult">1x</span><span class="rsm-desc">1 upd per 1 sec</span></button>
+  <button class="replay-speed-option" data-speed="0.5" onclick="setReplaySpeed(0.5)"> <span class="rsm-mult">0.5x</span> <span class="rsm-desc">1 upd per 2 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="0.3" onclick="setReplaySpeed(0.3)"> <span class="rsm-mult">0.3x</span> <span class="rsm-desc">1 upd per 3 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="0.2" onclick="setReplaySpeed(0.2)"> <span class="rsm-mult">0.2x</span> <span class="rsm-desc">1 upd per 5 sec</span>   </button>
+  <button class="replay-speed-option" data-speed="0.1" onclick="setReplaySpeed(0.1)"> <span class="rsm-mult">0.1x</span> <span class="rsm-desc">1 upd per 10 sec</span>  </button>
+</div>
+
+<!-- INDICATORS MODAL -->
+<div id="indicatorsModal" class="modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeIndicatorsModal()"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Indicators</h2>
+      <button class="modal-close" onclick="closeIndicatorsModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-search">
+      <input type="text" id="indicatorSearch" placeholder="Search indicators..." onkeyup="filterIndicators()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </div>
+    <div class="modal-body">
+      <div class="indicator-list" id="indicatorList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>Data sourced from <strong>dsebd.org</strong> · Prices in BDT (Taka) · For informational purposes only</p>
+</footer>
+
+<!-- SCRIPTS -->
+<!-- 1. Full candlestick chart system -->
+<script src="../candlestick_chart/candlestick-data.js"></script>
+<script src="../candlestick_chart/indicators/ma.js"></script>
+<script src="../candlestick_chart/indicators/bollinger-bands.js"></script>
+<script src="../candlestick_chart/indicators/ichimoku.js"></script>
+<script src="../candlestick_chart/indicators/macd.js"></script>
+<script src="../candlestick_chart/indicators/rsi.js"></script>
+<script src="../candlestick_chart/indicators/supertrend.js"></script>
+<script src="../candlestick_chart/indicators/hilega-milega.js"></script>
+<script src="../candlestick_chart/strategies/strategy-engine.js"></script>
+<script src="../candlestick_chart/strategies/supertrend-strategy.js"></script>
+<script src="../candlestick_chart/candlestick-draw.js"></script>
+<script src="../candlestick_chart/candlestick-legend.js"></script>
+<script src="../candlestick_chart/candlestick-ui.js"></script>
+
+<!-- 2. Company page modules -->
+<script type="module" src="company.js"></script>
+<script src="news.js"></script>
+<script src="../notifications.js" defer></script>
+<script src="sr-levels.js" defer></script>
+<script src="stock-sidebar-search.js" defer></script>
+<script src="column-resize.js" defer></script>
+<script src="financials.js" defer></script>
+<script src="financials-chart.js" defer></script>
+<script src="ddm.js" defer></script>
+<script src="annual-reports.js" defer></script>
+<script src="bank-financials.js" defer></script>
+
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

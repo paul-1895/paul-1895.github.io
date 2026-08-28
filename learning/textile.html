@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Textile Sector — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Textile Sector</h1>
+        <p>The biggest sector on the exchange by count — and the one where what's listed differs most from what the country exports</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">The sector</a>
+    <a href="#gap">The listing gap</a>
+    <a href="#chain">Where the money is made</a>
+    <a href="#numbers">The numbers</a>
+    <a href="#ranking">Against other sectors</a>
+    <a href="#drivers">What moves it</a>
+    <a href="#honest">Reading it honestly</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">The sector</h2>
+      <p class="cd-lead">
+        Textile is the largest sector on the DSE by number of listed companies. It is also the
+        one most likely to be misread, because the industry it is named after — ready-made
+        garments — is the backbone of Bangladesh's export economy, and the connection between
+        that national story and these particular shares is much weaker than it first appears.
+      </p>
+      <p class="cd-lead">
+        Ready-made garments dominate Bangladesh's merchandise exports and employ millions of
+        people, overwhelmingly women. That much is uncontroversial and well documented. What
+        follows from it for an investor is not, and the next section is the single most useful
+        thing on this page.
+      </p>
+      <div class="cd-callout">
+        <b>What this page is.</b> Real measurements of how these shares have traded, computed
+        from this app's own daily price archive, plus a description of the industry behind them.
+        It contains no earnings, order-book or capacity data, because none of that exists in this
+        repository.
+      </div>
+    </section>
+
+    <!-- ─── The listing gap ─── -->
+    <section id="gap" class="cd-sec">
+      <h2 class="cd-h2">The listing gap</h2>
+      <p class="cd-lead">
+        Most of Bangladesh's large garment exporters are privately held. They have not needed
+        public equity — the industry has historically been financed by bank credit and retained
+        earnings, and family ownership is the norm. The result is that the DSE's Textile sector is
+        <b>not</b> a way to own the country's export champions.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>What people assume</th><th>What is actually listed</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Large export-oriented garment manufacturers selling to global brands.</td>
+              <td class="cd-t-why">A minority of the sector. Some genuine exporters are listed,
+                  but they are not the household names of the industry.</td>
+            </tr>
+            <tr>
+              <td>Direct exposure to national garment export growth.</td>
+              <td class="cd-t-why">Mostly <b>backward-linkage</b> businesses — spinning mills,
+                  weaving, dyeing and finishing — which sell yarn and fabric <i>to</i> the
+                  exporters rather than exporting themselves.</td>
+            </tr>
+            <tr>
+              <td>Companies whose fortunes track apparel demand in the US and EU.</td>
+              <td class="cd-t-why">Companies whose margins track cotton and yarn prices, energy
+                  supply, and how promptly their domestic customers pay.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout cd-warn" style="margin-top:16px">
+        <b>The practical consequence.</b> "Exports are strong, so buy textile stocks" does not
+        follow. A spinning mill can be squeezed by exactly the conditions that make its
+        customers' exports competitive — cheap imported fabric, for instance, is good for a
+        garment maker and bad for a domestic mill. The listed sector and the national industry
+        are related but not the same trade.
+      </div>
+    </section>
+
+    <!-- ─── Chain ─── -->
+    <section id="chain" class="cd-sec">
+      <h2 class="cd-h2">Where the money is made along the chain</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Stage</th><th>What it does</th><th>Margin character</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Spinning</td>
+              <td>Turns raw cotton into yarn. Capital-intensive, energy-hungry, continuous
+                  process.</td>
+              <td class="cd-t-why">A spread business: yarn price minus cotton price minus energy.
+                  Both ends move independently, so margins can invert quickly. Heavy fixed costs
+                  make it painful to run below capacity.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Weaving / knitting</td>
+              <td>Turns yarn into fabric.</td>
+              <td class="cd-t-why">Competes directly with imported fabric, so pricing power
+                  depends partly on trade policy and partly on lead times.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Dyeing &amp; finishing</td>
+              <td>Colours and treats fabric to a buyer's specification.</td>
+              <td class="cd-t-why">The most energy- and water-intensive stage, and the most
+                  exposed to environmental compliance costs and gas supply.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Garment manufacture</td>
+              <td>Cuts and sews fabric into finished apparel for export.</td>
+              <td class="cd-t-why">Labour-intensive rather than capital-intensive. Margins are
+                  thin and set by buyers, but the business scales without the fixed-cost trap of
+                  a mill.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout" style="margin-top:16px">
+        <b>Energy is the recurring constraint.</b> Spinning, weaving and dyeing all need reliable
+        gas and electricity, and interruptions or tariff increases hit these businesses directly
+        through both output and unit cost. It is the one input that shows up across nearly every
+        stage of the chain at once.
+      </div>
+    </section>
+
+    <!-- ─── Numbers ─── -->
+    <section id="numbers" class="cd-sec">
+      <h2 class="cd-h2">The numbers</h2>
+      <p class="cd-lead">
+        Every listed textile company in this app's archive, with median returns over one, three
+        and five years, annualised volatility, typical daily turnover, exchange category and the
+        most recent declared cash dividend. Read the category column carefully on this page in
+        particular.
+      </p>
+      <div class="cd-callout" id="sec-generated" style="margin-bottom:22px">Loading…</div>
+      <div id="sec-data">
+        <div class="cd-callout">Loading sector figures…</div>
+      </div>
+    </section>
+
+    <!-- ─── Ranking ─── -->
+    <section id="ranking" class="cd-sec">
+      <h2 class="cd-h2">Against every other sector</h2>
+      <p class="cd-lead">
+        The same measurements for every operating sector, ranked by one-year median return, with
+        this one highlighted. Note both where Textile sits and what its turnover column says
+        relative to sectors of similar size — the two together say more than either alone.
+      </p>
+      <div id="sec-ranking">
+        <div class="cd-callout">Loading the ranking…</div>
+      </div>
+    </section>
+
+    <!-- ─── Drivers ─── -->
+    <section id="drivers" class="cd-sec">
+      <h2 class="cd-h2">What moves it</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Driver</th><th>Mechanism</th><th>Visible in this app?</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Cotton and yarn prices</td>
+              <td>The input and output of a spinning mill. The <i>gap</i> between them, not
+                  either level, is what determines the margin.</td>
+              <td class="cd-t-why"><b>No.</b> No commodity prices are stored here.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Energy supply and tariffs</td>
+              <td>Gas and electricity availability set how much of installed capacity can
+                  actually run; tariffs set what it costs.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Taka exchange rate</td>
+              <td>Cuts both ways: helps exporters' taka revenue, raises the cost of imported
+                  cotton, machinery and dyes.</td>
+              <td class="cd-t-why"><b>No.</b> Net effect differs by company and cannot be
+                  inferred from prices.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Buyer demand in the US and EU</td>
+              <td>Order volumes and prices from global apparel brands flow down the chain with a
+                  lag.</td>
+              <td class="cd-t-why"><b>No.</b></td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Working capital and bank credit</td>
+              <td>These are receivables-heavy businesses. Tight credit or slow-paying customers
+                  can stress a mill that is otherwise operating normally.</td>
+              <td class="cd-t-why"><b>No.</b> Balance sheets are not in the archive.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Speculative activity in low-priced shares</td>
+              <td>Many of these shares trade at low absolute prices on small floats, which makes
+                  them easy to move regardless of operating performance.</td>
+              <td class="cd-t-why"><b>Partly.</b> The volatility and turnover columns are the
+                  available proxy.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>Check the Z count before anything else on this page</h4>
+          <p>Z category means the company failed to hold an AGM or declare a dividend, as
+          classified by the exchange. A large Z share within a sector is a statement about how
+          many of its companies are not currently rewarding shareholders at all — and it is worth
+          comparing the Z and non-Z performance columns in the constituent table before drawing
+          any conclusion about the sector as a whole.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Liquidity is the constraint the return columns don't show</h4>
+          <p>A median daily turnover figure well below the market's means the typical stock here
+          trades thinly. A return you can see in a table is not the same as a return you could
+          have captured: entering or exiting size in a thin name moves its price against you, and
+          nothing in these columns accounts for that.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>A big one-year number after a weak five-year number is a specific shape</h4>
+          <p>When a sector's one-year median is strongly positive while its three- and five-year
+          medians remain deeply negative, what is being described is a bounce inside a longer
+          decline, not a recovery to previous levels. Both facts are in the table; reading only
+          the first column inverts the picture.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>"Textile" is one label over several different businesses</h4>
+          <p>The sector classification comes from the exchange's own list. It puts spinners,
+          weavers, dyers and garment makers in one bucket even though a cotton price move helps
+          some and hurts others. A sector median across businesses that respond oppositely to the
+          same input is a weak summary by construction.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Only survivors are counted</h4>
+          <p>The archive holds tickers that exist today. Companies that were delisted are absent
+          entirely, which flatters every long-horizon median by an amount this app cannot
+          quantify. In a sector with this many distressed companies, that bias is likely to be
+          larger than elsewhere.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Nothing here is fundamental analysis</h4>
+          <p>There is no capacity utilisation, no order book, no cotton hedging position and no
+          debt figure anywhere in these tables, because none of it is in the price archive. What
+          is measured is how the shares traded. Anyone deciding on these companies needs the
+          accounts, and this page is not a substitute for them.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        Related reading: <a href="insurance.html">Insurance</a>,
+        <a href="pharma.html">Pharmaceuticals</a>, <a href="telecom.html">Telecommunication</a> and
+        <a href="paper.html">Paper &amp; Printing</a>. For individual companies, the
+        fundamentals and
+        <a href="../company_profile/company.html">company profile</a> pages carry what this
+        archive does not.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  window.SECTOR_GUIDE = { sectors: ['Textile'] };
+</script>
+<script src="sector-guide.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

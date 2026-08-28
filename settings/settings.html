@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Settings — DSE</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/style.css" />
+<link rel="stylesheet" href="settings.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Settings</h1>
+        <p>Preferences &amp; configuration</p>
+      </div>
+      <nav class="set-crumbs">
+        <a href="/index.html">Home</a>
+        <span class="sep">/</span>
+        <b>Settings</b>
+      </nav>
+    </div>
+
+    <div class="header-meta set-head-actions">
+      <span class="set-saved" id="saved-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span id="saved-text">Auto-saved</span></span>
+      <a class="btn" href="/index.html" target="_blank" rel="noopener" title="See your settings on the Live Market page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Preview
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="settings-shell">
+
+  <!-- ── Left rail ──────────────────────────────────────────────── -->
+  <aside class="set-rail">
+    <nav class="set-rail-nav" id="rail-nav">
+        <a class="set-rail-item" href="#interface" data-section="interface">
+          <span class="set-rail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></span>
+          <span class="set-rail-text"><b>Preferences</b><span>Typography &amp; interface</span></span>
+        </a>
+        <a class="set-rail-item" href="#themes" data-section="themes">
+          <span class="set-rail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>
+          <span class="set-rail-text"><b>Themes</b><span>Colour, accent &amp; market</span></span>
+        </a>
+        <a class="set-rail-item" href="#layout" data-section="layout">
+          <span class="set-rail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+          <span class="set-rail-text"><b>Layout</b><span>Tables, density &amp; motion</span></span>
+        </a>
+        <a class="set-rail-item" href="#market" data-section="market">
+          <span class="set-rail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg></span>
+          <span class="set-rail-text"><b>Market data</b><span>Refresh, fees &amp; alerts</span></span>
+        </a>
+        <a class="set-rail-item" href="#storage" data-section="storage">
+          <span class="set-rail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></span>
+          <span class="set-rail-text"><b>Stored data</b><span>What this browser keeps</span></span>
+        </a>
+        <a class="set-rail-item" href="#about" data-section="about">
+          <span class="set-rail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
+          <span class="set-rail-text"><b>About</b><span>What is currently applied</span></span>
+        </a>
+    </nav>
+
+    <div class="set-rail-card">
+      <h4>Backup</h4>
+      <p>Export your settings, or restore them from a file.</p>
+      <div class="btn-row">
+        <button class="btn" id="export-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg> Export</button>
+        <button class="btn" id="import-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 8l5-5 5 5"/><path d="M12 3v12"/></svg> Import</button>
+      </div>
+      <input type="file" id="import-file" accept="application/json" hidden />
+      <button class="btn block" id="share-btn" type="button" style="margin-top:8px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Copy share link
+      </button>
+      <p class="share-hint" id="share-hint" hidden></p>
+      <button class="link-btn" id="reset-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> Restore defaults</button>
+    </div>
+  </aside>
+
+  <!-- ── Main ───────────────────────────────────────────────────── -->
+  <div>
+    <div class="set-title">
+      <h2>Preferences</h2>
+      <p>Customise the appearance and behaviour of every page in the project.</p>
+    </div>
+
+    <div class="share-banner" id="share-banner" hidden>
+      <div class="share-banner-text">
+        <b>Someone shared a look with you</b>
+        <span id="share-banner-detail">Apply it, or keep your current settings.</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn" id="share-apply" type="button">Apply</button>
+        <button class="btn" id="share-dismiss" type="button">Dismiss</button>
+      </div>
+    </div>
+
+    <div class="set-columns">
+
+      <!-- Column 1 -->
+      <div class="set-col">
+
+        <section class="card" id="looks">
+          <div class="card-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.09 5.26L20 9.27l-4 3.9.94 5.83L12 16.27l-4.94 2.73L8 13.17l-4-3.9 5.91-1.01L12 3z"/></svg><h3>Looks</h3></div>
+          <div class="row stack">
+            <div class="row-sub">One click sets typography, colour, density and motion together. Start here, then fine-tune below.</div>
+            <div class="looks" id="looks-grid"></div>
+          </div>
+        </section>
+
+        <section class="card" id="interface">
+          <div class="card-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><h3>Interface</h3></div>
+
+          <div class="row">
+            <div class="row-text"><b>Interface theme</b><span>Light, dark, or follow the system</span></div>
+            <div class="row-control"><select class="control" id="theme-select"></select></div>
+          </div>
+
+          <div class="row">
+            <div class="row-text"><b>Interface font</b><span>Headings, labels and body text</span></div>
+            <div class="row-control"><select class="control" id="sans-select"></select></div>
+          </div>
+
+          <div class="row">
+            <div class="row-text"><b>Data &amp; numbers font</b><span>Tickers, prices and tables</span></div>
+            <div class="row-control"><select class="control" id="mono-select"></select></div>
+          </div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Text &amp; typography size</b><span class="row-value" id="scale-value">100%</span></div>
+            <div class="row-sub">Scales every font size in the project</div>
+            <input class="control" type="range" id="scale-range" min="80" max="150" step="5" value="100" />
+            <div class="range-ends"><span>80%</span><span>150%</span></div>
+          </div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Line height</b><span class="row-value" id="lh-value">100%</span></div>
+            <input class="control" type="range" id="lh-range" min="85" max="140" step="5" value="100" />
+            <div class="range-ends"><span>Tight</span><span>Airy</span></div>
+          </div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Letter spacing</b><span class="row-value" id="ls-value">0.00em</span></div>
+            <input class="control" type="range" id="ls-range" min="-30" max="80" step="5" value="0" />
+            <div class="range-ends"><span>-0.03em</span><span>0.08em</span></div>
+          </div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Font weight</b></div>
+            <div class="row-sub">Shifts every weight one step, clamped to 100–900</div>
+            <div class="seg" id="weight-seg">
+              <button type="button" data-weight="-100">Lighter</button>
+              <button type="button" data-weight="0">Default</button>
+              <button type="button" data-weight="100">Bolder</button>
+            </div>
+          </div>
+
+          <div class="hint" id="autosave-note">Settings are saved automatically and apply to every open tab.</div>
+        </section>
+
+        <section class="card" id="themes">
+          <div class="card-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg><h3>Themes</h3></div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Accent colour</b><span class="contrast-badge" id="accent-contrast"></span></div>
+            <div class="row-sub">Used for highlights, buttons and selected states — 884 rules follow this token</div>
+            <div class="swatches" id="accent-swatches"></div>
+          </div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Gain &amp; loss colours</b><span class="contrast-badge" id="market-contrast"></span></div>
+            <div class="row-sub">Applied to every price change, chart and P&amp;L figure</div>
+            <div class="options" id="market-options"></div>
+          </div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Corners</b></div>
+            <div class="seg" id="radius-seg"></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="set-col">
+
+        <section class="card" id="preview">
+          <div class="card-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg><h3>Live Market</h3><span class="live-badge"><i></i>Preview</span></div>
+
+          <div class="prev-title">Dhaka Stock Exchange</div>
+          <div class="prev-meta">LAST UPDATED 10:30 AM · 20 MAY 2026</div>
+          <p class="prev-note">Every control on this page is reflected here — fonts, colours, density and table chrome.</p>
+
+          <table class="prev-table">
+            <thead>
+              <tr><th>Index</th><th class="num">Last</th><th class="num">Change</th><th class="num">Volume</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>DSEX</td>  <td class="num">6,248.41</td><td class="num up">+0.68%</td>  <td class="num">5,438.12M</td></tr>
+              <tr><td>DSES</td>  <td class="num">1,416.30</td><td class="num down">-0.23%</td><td class="num">1,215.26M</td></tr>
+              <tr><td>DS30</td>  <td class="num">2,156.58</td><td class="num up">+0.91%</td>  <td class="num">2,101.90M</td></tr>
+              <tr><td>CDSET</td> <td class="num">1,253.76</td><td class="num down">-0.32%</td><td class="num">840.32M</td></tr>
+            </tbody>
+          </table>
+
+          <div class="prev-bar"><i></i></div>
+          <div class="prev-legend"><span>PORTFOLIO TARGET</span><span>62%</span></div>
+
+          <div class="prev-tabs">
+            <button class="prev-tab active" type="button">Top Gainers</button>
+            <button class="prev-tab" type="button">Top Losers</button>
+            <button class="prev-tab" type="button">Most Active</button>
+          </div>
+
+          <div class="prev-stock">
+            <div><div class="prev-stock-name">Prime 1 Bank Ltd.</div><div class="prev-stock-sub">LAST 23.40</div></div>
+            <div><div class="prev-stock-pct up">+7.63%</div><div class="prev-stock-vol">VOL 12.4M</div></div>
+          </div>
+          <div class="prev-stock">
+            <div><div class="prev-stock-name">Orion Infusion Ltd.</div><div class="prev-stock-sub">LAST 189.60</div></div>
+            <div><div class="prev-stock-pct up">+6.33%</div><div class="prev-stock-vol">VOL 7.8M</div></div>
+          </div>
+          <div class="prev-stock">
+            <div><div class="prev-stock-name">Beximco Ltd.</div><div class="prev-stock-sub">LAST 98.70</div></div>
+            <div><div class="prev-stock-pct down">-2.15%</div><div class="prev-stock-vol">VOL 5.4M</div></div>
+          </div>
+
+          <p class="prev-sample">
+            <b>Pack my box with five dozen liquor jugs.</b><br>
+            <span class="mono">0123456789 ৳ +12.45% -3.07% 1,204,880</span>
+          </p>
+
+          <div class="btn-row" style="margin-top:14px">
+            <a class="btn block" href="/index.html" target="_blank" rel="noopener">View full market</a>
+          </div>
+        </section>
+
+        <section class="card" id="layout">
+          <div class="card-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><h3>Layout &amp; Tables</h3></div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Table density</b></div>
+            <div class="row-sub">Row padding &amp; spacing within tables</div>
+            <div class="seg" id="density-seg"></div>
+          </div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Headers</b></div>
+            <div class="row-sub">Keep table headers visible while scrolling</div>
+            <div class="seg" id="headers-seg"></div>
+          </div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Borders</b></div>
+            <div class="row-sub">Show borders between rows and columns</div>
+            <div class="seg" id="borders-seg"></div>
+          </div>
+
+
+          <div class="row stack">
+            <div class="row-label"><b>Motion</b></div>
+            <div class="row-sub">Reduced stops transitions and animations everywhere</div>
+            <div class="seg" id="motion-seg">
+              <button type="button" data-motion="default">Default</button>
+              <button type="button" data-motion="reduced">Reduced</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="set-col">
+
+        <section class="card" id="market">
+          <div class="card-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg><h3>Market Data</h3></div>
+
+          <div class="row">
+            <div class="row-text"><b>Live price refresh</b><span>Live Market, Trades, Candlestick &amp; Watchlist polling</span></div>
+            <div class="row-control"><select class="control" id="refresh-select"></select></div>
+          </div>
+
+          <div class="row">
+            <div class="row-text"><b>Default commission</b><span>Per side — seeds Grid Buy and the MACD backtest</span></div>
+            <div class="row-control">
+              <span class="num-input"><input type="number" id="commission-input" min="0" max="10" step="0.05" value="0.4" /><span>%</span></span>
+            </div>
+          </div>
+
+          <div class="row stack">
+            <div class="row-label"><b>Price alerts</b></div>
+            <div class="row-sub">Support/resistance hits raised by the notification bell</div>
+            <div class="seg" id="notif-seg">
+              <button type="button" data-notif="on">On</button>
+              <button type="button" data-notif="off">Muted</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="storage">
+          <div class="card-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg><h3>Stored data</h3></div>
+          <div class="row stack">
+            <div class="row-sub">Everything this project keeps in your browser. Clearing a group cannot be undone.</div>
+            <div class="options" id="storage-list"></div>
+          </div>
+        </section>
+
+        <section class="card" id="about">
+          <div class="card-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><h3>About</h3></div>
+          <div class="row stack">
+            <div class="options" id="about-list"></div>
+          </div>
+          <div class="btn-row" style="margin-top:12px">
+            <button class="btn danger block" id="reset-all-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> Reset all settings</button>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script type="module">
+  import { initTheme, toggleTheme } from '/theme/theme.js';
+  initTheme();
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => toggleTheme());
+</script>
+<script src="settings.js"></script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/* ─── TABLE ──────────────────────────────────────────────────────── */
+.table-container {
+  max-width: 1400px;
+  margin: 0 auto 24px;
+  padding: 0 16px;
+  position: relative;
+  min-height: 200px;
+  animation: fadeSlideUp 0.4s 0.2s var(--ease-spring) both;
+}
+
+.state-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  gap: 14px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.state-overlay.hidden { display: none; }
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  box-shadow: none;
+}
+
+.error-icon {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--loss);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--loss);
+  box-shadow: none;
+  animation: none;
+}
+
+.retry-btn {
+  padding: 8px 18px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  box-shadow: none;
+}
+.retry-btn:hover {
+  background: color-mix(in srgb, var(--accent) 85%, black);
+  color: #fff;
+  transform: none;
+  box-shadow: none;
+}
+
+#stocks-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+#stocks-table.hidden { display: none; }
+
+#stocks-table thead tr {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Accent header underline */
+#stocks-table thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+#stocks-table th {
+  padding: 7px 10px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: left;
+  white-space: nowrap;
+  user-select: none;
+  transition: color 0.15s;
+  position: relative;
+}
+#stocks-table th.th-num { text-align: right; }
+#stocks-table th[data-col]:not([data-col="rank"]) { cursor: pointer; }
+#stocks-table th:hover { color: var(--accent); }
+.sort-arrow { font-size: 10px; color: var(--accent); text-shadow: none; }
+
+.table-scroll { width: 100%; overflow-x: auto; }
+
+#stocks-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+#stocks-table tbody tr:hover {
+  background: var(--bg-row-hover);
+  position: relative;
+}
+#stocks-table tbody tr:last-child { border-bottom: none; }
+
+/* Subtle left accent indicator on row hover */
+#stocks-table tbody tr td:first-child { position: relative; }
+#stocks-table tbody tr:hover td:first-child::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 0;
+}
+
+#stocks-table td {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  vertical-align: middle;
+  transition: color 0.1s;
+}
+
+.th-rank {
+  color: var(--text-muted) !important;
+  font-family: var(--mono);
+  font-size: 10px !important;
+}
+.th-code {
+  font-family: var(--mono);
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--accent) !important;
+  letter-spacing: 0;
+}
+.th-num {
+  text-align: right !important;
+  font-family: var(--mono);
+  font-size: 12px !important;
+  font-variant-numeric: tabular-nums;
+}
+.up {
+  color: var(--gain) !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+}
+.dn {
+  color: var(--loss) !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+}
+
+/* Category column badge */
+.th-cat {
+  font-family: var(--mono);
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+.table-footer {
+  padding: 10px 0;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* ─── FAVOURITE / WATCHLIST CELL ─────────────────────────────────── */
+.fav-cell {
+  padding: 0 8px !important;
+  width: 32px;
+  text-align: center;
+}
+.fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s, background 0.15s;
+}
+.fav-btn:hover { color: var(--accent); background: var(--accent-dim); }
+.fav-btn.active { color: var(--accent); }
+

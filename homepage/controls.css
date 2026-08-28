@@ -1,0 +1,93 @@
+/* ─── CONTROLS ───────────────────────────────────────────────────── */
+.controls-bar {
+  max-width: 1400px;
+  margin: 12px auto 0;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  animation: fadeSlideUp 0.4s 0.12s var(--ease-spring) both;
+}
+
+.search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 11px;
+  flex: 1;
+  min-width: 200px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.search-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+.search-icon { width: 14px; height: 14px; color: var(--text-muted); flex-shrink: 0; }
+.search-wrap input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--sans);
+  font-size: 13px;
+  width: 100%;
+}
+.search-wrap input::placeholder { color: var(--text-muted); }
+
+.filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-btn {
+  padding: 6px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.filter-btn::before { display: none; }
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+  transform: none;
+}
+.filter-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sort-wrap label {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.sort-wrap select {
+  padding: 6px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.sort-wrap select:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-dim); }

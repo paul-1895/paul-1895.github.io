@@ -1,0 +1,14 @@
+/* ─── SCROLLBAR ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb {
+  background: var(--border-glow);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ─── SELECTION ──────────────────────────────────────────────────── */
+::selection {
+  background: var(--accent);
+  color: #000;
+}

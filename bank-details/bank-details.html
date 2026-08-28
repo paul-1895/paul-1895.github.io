@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bank Details — DSE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../fundamentals/fundamentals.css" />
+  <style>
+    /* ── Bank-details: Google Sheets–style spreadsheet skin ──
+       fundamentals.css renders a dark "terminal" table (mono font, glowing
+       uppercase headers, no vertical rules) shared with fundamentals.html.
+       This page overrides it with a flat, fully gridded, light spreadsheet
+       look instead: plain gray header/frozen-column band, sans-serif
+       everywhere, and a crisp blue ring on the active cell — Sheets' core
+       interaction. Built entirely off this app's own light/dark tokens
+       (--accent, --border, --bg-row-hover, ...) so it still tracks the
+       theme toggle rather than being a fixed one-off palette. */
+    .bd-page { --border-glow: var(--border); }
+
+    /* Bank identifier in the header — was sharing style.css's generic
+       10px ".logo-text p" caption style, which buried it. Scoped to this
+       page's #bd-code only, so the shared header style stays untouched
+       for every other page that includes style.css. */
+    .bd-page .logo-text p { font-size: 12px; }
+    .bd-page #bd-code {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -.2px;
+    }
+
+    /* Page header (back link + title + mode/actions row). fundamentals.css
+       styles this in the same mono "terminal" voice as the old table, which
+       now clashes with the flat sans-serif sheet below it — and the whole
+       row just floats on the bare page background with nothing to anchor
+       it. Reskinned to match: sans-serif, a real title-sized heading, and
+       a hairline rule underneath to separate header from content. */
+    .bd-page .fund-topbar {
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .bd-page .fund-back {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 600;
+      background: var(--bg-card);
+      border-color: var(--border);
+    }
+    .bd-page .fund-back:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .bd-page .fund-title-block h1 {
+      font-family: var(--sans);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -.3px;
+      color: var(--text-primary);
+    }
+    .bd-page .fund-title-block p {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Flat card — Sheets has no rounding or drop-shadow glow. */
+    .bd-page .fund-table-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: none;
+    }
+    .bd-page .fund-table {
+      font-family: var(--sans);
+      font-size: 14px;
+      /* fundamentals.css sets min-width:100% so a table with few columns
+         still fills the container. That fights column shrinking though:
+         once the sum of column widths drops below the container width,
+         the browser redistributes the freed-up space right back out to
+         satisfy the 100% floor, so shrinking looks "stuck" partway down
+         instead of reaching COL_MIN_WIDTH. A spreadsheet's width should
+         just be the sum of its columns — extra container space stays
+         empty, same as Sheets leaves blank gray space past the last
+         column rather than stretching your data to fill the window. */
+      min-width: 0;
+    }
+
+    /* Header band */
+    .bd-page .fund-table thead tr {
+      background: var(--bg-row-hover);
+      border-bottom: 1px solid var(--border);
+    }
+    .bd-page .fund-th-inner {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--text-secondary);
+      padding: 14px 14px;
+    }
+
+    /* Full grid — a vertical rule on every cell (not just row underlines)
+       so this reads as a spreadsheet grid rather than a striped list. */
+    .bd-page .fund-col-th,
+    .bd-page .bd-metric-th,
+    .bd-page .fund-table tbody td {
+      border-right: 1px solid var(--border);
+    }
+    .bd-page .fund-table tbody td { padding: 12px 14px; }
+    .bd-page .fund-table tbody tr { border-bottom: 1px solid var(--border); }
+    .bd-page .fund-table tbody tr:hover { background: var(--bg-row-hover); }
+
+    /* Frozen metric column reads as a header band, with a hairline shadow
+       marking the freeze boundary the way Sheets shades a frozen column. */
+    .bd-page .bd-metric-th {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+      background: var(--bg-row-hover) !important;
+      width: 220px !important;
+      min-width: 220px;
+      max-width: 220px;
+    }
+    .bd-page .bd-label-cell {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: var(--bg-card) !important;
+      box-shadow: 2px 0 4px -2px rgba(0,0,0,.12);
+      padding: 12px 14px !important;
+      text-align: left !important;
+      width: 220px;
+      min-width: 220px;
+      max-width: 220px;
+    }
+    .bd-page .fund-table tbody tr:nth-child(even) .bd-label-cell { background: var(--bg-row-hover) !important; }
+
+    /* Empty state ("No year columns yet") renders as a bare, classless
+       <td> (see bank-details.js), so it falls through to fundamentals.css's
+       `.fund-table tbody td:first-child` rule — a hardcoded dark-terminal
+       navy meant for that stylesheet's own look, never patched for this
+       page's light spreadsheet skin. Left alone it shows as a solid dark
+       block regardless of theme. */
+    .bd-page .fund-table tbody td:first-child { background: var(--bg-card); }
+    .bd-page .fund-table tbody tr:hover           .bd-label-cell { background: var(--accent-dim) !important; }
+
+    .bd-page .bd-metric-label {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      /* Was display:block, which — being a block element — always forces
+         whatever comes after it (the % / Tk unit tag) onto its own new
+         line, regardless of how much room is actually left on the row.
+         inline keeps it flowing on the same line and only wraps if the
+         220px label column genuinely runs out of width. */
+      display: inline;
+    }
+    .bd-page .bd-unit {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--accent);
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+    .bd-page .bd-hint {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 6px;
+      background: var(--bg-base);
+      border-radius: 3px;
+      border: 1px solid var(--border);
+    }
+
+    /* Cell text + the Sheets-style active-cell ring. fundamentals.css's
+       dashed-underline focus style is dropped for a crisp border tightly
+       hugging the whole cell, like Sheets' own selection outline. */
+    .bd-page .fund-cell,
+    .bd-page .fund-qtr-input {
+      font-family: var(--sans);
+      color: var(--text-primary);
+      border-bottom: none !important;
+    }
+    .bd-page .fund-qtr-input { font-weight: 600; }
+    .bd-page .fund-edit-mode .fund-cell:hover,
+    .bd-page .fund-edit-mode .fund-qtr-input:hover {
+      background: var(--bg-row-hover);
+    }
+    .bd-page .fund-edit-mode .fund-cell:focus,
+    .bd-page .fund-edit-mode .fund-qtr-input:focus {
+      outline: 2px solid var(--accent) !important;
+      outline-offset: -2px;
+      background: var(--bg-card) !important;
+      color: var(--text-primary) !important;
+      box-shadow: 0 1px 6px rgba(0,0,0,.12);
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Buttons + badges — flat and gray, matching a Sheets toolbar rather
+       than the dark shell's glowing ghost buttons. */
+    .bd-page .fund-btn {
+      font-family: var(--sans);
+      letter-spacing: 0;
+      text-transform: none;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+    }
+    .bd-page .fund-nav-btn,
+    .bd-page .fund-btn--primary {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .bd-page .fund-btn--primary:hover {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: none;
+      transform: none;
+    }
+    .bd-page .fund-btn--ghost {
+      background: var(--bg-card);
+      border-color: var(--border);
+      color: var(--text-secondary);
+    }
+    .bd-page .fund-btn--ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .bd-page .fund-mode-badge--edit {
+      animation: none;
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+    /* "Done Editing" reads as a confirm/finish action, distinct from the
+       blue "Edit Data" CTA it replaces — green instead of fundamentals.css's
+       fixed indigo, and tied to --gain so it still tracks the theme. */
+    .bd-page .fund-btn--edit-active {
+      background: rgba(15,153,96,.1);
+      border-color: var(--gain);
+      color: var(--gain);
+    }
+    .bd-page .fund-btn--edit-active:hover {
+      background: var(--gain);
+      color: #fff;
+    }
+    .bd-page .fund-mode-badge--view {
+      border-color: var(--border);
+      color: var(--text-muted);
+      background: var(--bg-row-hover);
+    }
+    .bd-page .fund-toolbar {
+      background: var(--bg-row-hover);
+      border-top: 1px solid var(--border);
+    }
+    .bd-page .fund-toolbar-hint,
+    .bd-page .fund-toolbar-label {
+      font-family: var(--sans);
+      color: var(--text-muted);
+    }
+
+    /* Column drag-to-reorder */
+    .bd-page .bd-col-drag-handle {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      color: var(--text-muted);
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+      transition: color .15s;
+    }
+    .bd-page .bd-col-drag-handle:hover { color: var(--accent); }
+    .bd-page .bd-col-drag-handle:active { cursor: grabbing; }
+    .bd-page .fund-col-th { transition: box-shadow .15s; }
+    .bd-page .fund-col-th.bd-col-dragging { opacity: 0.4; }
+    .bd-page .fund-col-th.bd-col-drop-before { box-shadow: inset 3px 0 0 0 var(--accent); }
+    .bd-page .fund-col-th.bd-col-drop-after  { box-shadow: inset -3px 0 0 0 var(--accent); }
+
+    /* Column resize — hitbox straddles the column border (-6px..+6px) so
+       aiming at the visible dividing line, the natural target, reliably
+       lands inside it instead of missing by a few sub-pixels. */
+    .bd-page .bd-col-th-resizer {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: -6px;
+      width: 12px;
+      cursor: col-resize;
+      touch-action: none;
+      z-index: 4;
+    }
+    .bd-page .bd-col-th-resizer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 6px;
+      width: 1px;
+      /* Faintly visible at rest so the handle is discoverable, not just
+         guessable — brightens on hover/drag. */
+      background: var(--border);
+      transition: background-color .15s, width .15s;
+    }
+    .bd-page .bd-col-th-resizer:hover::after,
+    .bd-page .bd-col-th-resizer.bd-col-resizing::after {
+      width: 3px;
+      left: 5px;
+      background: var(--accent);
+    }
+    .bd-page .fund-col-th.bd-col-th-resizing {
+      box-shadow: inset 0 0 0 1px var(--accent);
+      background: var(--accent-dim);
+    }
+    .bd-page .bd-col-resize-tip {
+      position: fixed;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--mono, monospace);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 7px;
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 9999;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+
+    /* ── "Data on file" badge next to the bank code ──
+       A real signal, not decoration: only shown once this bank actually
+       has a saved value somewhere in the grid (toggled in bank-details.js). */
+    .bd-verified-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      margin-left: 5px;
+      border-radius: 50%;
+      background: var(--gain);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+
+    /* ── Page header: icon + title row ─────────────────────────── */
+    .bd-title-row { display: flex; align-items: center; gap: 12px; }
+    .bd-title-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: var(--radius-sm);
+      background: var(--gain);
+      color: #fff;
+    }
+    .bd-title-icon svg { width: 21px; height: 21px; }
+    .bd-btn-charts { border-color: #7c3aed; color: #7c3aed; background: rgba(124,58,237,.08); }
+    .bd-btn-charts:hover { border-color: #7c3aed; color: #fff; background: #7c3aed; }
+
+    /* ── KPI summary cards ──────────────────────────────────────── */
+    .bd-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 22px 0;
+    }
+    .bd-kpi-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .bd-kpi-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+    .bd-kpi-icon svg { width: 21px; height: 21px; }
+    .bd-kpi-body { min-width: 0; }
+    .bd-kpi-label {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .bd-kpi-value {
+      font-family: var(--sans);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2px 0 3px;
+    }
+    .bd-kpi-delta { font-family: var(--sans); font-size: 12px; font-weight: 600; }
+    .bd-kpi-up   { color: var(--gain); }
+    .bd-kpi-down { color: var(--loss); }
+    .bd-kpi-delta-none { color: var(--text-muted); font-weight: 400; }
+
+    /* ── Two-column layout: table + insights sidebar ──────────────── */
+    .bd-main-layout { display: flex; align-items: flex-start; gap: 18px; }
+    .bd-main-col { flex: 1 1 auto; min-width: 0; }
+    .bd-insights-col { flex: 0 0 300px; }
+    @media (max-width: 980px) {
+      .bd-main-layout { flex-direction: column; }
+      .bd-insights-col { flex-basis: auto; width: 100%; }
+    }
+
+    .bd-insights-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      position: sticky;
+      top: 76px;
+    }
+    .bd-insights-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .bd-insights-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+    .bd-insights-icon svg { width: 15px; height: 15px; }
+    .bd-insights-header h2 {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .bd-insights-body { display: flex; flex-direction: column; gap: 12px; }
+    .bd-insight-card { display: flex; align-items: flex-start; gap: 10px; }
+    .bd-insight-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .bd-insight-icon svg { width: 15px; height: 15px; }
+    .bd-insight-up   { background: rgba(15,153,96,.12); color: var(--gain); }
+    .bd-insight-down { background: rgba(209,63,63,.12); color: var(--loss); }
+    .bd-insight-title {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .bd-insight-text {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-top: 2px;
+    }
+    .bd-insight-empty {
+      font-family: var(--sans);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .bd-insights-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .bd-insights-footer svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .bd-asof-label { font-family: var(--sans); font-size: 11px; color: var(--text-muted); }
+    .bd-asof-value { font-family: var(--sans); font-size: 13px; font-weight: 700; color: var(--text-primary); }
+
+    /* ── Per-row icon badge in the metric column ───────────────────── */
+    .bd-row-label-flex { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .bd-row-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      flex-shrink: 0;
+    }
+    .bd-row-icon svg { width: 15px; height: 15px; }
+
+    /* ── Trend sparkline column ──────────────────────────────────── */
+    .bd-page .bd-trend-th,
+    .bd-page .bd-trend-td {
+      width: 110px;
+      min-width: 110px;
+      max-width: 110px;
+    }
+    /* text-align (not display:flex — a <td> needs to stay display:table-cell
+       or its width/border participation in the table's column layout gets
+       unreliable) centers the inline-level <svg> horizontally; vertical
+       centering already comes from fundamentals.css's td{vertical-align:middle}. */
+    .bd-trend-td { text-align: center; padding: 6px 8px !important; }
+    .bd-spark { display: inline-block; vertical-align: middle; }
+  </style>
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body class="bd-page">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Bank Details</h1>
+        <p>Yearly Data — <span id="bd-code">—</span><span id="bd-verified" class="bd-verified-badge" style="display:none" title="Data on file for this bank">✓</span></p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="fund-page">
+
+  <!-- Top bar -->
+  <div class="fund-topbar">
+    <div class="bd-title-row">
+      <span class="bd-title-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>
+        </svg>
+      </span>
+      <div class="fund-title-block">
+        <h1>Bank Details</h1>
+        <p>Yearly figures — stored locally per stock code.</p>
+      </div>
+    </div>
+
+    <div class="fund-actions">
+      <a id="bd-back-link" href="/" class="fund-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        Company Profile
+      </a>
+      <a id="bd-view-charts" href="#" class="fund-btn fund-btn--ghost bd-btn-charts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>
+        </svg>
+        View Charts
+      </a>
+      <span class="fund-mode-badge fund-mode-badge--view" id="bd-mode-badge">VIEW</span>
+      <button class="fund-btn fund-btn--ghost"
+              id="bd-add-col"
+              style="display:none"
+              onclick="addColumn()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        Year
+      </button>
+      <button class="fund-btn fund-btn--primary" id="bd-toggle-mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 3a2.85 2.85 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+        </svg>
+        Edit Data
+      </button>
+    </div>
+  </div>
+
+  <!-- KPI summary cards -->
+  <div id="bd-kpi-row" class="bd-kpi-row"></div>
+
+  <!-- Main content: table + insights -->
+  <div class="bd-main-layout">
+    <div class="bd-main-col">
+      <div id="bd-content"></div>
+    </div>
+    <aside class="bd-insights-col">
+      <div class="bd-insights-panel">
+        <div class="bd-insights-header">
+          <span class="bd-insights-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0012 2z"/>
+            </svg>
+          </span>
+          <h2>Insights</h2>
+        </div>
+        <div id="bd-insights-body" class="bd-insights-body"></div>
+        <div class="bd-insights-footer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/>
+          </svg>
+          <div>
+            <div class="bd-asof-label">Data as of</div>
+            <div class="bd-asof-value" id="bd-insights-asof">—</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+</div>
+
+<div class="fund-toast-wrap" id="fund-toast-wrap"></div>
+
+<footer class="site-footer">
+  <p>Data stored locally · For informational purposes only</p>
+</footer>
+
+<script src="/shared/bank-rows.js" defer></script>
+<script src="bank-details.js" defer></script>
+<script type="module">
+  // Shared theme module — same `dse-theme` localStorage key and `data-theme`
+  // attribute every other page uses (see company_profile/company.js). This
+  // page used to carry its own parallel "self-contained" toggle keyed on a
+  // different localStorage key (`theme-preference`), so a theme chosen
+  // elsewhere on the site silently reset when you navigated here.
+  import { initTheme, toggleTheme } from '../theme/theme.js';
+  initTheme();
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => toggleTheme());
+</script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

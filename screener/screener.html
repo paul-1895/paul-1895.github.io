@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Screener — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="screener.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Screener</h1>
+        <p>Built-in S/R, Candlestick &amp; Valuation Scanner</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/>
+        </svg>
+      </a>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="screener-page-root" class="screener-page-root"></main>
+
+<footer class="site-footer">
+  <p>Read-only scan of live prices &middot; Prices in BDT (Taka) &middot; For informational purposes only</p>
+</footer>
+
+<script type="module" src="screener.js"></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

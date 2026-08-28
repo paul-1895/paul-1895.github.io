@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Investment Process — Bangladesh Equity Portfolio Management — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="investment-process.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Investment Process</h1>
+        <p>Bangladesh Equity Portfolio Management — Client-Facing Playbook</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/>
+        </svg>
+      </a>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+      <button class="theme-toggle has-tooltip" id="lang-toggle-btn" data-tooltip="Machine-translate this page to Bengali" aria-label="Translate to Bengali">
+        <span class="toggle-icon">🌐</span>
+        <span id="lang-label">বাংলা</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="ip-page-root">
+  <div class="ip-hero">
+    <h1>How to Earn the Right to Manage Someone Else's Money</h1>
+    <p>A client-facing operating playbook for a Bangladesh equity portfolio-management business: positioning, investment philosophy, a systematic stock-scoring model, risk framework, model portfolio and track record, client onboarding, reporting, and the pitch itself — process before predictions, credibility before capital.</p>
+    <p class="ip-hero-companion">Companion to the Startup Plan — that page covers the BSEC licensing route and the financial case for the business; this page covers how you actually run money and earn a client's trust once (or before) it's licensed.</p>
+  </div>
+
+  <div class="ip-lang-note" id="ipLangNote" style="display:none;">
+    <span>যন্ত্র-অনূদিত (Google Translate) — ভুল থাকতে পারে।</span>
+    <button type="button" id="ipLangRevertBtn" class="ip-lang-revert-btn">মূল ইংরেজি দেখুন · Show original</button>
+  </div>
+
+  <div class="ip-layout">
+    <nav class="ip-toc" id="ipToc">
+      <div class="ip-toc-title">Contents</div>
+      <a href="#positioning" class="ip-toc-link"><span class="ip-toc-num">01</span>Positioning</a>
+      <a href="#mandate" class="ip-toc-link"><span class="ip-toc-num">02</span>The Mandate</a>
+      <a href="#philosophy" class="ip-toc-link"><span class="ip-toc-num">03</span>Investment Philosophy</a>
+      <a href="#database" class="ip-toc-link"><span class="ip-toc-num">04</span>Stock Database</a>
+      <a href="#scoring" class="ip-toc-link"><span class="ip-toc-num">05</span>Scoring Model</a>
+      <a href="#committee" class="ip-toc-link"><span class="ip-toc-num">06</span>Investment Committee</a>
+      <a href="#track-record" class="ip-toc-link"><span class="ip-toc-num">07</span>Track Record</a>
+      <a href="#custody" class="ip-toc-link"><span class="ip-toc-num">08</span>Custody &amp; Trust</a>
+      <a href="#onboarding" class="ip-toc-link"><span class="ip-toc-num">09</span>Client Onboarding</a>
+      <a href="#ips" class="ip-toc-link"><span class="ip-toc-num">10</span>Policy Statement</a>
+      <a href="#dashboard" class="ip-toc-link"><span class="ip-toc-num">11</span>Reporting Dashboard</a>
+      <a href="#fees" class="ip-toc-link"><span class="ip-toc-num">12</span>Fee Structure</a>
+      <a href="#pitch-deck" class="ip-toc-link"><span class="ip-toc-num">13</span>The Pitch Deck</a>
+      <a href="#first-meeting" class="ip-toc-link"><span class="ip-toc-num">14</span>First Client Meeting</a>
+      <a href="#roadmap" class="ip-toc-link"><span class="ip-toc-num">15</span>Roadmap From Zero</a>
+      <a href="#architecture" class="ip-toc-link"><span class="ip-toc-num">16</span>System Architecture</a>
+      <a href="#regulatory" class="ip-toc-link"><span class="ip-toc-num">17</span>Regulatory Note</a>
+    </nav>
+
+    <div class="ip-content">
+
+      <!-- 01 POSITIONING -->
+      <section id="positioning" class="ip-card">
+        <div class="ip-card-eyebrow">01 · The pitch</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <h2>Positioning</h2>
+        </div>
+        <p>If the objective is to convince a client to hand over capital to manage in Bangladesh equities, the pitch doesn't start with individual stocks. It starts by building a professional investment-management proposition, in this order: <b>credibility → investment philosophy → risk framework → track record → portfolio construction → reporting → fees → legal/compliance structure.</b></p>
+        <p class="ip-note"><b>An important distinction:</b> giving investment advice and actually managing another person's portfolio under discretionary authority can carry different regulatory implications in Bangladesh. Treat BSEC as the primary regulatory reference point before accepting client money or discretionary authority — BSEC itself provides investor education covering securities analysis and portfolio management. See <a href="#regulatory">Regulatory Note</a>, and the Startup Plan for the licensing route in detail.</p>
+
+        <h3>You need a simple answer to one question</h3>
+        <p>"Why should I give you my money instead of investing myself?" Your answer should <em>not</em> be "I know which stocks will go up." It should read more like this:</p>
+        <blockquote class="ip-quote">"I run a disciplined, research-driven Bangladesh equity strategy focused on capital preservation, fundamental valuation and long-term compounding. I construct concentrated portfolios only when the expected return adequately compensates for the downside risk, and I provide transparent performance and risk reporting."</blockquote>
+        <p>That's a far more credible proposition than a stock tip — and it's the one a client with real capital can actually evaluate.</p>
+
+        <h3>Five pillars</h3>
+        <div class="ip-pillar-grid">
+          <div class="ip-pillar"><div class="ip-pillar-num">1</div><div class="ip-pillar-label">Fundamental research</div></div>
+          <div class="ip-pillar"><div class="ip-pillar-num">2</div><div class="ip-pillar-label">Valuation</div></div>
+          <div class="ip-pillar"><div class="ip-pillar-num">3</div><div class="ip-pillar-label">Portfolio construction</div></div>
+          <div class="ip-pillar"><div class="ip-pillar-num">4</div><div class="ip-pillar-label">Risk management</div></div>
+          <div class="ip-pillar"><div class="ip-pillar-num">5</div><div class="ip-pillar-label">Transparent reporting</div></div>
+        </div>
+
+        <p class="ip-note">One closing point about Bangladesh specifically: don't sell "Bangladesh stocks are going to rise" — markets can stay weak for long periods. Sell "regardless of what the market does, we have a disciplined framework for determining what to own, how much to own, when the thesis is wrong, and how much risk we're willing to take." That's the foundation of a credible portfolio-management business.</p>
+      </section>
+
+      <!-- 02 THE MANDATE -->
+      <section id="mandate" class="ip-card">
+        <div class="ip-card-eyebrow">02 · What you're selling</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><path d="M9 12l2 2 4-4"/></svg>
+          <h2>Define Exactly What You Are Selling</h2>
+        </div>
+        <p>Before approaching clients, decide your investment mandate. The example below — <b>"Bangladesh Equity Growth Portfolio"</b> — is a framework to adapt, not a fixed template.</p>
+
+        <div class="ip-mandate-grid">
+          <div class="ip-mandate-item"><div class="ip-mandate-k">Objective</div><div class="ip-mandate-v">Beat the DSEX over a 3–5 year period while maintaining controlled downside risk.</div></div>
+          <div class="ip-mandate-item"><div class="ip-mandate-k">Universe</div><div class="ip-mandate-v">DSE-listed equities; primarily fundamentally strong companies; minimum liquidity requirement; no speculative penny stocks; no excessive concentration.</div></div>
+          <div class="ip-mandate-item"><div class="ip-mandate-k">Investment horizon</div><div class="ip-mandate-v">3–5+ years.</div></div>
+        </div>
+
+        <h3>Typical portfolio (illustrative)</h3>
+        <div class="ip-barchart">
+          <div class="ip-bar-row">
+            <div class="ip-bar-label">Core holdings</div>
+            <div class="ip-bar-track"><div class="ip-bar-fill" style="width:100%"></div></div>
+            <div class="ip-bar-value">50–60%</div>
+          </div>
+          <div class="ip-bar-row">
+            <div class="ip-bar-label">Growth opportunities</div>
+            <div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:50%"></div></div>
+            <div class="ip-bar-value">20–30%</div>
+          </div>
+          <div class="ip-bar-row">
+            <div class="ip-bar-label">Defensive / value</div>
+            <div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:33%"></div></div>
+            <div class="ip-bar-value">10–20%</div>
+          </div>
+          <div class="ip-bar-row">
+            <div class="ip-bar-label">Cash</div>
+            <div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:17%"></div></div>
+            <div class="ip-bar-value">0–10%</div>
+          </div>
+        </div>
+        <p class="ip-note">Don't make these numbers rigid initially — they are an example framework, to be adapted once the actual client mandate and risk tolerance are known.</p>
+      </section>
+
+      <!-- 03 INVESTMENT PHILOSOPHY -->
+      <section id="philosophy" class="ip-card">
+        <div class="ip-card-eyebrow">03 · What sets you apart</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          <h2>Investment Philosophy</h2>
+        </div>
+        <p>This is where you distinguish yourself from the typical Bangladesh stock-market "tip provider." Build the philosophy around two disciplines: business quality, and valuation done properly.</p>
+
+        <h3>A. Business quality</h3>
+        <p>Analyse every candidate on:</p>
+        <div class="ip-tag-grid">
+          <span class="ip-tag">Revenue growth</span><span class="ip-tag">EPS growth</span><span class="ip-tag">ROE</span><span class="ip-tag">ROA</span>
+          <span class="ip-tag">Gross margin</span><span class="ip-tag">Operating margin</span><span class="ip-tag">Free cash flow</span><span class="ip-tag">Debt/equity</span>
+          <span class="ip-tag">Interest coverage</span><span class="ip-tag">Dividend history</span><span class="ip-tag">Corporate governance</span><span class="ip-tag">Related-party transactions</span>
+        </div>
+
+        <h3>B. Valuation — use multiple methods, not one heuristic</h3>
+        <p>Not simply "P/E is low, therefore buy." Triangulate across several models:</p>
+        <div class="ip-tag-grid">
+          <span class="ip-tag ip-tag-accent">DCF</span><span class="ip-tag ip-tag-accent">DDM</span><span class="ip-tag ip-tag-accent">Residual Income</span>
+          <span class="ip-tag">EV/EBITDA</span><span class="ip-tag">P/E</span><span class="ip-tag">P/B</span><span class="ip-tag">P/S</span><span class="ip-tag">PEG</span>
+        </div>
+
+        <h3>Then establish a valuation range: bear → base → bull</h3>
+        <div class="ip-table-wrap">
+          <table class="ip-table">
+            <tr><th>Scenario</th><th>Fair value</th><th>Probability</th></tr>
+            <tr><td>Bear</td><td>Tk 82</td><td>25%</td></tr>
+            <tr><td><b>Base</b></td><td><b>Tk 115</b></td><td><b>55%</b></td></tr>
+            <tr><td>Bull</td><td>Tk 155</td><td>20%</td></tr>
+          </table>
+        </div>
+        <div class="ip-stat-row">
+          <div class="ip-stat"><div class="ip-stat-val">Tk 112.85</div><div class="ip-stat-label">Probability-weighted expected value (0.25×82 + 0.55×115 + 0.20×155)</div></div>
+          <div class="ip-stat"><div class="ip-stat-val">Tk 80</div><div class="ip-stat-label">Illustrative market price</div></div>
+          <div class="ip-stat"><div class="ip-stat-val">~29%</div><div class="ip-stat-label">Implied margin of safety vs. expected value</div></div>
+        </div>
+        <p>That is a far more persuasive, and far more honest, statement than "I think this stock will go to Tk 120" — it shows the range you considered, the probabilities you assigned, and the safety margin the current price offers.</p>
+      </section>
+
+      <!-- 04 STOCK DATABASE -->
+      <section id="database" class="ip-card">
+        <div class="ip-card-eyebrow">04 · The technical backbone</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          <h2>Build a Bangladesh Stock Database</h2>
+        </div>
+        <p>This is probably the single most important technical asset you can build: a database containing every meaningful DSE company, so the investment process runs on structured data rather than spreadsheets assembled manually for each client.</p>
+
+        <div class="ip-schema-grid">
+          <div class="ip-schema-col">
+            <h4>Company information</h4>
+            <ul class="ip-list">
+              <li>Ticker &amp; sector</li>
+              <li>Market cap</li>
+              <li>Free float</li>
+              <li>Shares outstanding</li>
+              <li>Sponsor/director holding</li>
+              <li>Institutional holding</li>
+              <li>Foreign holding</li>
+            </ul>
+          </div>
+          <div class="ip-schema-col">
+            <h4>Financials (per quarter/year)</h4>
+            <ul class="ip-list">
+              <li>Revenue, EBITDA, EBIT, net income</li>
+              <li>EPS, DPS, NAV</li>
+              <li>Operating cash flow, free cash flow</li>
+              <li>Debt, cash</li>
+              <li>Total assets, equity</li>
+            </ul>
+          </div>
+          <div class="ip-schema-col">
+            <h4>Ratios (auto-calculated)</h4>
+            <ul class="ip-list">
+              <li>P/E, P/B, P/S, EV/EBITDA, EV/FCF</li>
+              <li>ROE, ROA, debt/equity, current ratio</li>
+              <li>Dividend yield</li>
+              <li>EPS CAGR, revenue CAGR, FCF CAGR</li>
+            </ul>
+          </div>
+        </div>
+        <p class="ip-note">This app already has real experience working with exactly this type of DSE dataset — that existing capability is the backbone the rest of this process (scoring, valuation, memos, reporting) should be built on, rather than reassembling data by hand per client.</p>
+      </section>
+
+      <!-- 05 SCORING MODEL -->
+      <section id="scoring" class="ip-card">
+        <div class="ip-card-eyebrow">05 · Make it systematic</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <h2>Create a Stock-Ranking System</h2>
+        </div>
+        <p>A weighted, systematic score lets you rank the entire DSE universe automatically instead of relying on ad hoc judgment. The weights below are an example starting framework:</p>
+
+        <h3>Fundamental score — 40%</h3>
+        <div class="ip-barchart">
+          <div class="ip-bar-row"><div class="ip-bar-label">Earnings growth</div><div class="ip-bar-track"><div class="ip-bar-fill" style="width:100%"></div></div><div class="ip-bar-value">10%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">FCF quality</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:80%"></div></div><div class="ip-bar-value">8%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">ROE</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:70%"></div></div><div class="ip-bar-value">7%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Balance sheet</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:70%"></div></div><div class="ip-bar-value">7%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Revenue growth</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:50%"></div></div><div class="ip-bar-value">5%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Dividend quality</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:30%"></div></div><div class="ip-bar-value">3%</div></div>
+        </div>
+
+        <h3>Valuation score — 30%</h3>
+        <div class="ip-barchart">
+          <div class="ip-bar-row"><div class="ip-bar-label">DCF upside</div><div class="ip-bar-track"><div class="ip-bar-fill" style="width:100%"></div></div><div class="ip-bar-value">8%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">P/E</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:88%"></div></div><div class="ip-bar-value">7%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Margin of safety</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:63%"></div></div><div class="ip-bar-value">5%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">P/B</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:63%"></div></div><div class="ip-bar-value">5%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">EV/EBITDA</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:63%"></div></div><div class="ip-bar-value">5%</div></div>
+        </div>
+
+        <div class="ip-mandate-grid" style="margin-top:8px;">
+          <div class="ip-mandate-item"><div class="ip-mandate-k">Quality score — 20%</div><div class="ip-mandate-v">Management · Governance · Competitive advantage · Industry structure · Earnings quality</div></div>
+          <div class="ip-mandate-item"><div class="ip-mandate-k">Technical/liquidity score — 10%</div><div class="ip-mandate-v">Liquidity · Trend · Relative strength · Volume · Institutional activity</div></div>
+        </div>
+
+        <p class="ip-formula">Overall Score = Fundamental (40%) + Valuation (30%) + Quality (20%) + Technical/Liquidity (10%)</p>
+        <p class="ip-note">Rank the entire DSE universe against this score automatically once the database (Section 04) is in place — that turns "find good stocks" from a manual weekly task into a continuously-running, repeatable process.</p>
+      </section>
+
+      <!-- 06 INVESTMENT COMMITTEE -->
+      <section id="committee" class="ip-card">
+        <div class="ip-card-eyebrow">06 · Behave like an institution</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <h2>Create an Investment Committee Process</h2>
+        </div>
+        <p>Even managing money alone, behave like an institutional portfolio manager: every proposed investment gets a written memo before it enters the portfolio.</p>
+
+        <div class="ip-memo">
+          <div class="ip-memo-hd">
+            <div class="ip-memo-title">Investment Memo — Example</div>
+          </div>
+          <div class="ip-memo-fields">
+            <div><span>Company</span>XYZ PLC</div>
+            <div><span>Sector</span>Pharmaceuticals</div>
+            <div><span>Current price</span>Tk X</div>
+            <div><span>Fair value</span>Tk Y</div>
+            <div><span>Expected return</span>X%</div>
+            <div><span>Horizon</span>3–5 years</div>
+            <div><span>Position size</span>X%</div>
+          </div>
+          <div class="ip-memo-body">
+            <div class="ip-memo-block">
+              <h4>Investment thesis</h4>
+              <ol class="ip-list ip-list-numbered">
+                <li>Earnings growth</li>
+                <li>Competitive advantage</li>
+                <li>Industry growth</li>
+                <li>Valuation</li>
+                <li>Catalyst</li>
+              </ol>
+            </div>
+            <div class="ip-memo-block">
+              <h4>Risks</h4>
+              <ol class="ip-list ip-list-numbered">
+                <li>Regulatory</li>
+                <li>Currency</li>
+                <li>Interest rates</li>
+                <li>Raw material costs</li>
+                <li>Governance</li>
+                <li>Liquidity</li>
+                <li>Management</li>
+              </ol>
+            </div>
+            <div class="ip-memo-block">
+              <h4>Valuation</h4>
+              <p>Bear / Base / Bull — see Section 03's scenario framework.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Kill criteria — decide these before you buy</h3>
+        <p>Specify in advance: <i>"I will exit if these fundamental assumptions are invalidated."</i> For example:</p>
+        <ul class="ip-list">
+          <li>EPS declines &gt;30% without a temporary explanation</li>
+          <li>A major governance problem emerges</li>
+          <li>Debt increases beyond a defined threshold</li>
+          <li>ROE deteriorates</li>
+          <li>The investment thesis changes</li>
+          <li>Valuation becomes excessive</li>
+        </ul>
+        <p class="ip-note">Kill criteria are extremely important: they demonstrate you're not emotionally attached to stocks — the exit conditions were set before the money was, not rationalized after a loss.</p>
+      </section>
+
+      <!-- 07 TRACK RECORD -->
+      <section id="track-record" class="ip-card">
+        <div class="ip-card-eyebrow">07 · Prove it, don't assert it</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          <h2>Build a Real Track Record</h2>
+        </div>
+        <p>This is probably the single biggest thing needed before asking someone to entrust significant capital to you. If a verified professional track record doesn't exist yet, don't manufacture one — start a transparent model portfolio instead.</p>
+
+        <div class="ip-mandate-grid">
+          <div class="ip-mandate-item"><div class="ip-mandate-k">Model portfolio</div><div class="ip-mandate-v">"Bangladesh Alpha Portfolio" — starting capital Tk 10,000,000, benchmarked against the DSEX.</div></div>
+          <div class="ip-mandate-item"><div class="ip-mandate-k">Record every</div><div class="ip-mandate-v">Buy, sell, dividend, transaction cost, cash position, and portfolio value — nothing summarized after the fact.</div></div>
+        </div>
+
+        <h3>Then calculate, and publish, all of it</h3>
+        <div class="ip-tag-grid">
+          <span class="ip-tag">Absolute return</span><span class="ip-tag">CAGR</span><span class="ip-tag">Benchmark return</span><span class="ip-tag">Alpha</span>
+          <span class="ip-tag">Volatility</span><span class="ip-tag">Sharpe ratio</span><span class="ip-tag">Sortino ratio</span><span class="ip-tag">Maximum drawdown</span>
+          <span class="ip-tag">Win rate</span><span class="ip-tag">Average gain</span><span class="ip-tag">Average loss</span><span class="ip-tag">Turnover</span>
+        </div>
+
+        <h3>Most importantly: show drawdowns</h3>
+        <p>A portfolio manager who only shows winning trades looks like a salesman. A portfolio manager who says:</p>
+        <blockquote class="ip-quote">"The portfolio returned 18.2% versus DSEX 9.7%, but experienced a maximum drawdown of 12.4%."</blockquote>
+        <p>looks far more credible — the drawdown figure is what tells a client you're being honest about risk, not just performance.</p>
+
+        <h3>Don't cherry-pick</h3>
+        <p>If a portfolio holds 20 stocks and 8 were spectacular, don't show those eight — show the entire portfolio. A client should be able to trace the whole chain:</p>
+        <p class="ip-formula">Starting capital → contributions/withdrawals → transactions → dividends → fees → ending value</p>
+        <p class="ip-note">Ideally, an independent broker/DP/CDBL record supports the holdings shown — see <a href="#custody">Custody &amp; Trust</a> for why that independent verification matters for building trust.</p>
+      </section>
+
+      <!-- 08 CUSTODY & TRUST -->
+      <section id="custody" class="ip-card">
+        <div class="ip-card-eyebrow">08 · The biggest trust signal</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <h2>Custody &amp; Trust</h2>
+        </div>
+        <p>From a trust and operational-risk perspective, the structure should be designed so the client knows: <b>"My shares are mine. My money is mine. The manager has defined authority to execute/manage according to the agreement."</b></p>
+        <p>CDBL provides BO (Beneficiary Owner) account services and portfolio valuation/balance information, and securities are normally held in the investor's own BO account rather than simply handed over to the portfolio manager. CDBL states that an investor normally has an account in their own name, with the rights and duties defined through the agreement with the CDBL participant — that distinction is central to building trust.</p>
+
+        <div class="ip-redflag">
+          <div class="ip-redflag-hd">🚩 Avoid building your business around this</div>
+          <blockquote class="ip-quote ip-quote-danger">"Send me Tk 20 million into my personal bank account and I'll invest it."</blockquote>
+          <p>That is an enormous red flag — to a sophisticated client and to a regulator. Instead, establish the appropriate regulated/legal structure and have the client's securities and cash handled through the proper intermediaries (their own BO account, a licensed broker/DP, and — for pooled capital — a licensed custodian/trustee; see the Startup Plan's Licensing section).</p>
+        </div>
+      </section>
+
+      <!-- 09 CLIENT ONBOARDING -->
+      <section id="onboarding" class="ip-card">
+        <div class="ip-card-eyebrow">09 · Before the stock pitch</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          <h2>Build a Client Onboarding Process</h2>
+        </div>
+        <p>The first meeting should not immediately be "here are five stocks you should buy." Instead, it's a discovery meeting.</p>
+
+        <h3>Meeting 1 — Discovery: understand the client's</h3>
+        <div class="ip-tag-grid">
+          <span class="ip-tag">Capital available</span><span class="ip-tag">Investment horizon</span><span class="ip-tag">Income requirements</span>
+          <span class="ip-tag">Risk tolerance</span><span class="ip-tag">Liquidity needs</span><span class="ip-tag">Previous investment experience</span>
+          <span class="ip-tag">Existing holdings</span><span class="ip-tag">Maximum acceptable drawdown</span><span class="ip-tag">Investment objectives</span>
+        </div>
+
+        <h3>Then classify the client (design examples, not promises)</h3>
+        <div class="ip-table-wrap">
+          <table class="ip-table">
+            <tr><th>Profile</th><th>Maximum drawdown target</th></tr>
+            <tr><td><b>Conservative</b></td><td>~10%</td></tr>
+            <tr><td><b>Moderate</b></td><td>~15–20%</td></tr>
+            <tr><td><b>Aggressive</b></td><td>25%+</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 10 INVESTMENT POLICY STATEMENT -->
+      <section id="ips" class="ip-card">
+        <div class="ip-card-eyebrow">10 · The document that governs the mandate</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <h2>Give Them an Investment Policy Statement</h2>
+        </div>
+        <p>This is one of the most important documents a portfolio manager can have — it defines the mandate in writing, before any money moves.</p>
+
+        <div class="ip-ips-list">
+          <div class="ip-ips-row"><div class="ip-ips-k">Client objective</div><div class="ip-ips-v">Long-term capital appreciation with controlled downside risk.</div></div>
+          <div class="ip-ips-row"><div class="ip-ips-k">Benchmark</div><div class="ip-ips-v">DSEX.</div></div>
+          <div class="ip-ips-row"><div class="ip-ips-k">Horizon</div><div class="ip-ips-v">5 years.</div></div>
+          <div class="ip-ips-row"><div class="ip-ips-k">Target return</div><div class="ip-ips-v">Benchmark + X% annualised over a full market cycle. <b>Don't promise a guaranteed return.</b></div></div>
+          <div class="ip-ips-row"><div class="ip-ips-k">Risk limits</div><div class="ip-ips-v">Maximum single stock 10% · maximum sector 30% · minimum liquidity requirement · maximum speculative allocation · maximum leverage · defined cash range.</div></div>
+          <div class="ip-ips-row"><div class="ip-ips-k">Rebalancing</div><div class="ip-ips-v">Monthly/quarterly, or when a position breaches a predefined limit.</div></div>
+          <div class="ip-ips-row"><div class="ip-ips-k">Reporting</div><div class="ip-ips-v">Monthly portfolio statement + quarterly investment report.</div></div>
+        </div>
+      </section>
+
+      <!-- 11 REPORTING DASHBOARD -->
+      <section id="dashboard" class="ip-card">
+        <div class="ip-card-eyebrow">11 · Your biggest competitive advantage</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <h2>Create a Professional Reporting Dashboard</h2>
+        </div>
+        <p>The client opens a dashboard, not a spreadsheet emailed once a quarter. Example mock-up:</p>
+
+        <div class="ip-stat-row">
+          <div class="ip-stat"><div class="ip-stat-val">Tk 52.4M</div><div class="ip-stat-label">Portfolio value</div></div>
+          <div class="ip-stat"><div class="ip-stat-val">Tk 47.8M</div><div class="ip-stat-label">Invested</div></div>
+          <div class="ip-stat"><div class="ip-stat-val">Tk 4.6M</div><div class="ip-stat-label">Cash</div></div>
+          <div class="ip-stat"><div class="ip-stat-val ip-gain">+14.8%</div><div class="ip-stat-label">Return</div></div>
+          <div class="ip-stat"><div class="ip-stat-val">+7.2%</div><div class="ip-stat-label">DSEX</div></div>
+          <div class="ip-stat"><div class="ip-stat-val ip-gain">+7.6%</div><div class="ip-stat-label">Alpha</div></div>
+        </div>
+
+        <h3>Allocation</h3>
+        <div class="ip-barchart">
+          <div class="ip-bar-row"><div class="ip-bar-label">Banks</div><div class="ip-bar-track"><div class="ip-bar-fill" style="width:100%"></div></div><div class="ip-bar-value">22%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Pharma</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:82%"></div></div><div class="ip-bar-value">18%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Consumer</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:68%"></div></div><div class="ip-bar-value">15%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Industrials</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:64%"></div></div><div class="ip-bar-value">14%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Telecom</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:55%"></div></div><div class="ip-bar-value">12%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Cash</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:45%"></div></div><div class="ip-bar-value">10%</div></div>
+          <div class="ip-bar-row"><div class="ip-bar-label">Power</div><div class="ip-bar-track"><div class="ip-bar-fill dim" style="width:41%"></div></div><div class="ip-bar-value">9%</div></div>
+        </div>
+
+        <h3>Holdings</h3>
+        <div class="ip-table-wrap">
+          <table class="ip-table">
+            <tr><th>Stock</th><th>Weight</th><th>Avg cost</th><th>Price</th><th>Return</th></tr>
+            <tr><td>Stock A</td><td>9%</td><td>82</td><td>105</td><td class="ip-gain">+28%</td></tr>
+            <tr><td>Stock B</td><td>8%</td><td>145</td><td>162</td><td class="ip-gain">+12%</td></tr>
+            <tr><td>Stock C</td><td>7%</td><td>61</td><td>55</td><td class="ip-loss">−10%</td></tr>
+          </table>
+        </div>
+
+        <h3>And narrative context, every period</h3>
+        <div class="ip-tag-grid">
+          <span class="ip-tag">Why we own each stock</span><span class="ip-tag">What changed this month</span><span class="ip-tag">What we're watching</span><span class="ip-tag">Risks</span>
+        </div>
+        <p class="ip-note">That combination — real numbers plus the reasoning behind them — is what makes a manager look like a portfolio manager rather than a stock-tip seller.</p>
+      </section>
+
+      <!-- 12 FEE STRUCTURE -->
+      <section id="fees" class="ip-card">
+        <div class="ip-card-eyebrow">12 · How you get paid</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          <h2>Decide Your Fee Model Carefully</h2>
+        </div>
+        <div class="ip-mandate-grid">
+          <div class="ip-mandate-item"><div class="ip-mandate-k">A. Management fee</div><div class="ip-mandate-v">Example: 1–2% annually on AUM.</div></div>
+          <div class="ip-mandate-item"><div class="ip-mandate-k">B. Performance fee</div><div class="ip-mandate-v">Example: 20% of performance above a hurdle.</div></div>
+          <div class="ip-mandate-item"><div class="ip-mandate-k">C. Combination</div><div class="ip-mandate-v">Example: 1% management + 10% performance fee.</div></div>
+        </div>
+        <p class="ip-note">The exact fee structure, permissible activities, disclosures, and licensing requirements need to be checked against the applicable Bangladesh regulatory framework before implementation (see Startup Plan — Revenue &amp; Fees) — don't simply copy a US hedge-fund structure onto a BSEC-regulated business.</p>
+      </section>
+
+      <!-- 13 PITCH DECK -->
+      <section id="pitch-deck" class="ip-card">
+        <div class="ip-card-eyebrow">13 · Process, not predictions</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+          <h2>The Pitch Deck</h2>
+        </div>
+        <p>The presentation itself needs only 12 slides — and none of them is a stock prediction.</p>
+        <div class="ip-slide-grid">
+          <div class="ip-slide"><div class="ip-slide-num">1</div><div class="ip-slide-title">Bangladesh Equity Portfolio Management</div><div class="ip-slide-desc">Title.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">2</div><div class="ip-slide-title">The Opportunity</div><div class="ip-slide-desc">Why Bangladesh equities?</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">3</div><div class="ip-slide-title">Our Investment Philosophy</div><div class="ip-slide-desc">Quality + valuation + discipline.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">4</div><div class="ip-slide-title">Our Investment Process</div><div class="ip-slide-desc">Universe → Screening → Research → Valuation → Portfolio → Monitoring.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">5</div><div class="ip-slide-title">How We Select Stocks</div><div class="ip-slide-desc">Your scoring model.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">6</div><div class="ip-slide-title">Portfolio Construction</div><div class="ip-slide-desc">Position sizing + diversification.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">7</div><div class="ip-slide-title">Risk Management</div><div class="ip-slide-desc">Drawdown, concentration, liquidity, governance.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">8</div><div class="ip-slide-title">Example Investment</div><div class="ip-slide-desc">One detailed stock analysis.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">9</div><div class="ip-slide-title">Track Record</div><div class="ip-slide-desc">Benchmark comparison.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">10</div><div class="ip-slide-title">Portfolio Reporting</div><div class="ip-slide-desc">Show the dashboard.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">11</div><div class="ip-slide-title">Client Protection &amp; Custody</div><div class="ip-slide-desc">How assets are held, how authority works.</div></div>
+          <div class="ip-slide"><div class="ip-slide-num">12</div><div class="ip-slide-title">Investment Proposal</div><div class="ip-slide-desc">Amount → mandate → benchmark → fees → reporting → next steps.</div></div>
+        </div>
+      </section>
+
+      <!-- 14 FIRST CLIENT MEETING -->
+      <section id="first-meeting" class="ip-card">
+        <div class="ip-card-eyebrow">14 · Don't pressure them to invest</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <h2>Your First Client Meeting</h2>
+        </div>
+        <p>Structure a 45-minute meeting roughly like this — then stop. Don't pressure them to invest immediately.</p>
+
+        <div class="ip-timeline">
+          <div class="ip-timeline-item"><div class="ip-timeline-date">0–5 min</div><div class="ip-timeline-rail"><div class="ip-timeline-dot"></div><div class="ip-timeline-line"></div></div><div><div class="ip-timeline-desc">Understand the client's objectives.</div></div></div>
+          <div class="ip-timeline-item"><div class="ip-timeline-date">5–10 min</div><div class="ip-timeline-rail"><div class="ip-timeline-dot"></div><div class="ip-timeline-line"></div></div><div><div class="ip-timeline-desc">Ask about their existing experience.</div></div></div>
+          <div class="ip-timeline-item"><div class="ip-timeline-date">10–15 min</div><div class="ip-timeline-rail"><div class="ip-timeline-dot"></div><div class="ip-timeline-line"></div></div><div><div class="ip-timeline-desc">Explain the Bangladesh market opportunity.</div></div></div>
+          <div class="ip-timeline-item"><div class="ip-timeline-date">15–25 min</div><div class="ip-timeline-rail"><div class="ip-timeline-dot"></div><div class="ip-timeline-line"></div></div><div><div class="ip-timeline-desc">Explain your investment philosophy.</div></div></div>
+          <div class="ip-timeline-item"><div class="ip-timeline-date">25–35 min</div><div class="ip-timeline-rail"><div class="ip-timeline-dot"></div><div class="ip-timeline-line"></div></div><div><div class="ip-timeline-desc">Show your research process and one complete stock analysis.</div></div></div>
+          <div class="ip-timeline-item"><div class="ip-timeline-date">35–40 min</div><div class="ip-timeline-rail"><div class="ip-timeline-dot"></div><div class="ip-timeline-line"></div></div><div><div class="ip-timeline-desc">Show your historical/model portfolio results.</div></div></div>
+          <div class="ip-timeline-item"><div class="ip-timeline-date">40–45 min</div><div class="ip-timeline-rail"><div class="ip-timeline-dot"></div></div><div><div class="ip-timeline-desc">Explain risk, custody, reporting and fees.</div></div></div>
+        </div>
+
+        <h3>Have precise answers ready — a sophisticated client will ask</h3>
+        <ul class="ip-list">
+          <li>"What happens if the market falls 30%?"</li>
+          <li>"What is your maximum position size?"</li>
+          <li>"What is your worst historical drawdown?"</li>
+          <li>"Why should I trust your valuation?"</li>
+          <li>"Who holds my shares?"</li>
+          <li>"What happens if you stop managing my portfolio?"</li>
+          <li>"What happens if I want my money back?"</li>
+        </ul>
+      </section>
+
+      <!-- 15 ROADMAP FROM ZERO -->
+      <section id="roadmap" class="ip-card">
+        <div class="ip-card-eyebrow">15 · If you're starting with nothing</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          <h2>Roadmap From Zero</h2>
+        </div>
+        <p>If a verifiable portfolio-management track record doesn't exist yet, the first objective isn't collecting Tk 100 million — it's earning the right to be trusted with any capital at all.</p>
+
+        <div class="ip-phase">
+          <div class="ip-phase-hd"><span class="ip-phase-title">Stage 1 — Build Credibility</span><span class="ip-phase-when">Months 0–3</span></div>
+          <p>Research framework, DSE database, stock-ranking system, model portfolio, investment memos, monthly reports, website/dashboard.</p>
+        </div>
+        <div class="ip-phase">
+          <div class="ip-phase-hd"><span class="ip-phase-title">Stage 2 — Establish Track Record</span><span class="ip-phase-when">Months 3–12</span></div>
+          <p>Run a transparent model portfolio. Publish monthly return, DSEX return, alpha, drawdown, holdings, and investment decisions — every month, without exception.</p>
+        </div>
+        <div class="ip-phase">
+          <div class="ip-phase-hd"><span class="ip-phase-title">Stage 3 — First Clients</span><span class="ip-phase-when">Once credible</span></div>
+          <p>Start with people who understand your process and risk. Don't immediately target strangers with large amounts of capital.</p>
+        </div>
+        <div class="ip-phase">
+          <div class="ip-phase-hd"><span class="ip-phase-title">Stage 4 — Scale</span><span class="ip-phase-when">Once ready</span></div>
+          <p>Once a track record, legal structure, compliance, reporting, operations, client agreement, and custody arrangements all exist — then approach larger investors.</p>
+        </div>
+      </section>
+
+      <!-- 16 SYSTEM ARCHITECTURE -->
+      <section id="architecture" class="ip-card">
+        <div class="ip-card-eyebrow">16 · Build the system, not just the deck</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+          <h2>What This Should Actually Be</h2>
+        </div>
+        <p>Given the existing interest in DSE financial data, valuation models, stock screening and portfolio analytics, this should be built as an actual <b>Bangladesh Equity Portfolio Management System</b>, not merely a sales presentation. Then a client sees an investment-management system, not a typical Bangladesh stock adviser.</p>
+
+        <div class="ip-pipeline">
+          <div class="ip-pipe-node">DSE Data</div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-node">Financial Database</div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-branch">
+            <div class="ip-pipe-node">Fundamental Engine</div>
+            <div class="ip-pipe-node">Market Engine</div>
+          </div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-node">Stock Scoring</div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-node">Valuation Engine</div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-branch ip-pipe-branch-3">
+            <div class="ip-pipe-node ip-pipe-node-sm">DCF</div>
+            <div class="ip-pipe-node ip-pipe-node-sm">DDM</div>
+            <div class="ip-pipe-node ip-pipe-node-sm">Relative</div>
+          </div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-node">Investment Committee</div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-node">Portfolio Builder</div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-node">Risk Management</div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-node">Client Portfolio</div>
+          <div class="ip-pipe-rail"></div>
+          <div class="ip-pipe-node ip-pipe-node-final">Reporting Dashboard</div>
+        </div>
+      </section>
+
+      <!-- 17 REGULATORY NOTE & SOURCES -->
+      <section id="regulatory" class="ip-card">
+        <div class="ip-card-eyebrow">17 · Read this before taking client money</div>
+        <div class="ip-card-hd">
+          <svg class="ip-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h2>Regulatory Note &amp; Sources</h2>
+        </div>
+        <p>Giving investment advice and actually managing another person's portfolio under discretionary authority can carry different regulatory implications in Bangladesh. <b>Treat BSEC as the primary regulatory reference point</b> before accepting client money or discretionary authority — BSEC itself provides investor education covering securities analysis and portfolio management. The Startup Plan's Licensing section covers the specific BSEC registration categories (Portfolio Manager, AMC, Stock Dealer/Broker, AIF) in detail.</p>
+
+        <div class="ip-stat-row">
+          <div class="ip-stat"><div class="ip-stat-val">~1.66M</div><div class="ip-stat-label">Operable BO accounts (CDBL, Aug 2026)</div></div>
+          <div class="ip-stat"><div class="ip-stat-val">559</div><div class="ip-stat-label">Depository participants (CDBL, Aug 2026)</div></div>
+          <div class="ip-stat"><div class="ip-stat-val">&gt;Tk 3.28T</div><div class="ip-stat-label">Market value held in CDS (CDBL, Aug 2026)</div></div>
+        </div>
+        <p>Bangladesh's securities infrastructure is substantial — the CDBL figures above confirm the opportunity is real. But regulatory structure, custody, client agreements, disclosure, and demonstrable performance need to be established <i>before</i> taking discretionary client money, not after.</p>
+
+        <p class="ip-note"><b>Confidence:</b> the CDBL BO-account/DP/market-value figures and the CDBL custody/BO-account mechanics described here are as reported to this plan; re-verify against cdbl.com.bd and sec.gov.bd before citing them externally or relying on them for a filing. This page is a process and portfolio-construction playbook, not investment, legal, or regulatory advice — see the Startup Plan for the licensing and financial case, and confirm every regulatory point against BSEC's current rules and a licensed securities-law consultant before accepting client capital.</p>
+
+        <h3>The next step</h3>
+        <p>Taken together, this playbook and the Startup Plan can become a full build-out: investment philosophy → stock-scoring model → DSE database → portfolio construction → risk-management system → model portfolio → performance reporting → client presentation → IPS → fee structure → client onboarding → regulatory/compliance checklist. That's substantially more useful to a prospective client than a sales pitch alone.</p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>Planning document &middot; Not investment, legal, or tax advice &middot; Verify all regulatory figures against current BSEC/CDBL rules</p>
+</footer>
+
+<script type="module">
+  import { initTheme, toggleTheme } from '../theme/theme.js';
+  initTheme();
+  document.getElementById('theme-toggle-btn')?.addEventListener('click', () => toggleTheme());
+</script>
+<script src="investment-process.js" defer></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

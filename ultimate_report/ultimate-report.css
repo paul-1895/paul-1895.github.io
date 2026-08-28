@@ -1,0 +1,220 @@
+/* ════════════════════════════════════════════════════════════
+   ultimate-report.css
+   Tokens come from style.css / shared/tokens.css — nothing is
+   hardcoded here.
+   ════════════════════════════════════════════════════════════ */
+
+.ur-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+/* ─── Section shell ──────────────────────────────────────── */
+.ur-section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 14px);
+  background: var(--bg-card);
+  padding: 20px;
+}
+
+.ur-section-hd { margin-bottom: 16px; }
+
+.ur-section-hd h2 {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.ur-section-hd p {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ─── Controls ───────────────────────────────────────────── */
+.ur-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.ur-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ur-field span {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.ur-field input {
+  width: 200px;
+  padding: 8px 11px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 6px);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.ur-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.ur-field input::placeholder {
+  font-weight: 400;
+  text-transform: none;
+  color: var(--text-muted);
+}
+
+.ur-btn {
+  padding: 9px 16px;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm, 6px);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.15s, background 0.15s, border-color 0.15s;
+  min-width: 118px;
+}
+
+.ur-btn:hover { opacity: 0.85; }
+
+.ur-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ur-actions[hidden] { display: none; }
+
+.ur-btn-ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-secondary);
+  min-width: 0;
+}
+
+.ur-btn-ghost:hover {
+  opacity: 1;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── "Edited" badge ─────────────────────────────────────── */
+.ur-badge {
+  align-self: center;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 2px 9px;
+  white-space: nowrap;
+}
+
+.ur-badge[hidden] { display: none; }
+
+/* ─── Edit-mode hint ─────────────────────────────────────── */
+.ur-edit-hint {
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+}
+
+.ur-edit-hint[hidden] { display: none; }
+
+.ur-edit-hint code,
+.ur-edit-hint kbd {
+  font-family: var(--mono);
+  font-size: 11px;
+  background: var(--bg-hover, var(--bg-base));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--text-secondary);
+}
+
+.ur-btn-ok {
+  background: var(--gain);
+  border-color: var(--gain);
+  opacity: 1;
+}
+
+.ur-btn-bad {
+  background: var(--loss);
+  border-color: var(--loss);
+  opacity: 1;
+}
+
+/* ─── The prompt itself ──────────────────────────────────── */
+.ur-prompt {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm, 6px);
+  background: var(--bg-base);
+  padding: 16px 18px;
+  margin: 0;
+  max-height: 620px;
+  overflow-y: auto;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  white-space: pre-wrap;   /* wrap the prose, keep the blank lines */
+  overflow-wrap: anywhere; /* never push the page sideways */
+  user-select: text;
+}
+
+.ur-prompt[hidden] { display: none; }
+
+/* The editor is deliberately the same box as the preview — same font, size and
+   padding — so switching modes doesn't reflow the text under you. */
+.ur-prompt-edit {
+  display: block;
+  width: 100%;
+  height: 620px;
+  max-height: none;
+  resize: vertical;
+  color: var(--text-primary);
+}
+
+.ur-prompt-edit:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+@media (max-width: 600px) {
+  .ur-page { padding: 16px 12px 40px; }
+  .ur-section { padding: 14px; }
+  .ur-controls { gap: 8px; }
+  .ur-field, .ur-field input { width: 100%; }
+  .ur-actions { width: 100%; }
+  .ur-actions .ur-btn { flex: 1 1 auto; }
+  .ur-prompt { font-size: 11.5px; padding: 12px 13px; max-height: none; }
+  .ur-prompt-edit { height: 460px; }
+}

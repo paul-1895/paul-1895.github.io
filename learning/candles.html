@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Different Candles — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Different Candles</h1>
+        <p>What each candle shape records, and what it does not</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <!-- ─── Contents rail ─── -->
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#anatomy">Anatomy of a candle</a>
+    <a href="#single">Single-candle shapes</a>
+    <a href="#multi">Multi-candle patterns</a>
+    <a href="#detected">What this app detects</a>
+    <a href="#types">Chart types</a>
+    <a href="#honest">Reading them honestly</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── Anatomy ─── -->
+    <section id="anatomy" class="cd-sec">
+      <h2 class="cd-h2">Anatomy of a candle</h2>
+      <p class="cd-lead">
+        Every candle on every chart in this app is four numbers — open, high, low, close —
+        drawn as a shape. Learning candles is really learning to read those four numbers
+        quickly. Nothing else is encoded in the shape, and treating it as though more is
+        there is the single most common mistake.
+      </p>
+
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="cd-anatomy-fig"></div>
+        <div class="cd-anatomy-notes">
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Body</span>
+            <span>The distance between <b>open</b> and <b>close</b>. Filled green here when
+            the close is higher, red when lower. Its <i>size</i> is the session's conviction.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Upper wick</span>
+            <span>From the top of the body up to the <b>high</b>. This is territory price
+            reached and could not hold — a record of supply.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Lower wick</span>
+            <span>From the bottom of the body down to the <b>low</b>. Territory price
+            reached and was bought back from — a record of demand.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key">Range</span>
+            <span>High minus low: the whole bar. Almost every rule below is a
+            <i>ratio</i> against this, which is what lets one rule work on a ৳20 stock
+            and a ৳400 one alike.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cd-callout">
+        <b>The one idea worth keeping.</b> A long body says one side won and held.
+        A long wick says one side tried and failed. Body = conviction, wick = rejection.
+        Nearly every named pattern below is a rearrangement of those two statements.
+      </div>
+    </section>
+
+    <!-- ─── Single ─── -->
+    <section id="single" class="cd-sec">
+      <h2 class="cd-h2">Single-candle shapes</h2>
+      <p class="cd-lead">
+        Percentages under each diagram are measured from the very OHLC numbers the shape
+        is drawn from, so the picture and the figures cannot disagree.
+      </p>
+      <div class="cd-grid" id="cd-single"></div>
+    </section>
+
+    <!-- ─── Multi ─── -->
+    <section id="multi" class="cd-sec">
+      <h2 class="cd-h2">Multi-candle patterns</h2>
+      <p class="cd-lead">
+        These need two or three bars in sequence. None of them are detected anywhere in
+        this app today — they are here to read by eye on the
+        <a href="../candlestick_chart/candlestick.html">chart page</a>.
+      </p>
+      <div class="cd-grid" id="cd-multi"></div>
+    </section>
+
+    <!-- ─── What this app detects ─── -->
+    <section id="detected" class="cd-sec">
+      <h2 class="cd-h2">What this app actually detects</h2>
+      <p class="cd-lead">
+        The <a href="../screener/screener.html">Screener</a> scans every listed stock for
+        exactly four candle shapes. The thresholds are constants at the top of
+        <code>screener/screener.js</code> — reproduced here so the guide and the code
+        cannot drift apart.
+      </p>
+
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead>
+            <tr><th>Constant</th><th>Value</th><th>What it gates</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="cd-t-name">CANDLE_MIN_RANGE_PCT</td><td><b>0.3%</b></td>
+                <td>Minimum high-to-low range. Below this the bar is noise and every ratio
+                    becomes unstable, so no pattern is reported at all.</td></tr>
+            <tr><td class="cd-t-name">HAMMER_MIN_WICK_RATIO</td><td><b>2.0×</b></td>
+                <td>The dominant wick must be at least twice the body.</td></tr>
+            <tr><td class="cd-t-name">HAMMER_MAX_OPP_RATIO</td><td><b>10%</b></td>
+                <td>The opposite wick must be near-absent, or the bar is a spinning top
+                    rather than a hammer.</td></tr>
+            <tr><td class="cd-t-name">HAMMER_MAX_BODY_RATIO</td><td><b>35%</b></td>
+                <td>Body must stay small relative to the range.</td></tr>
+            <tr><td class="cd-t-name">MARUBOZU_MIN_BODY_RATIO</td><td><b>85%</b></td>
+                <td>Body must dominate the range.</td></tr>
+            <tr><td class="cd-t-name">MARUBOZU_MAX_WICK_RATIO</td><td><b>5%</b></td>
+                <td>Each wick must be almost nothing.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cd-callout cd-warn">
+        <b>An important quirk of the daily data.</b> The Screener builds these candles with
+        <code>open = YCP</code> (yesterday's closing price), not the session's real opening
+        trade — the Screener's own footer says <i>"open ≈ YCP"</i>. On a stock that gaps at
+        the open, the body it measures is the gap plus the day's move, so a marubozu there
+        may be describing the overnight jump rather than a session of one-way trade. The
+        <a href="../candlestick_chart/candlestick.html">chart page</a> uses true OHLC and
+        can therefore disagree with the Screener about the same stock on the same day.
+      </div>
+    </section>
+
+    <!-- ─── Chart types ─── -->
+    <section id="types" class="cd-sec">
+      <h2 class="cd-h2">Chart types in this app</h2>
+      <p class="cd-lead">
+        The chart page can redraw the same four numbers several different ways. Each
+        transformation trades some information away for some clarity — knowing which is
+        which keeps you from reading a level off a chart that never had one.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Type</th><th>How it is built</th><th>What you gain / lose</th></tr></thead>
+          <tbody id="cd-types"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Honesty ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading them honestly</h2>
+
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>A pattern is a description, not a prediction</h4>
+          <p>Every shape above describes what already happened in a session. None of them
+          carry a probability of what happens next. The names — "reversal", "continuation" —
+          are conventions from a different market and century, not measured outcomes on the DSE.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Context outranks shape, every time</h4>
+          <p>The identical shape is a Hammer after a decline and a Hanging Man after a rally.
+          The candle cannot tell you which; only the fifty bars to its left can. Any rule that
+          fires on one bar in isolation is throwing that away.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>This app has evidence that textbook structure can mislead</h4>
+          <p>The <a href="../super_model/super-model.html">Super Model</a> scores a full 7/7
+          Minervini uptrend <b>negatively</b> — on this market and sample, that textbook-bullish
+          structure was followed by underperformance in every period tested. That finding is
+          about trend templates rather than candles, but the lesson transfers: a shape being
+          canonical in the literature is not evidence it works here.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Higher timeframes carry more signal — for a concrete reason</h4>
+          <p>A weekly bar aggregates five sessions of trading, so one unusual print moves its
+          shape far less than it moves a daily bar's. That matters more on the DSE than on a
+          deep market: on a thinly traded stock a single daily candle can represent a handful
+          of trades, and its "pattern" is then an artefact of low volume rather than a
+          balance of buyers and sellers. Aggregating up is a real defence — but it is a
+          mechanism, not a guarantee, and it costs you timeliness.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Small ranges manufacture patterns</h4>
+          <p>On an illiquid stock a ৳0.10 range can technically satisfy a hammer's ratios.
+          That is why <code>CANDLE_MIN_RANGE_PCT</code> exists. When reading by eye, apply the
+          same discipline: check the range is real before naming the shape.</p>
+        </div>
+      </div>
+
+      <p class="cd-foot">
+        Want to test any of this? The <a href="../screener/screener.html">Screener</a> lists
+        today's hammers and marubozus across all ~396 listed stocks, and the
+        <a href="../candlestick_chart/candlestick.html">chart page</a> will show you the bars
+        around them.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<script src="candles.js"></script>
+<script>
+  // Theme support — same inline pattern as learning.html / topic.html so all
+  // three pages read and write the one 'dse-theme' key.
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

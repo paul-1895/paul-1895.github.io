@@ -1,0 +1,81 @@
+/* ─── SUMMARY CARDS ──────────────────────────────────────────────── */
+.summary-row {
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s var(--ease-spring);
+  animation: fadeSlideUp 0.5s var(--ease-spring) both;
+}
+
+/* Stagger card animations */
+.summary-card:nth-child(1) { animation-delay: 0.05s; }
+.summary-card:nth-child(2) { animation-delay: 0.10s; }
+.summary-card:nth-child(3) { animation-delay: 0.15s; }
+.summary-card:nth-child(4) { animation-delay: 0.20s; }
+.summary-card:nth-child(5) { animation-delay: 0.25s; }
+
+/* Glossy top edge */
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+/* Ambient glow blob */
+.summary-card::after {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 50%;
+}
+
+.summary-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 24px var(--accent-glow);
+}
+.summary-card:hover::before { opacity: 1; }
+.summary-card:hover::after  { opacity: 1; }
+
+.sc-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.sc-value {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+.sc-value.gain {
+  color: var(--gain);
+  text-shadow: 0 0 20px rgba(0,230,118,0.4);
+}
+.sc-value.loss {
+  color: var(--loss);
+  text-shadow: 0 0 20px rgba(255,64,96,0.4);
+}

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hilega-Milega — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Hilega-Milega</h1>
+        <p>An RSI read against its own average — and what testing it here found</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">What it is</a>
+    <a href="#build">How the pane is built</a>
+    <a href="#zones">Zones vs crossovers</a>
+    <a href="#crosses">The two signals</a>
+    <a href="#real-examples">Real DSE examples</a>
+    <a href="#detected">What this app detects</a>
+    <a href="#evidence">What the backtest found</a>
+    <a href="#honest">Reading it honestly</a>
+    <a href="#videos">Videos</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What it is ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">What it is</h2>
+      <p class="cd-lead">
+        Hilega-Milega is not a standard indicator you will find in a textbook — it is a
+        custom pane this app draws, built entirely out of <b>one</b> input: a 9-period RSI.
+        Everything else on the pane is a smoothing of that same RSI line. Understanding
+        that one fact explains most of how it behaves.
+      </p>
+
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="hm-full"></div>
+      </div>
+
+      <div class="cd-anatomy" style="margin-top:16px">
+        <div class="cd-anatomy-notes">
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" style="color:#26c6da">RSI(9)</span>
+            <span>The fast line. A 9-period RSI of closing price — quicker and noisier than
+            the standard RSI(14) drawn in its own pane above.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" style="color:#f57c00">WMA(21)</span>
+            <span>The dotted "strength" line: a 21-period <i>weighted</i> moving average
+            <b>of the RSI</b>, not of price. This is the slow reference the fast line is
+            measured against.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" style="color:#1e88e5">EMA(3)</span>
+            <span>The "price" line: a 3-period EMA <b>of the RSI</b>. Barely a smoothing at
+            all — it tracks the RSI closely and mostly serves to make the turn direction
+            easier to see.</span>
+          </div>
+          <div class="cd-anat-row">
+            <span class="cd-anat-key" style="color:#4caf50">Line-50</span>
+            <span>The RSI midpoint. The shaded fill flips colour across it, which is what
+            gives the pane its at-a-glance bullish/bearish read.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── How built ─── -->
+    <section id="build" class="cd-sec">
+      <h2 class="cd-h2">How the pane is built</h2>
+      <p class="cd-lead">
+        Three lines, computed in order. Each step takes the output of the one above it —
+        which is why the whole pane moves together and why none of the lines can disagree
+        with each other for long.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Step</th><th>Computed from</th><th>Consequence</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">RSI(9)</td>
+              <td>Closing prices, 9 bars.</td>
+              <td class="cd-t-why">Bounded 0–100, so it never trends off the top of the pane
+                  the way price does.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">WMA(21)</td>
+              <td><b>The RSI series</b>, 21 bars, linearly weighted toward the newest value.</td>
+              <td class="cd-t-why">A smoothing of a smoothing. It lags the RSI by construction,
+                  which is precisely what makes a crossover possible.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">EMA(3)</td>
+              <td><b>The RSI series</b>, 3 bars.</td>
+              <td class="cd-t-why">So short it is nearly the RSI itself; it is a readability
+                  aid, not an independent signal.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cd-callout">
+        <b>Why the warm-up is longer than it looks.</b> The RSI needs 9 bars before it
+        produces anything, and the WMA then needs 21 <i>more</i> RSI values on top of that.
+        During the gap, <code>attachHilegaMilega()</code> substitutes <code>50</code> for the
+        missing RSI values so the average has something to chew on — so the first stretch of
+        the dotted line is anchored to a placeholder, not to real data. Do not read
+        crossovers from the left edge of a freshly loaded chart.
+      </div>
+    </section>
+
+    <!-- ─── Zones ─── -->
+    <section id="zones" class="cd-sec">
+      <h2 class="cd-h2">Zones versus crossovers</h2>
+      <p class="cd-lead">
+        The pane tells you two different things, and they are easy to confuse. The
+        <b>shading</b> is a zone read — which side of 50 the RSI sits on. The
+        <b>crossover</b> is an event — the fast line passing its own average. They often
+        disagree, and only one of them is what the Screener scans for.
+      </p>
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="hm-zones"></div>
+      </div>
+      <div class="cd-callout">
+        <b>Same pane, two readings.</b> Orange fill means RSI is above 50 — momentum leaning
+        bullish. But the RSI can be well above 50 and still cross <i>below</i> its WMA(21),
+        which the Screener reports as a bearish signal. A stock can therefore be "in the
+        orange" and appear in the sell list on the same day. Neither is wrong; they answer
+        different questions.
+      </div>
+    </section>
+
+    <!-- ─── The two signals ─── -->
+    <section id="crosses" class="cd-sec">
+      <h2 class="cd-h2">The two signals</h2>
+      <p class="cd-lead">
+        Both diagrams below are genuine slices of the series plotted at the top of this page,
+        marked at bars where the real crossover test fires. The numbers beside them are the
+        actual RSI and WMA values on those bars.
+      </p>
+      <div class="cd-grid cd-grid--wide" id="hm-crosses"></div>
+    </section>
+
+    <!-- ─── Real DSE examples ─── -->
+    <section id="real-examples" class="cd-sec">
+      <h2 class="cd-h2">Real DSE examples</h2>
+      <p class="cd-lead">
+        Everything above runs on a <a href="#honest">deliberately synthetic</a> series, kept
+        stable so the anatomy diagrams do not shift as the archive grows. These three cards are
+        the opposite: real daily closes for real DSE tickers, fetched from this app's own
+        <code>/historical_prices</code> archive, with the same RSI(9)/WMA(21) test applied. The
+        two directional cases are picked programmatically — the largest same-direction 5-day
+        move among a small sample of stocks — not hand-selected for a flattering result, and the
+        whipsaw case is included deliberately so this section is not just a highlight reel.
+      </p>
+      <div class="cd-grid cd-grid--wide" id="hm-real-examples">
+        <div class="cd-callout">Loading real examples…</div>
+      </div>
+    </section>
+
+    <!-- ─── Detected ─── -->
+    <section id="detected" class="cd-sec">
+      <h2 class="cd-h2">What this app actually detects</h2>
+      <p class="cd-lead">
+        The <a href="../screener/screener.html">Screener</a>'s Hilega-Milega Buy / Sell lists
+        come from <code>detectHmCrossover()</code> in
+        <code>routes/screener-technicals.js</code>. It is a strict two-bar test on the
+        <i>most recent completed daily bar</i> only:
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Signal</th><th>Condition</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Buy</td>
+              <td><code>prev: RSI − WMA ≤ 0</code> and <code>now: RSI − WMA &gt; 0</code></td>
+              <td class="cd-t-why">Crossed up on this bar. A stock already above its WMA does
+                  not qualify — the list is fresh crossings only.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Sell</td>
+              <td><code>prev: RSI − WMA ≥ 0</code> and <code>now: RSI − WMA &lt; 0</code></td>
+              <td class="cd-t-why">Crossed down on this bar.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cd-lead" style="margin-top:18px">
+        Note the <code>≤</code> and <code>≥</code> on the previous bar: a bar where the two
+        lines are exactly equal counts as "not yet above", so a touch-and-go still registers
+        as a cross the next bar. Only the daily timeframe is scanned — unlike the MACD scan,
+        there is no weekly or monthly option.
+      </p>
+      <div class="cd-callout">
+        <b>Expect a lot of them.</b> Because it fires on any crossing of a fast line and its
+        own short average, this is one of the busiest scans in the app — on a typical day it
+        returns dozens of names across the ~396 listed stocks. A signal that common cannot
+        also be rare and precious; treat it as a shortlist to look at, not a list to act on.
+      </div>
+    </section>
+
+    <!-- ─── Evidence ─── -->
+    <section id="evidence" class="cd-sec">
+      <h2 class="cd-h2">What the backtest found</h2>
+      <p class="cd-lead">
+        This is the part worth reading twice. Hilega-Milega was not taken on trust — the
+        <a href="../super_model/super-model.html">Super Model</a> tested it as a candidate
+        signal against forward returns, and <b>it did not survive</b>.
+      </p>
+
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Measure</th><th>Result</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td class="cd-t-name">Edge, earlier half</td><td><b>+0.75</b></td>
+                <td class="cd-t-why">Excess forward return of bullish over bearish crossings.</td></tr>
+            <tr><td class="cd-t-name">Edge, later half</td><td><b>−0.15</b></td>
+                <td class="cd-t-why">The sign flipped when the history was cut at a different date.</td></tr>
+            <tr><td class="cd-t-name">Consistent?</td><td><b>No</b></td>
+                <td class="cd-t-why">An effect that changes direction with the split is the
+                    signature of noise, not edge.</td></tr>
+            <tr><td class="cd-t-name">Weight in the shipped model</td><td><b>0</b></td>
+                <td class="cd-t-why">Detected and displayed, but contributes nothing to any score.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cd-callout cd-warn">
+        <b>What that does and does not mean.</b> It does <i>not</i> prove Hilega-Milega is
+        worthless — the sample is roughly 13 months of broad-market DSE history, which is
+        thin, and a signal can be useful inside a strategy while showing no edge in isolation.
+        What it does mean is that on this data, nobody has demonstrated it works, and the
+        model that could have used it chose not to. That is the honest status: <b>unproven
+        here</b>, not disproven, and certainly not confirmed.
+      </div>
+
+      <p class="cd-lead" style="margin-top:18px">
+        For contrast, only four signals earned a non-zero weight in that model:
+        the 50-day SMA trend (+12), Supertrend (+12), monthly seasonality (+8), and a full
+        Minervini pass at <b>−20</b> — scored negatively. MACD, liquidity sweeps,
+        support/resistance proximity and Hilega-Milega were all measured and all zeroed.
+      </p>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+
+      <p class="cd-lead">
+        Before the general points, one specific thing you can see. Every ring below is a bar
+        where the crossover test fires. This stretch is the same series from the top of the
+        page — <b><span id="hm-whipcount">–</span> signals in <span id="hm-whipbars">–</span>
+        bars</b>, alternating buy and sell almost every other session while price went
+        essentially nowhere.
+      </p>
+      <div class="cd-anatomy">
+        <div class="cd-anatomy-fig" id="hm-whipsaw"></div>
+      </div>
+      <div class="cd-callout cd-warn" style="margin-bottom:22px">
+        <b>This is the failure mode, not an edge case.</b> When the RSI hovers near its own
+        average, the sign of a tiny difference flips repeatedly — and each flip is a fresh
+        entry in the Screener's list. Acting on every one of these would have meant a
+        round-trip in commission every second day for no directional move at all. It is the
+        clearest reason the crossover cannot be used on its own.
+      </div>
+
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>It is an oscillator read, not a price read</h4>
+          <p>Every line on this pane derives from RSI, and RSI derives from the <i>ratio</i>
+          of average gains to average losses. A bullish crossover says momentum improved
+          relative to its own recent average — price can still be falling while that happens.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Smoothing a smoothing adds lag, not information</h4>
+          <p>WMA(21) of RSI(9) contains nothing RSI(9) did not already contain; it is the same
+          series, delayed. The crossover is therefore an artefact of that delay. That is not a
+          criticism — it is what makes the event well-defined — but it is worth knowing no new
+          data enters the pane after the first line.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The diagrams here are synthetic — deliberately</h4>
+          <p>Every plot on this page runs the indicator's real maths over a <i>generated</i>
+          price series, not a real stock, so the shapes stay stable as the archive grows. The
+          generator is calibrated against the archive: across 57 DSE stocks over 130 bars,
+          RSI(9) had a median range of 10–97 and a median 11 bullish / 10 bearish crossings —
+          this series produces 12–100 and 11 / 11. It behaves like your charts, but it is not
+          one of them. For a real stock, open the
+          <a href="../candlestick_chart/candlestick.html">chart page</a>.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The app itself declines to rely on it</h4>
+          <p>The Super Model detects this signal, shows it in its reasoning, and gives it a
+          weight of zero. When a tool built on the same codebase measures a signal and then
+          refuses to score it, that is the most direct evidence available to you — and it is
+          worth more than any pattern's reputation.</p>
+        </div>
+      </div>
+
+      <p class="cd-foot">
+        See it live: the <a href="../screener/screener.html">Screener</a> lists today's
+        Hilega-Milega buy and sell crossovers, and the
+        <a href="../candlestick_chart/candlestick.html">chart page</a> draws the full pane for
+        any stock. Related reading: <a href="candles.html">Different Candles</a>.
+      </p>
+    </section>
+
+    <!-- ─── Videos ───
+         Deliberately empty for now — Hilega-Milega itself is this app's
+         own custom indicator, so there is no existing video specifically
+         about it; any video here should be picked and reviewed by hand
+         rather than guessed at. Drop cards in with this markup:
+
+         <a class="cd-video-card" href="https://www.youtube.com/watch?v=VIDEO_ID"
+            target="_blank" rel="noopener">
+           <div class="cd-video-thumb">
+             <img src="https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg" alt="" loading="lazy" />
+             <span class="cd-video-play">▶</span>
+           </div>
+           <div class="cd-video-body">
+             <h4>Video title</h4>
+             <p>Channel name</p>
+           </div>
+         </a>
+    -->
+    <section id="videos" class="cd-sec">
+      <h2 class="cd-h2">Videos</h2>
+      <p class="cd-lead">
+        Background viewing on the concepts this pane is built from — RSI, moving-average
+        crossovers, and the whipsaw problem covered in <a href="#honest">Reading it honestly</a>
+        above. Nothing here is specific to Hilega-Milega itself; it is a custom pane unique to
+        this app, so no existing video covers it directly.
+      </p>
+      <div class="cd-video-grid" id="hm-videos">
+        <div class="cd-callout">No videos added yet.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="hilega-milega.js"></script>
+<script>
+  // Theme support — same inline pattern as the other learning pages so all
+  // of them read and write the one 'dse-theme' key.
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

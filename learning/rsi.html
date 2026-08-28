@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RSI — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>RSI</h1>
+        <p>How it's built, what it can and can't say — and a discrepancy in this app's own version of it</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">What it is</a>
+    <a href="#formula">The formula</a>
+    <a href="#discrepancy">A discrepancy here</a>
+    <a href="#measured">How big is the gap</a>
+    <a href="#example">Seen on a real stock</a>
+    <a href="#levels">The levels</a>
+    <a href="#divergence">Divergence</a>
+    <a href="#where">Where RSI is used here</a>
+    <a href="#evidence">What testing found</a>
+    <a href="#honest">Reading it honestly</a>
+    <a href="#videos">Videos</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What it is ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">What it is</h2>
+      <p class="cd-lead">
+        The Relative Strength Index, published by J. Welles Wilder in 1978, answers one narrow
+        question: <b>over the last N bars, what share of the total price movement was upward?</b>
+        If every bar closed higher, RSI is 100. If every bar closed lower, it is 0. If gains and
+        losses were equal in total size, it is 50. Everything else people do with RSI —
+        overbought lines, divergences, crossovers — is interpretation layered on top of that one
+        ratio.
+      </p>
+      <div class="cd-callout">
+        <b>"Relative strength" here does not mean strength relative to other stocks.</b> That is a
+        different measure entirely (relative strength ranking, which the
+        <a href="minervini.html">Minervini guide</a> deals with). RSI compares a stock only to its
+        own recent history. A stock at RSI 80 is not outperforming anything except its own
+        past two weeks.
+      </div>
+    </section>
+
+    <!-- ─── Formula ─── -->
+    <section id="formula" class="cd-sec">
+      <h2 class="cd-h2">The formula</h2>
+      <p class="cd-lead">
+        Three steps, and the whole argument on this page lives in step two.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Step</th><th>What happens</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">1 · Split</td>
+              <td>Each bar's change from the previous close is filed as a gain or a loss. A
+                  down day contributes 0 to gains, not a negative number.</td>
+              <td class="cd-t-why">Uncontroversial — every implementation agrees here.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">2 · Average</td>
+              <td>Average the gains and average the losses over the lookback period.</td>
+              <td class="cd-t-why"><b>This is where implementations diverge.</b> "Average" can
+                  mean a simple mean of the last N, or Wilder's forward-smoothed running
+                  average. They give different numbers forever.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">3 · Normalise</td>
+              <td><code>RS = avgGain / avgLoss</code>, then
+                  <code>RSI = 100 − 100/(1 + RS)</code>.</td>
+              <td class="cd-t-why">Squashes any ratio into 0–100. When there are no losses at
+                  all the ratio is undefined, and code has to pick a fallback.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout" style="margin-top:16px">
+        <b>Wilder's smoothing, precisely.</b> After seeding from the first N changes, each new
+        average is <code>(previous × (N − 1) + today) / N</code>. Every bar in history keeps some
+        weight forever, decaying but never dropping out. A simple N-bar mean does the opposite:
+        a bar counts fully for N bars, then vanishes completely.
+      </div>
+    </section>
+
+    <!-- ─── Discrepancy ─── -->
+    <section id="discrepancy" class="cd-sec">
+      <h2 class="cd-h2">A discrepancy in this app</h2>
+      <p class="cd-lead">
+        This app does not use Wilder's smoothing. <code>candlestick_chart/indicators/rsi.js</code>
+        computes RSI from a plain simple average of the last 14 gains and losses — and
+        <code>routes/screener-technicals.js</code> carries an identical copy, so the chart, the
+        screener and the Super Model all inherit it.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Where</th><th>Uses</th><th>Consequence</th></tr></thead>
+          <tbody>
+            <tr><td class="cd-t-name">indicators/rsi.js</td>
+                <td>Simple 14-bar mean of gains/losses</td>
+                <td class="cd-t-why">The RSI pane drawn under every chart in this app.</td></tr>
+            <tr><td class="cd-t-name">screener-technicals.js</td>
+                <td>The same function, copied</td>
+                <td class="cd-t-why">Server-side scans, and the Hilega-Milega RSI(9).</td></tr>
+            <tr><td class="cd-t-name">TradingView, Investing.com, textbooks</td>
+                <td>Wilder's forward smoothing</td>
+                <td class="cd-t-why">Anyone comparing this app's RSI reading against another
+                    platform's is comparing two different indicators.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout cd-warn">
+        <b>This is a real difference, not a rounding one.</b> A simple mean makes RSI jump when a
+        large move drops out of the back of the window — the price today did not change, but the
+        indicator did. Wilder's version cannot do that, because nothing ever leaves the window
+        abruptly. The next section measures how far apart the two actually get.
+      </div>
+    </section>
+
+    <!-- ─── Measured ─── -->
+    <section id="measured" class="cd-sec">
+      <h2 class="cd-h2">How big is the gap</h2>
+      <p class="cd-lead">
+        Both versions were computed on identical closing prices for every stock in this app's
+        archive, by <code>scripts/build-learning-stats.js</code>. This is not an estimate — it is
+        every bar, compared.
+      </p>
+      <div id="rsi-marketwide">
+        <div class="cd-callout">Loading measured figures…</div>
+      </div>
+      <div class="cd-callout" style="margin-top:18px">
+        <b>Which one is "right"?</b> Wilder's is the standard, and it is what almost every other
+        platform means by RSI — so if you are reading RSI levels from a book, a course or another
+        chart, they are describing the dashed line, not this app's solid one. Neither is broken
+        mathematically; they are two different indicators that share a name. The problem is only
+        that the shared name hides it.
+      </div>
+    </section>
+
+    <!-- ─── Example ─── -->
+    <section id="example" class="cd-sec">
+      <h2 class="cd-h2">Seen on a real stock</h2>
+      <p class="cd-lead">
+        Real daily closes from this app's own archive, with both implementations drawn on the
+        same 0–100 axis. Both are computed on the full price history and only then sliced for
+        display — Wilder's version depends on its entire past, so seeding it from a short window
+        would produce a line no chart would ever show.
+      </p>
+      <div class="cd-anatomy" id="rsi-example">
+        <div class="cd-callout">Loading a real example…</div>
+      </div>
+    </section>
+
+    <!-- ─── Levels ─── -->
+    <section id="levels" class="cd-sec">
+      <h2 class="cd-h2">The levels, and what they actually mean</h2>
+      <p class="cd-lead">
+        70 and 30 are conventions Wilder proposed, not thresholds derived from anything. The
+        chart pane in this app shades above 70 red and below 30 green, and draws a line at 50.
+        Here is what each level does and does not tell you.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Level</th><th>Common reading</th><th>The catch</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Above 70</td>
+              <td>"Overbought" — the move is stretched and due a pause.</td>
+              <td class="cd-t-why">In a strong trend RSI can sit above 70 for weeks. Selling every
+                  touch of 70 in an uptrend means exiting the best stocks first. Wilder himself
+                  described high RSI as a sign of strength, not of a sell.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Below 30</td>
+              <td>"Oversold" — the fall is stretched and due a bounce.</td>
+              <td class="cd-t-why">Equally, a stock in structural decline can print sub-30
+                  readings all the way down. Oversold and cheap are unrelated concepts.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">The 50 line</td>
+              <td>The midpoint — above it, gains have outweighed losses over the window.</td>
+              <td class="cd-t-why">The most defensible of the three, because it is a direct
+                  restatement of the arithmetic rather than a judgement about what is "too
+                  much". <a href="hilega-milega.html">Hilega-Milega</a> is built around it.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Period (14 vs 9)</td>
+              <td>Shorter periods react faster.</td>
+              <td class="cd-t-why">A shorter RSI also reaches the extremes far more often, so 70
+                  on an RSI(9) is a much weaker statement than 70 on an RSI(14). The levels are
+                  not transferable between periods.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Divergence ─── -->
+    <section id="divergence" class="cd-sec">
+      <h2 class="cd-h2">Divergence</h2>
+      <p class="cd-lead">
+        The most popular advanced use of RSI: price makes a higher high while RSI makes a lower
+        high (bearish divergence), or price makes a lower low while RSI makes a higher low
+        (bullish divergence). The reasoning is that the second push happened with less
+        momentum behind it.
+      </p>
+      <div class="cd-callout cd-warn">
+        <b>Nothing in this app detects RSI divergence.</b> Not the chart, not the screener, not
+        the Super Model. Spotting one requires deciding which two peaks to compare, and that is a
+        human choice with no rule behind it — the same objection the
+        <a href="fibonacci.html">Fibonacci</a> and <a href="smart-money.html">Smart Money
+        Concepts</a> guides run into. Any divergence you see on a chart here, you found yourself,
+        and no backtest on this Hub says anything about whether it works.
+      </div>
+      <p class="cd-lead" style="margin-top:18px">
+        Two things worth knowing before relying on one. First, divergences are only obvious in
+        hindsight — a lower RSI high becomes a divergence only once price has turned, and a
+        trend can produce four of them in a row before the fifth one "works". Second, on this
+        app's simple-mean RSI, the shape of a peak also depends on what dropped out of the back
+        of the 14-bar window, which adds a source of wiggle that Wilder's version does not have.
+      </p>
+    </section>
+
+    <!-- ─── Where used ─── -->
+    <section id="where" class="cd-sec">
+      <h2 class="cd-h2">Where RSI is used in this app</h2>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Place</th><th>Period</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td class="cd-t-name">Chart RSI pane</td><td>14</td>
+                <td>Its own sub-pane below volume, with 30/70 shading and a right-axis tag
+                    showing the latest value.</td></tr>
+            <tr><td class="cd-t-name"><a href="hilega-milega.html">Hilega-Milega</a></td><td>9</td>
+                <td>The entire pane is built from RSI(9) — its "strength" line is a WMA(21)
+                    <i>of the RSI</i>, and its "price" line an EMA(3) of the same RSI.</td></tr>
+            <tr><td class="cd-t-name">Screener technicals</td><td>9</td>
+                <td>Fires a discrete buy/sell when RSI(9) crosses its own WMA(21).</td></tr>
+            <tr><td class="cd-t-name"><a href="../super_model/super-model.html">Super Model</a></td><td>9</td>
+                <td>Takes the Hilega-Milega crossover as a candidate signal — and scores it
+                    zero.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Evidence ─── -->
+    <section id="evidence" class="cd-sec">
+      <h2 class="cd-h2">What testing found</h2>
+      <p class="cd-lead">
+        RSI on its own has never been backtested in this app — there is no rule attached to it to
+        test. What has been tested is the one strategy built from it: the
+        <a href="hilega-milega.html">Hilega-Milega</a> RSI(9)/WMA(21) crossover.
+      </p>
+      <div class="cd-callout cd-warn">
+        <b>It did not survive.</b> The Super Model measured its excess forward return across
+        different splits of the history, the sign flipped depending on where the data was cut,
+        and its weight in the shipped model is <code>0</code> — detected and displayed, but
+        contributing nothing to any score. The full figures are on the
+        <a href="hilega-milega.html#evidence">Hilega-Milega page</a>, which is where that result
+        belongs rather than being restated here.
+      </div>
+      <p class="cd-lead" style="margin-top:18px">
+        Note carefully what that does and does not implicate. It tests one crossover rule built
+        on RSI(9), on this market, over this sample. It says nothing about RSI(14) as a
+        descriptive measure, and nothing about the 70/30 levels, because neither has been given a
+        testable rule here.
+      </p>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>This app's RSI is not the RSI in your book</h4>
+          <p>The single most useful thing on this page. If you read "buy below 30" somewhere and
+          apply it to the pane in this app, you are applying a threshold calibrated on Wilder's
+          smoothed version to a simple-mean version that reaches those extremes far more often.
+          The measured section shows how much more often.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>RSI can change without price changing</h4>
+          <p>Because this app's version uses a fixed 14-bar window, a large gain or loss falling
+          out of the back of that window shifts the reading on its own. A flat day can move RSI
+          several points. That is an artefact of the windowing, not information about today.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Bounded does not mean mean-reverting</h4>
+          <p>RSI cannot leave 0–100, and it is tempting to read that as "it must come back". The
+          bound is arithmetic, not economic. A stock can hold RSI above 70 for a quarter while
+          the price doubles, and the indicator will simply sit there.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The extremes are least reliable where they are most common</h4>
+          <p>Thin DSE small caps can print an RSI of 100 or 0 on a handful of one-sided ticks,
+          because with no losses in the window the ratio is undefined and the code falls back to
+          an extreme. On an illiquid stock, an extreme RSI often measures the absence of trading
+          rather than the presence of momentum.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>No divergence detection exists here — including in the backtests</h4>
+          <p>The most-cited RSI technique in trading education is entirely absent from this
+          codebase, which also means no result on this Hub supports or undermines it. If you use
+          divergences, you are outside anything this app has measured.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The one RSI rule that was tested here scored zero</h4>
+          <p>Hilega-Milega is a mechanical, testable RSI strategy, it was tested properly, and it
+          showed no consistent edge. That is one rule on one market — but it is the only
+          evidence this app has, and it points down rather than up.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        See it live: enable the RSI pane on any stock's
+        <a href="../candlestick_chart/candlestick.html">chart page</a>. Related reading:
+        <a href="hilega-milega.html">Hilega-Milega</a> — the RSI-derived pane and its backtest;
+        <a href="macd-ema.html">MACD + EMA</a> — the other momentum indicator here, with a
+        market-wide test behind it; <a href="minervini.html">Minervini Trend Template</a> — where
+        "relative strength" means something completely different.
+      </p>
+    </section>
+
+    <!-- ─── Videos ─── -->
+    <section id="videos" class="cd-sec">
+      <h2 class="cd-h2">Videos</h2>
+      <p class="cd-lead">
+        Background viewing on RSI as a general concept. Note that essentially all of it will
+        describe Wilder's smoothed version — see <a href="#discrepancy">the discrepancy
+        section</a> before transferring any threshold from a video to this app's pane.
+      </p>
+      <div class="cd-video-grid" id="rsi-videos">
+        <div class="cd-callout">No videos added yet.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="rsi.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

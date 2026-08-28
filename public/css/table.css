@@ -1,0 +1,182 @@
+/* ─── TABLE ──────────────────────────────────────────────────────── */
+.table-container {
+  max-width: 1400px;
+  margin: 0 auto 50px;
+  padding: 0 24px;
+  position: relative;
+  min-height: 200px;
+  animation: fadeSlideUp 0.5s 0.3s var(--ease-spring) both;
+}
+
+.state-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.state-overlay.hidden { display: none; }
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-right-color: var(--grad-b);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.error-icon {
+  width: 52px;
+  height: 52px;
+  border: 2px solid var(--loss);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--loss);
+  box-shadow: 0 0 20px rgba(255,64,96,0.3);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.retry-btn {
+  padding: 9px 20px;
+  background: var(--loss-bg);
+  border: 1px solid var(--loss);
+  color: var(--loss);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-spring);
+  box-shadow: 0 0 12px rgba(255,64,96,0.15);
+}
+.retry-btn:hover {
+  background: var(--loss);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,64,96,0.4);
+}
+
+#stocks-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.3);
+}
+#stocks-table.hidden { display: none; }
+
+#stocks-table thead tr {
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(14,21,33,0.95) 100%);
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+
+/* Rainbow header stripe */
+#stocks-table thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--grad-a), var(--grad-b), var(--grad-c), var(--grad-d));
+}
+
+#stocks-table th {
+  padding: 13px 14px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  user-select: none;
+  transition: color 0.2s;
+  position: relative;
+}
+#stocks-table th.th-num { text-align: right; cursor: pointer; }
+#stocks-table th:hover { color: var(--accent); }
+.sort-arrow { font-size: 11px; color: var(--accent); text-shadow: 0 0 8px var(--accent-glow); }
+
+#stocks-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s, transform 0.15s;
+}
+#stocks-table tbody tr:hover {
+  background: var(--bg-row-hover);
+  position: relative;
+}
+#stocks-table tbody tr:last-child { border-bottom: none; }
+
+/* Left accent bar on hover */
+#stocks-table tbody tr td:first-child {
+  position: relative;
+}
+#stocks-table tbody tr:hover td:first-child::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--grad-b));
+  border-radius: 0 2px 2px 0;
+}
+
+#stocks-table td {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+
+.th-rank {
+  color: var(--text-muted) !important;
+  font-family: var(--mono);
+  font-size: 10px !important;
+}
+.th-code {
+  font-family: var(--mono);
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: 0.3px;
+}
+.th-num {
+  text-align: right !important;
+  font-family: var(--mono);
+  font-size: 11px !important;
+  font-variant-numeric: tabular-nums;
+}
+.up {
+  color: var(--gain) !important;
+  text-shadow: 0 0 10px rgba(0,230,118,0.4) !important;
+  font-weight: 700 !important;
+}
+.dn {
+  color: var(--loss) !important;
+  text-shadow: 0 0 10px rgba(255,64,96,0.4) !important;
+  font-weight: 700 !important;
+}
+
+.table-footer {
+  padding: 12px 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: right;
+  letter-spacing: 0.3px;
+}
