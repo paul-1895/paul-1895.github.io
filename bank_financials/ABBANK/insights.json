@@ -1,0 +1,51 @@
+{
+  "bank_id": "ABBANK",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight below cites the specific ratio/period pair it is derived from in ratios_timeseries.json or the underlying quarterly/*.json files; none are generic or asserted without a supporting number. Updated 2026-08-26 after a full Q1-Q3 quarterly backfill covering 2011-2025 (45 new quarterly files), which changed several conclusions from quarterly-only to the year-end (Q4/annual) view.",
+  "risk_signals": [
+    {
+      "category": "credit_risk",
+      "severity": "critical",
+      "statement": "NPL ratio surged from 30.0% (FY2023) to 67.1% (FY2024) to 56.5% (FY2025) and 55.7% (Q2 2026) — more than 10x the FY2011-2017 average of ~4.2%. The now-available quarterly granularity shows this was NOT a gradual build-up during 2024: NPL was still only 31.23% (Q1 2024), 30.75% (Q2 2024) and 31.01% (Q3 2024) — essentially flat — before jumping to 67.14% specifically within Q4 2024 (Oct-Dec) alone, a single-quarter recognition event rather than a multi-quarter drift.",
+      "metrics": ["npl_ratio_pct"],
+      "periods": ["2024_Q1","2024_Q2","2024_Q3","2024_Q4","2025_Q4","2026_Q2"]
+    },
+    {
+      "category": "capital_risk",
+      "severity": "critical",
+      "statement": "Capital Adequacy Ratio fell from 10.26% (FY2023, above the ~10% regulatory minimum) to 3.47% (FY2024) and turned negative at -3.78% (FY2025) — the bank is capital-deficient against Basel III minimum requirements as of the latest reported figure.",
+      "metrics": ["car_pct"],
+      "periods": ["2023_Q4","2024_Q4","2025_Q4"]
+    },
+    {
+      "category": "profitability_risk",
+      "severity": "critical",
+      "statement": "ROE moved from +2.95% (FY2023) to -131.1% (FY2024) to -269.5% (FY2025). The quarterly backfill pinpoints the structural break earlier than the annual figures suggest: discrete net interest income was already negative in Q2 2024 (-693,932,503) and Q3 2024 (-792,875,189) — interest paid on deposits/borrowings exceeded interest income for two consecutive quarters before the FY2024 year-end NPL shock even hit — and cumulative 9-month 2024 net profit was still positive (+15,839,598) right up to Q3, meaning Q4 2024 alone produced a loss larger than the entire year's prior earnings.",
+      "metrics": ["roe_pct", "net_interest_income"],
+      "periods": ["2023_Q4","2024_Q2","2024_Q3","2024_Q4","2025_Q4"]
+    },
+    {
+      "category": "capital_risk",
+      "severity": "critical",
+      "statement": "Total equity turned negative in Q2 2025 (-12,829,192,612) — not merely 'FY2024' as the annual-only view implied — and has deteriorated in every single quarter since with no floor yet visible: +2,200,808,359 (Q1 2025) to -12,829,192,612 (Q2 2025) to -26,357,718,003 (Q3 2025) to -32,283,000,000 (FY2025 year-end) to -40,251,386,638 (Q1 2026) to -48,585,901,546 (Q2 2026). Six consecutive quarters of decline.",
+      "metrics": ["equity"],
+      "periods": ["2025_Q1","2025_Q2","2025_Q3","2025_Q4","2026_Q1","2026_Q2"]
+    },
+    {
+      "category": "funding_risk",
+      "severity": "moderate",
+      "statement": "Total deposits have stayed broadly stable through the credit-quality collapse (~BDT 333bn FY2025 vs ~BDT 355bn FY2023 vs ~BDT 298bn FY2021) — based on the data collected, the stress is concentrated in capital and provisioning rather than a deposit run, though deposit costs (interest paid on deposits/borrowings) have risen and are a contributor to the negative net interest income noted above.",
+      "metrics": ["total_deposits"],
+      "periods": ["2021_Q4","2023_Q4","2025_Q4"]
+    },
+    {
+      "category": "credit_risk",
+      "severity": "info",
+      "statement": "This is not the bank's first NPL shock, and the earlier one shows the current episode is qualitatively different. FY2018's NPL jump to 33.07% (per this dataset's Q4 series) peaked at 32.47% in Q1 2019 and was worked down gradually and steadily across four quarters (32.47% Q1 2019 to 28.41% Q2 2019 to 24.59% Q3 2019 to 18.28% Q4 2019) while equity and CAR stayed positive throughout. The 2024-2025 episode has shown no such recovery pattern in the six quarters of data collected since — equity has fallen every single quarter instead.",
+      "metrics": ["npl_ratio_pct", "equity"],
+      "periods": ["2018_Q4","2019_Q1","2019_Q2","2019_Q3","2019_Q4"]
+    }
+  ],
+  "historical_context": "With the full 2011-2025 Q1-Q3 quarterly series now on file (15 years, 45 quarters), ABBANK's pre-crisis history shows two distinct weak patches, both survived: (1) 2017-2018, when a large Q1 2017 provision expense (1,740,321,934, versus ~200-500m in a typical quarter) drove profit before tax briefly negative and Q3 2017 repeated the pattern (net loss -218,510,442) — the opening act of the FY2018 NPL jump to 33.07%; and (2) that FY2018 shock's aftermath, worked down gradually across 2019 (see risk_signals) back to a stable footing by FY2020-2023 (NPL 14-20%, CAR ~10-11%, positive ROE each year). The FY2024-2025 deterioration is a much larger, structurally different event: net interest income itself went negative for sustained periods (not just elevated provisioning), and equity — which never went negative in either of the two earlier weak patches — has now been negative for six consecutive quarters with no sign of bottoming. This matches the documented sector-wide Bangladesh banking asset-quality crisis of 2024-2025 but ABBANK's own severity and equity impact go beyond the median bank in this dataset.",
+  "data_gaps": "Q1-Q3 quarterly granularity is now available for all 15 years 2011-2025 (45 quarters), closing what was previously this bank's largest data gap. Two residual, genuine (not research) gaps remain: (1) the 2017 Q3 filing (financial-statment-September-2017.pdf) contains no loan-classification breakdown anywhere in the document — confirmed by exhaustive search — so classified_loans_*/unclassified_* fields are absent from 2017_Q3.json specifically, though all other fields for that quarter are complete; (2) provision-coverage ratio, ROA and ROE are not calculable for any Q1-Q3 quarter in this dataset (only Q4/annual) because the unaudited interim filings do not disclose the loan-loss-allowance balance sheet account or a usable CAR figure the way annual reports do — this is a structural feature of Bangladeshi banks' interim disclosure, not a one-off omission. A 2010 H1 filing was found and its text archived (annual_reports/ABBANK/abbank-2010-h1-unaudited.txt) but not converted to a quarterly/*.json file, since this dataset's own FY2010 Q4/annual anchor doesn't exist for ABBANK (its Q4 series starts FY2011) — a future session could add it as a standalone supplementary point if useful."
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Topic — DSE Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1 id="topic-title-header">Topic</h1>
+        <p id="topic-cat-header">Learning Hub</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        All Topics
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- TOPIC HERO -->
+<div class="topic-hero" id="topic-hero">
+  <div class="topic-hero-inner">
+    <div class="topic-hero-left">
+      <div class="topic-hero-badge" id="topic-badge">OTHER</div>
+      <h2 class="topic-hero-title" id="topic-title-main">—</h2>
+      <p class="topic-hero-desc" id="topic-desc-main">—</p>
+    </div>
+    <div class="topic-hero-meta">
+      <div class="topic-meta-item">
+        <div class="topic-meta-num" id="topic-notes-count">0</div>
+        <div class="topic-meta-label">Notes</div>
+      </div>
+      <div class="topic-meta-item">
+        <div class="topic-meta-num" id="topic-links-count">0</div>
+        <div class="topic-meta-label">Links</div>
+      </div>
+      <div class="topic-meta-item topic-created" id="topic-created-wrap">
+        <div class="topic-meta-num" id="topic-created-date" style="font-size:11px">—</div>
+        <div class="topic-meta-label">Created</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT: two-column layout -->
+<div class="topic-layout">
+
+  <!-- LEFT: NOTES -->
+  <div class="topic-col">
+    <div class="topic-col-header">
+      <div class="topic-col-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+        Notes
+        <span class="topic-col-count" id="notes-badge">0</span>
+      </div>
+      <button class="topic-add-btn" onclick="openNoteModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Note
+      </button>
+    </div>
+
+    <div class="topic-items" id="notes-list">
+      <div class="topic-empty" id="notes-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        <p>No notes yet. Start documenting what you learn.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: LINKS -->
+  <div class="topic-col">
+    <div class="topic-col-header">
+      <div class="topic-col-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+        Links
+        <span class="topic-col-count" id="links-badge">0</span>
+      </div>
+      <button class="topic-add-btn" onclick="openLinkModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Link
+      </button>
+    </div>
+
+    <div class="topic-items" id="links-list">
+      <div class="topic-empty" id="links-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <p>No links saved. Add articles, videos, or references.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════ NOTE MODAL ══════════ -->
+<div class="learn-overlay" id="note-overlay" onclick="closeNoteModal()"></div>
+<div class="learn-modal" id="note-modal" style="display:none;">
+  <div class="learn-modal-header">
+    <div class="learn-modal-title" id="note-modal-title">Add Note</div>
+    <button class="learn-modal-close" onclick="closeNoteModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="learn-modal-body">
+    <div class="learn-field">
+      <label class="learn-label">Title <span class="learn-required">*</span></label>
+      <input type="text" id="note-title-input" class="learn-input" placeholder="e.g. Key takeaway from Chapter 3" maxlength="120" />
+    </div>
+    <div class="learn-field">
+      <label class="learn-label">Note Content <span class="learn-required">*</span></label>
+      <textarea id="note-content-input" class="learn-input learn-textarea" placeholder="Write your note here…" rows="6"></textarea>
+    </div>
+    <div class="learn-field">
+      <label class="learn-label">Tag <span class="learn-tag-hint">(optional)</span></label>
+      <input type="text" id="note-tag-input" class="learn-input" placeholder="e.g. Important, Review, Formula…" maxlength="30" />
+    </div>
+  </div>
+  <div class="learn-modal-footer">
+    <button class="learn-btn-cancel" onclick="closeNoteModal()">Cancel</button>
+    <button class="learn-btn-save" onclick="saveNote()">Save Note</button>
+  </div>
+</div>
+
+<!-- ══════════ LINK MODAL ══════════ -->
+<div class="learn-overlay" id="link-overlay" onclick="closeLinkModal()"></div>
+<div class="learn-modal" id="link-modal" style="display:none;">
+  <div class="learn-modal-header">
+    <div class="learn-modal-title" id="link-modal-title">Add Link</div>
+    <button class="learn-modal-close" onclick="closeLinkModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="learn-modal-body">
+    <div class="learn-field">
+      <label class="learn-label">URL <span class="learn-required">*</span></label>
+      <input type="url" id="link-url-input" class="learn-input" placeholder="https://…" />
+    </div>
+    <div class="learn-field">
+      <label class="learn-label">Label <span class="learn-required">*</span></label>
+      <input type="text" id="link-label-input" class="learn-input" placeholder="e.g. Investopedia — RSI Explained" maxlength="120" />
+    </div>
+    <div class="learn-field">
+      <label class="learn-label">Notes <span class="learn-tag-hint">(optional)</span></label>
+      <textarea id="link-note-input" class="learn-input learn-textarea" placeholder="Why is this link useful?" rows="3" maxlength="300"></textarea>
+    </div>
+    <div class="learn-field">
+      <label class="learn-label">Type</label>
+      <select id="link-type-input" class="learn-input">
+        <option value="Article">Article</option>
+        <option value="Video">Video</option>
+        <option value="Book">Book</option>
+        <option value="Course">Course</option>
+        <option value="Tool">Tool</option>
+        <option value="Reference">Reference</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="learn-modal-footer">
+    <button class="learn-btn-cancel" onclick="closeLinkModal()">Cancel</button>
+    <button class="learn-btn-save" onclick="saveLink()">Save Link</button>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM -->
+<div class="learn-overlay" id="item-del-overlay" onclick="closeItemDel()" style="display:none;"></div>
+<div class="learn-modal learn-del-modal" id="item-del-modal" style="display:none;">
+  <div class="learn-modal-header">
+    <div class="learn-modal-title" style="color:var(--loss)">Confirm Delete</div>
+    <button class="learn-modal-close" onclick="closeItemDel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="learn-modal-body">
+    <p class="learn-del-warning">Delete this item? This cannot be undone.</p>
+  </div>
+  <div class="learn-modal-footer">
+    <button class="learn-btn-cancel" onclick="closeItemDel()">Cancel</button>
+    <button class="learn-btn-delete" onclick="confirmItemDelete()">Delete</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>DSE Learning Hub · Knowledge is the best investment</p>
+</footer>
+
+<script src="learning.js"></script>
+<script src="topic.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+</script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

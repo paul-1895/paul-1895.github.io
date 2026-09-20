@@ -1,0 +1,73 @@
+{
+  "bank_id": "RUPALIBANK",
+  "bank_name": "Rupali Bank PLC",
+  "reporting_date": "2020-06-30",
+  "financial_year": 2020,
+  "quarter": "Q2",
+  "period_note": "Unaudited interim financial performance. Source table gives BOTH a discrete Apr-Jun 2020 quarter figure AND a separate Jan-Jun 2020 cumulative (Half Yearly) figure side by side - both are recorded below (discrete as the primary metric, cumulative with a _6m_cumulative suffix), matching the convention used elsewhere in this dataset (e.g. CITYBANK's _cumulative suffix) but here BOTH bases are directly reported by the source, not derived by subtraction. Reconciliation check: Q1 (91.86) + this quarter's discrete profit (60.14) = 152.00, matching the reported Half-Yearly cumulative of 152.01 (0.01 rounding-level difference only). Same source/basis caveats as 2020_Q1.json (DSE-compiled EPS/profit/price summary only, no balance sheet; Solo basis presumed but not explicitly labeled; Profit from continuing operations/Profit for the period/Total Comprehensive Income identical in source, only one recorded).",
+  "source": {
+    "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Capture 1 of 6)",
+    "source_path": "annual_reports/RUPALIBANK/rupalibank-dse-interim-tables-2020-2026.txt",
+    "source_url": "https://web.archive.org/web/20210610080804id_/https://dsebd.org/displayCompany.php?name=RUPALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2020\" table, Q2 (discrete) and Half Yearly (cumulative) columns (period-end code 202006)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "turnover_revenue",
+      "original_metric_name": "Turnover/Revenue (mn) [DSE generic template row], discrete Apr-Jun",
+      "value": -802.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "turnover_revenue_6m_cumulative",
+      "original_metric_name": "Turnover/Revenue (mn) [DSE generic template row], Half Yearly cumulative",
+      "value": -1102.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax",
+      "original_metric_name": "Profit for the period (mn), discrete Apr-Jun",
+      "value": 60.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_6m_cumulative",
+      "original_metric_name": "Profit for the period (mn), Half Yearly cumulative",
+      "value": 152.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Apr-Jun",
+      "value": 0.15,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_6m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, Half Yearly cumulative",
+      "value": 0.37,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 24.4,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "bank_id": "MERCANBANK",
+  "bank_name": "Mercantile Bank PLC",
+  "reporting_date": "2024-12-31",
+  "financial_year": 2024,
+  "quarter": "Q4",
+  "period_note": "Year-end position from the Annual Report's own multi-year 'Five-Year Business Summary' table (audited), Solo basis. Reporting basis (Solo vs Consolidated) confirmed by matching this dataset's recorded total assets against the annual report's own balance sheets: the standalone 'BALANCE SHEET' reports Total Property and Assets of BDT 444,690,299,923 (=444,690.30m, matches this record and the Five-Year table exactly), while 'MERCANTILE BANK PLC. AND ITS SUBSIDIARIES / CONSOLIDATED BALANCE SHEET' reports BDT 447,583,942,554 (=447,583.94m) for the same date -- Solo is the basis used throughout this dataset (consistent with FY2011-2023). Total liabilities not directly given as a line in the Five-Year table; calculated as total assets minus shareholders' equity (matches the raw Balance Sheet's own reported Total Liabilities of 418,880,240,077 almost exactly). MAJOR FINDING: FY2024 discloses a large loan-loss provisioning shortfall. Per Note 7.8 ('Required provision for Loans and advances/investments'), required provision against loans/advances was BDT 38,167.71m against BDT 21,159.11m maintained -- a shortfall of BDT 17,008.60m (44.6% underprovisioned vs requirement). Per the note: Bangladesh Bank's letter Ref. DBI-4/110/2025-655 (dated 29 April 2025) initially assessed a shortfall of BDT 2,121.19 crore (=21,211.9m) against BDT 220.33 crore then held, i.e. an initial shortfall of BDT 1,900.86 crore (=19,008.6m); a subsequent Bangladesh Bank directive (reference contains Bangla-script text that did not extract cleanly from the source PDF; dated 22 May 2025) permitted the Bank to transfer BDT 200.00 crore from FY2024 pre-provision profit into specific provisions, reducing the final disclosed shortfall to BDT 1,700.86 crore (=17,008.60m, the figure reconciled in the table above). Bangladesh Bank granted regulatory forbearance to finalize FY2024 financials without full provisioning adjustment; consequently no dividend was declared for FY2024 (0% across cash/stock). This provisioning shortfall was disclosed only via a note-level asterisk in the FY2024 financial statements -- the independent auditors' report for FY2024 does NOT contain a formal 'Emphasis of Matter' paragraph on this (unlike FY2025, where it does -- see 2025_Q4.json). required_capital is a directly REPORTED figure this year (Note 14.5/14.6, 'Minimum Capital Requirement (MCR)' = Total RWA x 12.5% including the 2.5% capital conservation buffer), not calculated -- it reconciles exactly against Total Capital minus the reported Capital Surplus (38,748.56 - 1,683.77 = 37,064.79). CROSS-VALIDATED against the FY2025 annual report's comparative column for FY2024, which reproduces every figure below identically. DISCREPANCY NOTE (does not affect any stored year): both the FY2024 and FY2025 reports' own Five-Year tables show FY2023 Paid-up Capital as 11,065.23m in their comparative column, but the FY2023 report's own audited balance sheet -- and this dataset's already-stored 2023_Q4.json -- record 11,065.75m, which also matches the unchanged Dec-23 raw balance-sheet comparative (11,065,754,350) printed in both the FY2024 and FY2025 reports' own audited 'BALANCE SHEET' statements. This appears to be a typo in the bank's own Five-Year summary table row, repeated across two report vintages; the FY2023 record is left unchanged per this dataset's restatement policy.",
+  "source": {
+    "source_document": "mercanbank-annual-report-2024.txt",
+    "source_path": "annual_reports/MERCANBANK/mercanbank-annual-report-2024.txt",
+    "source_url": "https://www.mblbd.com",
+    "source_page_lines": "3799-3934 (Five-Year Business Summary, 2020-2024); 16952-17008 (Balance Sheet, Solo); 16508-16565 (Consolidated Balance Sheet, used only to confirm reporting basis); 17083-17124 (Profit and Loss Account, Solo); 19976-19999 (Note 7.8, Required provision for Loans and advances/investments); 21467, 21483 (Note 14.5/14.6-equivalent Capital Adequacy disclosure, Minimum Capital Requirement); cross-checked against mercanbank-annual-report-2025.txt lines 3413-3591 (Five-Year Business & Financial Summary, FY2024 comparative column)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "authorized_capital",
+      "original_metric_name": "Authorized Capital",
+      "value": 20000,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 11065.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Shareholders' Equity",
+      "value": 25810.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 418880.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 444690.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits*",
+      "value": 355121.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 300025.11,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 89098.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets",
+      "value": 3249.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest Income **",
+      "value": 30536.67,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest Expenses",
+      "value": 22632.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net Interest Income",
+      "value": 7904.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income",
+      "original_metric_name": "Non-Interest Income",
+      "value": 6202.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit before Provision and Tax",
+      "value": 5633.39,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Provision for Loans and Advances & Other Provision",
+      "value": 4352.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Profit after Provision before Tax",
+      "value": 1281.22,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Provision for Tax including Deferred Tax",
+      "value": 650,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Profit after Tax",
+      "value": 631.22,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "risk_weighted_assets",
+      "original_metric_name": "Total Risk Weighted Assets",
+      "value": 296518.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Core Capital (Tier I)",
+      "value": 27715.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Supplementary Capital (Tier II)",
+      "value": 11033.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_capital",
+      "original_metric_name": "Total Capital/Regulatory Capital",
+      "value": 38748.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_ratio_pct",
+      "original_metric_name": "Core Capital (Tier I) to RWA",
+      "value": 9.35,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_ratio_pct",
+      "original_metric_name": "Supplementary Capital (Tier II) to RWA",
+      "value": 3.72,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Total Capital Adequacy Ratio (CRAR)",
+      "value": 13.07,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "required_capital",
+      "original_metric_name": "Minimum Capital Requirement (MCR)",
+      "value": 37064.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "capital_surplus",
+      "original_metric_name": "Capital Surplus/(Deficit)",
+      "value": 1683.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Non-Performing Loans (NPLs)",
+      "value": 51761.7,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "NPLs to Total Loans and Advances",
+      "value": 17.25,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_unclassified",
+      "original_metric_name": "Provision for Unclassified Loan",
+      "value": 9711.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_classified",
+      "original_metric_name": "Provision for Classified Loan",
+      "value": 11447.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "required_provision_loans",
+      "original_metric_name": "Total Required provision up to 31 December 2024 (Note 7.8, loans/advances only, excl. off-balance-sheet)",
+      "value": 38167.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_maintained_loans",
+      "original_metric_name": "Provision maintained (Note 7.8/13.5.1, loans/advances only)",
+      "value": 21159.11,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_shortfall_loans",
+      "original_metric_name": "Excess/(short) provision",
+      "value": -17008.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per Share (BDT)",
+      "value": 0.57,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Book Value per Share",
+      "value": 23.32,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market Price per Share (BDT)",
+      "value": 10.3,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Return on Average Equity",
+      "value": 2.44,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on Average Assets",
+      "value": 0.15,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Credit Deposit Ratio",
+      "value": 82.53,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "cost_to_income_pct",
+      "original_metric_name": "Cost Income/Efficiency Ratio",
+      "value": 60.06,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

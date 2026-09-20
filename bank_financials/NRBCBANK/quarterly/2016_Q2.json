@@ -1,0 +1,58 @@
+{
+  "bank_id": "NRBCBANK",
+  "bank_name": "NRB Commercial Bank PLC",
+  "reporting_date": "2016-06-30",
+  "financial_year": 2016,
+  "quarter": "Q2",
+  "period_note": "DISCRETE quarterly figures (NOT cumulative-from-Jan-1) taken from NRB Commercial Bank's own retrospective \"Quarterly Performance\" disclosure table embedded in its FY2016 annual report (this is the BSEC-mandated 'variance between quarterly financial performance and annual financial statements' disclosure, worded slightly differently in most years' reports). Verified as discrete (not cumulative) because Q1+Q2+Q3+Q4 sums to the table's own 'Annual' column for every row, every year, to within rounding. Consolidated basis (FY2013-FY2019 tables in this dataset are consolidated per sources.json's documented basis break at FY2020). No balance-sheet snapshot is available for this interim date -- NRB Commercial Bank's own quarterly/interim statements archive at nrbcommercialbank.com/about/reports only goes back to FY2020; for FY2016 the annual report's retrospective table is the only source of any interim data, and it carries income-statement rows only, no balance sheet. This table has only 5 rows in the source document -- it stops at Operating Profit and does not break out Provisions / Tax Effect / Net Profit by quarter the way FY2018 onward does.",
+  "source": {
+    "source_document": "nrbcbank-annual-report-2017.txt",
+    "source_path": "annual_reports/NRBCBANK/nrbcbank-annual-report-2017.txt",
+    "source_url": "https://www.nrbcommercialbank.com/about/annual_report",
+    "source_page_lines": "\"ix. Significant variance occurs between Quarterly Financial Performance...\" table, lines 2213-2231 (this PDF is internally the bank's FY2016 Annual Report, see period_note)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net Interest Income",
+      "value": 243.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_and_investment_income",
+      "original_metric_name": "Non-Interest Income (bank's own definition -- bundles Investment Income; see period_note)",
+      "value": 389.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "This is the bank's OWN retrospective-table definition of 'Non-Interest Income' = Investment Income + Commission/Exchange/Brokerage + Other Operating Income combined -- i.e. it INCLUDES investment income, unlike the 'non_interest_income' field used elsewhere in this dataset's Q4/annual files (which excludes investment income). Verified against the FY2020-2025 real interim statements, where the components are itemised separately and sum to exactly this combined figure each quarter checked (e.g. FY2024 Q1: 427.71 commission + 111.68 other + 957.02 investment = 1496.41 = this table's own Non-Interest Income cell for Q1,2024)."
+    },
+    {
+      "normalised_metric_name": "total_operating_income",
+      "original_metric_name": "Operating Income(s)",
+      "value": 632.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Operating Expenses",
+      "value": 322.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Operating Profit",
+      "value": 310.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

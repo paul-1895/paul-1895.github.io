@@ -1,0 +1,21 @@
+{
+  "bank_id": "BRACBANK",
+  "bank_name": "BRAC Bank PLC",
+  "reporting_date": "2026-06-30",
+  "financial_year": 2026,
+  "quarter": "Q2",
+  "period_note": "PARTIAL entry, CONSOLIDATED basis (basis mismatch vs this bank's primary Standalone/Solo Q4-annual series — flagged, not adjusted). This filing was approved at a board meeting held 28 July 2026 (per news coverage) but as of this retrieval date (2026-08-27) — one month later — no copy of the primary condensed-interim-FS PDF has appeared in Wayback Machine or in the current live bracbank.com investor-relations document list (checked via full-domain CDX search; legacy.bracbank.com is DNS-dead). Only EPS, cumulative PAT, and NAV per share were recoverable: from The Business Standard and The Financial Express news coverage of the disclosure, cross-checked against DSE's own company page (dsebd.org displayCompany.php?name=BRACBANK), whose 'Interim Financial Performance: 2026' table independently confirms Basic EPS of exactly 2.550 for the Q2 (202606) column and 5.070 for the Half-Yearly (6-month) column — an exact match to both news figures, giving confidence despite the primary PDF being unavailable. No balance sheet, P&L breakdown, deposits, loans, or asset-quality figures could be recovered for this quarter — left as explicit gaps rather than estimated or backfilled from annual data. Internal consistency check: Q1 2026 PAT (BDT 6,957m, per 2026_Q1.json) + discrete Q2 2026 PAT (news-reported as 'Tk 7.28 billion' = BDT 7,280m) = BDT 14,237m, versus the H1-2026 cumulative PAT reported directly as BDT 14,230m (Tk 1,423 crore) — a ~7m (0.05%) gap consistent with the two figures coming from differently-rounded news reports rather than a data error. The discrete Q2 2026 figures (PAT 7,280m, EPS 2.55, up from EPS 1.34 in Q2 2025) are kept here in this note only, not as their own line items, consistent with this bank's convention of recording the cumulative (H1) column as the primary Q2 data point. Consolidated NAV per share 49.38 as at 30 June 2026, up from 44.84 a year earlier (30 June 2025).",
+  "source": {
+    "source_document": "not available (see period_note)",
+    "source_path": "annual_reports/BRACBANK/ (no file — primary PDF not located anywhere; DSE table is a live web page, not a downloadable document)",
+    "source_url": "https://www.tbsnews.net/economy/stocks/brac-banks-h1-profit-surges-57-tk1423cr-1500281 ; https://thefinancialexpress.com.bd/bangladesh/brac-bank-posts-7345pc-year-on-year-surge-in-net-profit ; cross-checked against https://www.dsebd.org/displayCompany.php?name=BRACBANK ('Interim Financial Performance: 2026' table)",
+    "source_page_lines": "News articles reporting the 28 July 2026 board-approved H1 2026 disclosure; DSE company page's own EPS-by-quarter table (Basic EPS, Q2 column = 2.550, Half Yearly column = 5.070)",
+    "retrieval_method": "WebSearch + WebFetch of DSE's live company page (both news sites returned HTTP 403 to direct WebFetch, so figures are from search-result summaries plus independent DSE-page cross-check, not a direct article fetch).",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {"normalised_metric_name": "profit_after_tax_cumulative", "original_metric_name": "Consolidated net profit (cumulative Jan-Jun 2026, H1'26, 'Tk 1,423 crore')", "value": 14230, "unit": "BDT_million", "currency": "BDT", "basis": "reported"},
+    {"normalised_metric_name": "eps_cumulative", "original_metric_name": "Consolidated Earnings Per Share, Basic (cumulative H1 2026)", "value": 5.07, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported"},
+    {"normalised_metric_name": "nav_per_share", "original_metric_name": "Consolidated Net Asset Value (NAV) per share as at 30 June 2026", "value": 49.38, "unit": "BDT", "currency": "BDT", "basis": "reported"}
+  ]
+}

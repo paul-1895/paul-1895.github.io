@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Newspaper — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="newspaper.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Live Market</h1>
+        <p>Dhaka Stock Exchange — All Listed Securities</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="../index.html" class="wl-toggle-btn" style="text-decoration:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Home
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="np-shell">
+  <a href="../index.html" class="np-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Home
+  </a>
+
+  <!-- MASTHEAD -->
+  <div class="np-masthead">
+    <div class="np-masthead-top">
+      <span id="np-dateline">—</span>
+      <span>Dhaka Stock Exchange</span>
+    </div>
+    <h1 class="np-title">The DSE Newspaper</h1>
+    <p class="np-tagline">Company news and market headlines, gathered in one place</p>
+  </div>
+  <div class="np-rule"></div>
+
+  <div class="np-filter-bar" id="np-filter-bar" style="display:none;">
+    <div class="filter-select-wrap np-search-wrap">
+      <label for="np-filter-search">Search</label>
+      <input type="search" id="np-filter-search" class="np-search-input" placeholder="Search headlines &amp; articles…" />
+    </div>
+    <div class="filter-select-wrap">
+      <label for="np-filter-stock">Stock</label>
+      <select id="np-filter-stock">
+        <option value="all">All Stocks</option>
+      </select>
+    </div>
+    <div class="filter-select-wrap">
+      <label for="np-filter-sector">Sector</label>
+      <select id="np-filter-sector">
+        <option value="all">All Sectors</option>
+      </select>
+    </div>
+    <div class="filter-select-wrap">
+      <label for="np-filter-source">Source</label>
+      <select id="np-filter-source">
+        <option value="all">All Sources</option>
+      </select>
+    </div>
+    <div class="filter-select-wrap">
+      <label for="np-filter-scope">Coverage</label>
+      <select id="np-filter-scope">
+        <option value="all">Everything</option>
+        <option value="local">Bangladesh (DSE)</option>
+        <option value="world">International</option>
+      </select>
+    </div>
+    <div class="filter-select-wrap">
+      <label for="np-filter-date-from">From</label>
+      <input type="date" id="np-filter-date-from" class="np-date-input" />
+    </div>
+    <div class="filter-select-wrap">
+      <label for="np-filter-date-to">To</label>
+      <input type="date" id="np-filter-date-to" class="np-date-input" />
+    </div>
+    <button type="button" id="np-today-btn" class="np-today-btn">Today's News</button>
+    <button type="button" id="np-bookmarks-btn" class="np-today-btn np-bookmarks-btn" title="Show only saved articles">&#9733; Saved</button>
+    <div class="np-day-nav">
+      <button type="button" id="np-day-prev" class="np-day-nav-btn" aria-label="Previous day" title="Previous day">&#8592;</button>
+      <span class="np-day-nav-label" id="np-day-nav-label">All dates</span>
+      <button type="button" id="np-day-next" class="np-day-nav-btn" aria-label="Next day" title="Next day">&#8594;</button>
+    </div>
+    <div class="filter-select-wrap">
+      <label for="np-sort-date">Sort</label>
+      <select id="np-sort-date">
+        <option value="desc">Newest First</option>
+        <option value="asc">Oldest First</option>
+      </select>
+    </div>
+    <button type="button" id="np-clear-filters-btn" class="np-clear-filters-btn">Clear filters</button>
+    <span class="np-filter-count" id="np-filter-count"></span>
+  </div>
+
+  <div class="np-scan-bar" id="np-scan-bar" style="display:none;">
+    <button type="button" id="np-scan-btn" class="np-scan-btn">Scan sources for more news</button>
+    <span class="np-scan-status" id="np-scan-status"></span>
+  </div>
+
+  <!-- MY NEWSPAPER — curate the fetched articles into an edition of your own -->
+  <div class="np-edition-bar" id="np-edition-bar" style="display:none;">
+    <button type="button" id="np-compose-toggle" class="np-compose-toggle">&#9998; Build my newspaper</button>
+    <button type="button" id="np-editions-btn" class="np-today-btn">&#128218; My editions</button>
+    <span class="np-edition-hint" id="np-edition-hint">Pick stories from the feed below, then publish your own front page.</span>
+  </div>
+
+  <div class="np-trending-strip" id="np-trending-strip"></div>
+
+  <div id="np-status" class="np-status">Loading the latest news…</div>
+
+  <div id="np-articles" class="np-articles"></div>
+</div>
+
+<div class="np-modal-backdrop" id="np-article-modal-backdrop">
+  <div class="np-modal">
+    <button type="button" class="np-modal-close" id="np-article-modal-close" aria-label="Close">&times;</button>
+    <button type="button" class="np-modal-bookmark" id="np-modal-bookmark-btn" aria-label="Save article" title="Save article">&#9733;</button>
+    <img class="np-modal-image" id="np-modal-image" alt="" />
+    <div class="np-modal-body">
+      <button type="button" class="np-translate-btn" id="np-translate-btn" title="Machine-translate this article to Bengali">বাংলা অনুবাদ · Translate to Bengali</button>
+      <div class="np-translate-note" id="np-translate-note" style="display:none;">Machine-translated (Google Translate) — may contain errors. <button type="button" id="np-translate-revert-btn" class="np-translate-revert-btn">Show original</button></div>
+      <h2 class="np-modal-headline" id="np-modal-headline"></h2>
+      <div class="np-modal-byline" id="np-modal-byline"></div>
+      <div class="np-modal-desc" id="np-modal-desc"></div>
+      <a class="np-modal-link" id="np-modal-link" target="_blank" rel="noopener">Read full article on source site &#8594;</a>
+      <div class="np-modal-related" id="np-modal-related"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Picking tray — only visible while "Build my newspaper" is on -->
+<div class="np-pick-tray" id="np-pick-tray">
+  <span class="np-pick-count" id="np-pick-count">No stories picked yet</span>
+  <button type="button" id="np-pick-fill" class="np-tray-btn">Fill from this view</button>
+  <button type="button" id="np-pick-clear" class="np-tray-btn np-tray-btn--danger">Clear picks</button>
+  <button type="button" id="np-pick-publish" class="np-tray-btn np-tray-btn--primary">Compose &amp; publish &#8594;</button>
+  <button type="button" id="np-pick-exit" class="np-tray-btn">Done</button>
+</div>
+
+<!-- Composer -->
+<div class="np-modal-backdrop" id="np-compose-backdrop">
+  <div class="np-modal np-compose-modal">
+    <button type="button" class="np-modal-close" id="np-compose-close" aria-label="Close">&times;</button>
+    <div class="np-modal-body">
+      <h2 class="np-compose-title" id="np-compose-title">Publish your own edition</h2>
+      <p class="np-compose-sub">Your masthead, your running order. Stories are frozen into the edition as they read today.</p>
+
+      <div class="np-compose-grid">
+        <div class="np-compose-field">
+          <label for="np-ed-name">Newspaper name</label>
+          <input type="text" id="np-ed-name" maxlength="255" placeholder="The Dhaka Investor" />
+        </div>
+        <div class="np-compose-field">
+          <label for="np-ed-date">Edition date</label>
+          <input type="date" id="np-ed-date" class="np-date-input" />
+        </div>
+        <div class="np-compose-field np-compose-field--wide">
+          <label for="np-ed-tagline">Tagline</label>
+          <input type="text" id="np-ed-tagline" maxlength="255" placeholder="Curated from the day's market coverage" />
+        </div>
+        <div class="np-compose-field np-compose-field--wide">
+          <label for="np-ed-note">From the editor <span class="np-compose-optional">optional</span></label>
+          <textarea id="np-ed-note" rows="3" maxlength="5000" placeholder="Your take on the day — printed as a boxed column on the front page."></textarea>
+        </div>
+      </div>
+
+      <div class="np-compose-stories-head">
+        <span class="np-compose-stories-label">Running order</span>
+        <span class="np-compose-stories-count" id="np-ed-story-count"></span>
+      </div>
+      <div class="np-compose-stories" id="np-ed-stories"></div>
+
+      <div class="np-compose-actions">
+        <span class="np-scan-status" id="np-ed-status"></span>
+        <button type="button" id="np-ed-publish" class="np-scan-btn">Publish edition</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Published editions -->
+<div class="np-modal-backdrop" id="np-editions-backdrop">
+  <div class="np-modal np-editions-modal">
+    <button type="button" class="np-modal-close" id="np-editions-close" aria-label="Close">&times;</button>
+    <div class="np-modal-body">
+      <h2 class="np-compose-title">My editions</h2>
+      <p class="np-compose-sub">Front pages you have published from this feed.</p>
+      <div class="np-editions-list" id="np-editions-list"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>For informational purposes only · Not financial advice</p>
+</footer>
+
+<script src="newspaper.js" defer></script>
+<script type="module">
+  // Shared theme module — the one `dse-theme` key and [data-theme] contract
+  // every page uses. This page used to carry its own inline copy keyed on
+  // `theme-preference`, so a theme chosen elsewhere reset when you arrived.
+  import { initTheme, toggleTheme } from '/theme/theme.js';
+  initTheme();
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => toggleTheme());
+</script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+{
+  "bank_id": "RUPALIBANK",
+  "bank_name": "Rupali Bank PLC",
+  "website": "https://rupalibank.com.bd",
+  "reporting_basis": "Solo",
+  "reporting_basis_evidence": "rupalibank.com.bd is behind a Cloudflare JS challenge (HTTP 403 to all non-browser requests); all 7 annual reports in the archive were recovered from the Wayback Machine, plus one standalone Basel III Pillar 3 disclosure for FY2023 found separately (see below). Every annual report in the archive publishes BOTH a 'Statement of Financial Position'/'Balance Sheet' (Solo) and a separate 'Consolidated Statement of Financial Position'/'Consolidated Balance Sheet' (Group, i.e. Bank + subsidiary Rupali Bank Securities Ltd. and Rupali Investment Ltd.). The bank's own 'Five Years Performance of RBL at a Glance' summary table in every report reproduces the SOLO total assets figure exactly, not the consolidated one - verified directly for FY2013 (Solo Total assets 216,185,840,804 Taka = the table's 21,618.58 crore, vs. Consolidated 216,400,309,007 Taka) and FY2017 (Solo 382,410,196,381 Taka = the table's 38,241.02 crore, vs. Consolidated 382,903,473,581 Taka). Solo basis is used throughout this dataset per the dataset's standing preference and consistent with the bank's own summary-table convention. FY2023's Basel III Pillar 3 disclosure gives both Solo and Consolidated columns explicitly labelled; Solo is used for consistency.",
+  "notes": "annual_reports/RUPALIBANK archive contains 7 annual-report PDFs (FY2013, 2014, 2016, 2017, 2019, 2021, 2022 - already text-extracted, with embedded scanned pages OCR'd, prior to this research) plus one new standalone Basel III Pillar 3 disclosure for FY2023 (found and OCR'd in this session). By parsing every report's own multi-year 'Five Years Performance of RBL at a Glance' comparative table (titles/exact wording vary slightly by year) and cross-checking overlapping columns across reports, FY2011, FY2012, FY2015, FY2018 and FY2020 - none of which have their own recoverable annual report - were reconstructed from later (or, for FY2011/2012, the FY2013) reports' comparative columns. This achieves audited Q4/year-end coverage for 12 of 15 target years (FY2011-FY2022) plus a capital-adequacy/asset-quality-only partial year for FY2023. FY2024 and FY2025 remain complete gaps - no Wayback capture and no live-site access (see SOURCES.md). Only Q4/year-end (audited, or in FY2023's case, Basel III Pillar 3 audited-position-based) data was researched; Q1/H1/Q3 unaudited interim data was not researched.",
+  "sources": [
+    {
+      "period": "2011-2013 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "rupalibank-annual-report-2013.txt (\"Five Years Performance of RBL at a Glance\", own report)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012,
+        2013
+      ],
+      "note": "FY2011 is single-sourced (no other report's table reaches back this far); FY2012 and FY2013 cross-checked against the FY2016 report's comparative columns (see below). This report's own scan of FY2013 was OCR'd (image-only original) and its separate 'Key Financial Ratios and Performance' table (as opposed to the 'Five Years Performance' table used here) is badly OCR-degraded with many cells collapsed to a single visible column; not used except where independently cross-verifiable. Required capital for FY2012 (both here and in the FY2016 report) prints as 111.46 crore, inconsistent with the same table's own 'Capital excess/shortfall' row (12.15) and with 10% of reported RWA (1111.459); corrected to 1111.46 (see FY2012 period_note)."
+    },
+    {
+      "period": "2013 (Q4) - own balance sheet/P&L",
+      "type": "annual_report_own_financial_statements",
+      "source_document": "rupalibank-annual-report-2013.txt (own Balance Sheet, Solo, and Profit and Loss Account)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013
+      ],
+      "note": "Used for reporting-basis confirmation (Solo vs Consolidated total assets) and as the preferred contemporaneous source for FY2013's Tier-1/Tier-2/Total regulatory capital (1030.77/244.78/1275.55 crore, CRAR 10.16%) over the FY2016 report's later, materially different restated comparative for FY2013 (430.97/239.43/670.40 crore, implied CRAR ~5.34%) - both internally self-consistent with their own respective 'Capital excess/shortfall' rows, so this is a genuine restatement rather than an extraction error; the earlier figure is kept per the dataset's 'prefer contemporaneous' rule and the divergence is recorded verbatim."
+    },
+    {
+      "period": "2014 (Q4)",
+      "type": "annual_report_own_financial_statements",
+      "source_document": "rupalibank-annual-report-2014.txt (own Balance Sheet, Solo, Profit and Loss Account, and Notes 7.09-7.12)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014
+      ],
+      "note": "This archive's FY2014 document is the Auditors' Report and Financial Statements only (115 pages) - no Directors' Report / multi-year summary table for FY2014 itself. Used to CORRECT three figures in the FY2016 report's later 'Five Years Performance' table FY2014 column that do not reconcile with each other: Non-interest expenses (table shows 398.44 crore; FY2014's own P&L implies 378.44), Profit before provision and tax (table shows 232.70; implies 252.70), and Provision for loans and others (table shows 153.79; implies 173.79) - see FY2014 period_note for the full derivation. All other FY2014 figures in the FY2016 report's table reproduce this own report exactly."
+    },
+    {
+      "period": "2015-2016 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "rupalibank-annual-report-2016.txt (\"Five Years Performance of RBL at a Glance\", own report) and own Balance Sheet/Notes 7.09-7.11",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015,
+        2016
+      ],
+      "note": "FY2015 (no recoverable annual report of its own) cross-checked against the FY2019 report's comparative column - agrees exactly except for an unresolved internal anomaly: both the FY2016 and FY2019 reports print FY2015's 'Capital excess/(shortfall)' as -226.66 crore, which does not equal their own reported Total capital (1487.49) minus Required capital (1496.47) = -8.98; used as reported, flagged. FY2016 is this report's own current year (fully self-consistent) and is the first year the loan-loss provisioning shortfall was not fully offset by Bangladesh Bank dispensation (shortfall of BDT 1,684.04 crore, loans+off-balance-sheet combined)."
+    },
+    {
+      "period": "2017 (Q4)",
+      "type": "annual_report_own_financial_statements",
+      "source_document": "rupalibank-annual-report-2017.txt (own Statement of Financial Position, Solo, and Statement of Comprehensive Income)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017
+      ],
+      "note": "This report's own 'Five Years Performance' table is corrupted in this archive copy (its FY2017 column reproduces stale FY2013 figures, likely a scan/OCR splice error) and was not used; balance-sheet and P&L figures are from FY2017's own primary financial statements instead, with capital-adequacy figures (not disclosed in the primary statements) taken from the FY2019 and FY2021 reports' comparative columns (both agree with each other exactly)."
+    },
+    {
+      "period": "2018-2019 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "rupalibank-annual-report-2019.txt (\"Five-Year Performance of RBL at a Glance\", own report) and own Balance Sheet/Notes 7.10-7.11",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018,
+        2019
+      ],
+      "note": "FY2018 (no recoverable annual report of its own) triple cross-checked against the FY2021 and FY2022 reports' comparative columns for FY2018 - all three agree exactly on every figure. FY2019 is this report's own current year. Both years show the reported classified-loan ratio failing to reproduce exactly from classified/gross loans as reported (FY2018: 19.21% reported vs. 17.90% computed; FY2019: 16.15% vs. 15.04%) - see npl_pct notes; this gap recurs in FY2015-FY2021 and its cause is not disclosed in any source document."
+    },
+    {
+      "period": "2020-2021 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "rupalibank-annual-report-2021.txt (\"Five Year's Performance of RBL\", own report) and own Balance Sheet/Notes 7.10-7.11",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020,
+        2021
+      ],
+      "note": "FY2020 (the one Wayback capture found for its own annual report is truncated at exactly 1,048,576 bytes with no larger copy available - confirmed unrecoverable) cross-checked against the FY2022 report's comparative column - agrees exactly. FY2021 is this report's own current year, EXCEPT Non-interest income/Non-interest expenses differ from the FY2022 report's later comparative by a matching ~50.92 crore (net non-interest income and operating profit are identical either way - an apparent reclassification, not a restatement of the bottom line). FY2021's provisioning shortfall (BDT 3,078.35 crore, loans+OBS) is roughly 3x FY2020's (BDT 1,010.93 crore) in a single year; the bank's own capital-adequacy note additionally discloses a combined Bangladesh Bank forbearance of BDT 3,090.48 crore (provisions) + BDT 54.10 crore (Deferred Tax Assets) + BDT 10.32 crore (Intangible Assets), and a single-obligor special required provision of BDT 842.17 crore against a loan to 'Bangladesh Sugar and Food Industry' (a state-owned sugar-mills corporation)."
+    },
+    {
+      "period": "2022 (Q4)",
+      "type": "annual_report_own_financial_statements",
+      "source_document": "rupalibank-annual-report-2022.txt (\"Five Year's Performance of RBL\", own report, own Balance Sheet/Notes 7.10-7.11, and Capital Adequacy disclosure)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022
+      ],
+      "note": "Fully self-consistent own-year figures. The only year where the reported classified-loan ratio (21.19%) reproduces exactly from reported classified/gross loans (no gap). The bank's own Capital Adequacy note discloses an ALL-ASSET-CATEGORY provisioning shortfall of BDT 6,046.91 crore (loans BDT 5,256.48cr + off-balance-sheet BDT 182.28cr + other assets BDT 424.01cr + investments BDT 184.13cr shortfalls), materially larger than the loans+OBS-only figure (BDT 5,438.77 crore) used as this year's required_provision/provision_maintained line items; against reported total equity of just BDT 1,634.67 crore, the all-asset-category shortfall alone is ~3.7x the bank's entire equity base. Deferred under Bangladesh Bank forbearance (letter dated 27 April 2023) to finalization of the FY2023 financial statements."
+    },
+    {
+      "period": "2023 (Q4) - PARTIAL",
+      "type": "basel_iii_pillar3_disclosure",
+      "source_document": "rupalibank-basel3-disclosure-2023.txt (\"Disclosures on Risk Based Capital under Basel III For the Year Ended on December 31, 2023\")",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2023
+      ],
+      "note": "No FY2023 annual report is recoverable (confirmed unavailable, exhaustive search - see SOURCES.md). This standalone 17-page Basel III Pillar 3 capital/risk disclosure was found instead via a broader CDX sweep (not part of the prior exhaustive annual-report search) and OCR'd whole (image-scan PDF). It provides ONLY capital structure/adequacy (Tier-1/Tier-2/Total regulatory capital, RWA derived from capital-requirement-by-risk-type, CRAR%) and loan classification (gross loans, classified loans, NPL%) on a Solo and Consolidated basis; it has no balance sheet, P&L, deposits, or most other metrics tracked elsewhere in this dataset - all of those are gaps for FY2023 specifically. It also discloses a Bangladesh Bank forbearance of BDT 4,499.38 crore against required provisions (letter dated 30 April 2024), smaller than FY2022's disclosed all-asset-category shortfall of BDT 6,046.91 crore."
+    },
+    {
+      "period": "2024-2025 (Q4)",
+      "type": "annual_report",
+      "status": "unavailable",
+      "used_for_years": [],
+      "note": "Confirmed unavailable: no Wayback capture and no live-site access (rupalibank.com.bd is behind a Cloudflare JS challenge, HTTP 403 to all non-browser requests). Exhaustively searched in a prior session; a fresh CDX sweep in this session (2026-08-26) targeting large 2025 uploads under /admin_web/news/ found nothing beyond 404s, redirects, and unrelated tiny files - confirms no new capture has appeared. UPDATE 2026-08-27: while no full annual report PDF for either year has still been found, two new partial data points were located this session via DSE's 'Auditors_opinion' compiled-disclosure repository (a different DSE resource than the displayCompany.php interim table used for Q1-Q3 backfill, and hosted on DSE's own domain, so not subject to rupalibank.com.bd's Cloudflare block): (1) a document at dsebd.org/Auditors_opinion/2024/RUPALIBANK_2024.pdf gives the FY2024 auditor's Qualified Opinion and Emphasis of Matters in full narrative text - a BDT 15,375.30 crore total unrecognized provision shortfall, CRAR 2.95% Solo / 3.03% Consolidated, paid-up capital BDT 487.93 crore (see annual_reports/RUPALIBANK/rupalibank-dse-auditors-opinion-2024.txt) - this is real, audited, contemporaneous FY2024 year-end information, but not a full annual report (no balance sheet/P&L/deposits), so no 2024_Q4.json was created from it (out of this session's Q1-Q3 scope; flagged as a lead for whichever future session next works this bank's Q4/annual gap). (2) DSE's live company page (fetched 2026-08-27) shows 'Last AGM held on: 19-07-2026, for the year ended: Dec 31, 2025' - confirming a FY2025 annual report DOES exist and was approved, even though it still has not been located (no Wayback capture, live site still Cloudflare-blocked). FY2024 and FY2025 should therefore be considered 'exists but not yet located' rather than definitively unavailable, unlike this bank's earlier fully-exhausted gaps."
+    },
+    {
+      "period": "2011-2023 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "partially_recovered",
+      "used_for_years": [
+        2020,
+        2021,
+        2023
+      ],
+      "note": "Researched 2026-08-27. Step 1 (grep the 7 annual-report .txt files for a BSEC-mandated 'Evaluation of the Quarterly Financials' disclosure table) found NOTHING - every 'quarterly financial'/'interim financial'/'half yearly' hit across all 7 reports is boilerplate governance language (Audit Committee review-activity bullet points, IAS-34 applicability notes, BSEC compliance-checklist rows), never an actual embedded figures table. Step 2 (time-boxed Wayback search) instead found that DSE's own company page (dsebd.org/displayCompany.php?name=RUPALIBANK) carries a live 'Interim Financial Performance: <year>' table (EPS Basic/Diluted, EPS-continuing-operations, market price at period end, and in 2020-2021 vintages also Turnover/Revenue, Profit from continuing operations, Profit for the period, and Total Comprehensive Income in BDT millions) - this table only ever shows the CURRENT interim year, rolling over once the prior year's annual report is finalized, so historical years were recovered via Wayback Machine captures of this same URL timed to fall after that year's own Q3 was published. This recovered real Q1/Q2/Half-Yearly/Q3/9-Months data for FY2020 and FY2021 (FY2021 Q3/9M carries a DSE-native tooltip flagging 'Mismatch is due to issuers own actual disclosure' - preserved, not silently corrected), Q1/Q2 only for FY2023 (Q3 not yet published as of the only capture found, no later capture exists), and - beyond this task's original 2011-2023 window - Q1/Q2/Q3 for FY2024, Q1/Q2 for FY2025, and Q1/Q2 for FY2026 (fetched live; FY2026 Q3 has not occurred yet). A total Wayback gap for this URL exists for all of FY2022 (no capture between 2021-12-22 and 2023-10-28) - confirmed via a dedicated CDX sweep of that exact window, not merely absence of a search attempt. See annual_reports/RUPALIBANK/rupalibank-dse-interim-tables-2020-2026.txt for the full extracted text of every capture used, and quarterly/<YEAR>_Q1/Q2/Q3.json for 2020, 2021, 2023, 2024, 2025, 2026 for the normalized data. No interim PDF filing (the bank's own primary-source quarterly financial statements) was independently located - the bank's own site remains Cloudflare-blocked as documented elsewhere in this file, and this DSE-compiled table was the only interim data source found to work."
+    },
+    {
+      "period": "2020 Q1-Q3 (unaudited interim)",
+      "type": "dse_company_page_interim_table",
+      "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Capture 1 of 6)",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020
+      ],
+      "note": "DSE (dsebd.org) company-page 'Interim Financial Performance: 2020' table, recovered via a Wayback Machine capture from 2021-06-10. Gives Turnover/Revenue, Profit for the period, Total Comprehensive Income (all BDT mn), EPS Basic, and market price at period end for Q1, discrete Q2, cumulative Half-Yearly, discrete Q3 and cumulative 9-Months. All figures internally reconcile (Q1+Q2=HY, HY+Q3=9M) to within 0.01 BDT mn / exact EPS - clean, no DSE mismatch flags. Source priority 2 per this dataset's methodology (DSE, not the bank's own site) - used here for HISTORICAL interim recovery via Wayback rather than the live-page cross-check role the methodology doc originally envisioned, since the bank's own site remains unreachable."
+    },
+    {
+      "period": "2021 Q1-Q3 (unaudited interim)",
+      "type": "dse_company_page_interim_table",
+      "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Capture 2 of 6)",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2021
+      ],
+      "note": "DSE company-page 'Interim Financial Performance: 2021' table, via a Wayback capture from 2021-11-02. Q1 and Q2 (discrete + Half-Yearly cumulative) are clean and fully reconciling. Q3 and 9-Months are a genuine data-quality problem in the SOURCE itself, not an extraction issue: Turnover/Profit/TCI for Q3 all read exactly 0 across four unrelated line items (treated as non-disclosure, omitted from quarterly/2021_Q3.json rather than recorded as a fabricated zero), and the 9-Months versions of these same rows plus 9M EPS carry an explicit DSE tooltip: 'Mismatch is due to issuers own actual disclosure' (DSE's own system attributing the inconsistency to Rupali Bank's own filed disclosure). Only Q3's discrete EPS (-0.030, a small loss) is credible and recorded, since it is a specific non-zero non-flagged figure unlike the suspicious flat zeros around it."
+    },
+    {
+      "period": "2023 Q1-Q2 (unaudited interim)",
+      "type": "dse_company_page_interim_table",
+      "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Capture 3 of 6)",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2023
+      ],
+      "note": "DSE company-page 'Interim Financial Performance: 2023' table, via a Wayback capture from 2023-10-28. From this vintage onward DSE's page no longer displays the Turnover/Profit/TCI mn-figures at all (present in the HTML but wrapped in a comment) - only EPS and market price remain, so this and all later interim quarters in this dataset are EPS/price-only. Q1 and Q2 (discrete + HY cumulative) recovered; Q2's HY cumulative (0.790) has a small 0.010 BDT/share unreconciled gap vs Q1+Q2 summed (0.800), not DSE-flagged, recorded as reported. Q3 2023 not yet published as of this capture and no later 2023/2024 capture of this URL exists in the Wayback CDX index (confirmed via a dedicated sweep of the gap window) - confirmed unavailable, not merely unsearched. This complements, and does not overlap with, the existing 2023_Q4.json (capital/asset-quality only, from the Basel III Pillar 3 disclosure) since that document has no EPS or P&L figures of its own."
+    },
+    {
+      "period": "2024 Q1-Q3 (unaudited interim)",
+      "type": "dse_company_page_interim_table",
+      "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Capture 4 of 6)",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "DSE company-page 'Interim Financial Performance: 2024' table, via a Wayback capture from 2025-01-08 (all three quarters already published by this date). EPS-and-price-only (see 2023 note above for why). Q1+Q2 reconcile exactly to the reported Half-Yearly figure; HY+Q3=1.070 vs the reported 9-Months cumulative of 1.020 (a 0.050 BDT/share gap) - NOT DSE-flagged this time (unlike the FY2021 case) but recorded as an unresolved discrepancy per this dataset's 'flag, don't silently reconcile' rule. This is this dataset's only coverage of any kind for FY2024, aside from the separate partial annual-position data documented under the '2024-2025 (Q4)' entry above (found via a different DSE resource, the Auditors_opinion repository) - out of this session's Q1-Q3 scope to turn into a Q4 file."
+    },
+    {
+      "period": "2025 Q1-Q2 (unaudited interim)",
+      "type": "dse_company_page_interim_table",
+      "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Captures 5 and 6 of 6)",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2025
+      ],
+      "note": "DSE company-page 'Interim Financial Performance: 2025' table. Q1 from a 2025-06-08 capture; Q2/Half-Yearly cross-validated identically across two independent captures (2025-08-12 and 2025-08-25). EPS-and-price-only. Q1+Q2 reconcile exactly to the reported Half-Yearly figure - clean. Q3 2025 not recoverable: no Wayback capture of this URL exists between 2025-08-25 and 2026-07-30 (confirmed via CDX), and the sole 2026-07-30 capture that does exist returns 'Internet Archive: Temporarily Offline' on repeated fetch attempts as of 2026-08-27 (retried 3x with delays) - genuinely inaccessible right now, not a search gap. This is this dataset's only coverage of any kind for FY2025 aside from the AGM-approval evidence documented under the '2024-2025 (Q4)' entry above."
+    },
+    {
+      "period": "2026 Q1-Q2 (unaudited interim)",
+      "type": "dse_company_page_interim_table_live",
+      "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (live page section)",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2026
+      ],
+      "note": "DSE's live company page (not a Wayback capture - fetched directly via curl -k, TLS chain issue on dsebd.org's certificate, same workaround already documented for NCCBANK elsewhere in this dataset), showing 'Interim Financial Performance: 2026'. Q1 and Q2 (discrete + HY cumulative) both clean and fully reconciling, including diluted continuing-operations EPS. MAJOR FINDING: EPS swings from consistently positive across every prior quarter recovered (2020-2025: +0.07 to +0.49 BDT/share) to -8.120 (Q1) then -5.010 (Q2) - a large loss. See insights.json for the derived approximate BDT scale of this loss and ratios_timeseries.json for the full time series. Q3 2026 has not occurred yet as of the retrieval date - not a gap."
+    },
+    {
+      "period": "2023 (Q4) - supplementary",
+      "type": "dse_auditors_opinion_compiled_disclosure",
+      "source_document": "rupalibank-dse-auditors-opinion-2023.txt",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023
+      ],
+      "note": "Found while searching DSE for interim filings (not itself an interim document - covers FY2023 ANNUAL results). DSE's own compiled excerpt of Rupali Bank's FY2023 auditor's report 'Emphasis of Matter' paragraph. Cross-confirms the existing 2023_Q4.json's provision shortfall (BDT 4,499.38 crore) and Solo CRAR (5.28%) via an independent document, and adds NEW information not in the existing Basel III Pillar 3 source: a separate IAS-19 Gratuity/Pension provision shortfall of BDT 1,922.42 crore (required 2,069.54cr, set aside only 147.20cr, explicitly stated by the auditor to overstate net profit after tax), Consolidated CRAR 5.36% (vs the already-known 5.28% Solo), an uncorrected IAS-21 foreign-currency-retranslation issue, and a BDT 679.99 crore Share Money Deposit still not converted to share capital. Not merged into 2023_Q4.json's line_items this session (out of Q1-Q3 scope) - documented here and in insights.json as supplementary FY2023 context instead."
+    },
+    {
+      "period": "2024 (Q4) - partial, new this session",
+      "type": "dse_auditors_opinion_compiled_disclosure",
+      "source_document": "rupalibank-dse-auditors-opinion-2024.txt",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Found while searching DSE for interim filings (not itself an interim document - covers FY2024 ANNUAL results, previously a complete gap in this dataset). DSE's own compiled excerpt of Rupali Bank's FY2024 auditor's report: a QUALIFIED OPINION (escalated from FY2023's unqualified-with-emphasis) on a total unrecognized provision shortfall of BDT 15,375.30 crore (more than 3x FY2023's 4,499.38 crore), authorized by Bangladesh Bank letter dated 22 May 2025 despite the auditor stating this is inconsistent with IFRS. Also: CRAR fell further to 2.95% Solo / 3.03% Consolidated; paid-up capital BDT 487.93 crore (a BDT 12.07 crore shortfall vs the BDT 500 crore minimum); the same BDT 679.99 crore Share Money Deposit still unconverted for a second consecutive year; and a new IFRS 16 (leases) non-compliance finding. This is real, audited, contemporaneous FY2024 year-end information but NOT a full annual report (no balance sheet, P&L, or deposits/loans breakdown) - deliberately NOT turned into a quarterly/2024_Q4.json file this session (this task was scoped to Q1-Q3 backfill only; a proper Q4/annual treatment would need the same cross-checking rigor given to every other year in this series). Flagged here and in insights.json as the top lead for whichever future session next works this bank's Q4/annual gap."
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "bank_id": "MIDLANDBNK",
+  "generated_at": "2026-08-26",
+  "methodology": "Derived from bank_financials/MIDLANDBNK/quarterly/*.json (FY2013-FY2025 year-end, Solo basis) and ratios_timeseries.json. Every figure is a reported value from Midland Bank's own audited annual report 'MDB Financial Performance and Ratios: 5 Years Overview', except classified loans (reported NPL ratio applied to reported loans) and the annual provision charge (profit before provision and tax minus profit after provision before tax), both explicitly labelled as calculated. Midland Bank was licensed in 2013, so this series is the bank's complete public history and there is no FY2011 or FY2012. No figure is interpolated or estimated.",
+  "risk_signals": [
+    {
+      "category": "net_interest_income_turned_negative",
+      "severity": "high",
+      "statement": "In FY2025 Midland Bank paid more interest than it earned on lending: interest income 7,160m against interest expenses 8,065m, giving net interest income of MINUS 905m against a positive 58m in FY2024 and 763m in FY2023. The bank stayed profitable only because investment income rose 72.6% to 4,663m — treasury and securities income, not intermediation, now carries the earnings. This is the same margin compression visible across the Bangladeshi sector, and Midland is small enough that a reversal in bond yields would remove its profit cushion.",
+      "metrics": [
+        "net_interest_income",
+        "interest_income",
+        "interest_expense",
+        "investment_income"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "earnings_dependent_on_investment_income",
+      "severity": "high",
+      "statement": "Investment income has gone from 1,613m (FY2023) to 4,663m (FY2025), and now exceeds total operating income's other components combined. Profit after tax was 826m in FY2025 against a negative 905m of net interest income, so essentially all of the bank's reported profit is attributable to securities income. Profit after tax has also been flat for three years (1,133m, 818m, 826m) despite the balance sheet growing 51.5% over the same period.",
+      "metrics": [
+        "investment_income",
+        "profit_after_tax",
+        "net_interest_income",
+        "total_assets"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "provision_charge_tripled_in_two_years",
+      "severity": "medium",
+      "statement": "The annual provision charge rose from 466m (FY2023) to 989m (FY2024) to 1,592m (FY2025), a 3.4-fold increase in two years, and now consumes 59% of pre-provision operating profit (1,592m of 2,702m) against 27% in FY2023. Pre-provision operating profit itself grew healthily over that span (1,743m to 2,702m), so the flat bottom line is entirely a provisioning story.",
+      "metrics": [
+        "provision_charge",
+        "operating_profit",
+        "profit_before_tax"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "npl_ratio_stepped_up_from_a_very_low_base",
+      "severity": "medium",
+      "statement": "The NPL ratio rose from effectively nil in FY2013-FY2014 and 0.68% at its FY2016 low to a 3.81% peak in FY2023, settling at 3.08% in FY2025 (classified loans of roughly 2,189m). The step change came in FY2021, when classified loans jumped 220.7% year on year as pandemic-era classification forbearance lapsed. In absolute terms this is still a low ratio by Bangladeshi standards and is a fraction of the 49.65%-61.47% seen at Islami Bank, IFIC and National Bank — but it is a fivefold rise from the FY2016 low and the trend is upward across a decade.",
+      "metrics": [
+        "npl_pct",
+        "classified_loans"
+      ],
+      "periods": [
+        "2016_Q4",
+        "2021_Q4",
+        "2023_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "capital_ratio_declining_though_still_comfortable",
+      "severity": "info",
+      "statement": "Capital adequacy has fallen steadily as the balance sheet has grown into its initial capital: 43.95% (FY2014), 26.29% (FY2015), 21.03% (FY2017), 15.87% (FY2021) and 15.92% (FY2025). That is a normal maturation path for a bank licensed in 2013, and the FY2025 ratio remains comfortably above the 12.5% requirement with a reported capital surplus of 2,162m. The direction is worth watching, though: assets grew 22.95% in FY2025 while total capital grew 7.09%, so the ratio is being diluted by growth.",
+      "metrics": [
+        "car_pct",
+        "capital_surplus_deficit",
+        "total_capital",
+        "total_assets"
+      ],
+      "periods": [
+        "2014_Q4",
+        "2017_Q4",
+        "2021_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "strong_sustained_growth_and_conservative_funding",
+      "severity": "info",
+      "statement": "Midland Bank has compounded total assets at 26.49% a year since inception, from 7,532m (FY2013) to 126,365m (FY2025), a 16.8-fold increase, and has been profitable in every one of its thirteen years. Funding is conservative: the advance-deposit ratio is 75.15%, well below the regulatory ceiling and far below the 96.72% at Islami Bank or the 119.48% at National Bank, and deposits of 86,432m comfortably exceed loans of 71,068m. Net asset value per share rose from 12.67 (FY2015) to 15.91 (FY2025).",
+      "metrics": [
+        "total_assets",
+        "ldr_pct",
+        "total_deposits",
+        "gross_loans",
+        "nav_per_share"
+      ],
+      "periods": [
+        "2013_Q4",
+        "2015_Q4",
+        "2021_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "return_on_equity_settled_in_high_single_digits",
+      "severity": "info",
+      "statement": "Return on equity peaked at 13.49% (FY2023) and 12.77% (FY2016) and has otherwise sat in a 6.85%-12.30% band since FY2015, reading 8.19% in FY2025. Return on assets has drifted down from 2.26% (FY2016) to 0.72% (FY2025) as the asset base grew faster than earnings. These are unremarkable rather than weak numbers, and they are the healthiest profile of any bank added to this dataset in this pass.",
+      "metrics": [
+        "roe_pct",
+        "roa_pct"
+      ],
+      "periods": [
+        "2016_Q4",
+        "2021_Q4",
+        "2023_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "profit_heavily_concentrated_in_q4_masking_intra_year_volatility",
+      "severity": "medium",
+      "statement": "Now that Q1-Q3 interim data is available, the flat annual profit trend (1,133m FY2023, 818m FY2024, 826m FY2025) is revealed to sit on top of large and inconsistent intra-year swings that the annual figure alone hides. Discrete-quarter profit after tax was 179m / 54m / 139m / 761m across FY2023's four quarters, 74m / 211m / 61m / 472m across FY2024's, and 104m / 16m / 269m / 437m across FY2025's -- Q4 alone supplied 67%, 58% and 53% of the full year's profit in FY2023, FY2024 and FY2025 respectively, while the weakest quarter each year (Q2 in FY2023 and FY2025, Q3 in FY2024) contributed only 2%-7.4% of the annual total (53.54m of 1,133m in FY2023; 60.62m of 818m in FY2024; 16.15m of 826m in FY2025). This is consistent with, and helps explain, the earnings-quality concern already flagged above (net interest income going negative, profit now depending on investment income): investment/treasury income and provisioning decisions both appear to cluster toward year-end, so any single interim quarter is a poor guide to the bank's full-year run-rate.",
+      "metrics": [
+        "profit_after_tax_cumulative",
+        "net_interest_income_cumulative",
+        "investment_income_cumulative"
+      ],
+      "periods": [
+        "2023_Q1", "2023_Q2", "2023_Q3", "2023_Q4",
+        "2024_Q1", "2024_Q2", "2024_Q3", "2024_Q4",
+        "2025_Q1", "2025_Q2", "2025_Q3", "2025_Q4"
+      ]
+    }
+  ],
+  "historical_context": "Midland Bank is the youngest bank in this dataset and, on its reported figures, one of the healthiest. Licensed in 2013 as one of Bangladesh's fourth-generation banks, it has compounded total assets at 26.49% a year to 126,365m and turned a profit in every one of its thirteen years. Capital adequacy has declined from the very high ratios a newly-capitalised bank starts with (43.95% in FY2014) to 15.92% in FY2025, which is normal maturation and still leaves a 2,162m surplus over requirement. Asset quality has weakened gradually rather than dramatically: the NPL ratio went from effectively nil to a 3.81% peak in FY2023 and 3.08% in FY2025, with the step change arriving in FY2021 when classified loans jumped 220.7% as pandemic forbearance lapsed. The genuine concern in the recent data is the composition of earnings, not the balance sheet. Net interest income turned NEGATIVE in FY2025 (-905m, from +763m in FY2023) as deposit costs outran lending yields, and the bank remained profitable only because investment income rose to 4,663m. Meanwhile the provision charge tripled in two years to 1,592m, consuming 59% of pre-provision operating profit, which is why profit after tax has been flat at roughly 820m-1,130m for three years despite the balance sheet growing 51.5%. Funding remains conservative — an advance-deposit ratio of 75.15% is the lowest of any bank added in this pass — so the bank has room to absorb these pressures, but its profit is currently a treasury result rather than a banking one. Quarterly data added in a later pass (see risk_signals below) shows the bank was already listed and IPO'd in March 2023 (raising 700m BDT face value), and confirms the negative-NII / investment-income-dependent pattern was already visible mid-2025, not just at year-end.",
+  "data_gaps": "This series covers FY2013-FY2025, thirteen years rather than fifteen, because Midland Bank did not exist before 2013; the dataset's FY2011 and FY2012 slots are not applicable rather than missing. Q4/year-end (audited) figures cover FY2013-FY2025 as described above. Q1-Q3 interim data was added in a later pass and covers FY2022 (income-statement only, sourced from a later filing's comparative column, since the bank was not yet listed in 2022 and no standalone filing for that year exists) through Q2 FY2026 (Q3 2026 does not exist yet as of retrieval date) -- see sources.json for the full per-quarter sourcing and two data-quality findings: (1) a reclassification between net-interest-income and investment-income for the Apr-Jun-2025 period, found by comparing the original Q2-2025 filing against the same period as later shown as a comparative in the Q2-2026 filing (total income unaffected, only the split between the two lines) -- the earlier, contemporaneous split is used in 2025_Q2.json; (2) NAV-per-share comparatives in bonus-share years get recomputed with the current share count in later reports, understating the historical figure by roughly 3% per bonus cycle -- this dataset's own Q4 files are unaffected since they use each year's own contemporaneous share count. Six of the thirteen ANNUAL years (FY2013, FY2014, FY2018, FY2019, FY2020, FY2022) are not taken from their own reports because those PDFs extract with no usable summary table; each comes from the nearest clean report and is flagged in its period_note. The annual source table reports NO earnings-per-share figure and no cost-to-income ratio in any year, so both are absent from the annual series — a notable gap given EPS is available for every other bank here (EPS IS available quarterly, however, from the interim filings). Classified loans and the annual provision charge are calculated rather than read in the annual series (methods and verification in sources.json) -- the quarterly filings, by contrast, print 'Total Provision' directly, so provision_charge_cumulative is reported, not calculated, in every quarterly file. NPL ratios for FY2015-FY2017 were read directly from the FY2017 report rather than parsed, because dashes in the FY2013-FY2014 columns leave that row short of numbers. Restatements between reports were checked across all readable years and recorded per year; FY2019 carries the most (15), reflecting differences between the FY2021 and FY2023 reports."
+}

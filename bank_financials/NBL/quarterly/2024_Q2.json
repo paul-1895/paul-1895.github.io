@@ -1,0 +1,159 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2024-06-30",
+  "financial_year": 2024,
+  "quarter": "Q2",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account from National Bank's 2nd-Quarter 2024 unaudited financial statements; plain 'Balance Sheet (Un-audited)'/'Profit and Loss Account (Un-audited)' sections used (Solo+OBU basis). Comparative column (31 Dec 2023) reproduces the known FY2023 equity of 23189.24m exactly. Equity continued falling: 15473.99m (Mar 2024) to 12390.74m (Jun 2024), still positive. Income-statement items are CUMULATIVE from 1 January 2024 (first of four P&L columns). This filing's OCR text is noisier than most (extraneous punctuation throughout); 'Investment income' (H1-2024, ~9746.38m) and 'Total operating expenses' (H1-2024, printed with an apparent duplicated leading digit as '77,784,646,618') carry more OCR uncertainty than other fields in this record, so operating_profit and profit_after_tax are anchored instead to the doubly-confirmed figure: 'Profit before taxes' and 'Net Profit after taxation' both print an identical parenthesized -10,797,737,642m, which independently confirms zero provision and zero tax this half-year; operating_profit and profit_after_tax are both set to this anchor value rather than the noisier component sum. EPS of -3.38 is as printed but differs slightly (~1%) from EPS implied by PAT/shares-outstanding (-3.35); not corrected, flagged as minor OCR-range uncertainty. Source PDF was image-only; text obtained via OCR (tesseract, 300dpi).",
+  "source": {
+    "source_document": "2nd quarter-24-07312024185307.pdf (bank's own filename)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-2024-q2-ocr.txt",
+    "source_url": "https://www.nblbd.com/public/assets/financial-statement/1722429685_2nd%20quarter-24-07312024185307.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 571012.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 558621.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 12390.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 401670.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 429833.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 12828.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off B/S items (Including contingent liabilities)",
+      "value": 41599.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value per share (NAV)",
+      "value": 3.85,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest income (cumulative from Jan 1)",
+      "value": 8842.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense_cumulative",
+      "original_metric_name": "Interest paid on deposits and borrowings (cumulative from Jan 1)",
+      "value": 16833.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": -7991.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Cross-checked: interest income 8842.66m minus interest expense 16833.99m = -7991.33m, matches exactly."
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 9746.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Higher OCR uncertainty than other fields in this record; the source's stray punctuation around this cell made it the least legible figure in the filing. Not used to derive operating_profit (see period_note)."
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)",
+      "value": 1205.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (684.52m) and other operating income (521.34m)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 7784.65,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Source text printed an apparently digit-duplicated '77,784,646,618'; the leading duplicated digit was dropped to 7,784,646,618, consistent with the H1-2023 comparative of 6,563.73m and the quarter's own PBT anchor."
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": -10797.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Anchored to the unambiguous, clearly-parenthesized 'Profit before taxes' and 'Net Profit after taxation' figures, which print identically at -10,797,737,642, confirming zero provision and zero tax this half-year and making operating_profit = PBT = PAT."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after taxation (cumulative from Jan 1)",
+      "value": -10797.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share-(Re-stated) (cumulative from Jan 1)",
+      "value": -3.38,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "As printed; PAT/shares-outstanding implies approximately -3.35, a ~1% difference plausibly within OCR digit-confusion range on this specific cell, not corrected."
+    }
+  ]
+}

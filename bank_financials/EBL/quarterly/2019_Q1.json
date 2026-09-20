@@ -1,0 +1,36 @@
+{
+  "bank_id": "EBL",
+  "bank_name": "Eastern Bank PLC",
+  "reporting_date": "2019-03-31",
+  "financial_year": 2019,
+  "quarter": "Q1",
+  "period_note": "SOLO/SEPARATE basis ('Balance Sheet (Unaudited)'/'Profit & Loss Account (Unaudited)' headed 'Eastern Bank Limited' only). Income-statement items are CUMULATIVE from 1 January 2019 (column header '01 January 2019 to 31 March 2019'). Cross-checked the 31-Dec-2018 Solo comparative column against bank_financials/EBL/quarterly/2018_Q4.json: total_assets (282,450,953,307 vs 282,451m), gross_loans (209,306,250,747 vs 209,306m), total_deposits (199,628,906,411 vs 199,629m), investments_securities (27,719,949,401 vs 27,720m), fixed_assets (6,636,617,167 vs 6,637m), borrowings (46,731,901,799 vs 46,732m), total_equity (22,966,259,365 vs 22,966m), paid_up_capital (7,379,995,890 vs 7,380m) — all match exactly, no discrepancy.",
+  "source": {
+    "source_document": "ebl-q1-2019.txt",
+    "source_path": "annual_reports/EBL/ebl-q1-2019.txt",
+    "source_url": "https://www.ebl.com.bd/assets/reports/half/EBL_Q1_FS_2019.pdf",
+    "source_page_lines": "Balance Sheet (Unaudited) as at 31 March 2019 (lines 6-108, Solo/Bank-only columns), Profit & Loss Account for the first quarter ended 31 March 2019 (lines 201-315, Solo/Bank-only cumulative columns)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    { "normalised_metric_name": "paid_up_capital", "original_metric_name": "Paid up capital", "value": 7380, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_equity", "original_metric_name": "Total Shareholders' Equity", "value": 23768, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "gross_loans", "original_metric_name": "Loans, cash credits, overdraft etc. + Bills discounted and purchased", "value": 205124, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_deposits", "original_metric_name": "Deposits and other accounts", "value": 210782, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "borrowings", "original_metric_name": "Borrowing from other banks, financial institutions and agents", "value": 38680, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "investments_securities", "original_metric_name": "Investments (Government + Others)", "value": 27553, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "fixed_assets", "original_metric_name": "Fixed assets including land, building, furniture and fixtures", "value": 6602, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_assets", "original_metric_name": "Total Assets", "value": 287620, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_liabilities", "original_metric_name": "Total Liabilities", "value": 263852, "unit": "BDT_million", "currency": "BDT", "basis": "calculated_from_assets_minus_equity" },
+    { "normalised_metric_name": "net_interest_income_cumulative", "original_metric_name": "Net Interest Income (cumulative from Jan 1)", "value": 2079, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "investment_income_cumulative", "original_metric_name": "Income from investments (cumulative from Jan 1)", "value": 519, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "non_interest_income_cumulative", "original_metric_name": "Fees, commission and brokerage + Other operating income (cumulative from Jan 1)", "value": 949, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_income_cumulative", "original_metric_name": "Total operating income (cumulative from Jan 1)", "value": 3547, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_expenses_cumulative", "original_metric_name": "Total operating expenses (cumulative from Jan 1)", "value": 1552, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_profit_cumulative", "original_metric_name": "Profit before provisions (cumulative from Jan 1)", "value": 1994, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "provision_for_loans_cumulative", "original_metric_name": "Total provisions (cumulative from Jan 1)", "value": 481, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "profit_before_tax_cumulative", "original_metric_name": "Profit before tax for the period (cumulative from Jan 1)", "value": 1514, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "profit_after_tax_cumulative", "original_metric_name": "Profit after tax for the period (cumulative from Jan 1)", "value": 802, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "eps_cumulative", "original_metric_name": "Earnings per share (EPS)", "value": 1.09, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported" }
+  ]
+}

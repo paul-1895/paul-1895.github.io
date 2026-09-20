@@ -1,0 +1,20 @@
+{
+  "bank_id": "CITYBANK",
+  "bank_name": "The City Bank PLC",
+  "reporting_date": "2026-06-30",
+  "financial_year": 2026,
+  "quarter": "Q2",
+  "period_note": "THIN/PARTIAL RECORD -- EPS ONLY, not a full quarterly filing extraction. Same access-failure situation as 2026_Q1.json (see that file's period_note for the full account of every route attempted: legacy CMS stale since 2021, current site is an unfetchable client-rendered Next.js app, DSE/CSE both defer to the bank's own site, no Wayback capture, filename guessing failed). DSE's own 'Interim Financial Performance' disclosure table (a primary regulatory disclosure) discloses, for 2026: Q1 EPS 1.580 (see 2026_Q1.json), a DISCRETE Q2 (Apr-Jun) EPS of 1.630, and an H1-CUMULATIVE (Jan-Jun) EPS of 3.010 -- both recorded below (3.010 = 1.580 + 1.630 - 0.20 due to EPS rounding at each step, i.e. not perfectly additive, a normal artifact of per-period rounding rather than a data error). Basis (Solo vs Consolidated) is NOT specified by DSE's table -- this dataset's City Bank series is otherwise Solo throughout, so this is a real, flagged caveat, not an assumption. Press coverage (Prothom Alo / The Business Standard, City Bank earnings-disclosure webcast held 2-Aug-2026) independently corroborates a CONSOLIDATED H1 profit after tax of Tk526.69 crore (up from Tk301.11 crore a year earlier) and consolidated EPS of Tk3.01 for the half-year -- this matches DSE's disclosed 3.010 essentially exactly, which is itself a data point suggesting DSE's figure (and therefore the one recorded here) is likely CONSOLIDATED rather than Solo, though this was not independently confirmed against the bank's own primary filing. No balance sheet, no other income-statement line items, and no classified-loan data could be sourced for this quarter -- do not treat this file as balance-sheet-complete. Re-attempt with fresh site access in a future session; this is a genuine fetch-access gap, not a publication lag (an earnings-disclosure webcast was held and press coverage confirms the filing exists).",
+  "source": {
+    "source_document": "N/A -- primary PDF not accessible; figures from DSE's live company-page disclosure table",
+    "source_path": "N/A",
+    "source_url": "https://www.dsebd.org/displayCompany.php?name=CITYBANK",
+    "source_page_lines": "'Interim Financial Performance: 2026' table, 'Q2' and 'Half Yearly' columns, 'Earnings Per Share (EPS) - Basic' row",
+    "retrieval_date": "2026-09-12"
+  },
+  "line_items": [
+    { "normalised_metric_name": "eps", "original_metric_name": "Earnings Per Share (EPS) - Basic, discrete (Apr-Jun 2026)", "value": 1.63, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported", "note": "Basis (Solo vs Consolidated) not specified by DSE's disclosure table. See period_note." },
+    { "normalised_metric_name": "eps_cumulative", "original_metric_name": "Earnings Per Share (EPS) - Basic, cumulative Jan-Jun 2026 (Half Yearly)", "value": 3.01, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported", "note": "Likely CONSOLIDATED, not Solo -- matches press-reported consolidated H1 EPS of Tk3.01 almost exactly. Basis not specified by DSE's disclosure table itself; not independently confirmed against the bank's own primary filing. See period_note." },
+    { "normalised_metric_name": "market_price_period_end", "original_metric_name": "Market price per share at period end", "value": 32.0, "unit": "BDT", "currency": "BDT", "basis": "reported" }
+  ]
+}

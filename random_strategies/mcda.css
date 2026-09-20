@@ -1,0 +1,312 @@
+/* ═══════════════════════════════════════════════════════════
+   RANDOM STRATEGIES — MCDA dividend stock scorer
+   Two tables: an editable raw-metrics input grid, and a
+   computed ranking table that min-max normalizes each column
+   to a 0-20 score (100 total) and sorts by it.
+═══════════════════════════════════════════════════════════ */
+
+.mcda-root {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 24px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mcda-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
+}
+
+.mcda-intro { padding: 18px 22px; }
+.mcda-intro h2 {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+  margin-bottom: 8px;
+}
+.mcda-intro p {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.mcda-intro code {
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.mcda-methodology-note {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border: 1px solid var(--accent-dim);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.mcda-caveats {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.mcda-caveats summary {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  letter-spacing: 0.2px;
+}
+.mcda-caveats ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mcda-caveats li {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── Controls row ───────────────────────────────────────── */
+.mcda-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--border);
+}
+.mcda-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mcda-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mcda-select {
+  padding: 7px 10px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  outline: none;
+  cursor: pointer;
+}
+.mcda-select:focus { border-color: var(--accent); }
+.mcda-spacer { flex: 1; }
+.mcda-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.mcda-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.mcda-btn svg { width: 12px; height: 12px; }
+.mcda-btn.mcda-btn-danger:hover { border-color: var(--loss); color: var(--loss); background: color-mix(in srgb, var(--loss) 10%, transparent); }
+
+/* ─── Section headers ────────────────────────────────────── */
+.mcda-section-hd {
+  padding: 14px 22px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/* ─── Table shell (shared) ───────────────────────────────── */
+.mcda-table-wrap { overflow-x: auto; padding: 12px 0 4px; }
+.mcda-table { width: 100%; border-collapse: collapse; }
+.mcda-table thead th {
+  padding: 8px 14px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-align: right;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+.mcda-table thead th:first-child,
+.mcda-table thead th:nth-child(2),
+.mcda-table thead th.mcda-th-left { text-align: left; }
+.mcda-table thead th.mcda-th-sort {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+}
+.mcda-table thead th.mcda-th-sort:hover { color: var(--accent); }
+.mcda-table tbody td {
+  padding: 6px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.mcda-table tbody tr:last-child td { border-bottom: none; }
+.mcda-table tbody tr:hover { background: var(--bg-row-hover); }
+
+.mcda-sl { font-family: var(--mono); font-size: 11.5px; color: var(--text-muted); width: 28px; }
+
+/* Editable input grid */
+.mcda-input {
+  width: 100%;
+  min-width: 70px;
+  padding: 6px 8px;
+  background: var(--bg-base);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--mono);
+  font-size: 12px;
+  text-align: right;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.mcda-input:focus { border-color: var(--accent); background: var(--bg-card); }
+.mcda-input-name { min-width: 220px; text-align: left; font-weight: 600; }
+.mcda-row-del {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.mcda-row-del:hover { background: color-mix(in srgb, var(--loss) 14%, transparent); color: var(--loss); }
+.mcda-row-del svg { width: 12px; height: 12px; }
+
+/* Ranking table */
+.mcda-td-rank {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: left;
+}
+.mcda-row-1 .mcda-td-rank { color: #eab308; }
+.mcda-row-2 .mcda-td-rank { color: #9ca3af; }
+.mcda-row-3 .mcda-td-rank { color: #b8804a; }
+.mcda-td-company {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: left;
+  white-space: normal;
+  max-width: 240px;
+}
+.mcda-td-score {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: right;
+}
+.mcda-td-total {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: right;
+}
+.mcda-bar-cell { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.mcda-bar-track {
+  width: 60px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.mcda-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* ─── Methodology legend ─────────────────────────────────── */
+.mcda-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+  padding: 12px 22px 18px;
+}
+.mcda-legend-item {
+  padding: 10px 12px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.mcda-legend-item strong {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+.mcda-legend-item span {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.mcda-legend-weight {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.mcda-empty {
+  padding: 40px 22px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 720px) {
+  .mcda-root { padding: 16px 12px 40px; }
+  .mcda-input-name { min-width: 160px; }
+}

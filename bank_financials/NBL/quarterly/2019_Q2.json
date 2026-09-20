@@ -1,0 +1,135 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2019-06-30",
+  "financial_year": 2019,
+  "quarter": "Q2",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account, read from National Bank's own half-yearly Q2-2019 unaudited financial statements (clean digital text; some character-level corruption in labels but nearly all numbers legible directly). Comparative Balance Sheet column (31 Dec 2018) reproduces this dataset's existing FY2018 figures exactly: total_assets 407,227,403,673 (rounding of 407227.4m), total_liabilities 362,418,050,606 (= assets - equity exactly), total_equity 44,809,353,067, total_deposits 315,206,033,967, gross_loans component total, investments_securities 57,869,853,468, and nav_per_share 16.88 -- all confirming correct Solo section identification. Income-statement items are CUMULATIVE from 1 January 2019 (first of four P&L columns: [Jan-Jun 2019] [Jan-Jun 2018] [Apr-Jun 2019 discrete] [Apr-Jun 2018 discrete]); every cumulative component (net interest income, investment income, commission, other operating income) was cross-checked against the discrete-quarter identity (Q1-2019 + Q2-2019-discrete = H1-2019-cumulative, using this dataset's own 2019_Q1.json Q1 figures) and matches exactly in every case, and Total Operating Income (5,719,534,466) and Profit Before Provision (2,474,846,834) both reproduce their printed totals exactly via the standard waterfall identity. interest_income and interest_expense are not legible in this filing (that specific P&L row is corrupted across all four columns) and no other quarter's comparative column was found to recover it cleanly, so both are marked unavailable; net_interest_income itself is fully legible and unaffected. EPS is the filing's own printed cumulative figure.",
+  "source": {
+    "source_document": "National Bank's own half-yearly (2nd Quarter) 2019 unaudited financial statements",
+    "source_path": "annual_reports/NBL/nbl-unaudited-2019-q2.txt",
+    "source_url": "https://www.nblbd.com/investors-relations/financial-statement",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections (second occurrence of each heading, following the Consolidated sections)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 432334.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 386396.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 45937.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 330540.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 334298.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 55902.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value per share (NAV)",
+      "value": 17.3,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 1950.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Cross-validated: Q1-2019 (923.61m, per 2019_Q1.json) + Q2-2019 discrete (1,026,796,908, this filing's own third column) = 1,950,402,180, matching this cumulative figure."
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 2720.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Cross-validated: Q1-2019 (1,313.52m) + Q2-2019 discrete (1,407,021,908) = 2,720,542,763 exactly."
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)",
+      "value": 1048.59,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (700.72m) and other operating income (347.87m); both cross-validated exactly against Q1-2019 + Q2-2019-discrete."
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 3244.69,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": 2474.85,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Matches Total Operating Income (5,719,534,466) minus Total Operating Expenses exactly."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after taxation (cumulative from Jan 1)",
+      "value": 1124.85,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (Re-stated) (cumulative from Jan 1)",
+      "value": 0.42,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ],
+  "fields_derived_via_identity": [],
+  "fields_unavailable": ["interest_income_cumulative", "interest_expense_cumulative"]
+}

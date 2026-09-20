@@ -1,0 +1,187 @@
+{
+  "bank_id": "NRBCBANK",
+  "bank_name": "NRB Commercial Bank PLC",
+  "reporting_date": "2023-03-31",
+  "financial_year": 2023,
+  "quarter": "Q1",
+  "period_note": "SOLO basis, this bank's own real Q1 2023 interim financial statement. This PDF's embedded fonts have a broken glyph-to-Unicode mapping (a different corruption from a plain OCR scan -- digits like '1' are silently substituted with letters like 'L' in the extracted text, e.g. '9,L89,498,L75', while OTHER digits in the same cell extract correctly, making the corruption impossible to reverse with a simple substitution rule). Both the Balance Sheet and Profit and Loss Account were therefore read directly off the rendered page images (175dpi) rather than the text layer. Cross-checked against the FY2023 annual report's own retrospective table: Net Interest Income (1086.81 exact), Net profit (795.23 exact). non_interest_income here EXCLUDES investment_income (they are separate line items in this quarter's real interim statement), matching the Q4/annual files' definition of non_interest_income -- NOT the broader bundled definition used in this dataset's table-only years (2014-2019), which folds investment income into 'non_interest_income'.",
+  "source": {
+    "source_document": "nrbcbank-2023-q1-financial-statements.txt",
+    "source_path": "annual_reports/NRBCBANK/nrbcbank-2023-q1-financial-statements.txt",
+    "source_url": "https://www.nrbcommercialbank.com/assets/form/report/1684212830.928714-NRBCBANK%202023-Q1.pdf",
+    "source_page_lines": "Solo Balance Sheet, PDF page 7 (font-corrupted text layer, read visually); Profit and Loss Account, PDF page 9 (same)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 200899.78,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 187147.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 13751.85,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 144722.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances/investments",
+      "value": 137649.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 39693.46,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet exposures including contingent liabilities",
+      "value": 55965.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per Share",
+      "value": 17.34,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest income",
+      "value": 3142.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest paid/Profit Shared on deposits and borrowings, etc",
+      "value": 2055.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income",
+      "value": 1086.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income",
+      "value": 550.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (combined)",
+      "value": 362.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "non_interest_income here EXCLUDES investment_income (they are separate line items in this quarter's real interim statement), matching the Q4/annual files' definition of non_interest_income -- NOT the broader bundled definition used in this dataset's table-only years (2014-2019), which folds investment income into 'non_interest_income'."
+    },
+    {
+      "normalised_metric_name": "total_operating_income",
+      "original_metric_name": "Total operating income (A)",
+      "value": 2000.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses (B)",
+      "value": 1196.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit before Provision (C = A-B)",
+      "value": 804.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_expense",
+      "original_metric_name": "Total Provision (D)",
+      "value": -411.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Negative = a net provision RELEASE this quarter, as printed (Total Provision (D) = (411,445,068))."
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Profit before Taxation (C-D)",
+      "value": 1215.48,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Provision for Taxation",
+      "value": 420.26,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net profit after taxation",
+      "value": 795.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per share (EPS)",
+      "value": 1.003,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

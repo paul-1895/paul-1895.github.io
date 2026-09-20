@@ -1,0 +1,428 @@
+/* ═══════════════════════════════════════════════════════════
+   WATCHLIST PANEL
+═══════════════════════════════════════════════════════════ */
+
+/* .wl-toggle-btn is defined by the shared style.css (same pill button
+   used for the Watchlist/Menu buttons on every page) — not redeclared
+   here so the homepage matches the rest of the site. */
+.wl-toggle-btn .wl-count-badge {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  min-width: 16px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Drawer overlay */
+.wl-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 900;
+  backdrop-filter: blur(2px);
+}
+.wl-overlay.open { display: block; }
+
+/* Drawer panel */
+.wl-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  max-width: 95vw;
+  height: 100vh;
+  background: var(--bg-base);
+  border-left: 1px solid var(--border);
+  z-index: 901;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: -8px 0 40px rgba(0,0,0,0.35);
+}
+.wl-panel.open { transform: translateX(0); }
+
+/* Panel header */
+.wl-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.wl-panel-title {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.wl-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.wl-close-btn:hover { color: var(--text-primary); }
+.wl-close-btn svg { width: 18px; height: 18px; }
+
+/* New watchlist button */
+.wl-new-btn {
+  margin: 14px 16px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: transparent;
+  border: 1px dashed var(--border-glow);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: calc(100% - 32px);
+}
+.wl-new-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+.wl-new-btn svg { width: 14px; height: 14px; }
+
+/* Inline name input for create/rename */
+.wl-name-input {
+  margin: 10px 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.wl-name-input input {
+  flex: 1;
+  padding: 7px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  outline: none;
+}
+.wl-name-input input:focus { border-color: var(--accent); }
+.wl-name-input button {
+  padding: 7px 12px;
+  background: var(--accent);
+  border: none;
+  color: #000;
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.wl-name-input button:hover { opacity: 0.85; }
+.wl-name-input .wl-cancel-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* Lists container */
+.wl-lists {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0 20px;
+}
+
+/* Individual watchlist card */
+.wl-card {
+  margin: 8px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.wl-card:hover { border-color: var(--border-glow); }
+
+.wl-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px;
+  cursor: pointer;
+  gap: 8px;
+  user-select: none;
+  transition: background 0.15s;
+}
+.wl-card-header:hover { background: var(--bg-row-hover); }
+.wl-card-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+.wl-chevron {
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.wl-chevron svg { width: 12px; height: 12px; display: block; }
+.wl-card.expanded .wl-chevron { transform: rotate(90deg); }
+.wl-card-name {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wl-stock-count {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.wl-card-actions {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.wl-action-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+.wl-action-btn:hover { color: var(--text-primary); background: var(--bg-row-hover); }
+.wl-action-btn.danger:hover { color: var(--loss); }
+.wl-action-btn svg { width: 13px; height: 13px; }
+
+/* Rename inline input */
+.wl-rename-wrap {
+  padding: 0 12px 10px;
+  display: none;
+}
+.wl-rename-wrap.show { display: flex; gap: 6px; }
+.wl-rename-wrap input {
+  flex: 1;
+  padding: 6px 8px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-glow);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  outline: none;
+}
+.wl-rename-wrap input:focus { border-color: var(--accent); }
+.wl-rename-wrap button {
+  padding: 6px 10px;
+  background: var(--accent);
+  border: none;
+  color: #000;
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Stocks inside watchlist */
+.wl-stocks-body {
+  display: none;
+  border-top: 1px solid var(--border);
+}
+.wl-card.expanded .wl-stocks-body { display: block; }
+
+.wl-stock-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+  gap: 8px;
+  transition: background 0.15s;
+}
+.wl-stock-item:last-child { border-bottom: none; }
+.wl-stock-item:hover { background: var(--bg-row-hover); }
+.wl-stock-info { flex: 1; min-width: 0; }
+.wl-stock-code {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+.wl-stock-name {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+.wl-stock-price {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  text-align: right;
+  flex-shrink: 0;
+}
+.wl-stock-price.up { color: var(--gain); }
+.wl-stock-price.dn { color: var(--loss); }
+.wl-stock-price-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.wl-remove-stock {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 3px;
+  display: flex;
+  transition: color 0.15s;
+}
+.wl-remove-stock:hover { color: var(--loss); }
+.wl-remove-stock svg { width: 12px; height: 12px; }
+
+.wl-empty-msg {
+  padding: 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FAVORITE / WATCHLIST DROPDOWN IN TABLE
+═══════════════════════════════════════════════════════════ */
+.fav-cell {
+  position: relative;
+  text-align: center;
+  width: 36px;
+  padding: 0 !important;
+}
+.fav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  color: var(--text-muted);
+}
+.fav-btn:hover { color: #f5c518; }
+.fav-btn.active { color: #f5c518; }
+.fav-btn svg { width: 14px; height: 14px; }
+
+/* Dropdown */
+.fav-dropdown {
+  position: absolute;
+  left: 38px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-md);
+  z-index: 500;
+  min-width: 200px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  display: none;
+  overflow: hidden;
+}
+.fav-dropdown.open { display: block; }
+
+.fav-dropdown-header {
+  padding: 8px 12px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-base);
+}
+
+.fav-dropdown-list { max-height: 200px; overflow-y: auto; }
+
+.fav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--border);
+}
+.fav-dropdown-item:last-child { border-bottom: none; }
+.fav-dropdown-item:hover { background: var(--bg-row-hover); color: var(--text-primary); }
+.fav-dropdown-item.in-list { color: var(--accent); }
+.fav-dropdown-item .fav-item-check { width: 12px; height: 12px; flex-shrink: 0; }
+.fav-dropdown-item .fav-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.fav-dropdown-empty {
+  padding: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.fav-dropdown-footer {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-base);
+}
+.fav-dropdown-create {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: transparent;
+  border: 1px dashed var(--border-glow);
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.fav-dropdown-create:hover { border-color: var(--accent); color: var(--accent); }
+.fav-dropdown-create svg { width: 11px; height: 11px; }

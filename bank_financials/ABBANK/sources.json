@@ -1,0 +1,155 @@
+{
+  "bank_id": "ABBANK",
+  "bank_name": "AB Bank PLC",
+  "website": "https://abbl.com",
+  "investor_relations_url": "https://abbl.com/investor-relations/",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2025 total assets of 419,108m match the figure under this report's 'Balance Sheet' heading; its 'Consolidated Balance Sheet' shows 421,894m.",
+  "dse_url": "https://www.dsebd.org/displayCompany.php?name=ABBANK",
+  "notes": "DSE company page only surfaces the single latest financial-statement link and states 'For detail financial statements, please visit company's website' — not usable as a historical archive. Bank's own IR site is the working primary source. IMPORTANT CORRECTION (2026-08-26): a prior session's note below ('site's archive of standalone quarterly PDFs appears to start around 2020') was INCORRECT — a more thorough re-check of the IR page found the quarterly archive actually extends back to 2011 (Q1/Q3) and 2010 (Half-Yearly). All available years 2011-2025 for Q1/Q2/Q3 have now been extracted (2010 Half-Yearly PDF was also downloaded and its text archived to annual_reports/ABBANK/abbank-2010-h1-unaudited.txt, but not converted to a quarterly/*.json file since ABBANK's own Q4/annual series starts at FY2011 — a future session could extract it as a standalone supplementary data point if useful).",
+  "sources": [
+    {
+      "period": "2011-2025 (Q4/year-end, multiple years)",
+      "type": "annual_report_summary_table",
+      "source_document": "abbank-annual-report-2016.txt (\"Last 10 years performance\" table, covers 2007-2016)",
+      "source_path": "annual_reports/ABBANK/abbank-annual-report-2016.txt",
+      "source_url": "https://abbl.com/investor-relations/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [2011, 2012, 2013, 2014, 2015, 2016]
+    },
+    {
+      "period": "2016-2025 (Q4/year-end, multiple years)",
+      "type": "annual_report_summary_table",
+      "source_document": "abbank-annual-report-2025.txt (\"LAST 10 YEARS' PERFORMANCE\" table, covers 2016-2025)",
+      "source_path": "annual_reports/ABBANK/abbank-annual-report-2025.txt",
+      "source_url": "https://abbl.com/wp-content/uploads/2026/05/Annual-Report-2025.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+      "cross_check": "2016 figures independently confirmed identical between this table and the 2016 report's own table (total assets, loans, deposits, equity all match). 2024/2025 balance-sheet totals also independently confirmed against the audited financial statements section of the same report (lines ~6560-6865): Total Assets 419,108,158,258 (2024) / 421,894,086,288 (2025) match exactly."
+    },
+    {
+      "period": "2026 Q1 (31 Mar 2026)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "Un-audited-Financial-Statements-Q1-2026.pdf",
+      "source_url": "https://abbl.com/wp-content/uploads/2026/05/Un-audited-Financial-Statements-Q1-2026.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "validation": "Total Assets = Total Liabilities + Equity reconciles to within rounding."
+    },
+    {
+      "period": "2026 Q2 / H1 (30 Jun 2026)",
+      "type": "half_yearly_financial_statements",
+      "source_document": "Half-Yearly-Financial-Statements-2026.pdf",
+      "source_url": "https://abbl.com/wp-content/uploads/2026/08/Half-Yearly-Financial-Statements-2026.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "validation": "Total Assets = Total Liabilities + Equity reconciles exactly (421,608,859,218 = 470,194,760,762 + (-48,585,901,546), off by BDT 2 due to source rounding). Dec-2025 comparative column matches the annual report's audited 2025 figures exactly."
+    },
+    {
+      "period": "2011-2025 Q1 (unaudited), 15 years",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_urls": {
+        "2011": "https://abbl.com/download/edits/2011-quarterly-report-quarter-1.pdf",
+        "2012": "https://abbl.com/download/edits/2012-quarterly-report-quarter-1.pdf",
+        "2013": "https://abbl.com/download/edits/2013-quarterly-report-quarter-1.pdf",
+        "2014": "https://abbl.com/download/edits/2014-quarterly-report-quarter-1.pdf",
+        "2015": "https://abbl.com/download/edits/2015-quarterly-report-quarter-1.pdf",
+        "2016": "https://abbl.com/wp-content/uploads/2015/05/2016-quarterly-report-quarter-1.pdf",
+        "2017": "https://abbl.com/wp-content/uploads/2015/05/2017-quarterly-report-quarter-1.pdf",
+        "2018": "https://abbl.com/wp-content/uploads/2018/05/January-to-March.pdf",
+        "2019": "https://abbl.com/wp-content/uploads/2019/05/January-to-March.pdf",
+        "2020": "https://abbl.com/wp-content/uploads/2020/07/1st-QTR-FS-2020.pdf",
+        "2021": "https://abbl.com/wp-content/uploads/2021/05/Un-Audited-Financial-Statements-of-Q1-2021.pdf",
+        "2022": "https://abbl.com/wp-content/uploads/2022/04/Un-audited-Financial-Statements-March-2022.pdf",
+        "2023": "https://abbl.com/wp-content/uploads/2023/05/Un-audited-Financial-Statements-March-2023.pdf",
+        "2024": "https://abbl.com/wp-content/uploads/2024/05/Un-Audited-FS-March-2024-Revised.pdf",
+        "2025": "https://abbl.com/wp-content/uploads/2025/06/Un-Audited-FS-March-2025.pdf"
+      },
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+      "validation": "Every year's Total Assets = Total Liabilities + Equity reconciles exactly or within BDT 1-2 rounding. Every year's interest income minus interest paid = net interest income exactly. Extensive year-over-year cross-validation: each year's own report reprints the prior year's Q1 figures as a comparative column, and in the great majority of cases these match this dataset's own prior-year file exactly, independently confirming both extractions (see individual quarterly/*.json 'note' fields for the handful of exceptions, all explained)."
+    },
+    {
+      "period": "2010-2025 Half-Yearly / Q2, 16 years",
+      "type": "half_yearly_financial_statements",
+      "source_urls": {
+        "2010": "https://abbl.com/download/edits/2010-half-yearly-financial-statement.pdf",
+        "2011": "https://abbl.com/download/edits/2011-half-yearly-financial-statement.pdf",
+        "2012": "https://abbl.com/download/edits/2012-half-yearly-financial-statement.pdf",
+        "2013": "https://abbl.com/download/edits/2013-half-yearly-financial-statement.pdf",
+        "2014": "https://abbl.com/download/edits/2014-half-yearly-financial-statement.pdf",
+        "2015": "https://abbl.com/download/edits/2015-half-yearly-financial-statement.pdf",
+        "2016": "https://abbl.com/wp-content/uploads/2015/05/BRPD-14-June-2016.pdf",
+        "2017": "https://abbl.com/wp-content/uploads/2015/05/BRPD-8-aug-2017.pdf",
+        "2018": "https://abbl.com/wp-content/uploads/2018/08/Half-yearly-Financial-Statements_2018.pdf",
+        "2019": "https://abbl.com/wp-content/uploads/2019/08/BRPD-14-June-30-2019_for-Web.pdf",
+        "2020": "https://abbl.com/wp-content/uploads/2020/07/BRPD-14-June-2020_web.pdf",
+        "2021": "https://abbl.com/wp-content/uploads/2021/08/BRPD-14-June-2021-for-ABBL-Web.pdf",
+        "2022": "https://abbl.com/wp-content/uploads/2022/08/HALF-YEARLY-FINANCIAL-STATEMENTS-14-June-2022.pdf",
+        "2023": "https://abbl.com/wp-content/uploads/2023/07/Half-Yearly-Finanacial-Statements-2023.pdf",
+        "2024": "https://abbl.com/wp-content/uploads/2024/08/Half-Yearly-Financial-Statements-2024-of-AB-Bank-PLC.pdf",
+        "2025": "https://abbl.com/wp-content/uploads/2025/11/Half-Yearly-Financial-Statements-2025-V2.pdf"
+      },
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated (2011-2025); 2010 downloaded and archived to annual_reports/ABBANK/abbank-2010-h1-unaudited.txt but not yet converted to a quarterly/*.json file (no matching FY2010 Q4/annual data exists in this dataset to anchor a partial year)",
+      "used_for_years": [2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+      "validation": "Every year's discrete Q2 (Apr-Jun) income-statement figures were taken from the report's own 4-column layout (H1 current, H1 prior, Q2 discrete current, Q2 discrete prior) and cross-checked: discrete Q2 = H1 cumulative minus Q1 in every year, matching to within BDT 1-2 rounding throughout."
+    },
+    {
+      "period": "2011-2025 Q3 (unaudited), 15 years",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_urls": {
+        "2011": "https://abbl.com/download/edits/2011-quarterly-report-quarter-3.pdf",
+        "2012": "https://abbl.com/download/edits/2012-quarterly-report-quarter-3.pdf",
+        "2013": "https://abbl.com/download/edits/2013-quarterly-report-quarter-3.pdf",
+        "2014": "https://abbl.com/download/edits/2014-quarterly-report-quarter-3.pdf",
+        "2015": "https://abbl.com/download/edits/2015-quarterly-report-quarter-3.pdf",
+        "2016": "https://abbl.com/wp-content/uploads/2015/05/2016-Financial-Statements-3rd-Quater-.pdf",
+        "2017": "https://abbl.com/wp-content/uploads/2015/05/financial-statment-September-2017.pdf",
+        "2018": "https://abbl.com/wp-content/uploads/2018/11/Website-FS-Q32018.pdf",
+        "2019": "https://abbl.com/wp-content/uploads/2019/10/QTR-3-2019-FS_web-upload.pdf",
+        "2020": "https://abbl.com/wp-content/uploads/2020/11/BRPD-14-September-2020.pdf",
+        "2021": "https://abbl.com/wp-content/uploads/2021/11/BRPD-14-September-2021.pdf",
+        "2022": "https://abbl.com/wp-content/uploads/2022/11/BRPD-14-September-2022_Web.pdf",
+        "2023": "https://abbl.com/wp-content/uploads/2023/11/BRPD-14-December-Q3-2023-Un-Audited-web-upload.pdf",
+        "2024": "https://abbl.com/wp-content/uploads/2024/11/BRPD-14-December-Q3-2024-Un-Audited-web-upload.pdf.pdf",
+        "2025": "https://abbl.com/wp-content/uploads/2025/11/ABBL-Un-audited-Financial-Statements-Q3-2025.pdf"
+      },
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+      "note_2017": "The 2017 Q3 filing (financial-statment-September-2017.pdf) is the one exception in the entire 15-year Q1-Q3 series: it genuinely does not contain a loan-classification (Standard/SMA/Substandard/Doubtful/Bad-Loss) breakdown anywhere in the document (confirmed by exhaustive text search — only a provision-requirement note exists, which cannot be reliably converted back to loan balances). classified_loans_*/unclassified_* fields are omitted from 2017_Q3.json rather than estimated. All other fields for that quarter are fully reported and validated.",
+      "validation": "Every year's Total Assets = Total Liabilities + Equity reconciles exactly or within BDT 1-2 rounding; Q1+Q2+discrete-Q3 sums match each report's own printed 9-month cumulative column exactly or within BDT 1 in nearly every year (one exception: FY2011, see that file's note for a small ~0.13% source-internal inconsistency)."
+    },
+    {
+      "period": "Restated EPS comparatives found across the 2011-2019 series",
+      "type": "cross_report_discrepancy_log",
+      "note": "AB Bank issued bonus/rights shares repeatedly through 2011-2018 (paid-up capital rose from 3.2bn in 2011 to 8.96bn by 2024), and each time, EPS for prior periods gets retroactively restated using the new weighted-average share count in later reports' comparative columns, while the underlying net profit figure itself stays identical. Found and documented in the affected quarterly/*.json files' notes (2020_Q2, 2021_Q3, 2023_Q2, 2013_Q1, 2013_Q3, 2014_Q1, 2014_Q2, 2015_Q1, 2015_Q3, 2016_Q1, 2016_Q2, 2017_Q1, 2018_Q3 all carry a paired note). Per project convention, the contemporaneous EPS (as reported at the time) is always kept in this dataset; the restated figure is recorded in the note only, never substituted.",
+      "status": "documented_not_actionable"
+    },
+    {
+      "period": "One genuine source-internal inconsistency: FY2011",
+      "type": "data_quality_finding",
+      "note": "The 2011 Q3 report's own discrete Jul-Sep'11 income-statement column is fully self-consistent end-to-end (net interest income through net profit all reconcile via a-b-d-tax), but its starting 'Net interest income' figure (642,035,749) is 821,247 BDT (0.13%) higher than interest income minus interest paid would imply, and this small gap compounds so that Q1+Q2+discrete-Q3 2011 net profit (699,260,920) is 924,494 BDT (0.13%) below the report's own printed Jan-Sep'11 cumulative (700,185,414). This exact same figure (642,035,749) is independently reproduced as the Jul-Sep'11 comparative column in the bank's own 2012 Q3 report, confirming the inconsistency originates in AB Bank's own 2011 filing, not in this project's extraction. Recorded, not silently corrected, per project convention.",
+      "status": "documented_not_actionable"
+    },
+    {
+      "period": "2011-2019 Q1/Q2/Q3",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_urls": [],
+      "source_priority": null,
+      "retrieval_date": "2026-08-24",
+      "status": "SUPERSEDED — see corrected entries above (retrieval_date 2026-08-26). The prior session's conclusion below has been proven wrong by a more thorough IR-archive search.",
+      "notes": "OBSOLETE, kept for audit trail only: 'No quarterly (Q1/H1/Q3) filings found on AB Bank's current IR site or via web search for these years; the site's archive of standalone quarterly PDFs appears to start around 2020.' This was incorrect — see the corrected 2011-2025 Q1/H1/Q3 source entries above."
+    }
+  ]
+}

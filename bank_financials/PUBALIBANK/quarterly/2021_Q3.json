@@ -1,0 +1,34 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2021-09-30",
+  "financial_year": 2021,
+  "quarter": "Q3",
+  "period_note": "Recovered via a Wayback Machine capture of DSE's OWN company page (dsebd.org/displayCompany.php?name=PUBALIBANK), NOT the bank's site. This vintage of the table (titled 'Interim Financial Performance: <year>', 2016 onward) gives Turnover/Revenue, Profit for the period, Basic EPS and period-end market price, with Q2/Q3 given BOTH as a discrete quarter figure AND a separate cumulative (Half Yearly / 9 Months) figure side by side -- identical table structure to the one already documented for RUPALIBANK. Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). THIN/FLAGGED QUARTER, mirroring RUPALIBANK's own FY2021 Q3 finding exactly: the source table's Q3 column for Turnover/Profit/Total-Comprehensive-Income all read a plain (unflagged) 0, not credible as three unrelated genuine reported zeros for a bank that had just reported ~1.85bn cumulative profit through H1 -- treated as 'not disclosed to DSE in this structured field' and omitted. The 9-Months cumulative versions of these same rows carry DSE's own explicit tooltip: 'Mismatch is due to issuers own actual disclosure' -- also omitted. Turnover additionally excluded per this year's separate instability finding (see 2021_Q1.json). The ONE genuinely distinct, credible, non-zero, non-flagged figure for Q3 is EPS Basic = 2.720 -- recorded below. The flagged 9-Months cumulative EPS (4.520) is OMITTED from line_items per the RUPALIBANK precedent of excluding any tooltip-flagged cell regardless of arithmetic, though for the record it reconciles exactly (1.800 Half-Yearly + 2.720 this quarter = 4.520). Market price at period end (25.2) is clean/unflagged and recorded.",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://web.archive.org/web/20211102130203id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2021\" table, Q3 (discrete) column (period-end 202109); 9-Months cumulative column carries DSE's 'Mismatch is due to issuers own actual disclosure' tooltip and is excluded",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Jul-Sep",
+      "value": 2.72,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Profit-for-the-period figure for this same quarter was not usably disclosed (plain flat 0) and the 9-months cumulative EPS carries DSE's own 'mismatch' tooltip despite reconciling exactly (1.800+2.720=4.520) -- this discrete Q3 EPS is the only credible P&L figure available for this quarter."
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 25.2,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

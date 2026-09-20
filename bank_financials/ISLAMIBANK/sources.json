@@ -1,0 +1,131 @@
+{
+  "bank_id": "ISLAMIBANK",
+  "bank_name": "Islami Bank Bangladesh PLC",
+  "website": "https://www.islamibankbd.com",
+  "investor_relations_url": "https://www.islamibankbd.com/abt_annualReport.php",
+  "reporting_basis": "SOLO / STANDALONE. Islami Bank's 'Five Years Performance' schedule is prepared on the Bank-only basis. Islami Bank is Shariah-compliant, so the source terminology differs from a conventional bank and is preserved in original_metric_name: 'General Investment' is the financing book (mapped to gross_loans), 'Investment Income' is the equivalent of interest income, 'Profit Paid on deposit' the equivalent of interest expense, 'Net Investment Income' the equivalent of net interest income, and 'Classified Investment' the equivalent of non-performing loans.",
+  "notes": "Islami Bank's annual report is in the archive for all fifteen years, and twelve of them are taken from the reporting year's own document. The exceptions are FY2011, FY2018 and FY2020, whose PDFs are scanned images whose text layer is unusable (their covers extract as mojibake and no table row survives), so those three years come from the nearest clean report. The 'Five Years Performance' schedule is a numbered row list, and pdftotext loses the label text on a number of rows (the FY2022 report especially), so rows were parsed by serial number as well as by label and the two views merged. Row numbering is identical across all reports for the balance-sheet, capital and asset-quality blocks (rows 1-26); the income-statement block was renumbered one higher from the FY2016 report onward, which was verified against the labelled rows in the FY2012 and FY2014 reports before being relied on. All fifteen reports were parsed against each other, so every figure was checked against the same figure as republished elsewhere; 83 restatements were found and are recorded verbatim in the affected year's period_note.",
+  "sources": [
+    {
+      "period": "2011-2012 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "islamibank-annual-report-2012.txt ('Five Years Performance at a Glance', 2008-2012)",
+      "source_path": "annual_reports/ISLAMIBANK/islamibank-annual-report-2012.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012
+      ],
+      "note": "The FY2011 report is a scanned document with an unusable text layer, so FY2011 comes from the FY2012 report's comparative column. In this older table format Reserve Fund already subsumes retained earnings — paid-up capital plus reserve fund reproduces shareholders' equity exactly for both years (10,007.71 + 17,792.50 = 27,800.21 for FY2011; 12,509.64 + 27,245.87 = 39,755.51 for FY2012) — so the separate retained-earnings row in that report is not additive and is deliberately not carried into these records. EPS is not printed in this report and is taken from the FY2014 report.",
+      "cross_check": "Balance-sheet, capital and asset-quality rows reconcile: Tier-I plus Tier-II equals regulatory capital, and classified investment over general investment reproduces the reported classified-investment ratio (2.71% FY2011, 3.81% FY2012) exactly."
+    },
+    {
+      "period": "2013-2017 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "islamibank-annual-report-<YEAR>.txt for 2013, 2014, 2015, 2016 and 2017 ('Five Years Performance')",
+      "source_path": "annual_reports/ISLAMIBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "note": "Each year from its own report. FY2013's EPS is not printed in the FY2013 report and is taken from the FY2014 report (3.40)."
+    },
+    {
+      "period": "2018-2019 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "islamibank-annual-report-2019.txt ('Five Years Performance', 2015-2019)",
+      "source_path": "annual_reports/ISLAMIBANK/islamibank-annual-report-2019.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018,
+        2019
+      ],
+      "note": "The FY2018 report is a scanned document with an unusable text layer, so FY2018 comes from the FY2019 report's comparative column. The classified-investment ratio row is not printed in the FY2019 report; FY2018's 4.12% and FY2019's 3.82% are taken from the FY2021 report and both reproduce exactly from this report's own classified investment over general investment."
+    },
+    {
+      "period": "2020-2021 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "islamibank-annual-report-2021.txt ('Five Years Performance', 2017-2021)",
+      "source_path": "annual_reports/ISLAMIBANK/islamibank-annual-report-2021.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020,
+        2021
+      ],
+      "note": "The FY2020 report is a scanned document with an unusable text layer, so FY2020 comes from the FY2021 report's comparative column."
+    },
+    {
+      "period": "2022-2023, 2025 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "islamibank-annual-report-2022.txt, -2023.txt, -2025.txt ('Five Years Performance')",
+      "source_path": "annual_reports/ISLAMIBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022,
+        2023,
+        2025
+      ],
+      "note": "Each year from its own report. The FY2022 report loses the label text on rows 19 and 21-24 in extraction, so those were recovered by serial number; row 21's value (54,022.01) is confirmed by the FY2023, FY2024 and FY2025 reports."
+    },
+    {
+      "period": "2024 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "islamibank-annual-report-2024.txt ('Five Years Performance', 2020-2024); three capital lines from islamibank-annual-report-2025.txt",
+      "source_path": "annual_reports/ISLAMIBANK/islamibank-annual-report-2024.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "This is the ONE place in this bank's series where a later report is preferred over the contemporaneous one, and it is because the contemporaneous figures are arithmetically impossible rather than merely different. The FY2024 report prints Tier-I 62,519.04 plus Tier-II 32,998.64 = 95,517.68 against its own stated Regulatory Capital of 100,672.14, and risk-weighted assets as 132,922.20 (a lost leading digit). The FY2025 report's FY2024 column is internally consistent: Tier-I 73,463.75 plus Tier-II 27,208.40 = 100,672.15, exactly the regulatory capital both reports agree on, and RWA of 1,329,222.20 reproduces the 7.57% capital adequacy ratio the FY2024 report itself states (100,672.14 / 0.0757 = 1,329,883). All other FY2024 lines are the FY2024 report's own."
+    },
+    {
+      "period": "FY2011-FY2024 restatements",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-26",
+      "note": "83 restatements were detected by comparing all fifteen reports against each other; each is written out in the affected year's period_note. Most are small revisions to the income-statement block. The largest concentration is in FY2012 and FY2015, and FY2012's profit after tax was 5,524.44 as originally reported against 5,338.91 in the FY2014 report. The contemporaneous value is kept throughout."
+    },
+    {
+      "period": "FY2011-FY2025 annual reports, checked for an embedded quarterly-figures table",
+      "type": "data_quality_finding",
+      "status": "checked_negative",
+      "retrieval_date": "2026-08-27",
+      "note": "Grepped all 15 annual reports for the BSEC-mandated 'evaluation of quarterly financial statements' disclosure (item 1(5)(ix) of the Corporate Governance Code compliance table) before doing any web research, per this dataset's standard free-win check. Result: no embedded quarterly figures table exists anywhere in this bank's annual report archive. FY2019-2023 mark the compliance item 'N/A' or 'no such situation arose' (no variance to disclose). FY2024 and FY2025 both mark it complied and cross-reference a 'Significant Variance in Financial Statements' paragraph in the Directors' Report, but that paragraph explicitly states 'The quarterly variances are shown in the website of the Bank' (verbatim, both years) -- i.e. the bank satisfies this disclosure requirement by pointing to its own website rather than printing figures in the annual report. The only quarterly figures found anywhere in the 15 reports are three cumulative Consolidated EPS points in the FY2013 report's 'Share Price Sensitivity Analysis' table (14.05.2013 Q1 EPS Tk 0.46; 29.07.2013 H1 EPS Tk 1.32; 21.10.2013 9M EPS Tk 1.33) -- EPS-only, not a balance sheet or full P&L, and not used in the quarterly/*.json files given how little it covers."
+    },
+    {
+      "period": "2022 Q1-Q3, 2023 Q1-Q3, 2024 Q1-Q3, 2025 Q1-Q3, 2026 Q1-Q2 (Q1/Q2/Q3, solo)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "Islami Bank Bangladesh's own 'Financial Report' page (distinct from its annual-report archive page)",
+      "source_path": "annual_reports/ISLAMIBANK/islamibank-quarterly-<year>-q<n>.txt",
+      "source_url": "https://www.islamibankbd.com/financial-report",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "partially_extracted_and_validated",
+      "used_for_years": [2022, 2023, 2024, 2025, 2026],
+      "note": "This page lists 18 live PDF links spanning Q3-2020 through Q2-2026; 14 of the 18 (2022 Q1-Q3 through 2026 Q1-Q2) downloaded as valid PDFs -- all are scanned/signed copies with no text layer (Canon-scanner metadata) and were OCR'd via tesseract, then cross-validated line-by-line against the balance-sheet and P&L identities. Four listed links (Q3-2020, Q1/Q2/Q3-2021) return a fake HTTP 200 (a Laravel catch-all page, Content-Type text/html despite the .pdf URL) on the live site -- a genuine dead link, not a fetch mistake; confirmed by direct curl with a browser User-Agent. ALL 14 OF THE 14 DOWNLOADED QUARTERS ARE NOW CONFIRMED WRITTEN AND VALIDATED (as of 2026-08-27): 2022_Q2, 2024_Q1, 2025_Q2, 2025_Q3, 2026_Q1, 2026_Q2 (6, confirmed in an earlier pass of this session) plus 2022_Q1, 2022_Q3, 2023_Q1, 2023_Q2 (4, found already complete and re-verified -- balance sheet identity ties to the Taka or to sub-Taka float rounding -- at the start of a follow-up pass) plus 2023_Q3, 2024_Q2, 2024_Q3, 2025_Q1 (the final 4, completed in that same follow-up pass after two earlier sub-agent attempts at these specific 4 quarters were both interrupted by the machine sleeping before writing any files). Every one of the 14 passes balance-sheet identity (assets = liabilities + equity, to the Taka) and PBT-minus-tax-equals-PAT exactly. Income-statement figures are CUMULATIVE from 1 January of each year (Q3 filings print both a cumulative and a discrete column; the cumulative one is used, matching this dataset's convention elsewhere). SOLO basis is used throughout; each filing also contains a Consolidated version (Bank + Islami Bank Securities Ltd + Islami Bank Capital Management Ltd, joined by a new third subsidiary 'mCash Limited' from Q2-2026) which is not used. These interim filings do NOT disclose the absolute Classified Investment balance -- only the provision held and its movement (a note titled 'Provision for un-classified, classified investment and Off-balance sheet items', numbered 11.1 in 2022-2026 filings) -- so classified_loans and npl_pct are not populated for any interim quarter. Recurring OCR error pattern found and corrected across multiple files: a negative sign/parenthesis dropped on one line (usually the Off-Balance-Sheet or Net-Investment-Income sub-item), recoverable and cross-confirmed via closing-minus-opening arithmetic or via the line summing correctly only with the corrected sign; each correction is documented in the affected file's own period_note with the basis field marked accordingly. A second, rarer error pattern (a corrupted/extra leading digit, e.g. '4,697...' for '1,697...') was found and corrected in the 2022_Q2 file, confirmed by the balance sheet only tying with the correction applied. A third pattern, found while completing the final 4 quarters: an entire cell dropped from a multi-column P&L or Note-11.1 row (not just a sign), recovered via the surrounding row/column identity (e.g. Total operating income minus its three other legible components, or Opening-plus-Addition-equals-Closing at the provision-category level) and, where possible, cross-confirmed against the same balance-sheet date's figure printed independently in an adjacent quarter's own comparative column (e.g. 2023_Q3's and 2024_Q2's shared 1-Jan-2023 and 1-Jan-2024 opening provision balances respectively). Also newly observed while completing 2024_Q2 and 2025_Q1: the P&L's own 'Provision for investments & off-balance sheet items' line does not always equal Note 11.1's own 'D. Provision made during the period' total for the same quarter (they differ in 2024_Q2 -- 2,954,000,000 vs 3,904,000,000 -- but coincide exactly in 2025_Q1); both figures are independently internally consistent within their own respective identity chains, so this is treated as a genuine feature of two distinct disclosures rather than an OCR error, and both are extracted separately rather than forced to reconcile."
+    },
+    {
+      "period": "2012-2021 Q1/Q2/Q3, attempted via Wayback Machine",
+      "type": "data_quality_finding",
+      "status": "mostly_unsuccessful_this_session",
+      "retrieval_date": "2026-08-27",
+      "note": "The live financial-report page does not list anything before Q3-2020. A CDX search of Wayback Machine snapshots found the bank used a different, older URL structure (islamibankbd.com/upload_dir/annualreport/<name>.pdf) through at least 2021, with real application/pdf captures for most Q1/Q2/Q3 periods back to 2012 (e.g. 'FINANCIAL REPORT, MARCH-2012.pdf', 'Condensed Interim Financial Report_1st Quarter_2013_IBBL.pdf', etc. -- 29 candidate URLs identified, one per quarter 2012-2021 except a genuine gap at 2014 Q2). Recovery this session was blocked almost entirely by web.archive.org connectivity failures (repeated 'Connection refused'/'Connection timed out' from this environment, confirmed not a local sandbox issue since requests succeeded intermittently) -- of 29 targeted quarters, the background recovery script ran to completion and only 3 downloaded as valid PDFs (pdfinfo-verified): 2012_Q1 (6 pages), 2017_Q2 (14 pages), and 2020_Q1 (16 pages); the other 26 attempts failed to connect or returned Wayback's known 1-MiB-truncation stub even after trying up to 5 largest-first CDX captures each. 2012_Q1's text layer is present but font-encoding-corrupted (garbled characters, e.g. 'ISLAMI BANK BANGLADESI] LIIM TED', and every numeric cell is empty) -- unusable via pdftotext and would need image-based OCR, which was not attempted. 2017_Q2 and 2020_Q1 downloaded validly but neither was processed or extracted into any quarterly/*.json file (no time remaining in this session) -- both PDFs and the OCR step are the natural next action for a future session, ahead of re-attempting the other 26. Neither is reflected in any quarterly/*.json file. This is a real, worthwhile follow-up for a future session with better Wayback connectivity: the URL list and CDX timestamps are reconstructable from this note's search pattern (query the CDX API for 'islamibankbd.com/upload_dir/annualreport/' with matchType=prefix)."
+    }
+  ]
+}

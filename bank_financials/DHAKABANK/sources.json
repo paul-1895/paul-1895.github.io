@@ -1,0 +1,77 @@
+{
+  "bank_id": "DHAKABANK",
+  "bank_name": "Dhaka Bank PLC",
+  "website": "https://www.dhakabankltd.com",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2025 total assets of 445,206m match the figure under this report's 'Balance Sheet' (solo) heading; 446,114m is the consolidated total.",
+  "notes": "annual_reports/DHAKABANK archive covers 2011-2013, 2015-2025 (2014 missing, but its data is available via the 2016 annual report's comparative 5-year table). Four separate multi-year summary tables give complete, cross-validated coverage of 2011-2025 with no gaps and no need for individual quarterly PDFs. Q4/year-end (audited) data plus, as of 2026-08-26, Q1/Q2/Q3 unaudited interim data for 2014-2026 (see the dedicated Q1-Q3 source entry below) are both covered.",
+  "sources": [
+    {
+      "period": "2011 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "dhakabank-annual-report-2011.txt (\"Five-year Performance Line\", p.76-77)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011
+      ],
+      "cross_check": "Balance sheet and profit figures independently confirmed by the 2012 annual report's own comparative 2011 column; EPS differs (6.03 vs restated 4.64) due to bonus shares issued in 2012, restated value used."
+    },
+    {
+      "period": "2012-2016 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "dhakabank-annual-report-2016.txt (\"5-year Financial Highlights\", p.39-41)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2012,
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "note": "2014 annual report itself is not in the local archive; 2014 data sourced entirely from this table."
+    },
+    {
+      "period": "2016-2020 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "dhakabank-annual-report-2020.txt (\"5-year Financial Highlights\", p.52-53)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "cross_check": "2016 column independently matches the 2016 annual report's own table exactly."
+    },
+    {
+      "period": "2021-2025 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "dhakabank-annual-report-2025.txt (\"5-Year Financial Highlights\", p.60-61)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "period": "2014-2026 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "dhakabank.com.bd/financial-statements-reports/ (domain migrated from dhakabankltd.com, now redirects/rebrands there; confirmed live and unblocked 2026-08-26)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+      "note": "37 quarterly periods sourced (38 PDFs downloaded, including one duplicate-version pair for 2024 Q2) covering unaudited interim filings (Q1/Half-Yearly/Q3, WordPress media uploads on the bank's own site), pdftotext -layout'd, and (where the source PDF was a scanned image or had corrupted text encoding) pdftoppm+tesseract OCR'd with figures visually cross-checked against the rendered page image. PDFs deleted after extraction per project policy; one .txt per filing kept in annual_reports/DHAKABANK/ (dhakabank-unaudited-<year>-q<N>.txt). Solo/Standalone basis used throughout except 2016 Q1 and 2017 Q2, which are CONSOLIDATED-only because those two specific filings contain no separate Solo section at all (flagged in each file's own period_note). Income-statement items are cumulative-from-1-January (same convention as CITYBANK's quarterly filings in this dataset). Gaps: 2018 Q2 has no filing on the bank's site at all (not merely unlinked - checked the full document list, jumps from Q1 2018 directly to Q3 2018); left unavailable rather than fabricated. 2020 Q2 balance sheet, 2021 Q1 balance sheet, 2021 Q3 balance-sheet detail lines, and 2025 Q2 balance-sheet totals could not be legibly recovered from font-encoding-corrupted source PDFs even after OCR fallback attempts on the specific pages; left as partial/gapped rather than guessed (see each period's own period_note for exactly what is and isn't included). Two internal balance-sheet-identity discrepancies were found and documented rather than silently corrected: 2021 Q3 (a digit conflict between the source PDF's own 'Total Assets' and 'Total Liabilities and Shareholders' Equity' rows, resolved using the internally-consistent reading) and 2023 Q3 (an unreconciled 348,962,100 taka / 0.097% gap between Total Assets and Total Liabilities+Equity that persists even though both sides independently sum correctly from their own component rows - kept as-is, flagged in the file). Several EPS restatements were found across periods (2018 Q1, 2019 Q1, 2024 Q3, 2025 Q1 all show a lower EPS in a later report's comparative column than in their own original filing) consistent with bonus-share issuances diluting the per-share denominator retroactively - contemporaneous EPS kept in each case per project convention, both figures recorded. A similar divergence was found in 2024 Q1's interest expense (4,494,724,664 as originally reported vs 4,365,453,735 in the 2025 Q1 comparative) and in 2022 Q3's Other Operating Income / Total Operating Income (both figures recorded, later-republished figure used since it reconciles better against surrounding quarters)."
+    }
+  ]
+}

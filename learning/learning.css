@@ -1,0 +1,2033 @@
+/* ═══════════════════════════════════════════════════════════
+   learning.css  —  Learning Hub & Topic Detail Pages
+   Matches the DSE dark terminal aesthetic
+═══════════════════════════════════════════════════════════ */
+
+/* ─── EXTENDED TOKENS ────────────────────────────────────────
+   style.css (the only stylesheet loaded alongside this file)
+   doesn't define these — derive them from its base tokens so
+   glows/borders/gradients adapt automatically with the
+   existing [data-theme="dark"] switch instead of hardcoding
+   a second light/dark set here. ─────────────────────────── */
+:root {
+  --border-glow: color-mix(in srgb, var(--accent) 45%, var(--border));
+  --accent-glow: color-mix(in srgb, var(--accent) 35%, transparent);
+  --loss-bg:     color-mix(in srgb, var(--loss) 12%, transparent);
+  /* Text drawn on top of a solid --accent fill: white on the light theme's
+     #1a5cff, black on the dark theme's lighter #4d7cff. */
+  --accent-contrast: #fff;
+  --shadow-lift:  0 6px 18px rgba(15,23,42,.08);
+  --shadow-modal: 0 24px 64px rgba(15,23,42,.18);
+  /* ── Guide category colors ─────────────────────────────
+     Derived from tokens so they track theme changes. Deepened toward
+     text-primary where the raw token falls short of 4.5:1 label contrast
+     on this theme's card surface. Validated (contrast + color-blind
+     separation) against both card surfaces; category identity always also
+     carries a text label, never color alone. */
+  --cat-ta:    var(--accent);
+  --cat-strat: color-mix(in srgb, var(--gain) 85%, var(--text-primary) 15%);
+  --cat-fund:  color-mix(in srgb, color-mix(in srgb, var(--accent) 42%, var(--loss) 58%) 86%, var(--text-primary) 14%);
+}
+[data-theme="dark"] {
+  --accent-contrast: #000;
+  --shadow-lift:  0 6px 24px rgba(0,0,0,.35);
+  --shadow-modal: 0 24px 80px rgba(0,0,0,.6);
+  --cat-strat: var(--gain);
+  --cat-fund:  color-mix(in srgb, color-mix(in srgb, var(--accent) 42%, var(--loss) 58%) 90%, var(--text-primary) 10%);
+}
+
+/* Each group carries its category color as --cat for everything inside. */
+.learn-guide-group[data-cat="Technical Analysis"]   { --cat: var(--cat-ta); }
+.learn-guide-group[data-cat="Strategy"]             { --cat: var(--cat-strat); }
+.learn-guide-group[data-cat="Fundamental Analysis"] { --cat: var(--cat-fund); }
+
+/* Screen-reader-only utility (labels, radio inputs, live status) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* These keyframes exist in homepage/base.css and public/css/animations.css,
+   but neither stylesheet is loaded here — without local copies every
+   animation below silently never runs and the hero strip freezes as a
+   lopsided static gradient. */
+@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes dotPulse    { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.6; } }
+@keyframes gradShift   { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+/* ─── BACK BUTTON IN HEADER ─────────────────────────────── */
+.back-btn-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--border-glow);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(.34,1.56,.64,1);
+}
+.back-btn-header:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateX(-2px);
+}
+.back-btn-header svg { width: 13px; height: 13px; }
+
+/* ═══════════════════════════════════════════════════════════
+   LEARNING HUB PAGE
+═══════════════════════════════════════════════════════════ */
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.learn-hero {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding: 0 24px;
+  animation: fadeSlideUp 0.45s cubic-bezier(.34,1.56,.64,1) both;
+}
+.learn-hero-inner {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient candle tape — faint market texture behind the right half of the
+   hero; the close-trace draws itself once on load. */
+.learn-hero-tape {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: min(560px, 58%);
+  height: 100%;
+  pointer-events: none;
+  mask: linear-gradient(90deg, transparent, #000 35%);
+  -webkit-mask: linear-gradient(90deg, transparent, #000 35%);
+}
+.learn-tape-candles line { stroke: color-mix(in srgb, var(--accent) 10%, transparent); stroke-width: 2; }
+.learn-tape-candles rect { fill: none; stroke: color-mix(in srgb, var(--accent) 10%, transparent); stroke-width: 2; }
+.learn-tape-candles rect.dn { fill: color-mix(in srgb, var(--accent) 10%, transparent); stroke: none; }
+.learn-tape-trace {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 30%, transparent);
+  stroke-width: 1.5;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: tapeDraw 2.6s ease-out 0.25s forwards;
+}
+@keyframes tapeDraw { to { stroke-dashoffset: 0; } }
+@media (max-width: 600px) { .learn-hero-tape { display: none; } }
+.learn-hero-text { position: relative; z-index: 1; }
+/* Accent-derived scanner strip — tracks --accent in both themes instead of
+   carrying its own hardcoded palette. */
+.learn-hero-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 45%, transparent),
+    var(--accent),
+    color-mix(in srgb, var(--accent) 45%, transparent),
+    transparent);
+  background-size: 250% 100%;
+  animation: gradShift 7s ease-in-out infinite;
+}
+
+.learn-hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.learn-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-glow);
+  animation: dotPulse 1.8s ease-in-out infinite;
+}
+.learn-hero-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.learn-hero-stats {
+  display: flex;
+  gap: 28px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.learn-stat {
+  text-align: center;
+}
+.learn-stat-num {
+  font-family: var(--mono);
+  font-size: 32px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  line-height: 1;
+}
+/* Glow is a dark-theme effect; on white it just blurs the digits. */
+[data-theme="dark"] .learn-stat-num {
+  text-shadow: 0 0 18px var(--accent-glow);
+}
+/* Zeros recede instead of glowing — a first run shows 14 guides,
+   not three neon zeros. */
+.learn-stat-num.is-zero {
+  color: var(--text-muted);
+  text-shadow: none !important;
+}
+
+/* ── Reading-progress ring (replaces the static Guides counter) ── */
+.learn-ring-wrap {
+  position: relative;
+  width: 64px;
+  text-align: center;
+}
+.learn-ring-wrap svg {
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+.learn-ring-track {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 18%, var(--bg-card));
+  stroke-width: 6;
+}
+.learn-ring-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 163.36;
+  stroke-dashoffset: 163.36;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.8s cubic-bezier(.22,1,.36,1);
+}
+.learn-ring-wrap.is-done .learn-ring-fill { stroke: var(--gain); }
+.learn-ring-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.learn-ring-text .learn-ring-total {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.learn-ring-wrap .learn-stat-label { margin-top: 4px; }
+.learn-stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ─── UP NEXT RAIL ──────────────────────────────────────── */
+.learn-upnext {
+  max-width: 1200px;
+  margin: 12px auto 0;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+.learn-upnext:empty { display: none; }
+.learn-upnext-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+  animation: fadeSlideUp 0.45s 0.06s cubic-bezier(.34,1.56,.64,1) both;
+}
+.learn-upnext-card:nth-child(2) { animation-delay: 0.12s; }
+a.learn-upnext-card:hover {
+  border-color: var(--accent);
+  transform: translateX(2px);
+}
+a.learn-upnext-card:hover .learn-guide-arrow { color: var(--accent); transform: translateX(3px); }
+.learn-upnext-card:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.learn-upnext-body { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.learn-upnext-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.learn-upnext-kicker--done {
+  color: var(--gain);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.learn-upnext-name {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.learn-upnext-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  /* --text-muted is ~3:1 at this size — below AA. --text-secondary clears
+     4.5:1 comfortably in both themes. */
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.learn-upnext-done { border-style: dashed; }
+
+/* ─── TOOLBAR (search + chips, sticky on desktop) ───────── */
+.learn-toolbar {
+  padding-block: 10px;
+}
+@media (min-width: 641px) {
+  .learn-toolbar {
+    position: sticky;
+    /* style.css's .site-header is ALSO sticky at top:0 with a higher
+       z-index (100) and a fixed 56px content height (+1px border) — without
+       this offset the header wins the stack and paints over the search
+       row. */
+    top: 57px;
+    z-index: 50; /* far below modals (900) and toast (960) */
+    background: color-mix(in srgb, var(--bg-base) 92%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  }
+}
+
+/* Sticky-overlay compensation: when the browser scrolls a focused element
+   into view it aligns to the true viewport edge, which sits under the
+   sticky header (and, at ≥641px, the sticky toolbar on top of that) —
+   without this a keyboard-focused card scrolls in hidden behind them. */
+.learn-card, .learn-card--guide, .learn-upnext-card {
+  scroll-margin-top: 70px; /* clears the sticky site header alone */
+}
+@media (min-width: 641px) {
+  .learn-card, .learn-card--guide, .learn-upnext-card {
+    scroll-margin-top: 190px; /* header + stuck toolbar + breathing room */
+  }
+}
+
+/* ─── CONTROLS ──────────────────────────────────────────── */
+.learn-controls {
+  max-width: 1200px;
+  margin: 14px auto 0;
+  padding: 0 24px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  animation: fadeSlideUp 0.45s 0.05s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+.learn-kbd {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 2px 7px;
+  flex-shrink: 0;
+}
+.learn-search-wrap:focus-within .learn-kbd { display: none; }
+@media (max-width: 700px) { .learn-kbd { display: none; } }
+
+/* ─── FILTER CHIPS ──────────────────────────────────────── */
+.learn-chip-row {
+  max-width: 1200px;
+  margin: 10px auto 0;
+  padding: 0 24px;
+  display: flex;
+  gap: 8px;
+  animation: fadeSlideUp 0.45s 0.08s cubic-bezier(.34,1.56,.64,1) both;
+}
+.learn-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  min-height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+/* The raw --chip color (e.g. --gain, --accent) is too light against this
+   pill's near-bg-base surfaces to hit 4.5:1 at 11px — deepened 20% toward
+   --text-primary, validated across all three categories in both themes
+   (worst case 5.4:1 light / 5.8:1 dark). Border keeps the pure chip hue:
+   non-text contrast has a lower bar and the saturated ring reads better. */
+.learn-chip:hover {
+  border-color: var(--chip, var(--accent));
+  color: color-mix(in srgb, var(--chip, var(--accent)) 80%, var(--text-primary));
+}
+.learn-chip[aria-pressed="true"] {
+  color: color-mix(in srgb, var(--chip, var(--accent)) 80%, var(--text-primary));
+  background: color-mix(in srgb, var(--chip, var(--accent)) 12%, transparent);
+  border-color: var(--chip, var(--accent));
+}
+.learn-chip:focus-visible {
+  outline: none;
+  border-color: var(--chip, var(--accent));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--chip, var(--accent)) 22%, transparent);
+}
+.learn-chip-n {
+  font-weight: 400;
+  font-size: 10px;
+  /* No opacity: inherits the chip's own (already-validated) text color
+     instead of thinning it back below the contrast floor. */
+}
+@media (max-width: 640px) {
+  .learn-chip-row {
+    overflow-x: auto;
+    scrollbar-width: none;
+    mask: linear-gradient(90deg, #000 92%, transparent);
+    -webkit-mask: linear-gradient(90deg, #000 92%, transparent);
+  }
+  .learn-chip-row::-webkit-scrollbar { display: none; }
+}
+.learn-search-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-sm);
+  padding: 9px 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.learn-search-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.learn-search-wrap svg { width: 14px; height: 14px; color: var(--text-muted); flex-shrink: 0; }
+.learn-search-wrap input {
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text-primary);
+  width: 100%;
+}
+.learn-search-wrap input::placeholder { color: var(--text-muted); }
+
+.learn-sort-select {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.learn-sort-select:focus, .learn-sort-select:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+  outline: none;
+}
+
+.learn-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(.34,1.56,.64,1);
+  white-space: nowrap;
+}
+.learn-add-btn:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: translateY(-2px);
+}
+.learn-add-btn svg { width: 13px; height: 13px; }
+
+/* ─── SECTION HEADERS ────────────────────────────────────
+   Two labeled sections — Guide Library and Your Topics — replace the old
+   single undifferentiated list. The header says "guide" once, so the cards
+   no longer each carry a badge saying it thirteen times. */
+.learn-section-head-row {
+  max-width: 1200px;
+  margin: 28px auto 12px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.learn-section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.learn-section-count {
+  font-size: 10px;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--border-glow);
+  padding: 1px 8px;
+  border-radius: 10px;
+}
+.learn-section-count--read {
+  color: var(--gain);
+  background: color-mix(in srgb, var(--gain) 10%, transparent);
+  border-color: color-mix(in srgb, var(--gain) 35%, transparent);
+}
+.learn-section-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  min-width: 40px;
+}
+
+/* ─── GUIDE LIBRARY ──────────────────────────────────────
+   Built-in guide cards ship with the app rather than living in localStorage,
+   so they have no note/link counts and no edit/delete buttons. They REUSE
+   .learn-card rather than restyling a parallel one, so they stay the same
+   height, accent shape and hover as the user's topics — the only difference
+   is the arrow that replaces the action buttons. Cards are grouped by
+   category so the subhead names each category once instead of every card
+   repeating it. */
+.learn-guide-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+/* Specimen grid: each category is its own grid with the subhead spanning
+   the full row as a plate divider. */
+.learn-guide-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 12px;
+}
+.learn-subhead {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cat, var(--text-muted));
+  margin: 0;
+}
+.learn-subhead::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--cat, var(--border)) 45%, transparent), transparent);
+}
+.learn-subhead-count { color: color-mix(in srgb, var(--cat, var(--text-muted)) 70%, var(--text-muted)); }
+
+/* Specimen card: glyph tile on top, name + clamped description, footer
+   with read state and arrow pinned to the bottom. Staggered entrance in
+   DOM order via --i (set by JS). Doubled class so every declaration
+   outranks the base .learn-card rule that sits later in the file.
+   animation-fill-mode is 'backwards', not 'both': 'both' would keep the
+   keyframe's final transform (translateY(0)) pinned at animation-cascade
+   level forever, silently overriding every hover/focus transform below —
+   'backwards' only needs to hold the PRE-delay (from) state for the
+   stagger, and hands normal cascade priority back once the animation ends. */
+.learn-card.learn-card--guide {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  padding: 18px;
+  min-height: 158px;
+  animation: fadeSlideUp 0.45s cubic-bezier(.34,1.56,.64,1) backwards;
+  animation-delay: min(calc(var(--i, 0) * 35ms), 420ms);
+}
+.learn-card--guide .learn-card-name {
+  flex: none;
+  white-space: normal;
+  font-size: 15px;
+}
+.learn-card--guide .learn-card-desc {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.learn-guide-main {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.learn-glyph {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--cat, var(--accent)) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cat, var(--accent)) 22%, transparent);
+  color: color-mix(in srgb, var(--cat, var(--accent)) 60%, var(--text-muted));
+  transition: color 0.2s, border-color 0.2s;
+}
+.learn-glyph svg { width: 34px; height: 34px; }
+.learn-guide-foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Read / unread state. Unread: a small category-colored dot. Read: a gain
+   check + relative time (injected by JS); the glyph recedes but text stays
+   full-contrast — read guides remain reference material. */
+.learn-read-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 14px;
+}
+.learn-card--guide[data-read="false"] .learn-read-flag::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cat, var(--accent));
+  box-shadow: 0 0 6px color-mix(in srgb, var(--cat, var(--accent)) 40%, transparent);
+}
+.learn-card--guide[data-read="true"] .learn-glyph { opacity: 0.55; }
+.learn-read-check {
+  width: 12px;
+  height: 12px;
+  stroke: var(--gain);
+  flex-shrink: 0;
+}
+.learn-read-time {
+  font-family: var(--mono);
+  font-size: 10px;
+  /* --text-muted is ~3:1 at this size — below AA. --text-secondary clears
+     4.5:1 comfortably in both themes. (Hidden from AT — see learning.js;
+     this is a sighted-user legibility fix.) */
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Hover physics: lift + category ignite + cursor spotlight. Doubled class
+   on every state rule below — .learn-card--guide:hover alone is the same
+   (0,2,0) specificity as the base .learn-card:hover/:focus-visible rules
+   that sit LATER in the file, and later-at-equal-specificity would win,
+   silently discarding the category ignite and the lift. */
+.learn-card.learn-card--guide:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--cat, var(--accent)) 55%, var(--border));
+  box-shadow: var(--shadow-lift);
+}
+[data-theme="dark"] .learn-card.learn-card--guide:hover {
+  box-shadow: var(--shadow-lift), 0 0 24px color-mix(in srgb, var(--cat, var(--accent)) 12%, transparent);
+}
+.learn-card.learn-card--guide:focus-visible {
+  outline: none;
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--cat, var(--accent)) 55%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cat, var(--accent)) 25%, transparent);
+}
+.learn-card.learn-card--guide:hover .learn-glyph,
+.learn-card.learn-card--guide:focus-visible .learn-glyph {
+  color: var(--cat, var(--accent));
+  border-color: color-mix(in srgb, var(--cat, var(--accent)) 45%, transparent);
+  opacity: 1;
+}
+[data-theme="dark"] .learn-card.learn-card--guide:hover .learn-glyph {
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--cat, var(--accent)) 45%, transparent));
+}
+.learn-card--guide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 30%),
+    color-mix(in srgb, var(--cat, var(--accent)) 8%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+.learn-card.learn-card--guide:hover::after { opacity: 1; }
+
+/* Compact horizontal form on phones: glyph | text | state. Doubled class
+   so this outranks the base .learn-card { display:flex } rule, which sits
+   later in the file. The grid display also opts these cards out of the old
+   flex-wrap phone rules. The group's own specimen-grid columns
+   (minmax(290px,1fr)) are still active here too — at exactly 640px that
+   fits two 290px columns, so force a single column whenever the compact
+   card form is in effect. */
+@media (max-width: 640px) {
+  .learn-guide-group {
+    grid-template-columns: 1fr;
+  }
+  .learn-card.learn-card--guide {
+    display: grid;
+    grid-template-columns: 52px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    min-height: auto;
+    padding: 14px 16px;
+  }
+  .learn-card.learn-card--guide .learn-guide-foot { margin-top: 0; flex-direction: column; align-items: flex-end; gap: 6px; }
+  .learn-card.learn-card--guide .learn-read-time { display: none; }
+}
+
+.learn-guide-arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: color 0.18s, transform 0.18s;
+}
+.learn-card--guide:hover .learn-guide-arrow {
+  color: var(--cat, var(--accent));
+  transform: translateX(3px);
+}
+
+.learn-grid {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeSlideUp 0.45s 0.1s cubic-bezier(.34,1.56,.64,1) both;
+}
+/* With no topics the grid contributes nothing — hide it so its bottom
+   margin doesn't push the empty-state card down. */
+.learn-grid:empty { display: none; }
+
+.learn-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(.34,1.56,.64,1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  min-height: 56px; /* guide rows (arrow-only footer) match topic rows (28px buttons) */
+  text-decoration: none;
+}
+/* style.css underlines every a:hover — card-shaped anchors opt out. */
+a.learn-card, a.learn-card:hover,
+a.learn-upnext-card, a.learn-upnext-card:hover,
+.learn-card-link, .learn-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+.learn-card:hover {
+  border-color: var(--border-glow);
+  transform: translateX(3px);
+  box-shadow: var(--shadow-lift);
+}
+.learn-card:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+  transform: translateX(3px);
+}
+.learn-card--guide:focus-visible .learn-guide-arrow {
+  color: var(--cat, var(--accent));
+  transform: translateX(3px);
+}
+
+/* Topic cards use a stretched link: buttons can't legally nest inside an
+   <a>, so the card is a <div>, the topic name is the anchor, and its
+   ::after stretches the click/focus target over the whole card. The action
+   buttons sit above it via z-index. */
+.learn-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+.learn-card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.learn-card-link:focus-visible { outline: none; } /* ring drawn on the card */
+.learn-card:has(.learn-card-link:focus-visible) {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+  transform: translateX(3px);
+}
+.learn-card-accent {
+  width: 4px;
+  align-self: stretch;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+/* Topic monogram tile — the user-topic counterpart of the guide glyph, in
+   the topic's own chosen color, so the two sections rhyme. */
+.learn-topic-mono {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--tc, var(--accent));
+  background: color-mix(in srgb, var(--tc, var(--accent)) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tc, var(--accent)) 25%, transparent);
+}
+.learn-card-body {
+  padding: 0;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.learn-card-cat {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.learn-card-name {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.2px;
+  line-height: 1.3;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.learn-card-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+.learn-card-footer {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+  border-top: none;
+}
+.learn-card-stats {
+  display: flex;
+  gap: 14px;
+}
+.learn-card-stat {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.learn-card-stat svg { width: 10px; height: 10px; }
+.learn-card-stat strong { color: var(--text-secondary); }
+.learn-card-actions {
+  display: flex;
+  gap: 6px;
+  /* Above the stretched card link's ::after so button (and gap) clicks
+     never fall through to the anchor. */
+  position: relative;
+  z-index: 1;
+}
+.learn-card-btn {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+.learn-card-btn svg { width: 12px; height: 12px; }
+.learn-card-btn.edit:hover  { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.learn-card-btn.del:hover   { border-color: var(--loss); color: var(--loss); background: var(--loss-bg); }
+.learn-card-btn.edit:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.learn-card-btn.del:focus-visible {
+  outline: none;
+  border-color: var(--loss);
+  color: var(--loss);
+  background: var(--loss-bg);
+  box-shadow: 0 0 0 3px var(--loss-bg);
+}
+
+/* ─── EMPTY / NO-RESULTS STATES ─────────────────────────── */
+/* Dashed invitation card sharing the topic cards' left edge
+   (1152 = 1200 minus the wrappers' 2×24px padding). */
+.learn-empty {
+  width: min(1152px, calc(100% - 48px));
+  margin: 0 auto 60px;
+  padding: 40px 24px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+}
+/* .learn-empty's display:flex would beat the hidden attribute's default. */
+.learn-empty[hidden] { display: none; }
+
+/* Guides-none: shown inside the guide section when an active chip +
+   search combination reveals nothing — a filter must never leave a
+   silent blank. */
+.learn-guides-none {
+  margin-top: 12px;
+  margin-bottom: 0;
+  padding: 26px 24px;
+  gap: 12px;
+}
+.learn-guides-none h3 { font-size: 14px; }
+.learn-guides-none-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.learn-empty-icon {
+  width: 60px; height: 60px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.learn-empty-icon svg { width: 26px; height: 26px; }
+.learn-empty h3 { font-size: 16px; font-weight: 700; color: var(--text-secondary); }
+/* overflow-wrap: an unbroken search term echoed into #noresults-q must not
+   force horizontal scroll on narrow screens. */
+.learn-empty p  { font-size: 12px; line-height: 1.6; max-width: 100%; overflow-wrap: anywhere; }
+
+/* ─── MODALS ────────────────────────────────────────────── */
+.learn-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(4px);
+  z-index: 900;
+  animation: learnFadeIn 0.2s ease;
+}
+.learn-overlay.open { display: block; }
+@keyframes learnFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.learn-modal {
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 901;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-lg);
+  width: 480px;
+  max-width: 95vw;
+  max-height: 88vh;
+  overflow: hidden;
+  flex-direction: column;
+  box-shadow: var(--shadow-modal);
+  animation: learnModalIn 0.3s cubic-bezier(.34,1.56,.64,1);
+}
+/* The add/edit modal's body+footer are wrapped in a form for
+   Enter-to-submit; it must not break the column flex layout. */
+.learn-modal form {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+}
+.learn-modal.open { display: flex; }
+@keyframes learnModalIn {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 24px)) scale(0.96); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.learn-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.learn-modal-title {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+.learn-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+.learn-modal-close:hover { color: var(--text-primary); background: var(--bg-row-hover); }
+.learn-modal-close svg { width: 16px; height: 16px; }
+
+.learn-modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.learn-field { display: flex; flex-direction: column; gap: 6px; }
+.learn-color-field { border: none; padding: 0; margin: 0; }
+.learn-field-error {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--loss);
+}
+.learn-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.learn-required { color: var(--loss); }
+.learn-tag-hint { color: var(--text-muted); font-style: italic; font-size: 11px; }
+
+.learn-input {
+  background: var(--bg-base);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+.learn-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.learn-input--error {
+  border-color: var(--loss);
+  animation: learnShake 0.35s ease;
+}
+@keyframes learnShake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  60%      { transform: translateX(6px); }
+  80%      { transform: translateX(-3px); }
+}
+.learn-input::placeholder { color: var(--text-muted); }
+.learn-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.55;
+}
+select.learn-input { cursor: pointer; }
+
+.learn-color-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+/* Swatches are labels wrapping sr-only radio inputs: arrow-key navigation
+   and one Tab stop for free, no click-handler scaffolding. */
+.learn-color-swatch {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.18s;
+}
+.learn-color-swatch:hover { transform: scale(1.15); }
+/* Selected ring in --text-primary — visible on white and dark cards alike,
+   unlike the old hardcoded white ring. */
+.learn-color-swatch:has(input:checked) {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+/* Placed after the checked rule so the focus ring wins while tabbing; in a
+   radio group focus and selection travel together under arrow keys, so one
+   accent ring communicates both. The dim halo alone is too faint to serve
+   as the only indicator (10–14% alpha). */
+.learn-color-swatch:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.learn-modal-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.learn-btn-cancel {
+  padding: 9px 18px;
+  background: transparent;
+  border: 1px solid var(--border-glow);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.learn-btn-cancel:hover { border-color: var(--text-secondary); }
+.learn-btn-save {
+  padding: 9px 22px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(.34,1.56,.64,1);
+}
+.learn-btn-save:hover { background: var(--accent); color: var(--accent-contrast); box-shadow: 0 0 16px var(--accent-glow); }
+
+.learn-del-modal { width: 400px; }
+.learn-del-warning {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.learn-del-warning strong { color: var(--text-primary); }
+.learn-btn-delete {
+  padding: 9px 22px;
+  background: var(--loss-bg);
+  border: 1px solid var(--loss);
+  color: var(--loss);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.learn-btn-delete:hover { background: var(--loss); color: #fff; }
+
+/* ─── UNDO TOAST ────────────────────────────────────────── */
+.learn-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-modal);
+  padding: 10px 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-primary);
+  z-index: 960;
+  /* Own keyframes: fadeSlideUp animates transform and would wipe out the
+     translateX(-50%) centering mid-animation. */
+  animation: toastIn 0.3s ease;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+.learn-toast[hidden] { display: none; }
+
+/* ─── FOCUS-VISIBLE (keyboard) STATES ───────────────────── */
+/* Every hover gets a :focus-visible twin; never bare :focus, so mouse
+   clicks don't flash rings. All token-derived — both themes covered. */
+.learn-add-btn:focus-visible,
+.learn-btn-save:focus-visible,
+.learn-btn-cancel:focus-visible,
+.learn-modal-close:focus-visible,
+.back-btn-header:focus-visible,
+.theme-toggle:focus-visible,
+.learn-sort-select:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.learn-btn-delete:focus-visible {
+  outline: none;
+  border-color: var(--loss);
+  box-shadow: 0 0 0 3px var(--loss-bg);
+}
+/* The close button is borderless, so the border+halo treatment above gives
+   it no visible indicator — draw a real ring (this must come after the
+   group rule to win the cascade). Also used by topic.html's modals. */
+.learn-modal-close:focus-visible {
+  color: var(--text-primary);
+  background: var(--bg-row-hover);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  box-shadow: none;
+}
+
+/* ─── REDUCED MOTION ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .learn-hero, .learn-controls, .learn-chip-row, .learn-grid,
+  .learn-upnext-card,
+  .learn-modal, .learn-overlay, .learn-toast { animation: none; }
+  /* .learn-card--guide's entrance animation is declared on the doubled
+     selector .learn-card.learn-card--guide at (0,2,0) specificity — a
+     media query adds no specificity, so an equal-or-lower-specificity
+     override here would still lose to that unconditional rule and the
+     staggered pop-in would keep running for reduced-motion users. Also
+     zero the delay explicitly: animation:none alone doesn't reset it, and
+     a stale --i delay would leave the (still-animating-effectively-none)
+     element invisible until its turn. */
+  .learn-card.learn-card--guide { animation: none; animation-delay: 0s; }
+  .learn-hero-inner::before { animation: none; background-size: 100% 100%; }
+  .learn-dot { animation: none; }
+  .learn-input--error { animation: none; }
+  /* Tape trace lands on its final frame, never a blank strip. */
+  .learn-tape-trace { animation: none; stroke-dashoffset: 0; }
+  .learn-ring-fill { transition: none; }
+  .learn-card--guide::after { transition: none; }
+  .learn-card, .learn-card:hover, .learn-card:focus-visible,
+  .learn-card.learn-card--guide:hover, .learn-card.learn-card--guide:focus-visible,
+  a.learn-upnext-card:hover,
+  .learn-add-btn:hover, .back-btn-header:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TOPIC DETAIL PAGE
+═══════════════════════════════════════════════════════════ */
+
+/* ─── TOPIC HERO ────────────────────────────────────────── */
+.topic-hero {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding: 0 24px;
+  animation: fadeSlideUp 0.45s cubic-bezier(.34,1.56,.64,1) both;
+}
+.topic-hero-inner {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+/* Accent top bar injected via JS based on topic color */
+.topic-hero-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--topic-color, var(--accent));
+  box-shadow: 0 0 20px var(--topic-color, var(--accent-glow));
+}
+.topic-hero-inner::after {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, var(--topic-color, var(--accent-glow)) 0%, transparent 65%);
+  opacity: 0.15;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.topic-hero-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  border: 1px solid;
+  color: var(--topic-color, var(--accent));
+  background: color-mix(in srgb, var(--topic-color, var(--accent)) 12%, transparent);
+  border-color: color-mix(in srgb, var(--topic-color, var(--accent)) 40%, transparent);
+}
+.topic-hero-title {
+  font-size: 31px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.topic-hero-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.topic-hero-meta {
+  display: flex;
+  gap: 28px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.topic-meta-item { text-align: center; }
+.topic-meta-num {
+  font-family: var(--mono);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--topic-color, var(--accent));
+  line-height: 1;
+}
+.topic-meta-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ─── TWO-COL LAYOUT ────────────────────────────────────── */
+.topic-layout {
+  max-width: 1200px;
+  margin: 24px auto 60px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  animation: fadeSlideUp 0.45s 0.08s cubic-bezier(.34,1.56,.64,1) both;
+}
+@media (max-width: 768px) {
+  .topic-layout { grid-template-columns: 1fr; }
+}
+
+.topic-col {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.topic-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-base);
+  position: relative;
+}
+.topic-col-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--topic-color, var(--accent)), transparent);
+  opacity: 0.4;
+}
+.topic-col-title {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.topic-col-title svg { width: 13px; height: 13px; color: var(--topic-color, var(--accent)); }
+
+.topic-col-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--topic-color, var(--accent)) 12%, transparent);
+  color: var(--topic-color, var(--accent));
+  border: 1px solid color-mix(in srgb, var(--topic-color, var(--accent)) 35%, transparent);
+}
+
+.topic-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--border-glow);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.topic-add-btn svg { width: 10px; height: 10px; }
+.topic-add-btn:hover {
+  border-color: var(--topic-color, var(--accent));
+  color: var(--topic-color, var(--accent));
+  background: color-mix(in srgb, var(--topic-color, var(--accent)) 8%, transparent);
+}
+
+.topic-items {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+/* ─── NOTE CARD ─────────────────────────────────────────── */
+.note-card {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+  transition: background 0.13s;
+  position: relative;
+}
+.note-card:last-child { border-bottom: none; }
+.note-card:hover { background: var(--bg-row-hover); }
+.note-card:hover::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--topic-color, var(--accent));
+  border-radius: 0 2px 2px 0;
+}
+.note-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.note-card-title {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+.note-card-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.note-action-btn {
+  width: 24px; height: 24px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+.note-action-btn svg { width: 10px; height: 10px; }
+.note-action-btn.edit:hover  { border-color: var(--accent); color: var(--accent); }
+.note-action-btn.del:hover   { border-color: var(--loss); color: var(--loss); }
+.note-card-content {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.note-card-meta {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.note-card-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--bg-base);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  text-transform: uppercase;
+}
+.note-card-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+/* ─── LINK CARD ─────────────────────────────────────────── */
+.link-card {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  transition: background 0.13s;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.link-card:last-child { border-bottom: none; }
+.link-card:hover { background: var(--bg-row-hover); }
+.link-card:hover::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--topic-color, var(--accent));
+  border-radius: 0 2px 2px 0;
+}
+.link-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.link-card-label {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  flex: 1;
+}
+.link-card-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.link-card-url {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  margin-bottom: 4px;
+  display: block;
+}
+.link-card-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.link-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.link-card-type {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--bg-base);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  text-transform: uppercase;
+}
+.link-card-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* ─── EMPTY WITHIN COL ──────────────────────────────────── */
+.topic-empty {
+  padding: 44px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+.topic-empty svg { width: 36px; height: 36px; opacity: 0.25; }
+.topic-empty p { line-height: 1.6; max-width: 200px; }
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .learn-hero-inner, .topic-hero-inner { flex-direction: column; align-items: flex-start; }
+  .learn-hero-stats, .topic-hero-meta  { width: 100%; justify-content: flex-start; }
+  .learn-card { flex-wrap: wrap; }
+  .learn-card-body { flex-basis: 100%; order: 1; flex-wrap: wrap; row-gap: 4px; }
+  /* Without this the desc shares one flex line with the nowrap name and
+     gets squeezed into a sliver a few characters wide. */
+  .learn-card-desc { white-space: normal; flex-basis: 100%; }
+  .learn-card-footer { order: 2; margin-left: 20px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   YOUTUBE PLAYER MODAL
+═══════════════════════════════════════════════════════════ */
+
+/* Overlay */
+.yt-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 950;
+  animation: learnFadeIn 0.22s ease;
+}
+.yt-overlay.open { display: block; }
+
+/* Modal container */
+.yt-modal {
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 951;
+  width: min(860px, 95vw);
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 32px 100px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.04);
+  animation: ytModalIn 0.3s cubic-bezier(.34,1.4,.64,1);
+  flex-direction: column;
+}
+.yt-modal.open { display: flex; }
+
+@keyframes ytModalIn {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 30px)) scale(0.95); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Accent top bar */
+.yt-modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff0000, #ff4444, #ff0000);
+  background-size: 200% 100%;
+  animation: gradShift 3s ease infinite;
+  z-index: 1;
+}
+
+/* Header */
+.yt-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.yt-modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.yt-modal-yt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #ff0000;
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+.yt-modal-yt-badge svg { width: 11px; height: 11px; }
+
+.yt-modal-label {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 480px;
+}
+
+.yt-modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.yt-ext-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.yt-ext-link svg { width: 10px; height: 10px; }
+.yt-ext-link:hover {
+  border-color: #ff4444;
+  color: #ff4444;
+  background: rgba(255,68,68,0.08);
+}
+
+.yt-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+.yt-close-btn:hover { color: var(--text-primary); background: var(--bg-row-hover); }
+.yt-close-btn svg { width: 16px; height: 16px; }
+
+/* Iframe wrapper — 16:9 */
+.yt-player-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  background: #000;
+  flex-shrink: 0;
+}
+.yt-player-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Loading shimmer while iframe loads */
+.yt-player-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  background-size: 200% 100%;
+  animation: shimmerYt 1.5s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+.yt-player-wrap.loaded::before { display: none; }
+@keyframes shimmerYt {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.yt-player-wrap iframe { z-index: 1; }
+
+/* Footer meta */
+.yt-modal-footer {
+  padding: 10px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.yt-modal-url {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+}
+.yt-modal-hint {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* ── YouTube play indicator on link cards ─────────────── */
+.link-card.is-youtube .link-card-url {
+  color: #ff4444;
+}
+.yt-play-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(255,0,0,0.12);
+  color: #ff4444;
+  border: 1px solid rgba(255,0,0,0.3);
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.yt-play-badge svg { width: 8px; height: 8px; }
+
+/* ── YouTube thumbnail on link cards ──────────────────────── */
+.link-card.is-youtube {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
+  cursor: pointer;
+}
+
+.yt-thumb-wrap {
+  width: 120px;
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+}
+.yt-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s;
+  opacity: 0.85;
+}
+.link-card.is-youtube:hover .yt-thumb {
+  transform: scale(1.05);
+  opacity: 1;
+}
+.yt-thumb-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.35);
+  transition: background 0.2s;
+}
+.link-card.is-youtube:hover .yt-thumb-play {
+  background: rgba(0,0,0,.5);
+}
+.yt-thumb-play svg {
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.6));
+  transform: scale(1);
+  transition: transform 0.2s cubic-bezier(.34,1.56,.64,1);
+}
+.link-card.is-youtube:hover .yt-thumb-play svg {
+  transform: scale(1.18);
+  color: #ff4444;
+}
+
+/* content wrap sits next to the thumb */
+.link-card-content-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 20px;
+  gap: 4px;
+}
+
+/* Non-YouTube cards still need the inner wrapper to behave */
+.link-card:not(.is-youtube) .link-card-content-wrap {
+  padding: 0;
+}
+
+/* Padding for non-YouTube link cards (content-wrap is transparent) */
+.link-card:not(.is-youtube) {
+  padding: 14px 20px;
+}
+.link-card:not(.is-youtube) .link-card-content-wrap {
+  padding: 0;
+}
+
+/* ── 2× speed badge in player header ─────────────────────── */
+.yt-speed-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background: rgba(255, 68, 68, 0.12);
+  border: 1px solid rgba(255, 68, 68, 0.4);
+  border-radius: 20px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff4444;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

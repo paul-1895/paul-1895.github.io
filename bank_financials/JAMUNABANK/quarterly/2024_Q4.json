@@ -1,0 +1,313 @@
+{
+  "bank_id": "JAMUNABANK",
+  "bank_name": "Jamuna Bank PLC",
+  "reporting_date": "2024-12-31",
+  "financial_year": 2024,
+  "quarter": "Q4",
+  "period_note": "Year-end position from the Annual Report's own multi-year '5 (Five) Years Key Financial Data & Ratios- JBPLC. (Solo)' summary table (audited), Solo basis. Consolidated basis also published in the same report ('FIVE YEARS PERFORMANCE (CONSOLIDATED)', p.109-111) with slightly larger figures (e.g. FY2024 total assets BDT 366,487.71mn Consolidated vs BDT 366,021.48mn Solo here) -- Solo used for consistency with 2011-2023. Tax expense is taken from the report's separate 'Financial Highlights' table (p.108), which reports it explicitly, and cross-validated as Profit before tax (5,848.35) minus Profit after tax (2,794.00) = 3,054.35 exactly. tier1_ratio_pct's cell in this report's own table is corrupted by a text-extraction artifact ('217' instead of '12.17'); the value 12.17 used here is reconstructed from the FY2025 annual report's FY2024 comparative column, and is internally consistent with this report's own Tier-1 capital (23,307.35) / RWA (191,521.42) = 12.17%. EPS of 3.17 is this bank's own contemporaneously-reported figure for FY2024; the FY2025 annual report later restates FY2024 EPS down to 2.97 following BAS 33's retrospective-restatement requirement after the 6.50% FY2024 bonus share issue (paid out in 2025, raising paid-up capital from 8,820.07mn to 9,393.38mn) -- the restated figure is not used here per this project's contemporaneous-figures rule (see sources.json for the full restatement chain, which also affects FY2023's stored EPS when viewed from this later report). Book value/NAV per share is NOT retroactively restated for bonus issues in this bank's tables (24.70 for FY2024 is consistent across every report that shows it).",
+  "source": {
+    "source_document": "jamunabank-annual-report-2024.txt",
+    "source_path": "annual_reports/JAMUNABANK/jamunabank-annual-report-2024.txt",
+    "source_url": "https://www.jamunabankbd.com",
+    "source_page_lines": "6404-6446 (Financial Highlights, JBPLC Solo & Consolidated); 6639-6799 (5 (Five) Years Key Financial Data & Ratios- JBPLC. (Solo), p.112-115)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "authorized_capital",
+      "original_metric_name": "Authorized Capital",
+      "value": 15000,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 8820.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 21781.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 344240.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 366021.48,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits",
+      "value": 310449.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances",
+      "value": 188990.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 127588.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets",
+      "value": 5334.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest income",
+      "value": 20231.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest expenses",
+      "value": 16876.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income",
+      "value": 3355.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Income from Investment",
+      "value": 9290.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income",
+      "original_metric_name": "Fees, Commission, Brokerage & Other Operating Income",
+      "value": 4686.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Operating Income",
+      "value": 17332.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Operating Expenses",
+      "value": 8662.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit before provision and tax",
+      "value": 8670.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Provision charged for loans, investments and other assets",
+      "value": 2821.67,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Profit before tax (PBT)",
+      "value": 5848.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Tax including deferred tax",
+      "value": 3054.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit After Tax (NPAT)",
+      "value": 2794.00,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "risk_weighted_assets",
+      "original_metric_name": "Total Risk weighted Assets",
+      "value": 191521.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Core Capital (Tier-I)",
+      "value": 23307.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Supplementary Capital (Tier-II)",
+      "value": 8039.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_capital",
+      "original_metric_name": "Total Regulatory Capital (Tier-I and Tier-II)",
+      "value": 31347.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_ratio_pct",
+      "original_metric_name": "Tier-I Capital to RWA",
+      "value": 12.17,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_ratio_pct",
+      "original_metric_name": "Tier-II Capital to RWA",
+      "value": 4.20,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital to risk weighted assets ratio (CRAR)",
+      "value": 16.37,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Volume of Non-performing Loans (NPLs)",
+      "value": 13074.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "% of NPLs to total Loan & Advances",
+      "value": 6.92,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_unclassified",
+      "original_metric_name": "Provision for Un-classified Loans",
+      "value": 5449.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_classified",
+      "original_metric_name": "Provision for Classified Loans",
+      "value": 4180.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earning per Share Taka (EPS)",
+      "value": 3.17,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Book value per Share/ NAV (Taka)",
+      "value": 24.70,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per Share (Taka)",
+      "value": 19.60,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on average assets (after tax) (ROA)",
+      "value": 0.83,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Return on average equity (after tax) (ROE)",
+      "value": 13.33,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

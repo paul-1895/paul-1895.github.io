@@ -1,0 +1,201 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2023-06-30",
+  "financial_year": 2023,
+  "quarter": "Q2",
+  "period_note": "Unaudited interim financial statements 'As at 30 June 2023'. Balance sheet is the period-end snapshot; comparative column is 31 December 2022. Equity continued to rise on an as-filed basis: 13,649.92m (Jun-2023), up from 13,533.35m at Mar-2023 -- still no hint in the bank's own quarterly disclosure of the negative equity that the audited FY2023 annual report would eventually record (see 2023_Q1.json and 2024_Q1.json for the fuller restatement-timeline discussion). This filing's source PDF used an embedded, non-Unicode-mapped subset font specifically for the Profit and Loss Account table (pdffonts confirms 'WSRFQM+Helvetica... uni: no', unlike every other GIB interim filing checked in this pass, which use standard, cleanly-extractable Helvetica/WinAnsi) -- pdftotext produced badly garbled digits for that table specifically (the Balance Sheet page was unaffected and extracted cleanly). All P&L figures below were therefore extracted via OCR (tesseract on a 300dpi rasterization of the PDF's P&L pages) rather than the corrupted text layer, and every figure was cross-validated via the full internal arithmetic chain (Investment income - Profit paid on deposits = Net Investment Income; + non-investment income = Total Operating Income; - Total Operating Expenses = Profit before Provision; - Total Provision = PBT; - Tax = PAT) for all four of the filing's own columns (cumulative Jan-Jun 2023, cumulative Jan-Jun 2022, discrete Apr-Jun 2023, discrete Apr-Jun 2022), each reconciling to the exact Taka or within 1 Taka of rounding. Cross-check: this quarter's discrete PAT (117.75m) plus 2023_Q1's PAT (574.81m) equals this filing's own 6-month cumulative PAT (692.56m) exactly.",
+  "source": {
+    "source_document": "Financial-Statements-as-on-30-June-2023.pdf (downloaded from globalislamibankbd.com, OCR'd for the P&L pages due to a corrupted embedded font; PDF deleted after extraction per project policy)",
+    "source_url": "https://www.globalislamibankbd.com/wp-content/uploads/2023/07/Financial-Statements-as-on-30-June-2023.pdf",
+    "source_page": "Balance Sheet p.1 (pdftotext -layout, clean), Off-balance Sheet Items p.2, Profit and Loss Account p.3-4 (OCR'd at 300dpi, tesseract, due to a non-Unicode-mapped embedded font)",
+    "retrieval_date": "2026-08-27",
+    "reporting_basis": "Solo / standalone, unaudited"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets (cross-validated two ways: asset-side component sum and Total Liabilities + Total Shareholders' Equity, both agreeing exactly)",
+      "value": 151976.96,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General investment etc. + Bills purchased and discounted)",
+      "value": 124592.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 121799.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 13649.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 138327.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-balance sheet items including contingent liabilities",
+      "value": 4926.2,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per Share [previous year's figure restated]",
+      "value": 14.51,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 7533.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_cumulative",
+      "original_metric_name": "Less: Profit paid on deposits (cumulative from Jan 1)",
+      "value": 4985.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Investment Income (cumulative from Jan 1)",
+      "value": 2548.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative from Jan 1)",
+      "value": 2827.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 1968.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit / (Loss) before Provision (cumulative from Jan 1)",
+      "value": 858.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_cumulative",
+      "original_metric_name": "Total provision (cumulative from Jan 1; a net reversal)",
+      "value": -98.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit / (Loss) before tax (cumulative from Jan 1)",
+      "value": 956.96,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Deferred tax + Current tax (cumulative from Jan 1)",
+      "value": 264.39,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit/(Loss) after Tax (cumulative from Jan 1)",
+      "value": 692.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (cumulative from Jan 1)",
+      "value": 0.74,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_discrete_quarter",
+      "original_metric_name": "Profit / (Loss) before Provision, discrete Apr-Jun 2023",
+      "value": 384.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_discrete_quarter",
+      "original_metric_name": "Total provision, discrete Apr-Jun 2023",
+      "value": 102.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_discrete_quarter",
+      "original_metric_name": "Total Profit / (Loss) before tax, discrete Apr-Jun 2023",
+      "value": 281.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_discrete_quarter",
+      "original_metric_name": "Net Profit/(Loss) after Tax, discrete Apr-Jun 2023",
+      "value": 117.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_discrete_quarter",
+      "original_metric_name": "Earnings per share (EPS), discrete Apr-Jun 2023",
+      "value": 0.13,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "bank_id": "RUPALIBANK",
+  "bank_name": "Rupali Bank PLC",
+  "reporting_date": "2026-03-31",
+  "financial_year": 2026,
+  "quarter": "Q1",
+  "period_note": "Unaudited interim financial performance, Jan-Mar 2026 (Q1). Sourced LIVE from DSE's company page (not a Wayback capture - this is the page's current content), fetched 2026-08-27 via curl -k (TLS chain issue on dsebd.org's certificate required -k/--insecure, same workaround already documented elsewhere in this dataset for NCCBANK). MAJOR RISK SIGNAL: this is a sharp reversal from consistently positive quarterly EPS across every quarter recovered for 2020-2025 (ranging +0.07 to +0.49 BDT/share) to a large per-share LOSS. At the 941,262,318 shares outstanding shown on the same DSE page (paid-up capital BDT 9,412.62mn, face value BDT 10), basic EPS of -8.120 implies an approximate quarterly net loss on the order of BDT -7,643 million (~-764 crore) - flagged as a new risk_signal in insights.json. This BDT figure is a derived approximation (basic EPS x current share count) marked accordingly, not a directly reported profit/loss figure - DSE's page does not show a profit-in-BDT figure for this quarter (same suppression as every quarter from 2023 onward, see 2023_Q1.json). Solo basis presumed per the same caveat as 2020_Q1.json. No FY2025 annual data, and no FY2026 balance-sheet data of any kind, exists elsewhere in this dataset - this and 2026_Q2.json are this dataset's only signal for either period.",
+  "source": {
+    "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (live page section)",
+    "source_path": "annual_reports/RUPALIBANK/rupalibank-dse-interim-tables-2020-2026.txt",
+    "source_url": "https://www.dsebd.org/displayCompany.php?name=RUPALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2026\" table, Q1 column (period-end code 202603); \"Basic Information\" block on the same page for shares-outstanding/paid-up-capital context",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic / EPS - Continuing Operations, Basic (identical)",
+      "value": -8.12,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_diluted_continuing_operations",
+      "original_metric_name": "Earnings Per Share (EPS) - Continuing Operations, Diluted",
+      "value": -3.39,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 17.8,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital (mn) [as shown on DSE company page at retrieval date, not specifically dated to this quarter-end]",
+      "value": 9412.62,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Nearly double FY2023's BDT 4,646.9mn and well above FY2024's BDT 4,879.3mn (487.93 crore, per rupalibank-dse-auditors-opinion-2024.txt) - the increase happened during FY2025 or FY2026 via a mechanism not yet identified in this dataset (no bonus issue for 2024/2025 shown in the same page's dividend history). Flagged as a research lead in insights.json."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_estimated",
+      "original_metric_name": "Derived: Basic EPS x Total No. of Outstanding Securities (941,262,318)",
+      "value": -7643.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_eps_and_current_shares_outstanding",
+      "note": "Approximation only - uses the CURRENT (2026-08-27) share count, not independently confirmed to be exactly the weighted-average share count for Jan-Mar 2026 specifically. Provided to convey the scale of the swing to a loss; treat as indicative, not a reported figure."
+    }
+  ]
+}

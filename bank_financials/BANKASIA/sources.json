@@ -1,0 +1,475 @@
+{
+  "bank_id": "BANKASIA",
+  "bank_name": "Bank Asia PLC",
+  "website": "https://www.bankasia-bd.com",
+  "investor_relations_url": "https://www.bankasia-bd.com/other/investor_relation",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2025 total assets of 589,486.81m match the figure under this report's 'Balance Sheet' (solo) heading; the larger 591,933m figure in the document is the consolidated total.",
+  "notes": "Very deep IR archive: ~74 quarterly/half-yearly PDFs found spanning back to 2010. As of 2026-08-26, 36 distinct quarters have been extracted and validated: 2026 Q1-Q2 (prior session) plus a deepening pass this session covering 2014 Q1-Q3, 2015 Q1-Q2, 2016 Q1-Q3, 2017 Q1-Q3, 2018 Q1 & Q3, 2019-2025 Q1-Q3 (complete for every year 2016-2025 except 2018 Q2). Remaining genuine gaps: 2010-2013 (entirely - dead links on the live site AND on Wayback Machine playback, confirmed across 2 retry rounds), 2015 Q3, and 2018 Q2 (same dead-link-both-places pattern) - see the 'found_not_yet_extracted' entry below for detail. These are not fabricated or annual-backfilled; they are recorded as gaps for a future session to re-attempt.",
+  "sources": [
+    {
+      "period": "2011-2012 (Q4/year-end)",
+      "type": "annual_report_summary_table",
+      "source_document": "bankasia-annual-report-2012.txt (\"Five Years Performance\" table)",
+      "source_path": "annual_reports/BANKASIA/bankasia-annual-report-2012.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012
+      ]
+    },
+    {
+      "period": "2013-2016 (Q4/year-end)",
+      "type": "annual_report_summary_table",
+      "source_document": "bankasia-annual-report-2016.txt (\"Five Years Performance\" table)",
+      "source_path": "annual_reports/BANKASIA/bankasia-annual-report-2016.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013,
+        2014,
+        2015,
+        2016
+      ],
+      "cross_check": "2012 figures independently confirmed identical to the 2012 report's own table."
+    },
+    {
+      "period": "2017-2020 (Q4/year-end)",
+      "type": "annual_report_summary_table",
+      "source_document": "bankasia-annual-report-2020.txt (\"Five Years Performance\" table)",
+      "source_path": "annual_reports/BANKASIA/bankasia-annual-report-2020.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "cross_check": "2016 figures independently confirmed identical to the 2016 report's own table."
+    },
+    {
+      "period": "2021-2025 (Q4/year-end)",
+      "type": "annual_report_summary_table",
+      "source_document": "bankasia-annual-report-2025.txt (\"Five Years Performance\" table, p.33-34)",
+      "source_path": "annual_reports/BANKASIA/bankasia-annual-report-2025.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "note": "EPS not captured for 2021-2025 within the extracted table range \u2014 recorded as a data gap, not guessed."
+    },
+    {
+      "period": "2026 Q1 (31 Mar 2026)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "1st_Quarter_Financial_Statements_2026.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/1st_Quarter_Financial_Statements_2026.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "validation": "Separate-basis figures; Assets = Liabilities + Equity reconciles exactly. Dec-2025 comparative (589,486,807,241) matches the annual report's audited 2025 total assets exactly (589,486.81 million)."
+    },
+    {
+      "period": "2026 Q2 / H1 (30 Jun 2026)",
+      "type": "half_yearly_financial_statements",
+      "source_document": "BA-Financial-Q2_2026-WEB.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/BA-Financial-Q2_2026-WEB.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "validation": "CONSOLIDATED basis (only version published at retrieval time) \u2014 Assets = Liabilities + Equity reconciles exactly. Not directly comparable to the separate-basis figures used for other periods; flagged in reporting_basis."
+    },
+    {
+      "period": "2014 Q1 (31 Mar 2014)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "1st_Qt_Financial_Statements_2014.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/1st_Qt_Financial_Statements_2014.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2014-q1.txt"
+    },
+    {
+      "period": "2014 Q2 / H1 (30 Jun 2014)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "half_yearly_financial_position_2014.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/half_yearly_financial_position_2014.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2014-q2.txt"
+    },
+    {
+      "period": "2014 Q3 (30 Sep 2014)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "3rd Quarter Financial Position 2014.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/3rd Quarter Financial Position 2014.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2014-q3.txt"
+    },
+    {
+      "period": "2015 Q1 (31 Mar 2015)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "Q1 Financial Statements-2015.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/Q1 Financial Statements-2015.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "note": "PDF is a scanned/rasterized 3-panel-per-page layout (Balance Sheet | P&L | Cash Flow side by side) rather than the standard single-column layout used in most years; pdftotext -layout interleaves the three panels into shared lines. Extracted by isolating each panel's character-column range (BS: cols 0-109, P&L: cols 110-238) before applying the standard label-based row parser, then verified via balance-sheet identity and PBT-tax=NPAT / PBP-provision=PBT / TOI-TOE=PBP cross-checks (all held exactly).",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2015-q1.txt"
+    },
+    {
+      "period": "2015 Q2 / H1 (30 Jun 2015)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "half_yearly_financial_position_2015.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/half_yearly_financial_position_2015.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "note": "PDF is a single-page rasterized infographic (Adobe Photoshop-produced, no text layer at all - pdftotext returns 0 lines). Extracted by rendering the page to a high-resolution PNG (pdftoppm -r 150) and reading the 'separate set of financial statements of the bank' panel directly (vision), same method used for the already-existing 2026_Q2.json source. No archival .txt was created for this source (none of the project's usual pdftotext-based text exists to keep) - the JSON line_items are the durable extracted record. Cross-checked via balance-sheet identity and PBT-tax=NPAT / PBP-provision=PBT / TOI-TOE=PBP (all held exactly, all 4 P&L columns read and reconciled)."
+    },
+    {
+      "period": "2016 Q1 (31 Mar 2016)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "Q1_FS_2016.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/Q1_FS_2016.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2016-q1.txt"
+    },
+    {
+      "period": "2016 Q2 / H1 (30 Jun 2016)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "2nd_quarter_summery_2016.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/2nd_quarter_summery_2016.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2016-q2.txt"
+    },
+    {
+      "period": "2016 Q3 (30 Sep 2016)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "3rd Quarter Financial Position 2016.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/3rd Quarter Financial Position 2016.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2016-q3.txt"
+    },
+    {
+      "period": "2017 Q1 (31 Mar 2017)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "1st_quarter_financial_position_details_2017.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/1st_quarter_financial_position_details_2017.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2017-q1.txt"
+    },
+    {
+      "period": "2017 Q2 / H1 (30 Jun 2017)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "half_yearly_financial_position_final.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/half_yearly_financial_position_final.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "note": "Same 3-panel-per-page layout issue as 2015 Q1 (BS: cols 0-118, P&L: cols 119-279). Extracted via column-isolation and verified via the same identity and cross-checks (all held exactly).",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2017-q2.txt"
+    },
+    {
+      "period": "2017 Q3 (30 Sep 2017)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "financial_statement_2017_q3.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/financial_statement_2017_q3.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "note": "PDF is unusually large (255,756,114 bytes, 1 page) - confirmed via pdfinfo (Adobe Illustrator CS6 / PDF library 10.01) and pdftotext (returns 0 lines - no text layer despite the Illustrator origin, text was evidently outlined/rasterized). Extracted by rendering to PNG (pdftoppm -r 100, 1655x2292px) and reading the 'separate set of financial statements of the bank' panel via vision, cropping into sections for legibility. All 4 P&L columns (Jan-Sep17, Jan-Sep16, Jul-Sep17, Jul-Sep16) read and cross-checked (PBT-tax=NPAT / PBP-provision=PBT / TOI-TOE=PBP all held exactly); balance sheet identity held exactly (comparative column not transcribed since not needed for this dataset's schema, only the 30-Sep-2017 column is used). No archival .txt created (no text layer exists)."
+    },
+    {
+      "period": "2018 Q1 (31 Mar 2018)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS Q-1 March 2018_Final_25.04.2018.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS Q-1 March 2018_Final_25.04.2018.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2018-q1.txt"
+    },
+    {
+      "period": "2018 Q3 (30 Sep 2018)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "financial_statement_q3_2018_details.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/financial_statement_q3_2018_details.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2018-q3.txt"
+    },
+    {
+      "period": "2019 Q1 (31 Mar 2019)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS-Q-1_March_2019_Final_Web.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS-Q-1_March_2019_Final_Web.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2019-q1.txt"
+    },
+    {
+      "period": "2019 Q2 / H1 (30 Jun 2019)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS-Q-2-June_2019_WEB_Final_Board.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS-Q-2-June_2019_WEB_Final_Board.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2019-q2.txt"
+    },
+    {
+      "period": "2019 Q3 (30 Sep 2019)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q-3_Sep_2019_Final_23_09_2019_Web1.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q-3_Sep_2019_Final_23_09_2019_Web1.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2019-q3.txt"
+    },
+    {
+      "period": "2020 Q1 (31 Mar 2020)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_March_31__2020_-11_5_WEB.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_March_31__2020_-11_5_WEB.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2020-q1.txt"
+    },
+    {
+      "period": "2020 Q2 / H1 (30 Jun 2020)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "Un-audited_Financial_Statements_for_the_period_ended_30_June_2020.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/Un-audited_Financial_Statements_for_the_period_ended_30_June_2020.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2020-q2.txt"
+    },
+    {
+      "period": "2020 Q3 (30 Sep 2020)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q3_Sept_30__2020_Final_28_10_2020.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q3_Sept_30__2020_Final_28_10_2020.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2020-q3.txt"
+    },
+    {
+      "period": "2021 Q1 (31 Mar 2021)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "1st_Quarter_Financial_Statements_2021.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/1st_Quarter_Financial_Statements_2021.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2021-q1.txt"
+    },
+    {
+      "period": "2021 Q2 / H1 (30 Jun 2021)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Bank_Asia-June_2021.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Bank_Asia-June_2021.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2021-q2.txt"
+    },
+    {
+      "period": "2021 Q3 (30 Sep 2021)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q-3_Sep_30__2021_Detailed.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q-3_Sep_30__2021_Detailed.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2021-q3.txt"
+    },
+    {
+      "period": "2022 Q1 (31 Mar 2022)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "Bank-Asia_Q1_2022.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/Bank-Asia_Q1_2022.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2022-q1.txt"
+    },
+    {
+      "period": "2022 Q2 / H1 (30 Jun 2022)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Details_Q2_2022_Bank_Asia.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Details_Q2_2022_Bank_Asia.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2022-q2.txt"
+    },
+    {
+      "period": "2022 Q3 (30 Sep 2022)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q3_2022_Final_26_10_2022_WEB.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q3_2022_Final_26_10_2022_WEB.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2022-q3.txt"
+    },
+    {
+      "period": "2023 Q1 (31 Mar 2023)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q1_2023_Bank_Asia.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q1_2023_Bank_Asia.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2023-q1.txt"
+    },
+    {
+      "period": "2023 Q2 / H1 (30 Jun 2023)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q2_2023_Detailed.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q2_2023_Detailed.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2023-q2.txt"
+    },
+    {
+      "period": "2023 Q3 (30 Sep 2023)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q3_2023_Bank_Asia_final.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q3_2023_Bank_Asia_final.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2023-q3.txt"
+    },
+    {
+      "period": "2024 Q1 (31 Mar 2024)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q1_2024-Bank_Asia_09_05_2024.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q1_2024-Bank_Asia_09_05_2024.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2024-q1.txt"
+    },
+    {
+      "period": "2024 Q2 / H1 (30 Jun 2024)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q2_2024_Final_Board_July_31_2024_WEB.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q2_2024_Final_Board_July_31_2024_WEB.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2024-q2.txt"
+    },
+    {
+      "period": "2024 Q3 (30 Sep 2024)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q3_2024_Final_Board_Oct_312024.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q3_2024_Final_Board_Oct_312024.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2024-q3.txt"
+    },
+    {
+      "period": "2025 Q1 (31 Mar 2025)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q1_2025_March_2025_Details.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q1_2025_March_2025_Details.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2025-q1.txt"
+    },
+    {
+      "period": "2025 Q2 / H1 (30 Jun 2025)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS_Q2_2025_June_2025_for_Board_Web.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/FS_Q2_2025_June_2025_for_Board_Web.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2025-q2.txt"
+    },
+    {
+      "period": "2025 Q3 (30 Sep 2025)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "BA_FS_Q3_2025_Final_WEB.pdf",
+      "source_url": "https://www.bankasia-bd.com/assets/reports/half/BA_FS_Q3_2025_Final_WEB.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Separate (solo) basis; Assets = Liabilities + Equity reconciles exactly (within rounding). Cross-checked internally: Total profit before tax minus tax = Net profit after tax; Profit before provision minus provision = Total profit before tax; Total operating income minus expenses = Profit before provision - all held exactly for every period.",
+      "source_path": "annual_reports/BANKASIA/bankasia-quarterly-2025-q3.txt"
+    },
+    {
+      "period": "2010, 2011, 2012, 2013 Q1/Q3/H1; 2015 Q3; 2018 Q2 (still not extracted after this pass)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "found_not_yet_extracted",
+      "note": "2026-08-26 deepening pass extracted 32 of the ~34 additional quarters attempted (see the 2014_Q1 through 2025_Q3 entries above), leaving these genuinely blocked: (1) 2010-2013 (Q1 Y 2011/2012, Q3 Y 2010/2011/2012, Half Y 2011/2012, 1st_Quarter_Financial_Position_2013, 3rd_qt_statements_2013, half_yearly_financial_position_2013_new) - every one of these URLs 404s on the live bankasia-bd.com site; the Wayback Machine's CDX API lists captures for all of them (e.g. 1st_Quarter_Financial_Position_2013.pdf at 20220322061231) but the playback layer (web.archive.org/web/<ts>id_/...) returned 404 for every one tried (Q1 Y 2011, Details_BA_FS_Q2_2018, ba_3rd_Quarter_Financial_Report_2015, 1st_Quarter_Financial_Position_2013 - 4 distinct URLs across 2 retry rounds, both after an initial 'Internet Archive services are temporarily offline' banner had cleared), so this is a genuine, repeatedly-confirmed access blocker, not a transient blip. (2) 2018 Q2 (Details_BA_FS_Q2_2018_Aug_07_2018.pdf, Financial Statement_30_07_2018.pdf) - both candidate URLs 404 live and both Wayback captures also 404 on playback. (3) 2015 Q3 (ba_3rd_Quarter_Financial_Report_2015.pdf) - same pattern, 404 live and on Wayback playback. None of these were fabricated or backfilled from annual data - they are recorded as gaps. Worth re-attempting in a future session in case the Wayback playback issue is transient after all, despite surviving 2 retry rounds in this session.",
+      "full_listing_note": "The IR page at investor_relation lists ~74 quarterly/half-yearly PDFs total, spanning 2010-2025 (naming convention changed several times over the years; many older filenames are now dead links even though still listed on the page). Full URL list retrievable again from https://www.bankasia-bd.com/other/investor_relation."
+    }
+  ]
+}

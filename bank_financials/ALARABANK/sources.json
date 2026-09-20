@@ -1,0 +1,211 @@
+{
+  "bank_id": "ALARABANK",
+  "bank_name": "Al-Arafah Islami Bank PLC",
+  "website": "https://www.aibl.com.bd",
+  "investor_relations_url": "https://www.aibl.com.bd/financial-statement/",
+  "reporting_basis": "CONSOLIDATED (Group). Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2025 total assets of 645,256.74m match the figure under this report's 'CONSOLIDATED BALANCE SHEET' heading; the solo 'BALANCE SHEET' shows 640,489m. This bank's series is therefore on a different basis from most of the dataset. All Q1/Q2/Q3 quarterly line items added in the 2026-08-27 session below are likewise the CONSOLIDATED figures printed on each filing's 'Consolidated Balance Sheet' / 'Consolidated Profit & Loss Account' pages.",
+  "notes": "Shariah-compliant (Islamic) bank. Most quarterly financial statement PDFs on the IR site are scanned/image-based, not digital text -- extracted via direct vision reading rather than pdftotext. A handful of years (2011 Q1/Q3, 2012 Q1, 2014 Q1, 2016 Q1/H1, 2017 all quarters, 2018 all quarters, 2019 all quarters, 2020 Q1) turned out to have genuine embedded text layers and were extracted via pdftotext -layout instead, cross-checked against vision reads where both were available. IMPORTANT: the bank's own website has its 3rd-Quarter 2011 and 2012 PDFs swapped at the URL level -- see the dedicated source entry below.",
+  "sources": [
+    {
+      "period": "2010-2014 (Q4/year-end)",
+      "type": "annual_report_summary_table",
+      "source_document": "alarabank-annual-report-2014.txt (\"5 Year Financial Highlights\" table)",
+      "source_path": "annual_reports/ALARABANK/alarabank-annual-report-2014.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014
+      ]
+    },
+    {
+      "period": "2015-2019 (Q4/year-end)",
+      "type": "annual_report_summary_table",
+      "source_document": "alarabank-annual-report-2019.txt (\"5 Year Financial Highlights\" table)",
+      "source_path": "annual_reports/ALARABANK/alarabank-annual-report-2019.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ]
+    },
+    {
+      "period": "2020 (Q4/year-end)",
+      "type": "annual_report_summary_table",
+      "source_document": "alarabank-annual-report-2024.txt (\"5 Year Financial Highlights\" table, 2020 column only)",
+      "source_path": "annual_reports/ALARABANK/alarabank-annual-report-2024.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020
+      ]
+    },
+    {
+      "period": "2021-2025 (Q4/year-end)",
+      "type": "annual_report_summary_table",
+      "source_document": "alarabank-annual-report-2025.txt (\"A General Review of the Performance of the Company\" 5-year table)",
+      "source_path": "annual_reports/ALARABANK/alarabank-annual-report-2025.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "cross_check": "2021-2024 figures independently confirmed identical in the 2024 report's own table (total assets, PAT, equity all match)."
+    },
+    {
+      "period": "2026 Q1 (31 Mar 2026)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS-Un-Audited-1st-Quarter-26.pdf",
+      "source_url": "https://www.aibl.com.bd/wp-content/uploads/2026/05/FS-Un-Audited-1st-Quarter-26.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "validation": "Assets = Liabilities + Equity reconciles exactly (0 difference)."
+    },
+    {
+      "period": "2026 Q2 / H1 (30 Jun 2026)",
+      "type": "half_yearly_financial_statements",
+      "source_document": "Half-Yearly-Statement-2026.pdf",
+      "source_url": "https://www.aibl.com.bd/wp-content/uploads/2026/08/Half-Yearly-Statement-2026.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "validation": "31.12.2025 comparative column matches the annual report's audited 2025 figures exactly (total assets 645,256,740,479). Discrete Q2 profit matches H1-minus-Q1 to within BDT 1 rounding."
+    },
+    {
+      "period": "2022-2025 Q1/H1/Q3 (12 quarters)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_urls": {
+        "Q1_2022": "https://www.aibl.com.bd/wp-content/uploads/2022/06/6769_AIL_6299_22-1st-Quarter-Financial-Statement.pdf",
+        "Q1_2023": "https://www.aibl.com.bd/wp-content/uploads/2023/05/8145_AIL_7675_23_1st-Quarter-Financial-Statement-16-5-23-1.pdf",
+        "Q1_2024": "https://www.aibl.com.bd/wp-content/uploads/2024/06/1st-quarter-2024.pdf",
+        "Q1_2025": "https://www.aibl.com.bd/wp-content/uploads/2025/06/1st-Quarter-2025.pdf",
+        "H1_2022": "https://www.aibl.com.bd/wp-content/uploads/2022/08/Half-Yearly-2022-Financial-Statement.pdf",
+        "H1_2023": "https://www.aibl.com.bd/wp-content/uploads/2023/08/Half-Yearly-Accounts-2023-compressed.pdf",
+        "H1_2024": "https://www.aibl.com.bd/wp-content/uploads/2024/08/AIBL-Half-Yearly-Statement-1.pdf",
+        "H1_2025": "https://www.aibl.com.bd/wp-content/uploads/2025/08/half-yearly-statemen-2025.pdf",
+        "Q3_2022": "https://www.aibl.com.bd/wp-content/uploads/2023/11/3rd-Quarter-2022.pdf",
+        "Q3_2023": "https://www.aibl.com.bd/wp-content/uploads/2023/11/AIBL_23_3rd-Quarter-Financial-Statement.pdf",
+        "Q3_2024": "https://www.aibl.com.bd/wp-content/uploads/2024/11/AIB-PLC-3rd-quarter-statement.pdf",
+        "Q3_2025": "https://www.aibl.com.bd/wp-content/uploads/2025/11/Aib-3rd-Quarter-2025.pdf"
+      },
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "All 12 quarters: Assets = Liabilities + Equity reconciles exactly or within BDT 1-3 rounding; full income-statement chain (Investment Income through Net Profit) validated end-to-end for each quarter; Q1+Q2+Q3 sums cross-checked against each year's own 9M cumulative column."
+    },
+    {
+      "period": "2021 Q1/Q2/Q3 (3 quarters)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_urls": {
+        "Q1_2021": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/1st-quarter-2021.pdf",
+        "H1_2021": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/Half-Yearly-Report-2021_compressed.pdf",
+        "Q3_2021": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2021.pdf"
+      },
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "validation": "Q1'21 figures printed in South Asian digit-grouping (e.g. '4,11,49,80,23,018'), parsed by stripping all grouping commas and validated exhaustively against every printed subtotal before being trusted -- see 2021_Q1.json's own note for full methodology. Q2'21/Q3'21 in ordinary Western grouping; Q1+Q2 and Q1+Q2+Q3 sums match H1/9M cumulative columns exactly."
+    },
+    {
+      "period": "2020 Q1/Q2/Q3 (3 quarters)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_urls": {
+        "Q1_2020": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/AIBL_AIBL_1st-Quarter-Report-2020.pdf",
+        "H1_2020": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/AIBL_Half-Yearly-Report-2020-compressed.pdf",
+        "Q3_2020": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2020.pdf"
+      },
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "validation": "2020 Q1 is a genuine text-layer PDF (embedded Type1C fonts) -- extracted via pdftotext -layout AND independently cross-checked via vision at 400 DPI, both methods produced identical figures for every line, the highest-confidence extraction in this bank's archive. Q2/Q3 are image-based, read via vision. Q1+Q2+Q3 sums match the Q3 report's own 9M cumulative column to within BDT 1."
+    },
+    {
+      "period": "2011-2019 Q1 (9 years)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_urls": {
+        "Q1_2011": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/1st-Quarter-Financial-Report-2011.pdf",
+        "Q1_2012": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/Financial-Statements-Q1-2012.pdf",
+        "Q1_2013": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/1st-Quarter-2013.pdf",
+        "Q1_2014": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/2014.pdf",
+        "Q1_2015": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/2015.pdf",
+        "Q1_2016": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/AIBL_1st_Quarter_9-5-2016_Final.pdf",
+        "Q1_2017": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/AIBL-1st-Quarter-2017.pdf",
+        "Q1_2018": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/1st-Quarter-2018.pdf",
+        "Q1_2019": "https://www.aibl.com.bd/download/financial-statement/1st-Quarter/AIBL-1st-Quarter-2019.pdf"
+      },
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "validation": "2011, 2012, 2014, 2016, 2017, 2018, 2019 are genuine text-layer PDFs (extracted via pdftotext -layout); 2013 and 2015 are image-based (read via vision at 600/400 DPI). Every year's balance-sheet identity reconciles exactly or within BDT 1-2; full income-statement chain validated end-to-end for every year.",
+      "notable_findings": "2013 Q1 is a net LOSS quarter (-205,355,112), independently confirmed via three routes (this file, 2014_Q1.json's own comparative column, and 2013_Q2.json's H1-minus-Q2 implied figure) -- see 2013_Q1.json's note. 2013 Q1's balance sheet also carries a one-off 'Proposed Stock Dividend 2012' equity line (1,212,266,610) capitalized into Paid-up Capital by the following quarter."
+    },
+    {
+      "period": "2010-2021 Half-Yearly (12 years)",
+      "type": "half_yearly_financial_statements",
+      "source_urls": {
+        "H1_2010": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/Half-Yearly-2010.pdf",
+        "H1_2011": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/Half-Yearly-Accounts%202011.pdf",
+        "H1_2012": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/2nd-Quarter-Financial-Report-2012.pdf",
+        "H1_2013": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/Half-Yearly-2013.pdf",
+        "H1_2014": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/Half-Yearly-2014.pdf",
+        "H1_2015": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/Half-Yearly-2015-Final.pdf",
+        "H1_2016": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/AIBL-Half-Yearly-2016.pdf",
+        "H1_2017": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/AIBL-Half-Yearly-2017-Final.pdf",
+        "H1_2018": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/AIBL-2nd-Quarter-2018-Final.pdf",
+        "H1_2019": "https://www.aibl.com.bd/download/financial-statement/Half-Yearly/2nd-Quarter-2019.pdf",
+        "H1_2020": "see '2020 Q1/Q2/Q3' entry above",
+        "H1_2021": "see '2021 Q1/Q2/Q3' entry above"
+      },
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "validation": "2012, 2013, 2015, 2016, 2017 are genuine text-layer PDFs (pdftotext -layout); 2010, 2011, 2014, 2018, 2019 are image-based (vision). Every year's Q1+discrete-Q2 sum matches that year's own H1 cumulative exactly or within BDT 1 (independent cross-check against the corresponding Q1 entry above, for years where both exist).",
+      "notable_findings": "2010 and pre-Oct-2015 filings show NO Non-Controlling Interest / Minority Interest component in equity at all (the bank's subsidiaries were incorporated from September 2010 and evidently not consolidated as minority-interest-bearing until later). 2016 H1 is the one year where the source itself prints 'Total Liabilities' twice -- once excluding, once including the AIBL Subordinate Bond -- directly confirming this dataset's convention (applied by inference to 2016-2018's other quarters) of folding the bond into total_liabilities. 2018 Q2 net profit (3,000,904) is a near-breakeven quarter, independently predicted from 2018_Q3.json's own arithmetic before this source was read, then confirmed exactly."
+    },
+    {
+      "period": "2010-2019, 2021 3rd Quarter (11 years)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_urls": {
+        "Q3_2010": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2010.pdf",
+        "Q3_2011": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2012.pdf",
+        "Q3_2012": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2011.pdf",
+        "Q3_2013": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2013.pdf",
+        "Q3_2014": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2014.pdf",
+        "Q3_2015": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2015.pdf",
+        "Q3_2016": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2016.pdf",
+        "Q3_2017": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2017.pdf",
+        "Q3_2018": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2018.pdf",
+        "Q3_2019": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2019.pdf",
+        "Q3_2020": "see '2020 Q1/Q2/Q3' entry above",
+        "Q3_2021": "see '2021 Q1/Q2/Q3' entry above"
+      },
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "IMPORTANT_URL_SWAP": "The bank's website has its 2011 and 2012 3rd-Quarter PDFs swapped: the URL path ending '3rd-Quarter/2011.pdf' actually serves the genuine 2012 report (title inside the PDF reads '3rd Quarter (Q3) Financial Statements 2012'), while '3rd-Quarter/2012.pdf' actually serves the genuine 2011 report ('3rd Quarter (Q3) Financial Statements 2011'). This was only discovered by reading each PDF's own content/title, since both download successfully with plausible, distinct file sizes. The source_urls above are listed against the correct financial_year each URL's CONTENT actually belongs to (i.e. Q3_2011 points at the '2012.pdf' URL and vice versa) -- see 2011_Q3.json's and 2012_Q3.json's own notes for the full explanation.",
+      "validation": "2017, 2018, 2019 are genuine text-layer PDFs (pdftotext -layout); 2010, 2011, 2012, 2013 (P&L panel only), 2014, 2015, 2016 are image-based or partially image-based (vision). Every year's Q1+Q2+Q3 sum matches that year's own 9M cumulative column exactly or within BDT 1-3.",
+      "notable_findings": "2014 Q3 and 2019 Q3 are both net LOSS quarters (-135,623,391 and -286,736,038 respectively), each fully validated end-to-end and each attributed by the source's own management commentary to a specific-provisioning/tax spike that year -- establishing that Q3 net-loss or near-loss episodes recur periodically for this bank across multiple non-adjacent years, not as a single one-off event. A minor (BDT 1,000) source-internal inconsistency was found in 2012: 2012_Q1.json's own standalone net profit (724,963,896) plus 2012_Q2.json's own standalone discrete-Q2 figure (576,307,777) sum to 1,000 more than the H1 2012 report's own printed H1-cumulative total; the 2012 Q3 report's 9M cumulative is consistent with the H1 report's cumulative, not with the Q1+Q2 sum. Each source document is individually self-consistent; only this trivial cross-document figure is affected, and it is immaterial (BDT 1,000 against a >2 billion cumulative)."
+    },
+    {
+      "period": "SUPERSEDED (2026-08-24 note, corrected 2026-08-26/27)",
+      "type": "correction_pointer",
+      "notes": "This dataset originally recorded '2022-2025 Q1/H1/Q3' as found_not_yet_extracted, and '2011-2021 Q1/Q2/Q3' as not_yet_researched with the note: \"IR site's quarterly archive as browsed only listed Q1 back to 2022; earlier years not yet searched individually.\" Both statements are now known to be incorrect: the bank's IR site's financial-statement archive in fact lists 1st Quarter, Half-Yearly, and 3rd Quarter filings back to 2009 (2009-2010 lack a 1st Quarter filing; 2011 onward have all three). All of 2010 (H1/Q3 only, no Q1 available), 2011-2025 (Q1/Q2/Q3 each) have now been located, downloaded, and extracted -- see the source entries above. This entry is retained for audit-trail purposes only."
+    }
+  ]
+}

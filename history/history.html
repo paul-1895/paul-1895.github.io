@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DSE Price History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ── Design tokens ── */
+:root {
+  --bg:        #0d1117;
+  --surface:   #161b22;
+  --border:    #21262d;
+  --text:      #e6edf3;
+  --muted:     #8b949e;
+  --accent:    #58a6ff;
+  --gain:      #3fb950;
+  --loss:      #f85149;
+  --warn:      #d29922;
+  --mono:      'Space Mono', monospace;
+  --sans:      'DM Sans', sans-serif;
+  --radius:    8px;
+}
+[data-theme="light"] {
+  --bg:      #f6f8fa;
+  --surface: #ffffff;
+  --border:  #d0d7de;
+  --text:    #1f2328;
+  --muted:   #636c76;
+  --accent:  #0969da;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: sticky; top: 0; z-index: 100;
+}
+.logo-block { display: flex; align-items: center; gap: 10px; }
+.logo-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fff;
+  padding: 3px 7px;
+  border-radius: 4px;
+  letter-spacing: .08em;
+}
+.logo-block h1 { font-size: 15px; font-weight: 600; }
+.logo-block p  { font-size: 11px; color: var(--muted); }
+
+.header-actions { display: flex; gap: 10px; align-items: center; }
+.btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  transition: border-color .15s, background .15s;
+}
+.btn:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--surface)); }
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn.primary:hover { opacity: .9; }
+.btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+.back-btn { text-decoration: none; }
+
+/* ── Layout ── */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 60px);
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.sidebar-head {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sidebar-head h2 { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.day-count { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+.date-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.date-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background .1s, border-color .1s;
+  gap: 8px;
+}
+.date-item:hover    { background: color-mix(in srgb, var(--accent) 6%, var(--bg)); }
+.date-item.active   { border-left-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--bg)); }
+.date-item .date-str { font-family: var(--mono); font-size: 13px; }
+.date-item .date-meta { font-size: 11px; color: var(--muted); }
+.date-item .day-name  { font-size: 11px; color: var(--muted); flex: 1; text-align: right; }
+
+.no-data-msg {
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.no-data-msg svg { width: 36px; height: 36px; margin: 0 auto 12px; display: block; opacity: .3; }
+
+/* ── Main panel ── */
+.main-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.panel-header h2 { font-size: 18px; font-weight: 600; font-family: var(--mono); }
+.panel-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Stats strip */
+.stats-strip {
+  display: flex;
+  gap: 1px;
+  background: var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stat-box {
+  flex: 1;
+  padding: 12px 16px;
+  background: var(--surface);
+  min-width: 100px;
+}
+.stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; }
+.stat-value { font-family: var(--mono); font-size: 16px; margin-top: 3px; }
+.stat-value.gain  { color: var(--gain); }
+.stat-value.loss  { color: var(--loss); }
+.stat-value.warn  { color: var(--warn); }
+
+/* Search */
+.table-controls {
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+}
+.search-wrap svg {
+  position: absolute;
+  left: 10px; top: 50%;
+  transform: translateY(-50%);
+  width: 15px; height: 15px;
+  color: var(--muted);
+  pointer-events: none;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 7px 12px 7px 34px;
+  font-family: var(--sans);
+  font-size: 13px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  outline: none;
+}
+.search-wrap input:focus { border-color: var(--accent); }
+.result-count { font-size: 12px; color: var(--muted); font-family: var(--mono); }
+
+/* Table */
+.table-wrap {
+  flex: 1;
+  overflow: auto;
+  padding: 0 24px 24px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 16px;
+}
+thead th {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 8px 12px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  position: sticky; top: 0;
+  background: var(--bg);
+}
+thead th:first-child { text-align: left; }
+thead th:hover { color: var(--text); }
+thead th .arrow { margin-left: 4px; }
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background .08s;
+}
+tbody tr:hover { background: color-mix(in srgb, var(--accent) 4%, var(--bg)); }
+td {
+  padding: 9px 12px;
+  font-family: var(--mono);
+  font-size: 13px;
+  text-align: right;
+}
+td.code-cell {
+  text-align: left;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 13px;
+}
+td.gain  { color: var(--gain); }
+td.loss  { color: var(--loss); }
+td.muted { color: var(--muted); }
+
+/* Empty / placeholder states */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 80px 24px;
+  text-align: center;
+  color: var(--muted);
+  gap: 12px;
+}
+.placeholder svg { width: 48px; height: 48px; opacity: .2; }
+.placeholder h3  { font-size: 16px; font-weight: 600; color: var(--text); }
+.placeholder p   { font-size: 13px; max-width: 340px; line-height: 1.6; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { max-height: 220px; border-right: none; border-bottom: 1px solid var(--border); }
+  .table-wrap { padding: 0 12px 12px; }
+}
+</style>
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-block">
+    <span class="logo-tag">DSE</span>
+    <div>
+      <h1>Price History</h1>
+      <p>Daily snapshots — LTP · YCP · Highest · Lowest</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn" onclick="exportAll()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export All
+    </button>
+    <a href="../index.html" class="btn back-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Live Market
+    </a>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- Sidebar: list of dates -->
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      <h2>Saved Days</h2>
+      <span class="day-count" id="day-count">0 days</span>
+    </div>
+    <div class="date-list" id="date-list">
+      <div class="no-data-msg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        No snapshots yet.<br/>Load the live market page and data will be saved automatically each day.
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main panel: table for selected day -->
+  <div class="main-panel" id="main-panel">
+    <div class="placeholder" id="placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+      <h3>Select a day</h3>
+      <p>Click any date on the left to browse that day's closing prices for all listed DSE securities.</p>
+    </div>
+
+    <!-- Hidden until a day is selected -->
+    <div id="day-view" style="display:none; flex-direction:column; height:100%;">
+      <div class="panel-header">
+        <h2 id="pv-date"></h2>
+        <div class="panel-actions">
+          <button class="btn" onclick="exportDay()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download JSON
+          </button>
+          <button class="btn" onclick="deleteDay()" style="color:var(--loss); border-color:var(--loss);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+            Delete
+          </button>
+        </div>
+      </div>
+
+      <div class="stats-strip" id="stats-strip"></div>
+
+      <div class="table-controls">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="hist-search" placeholder="Search stock code…" oninput="renderTable()"/>
+        </div>
+        <span class="result-count" id="result-count"></span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th onclick="sort('code')" style="text-align:left;">Code <span class="arrow" id="arrow-code"></span></th>
+              <th onclick="sort('ltp')">LTP (৳) <span class="arrow" id="arrow-ltp"></span></th>
+              <th onclick="sort('highest')">Highest <span class="arrow" id="arrow-highest"></span></th>
+              <th onclick="sort('lowest')">Lowest <span class="arrow" id="arrow-lowest"></span></th>
+              <th onclick="sort('ycp')">YCP <span class="arrow" id="arrow-ycp"></span></th>
+              <th onclick="sort('chg')">Change% <span class="arrow" id="arrow-chg"></span></th>
+            </tr>
+          </thead>
+          <tbody id="hist-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="module">
+import {
+  listSnapshotDates,
+  getSnapshot,
+  exportSnapshotAsFile,
+  exportAllSnapshots,
+  deleteSnapshot,
+} from './js/priceHistory.js';
+
+// ── State ──────────────────────────────────────────────────────────────────
+let selectedDate = null;
+let currentStocks = [];
+let sortKey = 'code';
+let sortAsc = true;
+
+// Expose to inline onclick handlers
+window.exportAll = exportAllSnapshots;
+window.exportDay = () => { if (selectedDate) exportSnapshotAsFile(selectedDate); };
+window.deleteDay = () => {
+  if (!selectedDate) return;
+  if (!confirm(`Delete snapshot for ${selectedDate}?`)) return;
+  deleteSnapshot(selectedDate);
+  selectedDate = null;
+  renderSidebar();
+  showPlaceholder();
+};
+window.sort = sortBy;
+window.renderTable = renderTable;
+
+// ── Bootstrap ─────────────────────────────────────────────────────────────
+renderSidebar();
+
+function renderSidebar() {
+  const dates = listSnapshotDates().reverse(); // newest first
+  const list  = document.getElementById('date-list');
+  const cnt   = document.getElementById('day-count');
+
+  cnt.textContent = `${dates.length} day${dates.length !== 1 ? 's' : ''}`;
+
+  if (dates.length === 0) {
+    list.innerHTML = `<div class="no-data-msg">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      No snapshots yet.<br/>Open the live market page — data is saved automatically on each load.
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = dates.map(d => {
+    const snap = getSnapshot(d);
+    const count = snap?.stocks?.length ?? 0;
+    const dayName = new Date(d + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'short' });
+    const active  = d === selectedDate ? ' active' : '';
+    return `<div class="date-item${active}" onclick="selectDate('${d}')">
+      <div>
+        <div class="date-str">${d}</div>
+        <div class="date-meta">${count} stocks</div>
+      </div>
+      <div class="day-name">${dayName}</div>
+    </div>`;
+  }).join('');
+}
+
+window.selectDate = function(d) {
+  selectedDate = d;
+  const snap = getSnapshot(d);
+  if (!snap) return;
+
+  currentStocks = snap.stocks.map(s => ({
+    ...s,
+    chg: s.ycp > 0 ? +((s.ltp - s.ycp) / s.ycp * 100).toFixed(2) : 0,
+  }));
+
+  // Highlight sidebar
+  document.querySelectorAll('.date-item').forEach(el => {
+    el.classList.toggle('active', el.querySelector('.date-str')?.textContent === d);
+  });
+
+  // Panel header
+  document.getElementById('pv-date').textContent = d;
+
+  // Stats strip
+  const gainers  = currentStocks.filter(s => s.chg > 0).length;
+  const losers   = currentStocks.filter(s => s.chg < 0).length;
+  const neutral  = currentStocks.filter(s => s.chg === 0).length;
+  const maxPrice = Math.max(...currentStocks.map(s => s.ltp));
+  const minPrice = Math.min(...currentStocks.filter(s => s.ltp > 0).map(s => s.ltp));
+  const maxStock = currentStocks.find(s => s.ltp === maxPrice)?.code ?? '—';
+  const minStock = currentStocks.find(s => s.ltp === minPrice)?.code ?? '—';
+
+  document.getElementById('stats-strip').innerHTML = `
+    <div class="stat-box"><div class="stat-label">Gainers</div><div class="stat-value gain">${gainers}</div></div>
+    <div class="stat-box"><div class="stat-label">Losers</div><div class="stat-value loss">${losers}</div></div>
+    <div class="stat-box"><div class="stat-label">Unchanged</div><div class="stat-value">${neutral}</div></div>
+    <div class="stat-box"><div class="stat-label">Total Stocks</div><div class="stat-value">${currentStocks.length}</div></div>
+    <div class="stat-box"><div class="stat-label">Highest LTP</div><div class="stat-value warn">${maxStock} ৳${maxPrice}</div></div>
+    <div class="stat-box"><div class="stat-label">Lowest LTP</div><div class="stat-value muted">${minStock} ৳${minPrice}</div></div>
+  `;
+
+  // Show day view
+  document.getElementById('placeholder').style.display = 'none';
+  const dv = document.getElementById('day-view');
+  dv.style.display = 'flex';
+
+  document.getElementById('hist-search').value = '';
+  sortKey = 'code'; sortAsc = true;
+  renderTable();
+};
+
+function showPlaceholder() {
+  document.getElementById('placeholder').style.display = 'flex';
+  document.getElementById('day-view').style.display = 'none';
+}
+
+function sortBy(key) {
+  if (sortKey === key) sortAsc = !sortAsc;
+  else { sortKey = key; sortAsc = key === 'code'; }
+  renderTable();
+}
+
+function renderTable() {
+  const q = (document.getElementById('hist-search').value || '').toLowerCase();
+  let rows = currentStocks.filter(s => !q || s.code.toLowerCase().includes(q));
+
+  rows.sort((a, b) => {
+    let av = a[sortKey], bv = b[sortKey];
+    if (typeof av === 'string') av = av.toLowerCase(), bv = bv.toLowerCase();
+    return sortAsc ? (av > bv ? 1 : av < bv ? -1 : 0) : (av < bv ? 1 : av > bv ? -1 : 0);
+  });
+
+  // Update arrows
+  ['code','ltp','highest','lowest','ycp','chg'].forEach(k => {
+    const el = document.getElementById(`arrow-${k}`);
+    if (el) el.textContent = sortKey === k ? (sortAsc ? ' ↑' : ' ↓') : '';
+  });
+
+  const tbody = document.getElementById('hist-tbody');
+  const fmt   = n => n ? n.toLocaleString('en-BD', { minimumFractionDigits: 1, maximumFractionDigits: 2 }) : '—';
+  const chgClass = c => c > 0 ? 'gain' : c < 0 ? 'loss' : 'muted';
+  const chgStr   = c => c > 0 ? `+${c}%` : c < 0 ? `${c}%` : '0%';
+
+  tbody.innerHTML = rows.map(s => `<tr>
+    <td class="code-cell">${s.code}</td>
+    <td>${fmt(s.ltp)}</td>
+    <td>${fmt(s.highest)}</td>
+    <td>${fmt(s.lowest)}</td>
+    <td class="muted">${fmt(s.ycp)}</td>
+    <td class="${chgClass(s.chg)}">${chgStr(s.chg)}</td>
+  </tr>`).join('');
+
+  document.getElementById('result-count').textContent =
+    `${rows.length} / ${currentStocks.length} stocks`;
+}
+</script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

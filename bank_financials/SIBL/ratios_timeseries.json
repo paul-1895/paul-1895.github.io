@@ -1,0 +1,1800 @@
+{
+  "bank_id": "SIBL",
+  "generated_at": "2026-08-26",
+  "notes": "'gross_loans' field holds total Shariah-compliant Investment (General) -- the Islamic-banking equivalent of loans; 'npl_ratio_pct' holds the Ratio of Classified Investments to Total Investments. Equity was positive in every year 2010-2024 (including the FY2024 loss year), so the dataset's negative-equity-breaks-ROE rule was not triggered for SIBL; roa_pct/roe_pct are populated for all 15 years. UPDATED 2026-08-27: appended 37 Q1/Q2/Q3 interim periods (FY2012 H1 through FY2025 Q3) alongside the existing 15 Q4/annual periods above -- interim periods are distinguished by their 'quarter' field (Q1/Q2/Q3 vs Q4) and each carries its own 'period_type_note' explaining that npl_ratio_pct/car_pct are null (not disclosed in interim filings) and that eps/roa_pct/roe_pct inputs are cumulative-from-Jan-1. roa_pct/roe_pct for interim periods are annualized (x4 for Q1, x2 for Q2, x4/3 for Q3) using average of the prior FY's Q4 total_assets/equity and the current quarter's own total_assets/equity, per this dataset's stated ROA/ROE annualization convention (see _methodology.md); ldr_pct is calculated by this dataset (Investments / Deposits) since SIBL's own interim filings never state this ratio themselves (only its annual report does). Five quarters could not be sourced at all and have no entry here: 2012 Q1 (never published -- SIBL's own site's quarterly archive begins at H1 2012), 2012 Q3 and 2013 Q2 (the PDF at SIBL's own published URL for these periods was, on inspection, a different bank's report -- see sources.json), 2013 Q3 (the bank's own PDF's text layer was pervasively corrupted beyond safe extraction) and 2020 Q1 (PDF had no extractable text layer and was lost to a scratch-directory collision before OCR could be attempted -- see sources.json).",
+  "periods": [
+    {
+      "financial_year": 2010,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 55168.54,
+      "gross_loans": 36680.29,
+      "total_deposits": 44850.77,
+      "equity": 4198.77,
+      "npl_ratio_pct": {
+        "value": 4.76,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 92.08,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 2.39,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 15.31,
+        "basis": "reported"
+      },
+      "car_pct": {
+        "value": 9.33,
+        "basis": "reported"
+      },
+      "eps": 2.15,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2011,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 84406.18,
+      "gross_loans": 53908.58,
+      "total_deposits": 66852.55,
+      "equity": 9412.21,
+      "npl_ratio_pct": {
+        "value": 3.93,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 94.65,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.55,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "roe_pct": {
+        "value": 15.92,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "car_pct": {
+        "value": 13.17,
+        "basis": "reported"
+      },
+      "eps": 1.81,
+      "yoy_growth_pct": {
+        "total_assets": 53.0,
+        "gross_loans": 46.97,
+        "total_deposits": 49.06,
+        "equity": 124.17
+      }
+    },
+    {
+      "financial_year": 2012,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 96919.07,
+      "gross_loans": 63840.1,
+      "total_deposits": null,
+      "equity": 9958.8,
+      "npl_ratio_pct": null,
+      "ldr_pct": null,
+      "roa_pct": {
+        "value": 1.21,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2011 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 11.29,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2011 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.85,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2012,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 115165.95,
+      "gross_loans": 76024.97,
+      "total_deposits": 93594.29,
+      "equity": 10181.97,
+      "npl_ratio_pct": {
+        "value": 3.33,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 89.19,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.44,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "roe_pct": {
+        "value": 14.71,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "car_pct": {
+        "value": 11.52,
+        "basis": "reported"
+      },
+      "eps": 2.25,
+      "yoy_growth_pct": {
+        "total_assets": 36.44,
+        "gross_loans": 41.03,
+        "total_deposits": 40.0,
+        "equity": 8.18
+      }
+    },
+    {
+      "financial_year": 2013,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 120726.05,
+      "gross_loans": 77400.88,
+      "total_deposits": 99318.21,
+      "equity": 10275.23,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 77.93,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.41,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2012 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 4.78,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2012 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.19,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2013,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 126616.56,
+      "gross_loans": 85922.33,
+      "total_deposits": 102104.48,
+      "equity": 11083.43,
+      "npl_ratio_pct": {
+        "value": 5.35,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 86.78,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.01,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "roe_pct": {
+        "value": 11.48,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "car_pct": {
+        "value": 11.64,
+        "basis": "reported"
+      },
+      "eps": 1.74,
+      "yoy_growth_pct": {
+        "total_assets": 9.94,
+        "gross_loans": 13.02,
+        "total_deposits": 9.09,
+        "equity": 8.85
+      }
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 129652.22,
+      "gross_loans": 88878.54,
+      "total_deposits": 104565.5,
+      "equity": 11462.05,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 85.0,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 1.14,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2013 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 12.98,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2013 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.52,
+      "yoy_growth_pct": {
+        "total_assets": 7.39,
+        "gross_loans": 14.83,
+        "total_deposits": 5.28,
+        "equity": 11.55
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 140798.2,
+      "gross_loans": 97504.23,
+      "total_deposits": null,
+      "equity": 10869.86,
+      "npl_ratio_pct": null,
+      "ldr_pct": null,
+      "roa_pct": {
+        "value": 0.92,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2013 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 11.24,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2013 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.88,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 146189.16,
+      "gross_loans": 100425.44,
+      "total_deposits": null,
+      "equity": 10976.66,
+      "npl_ratio_pct": null,
+      "ldr_pct": null,
+      "roa_pct": {
+        "value": 0.71,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2013 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 8.73,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2013 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 1.03,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 153737.47,
+      "gross_loans": 107899.96,
+      "total_deposits": 124535.01,
+      "equity": 12143.38,
+      "npl_ratio_pct": {
+        "value": 4.56,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 89.52,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.36,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "roe_pct": {
+        "value": 16.39,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "car_pct": {
+        "value": 11.36,
+        "basis": "reported"
+      },
+      "eps": 2.71,
+      "yoy_growth_pct": {
+        "total_assets": 21.42,
+        "gross_loans": 25.58,
+        "total_deposits": 21.97,
+        "equity": 9.56
+      }
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 159336.29,
+      "gross_loans": 112788.08,
+      "total_deposits": 129268.19,
+      "equity": 12549.72,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 87.25,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.96,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2014 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 12.21,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2014 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.54,
+      "yoy_growth_pct": {
+        "total_assets": 22.9,
+        "gross_loans": 26.9,
+        "total_deposits": 23.62,
+        "equity": 9.49
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 165592.93,
+      "gross_loans": 121517.69,
+      "total_deposits": 134534.11,
+      "equity": 11155.47,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 90.32,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.31,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2014 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 4.26,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2014 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 17.61,
+        "gross_loans": 24.63,
+        "total_deposits": null,
+        "equity": 2.63
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 170551.9,
+      "gross_loans": 128212.42,
+      "total_deposits": null,
+      "equity": 11383.45,
+      "npl_ratio_pct": null,
+      "ldr_pct": null,
+      "roa_pct": {
+        "value": 0.39,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2014 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 5.39,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2014 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.68,
+      "yoy_growth_pct": {
+        "total_assets": 16.67,
+        "gross_loans": 27.67,
+        "total_deposits": null,
+        "equity": 3.71
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 180112.11,
+      "gross_loans": 134116.85,
+      "total_deposits": 149773.62,
+      "equity": 12950.32,
+      "npl_ratio_pct": {
+        "value": 3.84,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 88.52,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.24,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "roe_pct": {
+        "value": 16.52,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "car_pct": {
+        "value": 12.33,
+        "basis": "reported"
+      },
+      "eps": 2.95,
+      "yoy_growth_pct": {
+        "total_assets": 17.16,
+        "gross_loans": 24.3,
+        "total_deposits": 20.27,
+        "equity": 6.65
+      }
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 190357.57,
+      "gross_loans": 143803.76,
+      "total_deposits": 156178.35,
+      "equity": 13101.78,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 92.08,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.31,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2015 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 4.48,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2015 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.21,
+      "yoy_growth_pct": {
+        "total_assets": 19.47,
+        "gross_loans": 27.5,
+        "total_deposits": 20.82,
+        "equity": 4.4
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 203213.67,
+      "gross_loans": 156995.04,
+      "total_deposits": 171947.55,
+      "equity": 12409.27,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 91.3,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.54,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2015 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 8.1,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2015 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 22.72,
+        "gross_loans": 29.2,
+        "total_deposits": 27.81,
+        "equity": 11.24
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 210845.07,
+      "gross_loans": 161970.13,
+      "total_deposits": 177287.06,
+      "equity": 12638.64,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 91.36,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.51,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2015 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 7.74,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2015 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 23.63,
+        "gross_loans": 26.33,
+        "total_deposits": null,
+        "equity": 11.03
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 227704.18,
+      "gross_loans": 174196.13,
+      "total_deposits": 190564.52,
+      "equity": 14187.8,
+      "npl_ratio_pct": {
+        "value": 4.44,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 89.86,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.12,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "roe_pct": {
+        "value": 16.89,
+        "basis": "calculated_avg_equity_assets"
+      },
+      "car_pct": {
+        "value": 11.55,
+        "basis": "reported"
+      },
+      "eps": 3.1,
+      "yoy_growth_pct": {
+        "total_assets": 26.42,
+        "gross_loans": 29.88,
+        "total_deposits": 27.24,
+        "equity": 9.56
+      }
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 236833.73,
+      "gross_loans": 185072.04,
+      "total_deposits": 196820.58,
+      "equity": 14271.09,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 94.03,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.13,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2016 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 2.14,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2016 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 24.42,
+        "gross_loans": 28.7,
+        "total_deposits": 26.02,
+        "equity": 8.92
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 257174.02,
+      "gross_loans": 196141.24,
+      "total_deposits": 213445.24,
+      "equity": 12947.83,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 91.89,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.2,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2016 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 3.49,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2016 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 26.55,
+        "gross_loans": 24.93,
+        "total_deposits": 24.13,
+        "equity": 4.34
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 260168.88,
+      "gross_loans": 198313.27,
+      "total_deposits": 219821.36,
+      "equity": 13374.28,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 90.22,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.36,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2016 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 6.42,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2016 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 23.39,
+        "gross_loans": 22.44,
+        "total_deposits": 23.99,
+        "equity": 5.82
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 276348.95,
+      "gross_loans": 210045.51,
+      "total_deposits": 228798.9,
+      "equity": 14166.45,
+      "npl_ratio_pct": {
+        "value": 8.2,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 91.8,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": null,
+      "roe_pct": {
+        "value": 10.27,
+        "basis": "reported"
+      },
+      "car_pct": {
+        "value": 11.57,
+        "basis": "reported"
+      },
+      "eps": 1.79,
+      "yoy_growth_pct": {
+        "total_assets": 21.36,
+        "gross_loans": 20.58,
+        "total_deposits": 20.06,
+        "equity": -0.15
+      }
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 272749.39,
+      "gross_loans": 211177.81,
+      "total_deposits": 222187.22,
+      "equity": 14424.74,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 95.04,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.38,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2017 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 7.23,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2017 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.35,
+      "yoy_growth_pct": {
+        "total_assets": 15.16,
+        "gross_loans": 14.11,
+        "total_deposits": 12.89,
+        "equity": 1.08
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 290177.73,
+      "gross_loans": 220418.47,
+      "total_deposits": 237535.2,
+      "equity": 14480.26,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 92.79,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.22,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2017 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 4.38,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2017 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 12.83,
+        "gross_loans": 12.38,
+        "total_deposits": 11.29,
+        "equity": 11.84
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 294792.39,
+      "gross_loans": 226080.06,
+      "total_deposits": 240903.21,
+      "equity": 14836.63,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 93.85,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.31,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2017 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 6.16,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2017 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 13.31,
+        "gross_loans": 14.0,
+        "total_deposits": 9.59,
+        "equity": 10.93
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 307305.32,
+      "gross_loans": 238654.17,
+      "total_deposits": 248324.49,
+      "equity": 15749.88,
+      "npl_ratio_pct": {
+        "value": 7.69,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 96.11,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.54,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 10.05,
+        "basis": "reported"
+      },
+      "car_pct": {
+        "value": 14.27,
+        "basis": "reported"
+      },
+      "eps": 1.95,
+      "yoy_growth_pct": {
+        "total_assets": 11.2,
+        "gross_loans": 13.62,
+        "total_deposits": 8.53,
+        "equity": 11.18
+      }
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 305906.96,
+      "gross_loans": 242561.65,
+      "total_deposits": 244326.71,
+      "equity": 16001.58,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 99.28,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.33,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2018 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 6.34,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2018 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.31,
+      "yoy_growth_pct": {
+        "total_assets": 12.16,
+        "gross_loans": 14.86,
+        "total_deposits": 9.96,
+        "equity": 10.93
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 323433.91,
+      "gross_loans": 249255.67,
+      "total_deposits": 260528.44,
+      "equity": 16087.08,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 95.67,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.21,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2018 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 4.24,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2018 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 11.46,
+        "gross_loans": 13.08,
+        "total_deposits": 9.68,
+        "equity": 11.1
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 331724.13,
+      "gross_loans": 255227.46,
+      "total_deposits": 275377.7,
+      "equity": 16404.67,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 92.68,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.27,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2018 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 5.43,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2018 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 12.53,
+        "gross_loans": 12.89,
+        "total_deposits": 14.31,
+        "equity": 10.57
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 345056.23,
+      "gross_loans": 264268.59,
+      "total_deposits": 287936.65,
+      "equity": 17271.33,
+      "npl_ratio_pct": {
+        "value": 6.63,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 89.47,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.47,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 9.21,
+        "basis": "reported"
+      },
+      "car_pct": {
+        "value": 13.78,
+        "basis": "reported"
+      },
+      "eps": 1.7,
+      "yoy_growth_pct": {
+        "total_assets": 12.28,
+        "gross_loans": 10.73,
+        "total_deposits": 15.95,
+        "equity": 9.66
+      }
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 357815.54,
+      "gross_loans": 277347.13,
+      "total_deposits": null,
+      "equity": 17725.6,
+      "npl_ratio_pct": null,
+      "ldr_pct": null,
+      "roa_pct": {
+        "value": 0.26,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2019 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 5.19,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2019 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 10.63,
+        "gross_loans": 11.27,
+        "total_deposits": null,
+        "equity": 10.19
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 366022.05,
+      "gross_loans": 290209.95,
+      "total_deposits": 307515.67,
+      "equity": 17988.54,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 94.37,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.27,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2019 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 5.42,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2019 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 10.34,
+        "gross_loans": 13.71,
+        "total_deposits": 11.67,
+        "equity": 9.65
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 384999.71,
+      "gross_loans": 300617.94,
+      "total_deposits": 322383.51,
+      "equity": 18038.39,
+      "npl_ratio_pct": {
+        "value": 6.05,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 90.65,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.42,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 8.78,
+        "basis": "reported"
+      },
+      "car_pct": {
+        "value": 13.5,
+        "basis": "reported"
+      },
+      "eps": 1.57,
+      "yoy_growth_pct": {
+        "total_assets": 11.58,
+        "gross_loans": 13.75,
+        "total_deposits": 11.96,
+        "equity": 4.44
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 389426.58,
+      "gross_loans": 303538.18,
+      "total_deposits": null,
+      "equity": 18326.7,
+      "npl_ratio_pct": null,
+      "ldr_pct": null,
+      "roa_pct": {
+        "value": 0.3,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2020 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 6.34,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2020 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.31,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 397137.65,
+      "gross_loans": 305091.1,
+      "total_deposits": 332678.04,
+      "equity": 18527.14,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 91.71,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.25,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2020 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 5.35,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2020 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.52,
+      "yoy_growth_pct": {
+        "total_assets": 10.99,
+        "gross_loans": 10.0,
+        "total_deposits": null,
+        "equity": 4.52
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 400020.8,
+      "gross_loans": 308731.89,
+      "total_deposits": 334083.58,
+      "equity": 18324.6,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 92.41,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.26,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2020 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 5.54,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2020 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 9.29,
+        "gross_loans": 6.38,
+        "total_deposits": 8.64,
+        "equity": 1.87
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 408203.16,
+      "gross_loans": 312773.82,
+      "total_deposits": 341661.06,
+      "equity": 19237.42,
+      "npl_ratio_pct": {
+        "value": 5.18,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 90.19,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.42,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 8.91,
+        "basis": "reported"
+      },
+      "car_pct": {
+        "value": 11.6,
+        "basis": "reported"
+      },
+      "eps": 1.69,
+      "yoy_growth_pct": {
+        "total_assets": 6.03,
+        "gross_loans": 4.04,
+        "total_deposits": 5.98,
+        "equity": 6.65
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 413820.77,
+      "gross_loans": 316115.12,
+      "total_deposits": null,
+      "equity": 19352.28,
+      "npl_ratio_pct": null,
+      "ldr_pct": null,
+      "roa_pct": {
+        "value": 0.11,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2021 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 2.38,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2021 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.12,
+      "yoy_growth_pct": {
+        "total_assets": 6.26,
+        "gross_loans": 4.14,
+        "total_deposits": null,
+        "equity": 5.6
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 424066.56,
+      "gross_loans": 325921.68,
+      "total_deposits": 356118.18,
+      "equity": 19381.03,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 91.52,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.31,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2021 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 6.63,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2021 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.45,
+      "yoy_growth_pct": {
+        "total_assets": 6.78,
+        "gross_loans": 6.83,
+        "total_deposits": 7.05,
+        "equity": 4.61
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 431137.97,
+      "gross_loans": 341398.85,
+      "total_deposits": null,
+      "equity": 19598.07,
+      "npl_ratio_pct": null,
+      "ldr_pct": null,
+      "roa_pct": {
+        "value": 0.37,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2021 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 7.96,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2021 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 7.78,
+        "gross_loans": 10.58,
+        "total_deposits": null,
+        "equity": 6.95
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 439968.68,
+      "gross_loans": 342944.16,
+      "total_deposits": 340950.31,
+      "equity": 20765.08,
+      "npl_ratio_pct": {
+        "value": 4.8,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 93.7,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.57,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 12.15,
+        "basis": "reported"
+      },
+      "car_pct": {
+        "value": 11.89,
+        "basis": "reported"
+      },
+      "eps": 1.88,
+      "yoy_growth_pct": {
+        "total_assets": 7.78,
+        "gross_loans": 9.65,
+        "total_deposits": -0.21,
+        "equity": 7.94
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 420736.94,
+      "gross_loans": 342341.91,
+      "total_deposits": 335747.17,
+      "equity": 20907.75,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 101.96,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.23,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2022 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 4.73,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2022 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.14,
+      "yoy_growth_pct": {
+        "total_assets": 1.67,
+        "gross_loans": 8.3,
+        "total_deposits": null,
+        "equity": 8.04
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 432108.14,
+      "gross_loans": 349438.51,
+      "total_deposits": 347662.31,
+      "equity": 21243.09,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 100.51,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.32,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2022 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 6.56,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2022 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.47,
+      "yoy_growth_pct": {
+        "total_assets": 1.9,
+        "gross_loans": 7.22,
+        "total_deposits": -2.37,
+        "equity": 9.61
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 435738.27,
+      "gross_loans": 353854.02,
+      "total_deposits": 349758.87,
+      "equity": 21194.94,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 101.17,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.39,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2022 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 8.05,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2022 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 1.07,
+        "gross_loans": 3.65,
+        "total_deposits": null,
+        "equity": 8.15
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 476051.86,
+      "gross_loans": 360816.98,
+      "total_deposits": 357388.85,
+      "equity": 22383.44,
+      "npl_ratio_pct": {
+        "value": 4.79,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 91.14,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.56,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 11.89,
+        "basis": "reported"
+      },
+      "car_pct": {
+        "value": 12.66,
+        "basis": "reported"
+      },
+      "eps": 1.98,
+      "yoy_growth_pct": {
+        "total_assets": 8.2,
+        "gross_loans": 5.21,
+        "total_deposits": 4.82,
+        "equity": 7.79
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 430798.24,
+      "gross_loans": 366637.82,
+      "total_deposits": 336667.07,
+      "equity": 22558.75,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 108.9,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.26,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2023 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 5.23,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2023 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.16,
+      "yoy_growth_pct": {
+        "total_assets": 2.39,
+        "gross_loans": 7.1,
+        "total_deposits": 0.27,
+        "equity": 7.9
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 513516.31,
+      "gross_loans": 374797.24,
+      "total_deposits": 357135.07,
+      "equity": 22919.54,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 104.95,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.31,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2023 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 6.84,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2023 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": 0.5,
+      "yoy_growth_pct": {
+        "total_assets": 18.84,
+        "gross_loans": 7.26,
+        "total_deposits": 2.72,
+        "equity": 7.89
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 421462.12,
+      "gross_loans": 378417.63,
+      "total_deposits": 328109.76,
+      "equity": 21991.53,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 115.33,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": 0.15,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2023 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": 3.03,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2023 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": -3.28,
+        "gross_loans": 6.94,
+        "total_deposits": -6.19,
+        "equity": 3.76
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 476374.43,
+      "gross_loans": 383165.07,
+      "total_deposits": 309770.55,
+      "equity": 20613.45,
+      "npl_ratio_pct": {
+        "value": 61.74,
+        "basis": "reported",
+        "metric_note": "Ratio of Classified Investments to Total Investments (Islamic-banking equivalent of NPL ratio)."
+      },
+      "ldr_pct": {
+        "value": 121.15,
+        "basis": "reported",
+        "metric_note": "Investment-Deposit (ID) Ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": -0.11,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": -2.48,
+        "basis": "reported"
+      },
+      "car_pct": {
+        "value": 6.43,
+        "basis": "reported"
+      },
+      "eps": -0.88,
+      "yoy_growth_pct": {
+        "total_assets": 0.07,
+        "gross_loans": 6.19,
+        "total_deposits": -13.32,
+        "equity": -7.91
+      }
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 470756.39,
+      "gross_loans": 383818.39,
+      "total_deposits": 289679.1,
+      "equity": 19007.73,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 132.5,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": -1.25,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2024 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": -29.94,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x4 per this dataset's convention) / average(prior FY2024 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": -1.41,
+      "yoy_growth_pct": {
+        "total_assets": 9.28,
+        "gross_loans": 4.69,
+        "total_deposits": -13.96,
+        "equity": -15.74
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 463786.38,
+      "gross_loans": 387178.14,
+      "total_deposits": 282112.76,
+      "equity": 15673.73,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 137.24,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": -2.0,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2024 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": -51.72,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x2 per this dataset's convention) / average(prior FY2024 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": -4.33,
+      "yoy_growth_pct": {
+        "total_assets": -9.68,
+        "gross_loans": 3.3,
+        "total_deposits": -21.01,
+        "equity": -31.61
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 460265.15,
+      "gross_loans": 390808.77,
+      "total_deposits": 277475.45,
+      "equity": 3203.02,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 140.84,
+        "basis": "calculated",
+        "metric_note": "Investment-Deposit (ID) Ratio = Investments (General + Bills Purchased) / Deposits and Other Accounts. Calculated by this dataset -- SIBL's interim filings do not disclose this ratio themselves (only the annual report does)."
+      },
+      "roa_pct": {
+        "value": -4.85,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2024 Q4 Total Assets, current-quarter Total Assets). Not itself disclosed in the interim filing."
+      },
+      "roe_pct": {
+        "value": -190.76,
+        "basis": "calculated_avg_equity_assets_annualized",
+        "metric_note": "Net Profit After Tax (cumulative, annualized x1.33 per this dataset's convention) / average(prior FY2024 Q4 Equity, current-quarter Equity). Not itself disclosed in the interim filing."
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 9.21,
+        "gross_loans": 3.27,
+        "total_deposits": -15.43,
+        "equity": -85.44
+      },
+      "period_type_note": "Unaudited interim (Q1/Half-Yearly/9-Month) period. npl_ratio_pct and car_pct are null because SIBL's interim filings do not disclose classified-investment or capital-adequacy figures at all (confirmed absent; see quarterly JSON's own period_note). eps and the P&L inputs behind roa_pct/roe_pct are CUMULATIVE from 1 January, not discrete-quarter figures."
+    }
+  ]
+}

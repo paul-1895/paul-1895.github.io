@@ -1,0 +1,177 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2022-06-30",
+  "financial_year": 2022,
+  "quarter": "Q2",
+  "period_note": "Unaudited interim financial statements 'As at June 30, 2022'. Balance sheet is the period-end snapshot (reported); comparative column is 30 June 2021, matching this dataset's own 2021_Q2.json total assets/liabilities/equity exactly. Paid-up capital (5,154.19m) unchanged from Q1-2022 -- still pre-IPO. Income-statement figures are DISCRETE for the quarter (April 1 to June 30, 2022) -- this filing's own header states 'For the period from 01 April 2022 to 30 June 2022' with no separate cumulative Jan-Jun column (the bank's format standardised to show both cumulative and discrete columns only from the September-2022 filing onward). All figures in this filing reconcile exactly to their own internal P&L chain, and cross-validate exactly against this same discrete quarter as independently repeated in the comparative column of the June-2023 filing (Investment income, Profit paid on deposits, Net Investment Income, Total Operating Income, Total Operating Expenses, Profit before Provision, Total Provision, PBT, Tax and PAT all match to the exact Taka -- no restatement found for this particular quarter, unlike Q1-2022's tax figure). An additional cumulative Jan-Jun 2022 net-profit figure is included as profit_after_tax_h1_cumulative: this is not printed anywhere in this filing (which is discrete-only) but is derived by summing this quarter's own PAT (283,671,212) with 2022_Q1.json's own PAT (182,302,244) = 465,973,456, and this sum independently and exactly matches the 'Jan22 to Jun22' cumulative figure found in the June-2023 filing's own comparative column, giving high confidence in both underlying quarterly figures.",
+  "source": {
+    "source_document": "June-Quarter-2022.pdf (downloaded from globalislamibankbd.com, OCR'd; PDF deleted after extraction per project policy)",
+    "source_url": "https://www.globalislamibankbd.com/wp-content/uploads/2023/03/June-Quarter-2022.pdf",
+    "source_page": "Balance Sheet p.1, Off-Balance Sheet Items p.2, Profit and Loss Account p.3 (OCR'd at 300dpi, tesseract)",
+    "retrieval_date": "2026-08-27",
+    "reporting_basis": "Solo / standalone, unaudited"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 139212.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General Investment etc. + Bills Purchased and Discounted)",
+      "value": 109274.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 121375.85,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 8222.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 130990.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 5154.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 1814.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Total Shareholders' Equity / (Paid-up Capital / 10)",
+      "value": 15.95,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income, discrete Apr-Jun 2022",
+      "value": 3432.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits",
+      "original_metric_name": "Less: Profit paid on Deposits, discrete Apr-Jun 2022",
+      "value": 2067.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net Investment Income, discrete Apr-Jun 2022",
+      "value": 1365.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Total Operating Income, discrete Apr-Jun 2022",
+      "value": 1631.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total Operating Expenses, discrete Apr-Jun 2022",
+      "value": 892.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit / (Loss) before Provision, discrete Apr-Jun 2022",
+      "value": 739.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Total Provision, discrete Apr-Jun 2022",
+      "value": 66.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total Profit / (Loss) before tax, discrete Apr-Jun 2022",
+      "value": 672.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Deferred tax + Current tax, discrete Apr-Jun 2022",
+      "value": 389.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit/(Loss) after Tax, discrete Apr-Jun 2022",
+      "value": 283.67,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per share (EPS) [previous year's figure restated], discrete Apr-Jun 2022",
+      "value": 0.55,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_h1_cumulative",
+      "original_metric_name": "Net profit after tax, Jan-Jun 2022 cumulative (not printed in this discrete-only filing; derived as this quarter's PAT + 2022_Q1's PAT, cross-validated against the June-2023 filing's own comparative column)",
+      "value": 465.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated"
+    }
+  ]
+}

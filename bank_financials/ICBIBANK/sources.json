@@ -1,0 +1,134 @@
+{
+  "bank_id": "ICBIBANK",
+  "bank_name": "ICB Islamic Bank Limited",
+  "website": "https://icbislamic-bd.com",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2024 total assets of 9,243.04m match the figure under this report's 'Balance Sheet' (solo) heading; 10,685m is the consolidated total.",
+  "notes": "annual_reports/ICBIBANK archive originally contained 14 PDFs (2011-2024) but every single one had been truncated to exactly 1,048,576 bytes (1MB) in an earlier download pass, a systematic (not per-file) failure. 2017, 2018, 2020, 2021, 2022 happened to extract complete/usable text despite truncation (their text content fell within the first 1MB); 2011, 2012, 2013, 2014, 2015, 2016, 2019, 2023, 2024 failed outright. Re-downloaded fresh, complete copies of 2017, 2018, 2020, 2021, 2022, 2023, 2024 (7 years) directly from the bank's website during this session. A parallel session working on this same project independently re-sourced a genuine (non-truncated) FY2013 annual report from a different original capture (described in its commit message as salvaged from a Dhaka Tribune newspaper-insert disclosure); that report's 2013/2012 comparative columns provided clean FY2012 and FY2013 data, extending this dataset back one additional year beyond what this session's own re-download effort achieved. FY2011, FY2014, FY2015, FY2016, FY2019 could not be re-sourced (site restructured, old URL patterns 404, Wayback Machine fetch blocked) but FY2014-2016 and FY2019 data was still fully recoverable via other years' reports' 5-year comparative tables. This bank has operated with deeply negative shareholders' equity and CAR throughout 2012-2024 (see insights.json) — a legacy of the 2006 collapse/nationalization of its predecessor, The Oriental Bank Limited, on fraud grounds. UPDATE (2026-08-27): Q1-Q3 unaudited interim data has now been added for 2013-2014 and 2017-2026 (see the dedicated sources entries below for the full list, methodology, and discrepancies found); 2011, 2012, 2015 and 2016 were attempted but mostly could not be retrieved intact; 2017 Q2, 2019 Q3 (full statement) and 2020 Q2 remain genuine gaps. The Q4/year-end (audited) data described in the rest of this note is unchanged by this update.",
+  "sources": [
+    {
+      "period": "2012-2013 (Q4)",
+      "type": "annual_report_own_year",
+      "source_document": "icbibank-annual-report-2013.txt (own Balance Sheet / capital detail, p.14/note 14.7-14.8; \"HIGHLIGHTS\" Annexure-D)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2012,
+        2013
+      ],
+      "note": "This bank's own primary-source FY2013 annual report, contributed by a parallel session working on this project (see project-level notes above). Total shareholders' equity for both years uses Tier-I core capital, verified equal to paid-up capital + statutory reserve + general reserve + retained earnings (i.e. no material regulatory deductions apply for this institution), so treated as equivalent to accounting equity. FY2013's CAR here (-89.81%) differs marginally from the FY2017 report's retrospective table (-89.97%, used for FY2014-2016) — a minor cross-report rounding difference, not reconciled further."
+    },
+    {
+      "period": "2014-2017 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "icbibank-annual-report-2017.txt (\"Key operating and financial data of at least preceding 5 (five) years\")",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "note": "FY2014-2015 shareholders' equity not independently located (only Tier-I+II regulatory capital, a related but distinct figure — see FY2012/2013 note on why that figure is usually a safe equity proxy for this bank, not confirmed for these 2 years specifically); left as a gap for those 2 years. FY2016-2017 equity cross-validated against this report's own Balance Sheet."
+    },
+    {
+      "period": "2018 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "icbibank-annual-report-2018.txt (own 5-year table + Balance Sheet)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018
+      ]
+    },
+    {
+      "period": "2019 (Q4)",
+      "type": "cross_report_comparative",
+      "source_document": "icbibank-annual-report-2020.txt, -2021.txt, -2022.txt (comparative columns, mutually consistent)",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019
+      ],
+      "note": "FY2019's own annual report PDF could not be located/re-sourced; all figures cross-validated as identical across three later reports' comparative columns."
+    },
+    {
+      "period": "2020-2022 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "icbibank-annual-report-2020.txt, -2021.txt, -2022.txt (each report's own first-column data + Balance Sheet)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020,
+        2021,
+        2022
+      ],
+      "note": "IMPORTANT: the FY2024 report's own 5-year table has a one-year column-shift error affecting its FY2022/FY2021/FY2020 columns (each showing the PRIOR year's real data under the wrong year label). This was discovered by cross-checking the FY2024 report's table against each of these years' own annual report and Balance Sheet, which disagreed. FY2020-2022 figures in this dataset are therefore sourced from each year's own report (first-column position), not from the FY2024 report's comparative table."
+    },
+    {
+      "period": "2023-2024 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "icbibank-annual-report-2024.txt (\"Key operating and financial data of at least preceding 5 years\" — FY2024/FY2023 columns only, verified correctly aligned; Balance Sheet)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023,
+        2024
+      ]
+    },
+    {
+      "period": "2025 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "icbibank-annual-report-2025.txt (\"HIGHLIGHTS\" annexure, SI 1-23, plus own Balance Sheet, Profit and Loss Account, and Note 15.07-15.09 Capital Adequacy/MCR)",
+      "source_url": "https://icbislamic-bd.com/wp-content/uploads/2026/07/Auditors-Report-and-Audited-Financial-Statements-2025.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Source is the standalone 'Independent Auditor's Report and Audited Financial Statements' bundle (uploaded to the bank's site July 2026) — the fuller 'Annual Report 2025' (Directors' Report, AGM materials, multi-year comparative table) had not been published as of retrieval; this bank's pattern (per FY2024) is to publish that bundle several months later, near its AGM. Source PDF is a scanned/photocopied filing (54 pages, PDF Creator 'RICOH IM 2702') that returns 0 lines under pdftotext -layout — not a Wayback truncation (downloaded directly from the bank's live site at 1.93MB/54 pages, confirmed complete via pdfinfo, nowhere near the 1,048,576-byte truncation signature), just a genuine scan. Text was extracted via OCR (pdftoppm 300dpi -> tesseract 5.5.3) since pdftotext could not be used. Cross-validated via five independent arithmetic identities that all close exactly (balance-sheet identity; paid-up+reserves+retained-earnings=equity; operating income-expense-provision-tax=PAT; Total Eligible Capital/RWA=reported CRAR; total capital-required capital=reported capital surplus) and via the going-concern figures appearing twice in the document (Auditor's Emphasis of Matter + Note 3.03) with identical values both times — high confidence despite OCR. DISCREPANCY FOUND (not reconciled, contemporaneous figure kept per project convention): this report's HIGHLIGHTS annexure shows FY2024 'Cost of fund' as 7.65%, but FY2024's own Annual Report (already stored in 2024_Q4.json) reports 6.49% for the same line. Both values are recorded; 2024_Q4.json is unchanged. Every other FY2024 comparative figure in this report (paid-up capital, total capital, capital surplus, CAR -171.95%, total assets, total deposits, total investments, contingent liabilities, NPL% 90.68%, PAT -945.06m, classified investments, provisions, ROA -10.22%, EPS -1.42) reproduces the already-stored 2024_Q4.json value exactly, so this is an isolated single-metric discrepancy, not a broader restatement. Bank remains under a Bangladesh Bank-appointed Administrator (Note 45) in place of a Board of Directors."
+    },
+    {
+      "period": "2011 (Q4)",
+      "type": "not_yet_available",
+      "status": "not_started",
+      "notes": "Source PDF truncated and unrecoverable; no replacement source located. Given the bank's severe, consistent distress pattern from 2012 onward, this year is likely similarly distressed but this cannot be confirmed without a source."
+    },
+    {
+      "period": "2013, 2014 Q1 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "icbibank-quarterly-2013-q1.txt, icbibank-quarterly-2013-q3.txt, icbibank-quarterly-2014-q1.txt",
+      "source_url": "https://www.icbislamic-bd.com/assets/files/financial_statements/unaudited_first_quarter_financial_Statements_2013.pdf ; .../third_quarter_financial_statement_2013.pdf ; .../1stqs_2013_Un-audited.pdf (all retrieved via Wayback Machine, capture 2019-09-18, from the bank's pre-2021 site structure)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2013, 2014],
+      "note": "All three are genuine digital/text PDFs (no OCR needed). IMPORTANT: the file the bank itself uploaded as '1stqs_2013_Un-audited.pdf' is NOT Q1 2013 despite its filename -- its own header, data columns, comparative column, and signature date ('Dhaka, 12, May 2014') all confirm it is genuinely Q1 2014; stored as 2014_Q1.json. The genuine Q1 2013 filing was found separately under 'unaudited_first_quarter_financial_Statements_2013.pdf' and stored as 2013_Q1.json; its own Mar-2013 figures cross-validate exactly against the mislabeled file's Mar-2013 comparative column. MAJOR DISCREPANCY FOUND (not reconciled, contemporaneous interim figures preferred; 2012_Q4.json and 2013_Q4.json left unmodified): the Dec-2012 and Dec-2013 comparative columns in these interim filings show Total Shareholders' equity of -8,661,933,873 and -9,342,685,151 respectively (accounting/balance-sheet basis) -- both differing from 2012_Q4.json's stored total_equity (-9,214.82m) and 2013_Q4.json's stored total_equity (-9,895.57m) by almost exactly BDT 552.885m, which equals this bank's 'Other reserve' (revaluation reserve) balance. This suggests 2012_Q4.json/2013_Q4.json's total_equity was sourced from the annual report's Tier-I regulatory-capital note (which appears to exclude the revaluation reserve) rather than the face-of-balance-sheet accounting equity used in every other year and every interim filing in this dataset. Corroborated independently via NAV per share: dividing the interim-filing equity figures by 664,702,300 shares gives -13.03 (FY2012) and -14.06 (FY2013), which match 2012_Q4.json's and 2013_Q4.json's own stored nav_per_share fields exactly, whereas the stored total_equity values would imply NAVPS of -13.86 and -14.89, inconsistent with those same files' own NAVPS fields. Flagged here for a future session to consider correcting 2012_Q4.json/2013_Q4.json's total_equity basis; out of scope for this task (quarterly-only)."
+    },
+    {
+      "period": "2017-2026 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "icbibank-quarterly-2017-q1.txt through icbibank-quarterly-2026-q2.txt (26 files)",
+      "source_url": "https://icbislamic-bd.com/financial-statement/ (bank's own quarterly-statements listing page); individual PDFs under https://icbislamic-bd.com/wp-content/uploads/... for 2017-2026",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+      "note": "Found via the bank's own 'Financial Statement' page, which lists every quarterly/annual filing from 2017 to the present (2026 Q2 at time of retrieval). All PDFs are scanned filings requiring OCR (pdftoppm 300dpi -> tesseract 5.5.3) except 2019_Q1 and 2020_Q3, which are genuine digital PDFs. Every quarter's comparative column was cross-checked against the adjacent already-stored quarter/year in this dataset (Q4/annual figures from the existing dataset, or the immediately preceding/following interim quarter); all reconcile exactly except for the specific discrepancies noted below and in each quarter's own period_note. GENUINE GAPS (searched, not found, not fabricated): 2017 Q2, 2019 Q3 (full statement -- only a thin Price Sensitive Information announcement was ever found, and even that could not be retrieved intact from Wayback after repeated attempts, all truncated to exactly 1,048,576 bytes), and 2020 Q2 (no filing of any kind found under either the bank's old or current URL scheme, nor on Wayback). Two multi-quarter OCR digit-transposition errors were caught via cross-report validation and corrected: 2022_Q2.json's net_investment_income (originally misread as -35,654,555, corrected to -55,654,555 using 2023_Q2.json's comparative column and the income-sum identity), and two garbled '(C=A-B)' cells in 2017_Q3.json/2021_Q3.json corrected via the adjacent report's comparative or the A-B=C identity. Two isolated single-filing balance-sheet-comparative anomalies were found and flagged (not reconciled) rather than corrected, since they affect only a single filing's own comparative column and not the actual reported period: 2024_Q2.json's own Dec-2023 comparative (Total Assets/Liabilities ~52m higher than every other source for that date, traced to a 'Fixed assets including premises' misprint, reverted correctly in the very next quarter's filing); and 2025_Q1.json's own equity roll-forward (Dec-2024 to Mar-2025 equity IMPROVED by ~192.65m despite a reported quarterly loss of 98.16m, consistent with an undisclosed prior-year adjustment not reflected in that filing's own comparative column -- the following quarter, 2025_Q2, rolls forward cleanly with no such gap). ONE APPARENT GENUINE, PERSISTENT BASIS CHANGE (not an error) was found and is NOT a quarterly-only issue: starting with the 31-Dec-2025 comparative column shown in the 2026_Q1 and 2026_Q2 filings, 'Other assets' and 'Other liabilities' are both roughly BDT 3,218.24m higher than the audited FY2025 figures in 2025_Q4.json, with the exact same delta on both sides (so Total Shareholders' Equity is completely unaffected and matches 2025_Q4.json exactly) -- confirmed consistent across two independent filings (2026_Q1 and 2026_Q2), so this looks like a genuine change in how the bank now presents a suspended-profit/classified-investment-related asset-liability pair (likely a gross-up) from Dec-2025 onward, not a one-off filing error; the exact cause was not identified from the filings' own text. Flagged for a future session's attention since it could matter for any analysis using 2026 total-assets/total-liabilities figures. All reporting is SOLO/STANDALONE basis. All quarters follow the cumulative-from-Jan-1 income-statement convention (matching CITYBANK's schema), except Q1 filings where cumulative=discrete by definition. The bank's own 'Specific provision (charged)/released' or 'Total provision (D)' line is printed inconsistently across quarters/vintages (sometimes with correct parentheses, sometimes as a plain positive number regardless of actual direction); this dataset's provision_charge_cumulative values were derived as C (operating profit before provision) minus the reported PBT wherever the printed sign was ambiguous, which reliably recovers the correct signed value and was cross-checked against the reported PAT/EPS in every case."
+    },
+    {
+      "period": "2011, 2012, 2015, 2016 Q1/Q2/Q3 (unaudited interim) -- attempted",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "partially_recovered_or_gap",
+      "retrieval_date": "2026-08-27",
+      "note": "See the corresponding 20XX_QN.json files (where created) for final sourcing detail, or the ICBIBANK task's final report for which of these could not be recovered. Source PDFs for these years are Wayback Machine captures from the bank's pre-2021 site (single crawl dated 2019-09-18), which proved substantially less reliable to retrieve intact than the 2017+ captures -- repeated fetches of several specific captures returned truncated responses (consistently exactly 1,048,576 bytes, the same 1-MiB truncation signature already documented for this bank's annual-report archive, but arising here from Wayback's playback of this specific older crawl rather than from any prior download tool) or structurally corrupted PDFs (broken xref tables, sometimes repairable with qpdf but with the underlying image data itself unrecoverably lost). Multiple retry rounds (6-8 attempts each, including alternate Wayback capture timestamps where more than one existed) were used before treating a year/quarter as unrecoverable."
+    }
+  ]
+}

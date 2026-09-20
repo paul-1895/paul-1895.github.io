@@ -1,0 +1,241 @@
+{
+  "bank_id": "NRBBANK",
+  "bank_name": "NRB Bank PLC",
+  "reporting_date": "2014-12-31",
+  "financial_year": 2014,
+  "quarter": "Q4",
+  "period_note": "Year-end position from NRB Bank Limited's own FY2014 Annual Report (its first full calendar year of operation), which is fully legible (no font-encoding issues, unlike FY2013's report). Balance Sheet and headline P&L figures are read directly from the bank's own 'Balance Sheet AS AT 31 DECEMBER 2014' (Total Assets, Total Liabilities, Total Shareholders' Equity) and its 'FINANCIAL HIGHLIGHTS' / 'TWO-YEAR PROGRESSION OF NRB BANK' tables (Income Statement items, Capital Adequacy Ratio, Distribution Network); the Statutory Reserve / Other (Revaluation) Reserve / Retained Earnings split is taken from the FY2015 report's exact-taka comparative column for 31 Dec 2014, which reproduces the FY2014 report's own Total Shareholders' Equity (3,969,300,585) exactly. All figures cross-checked as stable (no restatement) between the FY2014 and FY2015 reports. Reserve fund = Statutory Reserve + Other (Revaluation) Reserve. Required Capital again reflects Bangladesh Bank's flat BDT 4,000m regulatory floor (CRAR was 41.7%, so the risk-weighted 10% figure was far from binding). ROE is not meaningful (blank) given the year's net loss (BDT -66m) essentially offset by the small equity base produces a ratio with little analytical value; ROA is still reported (small negative) for completeness.",
+  "source": {
+    "source_document": "nrbbank-annual-report-2014.txt",
+    "source_path": "annual_reports/NRBBANK/nrbbank-annual-report-2014.txt",
+    "source_url": "https://www.nrbbankbd.com",
+    "source_page_lines": "3532-3593 (own Balance Sheet); 3171-3260 (own 'FINANCIAL HIGHLIGHTS'/'TWO-YEAR PROGRESSION' tables, Capital Adequacy Ratio and Distribution Network); statutory/other reserve and retained earnings split cross-sourced from nrbbank-annual-report-2015.txt lines 4715-4785 (FY2014 comparative column)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 4000.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "authorised_capital",
+      "original_metric_name": "Authorised Capital",
+      "value": 10000.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 5.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserve",
+      "original_metric_name": "Other Reserve",
+      "value": 24.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "reserve_fund",
+      "original_metric_name": "Statutory Reserve + Other Reserve",
+      "value": 30.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": -60.83,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 3969.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 7804.83,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 6291.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 3519.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets including premises, furniture and fixtures",
+      "value": 259.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 13491.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Non Performing / Classified Loans and Advances (NPLs)",
+      "value": 0.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "actual_capital",
+      "original_metric_name": "Eligible Capital / Total Regulatory Capital (Tier-I & Tier-II)",
+      "value": 4031.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "required_capital",
+      "original_metric_name": "Minimum Capital Requirement (MCR)",
+      "value": 4000.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_regulatory_minimum"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital to Risk Weighted Assets Ratio (CRAR)",
+      "value": 41.7,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_income",
+      "original_metric_name": "Total Operating Income (A)",
+      "value": 472.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_expenditure",
+      "original_metric_name": "Total Operating Expenses (B)",
+      "value": 452.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_profit",
+      "original_metric_name": "Profit before Provision (C=A-B)",
+      "value": 20.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total Profit before Tax (E=C-D)",
+      "value": -50.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after Tax (G=E-F)",
+      "value": -66.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per Share (Face value Tk.10)",
+      "value": -0.17,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Credit to Deposit Ratio (Gross)",
+      "value": 77.3,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "NPL to Total Loans and Advance",
+      "value": 0.0,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on Assets (calculated, period-end assets)",
+      "value": -0.49,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated_period_end_not_average"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per Share (NAVPS)",
+      "value": 9.92,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "num_branches",
+      "original_metric_name": "Number of Branches",
+      "value": 11,
+      "unit": "count",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 9522.2,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "bank_id": "RUPALIBANK",
+  "bank_name": "Rupali Bank PLC",
+  "reporting_date": "2025-03-31",
+  "financial_year": 2025,
+  "quarter": "Q1",
+  "period_note": "Unaudited interim financial performance, Jan-Mar 2025 (Q1). Sourced from a DSE (dsebd.org) company-page table titled 'Interim Financial Performance: 2025', recovered via a Wayback Machine capture from 2025-06-08 and cross-checked (identical value) against a later capture from 2025-08-12. This dataset has no FY2025 Q4/annual coverage at all (not previously researched this session - out of this task's Q1-Q3 scope) but DSE's live company page (fetched 2026-08-27) shows an AGM held 19-07-2026 'for the year ended: Dec 31, 2025', confirming a FY2025 annual report does exist even though it was not located this session (rupalibank.com.bd remains Cloudflare-blocked; no Wayback capture found) - flagged as a lead for a future session in insights.json/sources.json. Same DSE-table caveats as 2023_Q1.json (EPS/price only; Solo basis presumed, not explicitly labeled).",
+  "source": {
+    "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Captures 5 and 6 of 6)",
+    "source_path": "annual_reports/RUPALIBANK/rupalibank-dse-interim-tables-2020-2026.txt",
+    "source_url": "https://web.archive.org/web/20250608234057id_/https://www.dsebd.org/displayCompany.php?name=RUPALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2025\" table, Q1 column (period-end code 202503); cross-validated identical in the 2025-08-12 and 2025-08-25 captures of the same URL",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic / EPS - Continuing Operations, Basic (identical)",
+      "value": 0.13,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 21.6,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

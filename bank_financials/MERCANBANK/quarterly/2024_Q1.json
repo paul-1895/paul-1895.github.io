@@ -1,0 +1,282 @@
+{
+  "bank_id": "MERCANBANK",
+  "bank_name": "Mercantile Bank PLC",
+  "reporting_date": "2024-03-31",
+  "financial_year": 2024,
+  "quarter": "Q1",
+  "period_note": "Balance sheet is the period-end snapshot (reported), compared against the prior period-end position. Income-statement items are CUMULATIVE from 1 January of the same year, as published in the bank's own 'Un-audited Balance Sheet' and 'Un-audited Profit and Loss Account' for the period ended 31 March 2024. SOLO/STANDALONE basis (header reads 'Mercantile Bank PLC.' / 'Mercantile Bank Limited' Balance Sheet and Profit and Loss Account with no 'and its Subsidiaries'/'Consolidated' qualifier; the same source PDF also contains an earlier CONSOLIDATED Balance Sheet and Profit & Loss Account section headed 'Mercantile Bank PLC. and its Subsidiaries', which was correctly identified and NOT used, consistent with this bank's established SOLO reporting_basis). SOURCE PDF WAS A SCANNED IMAGE (0 lines extractable via pdftotext) -- recovered via OCR: rendered to PNG with pdftoppm at 250 DPI, then run through tesseract (--psm 6). Every balance-sheet and P&L subtotal was manually cross-checked against every internal arithmetic identity before being trusted -- balance-sheet identity (Total Assets = sum of 8 asset lines = Total Liabilities + Total Equity), Total Liabilities composition (Borrowings + Subordinated Bond + Perpetual Bond + Deposits + Other Liabilities), the full operating-income chain (Net Interest Income + Investment Income + Commission/Exchange/Brokerage + Other Operating Income = Total Operating Income), the expense/provision/tax/net-profit chain, the appropriation chain (Net Profit + Retained Surplus b/f = Appropriations + Retained Surplus c/f, cross-tied to the Balance Sheet's own Surplus-in-P&L line), Off-Balance-Sheet composition, and EPS (Net Profit / (Paid-up Capital / 10 par value)). This redundant-arithmetic approach caught and corrected specific OCR digit-substitution errors (documented per-period below) before any figure was accepted into this dataset; periods where a figure could not be confidently resolved this way were left as reported without forcing a correction. No digit-substitution errors found -- every balance-sheet and P&L subtotal (including the retained-earnings cross-tie to the Balance Sheet's own Surplus-in-P&L line) reconciled exactly or within BDT 1-2 (immaterial rounding) on the first OCR pass. This filing's own Jan-23-to-Mar-23 comparative column also independently reproduced both digit corrections made to quarterly/2023_Q1.json (Commission 1,105,397,628; Profit before provision 1,404,170,170), cross-validating that quarter.",
+  "source": {
+    "source_document": "mercanbank-quarterly-2024-q1-ocr.txt",
+    "source_path": "annual_reports/MERCANBANK/mercanbank-quarterly-2024-q1-ocr.txt",
+    "source_url": "https://www.mblbd.com/assets/reports/first/Un-audited_Financial_Statements_of_Mercantile_Bank_PLC.pdf",
+    "source_page_lines": "Solo 'Un-audited Balance Sheet As at Mar-24' and 'Un-audited Profit and Loss Account For the period ended Mar-24' (OCR'd; page numbers vary by filing)",
+    "retrieval_date": "2026-08-28",
+    "extraction_method": "OCR (pdftoppm 250dpi + tesseract --psm 6), source PDF had 0 extractable lines via pdftotext"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "cash_bank_balances",
+      "original_metric_name": "Cash",
+      "value": 17912.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "balance_with_other_banks",
+      "original_metric_name": "Balance with other banks and financial institutions",
+      "value": 5989.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "money_at_call",
+      "original_metric_name": "Money at call on short notice",
+      "value": 688.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 87669.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances/investments",
+      "value": 288455.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises, furniture and fixtures",
+      "value": 3424.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other assets",
+      "value": 9024.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_banking_assets",
+      "original_metric_name": "Non-banking assets",
+      "value": 45.08,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 413208.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "borrowings",
+      "original_metric_name": "Borrowings from other banks, financial institutions and agents",
+      "value": 21192.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "subordinated_debt",
+      "original_metric_name": "Non-convertible Subordinated Bond",
+      "value": 1200.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "perpetual_bond",
+      "original_metric_name": "Mercantile Bank Perpetual Bond",
+      "value": 3630.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other Accounts",
+      "value": 314073.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Other Liabilities",
+      "value": 46337.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 386434.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up capital",
+      "value": 11065.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total shareholders' Equity",
+      "value": 26774.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "reserve_fund",
+      "original_metric_name": "Statutory reserve + General reserve + Other reserve + FX translation + Surplus in P&L (calculated)",
+      "value": 15708.37,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_equity_minus_paid_up_capital"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities",
+      "value": 171947.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest income/Profit on investment (cumulative from Jan 1)",
+      "value": 5527.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense_cumulative",
+      "original_metric_name": "Interest/Profit Paid on deposits, borrowings etc. (cumulative from Jan 1)",
+      "value": 4805.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 721.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 693.39,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage (cumulative from Jan 1)",
+      "value": 1648.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other operating income (cumulative from Jan 1)",
+      "value": 732.48,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total operating income (cumulative from Jan 1)",
+      "value": 3795.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 2118.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit/(Loss) before provision (cumulative from Jan 1)",
+      "value": 1676.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_cumulative",
+      "original_metric_name": "Total provision (cumulative from Jan 1)",
+      "value": 474.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total profit/(Loss) before taxes (cumulative from Jan 1)",
+      "value": 1202.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Provision for Current Tax + Deferred Tax (cumulative from Jan 1)",
+      "value": 400.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (cumulative from Jan 1)",
+      "value": 802.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (cumulative from Jan 1)",
+      "value": 0.72,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

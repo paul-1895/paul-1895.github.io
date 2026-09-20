@@ -1,0 +1,57 @@
+{
+  "bank_id": "JAMUNABANK",
+  "bank_name": "Jamuna Bank PLC",
+  "reporting_date": "2026-06-30",
+  "financial_year": 2026,
+  "quarter": "Q2",
+  "period_note": "H1-CUMULATIVE ONLY (Jan 1 - Jun 30, 2026), JBL Solo basis. No FY2026 annual report exists yet (this dataset's Q4/annual series ends FY2025), so there is no embedded 'Variance' table to provide a discrete-quarter breakdown or Q1 2026 standalone figures for cross-checking -- this quarter is sourced entirely from Jamuna Bank's own website interim financial-statement PDF (jamunabankbd.com/financial-statements/), specifically its \"key features of the financial performance\" summary table for the period ended 30 June 2026. That PDF's main Balance Sheet and Profit and Loss Account pages are a scanned image (not machine-readable text, unlike most other years in this dataset) and were not OCR'd this pass -- only this summary table's own digital text (cash-flow-reconciliation and notes pages) was extracted. The source table itself is denominated 'In crore' (BDT 10 million per crore) -- converted to BDT_million here (multiplied by 10) for consistency with the rest of this dataset; cross-checked via the table's own prior-year comparative column: 561.29 crore (H1 2025 Operating Profit, prior-year column) = BDT 5,612.9m, which matches the sum of this dataset's own 2025_Q1 (2,584.88m) + 2025_Q2 (3,028.06m) discrete operating_profit figures (5,612.94m) almost exactly, confirming both the crore conversion and the JBL-Solo-column selection are correct. Q1 2026 alone (Jan-Mar) is not separately available from this source (only H1-cumulative is disclosed here) and its own standalone interim PDF is a full scanned document not processed this pass -- flagged as a gap; per this project's Half-Yearly-filing convention, this H1-cumulative figure is placed in the Q2 slot rather than fabricating a discrete Q2 by any other means. Supplemented with operating_profit_cumulative, profit_after_tax_cumulative, eps_cumulative, nav_per_share, nocfs_cumulative sourced from the \"key features of the financial performance\" summary table in this bank's own website interim financial-statement PDF for this same quarter (JBL Solo column; a JBL-consolidated column also appears alongside but is not used, for consistency with this dataset's Solo basis) -- these are cumulative-from-Jan-1 figures (the source table is explicitly framed \"for the period ended\" the quarter-end date), a different convention from the discrete-quarter operating_profit/operating_income/etc. above; both are kept, clearly suffixed.",
+  "source": {
+    "source_document": "Financial-statements-as-on-June-30-2026-Un-audited.pdf",
+    "source_path": "(downloaded to scratch, pdftotext'd, transcribed, PDF deleted per project policy)",
+    "source_url": "https://jamunabankbd.com/wp-content/uploads/2026/07/Financial-statements-as-on-June-30-2026-Un-audited.pdf",
+    "source_page_lines": "\"6.00 The key features of the financial performance are as follows\" table, Selective Notes section",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Operating Profit (cumulative from Jan 1, JBL Solo) (In crore, converted to BDT_million)",
+      "value": 5992.2,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Profit after taxation (cumulative from Jan 1, JBL Solo) (In crore, converted to BDT_million)",
+      "value": 3765.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (cumulative from Jan 1, JBL Solo)",
+      "value": 4.01,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "NAV per share (JBL Solo)",
+      "value": 30.61,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nocfs_cumulative",
+      "original_metric_name": "Net Operating Cash Flow per Share (NOCFS) (cumulative from Jan 1, JBL Solo)",
+      "value": -2025.0,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

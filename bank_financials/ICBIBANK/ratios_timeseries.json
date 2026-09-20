@@ -1,0 +1,470 @@
+{
+  "bank_id": "ICBIBANK",
+  "generated_at": "2026-08-25",
+  "notes": "This bank has had negative shareholders' equity throughout the entire researched period (2016-2024 confirmed; likely 2013-2015 too). ROE is mathematically distorted by negative equity and should be treated with caution; CAR is reported and genuinely negative (not a data error) \u2014 see insights.json. UPDATE (2026-08-27): Q1-Q3 interim quarters were added to bank_financials/ICBIBANK/quarterly/ (2013-2014 and 2017-2026; see sources.json) but are deliberately NOT added to this file's periods array, which remains Q4/annual-only by design (matching this dataset's project-wide convention). This is also a genuine necessity for this bank specifically: its interim filings never disclose CAR/CRAR or classified-investment/NPL percentages at all (confirmed across all 29 interim quarters extracted) -- only the annual/Q4 filing carries the two ratios (npl_ratio_pct, car_pct) this file exists to track, so a quarterly row here would always have those two fields null and would not fit this file's schema. Total assets, gross investments, deposits, equity, ROA and EPS are available quarterly and are tracked instead in each quarter's own bank_financials/ICBIBANK/quarterly/<year>_Q<n>.json file.",
+  "periods": [
+    {
+      "financial_year": 2012,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 15118.74,
+      "gross_loans": 11009.17,
+      "total_deposits": 12381.39,
+      "equity": -9214.82,
+      "npl_ratio_pct": {
+        "value": 60.78,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 89,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -7.02,
+        "basis": "reported"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -73.33,
+        "basis": "reported"
+      },
+      "eps": -1.6,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2013,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 14302.84,
+      "gross_loans": 9788.56,
+      "total_deposits": 11970.13,
+      "equity": -9895.57,
+      "npl_ratio_pct": {
+        "value": 73.31,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 82,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -4.76,
+        "basis": "reported"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -89.81,
+        "basis": "reported"
+      },
+      "eps": -1.02,
+      "yoy_growth_pct": {
+        "total_assets": -5.4,
+        "gross_loans": -11.09,
+        "total_deposits": -3.32,
+        "equity": -7.39
+      }
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 14022.94,
+      "gross_loans": 9230.32,
+      "total_deposits": 12015.69,
+      "equity": null,
+      "npl_ratio_pct": {
+        "value": 77.52,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 77,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -1.33,
+        "basis": "reported"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -97.27,
+        "basis": "reported"
+      },
+      "eps": -0.43,
+      "yoy_growth_pct": {
+        "total_assets": -1.96,
+        "gross_loans": -5.7,
+        "total_deposits": 0.38,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 12752.9,
+      "gross_loans": 9188.51,
+      "total_deposits": 11107.04,
+      "equity": null,
+      "npl_ratio_pct": {
+        "value": 76.14,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 83,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -1.11,
+        "basis": "reported"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -98.76,
+        "basis": "reported"
+      },
+      "eps": -0.21,
+      "yoy_growth_pct": {
+        "total_assets": -9.06,
+        "gross_loans": -0.45,
+        "total_deposits": -7.56,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 12257.72,
+      "gross_loans": 9352.43,
+      "total_deposits": 10893.98,
+      "equity": -10045.08,
+      "npl_ratio_pct": {
+        "value": 71.89,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 86,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -2.21,
+        "basis": "reported"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -108.49,
+        "basis": "reported"
+      },
+      "eps": -0.41,
+      "yoy_growth_pct": {
+        "total_assets": -3.88,
+        "gross_loans": 1.78,
+        "total_deposits": -1.92,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 11785.22,
+      "gross_loans": 8834.5,
+      "total_deposits": 11293.57,
+      "equity": -10451.59,
+      "npl_ratio_pct": {
+        "value": 80.04,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 78,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -3.44,
+        "basis": "reported"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -115.67,
+        "basis": "reported"
+      },
+      "eps": -0.61,
+      "yoy_growth_pct": {
+        "total_assets": -3.85,
+        "gross_loans": -5.54,
+        "total_deposits": 3.67,
+        "equity": -4.05
+      }
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 11429.69,
+      "gross_loans": 8633.64,
+      "total_deposits": 11518.75,
+      "equity": -10950.62,
+      "npl_ratio_pct": {
+        "value": 82,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 75,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -4.25,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -125.08,
+        "basis": "reported"
+      },
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": -3.02,
+        "gross_loans": -2.27,
+        "total_deposits": 1.99,
+        "equity": -4.77
+      }
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 11240.14,
+      "gross_loans": 8458.07,
+      "total_deposits": 11960.39,
+      "equity": -11374.37,
+      "npl_ratio_pct": {
+        "value": 84,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 71,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -3.77,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -133.11,
+        "basis": "reported"
+      },
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": -1.66,
+        "gross_loans": -2.03,
+        "total_deposits": 3.83,
+        "equity": -3.87
+      }
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 11260.02,
+      "gross_loans": 8565.23,
+      "total_deposits": 12434.12,
+      "equity": -11659.25,
+      "npl_ratio_pct": {
+        "value": 78.37,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 69,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -1.66,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -133.16,
+        "basis": "reported"
+      },
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 0.18,
+        "gross_loans": 1.27,
+        "total_deposits": 3.96,
+        "equity": -2.5
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 11583.03,
+      "gross_loans": 8435.11,
+      "total_deposits": 12925.58,
+      "equity": -12054.07,
+      "npl_ratio_pct": {
+        "value": 80.8,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 65,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -3.41,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -137.41,
+        "basis": "reported"
+      },
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 2.87,
+        "gross_loans": -1.52,
+        "total_deposits": 3.95,
+        "equity": -3.39
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 10405.37,
+      "gross_loans": 8135.28,
+      "total_deposits": 12121.92,
+      "equity": -12306.48,
+      "npl_ratio_pct": {
+        "value": 84.34,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 67,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -2.43,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -138.91,
+        "basis": "reported"
+      },
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": -10.17,
+        "gross_loans": -3.55,
+        "total_deposits": -6.22,
+        "equity": -2.09
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 10685.39,
+      "gross_loans": 7909.73,
+      "total_deposits": 12316.12,
+      "equity": -12869.92,
+      "npl_ratio_pct": {
+        "value": 87.5,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 64,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -5.27,
+        "basis": "reported"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -151.82,
+        "basis": "reported"
+      },
+      "eps": -0.85,
+      "yoy_growth_pct": {
+        "total_assets": 2.69,
+        "gross_loans": -2.77,
+        "total_deposits": 1.6,
+        "equity": -4.58
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 9243.04,
+      "gross_loans": 7415.88,
+      "total_deposits": 11196.71,
+      "equity": -13814.99,
+      "npl_ratio_pct": {
+        "value": 90.68,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 66.23,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -10.22,
+        "basis": "reported"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -171.95,
+        "basis": "reported"
+      },
+      "eps": -1.42,
+      "yoy_growth_pct": {
+        "total_assets": -13.5,
+        "gross_loans": -6.24,
+        "total_deposits": -9.09,
+        "equity": -7.34
+      }
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 8638.26,
+      "gross_loans": 6315.38,
+      "total_deposits": 10864.73,
+      "equity": -14623.9,
+      "npl_ratio_pct": {
+        "value": 84.29,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 58.13,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -9.36,
+        "basis": "reported"
+      },
+      "roe_pct": null,
+      "car_pct": {
+        "value": -291.87,
+        "basis": "reported"
+      },
+      "eps": -1.22,
+      "yoy_growth_pct": {
+        "total_assets": -6.54,
+        "gross_loans": -14.84,
+        "total_deposits": -2.96,
+        "equity": -5.86
+      },
+      "metric_note": "roe_pct is null (not calculated) per the ROE-must-be-null-when-equity-<=0 rule: Total Shareholders' equity is -BDT 14,623.90m, so profit/equity would be mathematically distorted (a loss divided by negative equity can read as positive). This departs from how FY2012-2024 in this same series handled negative equity (a computed value plus a metric_note caveat rather than null) \u2014 flagged for the orchestrating session to decide whether to reconcile the historical entries to the same convention. yoy_growth_pct.equity uses (new-old)/abs(old) so a deepening negative equity position reads as negative growth rather than being sign-flipped to a misleading positive."
+    }
+  ]
+}

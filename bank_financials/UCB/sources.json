@@ -1,0 +1,131 @@
+{
+  "bank_id": "UCB",
+  "bank_name": "United Commercial Bank PLC",
+  "website": "https://www.ucb.com.bd",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2023 total assets of 685,012m match the figure under this report's 'Balance Sheet' (solo) heading; 687,559m is the consolidated total.",
+  "notes": "2026 Q1 and Q2 (Half-Yearly) added 2026-09-12 from UCB's own investor-relations Financial Statements archive (ucb.com.bd/reports/financial-statements/), SOLO basis, both natively-downloadable PDFs (fetched directly via curl, no Cloudflare/WAF issue this time) but scanned images requiring direct visual page-read (not tesseract OCR) since pdftotext returned 0 lines for both -- see quarterly/2026_Q1.json and 2026_Q2.json for full extraction/validation detail, including the Q2 filing's bonus discrete Apr-Jun column used to cross-check against Q1. annual_reports/UCB archive covers 2011-2024 (14 years of clean pdftotext .txt) plus ucb-audited-fs-2025-OCR.txt (a lower-provenance OCR transcript, NOT UCB's actual FY2025 annual report -- see the 2025 (Q4) source entry below for why the real annual report was unreachable, and the file's own header for OCR quality caveats per page). 2011-2025 (15 years) now processed into structured financial data. Q4/year-end coverage for 2011-2024 achieved from four overlapping annual reports' unusually detailed 'Five Years' Financial Summary' / '5 Years' Financial Summary' tables (balance sheet, income statement, capital, credit-quality, and share information all in one place); FY2025 was reconstructed from the audited Balance Sheet, P&L Account, and capital/asset-quality notes directly (see below). KNOWN DISCREPANCY: FY2023 Net Asset Value per share is 29.68 (BDT) in FY2023's own contemporaneous annual report (ucb-annual-report-2023.txt, used in 2023_Q4.json, kept unchanged per project convention preferring contemporaneous figures) vs. 28.30 (BDT) as a restated comparative in ucb-annual-report-2024.txt's own 'Comparative numbers are restated in line with current year' five-year table -- likely caused by retrospective EPS/NAV restatement (BAS 33) for a stock dividend issued in 2024 relating to FY2023 profit. All other FY2020-FY2023 comparative figures in the FY2024 report's five-year table (34 metrics x 4 years) reproduce the already-stored 2020_Q4-2023_Q4.json figures exactly with zero divergence. Q1/Q2/Q3 (2013-2016) added in the 2026-08-26 session from the annual reports' own embedded 'Evaluation of Quarterly Financial Statements' audit-committee table -- see the dedicated source entries below for full detail, including the discovery that the FY2015 and FY2016 annual report PDFs are pure image scans with no embedded text layer (explaining why annual_reports/UCB/ucb-annual-report-2015.txt and -2016.txt, though otherwise usable, have corrupted number formatting specifically in that one table). Q1/Q2/Q3 for 2017-2025 (all 27 possible quarters) added in the 2026-08-27 session from UCB's own website interim-financial-statements archive (a different, richer source than the annual-report table, confirming the prior session's premise that it was worth trying) -- see the dedicated 'UCB's own investor-relations Financial Statements archive' source entry below for full extraction-methodology detail (OCR of image-scan PDFs for 2017-2023/2025-Q1-Q2, targeted re-OCR of a corrupted embedded font for 2024/2025-Q3) and the one genuine restatement found (2019 Q3). Only 2011 Q1-2012 Q3 unaudited interim data remains not fully researched (see that source entry below): the same archive page lists the filings, one (2011 Q1) was fully extracted and cross-checked but not yet written up, and three more (2011 Q2/Q3, all of 2012) are downloaded-and-confirmed-to-exist but not yet extracted.",
+  "sources": [
+    {
+      "period": "2011-2015 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "ucb-annual-report-2015.txt (\"Five Years' Financial Summary\", p.14-15)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "note": "FY2012 shareholders' equity had a digit-transposed OCR value (\"18,7102\"); corrected to BDT 18,171.01mn via the balance sheet identity."
+    },
+    {
+      "period": "2015-2019 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "ucb-annual-report-2019.txt (\"Five Years' Financial Summary\", p.6-10)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "note": "2015 figures used from this report (matches the 2015 report's own table exactly, cross-validated)."
+    },
+    {
+      "period": "2019-2023 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "ucb-annual-report-2023.txt (\"5 Year's Financial Summary\", p.18-21)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020,
+        2021,
+        2022,
+        2023
+      ]
+    },
+    {
+      "period": "2024 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "ucb-annual-report-2024.txt (\"5 Years' Financial Summary\", report's own pp.20-21, lines 947-1049); cross-validated against the same report's \"Horizontal Analysis (Stand Alone)\" Balance Sheet and P&L tables, lines 1053-1099",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "FY2024 was UCB's sector-wide asset-quality recognition year: NPL 5.50%->14.90%, Total Provision (excl. tax) 4,548m->12,933m, specific-provision coverage of NPL 49.99%->26.18%, PAT 2,685m->608m, ROE 6.41%->1.44%. CAR moved into shortfall for the first time in the series: 12.58%->10.59% vs required-with-buffer 63,587.78m (actual Total Capital 53,859m), a reported Capital Surplus/(Shortage) of (9,728.77)m. Authorized capital raised 15,000m->25,000m. This report's own FY2023 comparative column shows NAV/share restated to 28.30 vs 29.68 in FY2023's own report -- see top-level notes field for the full discrepancy record; all other FY2020-2023 comparative figures reproduce exactly."
+    },
+    {
+      "period": "2025 (Q4)",
+      "type": "audited_financial_statements_ocr",
+      "source_document": "\"Auditors Report & Audited Consolidated and Separate Financial Statements for the Year ended 31 December 2025\" (PDF, published 30 April 2026); downloaded from ucb.com.bd, OCR'd with tesseract 5.5.3 (150dpi index pass across all 97 pages, 500dpi targeted re-render of pages 1-9 and the Balance Sheet/P&L/capital-adequacy/asset-quality pages), then the PDF deleted per project convention. The OCR transcript IS retained, as annual_reports/UCB/ucb-audited-fs-2025-OCR.txt, but under a deliberately different naming convention from the other 14 ucb-annual-report-*.txt files (it is not the bank's own annual report, and is a lower-provenance, only-partly-verified derived artifact -- see the file's own header for exactly which pages were re-verified at 500dpi vs. only lightly OCR'd for section-heading location); supplementary sources: UCB's Board-approved Price Sensitive Information notice dated 30 April 2026 (EPS/NAV per share, Solo), and this project's own historical_prices/json_files/UCB.json (30-Dec-2025 DSE closing price, the last trading day of FY2025)",
+      "source_url": "https://www.ucb.com.bd/reports/financial-statements/auditors-report-audited-consolidated-and-separate-financial.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated_via_ocr_with_caveats",
+      "used_for_years": [
+        2025
+      ],
+      "note": "UCB's actual FY2025 Annual Report (the format used for all prior years, with its 'Five Years' Financial Summary' table) could not be retrieved: the bank's own annual-report listing page links FY2025 to https://uds.ucb.com.bd/files/annual-report-2025.pdf, but that subdomain refused every connection attempt (direct curl and an independent WebFetch path both got ECONNREFUSED -- the host appears to be down, not merely sandbox-blocked); the analogous URL on the main ucb.com.bd domain (reports/shareholder-reports/annual-report/annual-report-2025.pdf) returns a 1-page placeholder PDF with no extractable text or images; Wayback Machine's CDX API returned zero captures for both URLs. Fell back to the audited financial-statements-only PDF, which is itself a genuine 150dpi scan (17,120,770 bytes, confirmed via pdfimages -- not a Wayback 1MiB-truncation artifact) with 0 pdftotext-extractable lines, requiring OCR as an explicit, documented exception to the 'don't retry a 0-line PDF' rule (there is no later report to recover FY2025 from instead). OCR reliability was cross-validated three ways: (1) this document's own FY2024 comparative column reproduces the already-stored, text-extracted 2024_Q4.json figures exactly (total assets 768,779m, equity 41,791m, deposits 554,215m, CAR 10.59%, etc.); (2) every FY2025 figure satisfies its own balance-sheet/P&L/capital identities to the taka; (3) the cleanly-OCR'd (non-tabular, prose) 'Basis for Qualified Opinion' paragraph on page 2 independently corroborates the note-level figures in crore. One 500dpi-vs-150dpi digit correction was required and is documented in the quarterly file's period_note (a BDT 600m Total-Operating-Expense identity break, resolved). HEADLINE FINDING: UCB PLC received a QUALIFIED audit opinion for FY2025 -- a BDT 5,155.04 crore (51,550.4m) shortfall in loan-loss provisioning plus a BDT 439.89 crore (4,398.9m) other-assets shortfall (incl. an unrecognized BDT 438.02 crore impairment on subsidiary UCB Fintech Company Ltd / 'Upay'), combined BDT 5,594.93 crore (55,949.3m), which Bangladesh Bank explicitly permitted the bank to leave unrecognized in finalizing its FY2025 accounts (letter BSD-5(Wing-3)/104/2026-410, 29 April 2026). The auditor states that without this forbearance the bank 'would have incurred an aggregate loss of BDT 3,278.88 crore' (-32,788.8m, vs the reported +635.8m profit) 'and the CRAR would have declined to 0.93%' (vs the reported 8.42%). NPL rose again to 15.50% (from 14.90%) and specific-provision coverage of NPL fell to 20.13% (from 26.18%) -- a third consecutive year of eroding coverage. market_price_per_share, nav_per_share and eps are NOT from the audited-FS source (see supplementary sources above); ldr_pct is a simple Gross-Loans/Deposits calculation, not directly comparable to the bank's own historically-reported regulatory Credit-deposit ratio (see quarterly file's period_note for the reconciliation check that establishes this)."
+    },
+    {
+      "period": "2013-2016 Q1/Q2/Q3",
+      "type": "annual_report_embedded_quarterly_evaluation_table",
+      "source_document": "\"Evaluation of Quarterly Financial Statements by the Audit Committee and by the Board\" -- a BSEC-mandated corporate-governance disclosure table embedded in UCB's own FY2013-FY2016 annual reports (first appears in FY2013, following BSEC's Corporate Governance Notification of 07 August 2012; discontinued from FY2017 onward -- see the 2017-2025 entry below)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2013, 2014, 2015, 2016],
+      "note": "FY2013 and FY2014: table extracted cleanly from the existing annual_reports/UCB/*.txt (native pdftotext, well-formatted, no OCR needed). FY2015 and FY2016: the existing .txt's rendering of this specific table was corrupted (missing thousand-separators/decimals; a ToC bullet just above it reads 'oO ©) Audit Committee & by the Board'), because -- discovered this session -- these two years' source PDFs are actually 146dpi image scans with NO embedded text layer at all (pdffonts confirms zero fonts across the whole document), meaning the existing .txt for these two years was itself produced by an earlier, lower-quality OCR pass, not native pdftotext. Re-downloaded both PDFs directly from ucb.com.bd (Annual-report-2015-part1.pdf, Annual-report-2016.pdf), re-rendered the specific page at 400dpi (pdftoppm), and re-transcribed it directly plus independently cross-checked with a fresh tesseract 5.5.3 OCR pass at the same resolution -- the two methods agreed on all 68 data cells in each table. Both PDFs deleted immediately after extraction per project policy; only the resulting quarterly/*.json files and this note are retained (the pre-existing, corrupted annual_reports/UCB/*.txt files were left exactly as-is/unmodified). Three data-quality findings surfaced and are cross-referenced in the affected quarterly/*.json files' period_note: (1) FY2013's own table has its NAV-per-share row's 1st- and 3rd-quarter columns transposed (caught by recomputing NAV from the same table's own equity/paid-up-capital rows, and confirmed via FY2014's comparative column); (2) FY2013's own table shows Q2-2013 net profit after tax as 4,058.69, a digit-extraction error -- FY2014's comparative column and the equity roll-forward both independently confirm 1,058.69; (3) FY2016's comparative-to-FY2015 column shows NAV/share of 30.59 vs. FY2015's own contemporaneous 25.49 (kept unchanged here, per project convention preferring contemporaneous figures) -- unlike FY2015's comparative EPS (3.77), which is fully explained by a standard BAS-33 bonus-share retrospective adjustment (3.96/1.05=3.77), the NAV figure does not reconcile against FY2015's own unchanged equity and actual year-end share count, and looks like a genuine computation error in UCB's FY2016 report (it matches equity divided by the OLD, pre-2015-bonus share count instead of the correct one)."
+    },
+    {
+      "period": "2011-2012 Q1/Q2/Q3",
+      "type": "annual_report_embedded_quarterly_evaluation_table",
+      "status": "confirmed_unavailable",
+      "retrieval_date": "2026-08-26",
+      "note": "Checked both years' full table of contents and corporate-governance sections in annual_reports/UCB/ucb-annual-report-2011.txt and ucb-annual-report-2012.txt: no 'Evaluation of Quarterly Financial Statements' table (or any equivalent) exists in either report. Consistent with the table's introduction being driven by BSEC's Corporate Governance Notification dated 07 August 2012 -- it first appears in the FY2013 report. This is a genuine non-existence, not a research gap; standalone (non-annual-report) interim financial statements for 2011-2012 were not separately searched for (see the 2017-2025 entry below for that still-open avenue)."
+    },
+    {
+      "period": "2017-2025 Q1/Q2/Q3 (unaudited interim) -- re-confirmed annual-report route is dead",
+      "type": "annual_report_embedded_quarterly_evaluation_table",
+      "status": "confirmed_unavailable",
+      "retrieval_date": "2026-08-27",
+      "notes": "Re-checked this session (grep across every annual_reports/UCB/*.txt for 2017-2025, incl. the FY2025 OCR transcript, for 'Evaluation of Quarterly' / 'audit committee and.*board' / close variants): confirmed again that UCB discontinued the embedded 'Evaluation of Quarterly Financial Statements' table after FY2016 -- FY2017 through FY2025 retain only a single generic BSEC compliance-checklist row with no actual figures. This dead end from the prior session stands; the successful route (below) was UCB's own website interim-statements archive, not the annual report."
+    },
+    {
+      "period": "2017 Q1 - 2025 Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "UCB's own investor-relations 'Financial Statements' archive: https://www.ucb.com.bd/know-ucb/investor-relations/financial-statements (paginated, 65 documents total spanning 2004/2011-2026, found this session -- a genuinely different and much richer source than the FY2013-2016 annual-report-embedded table, confirming the task's premise). Each period's exact filing URL is recorded in that quarter's own quarterly/<year>_<quarter>.json source.source_url field.",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years_quarters": ["2017_Q1","2017_Q2","2017_Q3","2018_Q1","2018_Q2","2018_Q3","2019_Q1","2019_Q2","2019_Q3","2020_Q1","2020_Q2","2020_Q3","2021_Q1","2021_Q2","2021_Q3","2022_Q1","2022_Q2","2022_Q3","2023_Q1","2023_Q2","2023_Q3","2024_Q1","2024_Q2","2024_Q3","2025_Q1","2025_Q2","2025_Q3"],
+      "note": "All 27 possible quarters in the 2017-2025 window were found and extracted -- the full block the prior session flagged as the biggest unattempted gap. Two distinct extraction-quality problems were encountered and solved: (1) FY2017 through FY2023 and FY2025-Q1/Q2 filings are pure image scans with zero embedded fonts (pdffonts confirms 0 fonts each) -- extracted via tesseract 5.5.3 OCR, a 150dpi full-document pass first to locate each year's Solo ('BALANCE SHEET' / 'PROFIT AND LOSS ACCOUNT' heading without the 'CONSOLIDATED' prefix, per this project's Solo-over-Consolidated preference) and Notes pages (page layout/count is not consistent year to year), since UCB's Notes-page EPS/NAVPS/NOCFPS disclosure format (introduced partway through 2018) gives the cleanest, most reliably-OCR'd net_profit_after_tax_cumulative/eps_cumulative/nav_per_share/nocfps_cumulative figures once present. (2) FY2024 (all 3 quarters) and FY2025 Q3 filings DO have an embedded text layer, but it uses a corrupted font character-to-glyph mapping (a different failure mode from a pure scan) that makes pdftotext's numeric-cell output unusable even though headings extract fine -- solved by re-rendering the specific pages at 300dpi and OCR'ing the rendered image instead, which reads cleanly since the underlying vector graphics are undamaged. Every quarter's key totals (Total Assets, Total Liabilities, Total Shareholders' Equity, Off-Balance-Sheet total) were cross-checked against the balance-sheet identity (Assets = Liabilities + Equity) and, where a specific OCR pass corrupted or truncated one cell (common on the 'Total Shareholders' Equity' row specifically, which recurs across ~12 of the 27 quarters), the true value was reconstructed from that same table's own uncorrupted component rows (Paid-up Capital + Share Premium + Statutory/General/Other Reserve + Retained Earning) and confirmed to reconcile the identity to the taka. Extensive cross-quarter validation was also used: each year's own comparative column (same period, prior year) was checked against that prior period's own contemporaneously-reported figure wherever both existed, catching one genuine restatement (below) and confirming everything else matched exactly, including several cases where a figure illegible in one year's OCR was instead recovered cleanly from an adjacent year's comparative column (documented per-quarter in the affected quarterly/*.json period_note). GENUINE DISCREPANCY FOUND (kept, not silently resolved): 2019 Q3's own contemporaneous report states net_profit_after_tax_cumulative (Bank) = BDT 1,885,991,908 for Jan-Sep 2019; the FY2020 Q3 report's comparative column for the same period instead shows BDT 1,816,792,548 (a ~3.7% / BDT 69.2m gap), with no stated reason. Per project convention the contemporaneous 2019 figure is kept in 2019_Q3.json; the restatement is recorded in that file's period_note rather than adjusted away. Two smaller NOCFPS contemporaneous-vs-later-comparative mismatches (2023 Q3, 2024 Q2) were similarly kept as their own contemporaneous figures and documented the same way. All PDFs were downloaded directly from ucb.com.bd, OCR'd/re-rendered as described, and deleted immediately after extraction per project policy; the resulting extracted text (one file per quarter) is retained as annual_reports/UCB/ucb-interim-<year>-<q>.txt."
+    },
+    {
+      "period": "2026 Q1 - Q2 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "ucb-unaudited-signed-fs-for-q1-2026.pdf; unaudited-financial-statements-q2-2026.pdf",
+      "source_url": "https://www.ucb.com.bd/reports/financial-statements/ucb-unaudited-signed-fs-for-q1-2026.pdf ; https://www.ucb.com.bd/reports/financial-statements/unaudited-financial-statements-q2-2026.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-09-12",
+      "status": "extracted_and_validated",
+      "used_for_years_quarters": ["2026_Q1", "2026_Q2"],
+      "note": "SOLO/Bank basis (the filings' own 'BALANCE SHEET'/'PROFIT AND LOSS ACCOUNT' headings without the 'CONSOLIDATED' prefix), matching the convention already established for 2017-2025. Both PDFs downloaded directly from ucb.com.bd with no access issue (unlike UCB's FY2025 audited-FS episode) -- confirmed correct basis via exact match of each filing's own 31-Dec-2025 comparative column against this dataset's stored 2025_Q4.json. Both are scanned images with no usable pdftotext output; read via direct visual inspection of 200dpi page renders rather than OCR. Neither filing has an NPL/loan-classification note or a CAR/CRAR note -- npl_ratio_pct and car_pct remain gaps for both quarters, consistent with every other UCB interim quarter in this dataset since FY2016. Full validation detail in each quarter's own quarterly/*.json period_note, including the Q2 filing's bonus discrete Apr-Jun column (cross-checks exactly against Q1 + Q2 = H1)."
+    },
+    {
+      "period": "2011 Q1 - 2012 Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "partially_researched_not_completed",
+      "retrieval_date": "2026-08-27",
+      "notes": "The same ucb.com.bd investor-relations archive (see entry above) also lists genuine standalone interim filings back to 2011 -- Q1/Q3 2011 and 2012, Balance-Sheet-only 31-Mar-2011, and Half-Yearly 2011/2012 -- meaning a full FY2011-2012 is very likely recoverable, consistent with the task's premise. 2011 Q1 ('Balance Sheet (Un-audited) 31 March 2011.pdf') was found to be a clean, fully native-text (non-scanned, no OCR needed) 26-page PDF; it was extracted, fully cross-checked (Solo Balance Sheet + P&L + Cash Flow all reconcile to the taka), and written up as quarterly/2011_Q1.json (the only caveat: this specific filing does not break out a Solo off-balance-sheet total, only a Consolidated one, used as a reliable proxy since the very next filing, Q3 2011, shows the two are identical -- see that file's period_note). 2011 Q2 (Half-Yearly), 2011 Q3, and all of 2012 remain unattempted: 2011 Q3's PDF is a single extremely dense page cramming Consolidated AND Solo Balance-Sheet/P&L/Cash-Flow/Statement-of-Changes-in-Equity into a 3-column newspaper-style layout that pdftotext's column-linearization badly interleaves (native text, but not reliably parseable without a slower visual/coordinate-based re-extraction -- a partial manual read did confirm Solo Total Assets of BDT 152,535.63m and NAVPS of 18.88 for 30-Sep-2011, but the full line-item set was not cleanly separated in the time available); 2012's three filings (Q1, Half-Yearly, Q3) are pure image scans requiring the same OCR pipeline used for 2017-2023 above. None of these three are a research dead end -- all are downloaded-and-confirmed-to-exist; they are simply not yet extracted. This is the natural next slice of work for a future session."
+    }
+  ]
+}

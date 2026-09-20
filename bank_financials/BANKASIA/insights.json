@@ -1,0 +1,91 @@
+{
+  "bank_id": "BANKASIA",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "credit_risk",
+      "severity": "moderate",
+      "statement": "NPL ratio spiked from 6.70% (FY2023) to 11.40% (FY2024) \u2014 the sharpest single-year jump in this bank's 15-year record \u2014 but then IMPROVED to 8.38% (FY2025), unlike the continued deterioration seen at AB Bank and Al-Arafah Islami Bank over the same period. Still meaningfully above the 2017-2021 average of ~4.5%.",
+      "metrics": [
+        "npl_ratio_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "profitability",
+      "severity": "info",
+      "statement": "ROE reached 13.29% in FY2025, its best level in the entire 2011-2025 series except for the anomalous 19.61% in FY2011 \u2014 recovering from 9.04% (FY2024) and 8.24% (FY2023) even as NPLs rose, driven by strong growth in investment income (BDT 26.4bn in FY2025 vs BDT 14.3bn FY2024).",
+      "metrics": [
+        "roe_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "capital_strength",
+      "severity": "info",
+      "statement": "Capital Adequacy Ratio has stayed in a healthy 11-18% band throughout 2011-2025 (15.32% at FY2025), never approaching the regulatory minimum even during the FY2024 NPL spike \u2014 capital strength has not been a constraint here, unlike at AB Bank (CAR went negative) or Al-Arafah (CAR declined toward its floor).",
+      "metrics": [
+        "car_pct"
+      ],
+      "periods": [
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "funding",
+      "severity": "info",
+      "statement": "Credit-Deposit Ratio (this bank's LDR) fell sharply from 72.48% (FY2023) to 55.77% (FY2025) even as both loans and deposits grew \u2014 deposits (BDT 456.5bn FY2025) grew much faster than loans (BDT 294.7bn FY2025), indicating the bank has been building a larger liquidity buffer / investment book rather than accelerating lending, consistent with the large jump in the 'Investments' line (BDT 219.8bn FY2025 vs BDT 102.8bn FY2022).",
+      "metrics": [
+        "ldr_pct"
+      ],
+      "periods": [
+        "2022_Q4",
+        "2023_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "interest_rate_risk",
+      "severity": "high",
+      "statement": "Net interest income collapsed and turned structurally NEGATIVE starting in 2025, on a separate/solo basis - a pattern invisible in the annual-only dataset before this session's quarterly deepening pass. Discrete quarterly NII: BDT 1.57bn (2024 Q3) -> BDT 0.06bn (2025 Q1, near zero) -> BDT -1.19bn (2025 Q2) -> BDT -0.97bn (2025 Q3) -> BDT -0.38bn (2026 Q1) -> BDT -1.75bn (2026 Q2) - five consecutive quarters of near-zero-or-negative NII. This is confirmed independently at the FULL-YEAR level by the FY2025 annual report's own summary table: Interest Income BDT 28,698.96m vs Interest Expense BDT 30,076.05m, i.e. a full-year NII of BDT -1,377.09m - the two independently-sourced figures (quarterly interims vs annual report) corroborate each other. The bank has stayed profitable through this (NPAT positive in 4 of these 6 quarters) only because investment income and fee/commission income have more than offset the negative interest margin - a materially riskier earnings mix than the NII-driven profitability typical of the 2014-2023 period in this same dataset.",
+      "metrics": [
+        "net_interest_income",
+        "interest_income",
+        "interest_expense"
+      ],
+      "periods": [
+        "2024_Q3",
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3",
+        "2025_Q4",
+        "2026_Q1",
+        "2026_Q2"
+      ]
+    },
+    {
+      "category": "earnings_quality",
+      "severity": "moderate",
+      "statement": "2024 Q3 (discrete, separate basis) shows a rare pattern: profit before tax was still positive at BDT 346.8m, but a current-tax charge of BDT 1.38bn for that single quarter (as printed in the filing's own 'July to Sep 2024' column - not a figure this dataset derived by subtraction) exceeded pre-tax profit outright, producing a discrete-quarter NET LOSS of BDT -1,033.2m despite the operating business being profitable that quarter. The cumulative Jan-Sep 2024 figures were still comfortably profitable (PBT BDT 4,378.7m, NPAT BDT 1,978.7m), so this is a single-quarter tax-timing effect, not a sign of operating distress - but it illustrates that this bank's tax provisioning is lumpy across quarters within a year and any quarter-only (non-cumulative) reading of profitability here can be misleading without checking the cumulative column too.",
+      "metrics": [
+        "profit_before_tax",
+        "net_profit_after_tax"
+      ],
+      "periods": [
+        "2024_Q3"
+      ]
+    }
+  ],
+  "historical_context": "Bank Asia shows a materially different trajectory from AB Bank (ABBANK) and Al-Arafah Islami Bank (ALARABANK) over the same 2023-2025 window covered so far in this dataset: all three banks saw NPL ratios rise in FY2024 (part of the broader 2024-2025 Bangladesh banking-sector asset-quality stress), but Bank Asia's rise was smaller, and its FY2025 ROE and CAR both improved rather than continuing to deteriorate. This is an early, genuine example of the cross-bank differentiation this project is meant to surface \u2014 not every DSE bank experienced the crisis the same way. The 2026-08-26 quarterly deepening pass (2014-2025 Q1-Q3, 32 new quarters) revealed that Bank Asia's FY2025 profitability recovery (noted above) coexists with a much less healthy underlying trend once viewed at quarterly resolution: net interest income - the core, most durable source of bank earnings - went structurally negative for 5 of the last 6 quarters on record (2025 Q2 through 2026 Q2). The annual figures alone would not have surfaced this; it only became visible once Q1-Q3 data existed to compare against Q4/annual.",
+  "data_gaps": "2026-08-26 update: this session extracted 32 additional quarters (2014 Q1-Q3, 2015 Q1-Q2, 2016 Q1-Q3, 2017 Q1-Q3, 2018 Q1 and Q3, 2019-2025 Q1-Q3), bringing Q1-Q3 coverage to essentially complete for 2016-2025 and largely complete back to 2014. Genuine remaining gaps, not fabricated or annual-backfilled: 2010-2013 entirely, 2015 Q3, and 2018 Q2 - every candidate URL for these 404s on the live bankasia-bd.com site AND on Wayback Machine's playback layer (confirmed across 2 retry rounds this session, even though Wayback's own CDX index lists captures for all of them), so this is a persistent access blocker worth re-checking in a future session rather than a research gap. NPL/CAR/provision-coverage/ROA/ROE were not computed for any Q1-Q3 quarter (this dataset's usual annualization/averaging convention for these ratios is not yet defined for quarterly cadence, and asset-quality figures are not disclosed in these unaudited interim statements) - only total_assets, gross_loans, total_deposits, equity, LDR (calculated), EPS, and YoY growth are populated for the new quarterly periods in ratios_timeseries.json. Q2 2026 remains on a CONSOLIDATED basis (only version published at retrieval time) while every other period including all newly-added ones is separate/solo - not directly comparable without adjustment."
+}

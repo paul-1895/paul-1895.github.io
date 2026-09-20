@@ -1,0 +1,215 @@
+{
+  "bank_id": "ISLAMIBANK",
+  "generated_at": "2026-08-27",
+  "methodology": "Derived from bank_financials/ISLAMIBANK/quarterly/*.json (FY2011-FY2025 year-end Q4/annual, Solo basis, plus Q1-Q3 unaudited interim quarters for 2022-2026 added 2026-08-27) and ratios_timeseries.json. Every figure quoted is a reported value from Islami Bank's own audited annual report 'Five Years Performance' table for that year or its own un-audited interim financial statements for interim quarters, or an explicitly-labelled ratio/derivation computed from them (provision coverage = provision against classified investment / classified investment; unprovided exposure = classified investment minus provision held). Islami Bank is Shariah-compliant: 'General Investment' is its financing book, 'Classified Investment' its non-performing financing, and 'Net Investment Income' its equivalent of net interest income — the conventional names are used below for comparability. Each year comes from its own contemporaneous report except FY2011, FY2018 and FY2020 (unusable scans) and three FY2024 capital lines (see sources.json). No figure is interpolated or estimated. Interim quarters do not disclose the absolute Classified Investment balance, only the provision held/movement against it and (from 2025 onward) an explicit required-vs-maintained provision adequacy note; both are used below where they add genuinely new information not visible in the annual 'Five Years Performance' table.",
+  "risk_signals": [
+    {
+      "category": "asset_quality_break_npl_to_half_the_book",
+      "severity": "critical",
+      "statement": "Classified investment went from 69,188m (4.32% of the financing book) at end-FY2023 to 657,157m (42.36%) at end-FY2024 and 943,226m (49.65%) at end-FY2025. Almost exactly half of Islami Bank's financing book is now non-performing. For context, the reported ratio never left a 2.71%-6.46% band across the thirteen years FY2011-FY2023. The FY2024 jump was recognised in the FY2024 report itself, not restated later.",
+      "metrics": [
+        "classified_loans",
+        "npl_pct",
+        "gross_loans"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "provisioning_almost_absent_against_recognised_npls",
+      "severity": "critical",
+      "statement": "This is the defining feature of Islami Bank's position and the reason it still reports a profit. Provision held against classified investment is 58,876m against 943,226m of classified investment — 6.24% coverage, down from 39.08% at end-FY2023. That leaves 884,350m of unprovided classified exposure, 12.7 times the bank's 69,624m of shareholders' equity. The FY2025 provision CHARGE was just 1,372m, down from 10,269m in FY2024 and 6,112m in FY2023, in the very year classified investment grew by 286,069m. The bank's own table also concedes the shortfall directly: it reports required provision on objective criteria of 72,472m against 58,876m held.",
+      "metrics": [
+        "provision_classified",
+        "provision_required_classified",
+        "classified_loans",
+        "provision_charge",
+        "total_equity"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "reported_profit_is_a_function_of_under_provisioning",
+      "severity": "critical",
+      "statement": "Islami Bank reported a profit after tax of 971m in FY2024 and 1,074m in FY2025 while carrying a 49.65% non-performing ratio. Those profits exist because provisioning was cut to 1,372m in FY2025 rather than raised. Provisioning the 884,350m of unprovided classified exposure even partially would eliminate the profit and the equity: full provision is roughly 12.7 times equity. The reported FY2025 profit should not be read as evidence that this bank is trading through the shock.",
+      "metrics": [
+        "profit_after_tax",
+        "provision_charge",
+        "classified_loans",
+        "provision_classified"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "capital_below_regulatory_minimum_with_large_deficit",
+      "severity": "critical",
+      "statement": "The capital adequacy ratio fell from 12.62% (FY2023) to 7.57% (FY2024) to 6.42% (FY2025), against a Basel III minimum of 10%. The bank's own table reports the resulting shortfall as an equity/capital deficit of 65,481m in FY2024 and 93,457m in FY2025, having reported a small SURPLUS of 1,072m as recently as FY2023. Regulatory capital itself fell only modestly (108,377m to 98,552m); the ratio collapsed because risk-weighted assets jumped from 858,436m to 1,536,074m as the reclassified exposures picked up risk weight.",
+      "metrics": [
+        "car_pct",
+        "capital_surplus_deficit",
+        "total_capital",
+        "risk_weighted_assets"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "core_earnings_halved",
+      "severity": "high",
+      "statement": "Net investment income — the Shariah equivalent of net interest income — fell from 39,335m (FY2023) to 30,911m (FY2024) to 18,330m (FY2025), a 53% decline in two years, as half the financing book stopped generating income while profit paid on deposits rose to 105,552m. Expressed against the financing book the margin fell from 2.46% to 0.98%. Unlike IFIC, Islami Bank's core margin is still positive, but it has halved in two years.",
+      "metrics": [
+        "net_interest_income",
+        "profit_paid_on_deposits",
+        "investment_income"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "deposit_growth_and_financing_ratio_at_series_high",
+      "severity": "high",
+      "statement": "Deposits grew 13.9% in FY2025 to 1,818,203m, the fastest growth in the series since FY2012, during a year with a 49.65% non-performing ratio and a 93,457m capital deficit. The investment-deposit ratio simultaneously reached 96.72%, its highest in the fifteen-year series and up from 79.74% in FY2021, meaning almost every taka of deposits is deployed in a book that is half non-performing.",
+      "metrics": [
+        "total_deposits",
+        "ldr_pct"
+      ],
+      "periods": [
+        "2021_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "workforce_contraction",
+      "severity": "medium",
+      "statement": "Headcount fell from 21,864 (FY2024) to 17,730 (FY2025), a loss of 4,134 staff or 18.9% in one year, while the branch count was unchanged at 400. This is the only year in the series in which employment fell at all; it had risen every year from 11,465 in FY2011.",
+      "metrics": [
+        "num_employees",
+        "num_branches"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "long_pre_crisis_growth_record",
+      "severity": "info",
+      "statement": "Before the break, Islami Bank was the largest and one of the steadiest private banks in the country: total assets compounded at 14.76% a year from FY2011 to FY2023 (389,192m to 2,031,533m), the classified ratio stayed between 2.71% and 6.46% throughout, and reported return on equity ran between 6.28% and 17.42% in every year. Capital adequacy was consistently above the minimum, peaking at 14.26% in FY2013. There is no gradual deterioration visible in the reported series before FY2024 — which is itself the finding: the reported numbers gave no warning.",
+      "metrics": [
+        "total_assets",
+        "npl_pct",
+        "roe_pct",
+        "car_pct"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2013_Q4",
+        "2019_Q4",
+        "2023_Q4"
+      ]
+    },
+    {
+      "category": "board_dissolved_by_regulator",
+      "severity": "critical",
+      "statement": "On 15 June 2026 Bangladesh Bank dissolved Islami Bank's entire Board of Directors (chairman and all directors) under Sections 45 and 47(3) of the Bank Company Act, 1991, and appointed Mohammad Zahir Hussain, a Bangladesh Bank Executive Director, as sole administrator with full board powers. Every signature block in the bank's own Q2-2026 interim financial statements confirms this directly: the normal multi-director panel used in every prior quarter (including Q1 2026) is replaced by 'Managing Director (Acting)' alongside 'Single Member Board Authority as per Section 47(3) of the Bank Company Act, 1991'. External reporting (Prothom Alo, 27 August 2026) attributes the trigger to political controversy over a 24 May 2026 chairman appointment, customer protests, and a deposit run of roughly Tk 12 billion in daily withdrawals over two consecutive days, met with a Tk 25 billion emergency Bangladesh Bank loan. This is the same statutory mechanism (Section 47(3)) associated in this dataset with the Sammilito-merger banks' resolutions, though as of this data Islami Bank continues operating independently rather than being merged.",
+      "metrics": [
+        "total_deposits",
+        "total_equity",
+        "profit_after_tax_cumulative"
+      ],
+      "periods": [
+        "2026_Q1",
+        "2026_Q2"
+      ]
+    },
+    {
+      "category": "auditor_quantified_true_loss_far_exceeds_reported_profit",
+      "severity": "critical",
+      "statement": "Islami Bank's own external auditors, in an 'Emphasis of Matters — Provision Shortfall' section of an otherwise-unqualified opinion, state explicitly that absent Bangladesh Bank's regulatory forbearance the Bank's true aggregated loss (recognising the full provisioning shortfall) would have been Tk 69,673.73 crore (696,737.3m) for FY2024 and Tk 84,507.83 crore (845,078.3m) for FY2025 on a solo basis — against reported profits of just 971.34m (FY2024) and 1,073.6m (FY2025). Bangladesh Bank granted written permission both years (letters dated 21 May 2025 and 28 April 2026) to finalise the accounts without the required provision adjustment, citing the Bank's 'insufficient profit'. The FY2025 audit opinion states the going-concern basis is dependent on continued Bangladesh Bank policy support, and that the Bank's true regulatory capital shortfall, if provisions were properly recognised, would have been Tk 93,960.92 crore versus the Tk 9,345.72 crore actually reported (both figures per the auditor's own report, Note 40 and Note 20.2 of the FY2025 financial statements).",
+      "metrics": [
+        "profit_after_tax",
+        "provision_charge",
+        "classified_loans",
+        "capital_surplus_deficit",
+        "car_pct"
+      ],
+      "periods": [
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "provisioning_shortfall_widening_quarter_by_quarter",
+      "severity": "critical",
+      "statement": "Islami Bank's un-audited interim filings from Q1 2025 onward disclose a required-vs-maintained provision adequacy note (absent from the annual 'Five Years Performance' summary table) that shows the shortfall widening across four consecutive quarters before narrowing slightly: total required-but-unmaintained provision (investments plus off-balance-sheet items) was Tk 660,416.46m at Q1 2025, Tk 805,050.55m at Q2 2025, Tk 821,859.03m at Q3 2025, and Tk 829,743.43m at Q1 2026, before narrowing to Tk 823,340.03m at Q2 2026 — still equal to roughly 15 times the Bank's entire Q2-2026 equity of Tk 55,846.63m. The classified-investment-specific required provision alone (objective criteria, excluding OBU and a qualitative-judgment overlay) does NOT move monotonically: Tk 455,746.4m (Q1 2025) fell sharply to Tk 177,585.9m (Q2 2025) before rising to Tk 786,323.45m (Q3 2025), Tk 781,682.1m (Q1 2026) and Tk 866,147.8m (Q2 2026), against maintained provision of roughly Tk 42-72 billion throughout. The Q1-to-Q2 2025 dip in this one sub-line, even as the total required figure rose over the same quarter, suggests Bangladesh Bank re-categorised a large slice of required provision from the 'classified investments' line into the qualitative-judgment-overlay line that quarter (which itself is not separately disclosed in the Q2 2025 filing) rather than a genuine improvement in classified-investment quality.",
+      "metrics": [
+        "provision_required_total",
+        "provision_shortfall_total",
+        "provision_required_classified_objective_criteria",
+        "provision_classified_closing",
+        "total_equity"
+      ],
+      "periods": [
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3",
+        "2026_Q1",
+        "2026_Q2"
+      ]
+    },
+    {
+      "category": "provisioning_built_up_then_reversed_within_fy2025",
+      "severity": "high",
+      "statement": "Cross-referencing this dataset's own new interim-quarter extraction against the FY2025 annual report's Note 17.1.3 answers exactly when in FY2025 the provisioning behaviour flagged in this bank's headline finding played out. Islami Bank's classified-investment-specific provision (per Note 11.1 in the interim filings) rose cumulatively by Tk 1,381.88m through H1 2025 and by Tk 2,262.43m through 9M 2025 — i.e. the Bank was still adding to this provision through September. The FY2025 annual report's Note 17.1.3 then shows the full-year net change was a DECREASE of Tk 1,146.84m (opening 60,022.41m to closing 58,875.57m) — meaning Q4 2025 alone reversed approximately Tk 3,409.27m of the provision built up over the first nine months. This reversal happened in the same quarter Bangladesh Bank was granting the Bank forbearance to finalise its FY2025 accounts without recognising an Tk 84,615.15 crore total provision shortfall (see the auditor-quantified-true-loss signal).",
+      "metrics": [
+        "provision_classified_added_cumulative",
+        "provision_classified_closing",
+        "provision_charge"
+      ],
+      "periods": [
+        "2025_Q2",
+        "2025_Q3",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "first_ever_quarterly_losses_and_negative_core_margin",
+      "severity": "critical",
+      "statement": "Q1 2026 (net loss 2,918.84m, EPS -1.81) and Q2 2026 (cumulative net loss 13,268.15m, EPS -8.24, implying a discrete Q2-alone loss of roughly 10,349.31m) are the first loss-making quarters anywhere in this bank's dataset (2011-2026) — every prior year, including the depths of the FY2024-25 asset-quality recognition, still produced a reported profit. In the same H1-2026 period, Net Investment Income (the Shariah-banking equivalent of net interest margin) went NEGATIVE for the first time on record, -3,379.18m cumulative, meaning profit paid to depositors now exceeds the Bank's entire gross investment income before any other income line is even counted. Retained earnings, positive in every prior period, turned to an accumulated deficit of -3,031.42m (Q1 2026) deepening to -13,589.97m (Q2 2026). Both quarters charged ZERO net new provisioning (Note 11.1's 'D. Provision made during the period' total is nil in both), and Q1 2026 additionally reclassified Tk 2,295.0m of provision FROM the Classified bucket TO the Unclassified bucket rather than adding new cover.",
+      "metrics": [
+        "profit_after_tax_cumulative",
+        "net_interest_income_cumulative",
+        "retained_earnings",
+        "provision_total_added_cumulative",
+        "eps_cumulative"
+      ],
+      "periods": [
+        "2026_Q1",
+        "2026_Q2"
+      ]
+    }
+  ],
+  "historical_context": "Islami Bank Bangladesh is the country's largest private commercial bank, and its fifteen-year series divides sharply at FY2024. Through FY2011-FY2023 it compounded total assets at 14.76% a year, from 389,192m to 2,031,533m, with a classified-investment ratio that never left a 2.71%-6.46% band and reported return on equity between 6.28% and 17.42% every year. Capital adequacy stayed above the 10% minimum throughout, and the bank reported a small capital surplus as recently as FY2023. Then the FY2024 report recognised classified investment of 657,157m against 69,188m a year earlier — 4.32% to 42.36% — and FY2025 took it to 943,226m, or 49.65% of the financing book. What separates Islami Bank from IFIC, the other bank in this dataset showing the same break, is the response: IFIC provisioned enough to report a 25,617m loss and wipe out its equity, whereas Islami Bank cut its provision charge to 1,372m and reported a 1,074m profit. Provision coverage of classified investment is 6.24%, leaving 884,350m unprovided against 69,624m of equity — 12.7 times over. The bank's own annual summary table concedes required provision of 72,472m against 58,876m held, but this understates the true picture: the Bank's own EXTERNAL AUDITORS, in an Emphasis of Matters section of both the FY2024 and FY2025 opinions, state the real required-vs-maintained shortfall is far larger — Tk 69,770.90 crore (697,709.0m) at FY2024 and Tk 84,615.15 crore (846,151.5m) at FY2025 — and that absent Bangladesh Bank's regulatory forbearance the Bank's true loss would have been 696,737.3m (FY2024) and 845,078.3m (FY2025), not the reported profits of 971m and 1,074m. The going-concern basis is now explicitly dependent on continued Bangladesh Bank support. Capital adequacy is 6.42% with a reported deficit of 93,457m (true deficit 939,609.2m if provisions were recognised), core margin has halved in two years, and headcount fell 18.9% in FY2025 — yet deposits grew 13.9% and the investment-deposit ratio reached a series-high 96.72%. \n\nA Q1-Q3 interim-quarter backfill added 2026-08-27 (all 14 quarters from 2022 Q1 through 2026 Q2 now confirmed and validated) extends the story well past FY2025's year-end snapshot. The un-audited interim filings disclose their own required-vs-maintained provision adequacy note (not present in the annual summary table) showing the shortfall widening quarter over quarter through 2025 into 2026 — Tk 805,050.55m (Q2 2025) to Tk 821,859.03m (Q3 2025) to Tk 829,743.43m (Q1 2026) — before narrowing slightly to Tk 823,340.03m (Q2 2026). Cross-referencing the interim Note 11.1 against the FY2025 annual report's Note 17.1.3 pinpoints exactly when the FY2025 provisioning behaviour played out: classified-investment provision was built UP through the first nine months of 2025 (+1,381.88m through H1, +2,262.43m through 9M) then reversed by roughly 3,409.27m in Q4 2025 alone, for a full-year net DECREASE of 1,146.84m. The crisis then escalated sharply in 2026: Q1 2026 (loss 2,918.84m) and Q2 2026 (cumulative loss 13,268.15m) are the first loss-making quarters in this bank's entire dataset, Net Investment Income went negative for the first time on record (-3,379.18m, H1 2026), and on 15 June 2026 Bangladesh Bank dissolved the Bank's entire Board of Directors under Section 47(3) of the Bank Company Act — confirmed directly in the Bank's own Q2-2026 filing signature blocks and corroborated by external reporting of a deposit run (~12bn/day over two days) met with a 25bn emergency Bangladesh Bank loan. The reported profit was always the least informative number in this series; by 2026 there is no reported profit left to be misleading about.",
+  "data_gaps": "Q4/year-end (audited) periods are covered for all 15 years FY2011-FY2025. Q1-Q3 unaudited interim data was added 2026-08-27: ALL 14 QUARTERS FROM 2022 Q1 THROUGH 2026 Q2 ARE NOW CONFIRMED AND VALIDATED (2022 Q1-Q3, 2023 Q1-Q3, 2024 Q1-Q3, 2025 Q1-Q3, 2026 Q1-Q2) — balance-sheet identity and PBT-minus-tax-equals-PAT both verified exactly (or to sub-Taka float rounding) for each. The last 4 of these (2023 Q3, 2024 Q2, 2024 Q3, 2025 Q1) required a dedicated follow-up pass after two earlier sub-agent attempts at exactly those 4 quarters were both interrupted by the machine sleeping before writing any files; the source PDFs were re-downloaded from islamibankbd.com's live financial-report page (a cached OCR pass from one of the interrupted attempts was found intact in that session's scratchpad and reused after being cross-checked byte-for-byte against the already-confirmed neighboring quarters' OCR output). STILL UNCOVERED, and NOT part of this pass: 2011-2021 Q1-Q3, a separately-confirmed permanent gap (Wayback Machine captures for those years are truncated/corrupted after exhaustive research; see sources.json's data_gaps entry for the 2012-2021 Wayback attempt for the full history, including 2 of 29 targeted quarters that did download but remain unprocessed). Interim quarters never disclose the absolute Classified Investment balance, only the provision held/movement against it (and, from 2025 onward, an explicit required-vs-maintained adequacy note) — so classified_loans and npl_ratio_pct are null for every interim quarter by design, not oversight. All figures are Solo/Standalone basis, this dataset's preferred basis, except that each interim filing also contains an unused Consolidated version. FY2011, FY2018 and FY2020 annual figures are not taken from their own reports because those PDFs are scanned images with unusable text layers; each comes from the nearest clean report's comparative column and is flagged in its period_note. Three FY2024 capital lines (Tier-I, Tier-II, risk-weighted assets) are taken from the FY2025 report because the FY2024 report's own figures are arithmetically impossible — its Tier-I plus Tier-II does not equal its own stated regulatory capital, and its RWA has lost a leading digit; the substitution is proved arithmetically in sources.json. EPS for FY2011-FY2013 is gap-filled from the FY2014 report and the classified-investment ratio for FY2018-FY2019 from the FY2021 report, in both cases because the primary report does not print the row. The source table reports no market price per share, so price-to-book and P/E are unavailable for every year, and it reports no cost-to-income or return-on-assets figure in several years. Note also that the bank's reported classified-investment ratio uses a denominator slightly wider than General Investment from FY2025 (reported 49.65% versus 50.68% computed on General Investment); earlier years reproduce exactly. 83 restatements were found across annual reports and are documented per year; the as-reported series held here should not be mixed with a later report's vintage in one trend line. FY2026 is in progress (Q1 and Q2 filed only); there is no FY2026 annual/Q4 file yet, which is expected."
+}

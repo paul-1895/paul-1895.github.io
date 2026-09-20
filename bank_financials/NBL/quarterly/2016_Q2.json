@@ -1,0 +1,156 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2016-06-30",
+  "financial_year": 2016,
+  "quarter": "Q2",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account from National Bank's Half-Yearly 2016 unaudited financial statements (clean digital pdftotext, some scattered character-level corruption typical of this bank's PDFs, but this particular filing's Balance Sheet and most P&L income/expense lines are directly legible). Plain 'Balance Sheet (Un-audited)'/'Profit and Loss Account (Un-audited)' sections used. Comparative column (31 Dec 2015) reproduces this dataset's existing FY2015 equity of 33557.96m exactly (TOTAL SHAREHOLDERS' EQUITY comparative = 33,557,964,916, also matching the Statement of Changes in Equity's own 'Balance on 01 January 2016' row). Income-statement items are CUMULATIVE from 1 January 2016 (this Half-Yearly filing's first of four P&L columns: [Jan-Jun 2016] [Jan-Jun 2015] [Apr-Jun 2016 discrete] [Apr-Jun 2015 discrete]). All four income lines (net interest, investment, commission, other operating) summed exactly to the printed 'Total operating income' of 8,507,925,678, which minus 'Total operating expenses' (2,653,273,137) reproduces the printed 'Profit before provision' (5,854,652,541) exactly; that figure minus 'Total provision' (2,526,259,456) reproduces 'Profit before taxes' (3,328,393,085) exactly; minus tax (1,300,000,000) reproduces 'Net Profit after taxation' (2,028,393,085) exactly, which also matches the Statement of Changes in Equity's own 'Net profit for the period' line. Net interest income (1,282,828,681) also equals this dataset's already-recorded 2016_Q1 solo NII (390.27m) plus this filing's own discrete Apr-Jun 2016 NII (892,557,864), a useful cross-check of quarter-to-quarter additivity. Interest income and interest paid on deposits/borrowings are marked unavailable: both rows are entirely consumed by garbled box-drawing artifacts in the source text with no recoverable digits, the same failure mode already documented for 2016_Q1. No NAV-per-share line is printed in this filing; nav_per_share is calculated from equity and paid-up capital (17,177,199,240 Taka, unchanged from Dec 2015 -- the first of several bonus-share capital increases in this history had not yet occurred as of this filing).",
+  "source": {
+    "source_document": "Half-Yearly-Financial-Statements2016.pdf (bank's own filename)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-h1-2016.txt",
+    "source_url": "https://www.nblbd.com/public/assets/financial-statement/1708415516_Half-Yearly-Financial-Statements2016.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 283651.78,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 250754.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Cross-checked: Borrowings (3051.26m) + Total deposits (221284.31m) + Subordinated bond (1280.00m) + Other liabilities (25138.95m) sums to this figure exactly."
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 32897.26,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Matches the Statement of Changes in Equity's own closing balance at 30 June 2016 exactly."
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 221284.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 194331.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 55694.88,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per share",
+      "value": 19.15,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Not printed in this filing; computed as equity 32897.26m / shares outstanding (paid-up capital 17177.20m / 10 Taka face value = 1717.72m shares) = 19.15."
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest income",
+      "value": null,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "unavailable",
+      "note": "Row entirely consumed by garbled box-drawing extraction artifacts; no digits recoverable."
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest paid on deposits and borrowings",
+      "value": null,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "unavailable",
+      "note": "Row entirely consumed by garbled box-drawing extraction artifacts; no digits recoverable."
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 1282.83,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Equals this dataset's own 2016_Q1 NII (390.27m) plus this filing's discrete Apr-Jun 2016 NII (892.56m), confirming quarter-to-quarter additivity."
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 6269.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)",
+      "value": 955.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (619.77m) and other operating income (336.18m)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 2653.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": 5854.65,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Directly legible and matches the identity Total Operating Income (8507.93m) minus Total Operating Expenses (2653.27m) exactly."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after taxation (cumulative from Jan 1)",
+      "value": 2028.39,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Matches the Statement of Changes in Equity's own 'Net profit for the period' line exactly."
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (Re-stated) (cumulative from Jan 1)",
+      "value": 1.18,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ],
+  "fields_derived_via_identity": ["nav_per_share (not printed; computed from equity and paid-up capital)"],
+  "fields_unavailable": ["interest_income", "interest_expense"]
+}

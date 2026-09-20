@@ -1,0 +1,51 @@
+{
+  "bank_id": "DUTCHBANGL",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "capital_adequacy_strength",
+      "severity": "info",
+      "statement": "CAR has stayed well above the regulatory minimum (12.5%) for every year since FY2018 (13.0%-17.2% range), reaching a series high of 17.2% in FY2020 during COVID-19, and remaining >15% through FY2023. This is among the strongest capital positions of any bank researched so far in this dataset.",
+      "metrics": ["car_pct"],
+      "periods": ["2018_Q4", "2020_Q4", "2023_Q4"]
+    },
+    {
+      "category": "asset_quality_deterioration_2024",
+      "severity": "warning",
+      "statement": "NPL ratio jumped sharply from 4.1% (FY2023) to 7.7% (FY2024), the worst level in the full 15-year series (prior range was 2.2%-5.2%), driven by a large increase in loan-loss provisioning to BDT 16,993.3mn in FY2024 (per the FY2025 annual report's own comparative column, Note to the P&L). ROE roughly halved over the same period (17.9% -> 9.17%). This aligns with the broader FY2024 stress seen across several other DSE banks in this dataset (e.g. Dhaka Bank, AB Bank, Al-Arafah Islami Bank). CORRECTION (2026-08-26): this signal previously misattributed the BDT 10,235.2mn figure to FY2023 -- verified against the source text (annual_reports/DUTCHBANGL/dutchbangl-annual-report-2025.txt, line ~6767, 'Total provision 10,235,169,706 | 16,993,298,620'), that figure is FY2025's own total provision (the comparative column pairs it with FY2024's 16,993,298,620), not FY2023's; FY2023's total provision was never extracted into this dataset. See the new 'provisioning_reversal_q4_2025' signal below for what the 10,235.2mn figure actually evidences.",
+      "metrics": ["npl_ratio_pct", "roe_pct"],
+      "periods": ["2023_Q4", "2024_Q4"]
+    },
+    {
+      "category": "provisioning_acceleration_within_2024",
+      "severity": "warning",
+      "statement": "The FY2024 provisioning surge was not evenly spread across the year: cumulative provision_for_loans_cumulative was BDT 1,042.8mn through Q1, jumped to BDT 5,018.6mn by Q2 (a Q2-alone charge of ~3,975.8mn, roughly 4x Q1's pace), reached BDT 9,391.4mn by Q3, and finished the year at BDT 16,993.3mn -- meaning Q4 2024 alone added a further ~7,601.9mn, the single largest quarterly charge of the year. Quarterly granularity (added 2026-08-26) shows the FY2024 asset-quality recognition event was back-loaded and accelerating, not a one-time Q1 reset.",
+      "metrics": ["provision_for_loans_cumulative"],
+      "periods": ["2024_Q1", "2024_Q2", "2024_Q3", "2024_Q4"]
+    },
+    {
+      "category": "provisioning_reversal_q4_2025",
+      "severity": "info",
+      "statement": "FY2025's full-year total provision (BDT 10,235.2mn, per the annual report) is LOWER than the bank's own cumulative provision_for_loans_cumulative reported through just the first nine months of the same year (BDT 15,414.1mn as of Q3 2025) -- implying a Q4-2025-alone provision reversal/release of approximately BDT -5,178.9mn. This is consistent with, and adds quarter-level evidence for, the already-documented FY2025 recovery (profit after tax more than doubling YoY): cumulative net profit after tax was only BDT 885.1mn through Q1 2025 (EPS 1.01) and BDT 2,557.0mn through Q3 (EPS 2.65), versus BDT 9,647.7mn for the full year (EPS 9.98) -- meaning Q4 2025 alone contributed roughly BDT 7,090.7mn of profit, more than the first three quarters combined, driven substantially by this provision release.",
+      "metrics": ["provision_for_loans_cumulative", "net_profit_after_tax_cumulative", "eps_cumulative"],
+      "periods": ["2025_Q1", "2025_Q3", "2025_Q4"]
+    },
+    {
+      "category": "recovery_2025",
+      "severity": "info",
+      "statement": "FY2025 shows a sharp one-year recovery: NPL ratio improved from 7.7% to 6.4% (though still above the pre-2024 norm), profit after tax more than doubled (BDT 4,735mn -> 9,648mn), and ROE recovered from 9.17% to 16.06%.",
+      "metrics": ["npl_ratio_pct", "roe_pct"],
+      "periods": ["2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "long_run_growth",
+      "severity": "info",
+      "statement": "Total assets grew from BDT 123.3bn (FY2011) to BDT 817.8bn (FY2025), a 6.6x increase over 15 years (14.4% CAGR), with growth accelerating notably from FY2019 onward (BDT 390.4bn) as paid-up capital was raised from BDT 2,000mn to BDT 9,667mn across successive rights/bonus issues.",
+      "metrics": ["total_assets"],
+      "periods": ["2011_Q4", "2019_Q4", "2025_Q4"]
+    }
+  ],
+  "historical_context": "Dutch-Bangla Bank shows one of the strongest and most consistent capital-adequacy profiles researched in this dataset, with CAR never dropping below 11% across 15 years and typically well above 13%. Its FY2024 asset-quality shock (NPL more than doubling YoY) followed by a sharp FY2025 recovery mirrors the pattern seen at Dhaka Bank over the same two years, reinforcing that FY2024 was a broadly difficult year across the sector rather than a bank-specific event.",
+  "data_gaps": "Q1/Q2/Q3 unaudited interim data added 2026-08-26: 45 of a possible 48 quarters from 2010 Q1 through 2026 Q2 (see sources.json for full detail). Confirmed-unrecoverable gaps: 2011 Q2 (site's own link points to a generic page, no PDF found anywhere including Wayback), 2013 Q2 and Q3 (never published in this format, confirmed via a 2015 Wayback capture of the same listing page), 2016 Q3 (site's own link 404s with no successful Wayback capture at any timestamp, despite the FY2016 annual report confirming the statement was released), and 2014 Q1 (downloaded and OCR'd but excluded -- source scan resolution too low for confident headline-total extraction). 2013 Q1 is flagged lower-confidence in its own quarterly/2013_Q1.json (balance sheet cross-validated, but most P&L subtotals were illegible and reconstructed from components with no second source). 2015-2017 quarterly balance sheets use the Main-Operation-only column of a 'Main Operation and Off-shore Banking Unit' split (consistent with the existing FY2016 Q4 precedent); 2018-2019 quarterly filings are labelled 'Consolidated' with no separate solo statement in the document, though figures reconcile exactly with the surrounding solo-basis years. Capital adequacy (CAR/Tier-1/Tier-2/RWA) is available for most 2011-2023 quarters (extracted from each interim filing's own Basel III note) but was not attempted for the OCR'd-image quarters (2010, 2012 Q2, 2013 Q1, 2020 Q3, 2024-2026) -- time-boxed. Prior gaps, unchanged: 2022 annual report itself is not in the local archive, but 2022 data is fully available via the 2023 annual report's comparative column, so there is no actual data gap for that year. Income-statement flow detail (interest income/expense, operating income breakdown) was not extracted for the 2021-2023 ANNUAL/Q4 figures (balance-sheet aggregates, profit after tax, EPS, and capital/asset-quality ratios were) -- note this is now partially filled in by the new Q1-Q3 quarterly data for those years, which does include full income-statement detail. Capital adequacy ratio (CAR) and Tier-1/Tier-2 capital breakdown were not extracted for the 2024-2025 ANNUAL/Q4 figures because the source PDF's main Balance Sheet table failed to extract its numeric values for that report year; the MD&A narrative and Profit and Loss Account were used as a substitute and cross-validate exactly against the balance-sheet identity, so this is a depth gap only for capital-ratio detail, not a reliability issue for the figures that were extracted."
+}

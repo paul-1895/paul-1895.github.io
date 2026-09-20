@@ -1,0 +1,297 @@
+/* ════════════════════════════════════════════════════════════
+   candlestick-analysis.css
+   Styles for the "Analysis" panel (candlestick-analysis.js).
+   Unlike the other candlestick.html popups (Indicators, Renko,
+   MACD settings), this one docks to the right edge of the
+   viewport as a slide-in side panel rather than a centered
+   modal — hence its own .an-panel* wrapper instead of the
+   shared .modal/.modal-content classes. Still reuses the
+   generic .modal-close button style and the same theme tokens
+   defined in candlestick-chart.css's :root.
+   ════════════════════════════════════════════════════════════ */
+
+.an-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.an-panel-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+}
+
+.an-panel-content {
+  position: relative;
+  width: 460px;
+  max-width: 92vw;
+  height: 100%;
+  background: var(--bg-card);
+  border-left: 1px solid var(--border);
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  animation: anPanelSlideIn 0.22s ease;
+}
+
+@keyframes anPanelSlideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.an-panel-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.an-panel-hd h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.an-panel-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px 24px;
+}
+
+@media (max-width: 640px) {
+  .an-panel-content { width: 100vw; max-width: 100vw; }
+}
+
+/* ── Verdict banner ─────────────────────────────────────────── */
+.an-verdict {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-hover);
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+
+.an-verdict-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.an-verdict-label {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--sans);
+}
+
+.an-verdict-score {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.an-verdict--bullish .an-verdict-label,
+.an-verdict--bullish-mild .an-verdict-label { color: var(--gain); }
+.an-verdict--bearish .an-verdict-label,
+.an-verdict--bearish-mild .an-verdict-label { color: var(--loss); }
+.an-verdict--neutral .an-verdict-label { color: var(--text-secondary); }
+
+.an-verdict-bar {
+  position: relative;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--loss), var(--text-muted) 50%, var(--gain));
+  opacity: 0.3;
+  margin-bottom: 12px;
+}
+
+.an-verdict-bar-zero {
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--text-primary);
+  opacity: 0.6;
+}
+
+.an-verdict-bar-marker {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2.5px solid var(--bg-card);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.an-verdict-bar-marker--bullish       { background: var(--gain); }
+.an-verdict-bar-marker--bullish-mild  { background: var(--gain); opacity: 0.75; }
+.an-verdict-bar-marker--bearish       { background: var(--loss); }
+.an-verdict-bar-marker--bearish-mild  { background: var(--loss); opacity: 0.75; }
+.an-verdict-bar-marker--neutral       { background: var(--text-secondary); }
+
+.an-verdict-tally {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+}
+
+/* ── Sections ────────────────────────────────────────────────── */
+.an-section {
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+.an-section:first-of-type { border-top: none; }
+
+.an-h3 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.an-h3-badge {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border-radius: 20px;
+  padding: 2px 8px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.an-empty, .an-loading {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  padding: 4px 0;
+}
+
+.an-empty-big {
+  padding: 30px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.an-note {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.an-note-muted { color: var(--text-muted); font-size: 11.5px; }
+
+/* ── Signal list (Trend/Momentum/Volatility/Volume/Patterns) ── */
+.an-signal-list { list-style: none; margin: 0; padding: 0; }
+
+.an-signal-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.an-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+.an-dot-bull { background: var(--gain); box-shadow: 0 0 6px color-mix(in srgb, var(--gain) 60%, transparent); }
+.an-dot-bear { background: var(--loss); box-shadow: 0 0 6px color-mix(in srgb, var(--loss) 60%, transparent); }
+.an-dot-neu  { background: var(--text-muted); }
+
+.an-signal-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.an-signal-label { font-size: 12.5px; font-weight: 600; color: var(--text-primary); }
+.an-signal-detail { font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+
+/* ── Minervini checklist ─────────────────────────────────────── */
+.an-mn-row { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; }
+.an-mn-icon {
+  flex: none;
+  width: 16px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 2px;
+}
+.an-mn-pass .an-mn-icon { color: var(--gain); }
+.an-mn-fail .an-mn-icon { color: var(--loss); }
+.an-mn-na   .an-mn-icon { color: var(--text-muted); }
+.an-mn-na .an-signal-label, .an-mn-na .an-signal-detail { opacity: 0.6; }
+
+/* ── Fact list (Fundamentals) ───────────────────────────────── */
+.an-fact-list { list-style: none; margin: 0; padding: 0; }
+.an-fact-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  font-size: 12.5px;
+}
+.an-fact-row:last-child { border-bottom: none; }
+.an-fact-label { color: var(--text-muted); flex: none; }
+.an-fact-value { color: var(--text-primary); text-align: right; font-family: var(--mono); }
+.an-fact-note { color: var(--text-muted); font-family: var(--sans); font-style: italic; }
+
+/* ── Sector peer list ────────────────────────────────────────── */
+.an-peer-list { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.an-peer-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  font-family: var(--mono);
+}
+.an-peer-current { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.an-peer-code { color: var(--text-primary); font-weight: 600; }
+.an-gain { color: var(--gain); }
+.an-loss { color: var(--loss); }
+
+/* ── News list ───────────────────────────────────────────────── */
+.an-news-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.an-news-row { padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.an-news-row:last-child { border-bottom: none; padding-bottom: 0; }
+.an-news-title {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  line-height: 1.4;
+}
+.an-news-title:hover { color: var(--accent); text-decoration: underline; }
+.an-news-meta { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+/* ── Disclaimer ──────────────────────────────────────────────── */
+.an-disclaimer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .an-fact-row { flex-direction: column; gap: 2px; }
+  .an-fact-value { text-align: left; }
+}

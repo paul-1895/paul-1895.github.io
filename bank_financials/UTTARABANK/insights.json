@@ -1,0 +1,37 @@
+{
+  "bank_id": "UTTARABANK",
+  "generated_at": "2026-09-12",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "elevated_early_2010s_npl_slow_grind_down",
+      "severity": "info",
+      "statement": "NPL ratio jumped from 5.22% (FY2011) to a peak of 8.42% (FY2012) and stayed in an 8%+ range through FY2015, then ground down slowly through the rest of the decade to a low of 6.33% (FY2018) before a mid-cycle bump back to 7.81% in FY2019 - a persistently elevated but non-worsening asset-quality profile rather than a sharp deterioration.",
+      "metrics": ["npl_ratio_pct"],
+      "periods": ["2011_Q4", "2012_Q4", "2015_Q4", "2018_Q4", "2019_Q4"]
+    },
+    {
+      "category": "steady_multi_year_deleveraging_of_npl_ratio",
+      "severity": "info",
+      "statement": "From FY2019's 7.81% local peak, NPL ratio declined nearly every year through FY2025, reaching a series-low 4.84% - a sustained six-year improvement in asset quality even as total assets nearly doubled (193.2bn to 321.4bn) over the same span.",
+      "metrics": ["npl_ratio_pct", "total_assets"],
+      "periods": ["2019_Q4", "2022_Q4", "2025_Q4"]
+    },
+    {
+      "category": "profitability_acceleration_2023_2025",
+      "severity": "info",
+      "statement": "ROE rose from 11.09% (FY2021) to 19.23% (FY2025) and ROA from 0.85% to 1.86% over the same span, with the sharpest single-year jump in FY2024 (ROA 1.22% -> 1.74%, ROE 14.12% -> 18.43%) coinciding with FY2024's Gross Income growth of roughly 30% year-on-year - the strongest profitability stretch in the bank's 15-year public history, sustained (not reversed) into FY2025.",
+      "metrics": ["roe_pct", "roa_pct"],
+      "periods": ["2021_Q4", "2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "fy2024_acceleration_was_intra_year_not_a_q4_step_change",
+      "severity": "info",
+      "statement": "Newly backfilled Q1-Q3 interim data (2013-2025, 30 quarters, ratios_timeseries.json) shows FY2024's profitability jump was not a single strong Q4 -- annualized ROE climbed sequentially every quarter that year: 9.92% (Q1) -> 16.83% (Q2) -> 17.21% (Q3) -> 18.43% (Q4), a roughly 8.5-percentage-point Q1-to-Q4 spread, the largest intra-year acceleration in the newly visible 2020-2025 interim series. By contrast FY2021 (9.33% -> 11.09%, a 1.8pp spread) and FY2022 (9.11% Q1, peaking mid-year at 14.94% in Q2 before easing to 13.27% by Q4) show flatter or non-monotonic intra-year patterns, so FY2024 is a genuine acceleration in the bank's underlying quarterly earnings trajectory, not a year-end-only effect (e.g. a one-off provision release or bonus).",
+      "metrics": ["roe_pct"],
+      "periods": ["2021_Q1", "2021_Q4", "2022_Q1", "2022_Q2", "2022_Q4", "2024_Q1", "2024_Q2", "2024_Q3", "2024_Q4"]
+    }
+  ],
+  "historical_context": "Uttara Bank's 15-year public history shows a bank that spent the first decade (FY2011-FY2019) working through an elevated but stable 6-8% NPL ratio while growing at a moderate pace, then entered a sustained improvement phase from FY2019 onward: NPL ratio nearly halved by FY2025 (7.81% to 4.84%) while total assets more than tripled since FY2015 (151.5bn to 321.4bn) and profitability metrics (ROA, ROE) reached series highs in FY2024-FY2025. There is no year in the series showing a sharp asset-quality shock; the pattern throughout is gradual, not cyclical.",
+  "data_gaps": "Q1/Q2/Q3 unaudited interim data is now populated for 30 quarter-periods spanning 2013-2025 (2013, 2014, 2016, 2018-2025 for Q1; 2016, 2018, 2020-2024 for Q2; 2013, 2015-2018, 2020-2025 for Q3) -- see sources.json for the full list and each gap's reason. Remaining interim gaps: Q1/Q2/Q3 2011-2012 and Q1/Q2 2015 (no interim filing found on the bank's site or via Wayback Machine -- likely predates the bank's practice of posting these online, not a research failure); Q2 2011-2015/2017 and Q3 2011/2014 specifically (page exists on the bank's site but the PDF link itself was never populated for that period, confirmed via a live Wayback snapshot of the page); Q1 2025 (still unlocated as of 2026-09-12, same status as before). 2026 Q1/Q2 UPDATE (2026-09-12): the bank's own primary filings could not be located this pass either -- uttarabank-bd.com now Cloudflare-gates every HTML page (a regression vs. the 2026-08-27 pass) and 20+ direct-PDF-filename guesses across all three interim directories all 404'd, with zero Wayback captures of the site after 2025-12-14. quarterly/2026_Q1.json and 2026_Q2.json were instead populated from DSE's live 'Interim Financial Performance' table as a documented fallback (EPS and period-end market price only, likely CONSOLIDATED basis per a cross-check against this bank's own SOLO 2025_Q2.json -- see quarterly/2026_Q1.json period_note) -- a much thinner data point than this bank's usual primary-sourced quarters, and NOT on the same Solo/cumulative-from-Jan-1 basis as the rest of this file's interim series. Q3 2026 has not occurred yet as of this retrieval date (not a gap). All interim filings are Solo/Standalone basis, same as the Q4/annual series, extracted from the second (non-Consolidated) Balance Sheet and Profit and Loss Account in each filing -- the filing's own first/Consolidated statement was read but not used. Interim income-statement items are cumulative-from-1-January (the source's own convention); Q2/Q3 filings also disclose a discrete quarter-only column, used only for internal cross-validation, not stored. Only Q4/year-end (audited) data has capital-adequacy and asset-quality disclosures; CAR%/CRAR is not available for any year (interim or annual) - the source tables report Required Capital and Actual Capital in absolute Taka terms (with a calculated 'capital_surplus_pct' provided as a proxy) but never disclose risk-weighted assets, so a true CAR% cannot be calculated; NPL/classified-loans figures are likewise Q4-only (not disclosed in the interim filings), so ratios_timeseries.json has no npl_ratio_pct/provision_coverage_pct/capital_surplus_pct for any Q1-Q3 period, only ldr_pct, cost_to_income_pct, and an annualized-from-cumulative roa_pct/roe_pct. FY2025's source document was the standalone Financial Statements only (no Directors' Report), so Authorised Capital, Guarantee/Export/Import Business, Foreign Remittance, Market Value Per Share, and Number of Shareholders/Branches/Employees are gaps for FY2025 only. Total liabilities not directly reported in any ANNUAL source table (calculated as total assets minus shareholders' equity there); by contrast every interim filing DOES report Total Liabilities directly, so interim quarters use the reported figure. FY2015 Gross Income/Foreign Remittance, FY2023 EPS/NAV-per-share, and FY2024 Total Assets/Other Assets each have a documented cross-report discrepancy in the annual series (see sources.json); the earlier/contemporaneous report's figures were used in each case, not reconciled. Separately, the 2019 interim filings (Q1-Q3, OCR-sourced) show paid-up capital rising from BDT 4,000.8mn to BDT 4,080.8mn between Q1 and Q2 2019 (a bonus share issue); the source's own Q2/Q3 2019 EPS is explicitly labelled '(Restated)' onto the new share count while Q1 2019's EPS was not restated, so EPS is not strictly comparable Q1-to-Q2/Q3 within 2019 specifically."
+}

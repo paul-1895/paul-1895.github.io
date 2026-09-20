@@ -1,0 +1,67 @@
+{
+  "bank_id": "UTTARABANK",
+  "bank_name": "Uttara Bank PLC",
+  "reporting_date": "2026-06-30",
+  "financial_year": 2026,
+  "quarter": "Q2",
+  "period_note": "Unaudited interim financial performance, sourced live from DSE's company page (fetched 2026-09-12, same page/method and same primary-source-unreachable situation as 2026_Q1.json -- see that file's period_note for the full account of why uttarabank-bd.com's own Q2/Half-Yearly filing could not be located: Cloudflare-gated HTML pages, 20+ filename guesses against /firstqreport/, /halfqreport/, /priceseninfo/ all 404, and zero Wayback captures of the site after 2025-12-14). Discrete Apr-Jun 2026 and cumulative Jan-Jun 2026 (Half Yearly) are both directly reported by DSE's table and are internally consistent with each other (both computed on the post-bonus 1,212,836,090-share base, per the reconciliation in 2026_Q1.json's period_note) -- Q1's OWN reported EPS (1.320, on the smaller pre-bonus 970,269,000-share base) is NOT simply additive with this quarter's discrete EPS (1.170) to reach the Half-Yearly cumulative (2.230); see 2026_Q1.json for the full share-count walkthrough, which reconciles to within 0.2%. DATA IS THIN, same caveats as Q1: EPS and market price only, no balance sheet, no NAV, no NOCFPS -- npl_pct, car_pct, total_assets, total_deposits, gross_loans, total_equity remain gaps. BASIS CAVEAT: DSE's table does not label Solo vs Consolidated; per 2026_Q1.json's cross-check against this bank's own Solo-basis 2025_Q2.json, this DSE table appears to run CONSOLIDATED, roughly 3% below the bank's own Solo figures -- not directly comparable to UTTARABANK's SOLO main series without that caveat in mind. Market price per share at period end (21.8) is identical for both the Q2 and Half-Yearly columns, as expected since both share the same 30-June-2026 period end.",
+  "source": {
+    "source_document": "uttarabank-dse-interim-table-2026.txt (live page section, not retained as a separate annual_reports file -- extracted directly from the fetched HTML)",
+    "source_path": "not applicable -- data read directly from the live dsebd.org page, no PDF or OCR involved",
+    "source_url": "https://www.dsebd.org/displayCompany.php?name=UTTARABANK",
+    "source_page_lines": "\"Interim Financial Performance: 2026\" table, Q2 (discrete) and Half Yearly (cumulative) columns (period-end code 202606)",
+    "retrieval_date": "2026-09-12"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Apr-Jun",
+      "value": 1.17,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_6m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, Half Yearly cumulative",
+      "value": 2.23,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 21.8,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital (mn) [as shown on DSE company page at retrieval date, post the 25% FY2025 bonus issue]",
+      "value": 12128.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_estimated",
+      "original_metric_name": "Derived: Basic EPS x post-bonus shares outstanding (1,212,836,090), discrete Apr-Jun",
+      "value": 1419.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_eps_and_current_shares_outstanding",
+      "note": "Approximation only, not a reported figure -- see 2026_Q1.json period_note for the share-count reconciliation supporting this choice of share base."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_estimated_6m_cumulative",
+      "original_metric_name": "Derived: Basic EPS x post-bonus shares outstanding (1,212,836,090), Half Yearly cumulative",
+      "value": 2704.62,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_eps_and_current_shares_outstanding",
+      "note": "Approximation only, not a reported figure. Sums with 2026_Q1.json's net_profit_after_tax_estimated (1,280.76m, pre-bonus share base) to 2,699.77m, within 0.2% of this figure -- internal cross-check, see 2026_Q1.json period_note."
+    }
+  ]
+}

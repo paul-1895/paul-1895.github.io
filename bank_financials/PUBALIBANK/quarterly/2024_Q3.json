@@ -1,0 +1,33 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2024-09-30",
+  "financial_year": 2024,
+  "quarter": "Q3",
+  "period_note": "Recovered via a Wayback Machine capture of DSE's OWN company page (dsebd.org/displayCompany.php?name=PUBALIBANK), NOT the bank's site. From this vintage onward DSE no longer publishes Turnover/Revenue or Profit-in-BDT on this page (the rows are present in the page's HTML but wrapped in a comment, rendering only placeholder zeros) -- only EPS and period-end market price remain, matching the identical presentation change already documented for RUPALIBANK from its own 2023 capture onward. Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). Q3's DISCRETE Basic EPS is specifically NOT disclosed by the source (shown as a dash) even though the 9-Months CUMULATIVE EPS and Q3's own period-end market price both ARE given -- a genuine sub-gap, not a full quarter gap. A naive subtraction (9M 7.580 - HY 3.730 = 3.850) is arithmetically possible but is NOT recorded as a line item here, since this same table's own Q1+Q2-vs-HY gap this year (see 2024_Q2.json) already shows an internal inconsistency that undermines confidence in a simple subtraction -- recording it would risk presenting a fabricated-looking precision this dataset's 'don't fabricate a number to fill a hole' rule is meant to avoid.",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://web.archive.org/web/20250108191824id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2024\" table, 9 Months (cumulative) column and Q3's own period-end price (period-end 202409; discrete Q3 EPS cell itself is blank/dash in the source)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps_9m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, 9 Months cumulative",
+      "value": 7.58,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 25.6,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

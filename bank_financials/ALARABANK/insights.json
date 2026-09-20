@@ -1,0 +1,51 @@
+{
+  "bank_id": "ALARABANK",
+  "generated_at": "2026-08-27",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "credit_risk",
+      "severity": "critical",
+      "statement": "NPI ratio (non-performing investment, this bank's NPL equivalent) rose from a stable 3.8-6.8% band across 2020-2023 to 15.14% (FY2024) and 17.16% (FY2025) — roughly a 2.5x jump in two years, following a long gradual climb from 1.14% in 2010.",
+      "metrics": ["npl_ratio_pct"],
+      "periods": ["2023_Q4","2024_Q4","2025_Q4"]
+    },
+    {
+      "category": "profitability_risk",
+      "severity": "critical",
+      "statement": "ROE fell from 8.89% (FY2023) to 2.98% (FY2024), only partially recovering to 3.28% (FY2025) — a sustained step-down, not a single bad quarter. This is the same-direction, lower-magnitude version of the sector-wide 2024-2025 Bangladesh banking stress also seen at AB Bank (ABBANK), though ALARABANK has stayed profitable and CAR-compliant throughout, unlike ABBANK.",
+      "metrics": ["roe_pct"],
+      "periods": ["2023_Q4","2024_Q4","2025_Q4"]
+    },
+    {
+      "category": "capital_risk",
+      "severity": "moderate",
+      "statement": "Capital Adequacy Ratio (Total Capital Ratio) declined from 14.05% (FY2023) to 12.44% (FY2024) to 11.08% (FY2025) — still above typical regulatory minimums but the third consecutive year of decline, converging toward the floor rather than away from it.",
+      "metrics": ["car_pct"],
+      "periods": ["2023_Q4","2024_Q4","2025_Q4"]
+    },
+    {
+      "category": "growth",
+      "severity": "info",
+      "statement": "Despite the asset-quality deterioration, the balance sheet kept growing every year on record (2010-2025, no contraction year), with total assets reaching BDT 645.3bn at FY2025 and BDT 660.2bn by Q2 2026 — the stress has not translated into a funding or growth freeze so far, based on the data collected.",
+      "metrics": ["total_assets"],
+      "periods": ["2024_Q4","2025_Q4","2026_Q2"]
+    },
+    {
+      "category": "earnings_volatility",
+      "severity": "moderate",
+      "statement": "Now that Q1/Q2/Q3 granularity exists for every year 2010-2025, a recurring pattern is visible that the annual figures alone conceal: this bank has posted an outright net LOSS in at least three individual quarters on record -- Q1 2013 (-205.4m), Q3 2014 (-135.6m), and Q3 2019 (-286.7m) -- each followed by a recovery to a profitable full year. The two Q3 episodes were each attributed by the bank's own contemporaneous management commentary to a specific-provisioning and/or tax-provision spike that quarter, not a change in underlying operating income. This intra-year volatility is invisible in the annual (Q4) time series alone.",
+      "metrics": ["eps", "net_profit_after_tax"],
+      "periods": ["2013_Q1", "2014_Q3", "2019_Q3"]
+    },
+    {
+      "category": "data_quality",
+      "severity": "info",
+      "statement": "EPS is restated downward across multiple comparative columns following bonus-share issuances (e.g. Mar-2019 quarter's EPS printed as 0.45 contemporaneously in the 2019 Q1 report itself, later shown as 0.44 in 2020 Q1's comparative column once the share count had grown; the same pattern recurs for the Mar-2024 quarter between its own 2024 Q1 report and 2025 Q1's comparative column, 0.23 vs 0.22). This dataset always keeps the CONTEMPORANEOUS EPS value per project convention, with the later restatement documented in that period's own note field. Net profit itself is never restated by this mechanism, only the per-share denominator.",
+      "metrics": ["eps"],
+      "periods": ["2019_Q1", "2024_Q1"]
+    }
+  ],
+  "historical_context": "ALARABANK's NPI ratio and ROE were both far stronger in 2010-2014 (NPI 1.1-4.5%, ROE 12.8-20%) than the 2015-2023 period, which was itself already a gradual erosion (NPI creeping to ~4.8-6.8%, ROE settling to 8-10%). The FY2024-2025 deterioration is a sharper break from that trend, consistent with the broader documented Bangladesh banking asset-quality crisis of 2024-2025, but materially less severe than at AB Bank (ABBANK) over the same period — equity, CAR and profitability all remained positive here. As of 2026-08-27, this annual-level picture is now underpinned by full Q1/Q2/Q3 quarterly detail for every year 2011-2025 plus 2010 H1/Q3 (2010 Q1 does not exist in the bank's own archive), extracted from a mix of genuine text-layer PDFs and image-based/scanned filings read via vision. The balance sheet's structure also shifted materially over this window: the AIBL Mudaraba Subordinated Bond first appears mid-2015 (none before); Non-Controlling Interest / Minority Interest first appears in the consolidated accounts around 2011 (absent in 2010, when the bank's subsidiaries were newly incorporated and evidently not yet consolidated as minority-interest-bearing).",
+  "data_gaps": "NPI/classified-investment breakdown, CAR, and ROA/ROE are structurally unavailable for EVERY interim (Q1/Q2/Q3) quarter in this entire dataset, 2010-2026 alike -- this bank's quarterly unaudited filings never disclose the loan-loss-allowance balance or capital-adequacy computation needed for these ratios; they are only ever reported in the annual audited financial statements (Q4/year-end). This is a structural limitation of the source documents, not a research gap. 2010 has no 1st-Quarter filing anywhere in the bank's own archive (their online archive itself only goes back to a Half-Yearly/3rd-Quarter pair for 2009-2010). A trivial (BDT 1,000) source-internal inconsistency between 2012's own Q1/H1 filings and its own Q3 filing's implied comparative is documented in sources.json but not investigated further given its immateriality."
+}

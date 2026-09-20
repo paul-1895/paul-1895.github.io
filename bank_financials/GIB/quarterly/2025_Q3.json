@@ -1,0 +1,217 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2025-09-30",
+  "financial_year": 2025,
+  "quarter": "Q3",
+  "period_note": "Unaudited interim financial statements 'As at 30 September 2025' -- the LAST quarterly filing GIB published as a standalone reporting entity before being absorbed into the Bangladesh Bank-brokered 'Sammilito Islami Bank PLC' merger (Letter of Intent 9 November 2025; Sammilito began independent operations 18 August 2026; see sources.json and the project_sammilito_islami_bank_merger memory note). Same fully-restated basis as 2025_Q1/Q2.json. Equity deepened further to -43,840.37m (from -37,847.30m at Jun-2025), a further quarterly loss of -5,993.07m. Cumulative Jan-Sep 2025 EPS of -22.63 matches, to the second decimal, the figure already on record in this dataset's own sources.json ('DSE's own company page... shows... 9-month cumulative EPS -22.63'), independently corroborating this filing as the correct primary source for GIB's terminal quarter. Total 9-month cumulative loss (-22,348.01m) already nearly double the entire FY2024 audited annual loss (-12,466.18m), all incurred across three quarters of 2025 that never received a corresponding annual report before the bank's merger absorption. Cross-check: Q1 PAT (-7,411.90m) + Q2 discrete PAT (-8,943.05m) + Q3 discrete PAT (-5,993.07m) = -22,348.02m, matching this filing's own cumulative 9-month PAT (-22,348.01m) to within 0.01m of rounding. This dataset's GIB series ends here: no FY2025 annual report / Q4 filing exists or will exist for GIB as a standalone entity (confirmed independently three ways in a prior session, see sources.json's 'confirmed_nonexistent' entry) -- any FY2025 annual comparison for GIB must use these Q1-Q3 interim figures, as there is no Q4/audited annual counterpart and there never will be.",
+  "source": {
+    "source_document": "F3-2025-One.pdf (downloaded from globalislamibankbd.com, OCR'd for the P&L page; PDF deleted after extraction per project policy)",
+    "source_url": "https://www.globalislamibankbd.com/wp-content/uploads/2025/10/F3-2025-One.pdf",
+    "source_page": "Balance Sheet p.1, Off-balance Sheet Items p.1-2, Profit and Loss Account p.3",
+    "retrieval_date": "2026-08-27",
+    "reporting_basis": "Solo / standalone, unaudited, fully-restated basis matching the audited FY2024 annual report; GIB's final standalone quarterly filing before the Sammilito Islami Bank merger"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 185628.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General investment, etc. + Bills purchased and discounted)",
+      "value": 146674.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposit and other accounts",
+      "value": 124151.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": -43840.37,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 229468.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-balance sheet items including contingent liabilities",
+      "value": 8687.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up capital",
+      "value": 9874.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 2020.64,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Total Shareholders' Equity / (Paid-up capital / 10)",
+      "value": -44.4,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 4199.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_cumulative",
+      "original_metric_name": "Less: Profit paid on deposits (cumulative from Jan 1)",
+      "value": 11744.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Investment Income (cumulative from Jan 1) -- NEGATIVE",
+      "value": -7545.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative from Jan 1) -- NEGATIVE",
+      "value": -6946.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 2803.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit / (Loss) before Provision (cumulative from Jan 1)",
+      "value": -9749.83,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_cumulative",
+      "original_metric_name": "Total provision (cumulative from Jan 1)",
+      "value": 12609.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit / (Loss) before tax (cumulative from Jan 1)",
+      "value": -22358.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Deferred tax + Current tax (cumulative from Jan 1; a net credit)",
+      "value": -10.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit/(Loss) after Tax (cumulative from Jan 1) -- matches the -22.63 EPS and 9-month cumulative loss already on record in this dataset's own sources.json from DSE's disclosure table",
+      "value": -22348.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) (cumulative from Jan 1)",
+      "value": -22.63,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_discrete_quarter",
+      "original_metric_name": "Profit / (Loss) before Provision, discrete Jul-Sep 2025",
+      "value": -4118.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_discrete_quarter",
+      "original_metric_name": "Total provision, discrete Jul-Sep 2025",
+      "value": 1904.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_discrete_quarter",
+      "original_metric_name": "Total Profit / (Loss) before tax, discrete Jul-Sep 2025",
+      "value": -6023.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_discrete_quarter",
+      "original_metric_name": "Net Profit/(Loss) after Tax, discrete Jul-Sep 2025 -- GIB's final reported quarterly result as a standalone entity",
+      "value": -5993.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_discrete_quarter",
+      "original_metric_name": "Earnings Per Share (EPS), discrete Jul-Sep 2025",
+      "value": -6.07,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

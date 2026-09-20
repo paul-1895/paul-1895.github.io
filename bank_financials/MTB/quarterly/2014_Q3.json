@@ -1,0 +1,145 @@
+{
+  "bank_id": "MTB",
+  "bank_name": "Mutual Trust Bank PLC",
+  "reporting_date": "2014-09-30",
+  "financial_year": 2014,
+  "quarter": "Q3",
+  "period_note": "Balance sheet only, as at September 30, 2014 (period-end snapshot, reported), Consolidated basis (document explicitly titled 'Consolidated Balance Sheet (Un-Audited)', consolidating MTB with MTB Securities Ltd, MTB Capital Ltd and MTB Exchange (UK) Ltd). Source: MTB's own contemporaneous Q3-2014 unaudited interim financial statement, downloaded from mutualtrustbank.com's regulatory-disclosure page; pdftotext extracted 0 lines (scanned image), recovered via OCR (pdftoppm -r 200 + tesseract --psm 6). VALIDATION: all 7 asset-side line items sum EXACTLY to the document's own printed Total Property and Asset (8,565,939,715+4,223,612,511+4,800,000,000+30,522,091,234+71,786,525,697+2,475,542,552+5,529,687,180=127,903,398,889, exact match), and Total Liabilities+Equity+Minority Interest (121,535,885,755+6,367,401,255+111,879=127,903,398,889) also reproduces Total Assets exactly -- strong internal-consistency evidence for every figure used. Cross-checked against the already-stored 2013_Q4.json via this document's own Dec-31-2013 comparative column (also OCR'd): Total Assets 101,463,540,461 vs stored 101,464m (exact), gross_loans 59,548,362,590 vs stored 59,548m (exact), total_equity 5,449,063,846 vs stored 5,449m (exact) -- confirms OCR reliability. total_deposits is the ONE exception: the source document's own 'Deposit and Other Accounts' grand-total row was too visually fragmented by the OCR pass to read directly (only sub-components like Savings/Fixed/Bills-Payable were legible, and they did not cleanly foot to a total), so this field is DERIVED (basis 'calculated') as Total Liabilities minus the three other liability components (all individually clean OCR reads) rather than reported directly -- flagged distinctly from every other 'reported' field in this file. P&L is NOT extracted for the same reason as 2013_Q1 (OCR of the multi-column P&L section is unreliable for banks' dense side-by-side comparative layout; a parallel document from the same batch, 2016_Q2, was caught with a proven 6-vs-9 digit misread on Net Profit After Tax, see that file's period_note) -- no P&L line items included here rather than risk a wrong number. Minority interest (~BDT 0.11m) omitted as its own line (rounds to 0).",
+  "source": {
+    "source_document": "mtb-unaudited-q3-2014-ocr.txt",
+    "source_path": "annual_reports/MTB/mtb-unaudited-q3-2014-ocr.txt",
+    "source_url": "https://www.mutualtrustbank.com/wp-content/uploads/2020/04/5.-UN-AUDITED-FINANCIAL-STATEMENTS-3rd-quarter-2014.pdf",
+    "source_page_lines": "Consolidated Balance Sheet (Un-Audited), As at September 30, 2014 -- OCR'd (pdftoppm 200dpi + tesseract --psm 6) from a scanned 1-page PDF",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "cash_and_balance_with_bangladesh_bank",
+      "original_metric_name": "Cash",
+      "value": 8566,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "balance_with_other_banks",
+      "original_metric_name": "Balance with Other Banks & Financial Institutions",
+      "value": 4224,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "money_at_call",
+      "original_metric_name": "Money at Call and Short Notice",
+      "value": 4800,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 30522,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 71787,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Asset including Premises, Furniture & Fixture",
+      "value": 2476,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other Assets",
+      "value": 5530,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Property and Asset",
+      "value": 127903,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "borrowings",
+      "original_metric_name": "Borrowing from other Banks, Financial Institutions & Agents",
+      "value": 3603,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposit and Other Accounts (derived: Total Liabilities - Borrowings - Other Liabilities - Subordinated Debt; source's own deposit sub-total row was OCR-illegible)",
+      "value": 107557,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Other Liabilities",
+      "value": 7877,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "subordinated_debt",
+      "original_metric_name": "Subordinated Debt",
+      "value": 2500,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 121536,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 6367,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "contingent_liabilities",
+      "original_metric_name": "Total Off Balance Sheet Items",
+      "value": 30537,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per share",
+      "value": 20.69,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

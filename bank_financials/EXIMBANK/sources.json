@@ -1,0 +1,105 @@
+{
+  "bank_id": "EXIMBANK",
+  "bank_name": "Export Import Bank of Bangladesh PLC (EXIM Bank)",
+  "website": "https://www.eximbankbd.com",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own FY2024 annual report, cross-checked three independent ways: (1) the report's own 'Resource Distribution' table (Taka in million, unlabeled page near p.210) explicitly presents three columns headed 'EXIM Bank' / 'Subsidiaries of EXIM Bank' / 'EXIM Bank Group' with Total Assets 626,122.98 / 144.54 / 626,267.52 respectively -- this dataset's stored FY2024 total assets (626,122.98m) is literally the report's own 'EXIM Bank' (solo) column, not its 'EXIM Bank Group' (consolidated) column; (2) the standalone 'Balance Sheet as at 31 December 2024' (as distinct from the separately-presented 'Consolidated Balance Sheet' a few pages earlier, whose own figures pdftotext failed to extract) reports Total Assets of exactly 626,122,977,532 Taka = 626,122.98m; (3) the 'Five Years Financial Performance at a Glance (Solo Basis)' table (p.23-24) reproduces every stored FY2024 figure in this dataset exactly -- Shareholder's Equity 31,167.01, Total Capital (Tier I+II) 51,706.45, Total Deposits 429,931.46, Total Investment (General) 524,694.57 -- while the parallel 'Five Years Financial Performance at a Glance (Consolidated Basis)' table (p.21-22) shows different figures throughout (Equity 31,579.57, Total Capital 52,148.47, Deposits 428,346.33, Total Investment 525,396.83, Total Assets 626,267.52). Both the Solo and Consolidated balance sheets independently satisfy Assets = Liabilities + Equity exactly (Solo: 594,955.97 + 31,167.01 = 626,122.98; Consolidated: 594,687.95 + 31,579.57 = 626,267.52), confirming both tables are internally self-consistent and the Solo one is unambiguously the one this dataset has used throughout. Applies to the full 2011-2024 series already extracted from Solo-labeled tables per the per-period notes below.",
+  "notes": "annual_reports/EXIMBANK archive covers 2011-2024 (14 years; no 2025 report available in the local archive or yet published as of retrieval, and none ever will be -- see below). EXIM Bank converted to a Shariah-based Islamic bank in 2004 and reports 'Investment' rather than conventional 'Loans and Advances', and 'Non-Performing Investment (NPI)' rather than 'NPL'. Complete Q4/year-end coverage for 2011-2024 achieved from three overlapping annual reports' 'Five Years Financial Performance at a Glance' tables. UPDATE 2026-08-27: Q1/Q2/Q3 backfill is now also complete -- 45 quarter-files spanning 2011-2025 (the full 2011-2024 span plus 2025, which has no Q4/annual counterpart and never will) -- see the last 'sources' entry below for the full methodology, basis notes (Consolidated 2011-2015 -> Solo 2016 onward), and validation results. UPDATE 2026-08-26: FY2025 ANNUAL report was searched for exhaustively (bank's own website, Wayback Machine, DSE disclosure table) and confirmed unavailable -- EXIM Bank is being absorbed into the newly formed state-owned Sammilito Islami Bank PLC together with four other crisis-hit Shariah banks (First Security Islami Bank, Global Islami Bank, Union Bank, Social Islami Bank) under Bangladesh Bank's resolution plan for S Alam Group-linked banks (BB Letter of Intent/no-objection certificate issued 9-Nov-2025, i.e. before FY2025 even closed). See the '2025 (Q4)' entry below for the full evidence trail. This bank's independent standalone ANNUAL-reporting series ends at FY2024 permanently -- however, its own genuine unaudited QUARTERLY interim filings continued right up to 30-Sept-2025 (filed 30-Oct-2025, before the 9-Nov-2025 BB Letter of Intent), which is why Q1-Q3 2025 data exists in this dataset despite no FY2025 annual report existing or ever being expected.",
+  "sources": [
+    {
+      "period": "2011-2015 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "eximbank-annual-report-2015.txt (\"Five Years Financial Performance at a Glance\", p.16, covering 2011-2015)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "note": "This report's PDF-to-text extraction was unusually poor for this specific table (dropped thousands-separators and some digits in several cells, e.g. equity shown as \"1448422\"). All figures reconstructed and cross-checked against the balance sheet identity (Assets = Liabilities + Equity) before use; Total Capital (Tier I + Tier II) could not be reliably reconstructed for 2011 only and was left as a gap."
+    },
+    {
+      "period": "2015-2019 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "eximbank-annual-report-2019.txt (\"Five Years Financial Performance at a Glance\", p.14-15, covering 2015-2019)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "note": "2015 figures used from this report (cleaner OCR) rather than the 2015 report's own table; the two sources show a small discrepancy (~0.2% on total equity/assets), flagged in the 2015 quarterly record rather than silently reconciled."
+    },
+    {
+      "period": "2020-2024 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "eximbank-annual-report-2024.txt (\"Five Years Financial Performance at a Glance (Solo Basis)\", p.23-24, covering 2020-2024; \"Summary of Business Ratio/Information (Solo Basis)\", p.25, covering 2022-2024)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "note": "Solo basis used throughout for consistency with 2011-2019 (a separate Consolidated-basis table is also given in the source but not used). Gross/Net Non-Performing Investment (NPI) ratio only located for 2022-2024 in this dataset; not available for 2011-2021."
+    },
+    {
+      "period": "2025 (Q4)",
+      "type": "not_yet_available",
+      "status": "researched_confirmed_unavailable",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "notes": "No FY2025 (year ended 31-Dec-2025) annual report or standalone audited financial statements exist for EXIM Bank as an independent entity, confirmed across three independent channels: (1) eximbankbd.com's own 'Annual Reports' page tops out at ar2024.pdf (published/crawled Jul-2025); its 'Half-yearly Reports' and 'Disclosure_qfs' pages show only unaudited interim filings through Q3 2025 (fs_q1_2025.pdf / qfsMar25.pdf for Mar-2025, hysjun25.pdf for Jun-2025, qfsSep25.pdf for Sep-2025) with no year-end/annual filing; its news page's most recent AGM mention is the 26th AGM (28-Aug-2025, which approved the FY2024 accounts) with no 27th AGM announced as of the newest news item found (11-Aug-2026, 'Board meeting of the combined Islamic bank'); (2) the Wayback Machine CDX index of eximbankbd.com/report/* (198 unique URLs, most recent crawl May-2026) contains no ar2025.pdf/fs2025.pdf/annual-report-2025 under any filename convention tested, and no agm_egm/notice_27th_agm.pdf; (3) DSE's own dynamically-updated 'Financial Performance as per Audited Financial Statements' table for EXIMBANK (dsebd.org/displayCompany.php?name=EXIMBANK) stops at FY2024 (EPS/NAV/profit-for-the-year columns end at 2024, no 2025 row). REASON FOUND: EXIM Bank is being merged into a newly formed state-owned entity, Sammilito Islami Bank PLC, together with four other crisis-hit Shariah banks (First Security Islami Bank, Global Islami Bank, Union Bank, Social Islami Bank), as part of Bangladesh Bank's resolution of S Alam Group-linked banks. Bangladesh Bank issued a Letter of Intent and no-objection certificate for Sammilito Islami Bank on 9-Nov-2025 (per Wikipedia's 'Sammilito Islami Bank' article, sourced to BB's own announcement) -- i.e. before FY2025 (Jan-Dec 2025) had even closed. Mid-2026 press coverage (The Business Standard: 'BB withdraws EXIM bank administrator, begins transition at merged banks'; 'Four banks agree to BB merger plan, EXIM seeks more time'; The Daily Star: 'BB orders swift merger of five Islamic banks') describes Bangladesh Bank withdrawing EXIM Bank's crisis-era administrator as governance transitions fully to Sammilito Islami Bank's own board/MD, consistent with EXIM's own news page now reporting board meetings of 'the combined Islamic bank'. CONCLUSION: a standalone EXIM Bank FY2025 annual report was very likely never prepared as an ordinary going-concern publication; any FY2025 EXIM-legacy financials will likely surface only inside Sammilito Islami Bank PLC's own combined/consolidated reporting, not as an EXIMBANK filing. Treat this as a probable series-end for EXIMBANK as an independently reporting entity, not an ordinary reporting lag -- a future session should re-verify EXIM Bank's legal/reporting status before assuming a late FY2025 report will simply appear.",
+      "sources_checked": [
+        "https://www.eximbankbd.com/report/Annual_Reports",
+        "https://www.eximbankbd.com/report/Half_yearly_Reports",
+        "https://www.eximbankbd.com/report/Disclosure_qfs",
+        "https://www.eximbankbd.com/media/news",
+        "http://web.archive.org/cdx/search/cdx?url=eximbankbd.com/report/*",
+        "http://web.archive.org/cdx/search/cdx?url=eximbankbd.com/report/agm_egm/*",
+        "https://www.dsebd.org/displayCompany.php?name=EXIMBANK",
+        "https://en.wikipedia.org/wiki/Sammilito_Islami_Bank"
+      ]
+    },
+    {
+      "period": "2011-2025 Q1/Q2/Q3 (unaudited/provisional interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "extracted_and_validated",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "used_for_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "notes": "Full Q1-Q3 backfill completed (45 quarter-files: 15 years x 3 quarters). Two sourcing routes used, in priority order: (1) the FY2024 Annual Report's own BSEC-mandated 'Evaluation of Quarterly Performance' disclosure table (p.199, lines 10228-10266 of eximbank-annual-report-2024.txt) -- the only annual report in the 2011-2024 archive found to embed this table (all other years' 'quarterly' mentions are boilerplate compliance-checklist references, not tables with figures) -- which gave FY2023 and FY2024 Q1/Q2/Q3 in one step, Solo basis, cross-validated against the primary 2025 filings' own prior-year comparative columns with exact matches on every overlapping figure (investment income, net investment income, operating expenses, operating profit, PAT, EPS); (2) eximbankbd.com's own interim-statement pages (a Wayback CDX sweep of eximbankbd.com/report/* surfaced dozens of historical filenames across at least 5 overlapping naming conventions the bank used over the years -- quar_/hy_r/tqf_ (2010-2011), qfs*/hyfs_ (2012-2015), Notice-FS_Q*_YYYY (2016-2017), FS_Q*_YYYY/fs_q*_YYYY/qys*/hysmar* (2016-2022), qfsMar/qfsSep/hysjun (2023-2025)) for the remaining years and for 2025 (no annual report will ever exist for FY2025 -- see the FY2025 entry above -- so 2025 Q1-Q3 primary filings are the ONLY source for that year). BASIS: 2011-2015 filings present ONLY a Consolidated statement (no separate Solo section) -- Consolidated used for those years, with total_equity/PAT taken from the 'EXIM Bank Shareholders' Equity' sub-line (i.e. Group-attributable, excluding minority interest) for closer comparability with Solo; minority interest is immaterial throughout (under 0.001% of equity in every one of these years, confirmed per-quarter). Starting 2016 Q1, a genuinely separate Solo 'Balance Sheet'/'Profit and Loss Account' section appears for the first time and is used thereafter (2016-2025), EXCEPT 2018 Q3 where only a Consolidated section was found in that specific filing (flagged as a one-quarter basis exception in its own record) -- this basis change (Consolidated 2011-2015 -> Solo 2016 onward) is a genuine feature of which statements the bank chose to publish each year, not a data quality issue, and is flagged in every affected quarter's own period_note. Several quarters (2018 Q1, 2019 Q1/Q3, 2020 Q1/Q2/Q3, 2022 Q1) had only a short Board-approved ratio-only 'Disclosure relating to Financial Statements' notice locatable (NAV/EPS/NOCFPS per share, Consolidated basis) rather than a full statement -- used as-is and clearly flagged rather than left as a complete gap. 2021 Q3 is a mixed-sourcing case: its own ratio-only notice (Consolidated) was supplemented with a FULL Solo profit-and-loss reconstruction from the 'Jan-Sept 2021' comparative column of the 2022 Q3 filing (EXIM's balance sheet comparatives are always vs prior Dec year-end, never vs prior same-quarter, so no Solo balance sheet as at 30-Sept-2021 could be recovered by any route -- a genuine, permanent gap, not an oversight). EXTRACTION METHOD: most source PDFs' pdftotext text layer has a font-encoding fault that silently scrambles digits into letters (e.g. a genuine '8,795,016' rendering as '8,795,01 1t6') despite NOT being scanned images -- confirmed by rendering suspect pages to PNG at 150dpi and reading them directly, which is fully legible; this was the primary extraction method for the majority of quarters once the fault was identified (2011 Q1-Q2, 2012 Q2-Q3, 2013 all, 2014 Q1-Q2, 2015 Q1-Q3 [2015 Q2's own poster/foldout-layout PDF additionally required cropping and rotating quadrants of a single oversized page], 2016-2017 all, 2018 Q2-Q3, 2019 Q2, 2021 Q1-Q2, 2022 Q2-Q3, 2025 Q1-Q3); a handful of older years extracted cleanly via plain pdftotext (2011 Q3, 2012 Q1, 2014 Q3). ONE SOURCE-DOCUMENT ANOMALY found and corrected: the 2012 Q2 filing's own PDF visually mis-renders the 'EXIM Bank's shareholders' equity' / 'Minority Interest' / 'Total shareholders' equity' row labels one row out of alignment with their values (confirmed via the balance-sheet identity and the smooth Q1->Q2->Q3 2012 equity trend) -- corrected value used, documented in that quarter's own period_note. ANOTHER WITHIN-REPORT DISCREPANCY found (not affecting any quarterly file written, noted here for the record): the FY2024 annual report's own 'Evaluation of Quarterly Performance' table shows NAV per share at 31-Dec-24 as 21.35, which does not reconcile with equity/shares (31,167.01m / 1,447.557m shares = 21.54) and disagrees with the SAME report's own 'Five Years Financial Performance at a Glance' table, which shows 21.53 for the identical date (already used in bank_financials/EXIMBANK/quarterly/2024_Q4.json) -- an internal transposition-type typo in the quarterly-performance table specifically (21.35 vs the correct ~21.53-21.54), isolated to that one cell; every other cross-checked figure in the same table (Q1/Q2/Q3 2023 and 2024 NAV, all PAT, all EPS) reconciles exactly. REPEATED EPS RESTATEMENT PATTERN (not an error, IAS 33 standard practice): at least 4 separate instances found across this series where a bonus-share issuance between two report dates caused a LATER report to retrospectively restate an EARLIER quarter's own EPS downward for comparability (e.g. Mar-2011 EPS 0.33 as originally reported vs 0.25 restated in the Mar-2012 filing; similar restatements visible at Mar-2013, Mar-2014, and Jun-2021/Jun-2022) -- original contemporaneous EPS kept in every case per project convention, restated figure noted in the affected quarter's period_note. VALIDATION: balance-sheet identity (Assets = Liabilities + Equity) verified exactly for every quarter where a full balance sheet was recovered (all pass, zero exceptions); operating-profit arithmetic (income - expense = operating profit) and PBT arithmetic (operating profit - provision = PBT) verified for every quarter with a full P&L (all pass); cross-quarter continuity checked against this bank's own existing Q4/annual series (every year's implied discrete-Q4 = FY total minus 9M cumulative is a plausible positive figure, no anomalies).",
+      "sources_checked": [
+        "https://www.eximbankbd.com/report/Disclosure_qfs",
+        "https://www.eximbankbd.com/report/Half_yearly_Reports",
+        "http://web.archive.org/cdx/search/cdx?url=eximbankbd.com/report/*",
+        "annual_reports/EXIMBANK/eximbank-annual-report-2024.txt (\"EVALUATION OF QUARTERLY PERFORMANCE\", p.199)"
+      ]
+    }
+  ]
+}

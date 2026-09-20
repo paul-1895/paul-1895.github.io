@@ -1,0 +1,63 @@
+{
+  "bank_id": "NCCBANK",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "mid_2010s_npl_peak_recovered",
+      "severity": "info",
+      "statement": "NPL ratio climbed from 2.68% (FY2011) to a peak of 7.41% (FY2014), stayed elevated through FY2017 (5.79%), then steadily improved to 4.57% by FY2021 \u2014 a multi-year cycle that fully resolved rather than compounding.",
+      "metrics": [
+        "npl_ratio_pct"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2014_Q4",
+        "2021_Q4"
+      ]
+    },
+    {
+      "category": "capital_adequacy_strengthening",
+      "severity": "info",
+      "statement": "CAR rose from an FY2017 low of 11.51% to a consistent 14-16% range from FY2021 onward, comfortably above the regulatory minimum throughout, even as NPL ratio fluctuated in the same period.",
+      "metrics": [
+        "car_pct"
+      ],
+      "periods": [
+        "2017_Q4",
+        "2021_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "recent_npl_volatility_with_strong_recovery",
+      "severity": "info",
+      "statement": "NPL ratio spiked to 6.85% (FY2022) and again to a series-high 7.32% (FY2024) with provisioning nearly doubling that year, but then improved sharply to 4.12% in FY2025 alongside a series-high ROE of 17.05% and EPS more than doubling (2.09 -> 4.38) \u2014 a volatile but ultimately favorable recent stretch.",
+      "metrics": [
+        "npl_ratio_pct",
+        "roe_pct"
+      ],
+      "periods": [
+        "2022_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2024_front_loaded_provisioning_back_loaded_profit",
+      "severity": "info",
+      "statement": "Newly-sourced interim data shows FY2024's now-familiar full-year NPL/provisioning spike (see 'recent_npl_volatility_with_strong_recovery' above) was heavily front-loaded within the year: cumulative provisions reached BDT 1,947.7mn by Q1 2024 alone (vs BDT 470.0mn in Q1 2023) and BDT 3,539.8mn by H1 2024 (vs BDT 994.2mn in H1 2023), pushing H1 2024 Profit After Tax down to just BDT 740.0mn (-53% YoY) despite Profit before provisions actually being higher than a year earlier. Since full-year FY2024 PAT (BDT 4,373mn, per the existing Q4 record) ended up well above FY2023's BDT 3,486mn, roughly 83% of FY2024's full-year profit was realised in H2 2024 alone -- a pattern invisible in annual-only data and only revealed by the interim quarterly filings.",
+      "metrics": [
+        "provision_charge_cumulative",
+        "profit_after_tax_cumulative"
+      ],
+      "periods": [
+        "2024_Q1",
+        "2024_Q2",
+        "2024_Q4"
+      ]
+    }
+  ],
+  "historical_context": "NCC Bank shows a cyclical but ultimately resilient pattern over its full 15-year public history: an early-2010s NPL climb that resolved by FY2021, followed by more volatile but shorter NPL swings in FY2022 and FY2024, each followed by improvement rather than compounding. Capital adequacy has strengthened steadily since FY2017 and remained comfortably above the regulatory minimum throughout. FY2025 stands out as the strongest year in the series on both asset quality and profitability simultaneously.",
+  "data_gaps": "Q1/Q2/Q3 unaudited interim data has now been researched and added for essentially the full available history (2011 Q2 through 2026 Q2; NCCBANK's own Q1 archive begins 2013, Q3 archive begins 2012, Half-Yearly begins 2011 -- 2011 Q1/Q3 and 2012 Q1 were simply never published by the bank, confirmed via both the live site and a Wayback CDX search, not an extraction gap). Only Q4/year-end (audited) data is available; Q1/H1/Q3 unaudited interim data was not researched. FY2012's own annual report PDF failed text extraction (likely scanned) and was recovered via the FY2013 report's comparative columns; FY2019-2021's own report PDFs also failed extraction and were recovered via the FY2022 report's comparative table. FY2011 and FY2012 have only balance-sheet aggregates and key ratios (no income-statement or capital-tier breakdown). Total liabilities not directly reported in any multi-year summary table used for FY2013 onward; calculated as total assets minus shareholders' equity throughout. FY2021-2022 profit-after-tax/ROE figures used are from the FY2022 report (contemporaneous); the FY2025 report's later comparative columns show different (restated) figures for those two years, not reconciled."
+}

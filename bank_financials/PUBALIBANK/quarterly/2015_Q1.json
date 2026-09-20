@@ -1,0 +1,41 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2015-03-31",
+  "financial_year": 2015,
+  "quarter": "Q1",
+  "period_note": "Balance-sheet-free, income-statement-only interim snapshot -- Solo/Standalone presumed (see sources.json). Recovered via a Wayback Machine capture of DSE's OWN company page (dsebd.org/displayCompany.php?name=PUBALIBANK), NOT the bank's site -- the technique proven on RUPALIBANK, applied here for the first time to PUBALIBANK. This vintage of the table (titled 'Financial Performance: <year>', pre-2016) gives only Turn Over, Net Profit After Tax (Continuing Operations), Basic/Diluted EPS and NAV per share, ALL CUMULATIVE FROM JAN 1 per the table's own column headers (Q1=3 Months, Q2=6 Months, Q3=9 Months) -- no period-end market price is given in this table vintage (the top-of-page 'Last Trade' price reflects the capture date, not the quarter-end, so it is not usable and not recorded). Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). This year's 'Net Profit After Tax (Including Extra-ordinary Income)' row explicitly shows 'n/a' (not '0' as in other years) -- reinforcing that this duplicate row is a genuine non-applicable field for this bank, not a data gap (omitted from line_items throughout this series as redundant with the Continuing-Operations figure, matching the RUPALIBANK precedent of keeping only one of several identical/non-applicable profit variants). Clean reconciliation throughout at a constant 880,373,812-share count (177.08/880.374=0.201; 1252.56/880.374=1.423; 2046.63/880.374=2.325) -- the 31/03/2015 AGM (for FY2014) declared a cash-only dividend, no bonus, no discontinuity.",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://web.archive.org/web/20151228211505id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Financial Performance: 2015\" table (OLD format), Q1 column (period-end 2015-03-31)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "turnover_revenue_cumulative",
+      "original_metric_name": "Turn Over in BDT (mn), cumulative 3 months",
+      "value": 1517.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit After Tax in BDT (mn) (Continuing Operations), cumulative 3 months",
+      "value": 177.08,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Basic EPS in BDT (Based on continuing operations), cumulative 3 months",
+      "value": 0.2,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

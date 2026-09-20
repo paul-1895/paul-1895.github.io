@@ -1,0 +1,38 @@
+{
+  "bank_id": "NCCBANK",
+  "bank_name": "National Credit and Commerce Bank PLC",
+  "reporting_date": "2024-09-30",
+  "financial_year": 2024,
+  "quarter": "Q3",
+  "period_note": "Cumulative-from-Jan-1 convention established from the filing's own column header '01 January to 30 September 2024' (the filing also separately shows a discrete '01 July to 30 September 2024' 3-month column: Net Profit after tax BDT 1,920.58mn, EPS 1.73, included here for reference only, not as a structured line item). Standalone/Solo basis. Source PDF (3rd_quarter_2024.pdf) is a scanned document; pdftotext -layout extracted 0 lines (no usable text layer). Balance Sheet figures were sourced via direct visual inspection of a 400dpi render of source page 7 (fully internally consistent: Total Liabilities 321,290,685,216 + Total Equity 25,269,192,622 = Total Assets 346,559,877,838). Income-statement figures were cross-validated from two independent sources that agree exactly: (a) a 400dpi render of this filing's own P&L page (source page 9, dated 28 October 2024), and (b) the FY2025 Q3 filing's (FS_Q3_2025.pdf) comparative 'Jan-Sep 2024' column -- both show identical figures (Net Profit after tax BDT 2,660,621,629, EPS 2.40, Provision for tax BDT 2,536,181,186), confirming this period was NOT subject to the deferred-tax restatement found in the FY2025 Q1/H1 filings when compared against their own later (2026) comparative columns. Cross-check: this filing's own comparative 'as at 31 December 2023' column (Total Assets BDT 318,954.68mn, Total Equity BDT 24,097.61mn) diverges from the existing bank_financials/NCCBANK/quarterly/2023_Q4.json (Total Assets BDT 319,416mn, Total Equity BDT 25,230mn, sourced from the FY2025 Annual Report's five-year summary table) by approximately 0.14% and 4.5% respectively, while gross loans and total deposits match closely -- the same equity-concentrated interim-vs-annual-report divergence pattern documented in the 2025_Q1/Q2/Q3 files, now also confirmed for the FY2023 year-end comparative. The existing 2023_Q4.json file was NOT modified.",
+  "source": {
+    "source_document": "nccbank-q3-2024.txt",
+    "source_path": "annual_reports/NCCBANK/nccbank-q3-2024.txt",
+    "source_url": "https://www.nccbank.com.bd/assets/files/quarterly_report/3rd_quarter_2024.pdf",
+    "source_page_lines": "Source PDF pages 7 (Balance Sheet, Un-audited) and 9 (Profit and Loss Account, Un-audited), 'Un-audited Financial Statements for the period ended September 30, 2024'. pdftotext -layout extracted 0 lines (no usable text layer, scanned/Canon-scanner PDF); figures sourced via direct visual inspection of 400dpi page renders and cross-validated against FS_Q3_2025.pdf's comparative column.",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    { "normalised_metric_name": "paid_up_capital", "original_metric_name": "Paid up capital", "value": 11104.2, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_equity", "original_metric_name": "Total Shareholders' Equity", "value": 25269.2, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_deposits", "original_metric_name": "Deposits and other accounts", "value": 252621.3, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "gross_loans", "original_metric_name": "Loans and advances", "value": 235444.7, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "investments_securities", "original_metric_name": "Investments", "value": 79188.0, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "fixed_assets", "original_metric_name": "Fixed assets including premises, furnitures and fixtures", "value": 2901.2, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_assets", "original_metric_name": "Total Assets", "value": 346559.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_liabilities", "original_metric_name": "Total Liabilities", "value": 321290.7, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "nav_per_share", "original_metric_name": "Net Assets Value Per Share", "value": 22.76, "unit": "BDT", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "interest_income_cumulative", "original_metric_name": "Interest/Profit income (cumulative from Jan 1)", "value": 17217.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "interest_expense_cumulative", "original_metric_name": "Interest/Profit paid on deposits and borrowings (cumulative from Jan 1)", "value": 12046.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "net_interest_income_cumulative", "original_metric_name": "Net interest income (cumulative from Jan 1)", "value": 5171.0, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "non_interest_income_cumulative", "original_metric_name": "Income from investments + Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)", "value": 7941.5, "unit": "BDT_million", "currency": "BDT", "basis": "calculated_sum_of_reported_components" },
+    { "normalised_metric_name": "operating_income_cumulative", "original_metric_name": "Total operating income (cumulative from Jan 1)", "value": 13112.4, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_expenses_cumulative", "original_metric_name": "Total operating expense (cumulative from Jan 1)", "value": 4032.7, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_profit_cumulative", "original_metric_name": "Profit before provisions (cumulative from Jan 1)", "value": 9079.7, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "provision_charge_cumulative", "original_metric_name": "Total provisions (cumulative from Jan 1)", "value": 3867.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "profit_before_tax_cumulative", "original_metric_name": "Profit before tax (cumulative from Jan 1)", "value": 5196.8, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "tax_expense_cumulative", "original_metric_name": "Provision for tax (cumulative from Jan 1)", "value": 2536.2, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "profit_after_tax_cumulative", "original_metric_name": "Net Profit after tax (cumulative from Jan 1)", "value": 2660.6, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "eps_cumulative", "original_metric_name": "Earnings per share (cumulative from Jan 1)", "value": 2.40, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported" }
+  ]
+}

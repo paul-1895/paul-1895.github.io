@@ -1,0 +1,217 @@
+{
+  "bank_id": "ONEBANKPLC",
+  "bank_name": "ONE Bank Limited",
+  "reporting_date": "2022-09-30",
+  "financial_year": 2022,
+  "quarter": "Q3",
+  "period_note": "Balance sheet is the 30-Sep-2022 period-end snapshot (reported), Solo basis. Income statement items are CUMULATIVE from 1 January 2022 (9-month). OCR'd (pdftoppm 300dpi + tesseract). Comparative (31-Dec-2021) column matches this dataset's existing 2021_Q4.json exactly for total_assets (310,366.413296m), total_equity (17,473.661601m), statutory_reserve (6,721.41491m), gross_loans (222,694.147172m) and paid_up_capital (9,340.40456m). NOTE: this filing's own comparative off_balance_sheet_exposures figure (57,912.795422m) diverges from the 65,075.728293m shown for the same 31-Dec-2021 date in the Q1-2022 and H1-2022 filings' own comparative columns (specifically the 'Acceptances and Endorsements' sub-line: 20,436.35185m here vs 27,599.284721m elsewhere) - a minor, unexplained cross-filing inconsistency in the comparative column only; it does not affect this quarter's own current-period figures, whose balance-sheet identity holds exactly (288,735.481014 + 18,182.429464 = 306,917.910478). Paid-up capital rose to 9,807.42478m by this date (from 9,340.40456m at 30-Jun-2022) - a bonus share issuance between Jun and Sep 2022, matching the FY2022 year-end figure exactly (2022_Q4.json). statutory_reserve corroborated by the 20%-of-PBT rule (6,721.41491m + 20% x 1,750.166024m = 7,071.448115m, exact, and the implied 350.033205m appropriation matches the reported 9-month Statutory Reserve appropriation exactly). Income statement fully reconciles: NII+investment+commission+other = total_operating_income (3,820.951269+2,005.495506+1,777.478118+435.433799=8,039.358692, matches 8,039.358691m reported to rounding); operating_profit = total_operating_income - total_operating_expenses (8,039.358691-4,204.0452=3,835.313491, matches 3,835.313492m reported); profit_before_tax = operating_profit - total_provision (3,835.313492-2,085.147468=1,750.166024 exact); profit_after_tax = profit_before_tax - tax_expense (1,750.166024-655.452863=1,094.713161, matches 1,094.713162m reported).",
+  "source": {
+    "source_document": "onebankplc-q3-2022.txt",
+    "source_path": "annual_reports/ONEBANKPLC/onebankplc-q3-2022.txt",
+    "source_url": "https://www.onebank.com.bd/financial-statement/3rd-quarter-report-2022.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit & Loss Account (Un-audited)' for the period 01-Jan-2022 to 30-Sep-2022, p.5-6 of the PDF",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 9807.42478,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 7071.448115,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 18182.429464,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 220226.761419,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances/Investments",
+      "value": 224677.782016,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 36881.487697,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets including premises, furniture & fixtures",
+      "value": 3585.208195,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 306917.910478,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 288735.481014,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-Balance Sheet items including contingent liabilities",
+      "value": 67818.443908,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value Per Share",
+      "value": 18.54,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 3820.951269,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 2005.495506,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage (cumulative from Jan 1)",
+      "value": 1777.478118,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other operating income (cumulative from Jan 1)",
+      "value": 435.433799,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total operating income (A) (cumulative from Jan 1)",
+      "value": 8039.358691,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (B) (cumulative from Jan 1)",
+      "value": 4204.0452,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision and tax (C=A-B) (cumulative from Jan 1)",
+      "value": 3835.313492,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provision_cumulative",
+      "original_metric_name": "Total Provision (D) (cumulative from Jan 1)",
+      "value": 2085.147468,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Profit before taxes (E=C-D) (cumulative from Jan 1)",
+      "value": 1750.166024,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deferred_tax_cumulative",
+      "original_metric_name": "Deferred tax expense/(income) (cumulative from Jan 1)",
+      "value": -28.505761,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "current_tax_cumulative",
+      "original_metric_name": "Current tax expense (cumulative from Jan 1)",
+      "value": 683.958624,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Provision for taxation, total (cumulative from Jan 1)",
+      "value": 655.452863,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after taxation (cumulative from Jan 1)",
+      "value": 1094.713162,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) (cumulative from Jan 1)",
+      "value": 1.12,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

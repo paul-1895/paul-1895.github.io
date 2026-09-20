@@ -1,0 +1,202 @@
+{
+  "bank_id": "SIBL",
+  "bank_name": "Social Islami Bank PLC",
+  "reporting_date": "2016-09-30",
+  "financial_year": 2016,
+  "quarter": "Q3",
+  "period_note": "Balance sheet is the period-end snapshot (reported), Solo/Standalone basis, matching this dataset's main Q4/annual series basis (see sources.json reporting_basis).  Income-statement items are CUMULATIVE from 1 January 2016 (Jan-1 through the end of this quarter), not discrete-quarter figures, per this project's convention (flagged via the _cumulative suffix, matching bank_financials/CITYBANK/quarterly/2024_Q1.json). Shariah-based Islamic bank: 'Investments' is the Shariah-compliant equivalent of conventional Loans and Advances; 'Profit paid on Deposits' is the equivalent of Interest Expense; 'Net Investment Income' is the equivalent of Net Interest Income -- consistent with the convention already used for this bank's Q4/annual series. Classified-investment (asset-quality/NPL) and Capital Adequacy (CRAR/Tier-1/Tier-2) figures are NOT disclosed in SIBL's interim quarterly/half-yearly filings at all (confirmed absent from every quarter's notes checked in this pass) -- this is a genuine limitation of the source documents themselves, not an extraction gap, so no classified_investments/npl_pct/car_pct/tier1/tier2/RWA fields are populated for any Q1-Q3 period in this dataset.",
+  "source": {
+    "source_document": "3rd_quarter_reports_2016.pdf",
+    "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_quarter_reports_2016.pdf",
+    "source_page_lines": "Condensed Balance Sheet and Profit and Loss Account, 3rd Quarter 2016 unaudited financial statements",
+    "extraction_method": "pdftotext",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 210845.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 198206.43,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 12638.64,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 7382.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 3844.46,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "revaluation_reserve",
+      "original_metric_name": "Revaluation Reserve on Fixed Assets",
+      "value": 1012.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": 398.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 177287.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General Investment etc. + Bills Purchased and Discounted)",
+      "value": 161970.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Islamic bank convention: 'Investments' is SIBL's Shariah-compliant equivalent of conventional Loans and Advances."
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) Per Share",
+      "value": 17.12,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment Income (cumulative from Jan 1)",
+      "value": 12051.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_cumulative",
+      "original_metric_name": "Profit Paid on Deposits (cumulative from Jan 1)",
+      "value": 7595.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_investment_income_cumulative",
+      "original_metric_name": "Net Investment Income (cumulative from Jan 1)",
+      "value": 4455.78,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "income_from_investment_in_shares_cumulative",
+      "original_metric_name": "Income from Investment in Shares/Securities (cumulative from Jan 1)",
+      "value": 124.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_cumulative",
+      "original_metric_name": "Commission, Exchange and Brokerage (cumulative from Jan 1)",
+      "value": 1200.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other Operating Income (cumulative from Jan 1)",
+      "value": 251.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative from Jan 1)",
+      "value": 6031.64,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 2823.69,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit/(Loss) before Provision (cumulative from Jan 1)",
+      "value": 3207.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provision_cumulative",
+      "original_metric_name": "Total Provision (cumulative from Jan 1)",
+      "value": 1387.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit/(Loss) before Income Taxes (cumulative from Jan 1)",
+      "value": 1820.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Provision for Income Tax (cumulative from Jan 1)",
+      "value": 1077.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit/(Loss) after Tax (cumulative from Jan 1)",
+      "value": 743.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

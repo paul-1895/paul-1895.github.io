@@ -1,0 +1,372 @@
+{
+  "bank_id": "FIRSTSBANK",
+  "bank_name": "First Security Islami Bank PLC",
+  "reporting_date": "2018-06-30",
+  "financial_year": 2018,
+  "quarter": "Q2",
+  "period_note": "Balance sheet is the period-end snapshot (reported), Solo basis, from First Security Islami Bank PLC's own Condensed Balance Sheet (Un-audited) as at 2018-06-30. Income-statement items with a '_cumulative' suffix are cumulative from 1 January of the same year; items with a '_discrete_q' suffix are the single discrete quarter alone -- both are printed directly as separate columns in the source document (not derived by subtraction), so both carry basis='reported'. Sourced via the Wayback Machine. NOTE -- small comparative discrepancy (not a parsing error, both figures internally validate): this filing's own comparative 31-Dec-2017 Total Assets column (343,739,479,294) is -100.00% LOWER than this dataset's already-stored 2017_Q4.json total_assets figure (344,486.61mn). The stored 2017_Q4 figure was sourced from a later annual report's multi-year 'Five-Year Summary'/Annexure table (per this bank's own sources.json, which already documents a ~0.1-0.2% internal inconsistency within that same summary table between Total Assets and Total Liabilities+Equity), whereas this interim filing's comparative column is drawn directly from the primary, contemporaneous Balance Sheet as originally published shortly after 2017 year-end. Per this dataset's 'prefer contemporaneous over later-restated' convention, this is recorded here verbatim rather than reconciled; the existing 2017_Q4.json file is NOT modified. Not crisis-related -- a pre-existing small classification/rounding difference in the bank's own summary tables. This report already includes BOTH a Jan-June cumulative column AND a separate Apr-June discrete-quarter column (headed 'Jan-June' and 'Apr-June' with a hyphen rather than the word 'to' used in later years' headers) -- both captured here with '_cumulative' and '_discrete_q' suffixes. This is the joint-earliest year in this bank's archive where a discrete quarterly breakout is available.",
+  "source": {
+    "source_document": "firstsbank-halfyearly-2018.txt",
+    "source_path": "annual_reports/FIRSTSBANK/firstsbank-halfyearly-2018.txt",
+    "source_url": "https://fsiblbd.com/wp-content/uploads/2018/07/Half-Yearly-Statement-june-2018.pdf",
+    "source_page_lines": "Condensed Balance Sheet (Un-audited, Solo) and Condensed Profit and Loss Account (Un-audited, Solo) sections of the bank's own quarterly/half-yearly interim financial statement PDF",
+    "retrieval_date": "2026-08-27",
+    "signed_date": "2018-07-25",
+    "retrieved_via": "Original fsiblbd.com URL returns HTTP 404 live (the old pre-2021 WordPress domain now redirects to fsibplc.com, which has no equivalent path for this old file) -- retrieved from the Wayback Machine instead. https://web.archive.org/web/20190712105825id_/http://www.fsiblbd.com:80/wp-content/uploads/2018/07/Half-Yearly-Statement-june-2018.pdf -- NOTE: the CDX-listed 'largest capture' for this exact URL was in some cases a Wayback capture genuinely truncated at the source (crawler-side) at exactly 1,048,576 bytes (x-archive-orig-content-length: 1048576, 'wayback content truncated by length' warning header) or otherwise structurally corrupt (pdfinfo/pdftotext errors) -- this specific timestamp was selected after checking pdfinfo page count and absence of syntax errors, per this dataset's established Wayback-truncation trap-avoidance protocol."
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 7128.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 3099.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserve",
+      "original_metric_name": "Other Reserve",
+      "value": 516.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": 923.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 12020.43,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 363755.48,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 351735.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 306896.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_investment",
+      "original_metric_name": "Investments (General Investment etc. + Bills Purchased and Negotiated)",
+      "value": 293365.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_in_shares_securities",
+      "original_metric_name": "Investments in Shares & Securities",
+      "value": 15709.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value Per Share (NAV)",
+      "value": 17.02,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "ldr_pct_calculated",
+      "original_metric_name": "Investment / Deposit (calculated: Total Investment / Deposits and Other Accounts)",
+      "value": 95.59,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated",
+      "metric_note": "Simple Investment/Deposit calculation per this dataset's standard formula (methodology.md). This does NOT match the bank's own regulatory-basis 'Investment Deposit Ratio' as separately disclosed in annual reports (e.g. FY2024 annual reports 122.25% vs this simple calculation giving ~141% at FY2024 year-end) -- the bank's own regulatory ratio evidently uses a different deposit/investment base (e.g. including borrowings or a regulatory-defined denominator) not disclosed in these condensed interim statements. Recorded as a internally-consistent, comparable-across-quarters proxy, not as a reproduction of the bank's own regulatory ratio."
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investments Income (Jan-Jun cumulative)",
+      "value": 15476.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_cumulative",
+      "original_metric_name": "Profit Paid on Deposits (Jan-Jun cumulative)",
+      "value": -12154.69,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_investment_income_cumulative",
+      "original_metric_name": "Net Investment Income (Jan-Jun cumulative)",
+      "value": 3321.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "income_from_investment_shares_cumulative",
+      "original_metric_name": "Income from Investment in Shares and Securities (Jan-Jun cumulative)",
+      "value": 200.94,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_cumulative",
+      "original_metric_name": "Commission, Exchange and Brokerage (Jan-Jun cumulative)",
+      "value": 308.11,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other Operating Income (Jan-Jun cumulative)",
+      "value": 322.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (Jan-Jun cumulative)",
+      "value": 4153.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (Jan-Jun cumulative)",
+      "value": 2868.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_provision_and_tax_cumulative",
+      "original_metric_name": "Profit/(Loss) before Provision and Tax (Jan-Jun cumulative)",
+      "value": 1284.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provisions_for_investments_cumulative",
+      "original_metric_name": "Provisions for Investments including off-B/S items (Jan-Jun cumulative)",
+      "value": 484.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provisions_diminution_shares_cumulative",
+      "original_metric_name": "Provisions for Diminution in Value of Inv. in Shares (Jan-Jun cumulative)",
+      "value": 53.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provisions_cumulative",
+      "original_metric_name": "Total Provisions (Jan-Jun cumulative)",
+      "value": 537.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit/(Loss) before Taxes (Jan-Jun cumulative)",
+      "value": 747.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_tax_cumulative",
+      "original_metric_name": "Total Provisions for Tax (Jan-Jun cumulative)",
+      "value": 398.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit/(Loss) after Tax (Jan-Jun cumulative)",
+      "value": 348.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) (Jan-Jun cumulative)",
+      "value": 0.49,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_discrete_q",
+      "original_metric_name": "Investments Income (Apr-Jun discrete quarter)",
+      "value": 8091.64,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_discrete_q",
+      "original_metric_name": "Profit Paid on Deposits (Apr-Jun discrete quarter)",
+      "value": -6559.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_investment_income_discrete_q",
+      "original_metric_name": "Net Investment Income (Apr-Jun discrete quarter)",
+      "value": 1532.46,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "income_from_investment_shares_discrete_q",
+      "original_metric_name": "Income from Investment in Shares and Securities (Apr-Jun discrete quarter)",
+      "value": 136.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_discrete_q",
+      "original_metric_name": "Commission, Exchange and Brokerage (Apr-Jun discrete quarter)",
+      "value": 152.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_discrete_q",
+      "original_metric_name": "Other Operating Income (Apr-Jun discrete quarter)",
+      "value": 213.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_discrete_q",
+      "original_metric_name": "Total Operating Income (Apr-Jun discrete quarter)",
+      "value": 2035.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expenses_discrete_q",
+      "original_metric_name": "Total Operating Expenses (Apr-Jun discrete quarter)",
+      "value": 1444.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_provision_and_tax_discrete_q",
+      "original_metric_name": "Profit/(Loss) before Provision and Tax (Apr-Jun discrete quarter)",
+      "value": 590.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provisions_for_investments_discrete_q",
+      "original_metric_name": "Provisions for Investments including off-B/S items (Apr-Jun discrete quarter)",
+      "value": 370.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provisions_diminution_shares_discrete_q",
+      "original_metric_name": "Provisions for Diminution in Value of Inv. in Shares (Apr-Jun discrete quarter)",
+      "value": -4.22,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provisions_discrete_q",
+      "original_metric_name": "Total Provisions (Apr-Jun discrete quarter)",
+      "value": 366.58,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_discrete_q",
+      "original_metric_name": "Total Profit/(Loss) before Taxes (Apr-Jun discrete quarter)",
+      "value": 224.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_tax_discrete_q",
+      "original_metric_name": "Total Provisions for Tax (Apr-Jun discrete quarter)",
+      "value": 183.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_discrete_q",
+      "original_metric_name": "Net Profit/(Loss) after Tax (Apr-Jun discrete quarter)",
+      "value": 40.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_discrete_q",
+      "original_metric_name": "Earnings Per Share (EPS) (Apr-Jun discrete quarter)",
+      "value": 0.06,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

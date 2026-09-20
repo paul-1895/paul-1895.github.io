@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>YouTube Videos — DSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="youtube-videos.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <a href="/index.html" class="logo-back" title="Back to Market">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </a>
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>YouTube Videos</h1>
+        <p>Analysis, news &amp; promotion clips tagged by ticker and sector</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="hdr-btn hdr-btn-accent" id="addVideoBtn" title="Add Video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Add Video
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- FILTER BAR (rendered by filters.js) -->
+<div class="yt-filter-bar" id="filterBar"></div>
+
+<!-- VIDEO GRID (rendered by grid.js) -->
+<main class="yt-main">
+  <div class="yt-video-grid" id="videoGrid"></div>
+</main>
+
+<!-- Modal mount points — built dynamically by player.js / crud-form.js -->
+<div id="ytPlayerModalRoot"></div>
+<div id="videoFormModalRoot"></div>
+
+<script src="/shared/nav-menu.js"></script>
+<script src="tag-picker.js"></script>
+<script src="player.js"></script>
+<script src="filters.js"></script>
+<script src="grid.js"></script>
+<script src="crud-form.js"></script>
+</body>
+</html>

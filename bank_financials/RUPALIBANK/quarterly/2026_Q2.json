@@ -1,0 +1,75 @@
+{
+  "bank_id": "RUPALIBANK",
+  "bank_name": "Rupali Bank PLC",
+  "reporting_date": "2026-06-30",
+  "financial_year": 2026,
+  "quarter": "Q2",
+  "period_note": "Unaudited interim financial performance, sourced live from DSE's company page (fetched 2026-08-27, same page/method as 2026_Q1.json). Discrete Apr-Jun 2026 and cumulative Jan-Jun 2026 (Half Yearly) both directly reported and reconcile exactly: Q1 (-8.120) + this quarter's discrete EPS (-5.010) = -13.130 = reported Half-Yearly cumulative; diluted continuing-ops EPS likewise reconciles exactly (-3.390 + -2.090 = -5.480). The loss narrowed quarter-on-quarter (Q1 -8.12 to Q2 -5.01 BDT/share) but H1 2026 cumulative is still a loss of roughly BDT -12,359 million (~-1,236 crore) on the same derived-approximation basis as 2026_Q1.json - by far the largest loss (even at the H1-only, un-annualized level) of any period in this dataset's RUPALIBANK series, which otherwise shows only modest quarterly profits (BDT 54-206mn per quarter in 2020-2021) or thin EPS-only positive figures (2023-2025). Q3 2026 has not occurred yet as of the retrieval date - not a gap, a future period. Solo basis presumed per the same caveat as 2020_Q1.json.",
+  "source": {
+    "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (live page section)",
+    "source_path": "annual_reports/RUPALIBANK/rupalibank-dse-interim-tables-2020-2026.txt",
+    "source_url": "https://www.dsebd.org/displayCompany.php?name=RUPALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2026\" table, Q2 (discrete) and Half Yearly (cumulative) columns (period-end code 202606)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Apr-Jun",
+      "value": -5.01,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_6m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, Half Yearly cumulative",
+      "value": -13.13,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_diluted_continuing_operations",
+      "original_metric_name": "Earnings Per Share (EPS) - Continuing Operations, Diluted, discrete Apr-Jun",
+      "value": -2.09,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_diluted_continuing_operations_6m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) - Continuing Operations, Diluted, Half Yearly cumulative",
+      "value": -5.48,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 17.1,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_estimated",
+      "original_metric_name": "Derived: Basic EPS x Total No. of Outstanding Securities (941,262,318), discrete Apr-Jun",
+      "value": -4715.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_eps_and_current_shares_outstanding",
+      "note": "Same approximation caveat as 2026_Q1.json's net_profit_after_tax_estimated."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_estimated_6m_cumulative",
+      "original_metric_name": "Derived: Basic EPS x Total No. of Outstanding Securities (941,262,318), Half Yearly cumulative",
+      "value": -12358.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_eps_and_current_shares_outstanding",
+      "note": "Same approximation caveat as 2026_Q1.json's net_profit_after_tax_estimated."
+    }
+  ]
+}

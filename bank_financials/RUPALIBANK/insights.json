@@ -1,0 +1,168 @@
+{
+  "bank_id": "RUPALIBANK",
+  "generated_at": "2026-08-27",
+  "methodology": "Every insight cites the specific ratio/value/period it is derived from in ratios_timeseries.json or quarterly/<YEAR>_Q4.json. All figures independently re-verified by script against the written JSON files before this file was finalized.",
+  "risk_signals": [
+    {
+      "category": "chronic_loan_loss_provisioning_shortfall_under_regulatory_forbearance",
+      "severity": "critical",
+      "statement": "From FY2016 onward, Rupali Bank has carried a loan-loss provisioning shortfall (required provision for loans & advances plus off-balance-sheet exposure, minus provision actually maintained) every single year, each time deferred rather than recognized via a Bangladesh Bank forbearance letter: BDT -1,684.04 crore (FY2016), -1,255.06cr (FY2017), -1,136.12cr (FY2018), -1,168.47cr (FY2019), -1,010.93cr (FY2020), -3,078.35cr (FY2021, roughly 3x FY2020's shortfall in a single year), and -5,438.77cr (FY2022). The FY2022 annual report's own Capital Adequacy note discloses a materially larger ALL-ASSET-CATEGORY shortfall of BDT 6,046.91 crore (loans, off-balance-sheet, other assets, investments and NBFI exposure combined) against reported total equity of just BDT 1,634.67 crore - i.e. the unrecognized shortfall alone is approximately 3.7x the bank's entire reported equity base. The FY2023 Basel III Pillar 3 disclosure confirms the pattern continuing with a further Bangladesh Bank forbearance of BDT 4,499.38 crore. By contrast, FY2013-FY2015 show an approximately-zero shortfall (required and maintained provision matched almost exactly each year), meaning this is a phenomenon that began specifically in FY2016 and has generally worsened since, not a constant feature of the bank.",
+      "metrics": [
+        "required_provision",
+        "provision_maintained",
+        "total_equity"
+      ],
+      "periods": [
+        "2013_Q4",
+        "2014_Q4",
+        "2015_Q4",
+        "2016_Q4",
+        "2017_Q4",
+        "2018_Q4",
+        "2019_Q4",
+        "2020_Q4",
+        "2021_Q4",
+        "2022_Q4"
+      ]
+    },
+    {
+      "category": "capital_adequacy_below_regulatory_minimum_for_most_of_the_series",
+      "severity": "critical",
+      "statement": "Capital to Risk-weighted Assets Ratio (CRAR, calculated as Tier1+Tier2 capital / risk-weighted assets) was above the 10% regulatory minimum in FY2011-FY2015 (11.13%, 10.11%, 10.16%, 10.43%, 9.94% - already only marginally so by FY2015) and briefly recovered to 10.02%/10.34% in FY2018/FY2019, but fell to 6.69% (FY2016), 6.53% (FY2017), 8.00% (FY2020), 5.56% (FY2021), 4.92% (FY2022) and 5.28% (FY2023, Solo) - roughly half the required minimum for most of the second half of the series, with no year after FY2019 meeting the 10% requirement. Required capital in every year checked reproduces as exactly 10% of reported risk-weighted assets (no capital-conservation-buffer add-on disclosed), so this is being measured against the base minimum, not a stricter phased-in Basel III buffer requirement.",
+      "metrics": [
+        "car_pct",
+        "risk_weighted_assets",
+        "actual_capital"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2015_Q4",
+        "2016_Q4",
+        "2018_Q4",
+        "2019_Q4",
+        "2021_Q4",
+        "2022_Q4",
+        "2023_Q4"
+      ]
+    },
+    {
+      "category": "structurally_negative_net_interest_income",
+      "severity": "high",
+      "statement": "Net interest income (interest income less interest expense) was negative in 6 of the 12 fully-sourced years - FY2014 (-121.62cr), FY2015 (-173.30cr), FY2016 (-175.43cr), FY2020 (-351.09cr), FY2021 (-334.33cr) and FY2022 (-306.52cr) - meaning the bank paid out more in interest on deposits and borrowings than it earned on loans and investments in half the years studied. Positive net interest income in the other years was thin relative to balance sheet size (e.g. FY2019's 1.88cr on total assets of 49,724.93cr). Reported profitability in every year of the series depends on non-interest income (fees, commission, investment/capital-gains income) fully offsetting a persistently weak or negative core lending spread, rather than the core banking business itself being profitable.",
+      "metrics": [
+        "net_interest_income",
+        "interest_income",
+        "interest_expense",
+        "gross_profit"
+      ],
+      "periods": [
+        "2014_Q4",
+        "2015_Q4",
+        "2016_Q4",
+        "2020_Q4",
+        "2021_Q4",
+        "2022_Q4"
+      ]
+    },
+    {
+      "category": "persistently_elevated_double_digit_npl_ratio",
+      "severity": "high",
+      "statement": "Reported classified-loan (NPL) ratio has not been below 12% in any year since FY2014 (12.15%) and has spent most of the series in the high-teens to low-20s: 16.75% (FY2013), 17.00% (FY2015), 20.64% (FY2016), a peak of 23.41% (FY2017), 19.21% (FY2018), 16.15% (FY2019), a trough of 12.70% (FY2020), then climbing again to 18.84% (FY2021), 21.19% (FY2022) and 21.03% (FY2023). This means Rupali Bank's own-reported asset quality was already at 2-4x the DSE sector's FY2024 crisis-level median NPL of 9.55% (per this dataset's cross-bank benchmarks) for most of the preceding decade - the FY2024-25 sector-wide asset-quality recognition event was not a new phenomenon at this particular bank, which had been running double-digit NPLs throughout. Separately, the reported NPL ratio fails to reproduce exactly from the bank's own reported classified-loans / gross-loans figures in 7 of the 10 years where both are disclosed (FY2015: 17.00% reported vs 16.43% computed; FY2016: 20.64% vs 19.90%; FY2017: 23.41% vs 22.17%; FY2018: 19.21% vs 17.90%; FY2019: 16.15% vs 15.04%; FY2020: 12.70% vs 11.79%; FY2021: 18.84% vs 17.50%) - a gap of 0.57 to 1.34 percentage points in every affected year, always in the same direction (reported > computed), with no explanation in any source document. FY2013, FY2014, FY2022 and FY2023 are the only years where the reported ratio reproduces exactly.",
+      "metrics": [
+        "npl_pct",
+        "classified_loans",
+        "gross_loans"
+      ],
+      "periods": [
+        "2013_Q4",
+        "2014_Q4",
+        "2016_Q4",
+        "2017_Q4",
+        "2020_Q4",
+        "2022_Q4",
+        "2023_Q4"
+      ]
+    },
+    {
+      "category": "thin_and_declining_profitability_despite_balance_sheet_growth",
+      "severity": "medium",
+      "statement": "Total assets grew 4.80x from BDT 14,302.33cr (FY2011) to BDT 68,672.72cr (FY2022), but profit after tax did not scale with it: BDT 109.13cr (FY2011) and 120.57cr (FY2012) were the series highs, followed by a FY2016 net loss of BDT -125.86cr, and FY2022's profit of just BDT 20.93cr on a balance sheet nearly 5x larger than FY2011's. Calculated ROA (profit after tax / average total assets) has not exceeded 0.21% in any year since FY2013, and calculated ROE (profit after tax / average total equity) swung from a series-high 9.61% (FY2012) to -10.33% (FY2016) and has stayed in low single digits since (0.92%-4.00%), including 1.26% in FY2022 - profitability that is both structurally weak and highly volatile, and materially overstated in economic terms given the unrecognized provisioning shortfall described above.",
+      "metrics": [
+        "profit_after_tax",
+        "roa_pct",
+        "roe_pct",
+        "total_assets"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2012_Q4",
+        "2016_Q4",
+        "2022_Q4"
+      ]
+    },
+    {
+      "category": "single_obligor_concentration_state_sugar_corporation",
+      "severity": "medium",
+      "statement": "The FY2021 and FY2022 annual reports' loan-loss provisioning notes each disclose a single named special required-provision line item of BDT 842.17cr (FY2021: 8,421,700,000 Taka) and BDT 842.17cr (FY2022: 8,421,665,000 Taka, essentially unchanged) against a 'Loan in favour of Bangladesh Sugar and Food Industry' (a state-owned sugar-mills corporation) - a single-obligor exposure whose required provision alone is roughly half of FY2022's reported total equity (BDT 1,634.67cr), illustrating a concentrated, state-directed-lending risk not visible in the aggregate classified-loans figures. The FY2022 report separately discloses a further new special provision of BDT 610.35cr ('Special Provision for Writ') that year.",
+      "metrics": [
+        "required_provision"
+      ],
+      "periods": [
+        "2021_Q4",
+        "2022_Q4"
+      ]
+    },
+    {
+      "category": "fy2026_swing_to_large_per_share_loss",
+      "severity": "critical",
+      "statement": "Interim EPS data recovered this session (from DSE's own company-page 'Interim Financial Performance' tables, via Wayback Machine captures for historical years and a live fetch for 2026) shows quarterly Basic EPS was consistently POSITIVE across every quarter available from FY2020 through FY2025 (Q1 2020 +0.220 through Q2 2025 +0.070, ranging +0.070 to +0.490 BDT/share, with one thin/flagged exception at Q3 2021 of -0.030), then swung sharply negative in FY2026: Q1 2026 EPS -8.120, Q2 2026 EPS -5.010 (Half-Yearly cumulative -13.130). At the 941,262,318 shares outstanding shown on the same DSE page, this implies an approximate H1 2026 net loss on the order of BDT -12,359 million (~-1,236 crore) - a derived approximation (EPS x current share count), not a directly reported figure, but the scale is unambiguous regardless of the exact share count used. This is consistent with, and arguably the first visible P&L consequence of, the escalating unrecognized provisioning shortfall already documented in this file's existing risk signals and in the FY2024 auditor's Qualified Opinion found this session (BDT 15,375.30 crore unrecognized as at 31-Dec-2024, more than 3x FY2023's 4,499.38 crore) - if Bangladesh Bank forbearance for some of that shortfall lapsed or the bank began recognizing more of it in FY2026, a loss of this magnitude would be the expected result. Not independently confirmed which specific driver caused the swing - flagged as the top research lead for a future session.",
+      "metrics": [
+        "eps",
+        "eps_diluted_continuing_operations",
+        "market_price_per_share"
+      ],
+      "periods": [
+        "2020_Q1",
+        "2020_Q2",
+        "2020_Q3",
+        "2021_Q1",
+        "2021_Q2",
+        "2021_Q3",
+        "2023_Q1",
+        "2023_Q2",
+        "2024_Q1",
+        "2024_Q2",
+        "2024_Q3",
+        "2025_Q1",
+        "2025_Q2",
+        "2026_Q1",
+        "2026_Q2"
+      ]
+    },
+    {
+      "category": "fy2024_qualified_opinion_and_provision_shortfall_escalation",
+      "severity": "critical",
+      "statement": "A DSE-compiled excerpt of Rupali Bank's FY2024 independent auditor's report, found this session (annual_reports/RUPALIBANK/rupalibank-dse-auditors-opinion-2024.txt), shows the auditor issued a QUALIFIED OPINION for FY2024 - an escalation from FY2023's unqualified-opinion-with-emphasis (see the existing chronic_loan_loss_provisioning_shortfall_under_regulatory_forbearance signal above, and this session's supplementary FY2023 finding below). The basis: BDT 15,375.30 crore of required provisions were not recognized as at 31 December 2024 (Balance with Banks & NBFIs 872.75cr, Loans and Advances & Off-Balance Sheet 12,282.84cr, Other Assets and Inter-Branch Accounts 300.15cr, Pension Fund 1,919.56cr) - more than 3x FY2023's already-large 4,499.38 crore shortfall - and the auditor explicitly states Bangladesh Bank's authorization to omit this (letter DOS(CAMS)1157/41(Dividend)/2025-3114, 22 May 2025) 'is not consistent with the relevant International Financial Reporting Standards (IFRs)'. CRAR fell further to 2.95% Solo / 3.03% Consolidated (from FY2023's 5.28%/5.36%), both roughly a quarter of the 12.50% requirement. Paid-up capital (BDT 487.93 crore) was itself BDT 12.07 crore below the BDT 500 crore regulatory minimum. This document only gives these specific disclosed figures, not a full balance sheet/P&L, so no 2024_Q4.json was created from it this session (out of this task's Q1-Q3 scope) - see sources.json for the full detail and the recommendation to build a proper Q4/annual entry for FY2024 in a future session.",
+      "metrics": [
+        "car_pct",
+        "required_provision",
+        "paid_up_capital"
+      ],
+      "periods": []
+    },
+    {
+      "category": "fy2023_supplementary_findings_ias19_pension_shortfall",
+      "severity": "high",
+      "statement": "A DSE-compiled excerpt of Rupali Bank's FY2023 auditor's Emphasis of Matter, found this session (annual_reports/RUPALIBANK/rupalibank-dse-auditors-opinion-2023.txt), discloses a provisioning gap not previously captured in this dataset's existing FY2023 entry (which is capital/asset-quality only, from a Basel III Pillar 3 disclosure): an IAS-19 Gratuity/Pension Fund provision shortfall of BDT 1,922.42 crore as of 31 December 2023 (required, per the last Actuarial Valuation dated 15 January 2023, BDT 2,069.54 crore; only BDT 147.20 crore set aside) - explicitly stated by the auditor to overstate net profit after tax. This is a SEPARATE shortfall from the already-known BDT 4,499.38 crore loans/assets/off-balance-sheet provisioning gap, and is itself the majority (1,919.56 of 15,375.30 crore, i.e. essentially the full pension-fund line) of the escalated FY2024 shortfall described in the fy2024_qualified_opinion_and_provision_shortfall_escalation signal above - indicating this specific pension liability has been carried unprovided for at least two consecutive year-ends without being resolved. Also newly found: Consolidated CRAR of 5.36% (the existing dataset only had Solo, 5.28%), and a BDT 679.99 crore Share Money Deposit still not converted to share capital as of FY2023 year-end (recurs, still unconverted, in FY2024 per the same auditor's-opinion source).",
+      "metrics": [
+        "car_pct",
+        "paid_up_capital"
+      ],
+      "periods": [
+        "2023_Q4"
+      ]
+    }
+  ],
+  "historical_context": "Rupali Bank PLC is a Bangladeshi state-owned commercial bank (90.19% government-owned per the FY2013 annual report's shareholding disclosure; the remaining ~9.81% is publicly held, consistent with its DSE listing), tracing its history to the 1972 nationalization of pre-independence banks and its 1986 conversion to a public limited company. Across the 12 fully-sourced years (FY2011-FY2022) plus a capital/asset-quality-only partial year for FY2023, the data shows a bank that was close to (but for most years just above) minimum regulatory capital adequacy through FY2015, then underwent a structural deterioration beginning in FY2016: capital adequacy fell to roughly half the regulatory minimum and has mostly stayed there since (with a partial, temporary recovery in FY2018-FY2019), loan-loss provisioning shortfalls of BDT 1,000-5,400+ crore per year have been repeatedly deferred rather than recognized via Bangladesh Bank forbearance letters (a pattern documented in the bank's own annual reports every year from FY2016 onward), and the classified-loan ratio has rarely dropped below the high teens. Reported profit has remained positive in most years (aside from FY2016's loss) but is thin relative to both balance-sheet size and to the scale of the unrecognized provisioning gap - by the dataset's own FY2024 sector-crisis framing (median NPL 5.48% to 9.55%, median CAR falling to 12.44%), Rupali Bank's FY2016-FY2023 profile (NPL 12.70%-23.41%, CAR 4.92%-10.34%) is not a new crisis but a pre-existing, chronic condition at this particular bank that predates and structurally resembles the sector-wide event by several years, managed throughout via regulatory forbearance rather than capital recognition or recapitalization visible in this data.",
+  "data_gaps": "FY2024 and FY2025 are complete gaps: no Wayback capture exists and the live site (rupalibank.com.bd) is behind a Cloudflare JS challenge returning HTTP 403 to all non-browser requests; confirmed exhaustively unavailable in a prior session and re-confirmed with a fresh CDX sweep in this session. FY2011, FY2012, FY2015, FY2018 and FY2020 have no recoverable annual report of their own and are reconstructed entirely from later (or, for FY2011/2012, the FY2013) reports' multi-year comparative tables - see sources.json and each year's period_note for the specific cross-checks performed. FY2023 is a PARTIAL year: only a standalone Basel III Pillar 3 capital/asset-quality disclosure was recoverable (no full annual report), so total_assets, total_deposits, total_equity, total_liabilities, all income-statement line items, EPS, NAV/share, and employee/branch/shareholder counts are gaps for FY2023 specifically. FY2011's classified_loans, npl_pct, off_balance_sheet_exposures, required_provision and provision_maintained are gaps (no source table reaches back that far). Q1/Q2/Q3 unaudited interim data was not researched for any year. The reported capital-adequacy figures for FY2013 (Tier-1/Tier-2/Total capital) differ materially from a later restatement in the FY2016/FY2017 reports (see FY2013 period_note and sources.json) - the earlier, contemporaneous figures are used per this dataset's standing rule, with the divergence recorded rather than reconciled. FY2015's reported 'Capital excess/(shortfall)' of -226.66cr does not reconcile with that same year's reported Total capital and Required capital (which imply -8.98cr) in either of the two reports that show it - an unresolved anomaly, reported as-is with a calculated CRAR (9.94%) provided as a cross-check. Checked explicitly for the negative-equity-breaks-ROE trap: reported total equity is positive in every year of the series (minimum BDT 1,165.57cr in FY2012/FY2016, maximum BDT 1,805.08cr in FY2020), so this does not apply here, though the unrecognized provisioning shortfall described in risk_signals means reported equity likely materially overstates the bank's true economic capital position in FY2016 onward. UPDATE 2026-08-27: Q1-Q3 unaudited interim data was researched this session (see sources.json's '2011-2023 Q1/Q2/Q3 (unaudited interim)' entry for the full method and results). Real interim EPS/price data (and, for 2020-2021, profit-in-BDT-millions) was recovered for FY2020, FY2021 (Q3 partial/flagged), FY2023 (Q1-Q2 only), FY2024 (Q1-Q3, complete), FY2025 (Q1-Q2 only) and FY2026 (Q1-Q2, the only two quarters that have occurred so far) - see quarterly/<YEAR>_Q1.json etc. FY2022 interim data is a confirmed total gap (no Wayback capture of the DSE source page exists for the entire year). Separately, FY2024 (previously a complete gap - no annual report of any kind) now has PARTIAL year-end data via a DSE Auditors_opinion document: a qualified audit opinion, a BDT 15,375.30 crore unrecognized provision shortfall, CRAR 2.95%/3.03% Solo/Consolidated, and paid-up capital BDT 487.93 crore - still not a full annual report (no balance sheet/P&L), and deliberately not built into a 2024_Q4.json this session (out of Q1-Q3 scope). FY2025's own annual report also still has not been located, but DSE's live company page confirms one now exists (AGM approved FY2025 results on 19-07-2026) - both years should be treated as 'exists, not yet located' going forward rather than 'confirmed unavailable' as this file previously stated."
+}

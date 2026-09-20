@@ -1,0 +1,1386 @@
+{
+  "bank_id": "NBL",
+  "generated_at": "2026-08-26",
+  "basis_note": "All figures Solo basis including the Offshore Banking Unit, from National Bank's own 'Five Years Financial Summary'. FY2025-sourced figures were converted from crore to million (x10). FY2011-FY2014 come from the FY2015 report (earlier reports are not in the archive) and FY2021-FY2023 from the FY2024 report (those years' own PDFs are image-only). NBL's table reports no provision figures, so provision coverage is unavailable for every year. UPDATE 2026-08-27: six Q1-Q3 interim periods (2024_Q1 through 2025_Q3) were appended below the original Q4-only annual periods, covering the quarters immediately around National Bank's insolvency crossing (equity turned negative during 2025_Q2). These interim entries use a lighter-weight subset of the schema than the annual periods above (several Basel/NPL/provision fields are null because NBL's interim filings do not disclose them) -- see each period's own data_completeness_note. ROE is explicitly nulled for 2025_Q2 and 2025_Q3 per the negative-equity-breaks-ROE rule, since equity is negative in both. Q3-2022, Q3-2023, and FY2011-2014/2026 quarters were not added here even though some now exist in quarterly/*.json, to keep this file focused on the crossing-relevant window; the full set of newly-sourced quarters is in quarterly/*.json and documented in sources.json.",
+  "periods": [
+    {
+      "financial_year": 2011,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2015.txt",
+      "total_assets": 169037.38,
+      "gross_loans": 115388.89,
+      "total_deposits": 128215.97,
+      "equity": 21522.57,
+      "profit_after_tax": 6085.7,
+      "npl_ratio_pct": {
+        "value": 2.83,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 90.0,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 4.01,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 29.96,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 3.6,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 28.28,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 12.65,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 10.32,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 4.55,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 24.73,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 2.67,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 4.29,
+      "nav_per_share": 25.02,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "total_equity": null,
+        "profit_after_tax": null,
+        "classified_loans": null
+      }
+    },
+    {
+      "financial_year": 2012,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2015.txt",
+      "total_assets": 205207.33,
+      "gross_loans": 126169.79,
+      "total_deposits": 157331.73,
+      "equity": 22374.27,
+      "profit_after_tax": 1487.91,
+      "npl_ratio_pct": {
+        "value": 4.32,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 80.19,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.8,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 6.78,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 0.73,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 6.65,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 12.8,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 10.53,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 4.3,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 34.03,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 1.4,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 1.05,
+      "nav_per_share": 15.76,
+      "yoy_growth_pct": {
+        "total_assets": 21.4,
+        "gross_loans": 9.34,
+        "total_deposits": 22.71,
+        "total_equity": 3.96,
+        "profit_after_tax": -75.55,
+        "classified_loans": 66.91
+      }
+    },
+    {
+      "financial_year": 2013,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2015.txt",
+      "total_assets": 235173.8,
+      "gross_loans": 151098.98,
+      "total_deposits": 193642.97,
+      "equity": 23929.64,
+      "profit_after_tax": 2116.59,
+      "npl_ratio_pct": {
+        "value": 3.24,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 78.03,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.96,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 9.14,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 0.9,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 8.85,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 11.69,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 9.72,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 1.86,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 39.23,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 0.7,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 1.36,
+      "nav_per_share": 16.86,
+      "yoy_growth_pct": {
+        "total_assets": 14.6,
+        "gross_loans": 19.76,
+        "total_deposits": 23.08,
+        "total_equity": 6.95,
+        "profit_after_tax": 42.25,
+        "classified_loans": -10.18
+      }
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2015.txt",
+      "total_assets": 256537.46,
+      "gross_loans": 172964.72,
+      "total_deposits": 203296.18,
+      "equity": 26963.95,
+      "profit_after_tax": 2660.29,
+      "npl_ratio_pct": {
+        "value": 5.26,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 85.08,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 1.08,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 10.45,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 1.04,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 9.87,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 11.71,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 9.75,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 2.38,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 35.54,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 0.66,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 1.55,
+      "nav_per_share": 17.27,
+      "yoy_growth_pct": {
+        "total_assets": 9.08,
+        "gross_loans": 14.47,
+        "total_deposits": 4.99,
+        "total_equity": 12.68,
+        "profit_after_tax": 25.69,
+        "classified_loans": 85.84
+      }
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2015.txt",
+      "total_assets": 281569.21,
+      "gross_loans": 186179.45,
+      "total_deposits": 222112.91,
+      "equity": 33557.96,
+      "profit_after_tax": 3854.03,
+      "npl_ratio_pct": {
+        "value": 7.01,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 83.82,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 1.43,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 12.74,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 1.37,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 11.48,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 12.05,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 10.5,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 1.58,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 36.83,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 0.48,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 2.24,
+      "nav_per_share": 19.54,
+      "yoy_growth_pct": {
+        "total_assets": 9.76,
+        "gross_loans": 7.64,
+        "total_deposits": 9.26,
+        "total_equity": 24.45,
+        "profit_after_tax": 44.87,
+        "classified_loans": 43.45
+      }
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2016.txt",
+      "total_assets": 305616.76,
+      "gross_loans": 209929.07,
+      "total_deposits": 241329.88,
+      "equity": 36202.87,
+      "profit_after_tax": 5567.87,
+      "npl_ratio_pct": {
+        "value": 10.35,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 84.66,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 1.9,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 15.96,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 1.82,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 15.38,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 13.19,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 11.37,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 1.94,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 34.11,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 0.56,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 2.82,
+      "nav_per_share": 18.33,
+      "yoy_growth_pct": {
+        "total_assets": 8.54,
+        "gross_loans": 12.76,
+        "total_deposits": 8.65,
+        "total_equity": 7.88,
+        "profit_after_tax": 44.47,
+        "classified_loans": 66.48
+      }
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2017.txt",
+      "total_assets": 350692.42,
+      "gross_loans": 248467.15,
+      "total_deposits": 272771.32,
+      "equity": 40370.82,
+      "profit_after_tax": 4696.01,
+      "npl_ratio_pct": {
+        "value": 10.64,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 89.03,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 1.43,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 12.27,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 1.34,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 11.63,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 12.2,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 9.72,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 2.59,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 36.02,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 0.76,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 1.98,
+      "nav_per_share": 17.03,
+      "yoy_growth_pct": {
+        "total_assets": 14.75,
+        "gross_loans": 18.36,
+        "total_deposits": 13.03,
+        "total_equity": 11.51,
+        "profit_after_tax": -15.66,
+        "classified_loans": 21.67
+      }
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2018.txt",
+      "total_assets": 407227.4,
+      "gross_loans": 314507.26,
+      "total_deposits": 315206.03,
+      "equity": 44809.35,
+      "profit_after_tax": 4100.31,
+      "npl_ratio_pct": {
+        "value": 9.5,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 97.49,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 1.08,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 9.63,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 1.01,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 9.15,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 14.04,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 11.52,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 2.26,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 41.34,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 0.56,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 1.54,
+      "nav_per_share": 16.88,
+      "yoy_growth_pct": {
+        "total_assets": 16.12,
+        "gross_loans": 26.58,
+        "total_deposits": 15.56,
+        "total_equity": 10.99,
+        "profit_after_tax": -12.69,
+        "classified_loans": 13.02
+      }
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2019.txt",
+      "total_assets": 463574.78,
+      "gross_loans": 360769.74,
+      "total_deposits": 366298.51,
+      "equity": 49037.56,
+      "profit_after_tax": 4164.35,
+      "npl_ratio_pct": {
+        "value": 10.98,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 95.27,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.96,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 8.87,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 0.9,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 8.49,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 13.38,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 11.17,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 2.9,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 43.89,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 0.48,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 1.43,
+      "nav_per_share": 16.79,
+      "yoy_growth_pct": {
+        "total_assets": 13.84,
+        "gross_loans": 14.71,
+        "total_deposits": 16.21,
+        "total_equity": 9.44,
+        "profit_after_tax": 1.56,
+        "classified_loans": 32.58
+      }
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2020.txt",
+      "total_assets": 529052.55,
+      "gross_loans": 408510.6,
+      "total_deposits": 430747.95,
+      "equity": 52093.56,
+      "profit_after_tax": 3485.54,
+      "npl_ratio_pct": {
+        "value": 9.38,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 92.96,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.7,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 6.9,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 0.66,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 6.69,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 13.0,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 10.86,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 2.01,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 43.14,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": 0.41,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": 1.14,
+      "nav_per_share": 16.99,
+      "yoy_growth_pct": {
+        "total_assets": 14.12,
+        "gross_loans": 13.23,
+        "total_deposits": 17.59,
+        "total_equity": 6.23,
+        "profit_after_tax": -16.3,
+        "classified_loans": -3.27
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2024.txt",
+      "total_assets": 575060.76,
+      "gross_loans": 445287.71,
+      "total_deposits": 473103.89,
+      "equity": 51943.54,
+      "profit_after_tax": 195.28,
+      "npl_ratio_pct": {
+        "value": 20.8,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 90.46,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.04,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": 0.38,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": 0.03,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 0.38,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 11.78,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 9.97,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": 0.31,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 77.23,
+        "basis": "reported"
+      },
+      "price_to_book": null,
+      "eps": 0.06,
+      "nav_per_share": 16.13,
+      "yoy_growth_pct": {
+        "total_assets": 8.7,
+        "gross_loans": 9.0,
+        "total_deposits": 9.83,
+        "total_equity": -0.29,
+        "profit_after_tax": -94.4,
+        "classified_loans": 141.71
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2024.txt",
+      "total_assets": 521446.32,
+      "gross_loans": 425065.55,
+      "total_deposits": 424305.99,
+      "equity": 41663.87,
+      "profit_after_tax": -32850.5,
+      "npl_ratio_pct": {
+        "value": 25.1,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 95.66,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": -5.99,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": -70.19,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": -6.3,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": -78.85,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 8.79,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 7.44,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": -2.36,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 124.26,
+        "basis": "reported"
+      },
+      "price_to_book": null,
+      "eps": -10.2,
+      "nav_per_share": 12.94,
+      "yoy_growth_pct": {
+        "total_assets": -9.32,
+        "gross_loans": -4.54,
+        "total_deposits": -10.31,
+        "total_equity": -19.79,
+        "profit_after_tax": -16922.26,
+        "classified_loans": 15.19
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2024.txt",
+      "total_assets": 566028.0,
+      "gross_loans": 430025.83,
+      "total_deposits": 426627.17,
+      "equity": 23189.24,
+      "profit_after_tax": -15156.41,
+      "npl_ratio_pct": {
+        "value": 36.57,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 98.49,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": -2.79,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": -46.74,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": -2.68,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": -65.36,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 3.42,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 2.3,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": -3.44,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 142.63,
+        "basis": "reported"
+      },
+      "price_to_book": null,
+      "eps": -4.71,
+      "nav_per_share": 7.2,
+      "yoy_growth_pct": {
+        "total_assets": 8.55,
+        "gross_loans": 1.17,
+        "total_deposits": 0.55,
+        "total_equity": -44.34,
+        "profit_after_tax": 53.86,
+        "classified_loans": 47.4
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2024.txt",
+      "total_assets": 572978.16,
+      "gross_loans": 431568.91,
+      "total_deposits": 370198.19,
+      "equity": 3208.1,
+      "profit_after_tax": -17224.21,
+      "npl_ratio_pct": {
+        "value": 64.64,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 113.56,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": -2.79,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": -114.74,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": -3.01,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": -536.9,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": 0.65,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": 0.3,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": -5.25,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 209.09,
+        "basis": "reported"
+      },
+      "price_to_book": null,
+      "eps": -5.35,
+      "nav_per_share": 1.0,
+      "yoy_growth_pct": {
+        "total_assets": 1.23,
+        "gross_loans": 0.36,
+        "total_deposits": -13.23,
+        "total_equity": -86.17,
+        "profit_after_tax": -13.64,
+        "classified_loans": 77.39
+      }
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nbl-annual-report-2025.txt",
+      "total_assets": 505200.9,
+      "gross_loans": 428012.0,
+      "total_deposits": 338843.7,
+      "equity": -24002.9,
+      "profit_after_tax": -24298.7,
+      "npl_ratio_pct": {
+        "value": 59.69,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 119.48,
+        "basis": "reported"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": -4.51,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roe_pct": {
+        "value": -233.7,
+        "basis": "reported",
+        "note": "As reported by the bank."
+      },
+      "roa_pct_period_end": {
+        "value": -4.81,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end total assets for cross-bank comparability; differs from the bank-reported average-balance RoA."
+      },
+      "roe_pct_period_end": {
+        "value": 101.23,
+        "basis": "calculated_period_end_not_average",
+        "note": "Recomputed on period-end equity for cross-bank comparability; differs from the bank-reported average-balance RoE."
+      },
+      "car_pct": {
+        "value": -5.48,
+        "basis": "reported"
+      },
+      "tier1_ratio_pct": {
+        "value": -6.02,
+        "basis": "reported"
+      },
+      "net_interest_margin_pct": {
+        "value": -8.33,
+        "basis": "calculated",
+        "note": "Net interest income over period-end loans and advances."
+      },
+      "cost_income_ratio_pct": {
+        "value": 244.1,
+        "basis": "reported"
+      },
+      "price_to_book": {
+        "value": -0.43,
+        "basis": "calculated",
+        "note": "Year-end DSE market price divided by net asset value per share."
+      },
+      "eps": -7.55,
+      "nav_per_share": -7.45,
+      "yoy_growth_pct": {
+        "total_assets": -11.83,
+        "gross_loans": -0.82,
+        "total_deposits": -8.47,
+        "total_equity": -848.2,
+        "profit_after_tax": -41.07,
+        "classified_loans": -8.42
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nblbd.com Q1-2024 unaudited financial statements",
+      "total_assets": 499377.79,
+      "gross_loans": 429109.18,
+      "total_deposits": 405131.14,
+      "equity": 15473.99,
+      "profit_after_tax": -7714.49,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 105.92,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "car_pct": null,
+      "tier1_ratio_pct": null,
+      "roa_pct_period_end": {
+        "value": -6.18,
+        "basis": "calculated_period_end_not_average",
+        "note": "PAT annualized (x4 for Q1, x2 for Q2 cumulative, x4/3 for Q3 cumulative) over period-end total assets. NBL's interim filings do not disclose a bank-reported ROA ratio, unlike the annual summary table."
+      },
+      "roe_pct_period_end": {
+        "value": -199.42,
+        "basis": "calculated_period_end_not_average",
+        "note": "Calculated on period-end equity, annualized PAT."
+      },
+      "net_interest_margin_pct": {
+        "value": -4.25,
+        "basis": "calculated",
+        "note": "Net interest income (annualized) over period-end gross loans and advances."
+      },
+      "cost_income_ratio_pct": null,
+      "price_to_book": null,
+      "eps": -2.4,
+      "eps_note": "As reported for this period (discrete Q1, cumulative H1 for Q2, cumulative 9M for Q3) -- not annualized.",
+      "nav_per_share": 4.81,
+      "yoy_growth_pct": {
+        "total_assets": -2.86,
+        "gross_loans": 0.73,
+        "total_deposits": -2.85,
+        "total_equity": -59.39,
+        "profit_after_tax": null,
+        "classified_loans": null
+      },
+      "yoy_growth_pct_note": "profit_after_tax and classified_loans YoY growth intentionally left null: NBL's PAT has been a loss (often from a loss base) for multiple consecutive quarters, which is exactly the YoY-growth-from-negative-base distortion this dataset's standing rules warn about (see the GIB precedent); classified_loans/NPL ratio is not disclosed in the interim filings at all, only in the annual summary table. total_equity growth is nulled for any quarter where either the current or prior-year value is <= 0, for the same reason.",
+      "data_completeness_note": "npl_ratio_pct, provision_coverage_pct, car_pct, tier1_ratio_pct, cost_income_ratio_pct and price_to_book are null because NBL's interim (Q1/Q2/Q3) financial statements do not disclose Basel capital ratios, NPL percentages, or provision detail the way the annual report's summary table does, and no per-quarter market share price was sourced in this pass. See bank_financials/NBL/quarterly/<year>_<quarter>.json for the full sourced balance-sheet and income-statement detail behind every figure here."
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nblbd.com 2nd-Quarter-2024 unaudited financial statements",
+      "total_assets": 571012.61,
+      "gross_loans": 429833.45,
+      "total_deposits": 401670.71,
+      "equity": 12390.74,
+      "profit_after_tax": -10797.74,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 107.01,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "car_pct": null,
+      "tier1_ratio_pct": null,
+      "roa_pct_period_end": {
+        "value": -3.78,
+        "basis": "calculated_period_end_not_average",
+        "note": "PAT annualized (x4 for Q1, x2 for Q2 cumulative, x4/3 for Q3 cumulative) over period-end total assets. NBL's interim filings do not disclose a bank-reported ROA ratio, unlike the annual summary table."
+      },
+      "roe_pct_period_end": {
+        "value": -174.29,
+        "basis": "calculated_period_end_not_average",
+        "note": "Calculated on period-end equity, annualized PAT."
+      },
+      "net_interest_margin_pct": {
+        "value": -3.72,
+        "basis": "calculated",
+        "note": "Net interest income (annualized) over period-end gross loans and advances."
+      },
+      "cost_income_ratio_pct": null,
+      "price_to_book": null,
+      "eps": -3.38,
+      "eps_note": "As reported for this period (discrete Q1, cumulative H1 for Q2, cumulative 9M for Q3) -- not annualized.",
+      "nav_per_share": 3.85,
+      "yoy_growth_pct": {
+        "total_assets": 12.52,
+        "gross_loans": 0.73,
+        "total_deposits": -2.18,
+        "total_equity": -64.51,
+        "profit_after_tax": null,
+        "classified_loans": null
+      },
+      "yoy_growth_pct_note": "profit_after_tax and classified_loans YoY growth intentionally left null: NBL's PAT has been a loss (often from a loss base) for multiple consecutive quarters, which is exactly the YoY-growth-from-negative-base distortion this dataset's standing rules warn about (see the GIB precedent); classified_loans/NPL ratio is not disclosed in the interim filings at all, only in the annual summary table. total_equity growth is nulled for any quarter where either the current or prior-year value is <= 0, for the same reason.",
+      "data_completeness_note": "npl_ratio_pct, provision_coverage_pct, car_pct, tier1_ratio_pct, cost_income_ratio_pct and price_to_book are null because NBL's interim (Q1/Q2/Q3) financial statements do not disclose Basel capital ratios, NPL percentages, or provision detail the way the annual report's summary table does, and no per-quarter market share price was sourced in this pass. See bank_financials/NBL/quarterly/<year>_<quarter>.json for the full sourced balance-sheet and income-statement detail behind every figure here."
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nblbd.com Q3-2024 unaudited financial statements",
+      "total_assets": 489104.04,
+      "gross_loans": 427449.33,
+      "total_deposits": 383677.48,
+      "equity": 5469.19,
+      "profit_after_tax": -17873.52,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 111.41,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "car_pct": null,
+      "tier1_ratio_pct": null,
+      "roa_pct_period_end": {
+        "value": -4.87,
+        "basis": "calculated_period_end_not_average",
+        "note": "PAT annualized (x4 for Q1, x2 for Q2 cumulative, x4/3 for Q3 cumulative) over period-end total assets. NBL's interim filings do not disclose a bank-reported ROA ratio, unlike the annual summary table."
+      },
+      "roe_pct_period_end": {
+        "value": -435.74,
+        "basis": "calculated_period_end_not_average",
+        "note": "Calculated on period-end equity, annualized PAT."
+      },
+      "net_interest_margin_pct": {
+        "value": -4.48,
+        "basis": "calculated",
+        "note": "Net interest income (annualized) over period-end gross loans and advances."
+      },
+      "cost_income_ratio_pct": null,
+      "price_to_book": null,
+      "eps": -5.55,
+      "eps_note": "As reported for this period (discrete Q1, cumulative H1 for Q2, cumulative 9M for Q3) -- not annualized.",
+      "nav_per_share": 1.7,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "total_equity": null,
+        "profit_after_tax": null,
+        "classified_loans": null
+      },
+      "yoy_growth_pct_note": "profit_after_tax and classified_loans YoY growth intentionally left null: NBL's PAT has been a loss (often from a loss base) for multiple consecutive quarters, which is exactly the YoY-growth-from-negative-base distortion this dataset's standing rules warn about (see the GIB precedent); classified_loans/NPL ratio is not disclosed in the interim filings at all, only in the annual summary table. total_equity growth is nulled for any quarter where either the current or prior-year value is <= 0, for the same reason.",
+      "data_completeness_note": "npl_ratio_pct, provision_coverage_pct, car_pct, tier1_ratio_pct, cost_income_ratio_pct and price_to_book are null because NBL's interim (Q1/Q2/Q3) financial statements do not disclose Basel capital ratios, NPL percentages, or provision detail the way the annual report's summary table does, and no per-quarter market share price was sourced in this pass. See bank_financials/NBL/quarterly/<year>_<quarter>.json for the full sourced balance-sheet and income-statement detail behind every figure here."
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nblbd.com Q1-2025 unaudited financial statements",
+      "total_assets": 507690.05,
+      "gross_loans": 434431.23,
+      "total_deposits": 349564.09,
+      "equity": 939.67,
+      "profit_after_tax": -2259.42,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 124.28,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "car_pct": null,
+      "tier1_ratio_pct": null,
+      "roa_pct_period_end": {
+        "value": -1.78,
+        "basis": "calculated_period_end_not_average",
+        "note": "PAT annualized (x4 for Q1, x2 for Q2 cumulative, x4/3 for Q3 cumulative) over period-end total assets. NBL's interim filings do not disclose a bank-reported ROA ratio, unlike the annual summary table."
+      },
+      "roe_pct_period_end": {
+        "value": -961.79,
+        "basis": "calculated_period_end_not_average",
+        "note": "Calculated on period-end equity, annualized PAT -- NOTE: equity was near zero this quarter (see total_equity), so this ratio is arithmetically valid but not economically meaningful; included for completeness ahead of the following quarter's crossing into negative equity."
+      },
+      "net_interest_margin_pct": {
+        "value": -7.26,
+        "basis": "calculated",
+        "note": "Net interest income (annualized) over period-end gross loans and advances."
+      },
+      "cost_income_ratio_pct": null,
+      "price_to_book": null,
+      "eps": -0.7,
+      "eps_note": "As reported for this period (discrete Q1, cumulative H1 for Q2, cumulative 9M for Q3) -- not annualized.",
+      "nav_per_share": 0.29,
+      "yoy_growth_pct": {
+        "total_assets": 1.66,
+        "gross_loans": 1.24,
+        "total_deposits": -13.72,
+        "total_equity": -93.93,
+        "profit_after_tax": null,
+        "classified_loans": null
+      },
+      "yoy_growth_pct_note": "profit_after_tax and classified_loans YoY growth intentionally left null: NBL's PAT has been a loss (often from a loss base) for multiple consecutive quarters, which is exactly the YoY-growth-from-negative-base distortion this dataset's standing rules warn about (see the GIB precedent); classified_loans/NPL ratio is not disclosed in the interim filings at all, only in the annual summary table. total_equity growth is nulled for any quarter where either the current or prior-year value is <= 0, for the same reason.",
+      "data_completeness_note": "npl_ratio_pct, provision_coverage_pct, car_pct, tier1_ratio_pct, cost_income_ratio_pct and price_to_book are null because NBL's interim (Q1/Q2/Q3) financial statements do not disclose Basel capital ratios, NPL percentages, or provision detail the way the annual report's summary table does, and no per-quarter market share price was sourced in this pass. See bank_financials/NBL/quarterly/<year>_<quarter>.json for the full sourced balance-sheet and income-statement detail behind every figure here."
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nblbd.com 2nd-Quarter-2025 unaudited financial statements",
+      "total_assets": 513585.24,
+      "gross_loans": 431576.51,
+      "total_deposits": 343261.65,
+      "equity": -6720.15,
+      "profit_after_tax": -9919.34,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 125.73,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "car_pct": null,
+      "tier1_ratio_pct": null,
+      "roa_pct_period_end": {
+        "value": -3.86,
+        "basis": "calculated_period_end_not_average",
+        "note": "PAT annualized (x4 for Q1, x2 for Q2 cumulative, x4/3 for Q3 cumulative) over period-end total assets. NBL's interim filings do not disclose a bank-reported ROA ratio, unlike the annual summary table."
+      },
+      "roe_pct_period_end": {
+        "value": null,
+        "basis": "null_negative_equity",
+        "note": "NULLED: equity is negative this quarter (period-end equity <= 0). A loss divided by negative equity would read as a misleadingly positive percentage -- see this dataset's standing negative-equity-breaks-ROE rule, and NBL's own FY2025 Q4 ratios_timeseries.json entry note for the same issue found (but not fixed, out of scope) in the existing annual data."
+      },
+      "net_interest_margin_pct": {
+        "value": -8.25,
+        "basis": "calculated",
+        "note": "Net interest income (annualized) over period-end gross loans and advances."
+      },
+      "cost_income_ratio_pct": null,
+      "price_to_book": null,
+      "eps": -3.08,
+      "eps_note": "As reported for this period (discrete Q1, cumulative H1 for Q2, cumulative 9M for Q3) -- not annualized.",
+      "nav_per_share": -2.09,
+      "yoy_growth_pct": {
+        "total_assets": -10.06,
+        "gross_loans": 0.41,
+        "total_deposits": -14.54,
+        "total_equity": null,
+        "profit_after_tax": null,
+        "classified_loans": null
+      },
+      "yoy_growth_pct_note": "profit_after_tax and classified_loans YoY growth intentionally left null: NBL's PAT has been a loss (often from a loss base) for multiple consecutive quarters, which is exactly the YoY-growth-from-negative-base distortion this dataset's standing rules warn about (see the GIB precedent); classified_loans/NPL ratio is not disclosed in the interim filings at all, only in the annual summary table. total_equity growth is nulled for any quarter where either the current or prior-year value is <= 0, for the same reason.",
+      "data_completeness_note": "npl_ratio_pct, provision_coverage_pct, car_pct, tier1_ratio_pct, cost_income_ratio_pct and price_to_book are null because NBL's interim (Q1/Q2/Q3) financial statements do not disclose Basel capital ratios, NPL percentages, or provision detail the way the annual report's summary table does, and no per-quarter market share price was sourced in this pass. See bank_financials/NBL/quarterly/<year>_<quarter>.json for the full sourced balance-sheet and income-statement detail behind every figure here."
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "basis": "solo",
+      "source_report": "nblbd.com Q3-2025 unaudited financial statements",
+      "total_assets": 506974.12,
+      "gross_loans": 426762.91,
+      "total_deposits": 341063.97,
+      "equity": -11352.77,
+      "profit_after_tax": -14588.65,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 125.13,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "car_pct": null,
+      "tier1_ratio_pct": null,
+      "roa_pct_period_end": {
+        "value": -3.84,
+        "basis": "calculated_period_end_not_average",
+        "note": "PAT annualized (x4 for Q1, x2 for Q2 cumulative, x4/3 for Q3 cumulative) over period-end total assets. NBL's interim filings do not disclose a bank-reported ROA ratio, unlike the annual summary table."
+      },
+      "roe_pct_period_end": {
+        "value": null,
+        "basis": "null_negative_equity",
+        "note": "NULLED: equity is negative this quarter (period-end equity <= 0). A loss divided by negative equity would read as a misleadingly positive percentage -- see this dataset's standing negative-equity-breaks-ROE rule, and NBL's own FY2025 Q4 ratios_timeseries.json entry note for the same issue found (but not fixed, out of scope) in the existing annual data."
+      },
+      "net_interest_margin_pct": {
+        "value": -8.48,
+        "basis": "calculated",
+        "note": "Net interest income (annualized) over period-end gross loans and advances."
+      },
+      "cost_income_ratio_pct": null,
+      "price_to_book": null,
+      "eps": -4.53,
+      "eps_note": "As reported for this period (discrete Q1, cumulative H1 for Q2, cumulative 9M for Q3) -- not annualized.",
+      "nav_per_share": -3.53,
+      "yoy_growth_pct": {
+        "total_assets": 3.65,
+        "gross_loans": -0.16,
+        "total_deposits": -11.11,
+        "total_equity": null,
+        "profit_after_tax": null,
+        "classified_loans": null
+      },
+      "yoy_growth_pct_note": "profit_after_tax and classified_loans YoY growth intentionally left null: NBL's PAT has been a loss (often from a loss base) for multiple consecutive quarters, which is exactly the YoY-growth-from-negative-base distortion this dataset's standing rules warn about (see the GIB precedent); classified_loans/NPL ratio is not disclosed in the interim filings at all, only in the annual summary table. total_equity growth is nulled for any quarter where either the current or prior-year value is <= 0, for the same reason.",
+      "data_completeness_note": "npl_ratio_pct, provision_coverage_pct, car_pct, tier1_ratio_pct, cost_income_ratio_pct and price_to_book are null because NBL's interim (Q1/Q2/Q3) financial statements do not disclose Basel capital ratios, NPL percentages, or provision detail the way the annual report's summary table does, and no per-quarter market share price was sourced in this pass. See bank_financials/NBL/quarterly/<year>_<quarter>.json for the full sourced balance-sheet and income-statement detail behind every figure here."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2025-06-30",
+  "financial_year": 2025,
+  "quarter": "Q2",
+  "period_note": "Recovered via a Wayback Machine capture of DSE's OWN company page (dsebd.org/displayCompany.php?name=PUBALIBANK), NOT the bank's site. From this vintage onward DSE no longer publishes Turnover/Revenue or Profit-in-BDT on this page (the rows are present in the page's HTML but wrapped in a comment, rendering only placeholder zeros) -- only EPS and period-end market price remain, matching the identical presentation change already documented for RUPALIBANK from its own 2023 capture onward. Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). FLAG: Q1 (1.600) + Q2 (3.020) = 4.620, vs the reported Half-Yearly cumulative of 4.440 (a 0.18 BDT/share gap). Consistent with the same AGM/bonus-timing pattern: the 18-06-2025 AGM (for FY2024) fell between Q1 and Q2 2025, with share count rising to 1,301,434,869 by this capture. Recorded as reported, not silently reconciled. Q3 2025 had not occurred yet as of this capture (2025-08-25) and no later 2025 capture with HTTP 200 exists in the CDX index (the sole later entry, 2025-12-15, is HTTP 403) -- a genuine 'not yet capturable' gap, not a research failure.",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://web.archive.org/web/20250825111315id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2025\" table, Q2 (discrete) and Half Yearly (cumulative) columns (period-end 202506)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Apr-Jun",
+      "value": 3.02,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_6m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, Half Yearly cumulative",
+      "value": 4.44,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Does not reconcile exactly with Q1+Q2 (4.620) -- see period_note for the likely AGM/bonus-share-timing cause."
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 25.4,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Super Model — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="../candlestick_chart/candlestick-chart.css" />
+<link rel="stylesheet" href="../candlestick_chart/candlestick-analysis.css" />
+<link rel="stylesheet" href="super-model.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">SM</span>
+      <div class="logo-text">
+        <h1>Super Model</h1>
+        <p>Backtest-validated trend, seasonal &amp; mean-reversion signals</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="/minervini_model/minervini.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Minervini Trend Template model" aria-label="Minervini Model">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+        <span>Minervini</span>
+      </a>
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/>
+        </svg>
+      </a>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="sm-shell">
+
+  <!-- ─── Sidebar ─────────────────────────────────────────────────────── -->
+  <aside class="sm-side">
+
+    <div class="sm-side-card" id="sm-market-card">
+      <div class="sm-side-card-title">Market summary</div>
+      <div class="sm-dsex" id="sm-dsex-summary">
+        <div class="sm-dsex-code">DSEX</div>
+        <div class="sm-dsex-price" id="sm-dsex-price">—</div>
+        <div class="sm-dsex-change" id="sm-dsex-change"></div>
+        <svg class="sm-dsex-spark" id="sm-dsex-spark" viewBox="0 0 220 56" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="sm-dsex-asof" id="sm-dsex-asof"></div>
+      </div>
+      <!-- The DSEX regime every scored trade is gated against (see
+           DEFAULT_PLAN in routes/super-model-engine.js). -->
+      <div class="sm-index-context" id="sm-index-context"></div>
+    </div>
+
+    <div class="sm-side-card">
+      <div class="sm-side-card-title">Today's picks</div>
+      <input type="search" id="sm-side-search" class="sm-side-search" placeholder="Search company…"
+             autocomplete="off" spellcheck="false" />
+      <div id="sm-side-picks"></div>
+    </div>
+
+    <div class="sm-side-card" id="sm-recent-card" style="display:none;">
+      <div class="sm-side-card-title">Recently viewed</div>
+      <div id="sm-side-recent"></div>
+    </div>
+
+    <div class="sm-side-card sm-side-about">
+      <details class="sm-side-acc">
+        <summary class="sm-side-card-title">About Super Model</summary>
+        <p>A composite score built from signals that survived cross-regime backtest
+          validation. Each suggestion carries a concrete entry, stoploss and target,
+          and every number on this page can be traced to the run that produced it.</p>
+      </details>
+      <!-- Outside the accordion: holds the as-of/meta line AND the load-failure
+           message, neither of which should be hidden behind a closed disclosure. -->
+      <div class="sm-meta-row" id="sm-meta-row"></div>
+    </div>
+
+  </aside>
+
+  <!-- ─── Main column ─────────────────────────────────────────────────── -->
+  <main class="sm-main">
+
+    <div class="sm-disclaimer">
+      <strong>⚠️ Algorithmically generated from historical price data. Not financial advice.</strong>
+      <span id="sm-disclaimer-sub">Verify independently before trading.</span>
+    </div>
+
+    <!-- Selected-stock strip: hidden until a suggestion is opened -->
+    <div class="sm-current" id="sm-current" style="display:none;">
+      <div class="sm-current-main">
+        <div class="sm-current-kicker">Current analysis</div>
+        <div class="sm-current-name" id="sm-current-name">—</div>
+        <div class="sm-current-chips" id="sm-current-chips"></div>
+      </div>
+      <div class="sm-current-cell">
+        <div class="sm-current-cell-label">Last price</div>
+        <div class="sm-current-cell-value" id="sm-current-price">—</div>
+      </div>
+      <div class="sm-current-cell">
+        <div class="sm-current-cell-label">Day change</div>
+        <div class="sm-current-cell-value" id="sm-current-change">—</div>
+      </div>
+    </div>
+
+    <!-- Tabbed evidence + analysis card. wireEvidenceDetails() binds the
+         delegated data-metric click handler on this element, so every pane
+         inside it gets clickable metric tiles for free. -->
+    <section class="sm-evidence" id="sm-evidence">
+      <div class="sm-evidence-tabs">
+        <button class="sm-tab" data-pane="suggest" onclick="window.smShowPane(this)">Suggestions</button>
+        <button class="sm-tab" data-pane="analysis" onclick="window.smShowPane(this)">Analysis</button>
+        <button class="sm-tab active" data-pane="backtest" onclick="window.smShowPane(this)">Backtest</button>
+        <button class="sm-tab" data-pane="live" onclick="window.smShowPane(this)">Live record</button>
+        <button class="sm-tab" data-pane="model" onclick="window.smShowPane(this)">What's scored</button>
+      </div>
+
+      <!-- Suggestions: filters + the Buy and Sell tables -->
+      <div class="sm-pane" id="sm-pane-suggest">
+
+        <div class="sm-filter-bar" id="sm-filter-bar">
+          <div class="filter-select-wrap sm-filter-search-wrap">
+            <label for="sm-filter-search">Search</label>
+            <input type="search" id="sm-filter-search" class="sm-filter-search"
+                   placeholder="Code or company…" autocomplete="off" spellcheck="false" />
+          </div>
+
+          <div class="filter-select-wrap">
+            <label for="sm-filter-category">Category</label>
+            <!-- enabled once the code→category map loads (fetched after first paint) -->
+            <select id="sm-filter-category" disabled>
+              <option value="">All</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="Z">Z</option>
+              <option value="none">Uncategorised</option>
+            </select>
+          </div>
+
+          <div class="filter-select-wrap">
+            <label for="sm-filter-sector">Sector</label>
+            <select id="sm-filter-sector"><option value="">All Sectors</option></select>
+          </div>
+
+          <div class="filter-select-wrap">
+            <label for="sm-filter-signal">Signal</label>
+            <select id="sm-filter-signal"><option value="">Any Signal</option></select>
+          </div>
+
+          <div class="filter-select-wrap">
+            <span class="sm-filter-label">Strength</span>
+            <div class="sm-seg" id="sm-filter-strength">
+              <button type="button" class="sm-seg-btn active" data-strength="all">All</button>
+              <button type="button" class="sm-seg-btn" data-strength="strong">Strong only</button>
+            </div>
+          </div>
+
+          <button type="button" id="sm-filter-clear" class="sm-filter-clear">Clear filters</button>
+          <span class="sm-filter-count" id="sm-filter-count"></span>
+        </div>
+
+        <section class="sm-section">
+          <div class="sm-section-hd sm-section-hd--buy">
+            <h2>Buy</h2>
+            <span class="sm-section-count" id="sm-buy-count"></span>
+          </div>
+          <div class="sm-table-wrap" id="sm-buy-table-wrap">
+            <table class="sm-table">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Sector</th>
+                  <th>Conviction</th>
+                  <th class="sm-th-num">Entry</th>
+                  <th class="sm-th-num">Stoploss</th>
+                  <th class="sm-th-num">Target</th>
+                  <th class="sm-th-num">R:R</th>
+                  <th class="sm-th-num">Signals</th>
+                </tr>
+              </thead>
+              <tbody id="sm-buy-grid"></tbody>
+            </table>
+          </div>
+          <div class="sm-empty" id="sm-buy-empty" style="display:none;">No high-conviction Buy setups right now.</div>
+        </section>
+
+        <section class="sm-section">
+          <div class="sm-section-hd sm-section-hd--sell">
+            <h2>Sell</h2>
+            <span class="sm-section-count" id="sm-sell-count"></span>
+          </div>
+          <div class="sm-table-wrap" id="sm-sell-table-wrap">
+            <table class="sm-table">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Sector</th>
+                  <th>Conviction</th>
+                  <th class="sm-th-num">Entry</th>
+                  <th class="sm-th-num">Stoploss</th>
+                  <th class="sm-th-num">Target</th>
+                  <th class="sm-th-num">R:R</th>
+                  <th class="sm-th-num">Signals</th>
+                </tr>
+              </thead>
+              <tbody id="sm-sell-grid"></tbody>
+            </table>
+          </div>
+          <div class="sm-empty" id="sm-sell-empty" style="display:none;">No high-conviction Sell setups right now.</div>
+        </section>
+
+      </div>
+
+      <!-- Analysis: the selected suggestion's full breakdown -->
+      <div class="sm-pane" id="sm-pane-analysis">
+        <p class="sm-note sm-note-muted" id="sm-analysis-placeholder">
+          Open any suggestion from the Suggestions tab (or the picks list on the left)
+          to see its full breakdown here — score, trade plan, and every signal behind it.
+        </p>
+        <div id="sm-analysis-body"></div>
+      </div>
+
+      <div class="sm-pane active" id="sm-pane-backtest">
+        <!-- Five variants exist to be COMPARED — the table does that in five
+             rows (renderBtComparison), then one write-up shows at a time via
+             the switcher below it: five stacked sections made the page
+             unscrollably long. Rejected comparison variants carry a warn dot. -->
+        <div id="sm-bt-compare"></div>
+        <div class="sm-bt-tabs" id="sm-bt-tabs">
+          <button type="button" class="sm-bt-tab" data-bt="full" onclick="window.smShowBtSection(this)">Full history</button>
+          <button type="button" class="sm-bt-tab" data-bt="2y" onclick="window.smShowBtSection(this)">Last 2 years</button>
+          <button type="button" class="sm-bt-tab sm-bt-tab--rejected" data-bt="capped" onclick="window.smShowBtSection(this)">Capped 1:2.5</button>
+          <button type="button" class="sm-bt-tab sm-bt-tab--rejected" data-bt="capped-pct" onclick="window.smShowBtSection(this)">Capped 12%</button>
+          <button type="button" class="sm-bt-tab" data-bt="explorer" onclick="window.smShowBtSection(this)">Explorer</button>
+          <button type="button" class="sm-bt-tab active" data-bt="range" onclick="window.smShowBtSection(this)">Custom range</button>
+          <button type="button" class="sm-bt-tab" data-bt="psim" onclick="window.smShowBtSection(this)">Portfolio sim</button>
+        </div>
+        <div class="sm-bt-section" id="sm-bt-section-full">
+          <div class="sm-bt-section-hd">
+            <h3 class="sm-bt-section-title">Full history</h3>
+            <div class="sm-bt-hd-actions">
+              <button type="button" class="sm-info-btn" data-metric="variant:full" aria-label="About this rule set" title="About this rule set">i</button>
+              <button type="button" id="sm-run-backtest-btn-full" class="sm-run-backtest-btn" onclick="window.runSuperModelBacktest('full')">
+                <span class="sm-run-backtest-icon">⟳</span><span class="sm-run-backtest-label">Run backtest</span>
+              </button>
+            </div>
+          </div>
+          <div class="sm-backtest-run-meta" id="sm-backtest-run-meta-full"></div>
+          <div id="sm-backtest-body-full"></div>
+        </div>
+        <div class="sm-bt-section" id="sm-bt-section-2y">
+          <div class="sm-bt-section-hd">
+            <h3 class="sm-bt-section-title">Last 2 years</h3>
+            <div class="sm-bt-hd-actions">
+              <button type="button" class="sm-info-btn" data-metric="variant:2y" aria-label="About this rule set" title="About this rule set">i</button>
+              <button type="button" id="sm-run-backtest-btn-2y" class="sm-run-backtest-btn" onclick="window.runSuperModelBacktest('2y')">
+                <span class="sm-run-backtest-icon">⟳</span><span class="sm-run-backtest-label">Run backtest</span>
+              </button>
+            </div>
+          </div>
+          <div class="sm-backtest-run-meta" id="sm-backtest-run-meta-2y"></div>
+          <div id="sm-backtest-body-2y"></div>
+        </div>
+        <div class="sm-bt-section" id="sm-bt-section-capped">
+          <div class="sm-bt-section-hd">
+            <h3 class="sm-bt-section-title">Last 2 years — capped 1:2.5 <span class="sm-warn">rejected, comparison only</span></h3>
+            <div class="sm-bt-hd-actions">
+              <button type="button" class="sm-info-btn" data-metric="variant:capped" aria-label="About this rule set" title="About this rule set">i</button>
+              <button type="button" id="sm-run-backtest-btn-capped" class="sm-run-backtest-btn" onclick="window.runSuperModelBacktest('capped')">
+                <span class="sm-run-backtest-icon">⟳</span><span class="sm-run-backtest-label">Run backtest</span>
+              </button>
+            </div>
+          </div>
+          <div class="sm-backtest-run-meta" id="sm-backtest-run-meta-capped"></div>
+          <div id="sm-backtest-body-capped"></div>
+        </div>
+        <div class="sm-bt-section" id="sm-bt-section-capped-pct">
+          <div class="sm-bt-section-hd">
+            <h3 class="sm-bt-section-title">Last 2 years — capped 12% target distance <span class="sm-warn">rejected, comparison only</span></h3>
+            <div class="sm-bt-hd-actions">
+              <button type="button" class="sm-info-btn" data-metric="variant:cappedPct" aria-label="About this rule set" title="About this rule set">i</button>
+              <button type="button" id="sm-run-backtest-btn-capped-pct" class="sm-run-backtest-btn" onclick="window.runSuperModelBacktest('cappedPct')">
+                <span class="sm-run-backtest-icon">⟳</span><span class="sm-run-backtest-label">Run backtest</span>
+              </button>
+            </div>
+          </div>
+          <div class="sm-backtest-run-meta" id="sm-backtest-run-meta-capped-pct"></div>
+          <div id="sm-backtest-body-capped-pct"></div>
+        </div>
+        <div class="sm-bt-section" id="sm-bt-section-explorer">
+          <div class="sm-bt-section-hd">
+            <h3 class="sm-bt-section-title">Explorer — capped 1:2.5 AND 12%, profit-lock ladder, S/R-break exit</h3>
+            <div class="sm-bt-hd-actions">
+              <a class="sm-beta-link" href="/explorer_beta/explorer-beta.html" title="The locked, forward-tracked clone of this rule set">Open Explorer Beta →</a>
+              <button type="button" class="sm-info-btn" data-metric="variant:explorer" aria-label="About this rule set" title="About this rule set">i</button>
+              <button type="button" id="sm-run-backtest-btn-explorer" class="sm-run-backtest-btn" onclick="window.runSuperModelBacktest('explorer')">
+                <span class="sm-run-backtest-icon">⟳</span><span class="sm-run-backtest-label">Run backtest</span>
+              </button>
+            </div>
+          </div>
+          <div class="sm-backtest-run-meta" id="sm-backtest-run-meta-explorer"></div>
+          <div id="sm-backtest-body-explorer"></div>
+        </div>
+        <div class="sm-bt-section active" id="sm-bt-section-range">
+          <div class="sm-bt-section-hd">
+            <h3 class="sm-bt-section-title">Custom range</h3>
+          </div>
+          <p class="sm-note">Backtest any model variant over any stretch of history. Pick the model and a
+            preset or exact dates, then run — a single pass over the whole universe, usually a few
+            minutes. Leaving both dates empty runs all available history.</p>
+          <div class="sm-filter-bar sm-bt-runbar">
+            <div class="filter-select-wrap">
+              <label for="sm-bt-range-variant">Model</label>
+              <select id="sm-bt-range-variant">
+                <option value="shipped">Shipped model</option>
+                <option value="capped">Capped 1:2.5</option>
+                <option value="cappedPct">Capped 12%</option>
+                <option value="explorer" selected>Explorer</option>
+              </select>
+            </div>
+            <div class="sm-seg" id="sm-bt-range-presets">
+              <button type="button" class="sm-seg-btn" data-years="2">Last 2 years</button>
+              <button type="button" class="sm-seg-btn" data-years="5">Last 5 years</button>
+              <button type="button" class="sm-seg-btn" data-years="all">All available</button>
+            </div>
+            <label class="sm-filter-label">From
+              <input type="date" id="sm-bt-range-from" class="sm-filter-search sm-date-input" />
+            </label>
+            <label class="sm-filter-label">To
+              <input type="date" id="sm-bt-range-to" class="sm-filter-search sm-date-input" />
+            </label>
+            <button type="button" id="sm-run-backtest-btn-range" class="sm-run-backtest-btn" onclick="window.runSuperModelBacktest('range')">
+              <span class="sm-run-backtest-icon">⟳</span><span class="sm-run-backtest-label">Run backtest</span>
+            </button>
+          </div>
+          <div class="sm-backtest-run-meta" id="sm-backtest-run-meta-range"></div>
+          <div id="sm-backtest-body-range"></div>
+        </div>
+        <div class="sm-bt-section" id="sm-bt-section-psim">
+          <div class="sm-bt-section-hd">
+            <h3 class="sm-bt-section-title">Portfolio simulation — ৳1,000,000, buy-only</h3>
+            <div class="sm-bt-hd-actions">
+              <button type="button" class="sm-info-btn" data-metric="variant:psim" aria-label="About this simulation" title="About this simulation">i</button>
+            </div>
+          </div>
+          <p class="sm-note">Every per-trade average on this page quietly assumes you could fund all
+            simulated trades at once. This section drops that assumption: it replays the same 2-year
+            trade streams — shipped plan and Explorer — through one simulated account with fixed
+            starting capital and a cap on simultaneous positions, so the two plans finally compete for
+            the same limited money the way they would in a real portfolio. Signals compete for free
+            slots (strongest conviction wins), every fill pays 0.4% commission per side, and equity is
+            marked to market daily against actual closes, which is what makes the drawdown figure real
+            rather than a realized-only staircase. Sell signals are excluded throughout — DSE has no
+            practical short mechanism, so a buy-only account is the honest frame. The grey dashed line
+            is the do-nothing alternative: the DSEX index bought once and held. Expand the sections
+            below the results for the full mechanics, how to read each number, and why the absolute
+            returns are an upper bound.</p>
+          <div class="sm-filter-bar sm-psim-bar">
+            <span class="sm-filter-label">Max open positions</span>
+            <div class="sm-seg" id="sm-psim-positions">
+              <button type="button" class="sm-seg-btn" data-pos="5">5</button>
+              <button type="button" class="sm-seg-btn active" data-pos="10">10</button>
+              <button type="button" class="sm-seg-btn" data-pos="20">20</button>
+            </div>
+          </div>
+          <div id="sm-psim-body"></div>
+        </div>
+      </div>
+
+      <div class="sm-pane" id="sm-pane-live"></div>
+      <div class="sm-pane" id="sm-pane-model"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Metric detail modal (evidence panel: what a number means and how it's computed) -->
+<div id="sm-info-modal" class="an-panel" style="display:none;">
+  <div class="an-panel-overlay" onclick="window.closeSuperModelInfo()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2 id="sm-info-title">—</h2>
+      <button class="modal-close" onclick="window.closeSuperModelInfo()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="sm-info-body"></div>
+  </div>
+</div>
+
+<!-- Trade chart modal: candlestick footprint (entry/stop/target/exit) for a
+     clicked trade row. Separate from sm-info-modal so it can stack on top
+     when opened from a row inside that modal's embedded trade browser. -->
+<div id="sm-trade-chart-modal" class="an-panel sm-chart-modal" style="display:none;">
+  <div class="an-panel-overlay" onclick="window.closeTradeChartModal()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2 id="sm-trade-chart-title">—</h2>
+      <button class="modal-close" onclick="window.closeTradeChartModal()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="sm-trade-chart-body"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>Read-only, algorithmic signal blend &middot; Prices in BDT (Taka) &middot; For informational purposes only</p>
+</footer>
+
+<script type="module" src="super-model.js"></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

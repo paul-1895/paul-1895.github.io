@@ -1,0 +1,189 @@
+{
+  "bank_id": "UTTARABANK",
+  "bank_name": "Uttara Bank PLC",
+  "website": "https://www.uttarabank-bd.com",
+  "reporting_basis": "SOLO / STANDALONE for both the Q4/annual series and the Q1-Q3 interim series. Confirmed 2026-08-27 for the interim series specifically: every Q1/Q2/Q3 filing in this archive is a single combined PDF containing a full Consolidated statement FIRST (Balance Sheet, P&L, Statement of Changes in Equity, Cash Flow) followed immediately by a full Solo/non-consolidated statement for the same date -- the Solo section (second occurrence of each statement in the document) was used throughout, matching this dataset's 'prefer Solo' rule and the existing annual series' own basis. Note: several annual reports' Audit Committee minutes describe the interim filings only as 'Un-audited Quarterly (1st, 2nd and 3rd) Consolidated Financial Statements' -- this is imprecise/shorthand for the overall filing package (which does open with a Consolidated statement); it does not mean a Solo statement is unavailable, and was confirmed to be present and used in every single period sourced.",
+  "notes": "annual_reports/UTTARABANK archive contains 13 annual-report PDFs (2013-2025) plus 28 interim (Q1/Q2/Q3) documents (24 with a native text layer, 4 OCR'd -- 2019 Q1/Q2/Q3 and 2025 Q2) covering FY2013-FY2025 -- see the 'sources' array below for exactly which years/quarters and why any gap exists. Achieved complete Q4/year-end coverage for all 15 years (2011-2025) using five overlapping 'Five Years at a Glance' / own-statement source documents (unchanged from the prior pass). Interim (Q1-Q3) coverage added 2026-08-27: 31 quarter-periods across 2013-2025. 2026 Q1/Q2 attempted 2026-09-12: the bank's own site is now Cloudflare JS-challenge gated on every HTML page (a change since the 2026-08-27 pass, which could still reach some live pages) and 20+ direct-PDF-filename guesses against /firstqreport/, /halfqreport/, /priceseninfo/ (following every historical naming convention plus the real PSI disclosure dates found via web search) all returned 404 -- see the dedicated 2026 source entry below for the full account and the DSE-live-table fallback used instead.",
+  "sources": [
+    {
+      "period": "2011-2015 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "uttarabank-annual-report-2015.txt (\"Five Years at a Glance\", p.79)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "note": "Total liabilities not directly reported in this table; calculated as total assets minus shareholders' equity throughout. FY2015's Gross Income (15,771.9) and Foreign Remittance (53,315.8) figures from this table differ from the FY2019 report's later comparative column for FY2015 (15,332.3 and 47,552.3 respectively); this table's contemporaneous figures are used, not reconciled."
+    },
+    {
+      "period": "2016-2019 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "uttarabank-annual-report-2019.txt (\"Five Years at a Glance\", p.84)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "note": "FY2015 also appears in this table as a comparative column but the FY2015 report's own contemporaneous figures were preferred for that year (see 2011-2015 source note). Total liabilities calculated as total assets minus shareholders' equity."
+    },
+    {
+      "period": "2020-2023 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "uttarabank-annual-report-2023.txt (\"Five Years at a Glance\", p.78)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "note": "FY2019 also appears in this table as a comparative column but the FY2019 report's own contemporaneous figures were preferred for that year. FY2020-2022 figures independently cross-confirmed against the FY2024 report's own comparative columns (identical). FY2023's per-share figures (EPS 4.37, NAV/share 30.91) differ from the FY2024 report's later comparative for FY2023 (EPS 3.88, NAV/share 27.47), consistent with a bonus share issue enlarging the share count between reports; this table's contemporaneous figures are used, not reconciled. Total liabilities calculated as total assets minus shareholders' equity."
+    },
+    {
+      "period": "2024 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "uttarabank-annual-report-2024.txt (\"Five Years at a Glance\", p.188; own Balance Sheet)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "The FY2025 report's own comparative Balance Sheet for FY2024 shows a materially lower Total Assets (BDT 268,829.6mn vs BDT 281,045.4mn here) and Total Liabilities, driven almost entirely by a large reclassification within 'Other Assets' (BDT 14,476.7mn here vs BDT 2,163.4mn in the FY2025 report's comparative); Deposits, Gross Loans, Investments, Fixed Assets and Shareholders' Equity are identical between the two reports. This report's own contemporaneous Total Assets figure is used, not reconciled further. Total liabilities calculated as total assets minus shareholders' equity."
+    },
+    {
+      "period": "2025 (Q4)",
+      "type": "annual_report_own_balance_sheet",
+      "source_document": "uttarabank-annual-report-2025.txt (own Balance Sheet, Profit and Loss Account, and 'Financial Highlights on the overall activities of the Bank', Solo basis)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2025
+      ],
+      "note": "This archive's FY2025 document is the standalone Financial Statements only (audit report, financial statements and notes) - no Directors' Report or multi-year 'Five Years at a Glance' table was present for FY2025. As a result, Authorised Capital, Guarantee/Export/Import Business, Foreign Remittance, Market Value Per Share, and Number of Shareholders/Branches/Employees are gaps for FY2025 only (available for all other 14 years). Gross Income and Gross Expenditure are calculated by summing the Profit & Loss Account's own income/expense line items, using the same aggregation the bank's own five-year tables use (verified exactly against FY2024's reported Gross Income/Gross Expenditure, which reproduce from the same P&L components). Reserve fund calculated as Statutory reserve plus Other reserves. Required Capital calculated as Actual (Total) Capital minus the reported capital surplus after conservation buffer. Required Provision calculated as Provision Maintained minus the reported provision surplus. ROE calculated as profit after tax divided by period-end shareholders' equity (not average), since ROA but not ROE is directly reported for FY2025."
+    },
+    {
+      "period": "2011-2025 Q1/Q2/Q3 (unaudited interim) -- embedded-table check",
+      "type": "annual_report_embedded_disclosure_check",
+      "status": "checked_not_present",
+      "retrieval_date": "2026-08-27",
+      "note": "Grepped every annual_reports/UTTARABANK/*.txt for a BSEC-mandated 'Evaluation of the Quarterly Financials by the Audit Committee and Board' disclosure table (and close wording variants: 'quarterly financials by the audit', 'quarterly performance of', 'audit committee and board'). None of the 13 annual reports (2013-2025) contain such a table with actual figures -- only narrative mentions of the Audit Committee having reviewed the Q1/Half-Yearly/Q3 statements (e.g. 'The Committee reviewed the First Quarter (Q1), Half-Yearly and Third Quarter (Q3) Financial Statements'). This is unlike CITYBANK/SHAHJABANK/SOUTHEASTB/etc. in this dataset, which do have such a table. Proceeded to the bank's own website/Wayback for standalone interim PDFs instead (see entries below)."
+    },
+    {
+      "period": "2012-2014, 2016, 2018, 2020-2024 (Q1)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "uttarabank-unaudited-<YEAR>-q1.txt",
+      "source_url": "https://www.uttarabank-bd.com/firstqreport/ (per-year filename varies; see bank_financials/UTTARABANK/quarterly/<YEAR>_Q1.json source.source_url for the exact one)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013,
+        2014,
+        2016,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "note": "Found via a combination of: (a) a live web search surfacing one direct PDF URL (thirdqreport/ThirdQuarted2025.pdf), which revealed the site's /firstqreport//halfqreport//thirdqreport/ directory structure; (b) the Wayback Machine CDX API queried against uttarabank-bd.com/firstqreport* to enumerate historical filenames actually uploaded 2013-2024; (c) for a few years (e.g. 2012, 2013 Q1) the CDX API had no direct PDF capture, so the Wayback snapshot of the bank's own 'quarterstatement/<year>' listing PAGE (which still worked, unlike the live Cloudflare-gated site) was fetched to recover the then-current PDF link. All years downloaded directly from the live site (bypassing Cloudflare, which only gates the PHP/HTML navigation pages, not direct PDF file requests) except where noted. Q1 2012 downloaded but is a scanned image (pdftotext returns 0 lines) -- not OCR'd this pass (lower priority: 2012 already has a Q3 gap too, see below). Q1 2015 and Q1 2017: no PDF ever found via CDX for either home/quarterstatement/2015 or /2017, and the one live snapshot available for each showed the site's generic 'no report' template with no PDF link -- likely never posted for these two years specifically (other adjacent years do have one), not a research gap. Q1 2011 and earlier: uttarabank-bd.com's earliest Wayback capture of any kind is from 2016; no evidence the bank posted interim PDFs before ~2012."
+    },
+    {
+      "period": "2016, 2018, 2020-2024 (Q2 / Half-Yearly)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "uttarabank-unaudited-<YEAR>-q2.txt",
+      "source_url": "https://www.uttarabank-bd.com/halfqreport/ (per-year filename varies; see each quarterly/<YEAR>_Q2.json)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016,
+        2018,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "note": "Same sourcing method as Q1 (CDX enumeration of the /halfqreport/ directory + one Wayback page-listing recovery for 2018's file, whose filename ('Half_Yearly_Financial_Statements1.pdf') gave no year hint and had to be identified by reading its own 'AS AT 30 JUNE 2018' heading). Q2 2011-2015 and Q2 2017: the bank's home/halfyearly/<year> page has either zero Wayback captures at all (2011, 2012) or a live captured page showing the generic no-report template (2013, 2014, 2015, 2017) -- these are confirmed gaps on the bank's own site (not a research shortfall), except 2016 which does have a filed report. Q2 2019 was attempted (Ubl30062019.pdf, 17MB) but is a scanned image; recovered via OCR instead -- see the separate OCR entry below."
+    },
+    {
+      "period": "2013, 2015-2018, 2020-2022, 2024-2025 (Q3)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "uttarabank-unaudited-<YEAR>-q3.txt",
+      "source_url": "https://www.uttarabank-bd.com/thirdqreport/ (per-year filename varies; see each quarterly/<YEAR>_Q3.json)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013,
+        2015,
+        2016,
+        2017,
+        2018,
+        2020,
+        2021,
+        2022,
+        2024,
+        2025
+      ],
+      "note": "Same sourcing method (CDX enumeration of /thirdqreport/, one Wayback page-listing recovery for 2012 and 2013 filenames, and a live web search that surfaced the 2025 filename directly). 2023's file ('Final_Porag.pdf' -- an unrelated-looking filename, 'porag' is Bengali for a comparable/companion document) was identified as Q3 2023 only by opening it and reading its own 'AS AT 30 SEPTEMBER 2023' heading. Q3 2012 was downloaded (3rdQuarter2012.pdf) but is a scanned image; not OCR'd this pass (2012 remains an incomplete year regardless, since Q2 2012 was never found at all). Q3 2014: the bank's home/thirdquarter/2014 page has a genuine live Wayback capture (200 status, not a redirect) but it renders the same generic 'no report posted' template as the not-yet-existing years -- confirmed gap, not a fetch failure. Q3 2011: no Wayback capture of any kind for this path."
+    },
+    {
+      "period": "2019 (Q1, Q2, Q3) -- OCR",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "uttarabank-unaudited-2019-q<N>-ocr.txt",
+      "source_url": "https://www.uttarabank-bd.com/firstqreport/UBL_31032019.pdf ; https://www.uttarabank-bd.com/halfqreport/Ubl30062019.pdf ; https://www.uttarabank-bd.com/thirdqreport/3rd_Quarter_Statement_2019.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019
+      ],
+      "note": "All three of Uttara Bank's own 2019 interim PDFs are scanned images (pdftotext -layout returns 0 lines on all three; Q2 2019's file alone is 17MB, consistent with a high-res scan). Recovered via OCR (pdftoppm 300dpi + tesseract --psm 6) on the Solo Balance Sheet and Solo P&L pages of each (pages 6-7 of each 10-page document; pages 1-5 are the Consolidated equivalents plus signature blocks, not used). Cross-validated three ways: (1) each period's own Balance Sheet identity (Assets = Liabilities + Equity) and equity-components identity reconcile exactly after OCR; (2) each period's own P&L identity chain (NII -> Total Operating Income -> Operating Profit -> PBT -> PAT) reconciles exactly; (3) independently, all three periods' 31-Dec-2018 balance-sheet comparative column reads BDT 190,029,921,008, which matches this dataset's own existing FY2018 annual figure (quarterly/2018_Q4.json total_assets = 190,029.9m) to the taka. Two systematic OCR gaps handled by reconstruction rather than misreading: Q1 2019's 'Interest paid' row and Q2/Q3 2019's 'Interest Income' (gross) row were each dropped entirely by the OCR on their respective pages; the missing figure in each case was recovered as the other two legs of the NII identity (Interest Income - Interest Paid = NII) and flagged 'calculated_from_pl_components' in that period's own JSON rather than 'reported'. Separately noted (not a sourcing issue, a genuine bank action): paid-up capital rose from BDT 4,000,803,370 (Q1 2019, matching FY2018 year-end) to BDT 4,080,819,430 (Q2 2019 onward) -- a bonus share issue between Q1 and Q2 2019 -- and the source's own Q2/Q3 2019 EPS is explicitly labelled '(Restated)' onto the enlarged share count while Q1 2019's EPS (0.90) was not restated; both are kept as their own filings report them, per this dataset's contemporaneous-figures convention.",
+      "extraction_method": "OCR (pdftoppm 300dpi + tesseract 5.5.3 --psm 6)"
+    },
+    {
+      "period": "2025 (Q2) -- OCR",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "uttarabank-unaudited-2025-q2-ocr.txt",
+      "source_url": "https://www.uttarabank-bd.com/halfqreport/half_Yearly_Statement_2025.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2025],
+      "note": "This PDF is NOT a scanned image (has a native text layer, 16 pages) but pdftotext extracts scrambled/garbled characters throughout (a broken font cmap/encoding specific to this one file -- e.g. the bank's own name renders as 'Mldland sent PlC' and numbers come out as strings like 'l,ryrqql') -- a different failure mode than the 2019 files (which are true scans). Recovered via OCR (pdftoppm 300dpi + tesseract --psm 6) on the Solo Balance Sheet and Solo P&L pages (7-9 of 16; pages 2-4 are the Consolidated equivalents, not used). Cross-validated the same way as the 2019 OCR quarters: own balance-sheet and equity-component identities reconcile exactly; the P&L identity chain reconciles exactly; EPS (1.88) matches Profit-after-tax divided by the bank's own explicitly-stated share count (970,268,872, given elsewhere in the same filing) almost exactly; and independently, this filing's own 31-Dec-2024 comparative column (Total Assets 281,045,438,127; Total Equity 26,480,694,751) matches this dataset's existing FY2024 annual figures (quarterly/2024_Q4.json) to the taka. As with the 2019 quarters, the OCR dropped the 'Interest Income' (gross) row on this page; interest_income_cumulative is CALCULATED as Net Interest Income plus Interest Paid, confirmed via the Total Operating Income identity.",
+      "extraction_method": "OCR (pdftoppm 300dpi + tesseract 5.5.3 --psm 6)"
+    },
+    {
+      "period": "Q1 2025; Q2 2012; Q1/Q2 2011-2012",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "not_available",
+      "retrieval_date": "2026-08-27",
+      "note": "Q1 2025: tried 6 filename guesses against the live /firstqreport/ directory (following every naming pattern used in 2020-2024) -- all 404. Q2 2025 and Q3 2025 ARE available (see the dedicated entries above); only Q1 2025 specifically could not be located, most likely posted under an unguessable filename rather than genuinely unpublished (Q2/Q3 2025 exist, so Q1 2025 almost certainly does too) -- worth a future session trying a Wayback CDX pass specifically once one is captured, or a direct browse of the live (Cloudflare-gated) page with a real browser. Q2 2012 (half-yearly): no capture of any kind in Wayback for this specific path/period -- likely never posted. Q1/Q2/Q3 2011: no Wayback capture of any kind for uttarabank-bd.com predates 2016-10, and none of the /firstqreport/, /halfqreport/, /thirdqreport/ directories show a 2011-dated file -- the bank's online interim-filing practice appears to start no earlier than 2012."
+    },
+    {
+      "period": "2026 Q1, Q2/Half-Yearly",
+      "type": "dse_live_interim_table_fallback",
+      "status": "extracted_thin_data_primary_source_unreachable",
+      "retrieval_date": "2026-09-12",
+      "source_url": "https://www.dsebd.org/displayCompany.php?name=UTTARABANK",
+      "note": "Primary source (the bank's own site) genuinely unreachable this pass: uttarabank-bd.com now Cloudflare JS-challenge gates every HTML page (a regression since 2026-08-27, when some live pages were still reachable) and direct-PDF-filename guessing failed across all three interim directories (over 20 attempts spanning every historical naming convention used 2013-2025 plus filenames built from the real PSI disclosure dates -- 11/13 May 2026 for Q1, 29 July 2026 for Q2, found via web search of the bank's own Price-Sensitive-Information listing page). Wayback Machine has zero captures of uttarabank-bd.com of any kind after 2025-12-14, so no historical snapshot recovers a working 2026 filename either -- ruling out the usual 'try an older capture' recovery route. FALLBACK USED: DSE's own live company page ('Interim Financial Performance: 2026' table), the same fallback already validated for RUPALIBANK in this dataset when its site was Cloudflare-blocked. Data is thin (EPS and period-end market price only, no balance sheet) and its basis is NOT labelled by DSE -- cross-checked against this bank's own Solo-basis 2025_Q2.json (H1 2025 cumulative EPS 1.88) against the equivalent DSE-table figure recovered via a Wayback capture of this same DSE page from 2025-10-07 (H1 2025 EPS 1.820, a ~3.2% gap), suggesting DSE's table runs CONSOLIDATED basis here -- flagged in both quarterly/*.json files. A 25% FY2025 bonus share issue (found on the same DSE page's Dividend Information block) complicates a naive EPS-to-profit conversion; the full share-count reconciliation (confirming DSE's Q1 column is pre-bonus, unlike Q2/Half-Yearly) is documented in quarterly/2026_Q1.json's period_note. Not comparable in richness to UTTARABANK's primary-sourced 2013-2025 quarters -- a future session should re-attempt direct site access (a real browser rendering the Cloudflare challenge, or a fresh Wayback capture once one exists) before accepting this as permanent."
+    }
+  ]
+}

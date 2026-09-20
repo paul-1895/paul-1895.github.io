@@ -1,0 +1,121 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2020-06-30",
+  "financial_year": 2020,
+  "quarter": "Q2",
+  "period_note": "Balance sheet is the period-end snapshot (reported), Solo/Standalone basis (see below). Income-statement items are CUMULATIVE from 1 January 2020 (as published in the FY2020 Annual Report's own 'Evaluation of the Quarterly Financials by the Audit Committee and by the Board' table, pubalibank-annual-report-2020.txt lines 13061-13100, p.226 of the report), not discrete-quarter figures -- flagged via the _cumulative suffix. This is a BSEC-mandated corporate-governance disclosure (Corporate Governance Code item 1.5(ix), 'significant variance between Quarterly Financial Performance and Annual Financial Statements'); most banks answer it with only a checkbox, but Pubali Bank publishes a full data table titled 'Evaluation of the Quarterly Financials by the Audit Committee and by the Board' giving Q1/Q2/Q3/Q4 balance-sheet and cumulative-income figures. All 14 available PUBALIBANK annual reports (FY2011-2024, the only years with extracted text; pubalibangla.com itself is Cloudflare-blocked) were searched for this table: it is present ONLY in the FY2017, FY2018, FY2019 and FY2020 Annual Reports (this is one more year -- FY2017 -- than a prior research pass had flagged, which found only FY2018-2020). Every other year (FY2011-2016, FY2021, FY2022, FY2023 [a 105-line stub with only the Balance Sheet], FY2024) contains only the checkbox-style compliance-item 1.5(ix) answer, confirmed by searching for the table heading, the distinctive phrase 'Committee and by the Board', and the 'Business Segment' table that immediately follows it in every year that does have it -- none of these markers appear in the other 10 years' extracted text. PARTIAL EXTRACTION: unlike the FY2018/FY2019 versions of this exact table (which are complete, ~16-row tables), this report's own table is missing roughly half its rows in the extracted text -- Balance with Other Banks and FIs, Investments, Fixed Assets, a separately-labeled 'Total assets' row, Subordinated bond, Other liabilities, Off-Balance Sheet Items, Total Operating Income (A), and Profit before provision (C=A-B) are ALL absent, in a near-perfectly-alternating pattern with the rows that DID extract cleanly -- almost certainly a pdftotext/table-layout extraction artifact specific to this one report rather than the bank dropping these disclosures (the original PDF was deleted per project convention after extraction, so this cannot be re-verified against the source PDF). Rather than guess the missing figures, they are simply omitted from this file. total_assets IS recoverable: the table's 'Total liabilities and shareholders' equity' row survived extraction and is, by definition, the same figure as total assets on any balanced balance sheet (confirmed exactly equal to the separately-reported 'Total assets' row in every other year of this same table where both rows extracted cleanly, e.g. FY2018 and FY2019, to the taka) -- used directly, basis 'reported'. total_equity is DERIVED as this recovered total_assets minus the cleanly-extracted Total Liabilities row (both from the same table/column) -- basis 'calculated', not an independent figure. CAUTION ON THIS DERIVATION: cross-checking this table's Dec-19 COMPARATIVE column (i.e. the prior-year column within this same FY2020 table) against the FY2019 report's own Dec-19 figures found a genuine ~3.72bn discrepancy in Other Assets/Total Assets for that one column (see 2019_Q1/Q2/Q3.json period_notes for detail) -- so this table's Dec-column figures carry a demonstrated small unreliability. However, the Mar/Jun/Sep INTERIM columns (i.e. the kind of figure actually used in this Q1/Q2/Q3 file) checked out as EXACT matches across every other year-pair compared in this research pass, and the quarter-by-quarter derived equity here forms a smooth, monotonically-increasing series (Q1 29,755.39m -> Q2 30,370.19m -> Q3 34,088.37m) consistent with retained-earnings accumulation through a profitable year and consistent with cumulative EPS/Net-Profit-After-Tax ratios implying a stable ~1,028m-1,030m share count throughout -- giving reasonable, but not certain, confidence in this quarter's own total_assets/total_equity figures. basis-match: this table's own current-year Dec-2020 total_assets (565,032.07m, via this same identity) is close to but not identical to the OFFICIAL 2020_Q4.json total_assets (565,467.21m, sourced from the 'Balance Sheet Parameters' 5-year summary table) -- a ~435m/0.077% gap, well within the small cross-source gaps already accepted elsewhere in this bank's dataset (e.g. FY2023's documented ~0.3-0.7% gap) and not indicative of a Solo-vs-Consolidated basis difference (that gap runs ~0.2% in this bank's data, per sources.json's FY2022 comparison) -- both are treated as the same (Solo) basis. No competing/duplicate Q4 file was created from this table -- the existing 2020_Q4.json is untouched, per scope.",
+  "source": {
+    "source_document": "pubalibank-annual-report-2020.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-annual-report-2020.txt",
+    "source_url": "https://www.pubalibangla.com",
+    "source_page_lines": "13061-13100 (\"Evaluation of the Quarterly Financials by the Audit Committee and by the Board\", Annual Report 2020 p.226) -- partial extraction, see period_note",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "cash_and_balances",
+      "original_metric_name": "Cash",
+      "value": 21902.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "money_at_call",
+      "original_metric_name": "Money at call and on short notice",
+      "value": 1409.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances",
+      "value": 290154.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other assets",
+      "value": 48172.37,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total liabilities and shareholders' equity (row labeled 'Total assets' was not present in this report's extracted table; this figure is definitionally identical to total assets on a balanced balance sheet)",
+      "value": 509433.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "borrowings",
+      "original_metric_name": "Borrowings from other banks, financial institutions and agents",
+      "value": 15224.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 390407.22,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 479063.26,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Derived: Total Liabilities and Shareholders' Equity (reported) minus Total Liabilities (reported), both from the same table row/column",
+      "value": 30370.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 2056.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (B) (cumulative from Jan 1)",
+      "value": 4413.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (cumulative from Jan 1)",
+      "value": 1463.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) (cumulative from Jan 1)",
+      "value": 1.42,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

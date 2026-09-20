@@ -1,0 +1,112 @@
+{
+  "bank_id": "MTB",
+  "generated_at": "2026-08-27",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "gradual_npl_drift",
+      "severity": "info",
+      "statement": "NPL ratio drifted gradually upward from a low of 2.08% (FY2015) to 6.54% (FY2023), roughly tripling over 8 years, though the pace was steady rather than a sudden shock — unlike the sharp single-year spikes seen at Dhaka Bank, Dutch-Bangla Bank, and several other banks in this dataset for FY2024. See the separate 'resilient_through_sector_asset_quality_event' signal below for what happened in FY2024-2025.",
+      "metrics": [
+        "npl_ratio_pct"
+      ],
+      "periods": [
+        "2015_Q4",
+        "2023_Q4"
+      ]
+    },
+    {
+      "category": "capital_adequacy_strength",
+      "severity": "info",
+      "statement": "CAR has trended upward over the series, from 10.71%-11.96% in FY2011-2013 to a consistent 12.9%-15.0% range from FY2019 onward, comfortably above the regulatory minimum throughout — capital position has strengthened even as NPL drifted up.",
+      "metrics": [
+        "car_pct"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2019_Q4",
+        "2023_Q4"
+      ]
+    },
+    {
+      "category": "covid_profitability_dip",
+      "severity": "info",
+      "statement": "ROE dipped to its lowest point in the series during FY2019-2020 (8.21% and 5.70% respectively) before recovering strongly to 15.13% in FY2021 — a COVID-19-era profitability dip followed by a swift rebound, a milder and more typical pattern than the multi-year distress seen at several other banks in this dataset.",
+      "metrics": [
+        "roe_pct"
+      ],
+      "periods": [
+        "2019_Q4",
+        "2020_Q4",
+        "2021_Q4"
+      ]
+    },
+    {
+      "category": "resilient_through_sector_asset_quality_event",
+      "severity": "info",
+      "statement": "Unlike the sector-wide FY2024 asset-quality recognition event described elsewhere in this dataset (median NPL 5.48% -> 9.55%, several banks with CAR breaches), MTB's NPL ratio rose only mildly from 6.54% (FY2023) to 6.95% (FY2024) and then fell to 5.77% (FY2025) -- its lowest level since FY2018 (5.39%). CAR stayed comfortably above the regulatory 10.00% minimum throughout (14.98% FY2023 -> 13.62% FY2024 -> 13.55% FY2025); the gradual decline reflects Risk-Weighted Assets growing faster than capital (RWA 240,623 -> 271,813 -> 311,418m) rather than any capital erosion -- Total Regulatory Capital grew every year (36,051 -> 37,013 -> 42,204m). Equity stayed positive throughout (24,106 -> 25,505 -> 30,403m), so ROE remained well-defined (no negative-equity distortion).",
+      "metrics": [
+        "npl_ratio_pct",
+        "car_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2025_negative_tax_expense",
+      "severity": "info",
+      "statement": "FY2025 Income Tax Expense was a net credit of BDT -296m rather than an expense: Profit Before Tax (BDT 3,097m) was actually lower than Profit After Tax (BDT 3,393m). Confirmed against the primary source's Segment Report Profit & Loss Account, where both the Consolidated (-BDT 296m) and Solo (-BDT 275m) columns show the same tax-credit pattern, so it is not a consolidation artifact. This reverses FY2024's BDT 1,617m tax expense on a similar Profit-Before-Tax base (BDT 4,784m). Likely driven by deferred tax asset recognition; not independently investigated further. Worth watching in the next annual report rather than treating as a red flag on its own.",
+      "metrics": [
+        "profit_before_tax",
+        "profit_after_tax"
+      ],
+      "periods": [
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "provision_coverage_definitional_break_fy2024",
+      "severity": "info",
+      "statement": "The FY2024 and FY2025 annual reports introduce a broader 'NPL/Loan Loss Coverage Ratio' (96.66% FY2024, 111.07% FY2025) that includes general, off-balance-sheet, and margin-loan provisions in its numerator, materially higher than the narrow classified-loan-only coverage this dataset tracked for FY2011-2023 (49.85% in FY2023, per the 'Gross NPL Coverage' figure in that report). Recomputing the narrow, classified-loan-only definition for FY2024-2025 gives 50.93% and 51.01% respectively -- a modest, gradually improving trend consistent with the pre-2024 series, stored as provision_coverage_pct in ratios_timeseries.json specifically to avoid an artificial trend break. Both figures are retained (see quarterly/2024_Q4.json and 2025_Q4.json gross_npl_coverage_pct vs provision_coverage_classified_only_pct) since the broad figure is the bank's own current headline metric.",
+      "metrics": [
+        "provision_coverage_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2020_contemporaneous_vs_retrospective_divergence",
+      "severity": "info",
+      "statement": "Newly found during the 2026-08-26 Q1-Q3 backfill: mtb-annual-report-2020.txt's own 'Evaluation of the Quarterly Financials' table gives a Dec-31-2020 total_deposits of BDT 190,120.48m and gross_loans of BDT 203,887.32m, versus BDT 188,734m and BDT 203,744m respectively already stored in 2020_Q4.json (which was sourced from mtb-annual-report-2023.txt's later retrospective comparative column) -- gaps of BDT 1,386m (0.73%) and BDT 143m (0.07%). operating_income shows a smaller, opposite-signed gap (BDT 9,956.08m contemporaneous vs BDT 9,987m stored, +0.31%). total_assets, total_liabilities, total_equity and profit_after_tax all match closely (<0.08%) across both sources. This is the same contemporaneous-vs-later-restated pattern this dataset's standing rule is built around (see UNIONBANK's FY2023), but smaller in magnitude and not yet reconciled -- 2020_Q4.json is unmodified (out of scope for the backfill task that found this); see bank_financials/MTB/sources.json's dedicated discrepancy_note for the full figures.",
+      "metrics": [
+        "total_deposits",
+        "gross_loans",
+        "operating_income"
+      ],
+      "periods": [
+        "2020_Q4"
+      ]
+    },
+    {
+      "category": "fy2020_q4_discrete_loss_confirmed",
+      "severity": "info",
+      "statement": "The newly-added Q1-Q3 cumulative data lets FY2020's discrete Q4 (Oct-Dec) be isolated for the first time: cumulative Net Profit After Tax was BDT 1,243.74m through Q3 2020 but only BDT 970.39m for the full year -- meaning Q4 2020 alone was a loss of approximately BDT 273m, the only negative discrete quarter found across all 7 years now backfilled (2019-2025). This confirms and sharpens the existing 'covid_profitability_dip' signal below (which only had annual-level FY2020 ROE of 5.70%) by showing the dip was concentrated in a single loss-making quarter rather than spread evenly across the year.",
+      "metrics": [
+        "net_profit_after_tax_cumulative"
+      ],
+      "periods": [
+        "2020_Q3",
+        "2020_Q4"
+      ]
+    }
+  ],
+  "historical_context": "Mutual Trust Bank shows a conventional, unremarkable risk profile relative to the more distressed banks researched in this dataset (AB Bank, Al-Arafah Islami Bank, ICB Islamic Bank, EXIM Bank's FY2024 shock): steady balance-sheet growth (BDT 76.3bn to BDT 505.2bn total assets over 2011-2025, a 6.6x increase), a gradually rising but not alarming NPL ratio that peaked mildly at 6.95% in FY2024 and then improved to 5.77% in FY2025, and capital adequacy that stayed above the regulatory minimum throughout even as it drifted down from a FY2023 peak (14.98% -> 13.62% -> 13.55%). No capital-adequacy breach or severe single-year shock is observed anywhere in the 15-year series, including through the FY2024 sector-wide asset-quality recognition event that hit several other banks in this dataset much harder (see resilient_through_sector_asset_quality_event above). The one point worth independent follow-up is FY2025's negative tax expense (see fy2025_negative_tax_expense above).",
+  "data_gaps": "Q1-Q3 backfill completed 2026-08-27: full quarterly balance-sheet + P&L coverage (cumulative-from-Jan-1 income-statement basis) now exists for every year FY2013-2025 that has a genuine interim filing. FY2019-2025 (7 years) came from each year's own annual report's embedded 'Evaluation of the Quarterly Financials' table. FY2013-2018 (the remaining 18 quarters -- 6 fetched 2026-08-26, 12 more including one bonus quarter fetched 2026-08-27) came directly from MTB's own website's interim-filings archive; all 18 of these documents were scanned images, extracted by directly reading the rasterized page (tesseract OCR proved unreliable for this template's 3-column layout) and cross-validated against the balance-sheet identity, the full P&L chain, and each document's own Dec-31 comparative column vs. the already-stored neighboring Q4.json. Both P&L and balance-sheet fields are now populated for all of these years (an earlier, more conservative pass had omitted P&L from 3 quarters -- 2013 Q1, 2014 Q3, 2016 Q2 -- after an OCR digit-misread was caught there; those 3 remain balance-sheet-only since they were extracted via OCR rather than direct visual reading and were not re-attempted this session). Remaining gaps: FY2011-2012 have no interim filings at all (confirmed unavailable via the site's own listing, not just unresearched) and are permanently Q4-only. EXTENSION (2026-08-27, same session): 2026 Q1 and H1 interim filings were also fetched (both clean text PDFs) and added, extending the quarterly series through mid-2026. These introduced a new balance-sheet item ('Perpetual Bond', BDT 4,000m) reported separately from 'Subordinated Debts' starting this year; the combined total is kept in the 'subordinated_debt' field for continuity with earlier years, with 'perpetual_bond' added as a new supplementary field on the 2026 quarter files only."
+}

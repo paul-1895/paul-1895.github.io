@@ -1,0 +1,110 @@
+{
+  "bank_id": "NRBBANK",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json or the specific line item in quarterly/<YEAR>_Q4.json. All cited figures were verified programmatically against those files before this file was finalized.",
+  "risk_signals": [
+    {
+      "category": "fy2024_fy2025_asset_quality_shock_and_partial_recovery",
+      "severity": "high",
+      "statement": "Classified loans jumped from 2992.63m (FY2023) to 10497.74m (FY2024) -- a 3.51x increase -- before partially receding to 6579.98m (FY2025), still 2.20x the FY2023 level. NPL ratio (classified/gross loans) moved 4.98% -> 15.61% (calculated) -> 9.05% (calculated) over the same three years, a pattern consistent with the sector-wide FY2024 asset-quality recognition event described in this project's cross-bank findings.",
+      "metrics": [
+        "classified_loans",
+        "npl_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "specific_provision_coverage_of_classified_loans_remains_thin",
+      "severity": "high",
+      "statement": "Specific provision held against classified loans covered only 20.7% of classified loans at FY2024 year-end (2174.79m against 10497.74m classified), leaving 8322.95m unprovided at the specific-provision level -- equivalent to 95.2% of FY2024 total shareholders' equity (8741.36m). Coverage improved to 29.8% by FY2025 (1960.83m against 6579.98m), but unprovided classified loans of 4619.15m still equal 52.1% of FY2025 equity (8870.35m). General provision (held mainly against unclassified/SMA exposures, not classified loans) is excluded from this coverage calculation.",
+      "metrics": [
+        "classified_loans",
+        "specific_provision_balance",
+        "total_equity"
+      ],
+      "periods": [
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "net_interest_income_turned_negative_in_fy2025",
+      "severity": "high",
+      "statement": "Solo Net Interest Income (Interest Income minus Interest Paid, within Total Operating Income of 3151.83m) was negative for the first time in the bank's public history in FY2025: -98.84m, versus +1,165.11m in FY2024, as Interest Paid on deposits/borrowings (7,576,995,799 Taka) exceeded Interest Income (7,478,151,469 Taka) per the FY2025 Profit and Loss Account. Profit After Tax of 108.52m was therefore generated almost entirely by non-fund-based income (Income from Investments and fees), not core lending spread, while Profit After Tax itself remains far below the FY2023 pre-crisis level of 793.82m (EPS 1.34 in FY2023 versus 0.11 in FY2024 and 0.16 in FY2025).",
+      "metrics": [
+        "profit_after_tax",
+        "eps"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "capital_adequacy_ratio_in_long_steady_decline",
+      "severity": "medium",
+      "statement": "CRAR (Solo) has declined in almost every year since its post-launch peak of 27.44% (FY2016) to 13.97% (FY2025), as risk-weighted assets grew faster than regulatory capital during the bank's expansion phase; Tier-1 ratio fell from 26.71% (FY2016) to 11.24% (FY2025). At 13.97%, CRAR is still above the Bangladesh Bank minimum of 12.5% (10% MCR + 2.5% conservation buffer) but the margin (roughly 1.5 percentage points) is the thinnest in the bank's history and would be eroded by further NPL-driven provisioning.",
+      "metrics": [
+        "car_pct",
+        "tier1_ratio_pct"
+      ],
+      "periods": [
+        "2016_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "repeated_cross_report_restatements_of_prior_year_figures",
+      "severity": "medium",
+      "statement": "Three separate, material inconsistencies were found between a year's own Annual Report and a later report's comparative column for the same date, all documented in sources.json: (1) FY2021 Retained Earnings/Equity were restated upward by exactly 505.04m in the FY2022 report's comparative column (7002.48m originally vs 7,507.52m later) without an offsetting change to Total Liabilities, causing that later comparative column to fail its own balance-sheet identity by 507.15m; (2) FY2022 Total Assets were restated downward by 1,423.87m in the FY2023 report's comparative (74676.05m originally vs 73,252.18m later), traced to a reclassification within 'Other assets'; (3) FY2022 off-balance-sheet exposures were separately restated from 11879.21m to 12,817.93m in the same FY2023 comparative. This dataset uses the contemporaneous, internally-consistent figures in all three cases (see sources.json for the arithmetic proof), but the frequency of restatement is itself a data-governance signal.",
+      "metrics": [
+        "total_equity",
+        "total_assets",
+        "off_balance_sheet_exposures"
+      ],
+      "periods": [
+        "2021_Q4",
+        "2022_Q4"
+      ]
+    },
+    {
+      "category": "fy2013_fy2014_founding_year_losses_and_thin_capital_base",
+      "severity": "info",
+      "statement": "NRB Bank's first full year (FY2014) posted a net loss of -66.0m (from FY2013's partial-year profit of 10.0m), and CRAR was extremely high in both years (196.4% FY2013, 41.7% FY2014) purely because risk-weighted assets were tiny relative to the BDT 4,000m+ regulatory minimum capital during the bank's start-up phase, not because of genuine capital strength -- CRAR fell to a more normal 26.03% by FY2015 as the loan book scaled up.",
+      "metrics": [
+        "profit_after_tax",
+        "car_pct"
+      ],
+      "periods": [
+        "2013_Q4",
+        "2014_Q4",
+        "2015_Q4"
+      ]
+    },
+    {
+      "category": "fy2025_asset_quality_crisis_intra_year_timeline_now_visible_at_quarterly_resolution",
+      "severity": "high",
+      "statement": "Newly-sourced Q1-Q3 interim filings (added 2026-08-27) show the FY2025 Net-Interest-Income/provisioning crisis (already flagged in this file's fy2024_fy2025 and net_interest_income entries above, from annual data alone) was far more acute intra-year than the FY2025 annual result of +108.52m profit suggests: Q1 2025 alone was still a normal, profitable quarter (cumulative PAT +38.33m, Net Interest Income +506.81m, both Consolidated), then deteriorated sharply -- discrete Q2 2025 PAT was -892.66m and discrete Q3 2025 PAT was -535.27m (derived from the cumulative figures in quarterly/2025_Q1.json, 2025_Q2.json and 2025_Q3.json), taking the 9-month cumulative loss to -1,389.60m before an implied swing of +1,498.12m in Q4 2025 alone brought the full year back to +108.52m profit (2025_Q4.json). Net Interest Income was negative for the whole of Q2 (-797.62m discrete) and Q3 (-75.09m discrete) before improving to -18.55m in Q1 2026 and -60.52m discrete in Q2 2026 (still negative, but recovering). The bank's own H1-2026 filing (quarterly/2026_Q2.json) explicitly attributes the trigger to a non-performing-loan event that forced BDT 110.71 crore of interest income into interest suspense during Jan-Jun 2025, and states the NPL ratio was brought down to 7.49% by June 2026 through management action, consistent with Total provision (D) falling from 1,483.52m (H1-2025 cumulative) to 13.41m (H1-2026 cumulative) and Net profit after tax recovering to +87.75m (H1-2026) from -854.33m (H1-2025). NOTE ON COMPARABILITY: all 2025-2026 interim figures cited here are Consolidated (a basis break from the Solo-basis annual series and from the Solo-basis 2024 interim quarters, see sources.json) -- the FY2025 annual PAT of 108.52m cited above and elsewhere in this file is Solo, so the 'implied Q4-2025-alone' swing mixes Solo (annual) and Consolidated (9-month) figures and should be read as approximately, not exactly, comparable; the intra-year DIRECTION and SEVERITY of the swing is nonetheless unambiguous across both bases.",
+      "metrics": [
+        "profit_after_tax_cumulative",
+        "net_interest_income_cumulative",
+        "total_provision_cumulative"
+      ],
+      "periods": [
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3",
+        "2025_Q4",
+        "2026_Q1",
+        "2026_Q2"
+      ]
+    }
+  ],
+  "historical_context": "NRB Bank PLC (a 'fourth generation' Bangladeshi bank targeting non-resident Bangladeshis, commenced banking operations 4 August 2013) grew rapidly from a Total Assets base of 5965.96m at its first, partial year-end (FY2013) to 112507.79m by FY2025 -- roughly an 18.9x increase over 12 years, including a run of double-digit annual asset growth from FY2015 (52.2% YoY) through FY2018 (26.35% YoY). Profitability was volatile early on (a first-year loss in FY2014, a second loss in FY2019 of -125.36m) but stabilised through FY2020-FY2023, with Profit After Tax reaching a series peak of 793.82m in FY2023 and EPS of 1.34. FY2024-FY2025 mark a sharp break from that trajectory: classified loans rose 3.5x in FY2024 alone, Net Interest Income compressed and then turned negative in FY2025, and Profit After Tax fell to a fraction of its FY2023 level even as the balance sheet kept growing (Total Assets grew 14.54% in FY2024 and 14.65% in FY2025) -- a pattern of asset-quality deterioration outpacing balance-sheet growth that matches this project's broader FY2024-FY2025 sector-crisis findings across the other 27+ banks already completed. NRB Bank's own reporting shows a partial recovery already underway in FY2025 (classified loans down from FY2024's peak, specific-provision coverage of classified loans improving from roughly one-fifth to roughly three-tenths), but neither asset quality nor core lending profitability (negative net interest income) has returned to pre-2024 levels as of the FY2025 filing.",
+  "data_gaps": "UPDATE 2026-08-27: Q1/H1/Q3 unaudited interim data has now been researched and added for 2016 (Q3 only), 2017 (Q1-Q3, full), 2024 (Q1-Q3, full, Solo basis), 2025 (Q1-Q3, full, Consolidated basis) and 2026 (Q1-Q2, Consolidated basis) -- see quarterly/<year>_Q<n>.json and sources.json for details. The 2018-2023 interim gap is now CONFIRMED STRUCTURAL, not a research gap: NRB Bank had no BSEC obligation to publish interim financials before its Jan/Feb-2024 IPO and DSE/CSE listing, and a full-domain Wayback Machine search found no genuine quarterly financial statements for that period (a superficially similar 'Quarterly Report' PDF series from 2021-2024 was investigated and confirmed via OCR to be unrelated National Integrity Strategy/Citizen's Charter compliance filings, not financial statements). 2016 Q1/Q2 and 2013-2015 interim data remain unfound (no matching Wayback captures). Below is the original (2026-08-26) note describing the Q4/annual-only series this file was originally built from: Only Q4/year-end (audited) data is available for FY2013-FY2025; Q1/H1/Q3 unaudited interim data was not researched (see sources.json). FY2013's own annual report is corrupted by a font-encoding fault affecting ~56% of its lines (including its own Balance Sheet); its figures are instead sourced from the FY2014 report's comparative column, cross-validated by manually decoding the encoding cipher for two figures. FY2024's own 'Annual Report' (glossy) PDF already in the archive is even more severely corrupted (at least three different, mutually-inconsistent encoding faults across different sections) and could not be used at all; FY2024 was instead sourced from two separate, freshly-downloaded clean documents (a compact Financial Statements booklet and the Basel III Pillar 3 disclosure), both deleted after extraction per the project's PDF-retention rule. FY2025 has no glossy 'Annual Report' published yet as of retrieval (only the audited Financial Statements and Basel III disclosure exist), so Authorised Capital and other narrative-report-only fields are gaps for FY2025 only. Number of Branches/ATMs/Employees is carried only for FY2013-FY2014 (found in those years' own report text); it is a gap for FY2015-FY2025 in this dataset even though the underlying annual reports disclose it (e.g. FY2023's own five-year table shows 51 branches, 51 ATMs, 817 employees) -- omitted here to keep the normalized schema focused on the figures needed for the required balance-sheet/capital/income validations, not because the source lacks it. By contrast, CAR%/Tier-1/Tier-2 ratios have NO gap years in this dataset (FY2013-FY2025 all populated) -- richer capital-adequacy coverage than some other banks in this project that lack a disclosed RWA base entirely. A single 'provision_maintained' (loan-loss allowance) line item is deliberately NOT carried across the full FY2013-FY2025 series: the 'General provision'/'Specific provision' balance figures in the bank's own five-year summary tables appear to have been redefined/regrouped between the FY2016-2018 and FY2019+ report vintages (documented in the FY2019 period_note and sources.json), so a single consistent time series could not be constructed with confidence; 'specific_provision_balance' is carried only for FY2024-FY2025, sourced unambiguously from the Basel III Pillar 3 disclosures' Gross NPA movement schedule. NPL% is 'calculated' (classified loans / gross loans) rather than 'reported' for FY2024 and FY2025 specifically, because the Basel III disclosure's own 'Non-Performing Assets (NPAs) to outstanding loans & advances' label has a blank value cell in both the FY2024 and FY2025 vintages of that document."
+}

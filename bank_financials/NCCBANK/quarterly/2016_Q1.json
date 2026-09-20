@@ -1,0 +1,37 @@
+{
+  "bank_id": "NCCBANK",
+  "bank_name": "National Credit and Commerce Bank PLC",
+  "reporting_date": "2016-03-31",
+  "financial_year": 2016,
+  "quarter": "Q1",
+  "period_note": "Cumulative-from-Jan-1 convention (for Q1, cumulative equals the discrete first-quarter figure) established from the filing's own column header '01 January to 31 March 2016'. Standalone/Solo basis. Source PDF (1st_quarter_2016.pdf) is a native digital PDF, but pdftotext -layout's initial extraction dropped/misaligned several deep P&L rows (Contribution to NCC Bank Foundation, Profit before tax, Provision for tax, and Profit after tax all appeared blank or column-shifted for the current period). Figures below were instead confirmed via a 300dpi visual render of the same source page, which is fully internally consistent: Profit after provision 681,149,369 - Contribution to NCC Bank Foundation (nil this quarter) = Profit before tax 681,149,369; Provision for tax 340,257,246 (current tax 407,563,570 + deferred tax income 67,306,324); Profit after tax 340,892,123, matching the filing's own EPS of 0.39. Balance sheet was extracted cleanly and ties to the taka (Total Liabilities 130,175,576,372 + Total Shareholders' Equity 15,952,898,397 = Total Assets 146,128,474,769). Cross-check: comparative '31 December 2015' column (Total Assets BDT 146,369.95mn, Total Shareholders' Equity BDT 15,654.64mn) matches the existing bank_financials/NCCBANK/quarterly/2015_Q4.json exactly.",
+  "source": {
+    "source_document": "nccbank-q1-2016.txt",
+    "source_path": "annual_reports/NCCBANK/nccbank-q1-2016.txt",
+    "source_url": "https://www.nccbank.com.bd/assets/files/quarterly_report/1st_quarter_2016.pdf",
+    "source_page_lines": "Source PDF page 8 (Balance Sheet, 'As at 31 March 2016') and page 9 (Profit and Loss Account, 'For the first quarter ended on 31 March 2016'). pdftotext -layout lines 284-345 and 374-435 (with several P&L values re-verified via a 300dpi page render due to column-alignment extraction defects on that specific page).",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    { "normalised_metric_name": "paid_up_capital", "original_metric_name": "Paid up capital", "value": 8832.2, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_equity", "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY", "value": 15952.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_deposits", "original_metric_name": "Deposits and other accounts", "value": 111824.5, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "gross_loans", "original_metric_name": "Loans and advances", "value": 107197.7, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "investments_securities", "original_metric_name": "Investments", "value": 20236.3, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "fixed_assets", "original_metric_name": "Fixed assets including premises, furnitures and fixtures", "value": 2607.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_assets", "original_metric_name": "TOTAL ASSETS", "value": 146128.5, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_liabilities", "original_metric_name": "TOTAL LIABILITIES", "value": 130175.6, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "interest_income_cumulative", "original_metric_name": "Interest income (cumulative from Jan 1)", "value": 2742.5, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "interest_expense_cumulative", "original_metric_name": "Interest paid on deposits and borrowings (cumulative from Jan 1)", "value": 1870.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "net_interest_income_cumulative", "original_metric_name": "Net interest income (cumulative from Jan 1)", "value": 871.6, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "non_interest_income_cumulative", "original_metric_name": "Income from investments + Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)", "value": 786.7, "unit": "BDT_million", "currency": "BDT", "basis": "calculated_sum_of_reported_components" },
+    { "normalised_metric_name": "operating_income_cumulative", "original_metric_name": "Total operating income (cumulative from Jan 1)", "value": 1658.3, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_expenses_cumulative", "original_metric_name": "Total operating expense (cumulative from Jan 1)", "value": 688.3, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_profit_cumulative", "original_metric_name": "Profit before provisions (cumulative from Jan 1)", "value": 970.0, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "provision_charge_cumulative", "original_metric_name": "Total provisions (cumulative from Jan 1)", "value": 288.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "profit_before_tax_cumulative", "original_metric_name": "Profit before tax (cumulative from Jan 1)", "value": 681.1, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "tax_expense_cumulative", "original_metric_name": "Provision for tax (cumulative from Jan 1)", "value": 340.3, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "profit_after_tax_cumulative", "original_metric_name": "Profit after tax (cumulative from Jan 1)", "value": 340.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "eps_cumulative", "original_metric_name": "Earnings per share (cumulative from Jan 1)", "value": 0.39, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported" }
+  ]
+}

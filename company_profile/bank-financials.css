@@ -1,0 +1,164 @@
+/* ================================================================
+   bank-financials.css — Quarterly Bank Financials section (company.html)
+   Reuses shared/tokens.css custom properties; scoped under .bf- prefix.
+   ================================================================ */
+
+.bf-section { margin: 24px 0; }
+
+.bf-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  margin-bottom: 16px;
+}
+
+.bf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.bf-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.bf-title svg { color: var(--accent); flex-shrink: 0; }
+
+.bf-asof {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+}
+
+.bf-range-toggle {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+.bf-range-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--mono);
+  transition: background var(--t), color var(--t);
+}
+.bf-range-btn:hover { color: var(--text-secondary); }
+.bf-range-btn.active { background: var(--accent); color: #fff; }
+
+/* KPI snapshot grid */
+.bf-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+.bf-kpi {
+  padding: 12px 14px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.bf-kpi-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+}
+.bf-kpi-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--mono);
+  line-height: 1.2;
+}
+.bf-kpi-value.bf-neg { color: var(--loss); }
+.bf-kpi-value.bf-pos { color: var(--gain); }
+.bf-kpi-note {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+.bf-kpi-note.bf-calc::before { content: '≈ calc · '; }
+.bf-kpi-note.bf-stale { color: #c98500; }
+
+/* Charts grid — always single-column. This section only ever renders inside
+   the fixed-width (--col-right, 320px) sidebar column of company.html, never
+   in a wide standalone layout. A `min-width: 900px` viewport query here
+   (matching the *page*, not this ~320px container) used to force a 2-up grid
+   on every normal desktop width, squeezing each chart into a ~150px track
+   and overflowing the whole page horizontally by ~370px. */
+.bf-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+/* min-width:0 — a grid item defaults to min-width:auto, which refuses to
+   shrink below its content's intrinsic width. The Chart.js <canvas> inside
+   carries an intrinsic pixel width, so each card held itself ~62px wider
+   than its own track and pushed the page into horizontal scroll. */
+.bf-chart-card { padding: 16px 18px; min-width: 0; }
+.bf-chart-wrap canvas { max-width: 100%; }
+.bf-chart-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+.bf-chart-wrap { position: relative; height: 200px; }
+
+/* Insights list */
+.bf-insight {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.bf-insight:first-child { border-top: none; }
+.bf-insight-badge {
+  flex-shrink: 0;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  height: fit-content;
+  white-space: nowrap;
+}
+.bf-insight-badge.bf-critical { background: rgba(209,63,63,0.12); color: var(--loss); }
+.bf-insight-badge.bf-moderate { background: rgba(234,161,6,0.14); color: #c98500; }
+.bf-insight-badge.bf-info     { background: var(--accent-dim); color: var(--accent); }
+
+.bf-empty {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  text-align: center;
+  padding: 20px;
+}
+
+.bf-source-note {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}

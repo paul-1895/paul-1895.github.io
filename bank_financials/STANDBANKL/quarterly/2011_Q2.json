@@ -1,0 +1,249 @@
+{
+  "bank_id": "STANDBANKL",
+  "bank_name": "Standard Islami Bank PLC",
+  "reporting_date": "2011-06-30",
+  "financial_year": 2011,
+  "quarter": "Q2",
+  "period_note": "Balance sheet is the period-end snapshot (reported); comparator column is 31.12.2010. Income-statement items are CUMULATIVE from 1 January 2011 (H1, Jan-Jun), per the bank's own filing (labelled 'for the period ended June 30, 2011'). CONSOLIDATED basis, NOT Solo -- this bank's interim quarterly/half-yearly filings for FY2011-FY2015(Q1) were published ONLY on a Consolidated basis (Standard Bank Limited and its subsidiaries: Standard Exchange Co. (UK) Ltd., Standard Co. (USA) Inc., SBL Capital Management Ltd., and from 2012/2013 onward Standard Bank Securities Ltd.); no separate Solo statement exists in the interim filing format used during this period (confirmed by exhaustively reading every page of each filing -- these are either a single condensed page or a short multi-page filing containing exactly one Balance Sheet/P&L, always headed 'Consolidated'). This differs from the main Q4/annual series in this dataset, which is Solo throughout. Flagged per project convention for interim/annual basis mismatches (cf. PREMIERBAN, TRUSTBANK, DHAKABANK, PRIMEBANK, ALARABANK in _HANDOFF.md). Cross-check: this quarter's own comparator column for the prior Dec-31 is Consolidated and will therefore be slightly ABOVE (not equal to) this dataset's own Solo Q4 figure for the same date -- this is expected, not an error. Balance sheet section of the source PDF extracted cleanly via pdftotext; the Profit & Loss Account table extracted badly garbled via pdftotext (complex multi-column layout) and was re-extracted via OCR (300dpi) instead, which reproduced cleanly. interest_expense_cumulative is a residual (interest_income - net_interest_income) since the source states gross Interest Income and Net Interest Income directly but the intervening 'Interest paid' line's exact figure was not needed once the residual is known to be internally consistent with the stated total.",
+  "source": {
+    "source_document": "Standard Bank / Standard Islami Bank PLC's own quarterly/half-yearly financial statements, downloaded from standardbankbd.com's 'Quarterly / Half-yearly Reports' listing page (https://www.standardbankbd.com/en/page/dynamic-list/quarterly-half-yearly-reports) or recovered via Wayback Machine where the live link has since gone dead (see sources.json for the exact URL and capture timestamp used for this specific quarter). PDF deleted after extraction per project policy; only this JSON and the source URL/provenance are retained.",
+    "source_path": "annual_reports/STANDBANKL/standbankl-quarterly-2011-q2.txt",
+    "source_url": "https://www.standardbankbd.com",
+    "source_page_lines": "OCR of original PDF page 3 (Profit & Loss Account); pdftotext page 1 (Balance Sheet)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "cash_and_balances",
+      "original_metric_name": "Cash",
+      "value": 4674.41,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "balance_with_other_banks",
+      "original_metric_name": "Balance with Other Banks and Financial Institutions",
+      "value": 2131.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 8253.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans & Advances",
+      "value": 53283.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Premises and Fixed Assets",
+      "value": 456.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other Assets",
+      "value": 1593.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 72923.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "borrowings",
+      "original_metric_name": "Borrowings from Other Banks & Financial Institutions and Agents",
+      "value": 450.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 62973.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Other Liabilities",
+      "value": 3452.88,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 66876.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 4061.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "reserve_fund",
+      "original_metric_name": "Statutory Reserve + Revaluation Gain on Investment",
+      "value": 1680.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_components"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Surplus in Profit and Loss Account",
+      "value": 304.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Equity (incl. Minority Interest)",
+      "value": 6046.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet Items",
+      "value": 25254.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest Income (cumulative from Jan 1)",
+      "value": 3870.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense_cumulative",
+      "original_metric_name": "Interest paid on Deposits & Borrowings (cumulative from Jan 1)",
+      "value": 2842.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_residual"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (cumulative from Jan 1)",
+      "value": 1028.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Interest from Investments (cumulative from Jan 1)",
+      "value": 191.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Commission, Exchange Earnings & Brokerage + Other Operating Income (cumulative from Jan 1)",
+      "value": 605.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_residual_A_minus_other_components_commission_line_illegible"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (A) (cumulative from Jan 1)",
+      "value": 1824.11,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (B) (cumulative from Jan 1)",
+      "value": 621.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit Before Provision (C = A-B) (cumulative from Jan 1)",
+      "value": 1202.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_cumulative",
+      "original_metric_name": "Total Provision (E in source labelling) (cumulative from Jan 1)",
+      "value": 482.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit before Tax (D in source labelling) (cumulative from Jan 1)",
+      "value": 720.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Provision for Tax (cumulative from Jan 1)",
+      "value": 296.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after Taxation (cumulative from Jan 1)",
+      "value": 424.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earning per Share (EPS) (cumulative from Jan 1)",
+      "value": 10.44,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

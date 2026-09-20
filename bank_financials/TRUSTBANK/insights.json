@@ -1,0 +1,51 @@
+{
+  "bank_id": "TRUSTBANK",
+  "generated_at": "2026-09-12",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "2018_npl_spike_recovered",
+      "severity": "info",
+      "statement": "NPL ratio spiked sharply from 3.35% (FY2017) to 7.90% (FY2018), the highest point in the full 15-year series, before recovering to 5.49% (FY2019) and further to 3.65% (FY2021) — a single-year shock that was resolved within about three years rather than compounding into sustained distress.",
+      "metrics": ["npl_ratio_pct"],
+      "periods": ["2017_Q4", "2018_Q4", "2021_Q4"]
+    },
+    {
+      "category": "recent_npl_drift_and_2025_provisioning_jump",
+      "severity": "warning",
+      "statement": "NPL ratio climbed again from 3.65% (FY2021) to 6.36% (FY2024), and loan-loss provisioning nearly doubled in FY2025 (BDT 5,185mn -> BDT 9,961mn) even as the reported NPL ratio improved that year (6.36% -> 4.39%) — a combination (rising provisions despite falling NPL%) worth flagging for further investigation, since it could reflect either conservative pre-provisioning for expected future stress or a change in write-off/reclassification policy.",
+      "metrics": ["npl_ratio_pct"],
+      "periods": ["2021_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "consistent_capital_adequacy",
+      "severity": "info",
+      "statement": "CAR has stayed within a relatively narrow 10.81%-14.62% band across the full 15-year series, never approaching the regulatory minimum and never showing the kind of severe multi-year erosion seen at several other banks in this dataset (AB Bank, ICB Islamic Bank, Al-Arafah Islami Bank). FY2025's 12.76% is toward the lower end of this bank's own historical range but still comfortably above the floor.",
+      "metrics": ["car_pct"],
+      "periods": ["2015_Q4", "2016_Q4", "2025_Q4"]
+    },
+    {
+      "category": "sustained_profitability",
+      "severity": "info",
+      "statement": "ROE has stayed above 10% in 12 of the 15 researched years (exceptions: FY2012 at 3.02%, FY2013 at 4.85%, FY2020 at 10.49% during COVID), with a high of 18.86% in FY2023 — one of the more consistently profitable banks researched in this dataset.",
+      "metrics": ["roe_pct"],
+      "periods": ["2012_Q4", "2013_Q4", "2023_Q4"]
+    },
+    {
+      "category": "2025_margin_mix_shift_masks_flat_profit",
+      "severity": "warning",
+      "statement": "Newly-added Q1-Q3 quarterly data (CONSOLIDATED basis, cumulative from Jan 1) shows Net Interest Income through Q3 nearly halved year-on-year: BDT 6,418m (9M-2024) -> BDT 3,195m (9M-2025), a -50.2% decline. Despite this, Total Operating Income through Q3 still GREW (BDT 15,351m -> BDT 16,960m, +10.5%), and Net Profit After Tax through Q3 was roughly flat (BDT 2,630m -> BDT 2,658m, +1.1%) — meaning non-interest income (fees, FX, investment income, etc.) grew sharply enough to fully offset the NII compression this year. This is a meaningful funding-cost/margin mix shift hidden by a stable bottom line; worth monitoring for whether the offsetting non-interest income is repeatable, especially against the report's own stated 2025 operating context (NPLs sector-wide reported at 35.73% of disbursements as of September 2025, private-sector credit growth slowing to 6.23%).",
+      "metrics": ["net_interest_income_cumulative", "operating_income_cumulative", "net_profit_after_tax_cumulative"],
+      "periods": ["2024_Q3", "2025_Q3"]
+    },
+    {
+      "category": "2026_q1_net_interest_income_turned_negative_then_recovered",
+      "severity": "warning",
+      "statement": "The margin-compression trend flagged for 9M-2025 (CONSOLIDATED basis) continued and briefly worsened into an outright negative Net Interest Income in Q1 2026, this time confirmed on SOLO basis (the bank's own primary Q1 2026 filing, an improvement over the CONSOLIDATED annual-report-embedded table used for 2017-2025): Net Interest Income was BDT -457.68m for Jan-Mar 2026 (interest income 9,188.21m vs interest paid 9,645.89m), the first negative NII in this dataset's TRUSTBANK series. It recovered by Q2: the discrete Apr-Jun 2026 quarter posted NII of +775.07m, bringing H1 2026 cumulative NII back to +317.39m. As in the 9M-2025 pattern, non-interest income (investment income, commission, other operating income) kept Total Operating Income and Net Profit After Tax positive throughout both quarters (Q1 2026 PAT 313.33m, H1 2026 cumulative PAT 1,267.87m) despite the NII swing. Confirms the funding-cost/margin-mix pressure identified in FY2025 is a real, ongoing dynamic rather than a CONSOLIDATED-basis artifact, and that it is volatile enough to turn NII negative in a single quarter.",
+      "metrics": ["net_interest_income_cumulative", "net_profit_after_tax_cumulative"],
+      "periods": ["2026_Q1", "2026_Q2"]
+    }
+  ],
+  "historical_context": "Trust Bank shows a generally healthy, well-capitalized profile across its full 15-year public history, with one contained NPL shock in FY2018 that resolved within a few years and no capital-adequacy breach at any point. The FY2025 combination of falling reported NPL% alongside near-doubled loan-loss provisioning is the one pattern in this dataset worth a closer look in a future research pass, as it doesn't fit the more straightforward 'NPL rises, provisions rise' or 'NPL falls, provisions fall' patterns seen at most other banks. Newly-added Q1-Q3 data for 2017-2025 (added 2026-08-26) additionally shows a recurring within-year pattern of Total Shareholders' Equity (CONSOLIDATED basis) dipping from Q1 to Q2 before partially recovering by Q3 in most years (e.g. FY2018: 12,951 (Q1) -> 11,958 (Q2) -> 12,389 (Q3), all three from quarterly/2018_Q1-Q3.json), consistent with the AGM-approved prior-year dividend typically being paid out around Q2 — a normal seasonal mechanic, not a distress signal. (Q4 is deliberately excluded from this comparison: this dataset's 2018_Q4.json is SOLO basis, 12,887.61, not directly comparable to the CONSOLIDATED Q1-Q3 figures — see reporting_basis.)",
+  "data_gaps": "2026 Q1 and Q2 (Half-Yearly) added 2026-09-12, sourced directly from the bank's own primary interim filings (SOLO basis, a basis improvement over the CONSOLIDATED 2017-2025 quarters) -- see quarterly/2026_Q1.json, 2026_Q2.json and sources.json for extraction detail. Q1/Q2/Q3 unaudited interim data is now available for 2013-2025 (added 2026-08-26, in two passes). 2017-2025 came from Trust Bank's own annual-report-embedded 'Audit Committee and the Board Evaluation of the Quarterly Financials' table — IMPORTANT: that table is on a CONSOLIDATED basis, while this bank's main Q4/annual series (and this file's other insights) is SOLO/standalone basis — see sources.json reporting_basis for the full determination and the measured ~0.5-1.1% gap on balance-sheet items. 2014-2016 (plus P&L-only for 2013) came instead from the bank's own live-website unaudited interim PDFs (tblbd.com/about-us/financial-statements), which are SOLO basis and need no such caveat — they match this dataset's main series exactly at every overlapping Dec-31 comparative checked. Only 2011-2012 Q1-Q3 remain not researched: neither shortcut reaches that far back (the embedded table did not exist in the bank's report format before FY2018; the live website's own archive only goes back to 2014, confirmed via its full page listing), and recovering those two years would require a different source (Wayback Machine or DSE/Bangladesh Bank archives) not attempted this session. Return on Average Equity (ROE) not directly reported for FY2016-2025 in the annual source tables used (calculated from profit-after-tax/equity instead, on a period-end rather than average basis, consistent with this dataset's general methodology). FY2024 figures show a modest restatement between the FY2024 and FY2025 reports (see sources.json) — corroborated in 2026-08-26 by an independent, nearly identical-magnitude restatement found in the CONSOLIDATED-basis quarterly table."
+}

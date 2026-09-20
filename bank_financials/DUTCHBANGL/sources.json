@@ -1,0 +1,88 @@
+{
+  "bank_id": "DUTCHBANGL",
+  "bank_name": "Dutch-Bangla Bank PLC",
+  "website": "https://www.dutchbanglabank.com",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2025 total assets of 817,797.6m match the figure under this report's 'Balance Sheet' (solo) heading.",
+  "notes": "annual_reports/DUTCHBANGL archive covers 2010-2021 and 2023-2025 (2022 missing, filled via the 2023 report's comparative column and 5-year table). Complete Q4/year-end coverage for all 15 years achieved by combining each report's own Balance Sheet with its embedded multi-year 'Key financial information & ratio - last five years' table (present in the 2011, 2015, and 2020 reports, giving 2007-2020 in 3 overlapping reads) plus the 2023 report's 5-year-at-a-glance table (2019-2023) and the 2025 report's MD&A narrative (2024-2025, since that report's own Balance Sheet table failed to extract numeric values from the source PDF text layer). Q1/Q2/Q3 unaudited interim coverage added 2026-08-26: 45 quarters (2010 Q1 through 2026 Q2) sourced directly from dutchbanglabank.com/investor-relations/interim-report.html, going back to 2010 as the bank's own site allows (see the '2010-2026 Q1/Q2/Q3' source entry below for full detail, gaps, and confidence caveats).",
+  "sources": [
+    {
+      "period": "2011 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "dutchbangl-annual-report-2011.txt (\"Key financial information & ratio - last five years\", covering 2007-2011)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011
+      ],
+      "cross_check": "Total assets, deposits, loans, equity independently confirmed by the 2012 and 2015 annual reports' own comparative columns."
+    },
+    {
+      "period": "2012-2015 (Q4)",
+      "type": "annual_report_balance_sheet_and_summary_table",
+      "source_document": "dutchbangl-annual-report-2012.txt, -2013.txt, -2014.txt (own-year audited Balance Sheets), cross-validated against dutchbangl-annual-report-2015.txt's \"Key financial information & ratio - last five years\" table (2011-2015)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2012,
+        2013,
+        2014,
+        2015
+      ]
+    },
+    {
+      "period": "2016-2020 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "dutchbangl-annual-report-2020.txt (\"Key financial information & ratio - last five years\", covering 2016-2020)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "note": "2016 total assets/liabilities use the cross-report-consistent 'Bank' solo basis (264,797.4mn) rather than the 2016 annual report's own 'Main Operation and Off-shore Banking Unit' combined balance sheet figure (276,844.4mn); see quarterly/2016_Q4.json period_note for detail."
+    },
+    {
+      "period": "2021-2023 (Q4)",
+      "type": "annual_report_balance_sheet_and_summary_table",
+      "source_document": "dutchbangl-annual-report-2021.txt (2021 own balance sheet), dutchbangl-annual-report-2023.txt (\"5-year at a glance\" table covering 2019-2023, and 2023/2022 comparative Balance Sheet)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021,
+        2022,
+        2023
+      ],
+      "note": "2022 annual report itself is not in the local archive; all 2022 data sourced from the 2023 report's comparative figures. Income-statement flow detail (interest income/expense, operating income breakdown) not extracted for these 3 years, only balance-sheet aggregates, profit after tax, EPS, and capital/asset-quality ratios."
+    },
+    {
+      "period": "2024-2025 (Q4)",
+      "type": "annual_report_mdna_and_pl_account",
+      "source_document": "dutchbangl-annual-report-2025.txt (MD&A \"Summary of assets/liabilities/loans and advances\" narrative sections, and the Profit and Loss Account)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024,
+        2025
+      ],
+      "note": "This report's own 'Balance Sheet'/'PROPERTY AND ASSETS' table failed to extract any numeric values from the source PDF's text layer (a table-layout extraction failure, not a missing table) — worked around via the MD&A narrative tables and the Profit and Loss Account, which extracted cleanly and are independently consistent (balance sheet identity validates exactly). Capital adequacy ratio (CAR) and Tier-1/Tier-2 capital breakdown not extracted for 2024-2025."
+    },
+    {
+      "period": "2010 Q1 - 2026 Q2 (Q1/Q2/Q3 unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "dutchbanglabank.com/investor-relations/interim-report.html links directly to every year's PDFs (2015-2026) or per-quarter static .htm landing pages with 2-3 linked PDFs each (2010-2014); no JS dropdown was actually needed to see the full 2010-2026 range -- the accordion widget's markup (javascript:expand('YYYY')) already contains every year's anchors in the raw HTML, confirmed identical as far back as a 2015-04-06 Wayback capture of the same page.",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+      "note": "45 of a possible 48 quarters extracted (2010 Q1 through 2026 Q2; 2026 is a bonus partial year beyond this dataset's existing Q4/annual terminal year of 2025, included because it was genuinely available). Format splits exactly as the prior research pass anticipated: 2015 onward is one combined PDF per quarter (Balance Sheet + P&L + Cash Flow + Statement of Changes in Equity); 2010-2014 is a static .htm landing page per quarter linking 1-3 separate PDFs (Balance Sheet, Profit & Loss, sometimes Cash Flow/Statement of Changes in Equity as their own files; 2011/2012 Q1/Q3 and 2014 Q2 instead link one already-combined PDF). Confirmed gaps, not backfilled: 2011 Q2 (the site's own Q2-2011 link points to a generic price-sensitive-information page, not a report; no Wayback capture of any PDF exists under Interim_Report/2011_second_quarter/); 2013 Q2 and Q3 (never published in this format -- confirmed absent from a 2015-04-06 Wayback capture of the same listing page, not just a dead link); 2016 Q3 (the site's own link, Interim_Report/2016_third_quarter/Financial_Statements_30_September_2016.pdf, 404s live and has no successful Wayback capture at any timestamp, despite the FY2016 annual report itself confirming a Q3 statement was released 30 October 2016 -- the PDF is simply not recoverable from any source checked). 2014 Q1 was downloaded and OCR'd but excluded from bank_financials/DUTCHBANGL/quarterly/ entirely: OCR quality on the 85 PPI source scan was insufficient for confident headline-total extraction even after 8x upscaling (see annual_reports/DUTCHBANGL/dutchbangl-interim-2014-q1-*.txt for the retained OCR attempt). 2020 Q3's PDF is delisted from the live page (a dead link) but still resolves at its original URL and was used after confirming via its own comparative column that it is a genuine DBBL filing. Reporting convention: Q1 and Q2 filings are titled 'First Quarter'/'Half-Yearly'; Q3 filings show both a 9-month-cumulative and a discrete-3-month column -- the 9-month CUMULATIVE column was used throughout for income-statement items (never the discrete quarter), matching the convention already established for CITYBANK and matching how this bank's own Q4 = Annual-minus-9M derivation in _methodology.md expects Q1-Q3 to be stored. Two format quirks found and handled: (1) 2015-2017 balance sheets are printed as 'Main Operation and Off-shore Banking Unit' in three columns; the Main-Operation-only column was used throughout, consistent with this dataset's existing FY2016 Q4 precedent (see that period_note) which rejected the combined Main+OBU figure for the same reason. (2) 2018-2019 interim filings title their statements 'Consolidated Balance Sheet'/'Consolidated Profit and Loss Account' with no separate solo statement in the document -- flagged per project convention, though every comparative column checked reconciles exactly with this dataset's existing solo-basis annual figures for the same dates, so there is no evidence of an actual consolidation-scope difference, only a label change specific to that vintage of the report template. PDFs from 2024 Q1 onward (plus 2020 Q3, and 2012 Q2/2013 Q1/2014 Q1 from the old era) had no extractable text layer (confirmed via pdffonts/pdfimages -- either a pure scanned image or a font with no ToUnicode map) and were OCR'd (pdftoppm 300-400 DPI + tesseract, upscaled 6-8x for the lowest-resolution old scans); every OCR'd quarter's headline figures were cross-validated against the balance-sheet identity, the operating-income/PBT/PAT subtotal identities, and (where a later report's comparative column covered the same date) a second independent source, before being accepted -- two OCR misreads were caught and corrected this way (2025 Q1's 'Total operating income' and EPS). 2013 Q1 is flagged as lower-confidence in its own quarterly/2013_Q1.json: its balance sheet reconciles and cross-checks against a later report's comparative column, but its P&L subtotals were mostly illegible and were reconstructed from individually-legible line items with no second source to check against."
+    }
+  ]
+}

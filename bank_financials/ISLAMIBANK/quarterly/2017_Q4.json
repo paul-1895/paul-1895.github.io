@@ -1,0 +1,393 @@
+{
+  "bank_id": "ISLAMIBANK",
+  "bank_name": "Islami Bank Bangladesh PLC",
+  "reporting_date": "2017-12-31",
+  "financial_year": 2017,
+  "quarter": "Q4",
+  "period_note": "Year-end (31 December 2017) position from Islami Bank Bangladesh's own audited annual report 'Five Years Performance' table, taken from the FY2017 report (the reporting year's own document). SOLO / STANDALONE basis. Islami Bank Bangladesh is a Shariah-compliant bank, so its own terminology is used in original_metric_name: 'Investment' is the financing book (the equivalent of loans and advances), 'Investment Income' is the equivalent of interest income, and 'Profit Paid on deposit' is the equivalent of interest expense. The normalised metric names map these onto the dataset's conventional banking vocabulary: gross_loans holds General Investment, net_interest_income holds Net Investment Income, and classified_loans holds Classified Investment. Total liabilities are calculated as total assets (excluding contra) minus shareholders' equity; the source table does not print a total-liabilities line. total_assets is the balance-sheet total EXCLUDING contra items, which is the comparable figure for other banks in this dataset; the bank's own 'Total Assets (including Contra)' is retained separately as total_assets_incl_contra and is materially larger. RESTATEMENTS -- 2 figure(s) in this record are reported differently by other Islami Bank annual reports. Per this dataset's sourcing rule the contemporaneous value is kept and the divergence recorded here: provision_classified: this record uses 15020.4 (AR2017); AR2019 report 9726.12; provision_required_classified: this record uses 15020.4 (AR2017); AR2019 report 9726.12.",
+  "source": {
+    "source_document": "islamibank-annual-report-2017.txt",
+    "source_path": "annual_reports/ISLAMIBANK/islamibank-annual-report-2017.txt",
+    "source_url": "https://www.islamibankbd.com/abt_annualReport.php",
+    "source_page_lines": "'Five Years Performance' multi-year table in the FY2017 annual report",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "authorized_capital",
+      "original_metric_name": "Authorized Capital",
+      "value": 20000.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 16099.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "reserve_fund",
+      "original_metric_name": "Reserve Fund",
+      "value": 32619.08,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": 1609.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Shareholders Equity",
+      "value": 50328.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 849630.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Total Deposit",
+      "value": 755022.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_investment",
+      "original_metric_name": "Total Investment",
+      "value": 748672.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "General Investment",
+      "value": 710728.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Investment Deposit Ratio",
+      "value": 87.8,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets (excluding Contra)",
+      "value": 899959.78,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets_incl_contra",
+      "original_metric_name": "Total Assets (including Contra)",
+      "value": 1069709.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets",
+      "value": 15475.41,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "risk_weighted_assets",
+      "original_metric_name": "Total Risk Weighted Assets (RWA)",
+      "value": 513097.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Tier-I Capital",
+      "value": 44026.11,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Tier-II Capital",
+      "value": 13931.96,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_capital",
+      "original_metric_name": "Regulatory Capital (Tier I, II & III)",
+      "value": 57958.08,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_capital",
+      "original_metric_name": "Statutory Capital (Paid up Capital & Statutory Reserve)",
+      "value": 32835.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "capital_surplus_deficit",
+      "original_metric_name": "Equity/Capital Surplus/(Deficit)",
+      "value": 234.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital Adequacy Ratio",
+      "value": 11.3,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Classified Investment",
+      "value": 25518.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Classified Investment to Total Investment",
+      "value": 3.59,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_required_classified",
+      "original_metric_name": "Provision against Classified Investment (Objective Criteria)",
+      "value": 15020.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_classified",
+      "original_metric_name": "Provision against Classified Investment",
+      "value": 15020.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_unclassified",
+      "original_metric_name": "General Provision against Unclassified Investment (including OBU)",
+      "value": 4918.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_off_bs",
+      "original_metric_name": "General Provision on Off Balance Sheet Items",
+      "value": 1697.49,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment Income",
+      "value": 57141.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits",
+      "original_metric_name": "Profit Paid on deposit",
+      "value": 31383.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net Investment Income",
+      "value": 25758.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_investment_income",
+      "original_metric_name": "Non-Investment Income",
+      "value": 9797.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_income",
+      "original_metric_name": "Total Income",
+      "value": 66939.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Administrative & other Exp.",
+      "value": 18751.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_expenditure_ex_provision",
+      "original_metric_name": "Total Expenditure Excluding Provision",
+      "value": 50134.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Provision for Investment, Off Balance Sheet Items & Other Assets",
+      "value": 4691.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_expenditure",
+      "original_metric_name": "Total Expenditure Including Provision",
+      "value": 54826.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Net Profit before Tax",
+      "value": 12113.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Provision for Income Tax",
+      "value": 7420.37,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after Tax",
+      "value": 4692.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "import_business",
+      "original_metric_name": "Import",
+      "value": 385194.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "export_business",
+      "original_metric_name": "Export",
+      "value": 240026.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "foreign_remittance",
+      "original_metric_name": "Remittance",
+      "value": 233052.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earning per Share",
+      "value": 2.91,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value (NAV) per Share",
+      "value": 31.26,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Return on Equity (ROE)",
+      "value": 9.63,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "num_shareholders",
+      "original_metric_name": "Number of Shareholders",
+      "value": 43414.0,
+      "unit": "count",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "num_employees",
+      "original_metric_name": "Number of Employees",
+      "value": 13760.0,
+      "unit": "count",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "num_branches",
+      "original_metric_name": "Number of Branches",
+      "value": 332.0,
+      "unit": "count",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

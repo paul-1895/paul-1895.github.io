@@ -1,0 +1,241 @@
+{
+  "bank_id": "UTTARABANK",
+  "bank_name": "Uttara Bank PLC",
+  "reporting_date": "2017-09-30",
+  "financial_year": 2017,
+  "quarter": "Q3",
+  "period_note": "Balance sheet is the period-end snapshot (reported), Solo/Standalone basis -- matching the basis of this bank's existing Q4/annual series (see bank_financials/UTTARABANK/quarterly/2025_Q4.json). This source filing's package presents a full Consolidated statement FIRST, followed by a full Solo (non-consolidated) statement for the same date; the Solo figures were used throughout, per this dataset's standing 'prefer Solo over Consolidated' rule -- the Consolidated section was read and confirmed present but not used. Income-statement items are CUMULATIVE from 1 January 2017 to 30 September 2017, taken from the source filing's own '01 January to 30 September' column (same convention as bank_financials/CITYBANK/quarterly/2024_Q1.json), flagged via the _cumulative suffix. The same filing separately discloses a discrete quarter-only column ('01 July to 30 September 2017') alongside the cumulative one; only the cumulative column was extracted into this file, consistent with this dataset's established convention -- the discrete figures were used only internally to cross-validate (cumulative-this-quarter minus cumulative-prior-quarter reconciles to the filing's own reported discrete column). reserve_fund is calculated as Statutory reserve plus Other reserves (same convention as the Q4 schema); non_funded_income_cumulative is calculated as Commission/Exchange/Brokerage plus Other Operating Income (matching CITYBANK's combined field, for cross-bank comparability) -- both granular components are also reported individually. tax_provision_cumulative is calculated as Current tax plus Deferred tax (the filing's own 'Provision for Taxation' subtotal line was not used directly in every year, since in at least one year that line carries a stray note-reference token in place of a value; the two components beneath it are unambiguous). Validated: Total Assets = Total Liabilities + Total Equity exactly; Net Interest Income = Interest Income - Interest Paid exactly; Total Operating Income = NII + Investment Income + Commission/Exchange/Brokerage + Other Operating Income exactly; Operating Profit = Total Operating Income - Total Operating Expenses exactly; Profit before Tax = Operating Profit - Provision exactly; Profit after Tax = Profit before Tax - Tax Provision exactly.",
+  "source": {
+    "source_document": "uttarabank-unaudited-2017-q3.txt",
+    "source_path": "annual_reports/UTTARABANK/uttarabank-unaudited-2017-q3.txt",
+    "source_url": "https://uttarabank-bd.com/thirdqreport/3rdQuarter_Statement2017.pdf",
+    "source_page_lines": "312-443 (own Balance Sheet and Profit and Loss Account, Solo, within the combined interim-financial-statements PDF)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 4000.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 4330.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserves",
+      "original_metric_name": "Other Reserves",
+      "value": 4200.88,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "reserve_fund",
+      "original_metric_name": "Reserve Fund and Other Reserves",
+      "value": 8531.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "retained_earnings_surplus",
+      "original_metric_name": "Surplus in Profit and Loss Account",
+      "value": 1169.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Capital/Shareholders' Equity",
+      "value": 13702.08,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 141826.85,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 89085.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 32676.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets including Premises, Furniture and Fixtures",
+      "value": 3203.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 172482.62,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 158780.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off Balance Sheet Items including Contingent Liabilities",
+      "value": 24042.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest Income (cumulative from 1 January)",
+      "value": 7567.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_paid_cumulative",
+      "original_metric_name": "Interest Paid on Deposits and Borrowings etc. (cumulative from 1 January)",
+      "value": 4472.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (cumulative from 1 January)",
+      "value": 3094.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment Income (cumulative from 1 January)",
+      "value": 2030.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_income_cumulative",
+      "original_metric_name": "Commission, Exchange and Brokerage (cumulative from 1 January)",
+      "value": 753.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other Operating Income (cumulative from 1 January)",
+      "value": 388.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_funded_income_cumulative",
+      "original_metric_name": "Non Funded Income (cumulative from 1 January)",
+      "value": 1141.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative from 1 January)",
+      "value": 6267.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from 1 January)",
+      "value": 4302.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before Provision (cumulative from 1 January)",
+      "value": 1965.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_cumulative",
+      "original_metric_name": "Provision for Loans, Advances and Off-Balance-Sheet Exposures (cumulative from 1 January)",
+      "value": 195.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Profit before Tax (cumulative from 1 January)",
+      "value": 1770.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_provision_cumulative",
+      "original_metric_name": "Provision for Taxation - Current + Deferred (cumulative from 1 January)",
+      "value": 644.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Profit after Taxation (cumulative from 1 January)",
+      "value": 1125.41,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) (cumulative from 1 January)",
+      "value": 2.81,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

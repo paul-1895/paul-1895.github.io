@@ -1,0 +1,57 @@
+{
+  "bank_id": "JAMUNABANK",
+  "bank_name": "Jamuna Bank PLC",
+  "reporting_date": "2013-06-30",
+  "financial_year": 2013,
+  "quarter": "Q2",
+  "period_note": "P&L-summary-level only (5 line items); no balance sheet available from this source for this quarter. Sourced from Jamuna Bank's own FY2013 Annual Report's Directors' Report disclosure, \"Variance Between Quarterly Financial Performance and Annual Financial Statements\" (a BSEC-mandated disclosure of the bank's own actually-filed quarterly results) -- this is the DISCRETE quarter's own figures (Quarter-2 column), not cumulative from Jan 1: the table's own four quarterly columns sum exactly to its Annually column for all five rows (verified for every year sourced this way). Source table is denominated in Tk. Lac (1 Lac = BDT 0.1 million); converted to BDT_million here (divide by 10). 'non_interest_income_combined' is this table's row B (\"Non-interest income\"), which = Investment income + Commission/exchange/brokerage + Other operating income combined -- this is NOT the same quantity as the 'non_interest_income' field in this bank's own annual *_Q4.json files (which excludes investment income as its own separate line); do not compare the two directly. 'operating_profit' = this table's row E, \"Operating profit (C-D)\" = Operating income minus Operating expenses, before loan-loss provisioning, tax, EPS -- this source table does not disclose provisioning, PBT, tax, PAT, or EPS at the quarterly level, so those are not included here. This table's own Annually column for this year was cross-checked against this dataset's already-stored 2013_Q4.json figures during research for this update: net_interest_income, operating_income, operating_expenses and operating_profit annual totals match exactly to the taka for FY2013. Note: this table's own Quarter-4 Net interest income cell prints as 'Tk 256.43' in the extracted text, which fails to reconcile with the table's own Annual total (9,498.29); reconstructing it as 4,256.43 (a dropped leading '4,' -- a known OCR/extraction digit-drop pattern) makes every row and column of this table reconcile exactly (Q1+Q2+Q3+Q4=Annual for all 5 rows, and each column's A+B=C and C-D=E). This affects only the Q4 cell already implicit in this dataset's existing 2013_Q4.json operating figures, not the Q1-Q3 files produced here.",
+  "source": {
+    "source_document": "jamunabank-annual-report-2013.txt",
+    "source_path": "annual_reports/JAMUNABANK/jamunabank-annual-report-2013.txt",
+    "source_url": "https://www.jamunabankbd.com",
+    "source_page_lines": "4136-4160 (Directors' Report 2013, \"Variance Between Quarterly and Annual Financial Performance\")",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income (A)",
+      "value": 172.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_combined",
+      "original_metric_name": "Non-interest income (B)",
+      "value": 1120.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Operating income (A+B)",
+      "value": 1292.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Operating expenses",
+      "value": 603.88,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Operating profit (C-D)",
+      "value": 689.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

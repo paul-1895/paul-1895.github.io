@@ -1,0 +1,41 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2014-09-30",
+  "financial_year": 2014,
+  "quarter": "Q3",
+  "period_note": "Balance-sheet-free, income-statement-only interim snapshot -- Solo/Standalone presumed (see sources.json). Recovered via a Wayback Machine capture of DSE's OWN company page (dsebd.org/displayCompany.php?name=PUBALIBANK), NOT the bank's site -- the technique proven on RUPALIBANK, applied here for the first time to PUBALIBANK. This vintage of the table (titled 'Financial Performance: <year>', pre-2016) gives only Turn Over, Net Profit After Tax (Continuing Operations), Basic/Diluted EPS and NAV per share, ALL CUMULATIVE FROM JAN 1 per the table's own column headers (Q1=3 Months, Q2=6 Months, Q3=9 Months) -- no period-end market price is given in this table vintage (the top-of-page 'Last Trade' price reflects the capture date, not the quarter-end, so it is not usable and not recorded). Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). Q1 EPS (0.660) reconciles against the OLD 838.451mn share count (556.89/838.451=0.664); Q2/Q3 reconcile against the NEW 880.374mn count (1635.52/880.374=1.858; 1641.69/880.374=1.865) -- consistent with the 25/03/2014 AGM's 5% bonus for FY2013 falling between Q1 and Q2 filing, same pattern as 2011 (see insights.json). Q2-to-Q3 cumulative profit growth is unusually flat (+6.17mn over the quarter) -- recorded as reported, not independently explained further.",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://web.archive.org/web/20141222155611id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Financial Performance: 2014\" table (OLD format), Q3 column (period-end 2014-09-30)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "turnover_revenue_cumulative",
+      "original_metric_name": "Turn Over in BDT (mn), cumulative 9 months",
+      "value": 3169.49,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit After Tax in BDT (mn) (Continuing Operations), cumulative 9 months",
+      "value": 1641.69,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Basic EPS in BDT (Based on continuing operations), cumulative 9 months",
+      "value": 1.87,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

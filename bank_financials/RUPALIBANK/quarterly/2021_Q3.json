@@ -1,0 +1,34 @@
+{
+  "bank_id": "RUPALIBANK",
+  "bank_name": "Rupali Bank PLC",
+  "reporting_date": "2021-09-30",
+  "financial_year": 2021,
+  "quarter": "Q3",
+  "period_note": "THIN/FLAGGED QUARTER - unaudited interim financial performance, discrete Jul-Sep 2021. The source DSE table's Q3 and 9-Months columns for this bank contain a data-quality problem which is preserved here rather than silently resolved: the 'Turnover/Revenue', 'Profit from continuing operations', 'Profit for the period', and 'Total Comprehensive Income' cells all read exactly 0 for Q3 (not credible as four unrelated genuine reported zeros in the same quarter for a bank that had just reported ~180mn cumulative profit through H1) - these are treated as 'not disclosed to DSE in this structured field' and DELIBERATELY OMITTED from line_items below rather than recorded as a fabricated/misleading zero. The 9-Months cumulative versions of these same four rows carry an explicit DSE tooltip: \"Mismatch is due to issuers own actual disclosure\" (verbatim; DSE's own system attributing the inconsistency to Rupali Bank's own filed disclosure, not a DSE processing error) - also omitted from line_items for the same reason, but recorded in full in the source text file for transparency. The ONE genuinely distinct, non-zero, non-flagged figure for Q3 itself is EPS Basic = -0.030 (a small per-share loss) - this IS recorded below since it is a specific, credible, directly-reported value, unlike the suspicious flat zeros. The 9-Months cumulative EPS (0.370) carries the same DSE mismatch tooltip as the other 9M figures and does NOT reconcile with Half-Yearly EPS (0.430) + this quarter's EPS (-0.030) = 0.400 (a 0.030 BDT/share gap) - flagged here per this dataset's 'prefer contemporaneous, flag don't fabricate' rule, and also OMITTED from line_items given DSE's own explicit mismatch flag. Market price at period end (36.4) is clean/unflagged and recorded. Same Solo-basis-presumed caveat as 2020_Q1.json.",
+  "source": {
+    "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Capture 2 of 6)",
+    "source_path": "annual_reports/RUPALIBANK/rupalibank-dse-interim-tables-2020-2026.txt",
+    "source_url": "https://web.archive.org/web/20211102143756id_/https://www.dsebd.org/displayCompany.php?name=RUPALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2021\" table, Q3 (discrete) and 9 Months (cumulative, DSE-flagged) columns (period-end code 202109)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Jul-Sep",
+      "value": -0.03,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Profit-for-the-period (mn) figure for this same quarter was not usably disclosed (reported as a flat 0 across 4 unrelated line items - treated as non-disclosure, not a genuine zero, and omitted). This EPS value is the only credible discrete Q3 2021 P&L figure available."
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 36.4,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

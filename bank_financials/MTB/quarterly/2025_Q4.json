@@ -1,0 +1,265 @@
+{
+  "bank_id": "MTB",
+  "bank_name": "Mutual Trust Bank PLC",
+  "reporting_date": "2025-12-31",
+  "financial_year": 2025,
+  "quarter": "Q4",
+  "period_note": "Year-end position from the Annual Report 2025's own 'Five Year at a Glance' summary table (audited), CONSOLIDATED basis. Reporting basis confirmed the same way as FY2024 (see 2024_Q4.json for the full cross-check derivation): Note 14.a.2.1 'CRAR as defined by the Basel Capital Accord (Consolidated)' gives Total Regulatory Capital BDT 42,203.69m, matching the Five Year at a Glance table's 'Total Regulatory Capital' row (42,204) exactly; the Segment Report's explicit 'Consolidated' column (Annexure G-i) gives Total Assets BDT 505,191.83m, again matching the Five Year at a Glance row exactly, while its explicit 'Solo' column gives BDT 501,549.92m, matching Annexure F(i) exactly (this year's Annexure F(i) table has dropped the '(Solo)' suffix from its own title compared to FY2024's report, but is confirmed Solo-basis by this exact match). Credit Metrics (classified loans, NPL%, coverage) are again explicitly labelled '(SOLO)' within the Five Year at a Glance table; npl_pct (5.77%) reproduces exactly from classified_loans (18,295.42) / SOLO gross loans (317,251.51) = 5.77%, versus 5.73% using this record's own CONSOLIDATED gross_loans (319,105) -- a 0.04pp difference, consistent with FY2024's finding. provision_classified (9,333) is Annexure F(i)'s 'Total Provision Maintained against Classified Loans' -- continuing the FY2011-2024 series (provision_coverage_classified_only_pct = 9,332.50/18,295.42 = 51.01%, versus the report's own broader 'NPL Coverage Ratio' of 111.07% which includes general/off-balance-sheet/margin-loan provisions -- see FY2024's period_note for the full definitional-break explanation). ldr_pct (75.05%) is the source's own reported 'Advance to Deposit Ratio (As per BB Asset-Liability guideline)', not naive gross_loans/total_deposits (319,105/364,086 = 87.64%); see FY2024's period_note for the pre-existing divergence this creates against the 2015-2023 'calculated' LDR series in ratios_timeseries.json. cet1_capital (24,076) and tier1_capital (28,076, = CET-I + BDT 4,000m Additional Tier-1 perpetual bond) are both reported directly in Note 14.a.2.1's Consolidated breakdown, consistent with FY2024's finding of a separately-disclosed AT1 instrument. DATA-QUALITY FINDING -- capital_surplus: the Five Year at a Glance table's own printed 'Capital Surplus' row for 2025 (BDT 10,814m) is internally inconsistent with the same table's own 'Total Regulatory Capital' (42,204) minus 'Minimum Capital Requirement' (31,142) = 11,062, and coincidentally equals that same column's 'Paid-up Capital' row (10,814) exactly -- almost certainly a copy/transcription artifact in the source report's own table (every other year-column in the same row satisfies Total Capital minus MCR exactly, e.g. FY2024: 37,013-27,181=9,832, matching its printed 9,832). This dataset uses Note 14.a.2.1's own explicit 'D. Capital Surplus/(Shortfall)' line (BDT 11,061.87m, rounds to 11,062) instead, which reconciles exactly and is also closer to the Solo-basis Annexure F(i) surplus of BDT 11,029.74m (consolidated surplus should exceed solo surplus, which it does under this corrected figure but would not information-wise under the printed 10,814 either way -- the corrected figure is simply the internally-consistent one). basis is marked 'reported' since BDT 11,061.87m is itself a directly reported line in Note 14.a.2.1, just not the (evidently erroneous) figure repeated in the Five Year at a Glance table. NOTABLE FINDING -- tax_expense is NEGATIVE (a net tax benefit/credit of BDT -295.97m, rounds to -296), confirmed via the Segment Report Consolidated P&L (Annexure G-ii): Profit Before Tax BDT 3,096,938,079 minus Income Tax Expenses of BDT (295,968,136) [shown in parentheses in the source, i.e. a credit] equals Profit After Tax BDT 3,392,906,214 (dataset's own recomputation: 3,096,938,079 + 295,968,136 = 3,392,906,215, matching to within BDT 1 rounding) -- this is why Profit After Tax (3,393) exceeds Profit Before Tax (3,097) for FY2025, a real and unusual but internally-consistent result, not a transcription error. The Solo P&L column shows the same pattern (Income Tax Expenses of BDT -274.72m), so this is not a consolidation artifact either. Likely driven by deferred tax asset recognition; not further investigated (outside this task's scope) but flagged as a risk-relevant data point for insights.json.",
+  "source": {
+    "source_document": "mtb-annual-report-2025.txt",
+    "source_path": "annual_reports/MTB/mtb-annual-report-2025.txt",
+    "source_url": "https://www.mutualtrustbank.com",
+    "source_page_lines": "24824-25055 (Five Year at a Glance, pages 354-358; Consolidated for sections A/B/D, explicitly Solo for section E Credit Metrics); 25925-25990 (audited Consolidated Balance Sheet); 30108-30180 (Note 14.a.2.1 CRAR (Consolidated) and 14.a.2.2 CRAR (Solo), page 424-425 -- used to confirm reporting basis, split CET1 from AT1, and source the corrected capital_surplus); 31882-31908 (Annexure F(i) 'Financial Highlights on the Overall Activities', page 452, confirmed Solo-basis by cross-match); 31940-32023 (Segment Report Annexure G-i Consolidated Balance Sheet and G-ii Consolidated Profit and Loss Account, explicit Solo/Consolidated columns, pages 453-454 -- also source of the negative tax_expense confirmation)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "authorized_capital",
+      "original_metric_name": "Authorized Capital",
+      "value": 20000,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 10814,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity (Consolidated Balance Sheet)",
+      "value": 30403,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities (Consolidated Balance Sheet)",
+      "value": 474788,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 505192,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits",
+      "value": 364086,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 319105,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 128975,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "contingent_liabilities",
+      "original_metric_name": "Off-Balance Sheet Exposures",
+      "value": 189483,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets",
+      "value": 4837,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Total Operating Income",
+      "value": 22496,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Profit Before Tax",
+      "value": 3097,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Income Tax Expenses (net credit/benefit -- see period_note)",
+      "value": -296,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit After Tax",
+      "value": 3393,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "risk_weighted_assets",
+      "original_metric_name": "Total Risk Weighted Assets",
+      "value": 311418,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "cet1_capital",
+      "original_metric_name": "Common Equity Tier-I (CET-I)",
+      "value": 24076,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Tier-I Capital (CET-1 + Additional Tier-1)",
+      "value": 28076,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Tier-II Capital",
+      "value": 14128,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_regulatory_capital",
+      "original_metric_name": "Total Regulatory Capital",
+      "value": 42204,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "capital_surplus",
+      "original_metric_name": "Capital Surplus/(Shortfall) (A-C) (Note 14.a.2.1; corrects an internally-inconsistent figure printed in the Five Year at a Glance table -- see period_note)",
+      "value": 11062,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital to Risk Weighted Assets Ratio (CRAR)",
+      "value": 13.55,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_ratio_pct",
+      "original_metric_name": "Tier-I Capital Ratio",
+      "value": 9.02,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_ratio_pct",
+      "original_metric_name": "Tier-II Capital Ratio",
+      "value": 4.54,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Advance to Deposit Ratio (As per BB Asset-Liability guideline)",
+      "value": 75.05,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Classified Loans and Advances (Solo)",
+      "value": 18295,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_classified",
+      "original_metric_name": "Total Provision Maintained against Classified Loans (Solo, Annexure F(i))",
+      "value": 9333,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "NPL Percentage (Solo)",
+      "value": 5.77,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_npl_coverage_pct",
+      "original_metric_name": "NPL Coverage Ratio (for funded & non-funded exposures; broader base than pre-2024 'Gross NPL Coverage', see FY2024 period_note)",
+      "value": 111.07,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_coverage_classified_only_pct",
+      "original_metric_name": "Provision for Classified Loans / Classified Loans and Advances (narrow definition, continues pre-2024 'Gross NPL Coverage' series)",
+      "value": 51.01,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS) (not-restated)",
+      "value": 3.14,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) Per Share (not-restated)",
+      "value": 28.11,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

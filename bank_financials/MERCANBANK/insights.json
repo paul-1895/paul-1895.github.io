@@ -1,0 +1,51 @@
+{
+  "bank_id": "MERCANBANK",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json, and every BDT figure quoted in a statement is verified against the corresponding quarterly/<year>_Q4.json line item.",
+  "risk_signals": [
+    {
+      "category": "capital_adequacy_strengthening",
+      "severity": "info",
+      "statement": "CAR has risen steadily from 10.52% (FY2011) to a consistent 13-15% range from FY2018 onward, comfortably above the regulatory minimum throughout — capital position has strengthened even as profitability declined in recent years.",
+      "metrics": ["car_pct"],
+      "periods": ["2011_Q4", "2018_Q4", "2023_Q4"]
+    },
+    {
+      "category": "2022_npl_and_profitability_deterioration",
+      "severity": "warning",
+      "statement": "NPL ratio jumped sharply from 4.54% (FY2021) to 7.09% (FY2022), the highest point in the 13-year series, alongside provisioning for classified loans roughly doubling (BDT 5,131.60mn -> BDT 8,062.79mn). ROE fell from 14.70% to 8.87% the same year and continued declining to 7.92% in FY2023 — the weakest two-year profitability stretch since FY2014-2015.",
+      "metrics": ["npl_ratio_pct", "roe_pct"],
+      "periods": ["2021_Q4", "2022_Q4", "2023_Q4"]
+    },
+    {
+      "category": "sustained_profitability_2017_2018",
+      "severity": "info",
+      "statement": "ROE peaked at 17.55% (FY2017) and 16.55% (FY2018), the strongest two-year run in the series, coinciding with the lowest NPL ratio observed (3.79% in FY2017) — profitability and asset quality moved together in that period.",
+      "metrics": ["roe_pct", "npl_ratio_pct"],
+      "periods": ["2017_Q4", "2018_Q4"]
+    },
+    {
+      "category": "fy2024_2025_provisioning_shortfall_and_regulatory_forbearance",
+      "severity": "critical",
+      "statement": "FY2024 and FY2025 both report loan-loss provisioning far below Bangladesh Bank's own requirement, and the gap widened: FY2024 required provision against loans/advances was BDT 38,167.71m against BDT 21,159.11m actually maintained (shortfall BDT 17,008.60m, i.e. 44.6% underprovisioned), rising to a required BDT 33,902.34m against only BDT 12,509.23m maintained in FY2025 (shortfall BDT 21,393.10m, 63.1% underprovisioned) as general/unclassified provisioning fell short for the first time alongside specific/classified provisioning. Both years' reported CRAR (13.07% FY2024, 12.52% FY2025) were computed without reflecting this shortfall, per the bank's own disclosure. Bangladesh Bank granted regulatory forbearance both years (Ref. DBI-4/110/2025-655 for FY2024; Ref. BSD-2/2203/2026-384 for FY2025) and no dividend was declared in either year. The FY2025 auditors' report elevates this to a formal Emphasis of Matter (opinion not modified) — a more severe treatment than FY2024, where it appeared only as a note-level disclosure. Provision coverage of classified loans (provision_classified / classified_loans) fell from 36.95% (FY2023) to 22.12% (FY2024) to 14.87% (FY2025), consistent in direction with the sector-wide FY2024-25 recognition event documented for other banks in this dataset (see _HANDOFF.md), though milder in coverage terms than ISLAMIBANK's 6.24%.",
+      "metrics": ["car_pct", "npl_ratio_pct", "provision_coverage_pct"],
+      "periods": ["2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "fy2024_npl_spike_then_writeoff_driven_decline",
+      "severity": "warning",
+      "statement": "NPL ratio nearly tripled from 6.08% (FY2023) to 17.25% (FY2024) as classified loans rose from BDT 17,313.35m to BDT 51,761.70m, the sharpest single-year asset-quality deterioration in the 15-year series. NPL ratio then fell to 15.19% in FY2025, but this is largely a write-off effect rather than recovery: the bank executed its largest-ever single-year loan write-off (BDT 20,750.89m per the FY2025 Directors' Report) in the same year gross loans fell 4.7% (BDT 300,025.11m -> BDT 285,935.57m, yoy_growth_pct.gross_loans = -4.70) and provision held against classified loans fell from BDT 11,447.80m to BDT 6,457.13m. The underlying provisioning shortfall (see the fy2024_2025_provisioning_shortfall risk signal) actually worsened over the same period, so the improving headline NPL ratio should not be read as an asset-quality improvement on its own.",
+      "metrics": ["npl_ratio_pct", "provision_coverage_pct"],
+      "periods": ["2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "fy2024_profitability_collapse_and_partial_fy2025_recovery",
+      "severity": "warning",
+      "statement": "ROE collapsed from 7.92% (FY2023, itself already the weakest point in the series to that date) to 2.44% (FY2024) as profit after tax fell 68.9% (BDT 2,028.61m -> BDT 631.22m) on a near-doubling of total provision charges (BDT 2,681.80m -> BDT 4,352.17m) and a compressed net interest margin (2.00% -> 2.04%, essentially flat, while cost-to-income rose to 60.06%). ROE partially recovered to 4.59% in FY2025 as profit after tax grew 90.1% to BDT 1,199.87m, but this remains less than 59% of the FY2023 level and well below the FY2017-2018 peak of 17.55%/16.55% — and the FY2025 profit recovery coincides with sharply lower provisioning relative to what Bangladesh Bank calculated as required (see the fy2024_2025_provisioning_shortfall risk signal), so part of the reported earnings recovery is attributable to under-provisioning rather than underlying performance.",
+      "metrics": ["roe_pct", "cost_to_income_pct"],
+      "periods": ["2023_Q4", "2024_Q4", "2025_Q4"]
+    }
+  ],
+  "historical_context": "Mercantile Bank's long run (FY2011-2021) shows a generally sound trajectory: steadily strengthening CAR and no capital-adequacy breach at any point, alongside a first bout of credit-quality and profitability deterioration in FY2022-2023 (NPL to 7.09%, ROE down to 7.92%) that was mild by the standards of what followed. FY2024-2025 mark a much sharper break: NPL nearly tripled in FY2024 (6.08% -> 17.25%), profit after tax collapsed 68.9% the same year, and both years disclose a Bangladesh-Bank-forborne loan-loss provisioning shortfall (BDT 17,008.60m in FY2024, widening to BDT 21,393.10m in FY2025) that its own reported CRAR does not reflect — the FY2025 shortfall is significant enough that the independent auditors elevated it to a formal Emphasis of Matter. The FY2025 apparent NPL improvement (to 15.19%) is substantially a write-off effect (BDT 20,750.89m written off, the bank's largest ever in a single year) rather than a genuine recovery, since the underlying required-vs-maintained provisioning gap widened in the same year. This full pattern — rising capital ratio computed without regard to a growing, disclosed provisioning shortfall, paired with reported profit recovering even as the shortfall worsens — is the same shape (though smaller in absolute magnitude) as the sector-wide FY2024-25 recognition-vs-deferral divide documented for NBL, IFIC, and ISLAMIBANK elsewhere in this dataset (see _HANDOFF.md's 'What the data shows' section): reported profit and even reported CRAR are the least informative numbers in Mercantile Bank's FY2024-2025 story, and the required-provision/maintained-provision gap (now captured in quarterly/2024_Q4.json and quarterly/2025_Q4.json as required_provision_loans, provision_maintained_loans, and provision_shortfall_loans) is the metric that actually separates recognition from deferral here.",
+  "data_gaps": "UPDATED 2026-08-27: Q1/H1/Q3 interim research was attempted for all of 2011-2026 (mblbd.com's /quarterly-halfyearly archive, ~60 PDFs, confirmed not WAF-blocked). Only two periods (2011 Q1, 2012 Q3) yielded clean, fully-validated text -- both solo basis, both cross-checked to the taka against every internal subtotal; see quarterly/2011_Q1.json, quarterly/2012_Q3.json and sources.json. The rest of the interim corpus was not usable: most of 2013-2016 and several 2020-2025 filings have severe embedded-text corruption baked into the PDF itself (garbled OCR-like character substitution, in the worst cases numbers fully detached from row labels), a smaller set (2018 Q3, 2019 Q1, 2020 Q3/H1, 2021 Q1/H1/Q3, 2022 Q3, 2023 H1/Q3) fails to download intact at all (consistent 'truncated at EOF' pattern across repeated attempts, repair tools included -- appears to be server-side, not a client timeout), and a further set are scanned images not yet OCR'd (2017 entirely, 2018 Q1/H1, 2019 H1/Q3, 2023 Q1, 2024 Q1/H1, 2025 Q1/Q3, 2026 Q1/H1, plus 2011 Q3 and 2016 Q3). This is a materially harder data-access problem than most other banks in this dataset and is flagged as a priority follow-up, particularly OCR of the 2023-2026 scanned filings for recency. Otherwise: Q4/year-end (audited) data is available for all of 2011-2025. Total liabilities not directly reported in any Five-Year summary table used across the whole series; calculated as total assets minus shareholders' equity throughout (this reconciles exactly to the audited Balance Sheet's own reported Total Liabilities line in every year checked, including FY2024 and FY2025). required_capital and capital_surplus are directly reported (not calculated) for FY2024-2025 only, via the Note 14.5/14.6 Capital Adequacy disclosure that was not present in the Five-Year tables used for 2011-2023. The FY2025 report contains one internal inconsistency not resolved by this dataset: the Capital Adequacy (Pillar III) narrative states the provision shortfall as BDT 2,161.31 crore in one passage vs. BDT 2,139.31 crore (the figure used here, reconciled from Note 7.8's own required/maintained figures and matching the Auditors' Report) elsewhere in the same report."
+}

@@ -1,0 +1,281 @@
+{
+  "bank_id": "CITYBANK",
+  "bank_name": "The City Bank PLC",
+  "reporting_date": "2025-12-31",
+  "financial_year": 2025,
+  "quarter": "Q4",
+  "period_note": "Year-end position from the FY2025 Annual Report's own 'Five Year Performance' and 'Key Ratios' summary tables (audited), Solo basis. This is currently the only source for FY2025 (no later annual report exists yet to restate it). Total liabilities is explicitly reported in this report's own Balance Sheet horizontal-analysis table (not derived), and reconciles with total assets minus equity to within BDT 1m (rounding). provision_maintained is calculated by summing the two reported components 'Provision for Unclassified Loans' (10,046) and 'Provision for Classified Loans' (4,386); off-balance-sheet provision (1,652) is excluded since it covers contingent, not on-balance-sheet loan, exposure. Net Interest Income collapsed to 2,847 (from 14,742 in FY2024, -76.4%) while Investment Income more than doubled to 35,619 (from 16,615, +114.4%) — the report's own commentary attributes this to sharply rising deposit costs (5.5% vs 4.9%) alongside a large shift of the balance sheet into government securities (Investments rose from 134,357 to 201,211, now 23.9% of total assets vs 19.2% prior year); Operating Profit and PAT still grew because Investment Income more than offset the NII decline. Data-quality note (not stored as a field, since CRR/SLR are outside this dataset's schema): this report's own Key Ratios and Five Year Performance tables show a Cash Reserve Ratio 'Surplus' of 23,740 for FY2025, which does not reconcile with the same table's own Required reserve (24,609) and Actual reserve maintained (22,870) figures for FY2025 (actual minus required = a deficit of 1,739, not a surplus of 23,740) — every other year in the same table (2021-2024) reconciles exactly using this method, so this looks like an isolated error in the bank's own published table rather than an extraction artifact; flagged here for visibility, not corrected.",
+  "source": {
+    "source_document": "citybank-annual-report-2025.txt",
+    "source_path": "annual_reports/CITYBANK/citybank-annual-report-2025.txt",
+    "source_url": "https://legacy.citybankplc.com/files/City-Bank-AR-2025.pdf",
+    "source_page_lines": "7106-7157 (\"Five Year Performance\", Annual Report 2025 p.115); 6622-6667 (\"Key Ratios\", p.108); 7413-7458 (Balance Sheet horizontal analysis, p.120-121); 6684-6707 (\"Quarterly Performance Review\", p.109, confirms Q4=annual)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 15212,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "reserve_fund",
+      "original_metric_name": "Reserve Fund & Surplus",
+      "value": 45890,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 61102,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits",
+      "value": 631642,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 506201,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 201211,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets",
+      "value": 12276,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 843341,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 782238,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Off-Balance Sheet Exposures",
+      "value": 243007,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Non Performing/classified Loans (NPLs)",
+      "value": 12669,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_maintained",
+      "original_metric_name": "Provision for Unclassified Loans + Provision for Classified Loans",
+      "value": 14432,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_components"
+    },
+    {
+      "normalised_metric_name": "risk_weighted_assets",
+      "original_metric_name": "Risk Weighted Assets (RWA)",
+      "value": 485051,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Tier I Capital",
+      "value": 59035,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Tier II Capital",
+      "value": 17298,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "actual_capital",
+      "original_metric_name": "Total Regulatory Capital (Tier-I and II)",
+      "value": 76333,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Operating Profit (profit before provision and tax)",
+      "value": 26953,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Operating Expenses",
+      "value": 20957,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Profit Before Tax",
+      "value": 18822,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Profit After Tax",
+      "value": 13059,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (BDT) (earlier year not adjusted to stock dividend)",
+      "value": 8.6,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value Per Share (BDT) (earlier year not adjusted to stock dividend)",
+      "value": 40.2,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "pe_ratio",
+      "original_metric_name": "Price Earning Ratio (Times)",
+      "value": 2.8,
+      "unit": "ratio",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Advance to deposit ratio (including Off Shore Banking Unit)",
+      "value": 71.3,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Gross NPL ratio / Percentage of NPL over Total Loans and Advances",
+      "value": 2.5,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_coverage_pct",
+      "original_metric_name": "Provision coverage ratio",
+      "value": 127.0,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Return on Average Equity (ROE)",
+      "value": 24.4,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on Average Assets (ROA)",
+      "value": 1.7,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nim_pct",
+      "original_metric_name": "Net Interest Margin Ratio",
+      "value": 5.0,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "cost_income_ratio_pct",
+      "original_metric_name": "Cost to Income Ratio",
+      "value": 43.7,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital to Risk-weighted Assets Ratio (CRAR) / Total Capital Adequacy Ratio",
+      "value": 15.7,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_ratio_pct",
+      "original_metric_name": "Tier I Capital Ratio",
+      "value": 12.2,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_ratio_pct",
+      "original_metric_name": "Tier II Capital Ratio",
+      "value": 3.6,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

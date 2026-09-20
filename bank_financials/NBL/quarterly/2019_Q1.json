@@ -1,0 +1,140 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2019-03-31",
+  "financial_year": 2019,
+  "quarter": "Q1",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account, read from National Bank's own Q1-2019 unaudited financial statements (clean digital text, but with a badly corrupted underlying text layer in numeric cells throughout the Balance Sheet -- much worse than most other quarters in this series). Comparative column (31 Dec 2018) is legible on the highest-confidence lines (equity 44,809,353,067; total_deposits 315,206,033,967 [component sums]; gross_loans 314,507,263,171; nav_per_share 16.88) and reproduces this dataset's existing FY2018 figures exactly, confirming correct Solo section. The P&L is fully clean and internally consistent (Total Operating Income - Total Operating Expenses = Profit Before Provision = printed exactly; - Provision = Profit Before Tax = printed exactly; - Tax = PAT = printed exactly), and every P&L line item was independently cross-validated against 2020_Q1.json's own comparative column (Jan-Mar 2019), which reproduces net_interest_income, investment_income, commission, other operating income, operating expenses, profit-before-provision, profit-before-tax and PAT all EXACTLY. Balance-sheet totals were less fortunate: TOTAL ASSETS and TOTAL LIABILITIES are not legibly printed for the current (Mar-2019) column at all (near-total OCR/text-layer noise), so both were derived via the identity Total Liabilities = Borrowings (4,682,332,794, as printed in this Solo panel -- NOTE: the Consolidated panel of the same filing shows a different Borrowings figure of 8,642,332,794, which is plausible as a genuine Solo-vs-Consolidated difference given a subsidiary's own borrowing, not treated as an error) + Total Deposits (319,134,539,599) + Subordinated Bond (4,000,000,000) + Other Liabilities (36,703,642,367) = 364,520,514,760; Total Assets = Total Liabilities + Equity (45,294,035,957) = 409,814,550,717. investments_securities could not be read directly (the Government/Others investment sub-lines are almost completely unrecoverable) and was derived as a residual plug (Total Assets minus all other legible/estimated asset line items, including an estimated ~4,230m for 'balance with other banks' interpolated from the Solo-vs-Consolidated gap seen in neighbouring quarters) -- this plug (45,189.44m) carries meaningfully higher uncertainty than every other figure in this record and should be treated with caution; it happens to sit close to the Dec-2018 Government-only sub-line (45,182.48m), which may or may not be coincidental. EPS was not legibly printed for the Solo panel (only the Consolidated panel's label survives, with no value); it is calculated as PAT / shares outstanding (paid-up capital 26,549,079,130 unchanged from Dec-2018, / Taka 10 face value = 2,654,907,913 shares) = 0.18. interest_income and interest_expense are not legible anywhere in this document (both columns of that specific P&L row are corrupted) and could not be recovered via identity (net_interest_income alone is insufficient to split into its two components), so both are marked unavailable.",
+  "source": {
+    "source_document": "National Bank's own Q1-2019 unaudited financial statements (digital PDF with a corrupted text layer)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-2019-q1.txt",
+    "source_url": "https://www.nblbd.com/investors-relations/financial-statement",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections (second occurrence of each heading, following the Consolidated sections)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 409814.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_liabilities_plus_equity",
+      "note": "Not legibly printed (near-total text-layer corruption on this cell); derived as Total Liabilities + Total Equity."
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 364520.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Not legibly printed; derived as Borrowings (4,682.33m) + Total Deposits (319,134.54m) + Subordinated Bond (4,000.00m) + Other Liabilities (36,703.64m)."
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 45294.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 319134.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 326207.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 45189.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Government/Others sub-lines almost entirely unrecoverable; derived as a residual plug (Total Assets minus all other asset line items, one of which -- balance with other banks -- was itself estimated by interpolation). Materially higher uncertainty than other figures in this record."
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets value per share",
+      "value": 17.06,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income",
+      "value": 923.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Cross-validated exactly against 2020_Q1.json's own Jan-Mar-2019 comparative column (923,605,272)."
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income",
+      "value": 1313.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Cross-validated exactly against 2020_Q1.json's comparative column (1,313,520,855)."
+    },
+    {
+      "normalised_metric_name": "non_interest_income",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income",
+      "value": 499.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (398.18m) and other operating income (101.64m); both cross-validated exactly against 2020_Q1.json's comparative column."
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses",
+      "value": 1504.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit before provision",
+      "value": 1232.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Printed value matches Total Operating Income minus Total Operating Expenses exactly."
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after taxation",
+      "value": 482.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Printed value matches the full Profit-before-provision to PAT identity chain exactly."
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per share (Re-stated)",
+      "value": 0.18,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Not legibly printed in the Solo panel; computed as PAT (482,188,151) / shares outstanding (paid-up capital 26,549,079,130 / Taka 10 = 2,654,907,913 shares)."
+    }
+  ],
+  "fields_derived_via_identity": ["total_assets", "total_liabilities", "investments_securities", "eps"],
+  "fields_unavailable": ["interest_income", "interest_expense"]
+}

@@ -1,0 +1,185 @@
+{
+  "bank_id": "ICBIBANK",
+  "bank_name": "ICB Islamic Bank Limited (formerly The Oriental Bank Limited / Al-Baraka Bank Bangladesh Limited)",
+  "reporting_date": "2025-12-31",
+  "financial_year": 2025,
+  "quarter": "Q4",
+  "period_note": "Year-end position from the bank's 'Independent Auditor's Report and Audited Financial Statements as at and for the year ended December 31, 2025' (uploaded to the bank's own site in July 2026). This is the standalone audited financial statements bundle only — not yet the fuller 'Annual Report 2025' (Directors' Report, AGM materials, multi-year 'Key operating and financial data' table) that this bank typically publishes months later, closer to its AGM (the FY2024 Annual Report bundle, for comparison, was uploaded Dec 2025, ~7 months after FY2024's Audited Financial Statements of May 2025, timed to the 38th AGM held 22 Dec 2025); the FY2025 equivalent had not been published as of this retrieval (2026-08-26), so this dataset uses the Audited Financial Statements' own 'HIGHLIGHTS' annexure (required Bangladesh Bank disclosure) instead of a multi-year summary table. The source PDF is a scanned/photocopied filing (PDF Creator: 'RICOH IM 2702') that returns 0 lines under pdftotext -layout; text was extracted via OCR instead (pdftoppm at 300dpi, then tesseract 5.5.3, per page). Confidence in the OCR is high despite this: five independent arithmetic identities close exactly to the reported figures — (1) Total assets = Total liabilities + Capital/Shareholders' equity (8,638,258,529 = 23,262,157,938 + (-14,623,899,409) Taka); (2) Paid-up capital + Statutory reserve + Other reserve + Retained-earnings deficit = Total equity; (3) Total operating income - Total operating expenses - net provision charge = Profit before tax, and Profit before tax - tax = Profit after tax; (4) Total Eligible Capital / Total Risk-Weighted Assets x 100 = the reported CRAR of -291.87%; (5) Total capital - Required capital (BDT 500 crore regulatory floor) = the reported capital surplus/(deficit) of -20,176.92m. The going-concern figures are also independently repeated, consistently, in two separate places in the document (the Auditor's 'Emphasis of Matter' paragraph and Note 3.03 'Going concern assumption'). As at 31 December 2025 the Bank continues under a Bangladesh Bank-appointed Administrator (Mr. Mamunur Rahman, Executive Director, Bangladesh Bank) in place of a Board of Directors (Note 45) — continuing the regulatory-intervention pattern already described in insights.json. CAR worsened sharply to -291.87% (from -171.95% in FY2024) even though the classified-investment ratio improved to 84.29% (from 90.68%) and the net loss narrowed to BDT -808.91m (from BDT -945.06m): Total Risk-Weighted Assets fell faster (BDT 835.58 crore to 519.98 crore, -37.8%) than the negative capital base deepened (Total Regulatory Capital -BDT 143.68 crore to -151.77 crore), so the ratio got worse on a shrinking denominator — the same 'ratio breaks when the base shrinks' distortion this dataset already flags for ROE under negative equity, here hitting CAR's denominator instead. DISCREPANCY vs. the already-stored FY2024 record (not reconciled, per project convention of keeping the contemporaneous figure): FY2024's 'Cost of fund' is 6.49% in FY2024's own Annual Report (used in 2024_Q4.json) but shown as 7.65% for FY2024 in this FY2025 report's HIGHLIGHTS comparative column — both values are recorded in sources.json; 2024_Q4.json is left unchanged. All other FY2024 comparative figures in this report's HIGHLIGHTS/Balance Sheet/P&L reproduce the already-stored 2024_Q4.json values exactly (paid-up capital, total capital, capital surplus, total assets, total deposits, total investments, contingent liabilities, NPL%, PAT, classified investments, provisions, ROA, EPS all match to the cent/basis point), and CAR for FY2024 (-171.95%) matches independently across both this report's Note 15.07 and Note 15.09. Authorized capital confirmed unchanged at 1,500,000,000 ordinary shares of Taka 10 (BDT 15,000m) via Note 15.00.",
+  "source": {
+    "source_document": "icbibank-annual-report-2025.txt",
+    "source_path": "annual_reports/ICBIBANK/icbibank-annual-report-2025.txt",
+    "source_url": "https://icbislamic-bd.com/wp-content/uploads/2026/07/Auditors-Report-and-Audited-Financial-Statements-2025.pdf",
+    "source_page_lines": "634-734 (Balance Sheet, as at 31 Dec 2025); 738-829 (Profit and Loss Account); 65-95 (Auditor's Emphasis of Matter — Going Concern); 1495-1512 (Note 3.03 Going concern assumption); 3710-3808 (Notes 15.00, 15.07-15.09 — Share Capital, Capital Adequacy / MCR under Basel III); 4718-4756 (HIGHLIGHTS annexure, SI 1-23)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "authorized_capital",
+      "original_metric_name": "Authorized Capital",
+      "value": 15000,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up capital",
+      "value": 6647.023,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Capital / Shareholders' equity",
+      "value": -14623.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 23262.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_regulatory_capital",
+      "original_metric_name": "Total capital (Tier-I & II)",
+      "value": -15176.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "capital_surplus_deficit",
+      "original_metric_name": "Capital surplus/(deficit)",
+      "value": -20176.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital to Risk Weighted Assets Ratio (CRAR)",
+      "value": -291.87,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 8638.26,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Total deposits",
+      "value": 10864.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_investments",
+      "original_metric_name": "Total investments",
+      "value": 6315.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "contingent_liabilities",
+      "original_metric_name": "Total contingent liabilities and commitments",
+      "value": 295.22,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Investments deposit ratio",
+      "value": 58.13,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Percentage of classified investments against total investments",
+      "value": 84.29,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Profit after tax and provision",
+      "value": -808.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Operating profit (Total operating income (A) in this report's P&L)",
+      "value": -270.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenditure",
+      "original_metric_name": "Operating expenditure (Total operating expenses (B) in this report's P&L)",
+      "value": 406.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_investments",
+      "original_metric_name": "Amount of classified investments during the year",
+      "value": 5323.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_classified",
+      "original_metric_name": "Provisions kept against classified investments",
+      "value": 2423.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "cost_of_fund_pct",
+      "original_metric_name": "Cost of fund",
+      "value": 8.6,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on assets (ROA)",
+      "value": -9.36,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per share (Taka)",
+      "value": -1.22,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

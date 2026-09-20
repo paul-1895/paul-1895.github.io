@@ -1,0 +1,50 @@
+{
+  "bank_id": "RUPALIBANK",
+  "bank_name": "Rupali Bank PLC",
+  "reporting_date": "2020-03-31",
+  "financial_year": 2020,
+  "quarter": "Q1",
+  "period_note": "Unaudited interim financial performance, Jan-Mar 2020 (Q1). Sourced from a DSE (dsebd.org) company-page table titled 'Interim Financial Performance: 2020', recovered via a Wayback Machine capture from 2021-06-10 (DSE's live page only ever shows the CURRENT interim year's table, rolling over once the prior year's annual report is finalized - as of June 2021 it still showed 2020, meaning FY2020's annual results had not yet been finalized at that point). This table is DSE's own compiled EPS/profit/price summary, not the bank's full quarterly financial statements (no balance sheet, deposits, or loan figures) - the bank's own site (rupalibank.com.bd) remains Cloudflare-blocked and no interim PDF filing was independently recoverable this session. Reporting basis is presumed Solo/separate (consistent with this bank's established annual-series basis and standard Bangladeshi-bank interim filing practice) but is NOT explicitly labeled solo vs consolidated on the DSE page itself - flagged as an assumption, not a confirmed fact. 'Profit from continuing operations', 'Profit for the period', and 'Total Comprehensive Income for the period' are identical in the source table (no discontinued operations, zero OCI) - only 'Profit for the period' is recorded below to avoid redundant duplicate line items. The 'Turnover/Revenue (mn)' row is DSE's generic cross-sector template label; its value is negative for this bank in every quarter recovered this session (2020-2021), which is unusual for a literal 'turnover' figure - it most likely reflects a net interest/revenue concept specific to how DSE's system captures a bank's top-line, but this dataset does not have independent confirmation of the exact definition, so it is recorded as reported under a deliberately generic normalised name rather than being mapped to a specific concept like net_interest_income without evidence.",
+  "source": {
+    "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Capture 1 of 6)",
+    "source_path": "annual_reports/RUPALIBANK/rupalibank-dse-interim-tables-2020-2026.txt",
+    "source_url": "https://web.archive.org/web/20210610080804id_/https://dsebd.org/displayCompany.php?name=RUPALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2020\" table, Q1 column (period-end code 202003)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "turnover_revenue",
+      "original_metric_name": "Turnover/Revenue (mn) [DSE generic template row]",
+      "value": -300.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Negative value as reported by DSE; exact underlying definition for a bank not independently confirmed - see period_note."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax",
+      "original_metric_name": "Profit for the period (mn)",
+      "value": 91.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic / EPS - Continuing Operations, Basic (identical)",
+      "value": 0.22,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 24.5,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

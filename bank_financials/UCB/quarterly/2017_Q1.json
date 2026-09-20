@@ -1,0 +1,129 @@
+{
+  "bank_id": "UCB",
+  "bank_name": "United Commercial Bank PLC",
+  "reporting_date": "2017-03-31",
+  "financial_year": 2017,
+  "quarter": "Q1",
+  "period_note": "Balance sheet is the period-end snapshot (reported, Solo/Standalone -- 'BALANCE SHEET' heading without the 'CONSOLIDATED' prefix used elsewhere in the same filing, per project convention of preferring Solo over Consolidated). Income-statement items are CUMULATIVE from 1 January 2017 (as published in UCB's own standalone unaudited interim financial statements filed on ucb.com.bd's investor-relations Financial Statements archive -- a different, richer source than the FY2013-2016 annual-report-embedded audit-committee table used elsewhere in this dataset) -- flagged via the _cumulative suffix, same convention as FY2013-2016. Most of this era's UCB interim-statement PDFs (2017 through 2023, plus 2025 Q1/Q2) are pure image scans with no embedded text layer, requiring tesseract 5.5.3 OCR (150dpi full-document pass to locate the Solo Balance Sheet/P&L/Notes pages, keyed off page headings, since page layout/count varies by year); the 2024 and 2025 Q3 filings do have an embedded text layer but it uses a corrupted font character-to-glyph mapping that pdftotext cannot read for numeric cells, so those were instead re-rendered at 300dpi and OCR'd the same way. All PDFs were downloaded directly from ucb.com.bd and deleted immediately after extraction per project policy. nav_per_share (24.42) is not disclosed in this report itself (UCB's Notes-with-NAVPS disclosure format was not yet introduced in early 2017); it is independently computed here as Total Shareholders' Equity / (Paid-up Capital / BDT10 par) = 25,740,675,191 / 1,054,130,654 shares = 24.42, then cross-validated exactly against the FY2018 Q1 report's own comparative ('31 Mrch 2017') column, which reports the same 24.42. nocfps_cumulative is not recorded for this quarter as NOCFPS reporting was not yet introduced either, and no later comparative column for it was found.",
+  "source": {
+    "source_document": "Quarterly Financial Statements (un-audited)- First Quarter, 2017.pdf",
+    "source_path": "annual_reports/UCB/ucb-interim-2017-q1.txt",
+    "source_url": "https://www.ucb.com.bd/reports/financial-reports/Quarterly%20Financial%20Statements%20(un-audited)-%20First%20Quarter,%202017.pdf",
+    "source_page_lines": "Solo/Standalone 'BALANCE SHEET', 'OFF-BALANCE SHEET ITEMS', 'PROFIT AND LOSS ACCOUNT' and 'Selective Notes' sections of this filing",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 52513.65,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 230738.65,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 258506.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 10541.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 25740.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 333130.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance sheet items including contingent liabilities",
+      "value": 180002.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (cumulative from Jan 1)",
+      "value": 1829.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Income from Investment + Commission, Exchange & Brokerage + Other Operating Income (cumulative from Jan 1)",
+      "value": 1887.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 2864.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit & Loss before provision (cumulative from Jan 1)",
+      "value": 852.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Profit after tax for the period (Bank) (cumulative from Jan 1)",
+      "value": 19.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Basic Earnings per share (EPS) - (Bank) (cumulative from Jan 1)",
+      "value": 0.02,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value Per Share (NAVPS) - Banks",
+      "value": 24.42,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

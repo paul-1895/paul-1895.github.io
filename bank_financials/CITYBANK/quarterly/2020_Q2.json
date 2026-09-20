@@ -1,0 +1,129 @@
+{
+  "bank_id": "CITYBANK",
+  "bank_name": "The City Bank PLC",
+  "reporting_date": "2020-06-30",
+  "financial_year": 2020,
+  "quarter": "Q2",
+  "period_note": "Sourced directly from the bank's own primary half-yearly interim financial statements (\"Half yearly Financial Statements as on 30 June 2020 (Unaudited)\"), used as the Q2 data point. Per project convention the SOLO ('Balance Sheet as at 30 June 2020' / 'Profit and Loss Account for the Half Year ended 30 June 2020') figures are used, not 'Consolidated'. Arithmetically verified: Total liabilities 372,614.28m + Total equity 26,071.35m = Total assets 398,685.63m; every P&L subtotal from Total operating income (8,160.91m) down to Net profit after tax (903.59m) reconciles exactly. NAV per share is explicitly reported (Note 3.d.1, Solo: Shareholders' equity / number of shares) as 25.65, comparing 30-Jun-2020 to 30-Jun-2019 (not Dec-2019). This filing also discloses (Note 2) a BSEC-mandated 'significant deviation between two quarterly periods' explanation: investment income rose from BDT113.48cr to BDT196.96cr YoY due to higher government-securities holdings and gains, attributed partly to pandemic-driven portfolio shifts. Non Funded Income is calculated as Commission/exchange/brokerage + Other operating income (both individually reported).",
+  "source": {
+    "source_document": "citybank-2q-2020-financial-statements.txt",
+    "source_path": "annual_reports/CITYBANK/citybank-2q-2020-financial-statements.txt",
+    "source_url": "https://legacy.citybankplc.com/files/Half-Yearly-fs30June2020_1596090539.pdf",
+    "source_page_lines": "Single-page landscape layout (3 columns); read visually via high-resolution page render (pdftoppm -r 300)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 39691,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances / Investments",
+      "value": 292420,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 274923,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Shareholders' equity of The City Bank Limited",
+      "value": 26071,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 398686,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities",
+      "value": 112932,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value per Share (NAV) - The City Bank Limited",
+      "value": 25.65,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest / net profit on investments (Year-to-Date)",
+      "value": 4053,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (Year-to-Date)",
+      "value": 1750,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_funded_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (Year-to-Date)",
+      "value": 2358,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_sum_of_reported_lines"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (B) (Year-to-Date)",
+      "value": 5462,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit / (loss) before provision (C=A-B) (Year-to-Date)",
+      "value": 2698,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (Year-to-Date)",
+      "value": 904,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (Year-to-Date)",
+      "value": 0.89,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

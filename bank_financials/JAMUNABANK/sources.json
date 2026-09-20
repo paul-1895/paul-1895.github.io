@@ -1,0 +1,192 @@
+{
+  "bank_id": "JAMUNABANK",
+  "bank_name": "Jamuna Bank PLC",
+  "website": "https://www.jamunabankbd.com",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual reports. Evidence: FY2023 total assets of BDT 306,920.50m match the 'FIVE YEARS PERFORMANCE (SOLO)' table in the FY2023 annual report (BDT 307,362.80m is the Consolidated total, same report); FY2024 total assets of BDT 366,021.48m match the FY2024 report's Solo table (BDT 366,487.71m Consolidated); FY2025 total assets of BDT 428,225.05m match the FY2025 report's Solo table (BDT 428,698.32m Consolidated). The Consolidated-vs-Solo gap is consistently small (~0.11-0.15% of assets, i.e. ordinary subsidiary-consolidation adjustment) across all three years checked, not an off-balance-sheet inflation pattern.",
+  "notes": "annual_reports/JAMUNABANK archive (2011-2025, 15 years) was already text-extracted by a parallel session working on this project before this session began processing it. Complete Q4/year-end coverage for all 15 years (2011-2025) achieved from five overlapping annual reports' 'X Years Key Financial Data & Ratios' tables (balance sheet, income statement, capital, and credit-quality data together for every year), using the Solo basis consistently (the bank also publishes a Consolidated version from 2020 onward, not used here -- see reporting_basis above). Only Q4/year-end (audited) data was extracted; Q1/H1/Q3 unaudited interim data was not researched.",
+  "sources": [
+    {
+      "period": "2011-2014 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "jamunabank-annual-report-2015.txt (\"5(Five) Years Key Financial Data & Ratios- JBL\", p.52-53)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012,
+        2013,
+        2014
+      ],
+      "note": "2014's table cells for interest expense and profit before tax had thousands-separators dropped by OCR; reconstructed via the reported PAT = PBT - Foundation Contribution - Tax formula and cross-checked against the balance sheet identity."
+    },
+    {
+      "period": "2015-2019 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "jamunabank-annual-report-2019.txt (\"5(FIVE) YEARS KEY FINANCIAL DATA & RATIOS- JBL (SOLO)\", p.69-72)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "note": "2015 figures used from this report rather than the 2015 report's own table; the two sources show minor (~0.3%) cross-report differences on some income-statement lines."
+    },
+    {
+      "period": "2020-2023 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "jamunabank-annual-report-2023.txt (\"5 (FIVE) YEARS KEY FINANCIAL DATA & RATIOS- JAMUNA BANK (SOLO)\", p.95-98)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "note": "This report also publishes an equivalent Consolidated-basis table (p.92-94) with slightly larger figures (e.g. FY2023 total assets BDT 307,362.80mn Consolidated vs BDT 306,920.50mn Solo) \u2014 the Solo version was used for consistency with 2011-2019."
+    },
+    {
+      "period": "2024 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "jamunabank-annual-report-2024.txt (\"5 (Five) Years Key Financial Data & Ratios- JBPLC. (Solo)\", p.112-115; \"Financial Highlights\", p.108)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Solo basis; Consolidated table in the same report (p.109-111) shows FY2024 total assets BDT 366,487.71mn vs BDT 366,021.48mn Solo. This table's 2020-2023 comparative columns reproduce the values already stored for those years exactly (total assets, equity, deposits, NPL%, CAR, etc. all match to the taka/decimal place) -- confirming no restatement of those years other than EPS (see the dedicated discrepancy entry below). tier1_ratio_pct's FY2024 cell is corrupted by a text-extraction artifact ('217' instead of '12.17'); reconstructed as 12.17 from the FY2025 report's FY2024 comparative column, consistent with this report's own Tier-1 capital (23,307.35) / RWA (191,521.42) ratio. tax_expense (3,054.35) cross-validated against the report's separate 'Financial Highlights' table and against Profit before tax (5,848.35) minus Profit after tax (2,794.00)."
+    },
+    {
+      "period": "FY2023/FY2024 EPS and per-share restatement chain",
+      "type": "cross_report_discrepancy",
+      "status": "noted_not_applied",
+      "note": "FY2023's contemporaneously-reported EPS (2.91, already stored in 2023_Q4.json, sourced from the FY2023 annual report) is restated downward to 2.68 in both the FY2024 and FY2025 annual reports' five-year tables. FY2024's own contemporaneously-reported EPS (3.17, used in 2024_Q4.json, sourced from the FY2024 annual report) is likewise restated downward to 2.97 in the FY2025 report. Mechanism confirmed arithmetically: each restatement factor equals 1/(1+bonus%) for the bonus share issued the following year -- e.g. 3.17 / 1.065 = 2.98 (~2.97, matching the 6.50% FY2024 bonus paid out as new shares in 2025, which raised paid-up capital from 8,820.07mn to 9,393.38mn) and 2.91 / 1.085 = 2.68 exactly (matching the 8.50% FY2023 bonus paid out in 2024, which raised paid-up capital from 7,492.26mn implied to 8,129.10mn). This is BAS 33's mandatory retrospective EPS restatement for bonus/stock-dividend issues, not a data error. Per this project's contemporaneous-figures rule, this dataset keeps each year's own originally-reported EPS in that year's own file and does not edit prior years. Net Assets Value (book value) per share is NOT retroactively restated by this bank for bonus issues -- FY2023 NAV/share (24.76) and FY2024 NAV/share (24.70) are identical across every report that republishes them."
+    },
+    {
+      "period": "2025 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "jamunabank-annual-report-2025.txt (\"5 (Five) Years Key Financial Data & Ratios- JBPLC. (Solo)\", p.82-85; \"Financial Highlights\", p.79)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Solo basis; Consolidated table in the same report (p.80-81) shows FY2025 total assets BDT 428,698.32mn vs BDT 428,225.05mn Solo. Every FY2025 figure cross-validated exactly against this report's own 'Financial Highlights' table (p.79). 2021-2024 comparative columns reproduce this dataset's already-stored figures for those years exactly, with the sole exception of FY2024 EPS (see the restatement-chain entry above). The steep net interest income fall (BDT 3,355.54mn FY2024 -> BDT 329.69mn FY2025) is a genuine reported figure appearing identically in both tables of this report, not an extraction error -- interest expense (17,707.85) grew while interest income fell (18,037.54, down from 20,231.71), consistent with sector-wide FY2024-25 deposit-rate/liquidity pressure; the bank offset it with a large increase in government-securities investment income (12,806.61, up from 9,290.93)."
+    },
+    {
+      "period": "2011-2025 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "not_yet_researched",
+      "notes": "Not yet searched on jamunabankbd.com. Time-boxed to prioritize breadth across more banks."
+    },
+    {
+      "period": "2012, 2013, 2015, 2019, 2020, 2021, 2022, 2023, 2024, 2025 (Q1-Q3 unaudited interim)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "Each year's OWN annual report text (e.g. jamunabank-annual-report-2023.txt), Directors' Report section, \"Variance Between Quarterly Financial Performance and Annual Financial Statements\" (heading wording varies slightly by year: \"Variance between Quarterly Financial performance...\" in 2015-2018, \"VARIANCE BETWEEN QUARTERLY FINANCIAL PERFORMANCE...\" in 2019-2025, and an untitled but structurally identical table in the Directors' Report in 2012-2013)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years_quarters": {
+        "2012": [
+          "Q1",
+          "Q2",
+          "Q3"
+        ],
+        "2013": [
+          "Q1",
+          "Q2",
+          "Q3"
+        ],
+        "2015": [
+          "Q1",
+          "Q3"
+        ],
+        "2019": [
+          "Q1"
+        ],
+        "2020": [
+          "Q1",
+          "Q2",
+          "Q3"
+        ],
+        "2021": [
+          "Q1",
+          "Q2",
+          "Q3"
+        ],
+        "2022": [
+          "Q1",
+          "Q3"
+        ],
+        "2023": [
+          "Q1",
+          "Q2",
+          "Q3"
+        ],
+        "2024": [
+          "Q1",
+          "Q2",
+          "Q3"
+        ],
+        "2025": [
+          "Q1",
+          "Q2",
+          "Q3"
+        ]
+      },
+      "note": "This is the BSEC-mandated 'Evaluation of the Quarterly Financials' disclosure family, in the form this bank actually uses: a 5-row table (Net interest income, Non-interest income, Operating income, Operating expenses, Operating profit) with Quarter-1/2/3/4/Annually columns. Checked ALL 15 annual reports (2011-2025) directly, not just the year (2018) previously known to have a version of this disclosure -- found the table with real embedded figures in 13 of 15 years (all except 2011 and 2014, where the bank's Directors' Report for those two years does not include it at all; confirmed by direct grep for 'Quarter-1'/'Variance'/'Net interest income' patterns in both full reports, which only turn up unrelated 5-year annual comparison tables). The DISCRETE Quarter-1/2/3/4 columns are the bank's own actually-filed quarterly figures, not derived: every year's own four quarterly columns sum exactly to that same table's Annually column for all 5 rows, and that Annually total was separately cross-checked against this dataset's already-stored *_Q4.json net_interest_income/operating_income/operating_expenses/operating_profit for that year -- exact match for 2020, 2021, 2022, 2023, 2024, 2025; a small (~0.1-2.3%) divergence for 2015, 2016, and 2017 between this contemporaneous table and the already-stored Q4 figures (which were sourced from a LATER report's comparative column per this bank's existing sourcing) -- per this project's contemporaneous-figures rule, the already-stored Q4/annual figures for 2015-2017 are left as-is (not overwritten), and 2016-2017's Q1-Q3 in this update use the richer, independently-corroborating website-PDF source instead of this table (see below) precisely because that source's own annual sum reproduces the SAME contemporaneous 2016/2017 figures as this embedded table (both agree with each other, differing from the later 2019 report's comparative column that this dataset's existing 2016_Q4.json/2017_Q4.json operating_expenses/operating_profit were built from). 2012 and 2013 values are denominated in Tk. Lac in the source (converted /10 to BDT_million). 2013's own Quarter-4 Net interest income cell has an isolated OCR digit-drop (256.43 instead of 4,256.43) reconstructed via the table's own row/column arithmetic -- affects only the already-existing 2013_Q4.json, not the new Q1-Q3 files. This table only discloses 5 income-statement line items -- no balance sheet, no provisioning/PBT/tax/PAT/EPS breakdown -- so quarters sourced from it alone (2012, 2013, 2015 Q1/Q3, 2019 Q1, 2020, 2021 Q1, 2022 Q1) are P&L-summary-only in this dataset."
+    },
+    {
+      "period": "2015 Q2, 2016 Q1-Q3, 2017 Q1-Q3, 2018 Q1-Q3, 2019 Q2-Q3, 2022 Q2 (Q1-Q3 unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "Jamuna Bank's own website interim financial-statement PDFs (jamunabankbd.com/financial-statements/, legacy path jamunabankbd.com/wp-content/uploads/assets/file/...)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "note": "Full Balance Sheet + Off-Balance-Sheet + Profit & Loss Account + Cash Flow + Statement of Changes in Equity, both Consolidated and separate 'JAMUNA BANK LIMITED' (Solo) sections -- the Solo section is used, matching this dataset's main series. Each PDF's P&L prints BOTH a cumulative-from-Jan-1 column and (for Q2/Q3 filings) a discrete single-quarter column side by side; the discrete column is used for consistency with the embedded-table-sourced quarters. Downloaded to scratch, pdftotext -layout'd, transcribed, PDF and text deleted per project policy (not retained in annual_reports/JAMUNABANK/, since these are not part of the annual-report archive). Cross-validated three ways: (1) balance-sheet identity (assets = liabilities + equity) holds to within rounding for every quarter; (2) discrete net_interest_income/operating_income/operating_expenses/operating_profit match the annual-report-embedded 'Variance' table exactly for every quarter where both sources exist (2016-2017 Q1-Q3); (3) each quarter's own prior-period Balance Sheet comparative column (immediately preceding audited Dec-31) matches this dataset's own stored *_Q4.json total_assets to within the bank's own known cross-report tolerance. profit_after_tax is COMPUTED (basis 'calculated') as Total profit before taxes (C-D) minus a combined tax_expense = reported tax provision + reported 'Contribution to Foundation@3% pre-tax profit' where present, rather than taken directly from the source's own 'Net profit after taxation' line, because that line's position relative to the Foundation-contribution line is inconsistent across report vintages: confirmed via full-file inspection that the 2018 Q1 filing already nets out Foundation before printing 'Net profit after taxation', while the 2018 Q2 and Q3 filings print 'Net profit after taxation' BEFORE the Foundation deduction (a further 'Retained earnings' line further down is the true post-Foundation bottom line in those two) -- computing directly from the three independently-reported components avoids relying on this ambiguous line-ordering. Two extraction bugs were found and fixed during this work (documented in case a similar pattern needs revisiting for other banks): (a) a 'borrow value from the next line' fallback for label-wrapped rows initially cross-contaminated 'Money at call on short notice' with the following 'Investments:' row's values whenever the comparator was blank/omitted (fixed by only borrowing when zero, not one, numbers are found on the matched line); (b) tax-provision rows that later report vintages (2019+) split into 'Current tax' + 'Deferred tax' + 'Total tax provision' sub-lines needed the explicit 'Total' line, not the first sub-line, to reconcile PBT-Tax=PAT exactly."
+    },
+    {
+      "period": "2021 Q2-Q3, 2022 Q3, 2023 Q1-Q3, 2024 Q1-Q3, 2025 Q1, 2026 Q2 (supplementary PAT/EPS/NAV)",
+      "type": "unaudited_quarterly_financial_statements_summary_table",
+      "source_document": "Jamuna Bank's own website interim financial-statement PDFs -- 'Selective notes to the accounts' section, '...key features of the financial performance are as follows' summary table",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "note": "For these quarters, the PDF's main Balance Sheet and Profit & Loss Account pages are scanned images embedded in an otherwise-digital-text PDF (signed/stamped pages), not machine-readable -- only the Notes/Cash-Flow-reconciliation pages remain digital text, which include a small summary table giving cumulative-from-Jan-1 Operating Profit, Profit after taxation, Net Asset Value (NAV), NAV per share, EPS, and Net Operating Cash Flow per Share (NOCFS), each with both a 'JBL' (Solo) and 'JBL consolidated' column (Solo used here) and a prior-year-same-period comparative. Added as _cumulative-suffixed fields alongside the discrete-quarter operating_income/operating_profit/etc. from the embedded 'Variance' table for the same quarter (different convention, both kept, clearly labelled) -- this is genuinely new information (PAT, EPS, NAV) not disclosed by the embedded table at all. Cross-validated: cumulative Operating Profit for 2021 Q2 (2,692.02m), 2023 Q2 (3,670.12m) and 2024 Q2 (5,018.25m) each reproduce the sum of this dataset's own Q1+Q2 discrete operating_profit figures for the same year almost exactly. 2026 Q2's summary table is denominated 'In crore' (BDT 10 million per crore), unlike every other year (BDT million) -- converted (x10) here; verified via the table's own prior-year comparative column (561.29 crore = BDT 5,612.9m) against this dataset's own 2025 Q1+Q2 discrete operating_profit sum (5,612.94m), matching almost exactly and confirming both the crore conversion and the JBL-Solo-column selection."
+    },
+    {
+      "period": "2014 Q2 (unaudited interim, H1-cumulative)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "'Half Yearly Position (Un-Audited) as on 30th June, 2014', jamunabankbd.com",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated_via_ocr",
+      "note": "This PDF is a scanned image (0 lines from pdftotext); OCR'd via pdftoppm (300dpi) + tesseract, 10 pages. OCR quality was high and every figure cross-validates exactly against the FY2015 annual report's own prior-year (30-Jun-2014) comparative column, recovered completely independently via the rich-website-PDF path used for 2015_Q2 (e.g. discrete Apr-Jun-2014 net_interest_income of BDT 604.52m and interest_income of BDT 2,557.08m both match to the taka) -- two fully independent extractions of the same underlying filing agree exactly. A companion 2014 Q3 PDF (fs_sept_14.pdf, a single very dense landscape page combining Consolidated+Solo Balance Sheet/P&L/Cash-Flow/Equity) was also downloaded and OCR'd but produced heavily garbled, internally-inconsistent figures (balance-sheet totals that do not reconcile even approximately) -- NOT used. 2014 Q1 has no corresponding PDF at all on the bank's website archive (the earliest interim statement found is the Jun-2014 half-yearly position; no Mar-2014 filing is linked). Neither the FY2014 nor FY2015 annual report contains the embedded 'Variance' table (confirmed absent in both by direct grep), so there is no fallback source for 2014 Q1 or Q3 -- both left as genuine gaps rather than fabricated. PDF and OCR intermediate files deleted per project policy."
+    },
+    {
+      "period": "2026 Q1 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "not_available_this_pass",
+      "note": "A PDF exists (Financial-Statements-as-on-March-31-2026-Un-audited.pdf, jamunabankbd.com) but is a 13-page fully scanned image (Creator: 'AVScan X', 0 lines from pdftotext) -- OCR was not attempted for this quarter given its size and that it falls outside this dataset's core 2011-2025 backfill scope (2026 Q2 was obtained more cheaply from a partially-digital PDF's summary-table page and is included as a bonus; 2026 Q1 was not, to bound effort). Flagged as a worthwhile follow-up: OCR'ing all 13 pages (or just locating the 2-3 Solo BS/P&L pages within it) would complete the pair with 2026 Q2."
+    },
+    {
+      "period": "2017 Q1-Q3 balance-sheet reconciliation note",
+      "type": "data_quality_note",
+      "note": "This bank's simple 'BALANCE SHEET (Un-audited)' Capital/Shareholders' Equity section for 2017 Q1-Q3 lists only Paid up Capital + Statutory Reserve + Other Reserve + Retained earnings, which sum to ~BDT 30.71m LESS than the same section's own reported 'Total Shareholders' Equity' for all three quarters (0.19-0.20% gap, consistent in absolute BDT terms across Q1/Q2/Q3). Cause identified: the same PDF's own 'STATEMENT OF CHANGES IN EQUITY' for this period separately itemizes a 'Dividend equalization fund' of BDT 30,705,969 that the simple Balance Sheet's 'Other Reserve' line evidently does not fold in for this report vintage (2016-2018-era filings; not present as a gap in 2016 or 2018's own simple Balance Sheet component sums, which reconcile exactly). Each individual line item here (paid_up_capital, statutory_reserve, other_reserve, retained_earnings_balance, total_equity) is reported exactly as the source PDF states -- not adjusted -- so total_equity remains correct and authoritative; the sub-components simply should not be expected to sum to it for these three quarters specifically. Flagged per project convention rather than silently reconciled."
+    },
+    {
+      "period": "2011, 2014 Q1/Q3, 2026 Q1 (Q1-Q3 unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "unavailable",
+      "note": "Genuine gaps, not yet-unresearched: 2011 -- neither the FY2011 annual report nor any other year's annual report contains an embedded 'Variance'/'Evaluation of Quarterly Financials' table with FY2011 figures (the disclosure first appears in the FY2012 annual report), and the bank's website interim-statement archive itself does not go back before mid-2014; no source exists for FY2011 Q1-Q3 with current means. 2014 Q1 and Q3 -- see the dedicated 2014 Q2 source entry above. 2026 Q1 -- see the dedicated 2026 Q1 source entry above."
+    }
+  ]
+}

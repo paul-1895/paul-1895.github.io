@@ -1,0 +1,104 @@
+{
+  "bank_id": "IFIC",
+  "bank_name": "IFIC Bank PLC",
+  "website": "https://www.ificbank.com.bd",
+  "investor_relations_url": "https://www.ificbank.com.bd/annual_report.php",
+  "reporting_basis": "SOLO / STANDALONE. IFIC's own multi-year 'Key Financial Data and Indicators' table is prepared on the Bank-only basis, which is the preferred basis for this dataset. Verified for FY2025 against the underlying audited statements: the table's total assets of 586,402m match the Bank balance sheet, while the consolidated figure is 592,288m.",
+  "notes": "This is the strongest source position of any bank in the dataset so far: IFIC's own annual report is available for every one of the fifteen years FY2011-FY2025, and each year is taken from its own contemporaneous report rather than from a later report's comparative column. The single exception is FY2011 (see below). Because all fifteen reports were parsed, every figure could be checked against the same figure as re-published in up to four later reports, and IFIC restates heavily — 85 individual restatements were found and are recorded verbatim in the affected year's period_note. The contemporaneous value is always the one kept.",
+  "sources": [
+    {
+      "period": "2011 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "ific-annual-report-2012.txt ('Key financial data & indicators', 2008-2012, p.54-55; 'Financial Highlights-IFIC', p.53)",
+      "source_path": "annual_reports/IFIC/ific-annual-report-2012.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2011],
+      "note": "FY2011 is the one year NOT taken from its own report. The FY2011 annual report is a scanned document whose text layer carries visible character-level corruption — paid-up capital is rendered '2,/68', import business '41517', foreign remittance '677?', and one provision row degrades to '5l.—i'iw AQ' — so its digits cannot be trusted individually. For the record its own table shows total assets 91,508, loans and advances 63,558 and profit after tax 715, against 91,541 / 64,641 / 748 in the FY2012 report. The FY2012 figures are used because they are internally consistent (91,541 total assets minus 84,939 total liabilities = 6,602 equity, exactly) and are corroborated by the FY2013 report. RoA, RoE, employee and branch counts for FY2011 and FY2012 come from the FY2012 report's two-column 'Financial Highlights-IFIC' table, which is the version consistent with that report's own pre-restatement profit after tax.",
+      "cross_check": "FY2011 equity of 6,602 is confirmed by the FY2013 report (which prints it in Taka as 6,602,020,000). The FY2011, FY2014 and FY2015 reports instead show 6,568, which does not reconcile with their own total assets and total liabilities for that year."
+    },
+    {
+      "period": "2012-2025 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "ific-annual-report-<YEAR>.txt for each year 2012 through 2025 ('Key Financial Data and Indicators' / 'Key financial data & indicators')",
+      "source_path": "annual_reports/IFIC/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+      "note": "Every year is taken from the first (own-year) column of that year's own annual report. All fifteen reports were parsed row-by-row so that each figure could be compared against the same figure as re-published in every other report that carries it.",
+      "cross_check": "All 15 years satisfy the balance-sheet identity (total assets = total liabilities + shareholders' equity), the capital-stack identity (Tier-1 + Tier-2 = total regulatory capital) and the equity-composition identity (paid-up capital + reserves = shareholders' equity), each to within 0.01%."
+    },
+    {
+      "period": "2014 (gap-fill)",
+      "type": "annual_report_summary_table",
+      "source_document": "ific-annual-report-2015.txt",
+      "source_path": "annual_reports/IFIC/ific-annual-report-2015.txt",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_partial",
+      "used_for_years": [2014],
+      "note": "The FY2014 report's own table stops at the Credit Quality Matrix and prints no Share Information or Profitability rows at all, so EPS (3.07), RoA (1.07%), RoE (15.66%), NAV per share (24.28), market price (26.10), P/E (8.51) and the shareholder, employee and branch counts for FY2014 are taken from the FY2015 report. This is a gap-fill, not an override — the FY2014 report offers no competing value."
+    },
+    {
+      "period": "2011-2012, 2018 (gap-fill)",
+      "type": "annual_report_summary_table",
+      "source_document": "ific-annual-report-2015.txt (RWA); ific-annual-report-2019.txt (FY2018 total regulatory capital)",
+      "source_path": "annual_reports/IFIC/",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_partial",
+      "used_for_years": [2011, 2012, 2018],
+      "note": "The FY2012 report prints the 'Total risk weighted assets' row with no values, so RWA for FY2011 (76,856) and FY2012 (77,799) comes from the FY2015 report. The FY2018 report's table omits the total regulatory capital line, so FY2018's 26,904 comes from the FY2019 report; it reconciles with the FY2018 report's own Tier-1 (20,877) plus Tier-2 (6,026)."
+    },
+    {
+      "period": "FY2011-FY2024 restatements",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-26",
+      "note": "IFIC restates prior-year figures more than any other bank in this dataset. 85 individual restatements were detected and each is written out in the affected year's period_note. The material ones: (1) FY2012 profit after tax was originally 388 and is 1,105 in every report from FY2014 onward — profit before tax is identical at 1,390 in both, so the entire difference is a restated tax charge (1,002 originally, 285 restated); FY2012 total assets moved 113,995 to 114,729, equity 6,867 to 7,753, and operating profit 2,707 to 3,110. (2) FY2013 deposits moved 107,778 to 110,464. (3) FY2020 total assets moved 363,412 to 356,794 and total liabilities 338,195 to 331,596, a 6,618m reduction driven by other assets (12,452 to 6,208) and other liabilities (26,699 to 20,105). (4) EPS and NAV per share are restated in almost every year as later stock dividends change the share count — for example FY2016 EPS was reported as 2.15 and later restated to 1.38, and FY2017 as 2.02 then 1.54. Users comparing IFIC across years should be aware that the as-reported EPS series held here is NOT comparable year-to-year on a constant-share basis; the restated series in the latest report is."
+    },
+    {
+      "period": "2016 Q1 - 2026 Q2 (Q1/Q2-or-H1/Q3, solo)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "ificbank.com.bd/financial-statements, individual PDFs (see quarterly/<FY>_<Q>.json source.source_url for each period's exact link); text retained at annual_reports/IFIC/ific-quarterly-<year>-q<n>.txt",
+      "source_path": "annual_reports/IFIC/ific-quarterly-*.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+      "note": "IFIC's own financial-statements page lists 43 PDFs (2016-2026, one page); a plain curl is soft-blocked by BotGuard/hCaptcha (HTTP 200 'Security check required' HTML instead of the PDF) but a browser-emulating fetch retrieved every file. 30 of 32 available Q1/Q2(or H1)/Q3 periods across 2016-2026 were extracted directly via pdftotext -layout from IFIC's own 'Condensed Separate Balance Sheet (Un-audited)' and 'Condensed (Separate) Profit and Loss Account (Un-audited)' -- SOLO basis throughout, consistent with reporting_basis above (the Consolidated section, also present in every filing, was not used). Income-statement figures are CUMULATIVE from 1 January (Q2/Q3 filings also print a discrete 3-month column alongside the cumulative one; only the cumulative column is stored, per this dataset's schema convention). Every single period (32/32, including the two recovered/OCR periods below) passed balance-sheet identity (assets = liabilities + equity), the liabilities-composition identity, and the full income-statement chain (interest income - interest expense = NII; NII + investment income + commission + other operating income = total operating income; total operating income - operating expenses = operating profit; operating profit - provision = profit before tax) to within 0.05%, and cross-validated exactly against the overlapping comparative column printed in the following year's own report wherever one existed (e.g. FY2024 Q1's comparative column for 1-Jan-23 to 31-Mar-23 reproduces the OCR-recovered FY2023 Q1 figures exactly).",
+      "cross_check": "FY2016 H1 (filed as a reviewed 'Half Yearly Report' rather than a plain 'Condensed' interim statement) uses slightly different section headings ('Balance Sheet' / 'Profit and Loss Account' without 'Condensed', 'for the half year ended') but the same line-item labels and figures reconcile the same way. 2016 Q1 has no Subordinated debt line at all (the bank had not yet issued any) -- correctly omitted rather than defaulted to zero."
+    },
+    {
+      "period": "2023 Q1, 2026 Q1 (solo) -- OCR recovery",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "1st Quarter Financial Statements PDFs for 31 March 2023 and 31 March 2026 (URLs in quarterly/2023_Q1.json and quarterly/2026_Q1.json)",
+      "source_path": "annual_reports/IFIC/ific-quarterly-2023-q1.txt, annual_reports/IFIC/ific-quarterly-2026-q1.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2023, 2026],
+      "note": "Both PDFs are scanned/rasterized documents (JPEG image per page, no text layer) -- pdftotext -layout produced 0 lines for each. Recovered via tesseract OCR (pdftoppm at 300dpi, tesseract --psm 6) of the Solo Balance Sheet and Profit and Loss Account pages. OCR digit errors were caught and corrected by cross-checking every subtotal against the underlying arithmetic: FY2023 Q1's Net interest income was OCR'd as 1,814,490,195 but Interest income (7,257,173,455) minus Interest paid (5,342,683,260) = 1,914,490,195 exactly (first digit misread, 8 for 9), and Profit before provision was OCR'd as 4,011,507,200 vs a calculated 1,011,507,201 (leading digit misread); both corrections are independently confirmed by the FY2024 Q1 report's own comparative column for the same dates, which reproduces the corrected figures exactly. FY2026 Q1's current tax was OCR'd as 60,000,000 (current) / 52,000,000 (comparative) but back-solving from the (cleanly OCR'd) profit-before-tax, profit-after-tax and deferred-tax figures gives 40,000,000 / 102,000,000 -- used instead, and FY2026 Q1's net profit after tax (-8,631,611,235) is independently confirmed via the retained-earnings roll-forward printed on the same page (opening -905,499,953 + NPAT = closing -9,537,111,188, exact). The raw uncorrected OCR transcriptions are retained in the two source .txt files above, flagged there as unverified; the corrected figures are what is stored in the quarterly/*.json line_items."
+    },
+    {
+      "period": "2017 Q1 (solo, P&L only)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "ific-quarterly-2018-q1.txt (comparative column '1 January to 31 March 2017')",
+      "source_path": "annual_reports/IFIC/ific-quarterly-2018-q1.txt",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_partial",
+      "used_for_years": [2017],
+      "note": "The PDF linked from IFIC's own site for '1st Quarter Financial Statements, 31 March 2017' is in fact a one-page newspaper notice (The Independent, 6 May 2017) directing readers to the bank's website -- it carries no financial data at all (see annual_reports/IFIC/ific-quarterly-2017-q1.txt, 7 lines). No balance sheet as at 31 March 2017 could be recovered: a Q1 filing's own comparative column is always the prior 31-December, never a prior-Q1 date, so no later IFIC filing republishes it. The income statement WAS recovered, from the FY2018 Q1 report's own comparative column reporting '1 January to 31 March 2017' -- a second, independently-reported instance of the same figures from the bank's own books, not an annual-data derivation. quarterly/2017_Q1.json therefore has P&L line items only, clearly flagged."
+    },
+    {
+      "period": "2011-2015 Q1/Q2/Q3",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "unavailable",
+      "retrieval_date": "2026-08-26",
+      "note": "IFIC's financial-statements page lists no PDFs earlier than 2016 Q1 (43 PDFs total span 2016-2026, one page, confirmed by direct fetch of the page's full document list). Not checked further against Wayback Machine captures of the same page in this pass -- a genuine gap, not yet exhausted, distinct from the FY2017 Q1 case above which does have a linked (but non-data) document."
+    }
+  ]
+}

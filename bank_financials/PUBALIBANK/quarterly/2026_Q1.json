@@ -1,0 +1,33 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2026-03-31",
+  "financial_year": 2026,
+  "quarter": "Q1",
+  "period_note": "Sourced LIVE from DSE's company page (not a Wayback capture -- this is the page's current content), fetched 2026-08-27 via curl -k (dsebd.org has a broken TLS certificate chain requiring -k/--insecure, the same workaround already documented elsewhere in this dataset for NCCBANK and RUPALIBANK). Beyond this task's original FY2011-2016/FY2021-2024 scope, but recovered at zero extra cost in the same session and consistent with the RUPALIBANK precedent of also capturing bonus current-year data when available. Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type).",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2026\" table, Q1 column (period-end 202603)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic",
+      "value": 1.72,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 35.9,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

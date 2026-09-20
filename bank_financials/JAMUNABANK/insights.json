@@ -1,0 +1,120 @@
+{
+  "bank_id": "JAMUNABANK",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "early_period_npl_spike_recovered",
+      "severity": "info",
+      "statement": "NPL ratio spiked to 9.73% in FY2012 (from 2.86% in FY2011), the highest point in the full 13-year series, before steadily improving to as low as 2.95% (FY2020) \u2014 a single-period shock resolved over several years rather than compounding.",
+      "metrics": [
+        "npl_ratio_pct"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2012_Q4",
+        "2020_Q4"
+      ]
+    },
+    {
+      "category": "capital_adequacy_strengthening",
+      "severity": "info",
+      "statement": "CAR has risen steadily from a low of 10.93% (FY2016) to a consistent 15-17% range from FY2020 onward, comfortably above the regulatory minimum throughout and trending in the opposite direction from the more distressed banks in this dataset.",
+      "metrics": [
+        "car_pct"
+      ],
+      "periods": [
+        "2016_Q4",
+        "2020_Q4",
+        "2023_Q4"
+      ]
+    },
+    {
+      "category": "2022_provisioning_jump",
+      "severity": "warning",
+      "statement": "NPL ratio nearly doubled from 2.97% (FY2021) to 5.32% (FY2022), and profit after tax fell sharply (BDT 2,476.88mn -> BDT 1,581.44mn, a 36% decline) despite operating income growing, driven by loan-loss provisioning more than doubling (BDT 1,155.08mn -> BDT 2,430.39mn). NPL ratio improved somewhat the following year (4.96% in FY2023) but remained above the FY2020-2021 lows.",
+      "metrics": [
+        "npl_ratio_pct",
+        "roe_pct"
+      ],
+      "periods": [
+        "2021_Q4",
+        "2022_Q4",
+        "2023_Q4"
+      ]
+    },
+    {
+      "category": "fy2024_25_lending_to_govt_securities_reallocation_and_margin_compression",
+      "severity": "warning",
+      "statement": "Net interest income collapsed from BDT 4,401.88mn (FY2023) to BDT 3,355.54mn (FY2024) to just BDT 329.69mn (FY2025, -90.2% YoY) as interest expense (BDT 10,515.78mn -> 16,876.17mn -> 17,707.85mn) rose faster than interest income (BDT 14,917.66mn -> 20,231.71mn -> 18,037.54mn, which itself fell in FY2025). The bank offset this by reallocating from lending into government securities: the loan book shrank outright (BDT 186,760.02mn -> 188,990.02mn -> 176,764.43mn, -6.47% YoY in FY2025) while investments roughly doubled twice over (BDT 79,773.50mn -> 127,588.47mn -> 201,986.08mn) and investment income grew accordingly (BDT 6,223.92mn -> 9,290.93mn -> 12,806.61mn). Calculated loan-to-deposit ratio fell from 76.42% (FY2023) to 60.88% (FY2024) to 49.06% (FY2025), consistent with a deliberate deleveraging of the loan book during the sector-wide FY2024-25 deposit-rate and liquidity stress rather than the profit deterioration pattern seen at other banks in this dataset during the same window.",
+      "metrics": [
+        "ldr_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2025_asset_quality_and_profitability_outperform_sector",
+      "severity": "info",
+      "statement": "Unlike the sector-wide FY2024-25 asset-quality deterioration recorded elsewhere in this dataset (median NPL rose from 5.48% to 9.55%), Jamuna Bank's NPL ratio rose only to 6.92% in FY2024 before falling to 3.94% in FY2025 -- its lowest level since FY2021 (2.97%) -- as classified loans fell in absolute terms from BDT 13,074.95mn to BDT 6,963.10mn even as the loan book also shrank. Profit after tax rose from BDT 2,362.36mn (FY2023) to BDT 2,794.00mn (FY2024, +18.3%) to BDT 5,578.70mn (FY2025, +99.7%), and ROE reached 23.42% in FY2025 -- the highest point in this bank's full 15-year series, above the prior peak of 18.27% in FY2011. CAR stayed comfortably above the regulatory minimum throughout (16.37% FY2024, 16.75% FY2025, vs 12.50% required MCAR including buffer).",
+      "metrics": [
+        "npl_ratio_pct",
+        "roe_pct",
+        "car_pct"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2021_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2024_25_effective_tax_rate_volatility",
+      "severity": "info",
+      "statement": "Effective tax rate (tax expense / profit before tax) swung sharply across the two newest years: 45.1% in FY2023 (BDT 1,940.10mn / 4,302.45mn) to 52.2% in FY2024 (BDT 3,054.35mn / 5,848.35mn) to 19.6% in FY2025 (BDT 1,364.09mn / 6,942.79mn). The five-year summary tables used as this dataset's source do not break out the deferred-tax component or explain the swing; not resolvable without the full tax notes to the financial statements, which are outside this dataset's scope.",
+      "metrics": [],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2025_nii_collapse_was_progressive_not_sudden",
+      "severity": "info",
+      "statement": "The Q1-Q3 2025 quarterly breakdown (newly added) shows the FY2025 net interest income collapse (already known at the annual level: BDT 3,355.54mn FY2024 -> BDT 329.69mn FY2025) was not a single Q4 event: discrete net_interest_income actually rose from BDT 845.62mn (Q1 2025) to BDT 1,272.57mn (Q2 2025), then fell sharply to BDT 89.39mn (Q3 2025), before turning negative at BDT -1,877.89mn in Q4 2025 (implied from the annual total less Q1-Q3, consistent with the already-stored 2025_Q4.json). The deterioration was therefore concentrated in the second half of the year and intensified quarter-on-quarter (Q2 to Q3 to Q4), rather than appearing abruptly only in the year-end figures.",
+      "metrics": [
+        "net_interest_income"
+      ],
+      "periods": [
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2022_operating_profit_collapse_concentrated_in_q4_pre_provision",
+      "severity": "info",
+      "statement": "The Q1-Q3 2022 quarterly breakdown (newly added) shows discrete operating profit (before loan-loss provisioning) improving every quarter through the first nine months of 2022 -- BDT 1,632.69mn (Q1), BDT 1,847.32mn (Q2), BDT 1,992.23mn (Q3) -- before collapsing to BDT 237.07mn in Q4 (implied from the annual total less Q1-Q3, consistent with 2022_Q4.json). This Q4 drop is driven by operating income falling (BDT 3,681.04mn in Q3 to BDT 2,385.83mn in Q4) while operating expenses simultaneously rose (BDT 1,688.81mn to BDT 2,148.76mn) -- i.e. it happened before and separately from the loan-loss provisioning increase already documented at the annual level (provisioning more than doubling year-on-year), indicating FY2022's profitability dip had both a pre-provision operating component concentrated in Q4 and a provisioning component, not provisioning alone.",
+      "metrics": [
+        "operating_income",
+        "operating_expenses",
+        "operating_profit"
+      ],
+      "periods": [
+        "2022_Q1",
+        "2022_Q2",
+        "2022_Q3",
+        "2022_Q4"
+      ]
+    }
+  ],
+  "historical_context": "Jamuna Bank shows a generally solid trajectory over its full 15-year researched history: an early NPL shock in FY2012 that fully resolved by FY2020, steadily strengthening capital adequacy, and a contained FY2022 profitability dip (driven by a provisioning jump) more comparable to Trust Bank's contained FY2018 NPL spike than to the multi-year distress patterns seen at AB Bank, ICB Islamic Bank, or Al-Arafah Islami Bank in this dataset. Notably, Jamuna Bank does not fit the sector-wide FY2024-25 distress narrative documented elsewhere in this dataset (e.g. NBL, IFIC, Islami Bank, AB Bank): instead of rising NPLs and falling capital, it shows record profitability (ROE 23.42% in FY2025, an all-time high for this bank) and improving NPL ratio (down to 3.94%), achieved via a pronounced balance-sheet shift away from lending and into government securities that nearly wiped out net interest income (down 90.2% in FY2025) but was more than offset by investment income and a shrinking, better-quality loan book.",
+  "data_gaps": "FY2024-2025 processed in this update (previously the source text was available but unprocessed). Only Q4/year-end (audited) data is available for the full 2011-2025 span; Q1/H1/Q3 unaudited interim data was not researched. ROA/ROE not directly reported for FY2011-2018 in the source tables used (calculated from profit-after-tax/assets or equity instead, on a period-end rather than average basis). FY2024's own-report Tier-1 capital ratio cell was corrupted by a text-extraction artifact and was reconstructed from the FY2025 report's comparative column (see sources.json). The FY2024-25 effective-tax-rate swing (52.2% -> 19.6%) is unexplained by the summary tables used and would require the full tax notes to resolve. Q1-Q3 unaudited interim data was added 2026-08-27 for 13 of the 15 years in this dataset's span (2012, 2013, 2015-2025), sourced from a combination of the annual reports' own embedded 'Variance Between Quarterly Financial Performance' disclosure (P&L-summary-level: net interest income, non-interest income, operating income/expenses/profit only) and, for 2015 Q2 / 2016-2018 all quarters / 2019 Q2-Q3 / 2022 Q2, the bank's own website interim financial statements (full balance sheet + P&L, richer). 2011 and 2014 Q1/Q3 remain genuine gaps (no source exists for either); 2014 Q2 was recovered via OCR of a scanned interim PDF. 2026 Q2 (H1-cumulative only) is also included as a bonus beyond this dataset's original 2011-2025 span; 2026 Q1 exists on the bank's website only as an un-OCR'd 13-page scan and was not processed. Quarterly balance-sheet data (total assets, loans, deposits, equity) is only available for 14 of the 41 new quarter-files (those sourced from the richer website PDFs); the remainder are P&L-summary-only by the nature of their source. profit_after_tax for rich-sourced quarters is a computed figure (Total profit before taxes minus tax provision and Foundation contribution combined) rather than a directly reported single line, because that source's own 'Net profit after taxation' line was found to inconsistently include or exclude the Foundation contribution across different report vintages (see sources.json)."
+}

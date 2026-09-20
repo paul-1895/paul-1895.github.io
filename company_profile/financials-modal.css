@@ -1,0 +1,101 @@
+/* ── EPS Chart Wrapper & Three-Dots Button ───────────────────── */
+.fin-chart-wrap {
+  position: relative;
+}
+
+.fin-dots-btn {
+  position: absolute;
+  top: 6px;
+  right: 0px;
+  z-index: 10;
+  background: transparent;
+  border: 1px solid var(--border-glow, #2d3748);
+  border-radius: 6px;
+  color: var(--text-muted, #8b949e);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.fin-dots-btn:hover {
+  background: var(--accent-dim, rgba(0,245,196,.08));
+  border-color: var(--accent, #00f5c4);
+  color: var(--accent, #00f5c4);
+  box-shadow: 0 0 10px var(--accent-glow, rgba(0,245,196,.2));
+}
+
+/* ── EPS Table Modal ─────────────────────────────────────────── */
+.eps-modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0,0,0,.65);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.eps-modal-backdrop.open {
+  display: flex;
+  animation: epsBackdropIn .15s ease;
+}
+@keyframes epsBackdropIn { from { opacity:0 } to { opacity:1 } }
+
+.eps-modal {
+  background: var(--bg-card, #161b22);
+  border: 1px solid var(--border-glow, #2d3748);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 40px rgba(0,0,0,.6);
+  animation: epsModalIn .2s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes epsModalIn {
+  from { opacity:0; transform:translateY(12px) scale(.97) }
+  to   { opacity:1; transform:none }
+}
+
+.eps-modal-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border, #2d3748);
+  flex-shrink: 0;
+}
+.eps-modal-title {
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-primary, #e6edf3);
+}
+.eps-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted, #8b949e);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color .15s;
+  line-height: 1;
+}
+.eps-modal-close:hover { color: var(--text-primary, #e6edf3); }
+
+.eps-modal-body {
+  overflow-y: auto;
+  padding: 16px;
+  flex: 1;
+}
+.eps-modal-body .fin-table-wrap {
+  border: none;
+  margin-top: 0;
+}

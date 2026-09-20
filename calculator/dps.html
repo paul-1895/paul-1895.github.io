@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DPS Calculator — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<style>
+/* ── DPS CALCULATOR PAGE (shares .calc-* system with calculator.html) ──── */
+.calc-shell {
+  max-width: 1100px;
+  margin: 28px auto 60px;
+  padding: 0 16px;
+}
+
+.calc-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 18px;
+  transition: color 0.15s;
+}
+.calc-back:hover { color: var(--accent); text-decoration: none; }
+.calc-back svg { width: 15px; height: 15px; }
+
+.calc-hero { margin-bottom: 24px; }
+.calc-hero h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+.calc-hero p {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.calc-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.calc-field { margin-bottom: 16px; }
+.calc-field:last-child { margin-bottom: 0; }
+
+.calc-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 7px;
+}
+.calc-label .calc-unit {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.calc-input-wrap { position: relative; display: flex; align-items: center; }
+.calc-input-prefix {
+  position: absolute; left: 13px;
+  font-family: var(--mono); font-size: 13px;
+  color: var(--text-muted); pointer-events: none;
+}
+.calc-input-suffix {
+  position: absolute; right: 13px;
+  font-family: var(--mono); font-size: 13px;
+  color: var(--text-muted); pointer-events: none;
+}
+.calc-field input[type="number"] {
+  width: 100%;
+  padding: 10px 13px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.calc-field input[type="number"].has-prefix { padding-left: 30px; }
+.calc-field input[type="number"].has-suffix { padding-right: 30px; }
+.calc-field input[type="number"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+.calc-field input[type="number"]::-webkit-outer-spin-button,
+.calc-field input[type="number"]::-webkit-inner-spin-button { opacity: 0.6; }
+
+.calc-slider {
+  width: 100%;
+  margin-top: 9px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.calc-toggle-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.calc-toggle-btn {
+  flex: 1;
+  padding: 8px 6px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.calc-toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+.calc-toggle-btn.active {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.calc-divider { height: 1px; background: var(--border); margin: 18px 0; }
+
+.calc-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.calc-switch-label {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.calc-switch-sub {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.calc-switch {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.calc-switch input { opacity: 0; width: 0; height: 0; }
+.calc-switch-track {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.calc-switch-track::before {
+  content: '';
+  position: absolute;
+  width: 18px; height: 18px;
+  left: 3px; top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.calc-switch input:checked + .calc-switch-track { background: var(--accent); }
+.calc-switch input:checked + .calc-switch-track::before { transform: translateX(18px); }
+
+.calc-results { display: flex; flex-direction: column; gap: 14px; }
+
+.calc-summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.calc-summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.calc-summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+}
+.calc-summary-card.principal::before { background: var(--text-muted); }
+.calc-summary-card.interest::before { background: var(--gain); }
+.calc-summary-card.tax::before { background: var(--loss); }
+.calc-summary-card.total::before { background: var(--accent); }
+
+.calc-summary-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.calc-summary-value {
+  font-family: var(--mono);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.4px;
+}
+.calc-summary-card.interest .calc-summary-value { color: var(--gain); }
+.calc-summary-card.tax .calc-summary-value { color: var(--loss); }
+.calc-summary-card.total .calc-summary-value { color: var(--accent); }
+
+.calc-summary-row-4 { grid-template-columns: repeat(4, 1fr); }
+
+.calc-chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.calc-chart-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.calc-chart-title {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.calc-chart-legend { display: flex; gap: 14px; }
+.calc-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.calc-legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+.calc-legend-dot.principal { background: var(--text-muted); }
+.calc-legend-dot.interest { background: var(--gain); }
+
+.calc-bars-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 200px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  overflow-x: auto;
+}
+.calc-bar-col {
+  flex: 1;
+  min-width: 14px;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.calc-bar-seg.principal { background: var(--text-muted); opacity: 0.55; }
+.calc-bar-seg.interest { background: var(--gain); }
+.calc-bar-col:hover .calc-bar-seg { filter: brightness(1.15); }
+
+.calc-bars-labels { display: flex; gap: 4px; margin-top: 6px; }
+.calc-bar-label {
+  flex: 1;
+  min-width: 14px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.calc-table-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.calc-table-hd {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.calc-table-scroll { max-height: 360px; overflow-y: auto; }
+.calc-table { width: 100%; border-collapse: collapse; }
+.calc-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bg-card);
+  padding: 10px 16px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.calc-table thead th:first-child { text-align: left; }
+.calc-table tbody td {
+  padding: 9px 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.calc-table tbody td:first-child {
+  text-align: left;
+  font-family: var(--sans);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.calc-table tbody tr:last-child td { border-bottom: none; }
+.calc-table tbody tr:hover { background: var(--bg-row-hover); }
+.calc-table .ci-interest { color: var(--gain); }
+
+.calc-note {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding: 12px 14px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 860px) {
+  .calc-grid { grid-template-columns: 1fr; }
+  .calc-summary-row, .calc-summary-row-4 { grid-template-columns: 1fr 1fr; }
+}
+</style>
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Live Market</h1>
+        <p>Dhaka Stock Exchange — All Listed Securities</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="../index.html" class="wl-toggle-btn" style="text-decoration:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Home
+      </a>
+      <a href="calculator.html" class="wl-toggle-btn" style="text-decoration:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="2" width="16" height="20" rx="2"/>
+          <line x1="8" y1="7" x2="16" y2="7"/>
+          <line x1="8" y1="11" x2="9" y2="11"/><line x1="12" y1="11" x2="13" y2="11"/><line x1="16" y1="11" x2="17" y2="11"/>
+          <line x1="8" y1="15" x2="9" y2="15"/><line x1="12" y1="15" x2="13" y2="15"/><line x1="16" y1="15" x2="17" y2="15"/>
+        </svg>
+        Compound Interest
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="calc-shell">
+  <a href="../index.html" class="calc-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Live Market
+  </a>
+
+  <div class="calc-hero">
+    <h1>DPS Calculator</h1>
+    <p>Estimate the maturity value of a Deposit Pension Scheme — a fixed monthly deposit for a fixed term.</p>
+  </div>
+
+  <div class="calc-grid">
+
+    <!-- INPUT PANEL -->
+    <div class="calc-panel">
+
+      <div class="calc-field">
+        <div class="calc-label">Monthly Installment <span class="calc-unit">BDT</span></div>
+        <div class="calc-input-wrap">
+          <span class="calc-input-prefix">৳</span>
+          <input type="number" id="dps-installment" class="has-prefix" value="5000" min="0" step="500" />
+        </div>
+        <input type="range" id="dps-installment-slider" class="calc-slider" min="0" max="50000" step="500" value="5000" />
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Tenure <span class="calc-unit" id="dps-tenure-display">5 years</span></div>
+        <input type="range" id="dps-tenure-slider" class="calc-slider" min="1" max="10" step="1" value="5" />
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Annual Interest Rate <span class="calc-unit">%</span></div>
+        <div class="calc-input-wrap">
+          <input type="number" id="dps-rate" class="has-suffix" value="8" min="0" max="20" step="0.1" />
+          <span class="calc-input-suffix">%</span>
+        </div>
+        <input type="range" id="dps-rate-slider" class="calc-slider" min="0" max="20" step="0.1" value="8" />
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Interest Compounding</div>
+        <div class="calc-note" style="margin-top:0;">
+          Compounded monthly — interest accrues on the running balance each month, which is how most Bangladeshi bank DPS schemes calculate maturity value.
+        </div>
+      </div>
+
+      <div class="calc-divider"></div>
+
+      <div class="calc-field">
+        <div class="calc-switch-row">
+          <div>
+            <div class="calc-switch-label">Deduct Source Tax (AIT)</div>
+            <div class="calc-switch-sub">Applies withholding tax on interest earned</div>
+          </div>
+          <label class="calc-switch">
+            <input type="checkbox" id="dps-tax-toggle" />
+            <span class="calc-switch-track"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="calc-field" id="dps-tax-rate-field" style="display:none;">
+        <div class="calc-label">Tax Rate on Interest <span class="calc-unit">%</span></div>
+        <div class="calc-input-wrap">
+          <input type="number" id="dps-tax-rate" class="has-suffix" value="10" min="0" max="50" step="0.5" />
+          <span class="calc-input-suffix">%</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RESULTS -->
+    <div class="calc-results">
+
+      <div class="calc-summary-row" id="dps-summary-row">
+        <div class="calc-summary-card principal">
+          <div class="calc-summary-label">Total Deposited</div>
+          <div class="calc-summary-value" id="dps-total-deposited">—</div>
+        </div>
+        <div class="calc-summary-card interest">
+          <div class="calc-summary-label">Gross Interest</div>
+          <div class="calc-summary-value" id="dps-gross-interest">—</div>
+        </div>
+        <div class="calc-summary-card tax" id="dps-tax-card" style="display:none;">
+          <div class="calc-summary-label">Tax Deducted</div>
+          <div class="calc-summary-value" id="dps-tax-amount">—</div>
+        </div>
+        <div class="calc-summary-card total">
+          <div class="calc-summary-label">Maturity Value</div>
+          <div class="calc-summary-value" id="dps-maturity-value">—</div>
+        </div>
+      </div>
+
+      <div class="calc-chart-card">
+        <div class="calc-chart-hd">
+          <span class="calc-chart-title">Growth Over Time</span>
+          <div class="calc-chart-legend">
+            <span class="calc-legend-item"><span class="calc-legend-dot principal"></span>Deposits</span>
+            <span class="calc-legend-item"><span class="calc-legend-dot interest"></span>Interest (net)</span>
+          </div>
+        </div>
+        <div class="calc-bars-wrap" id="dps-bars-wrap"></div>
+        <div class="calc-bars-labels" id="dps-bars-labels"></div>
+      </div>
+
+      <div class="calc-table-card">
+        <div class="calc-table-hd">Year-by-Year Breakdown</div>
+        <div class="calc-table-scroll">
+          <table class="calc-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Deposited</th>
+                <th>Interest Earned</th>
+                <th>Cumulative Interest</th>
+                <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody id="dps-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="calc-note">
+        Estimates only. Actual DPS maturity values vary by bank — compounding convention, exact tax/excise duty rules, and treatment of premature withdrawal differ across institutions. Confirm exact terms with your bank before relying on these figures.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>For informational purposes only · Not financial advice</p>
+</footer>
+
+<script type="module" src="dps.js"></script>
+<script type="module">
+  import { initTheme, toggleTheme } from '../theme/theme.js';
+  initTheme();
+  document.getElementById('theme-toggle-btn').addEventListener('click', toggleTheme);
+</script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

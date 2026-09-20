@@ -1,0 +1,50 @@
+{
+  "bank_id": "UTTARABANK",
+  "bank_name": "Uttara Bank PLC",
+  "reporting_date": "2026-03-31",
+  "financial_year": 2026,
+  "quarter": "Q1",
+  "period_note": "Unaudited interim financial performance, Jan-Mar 2026 (Q1). PRIMARY SOURCE UNREACHABLE: the bank's own site (uttarabank-bd.com) is Cloudflare JS-challenge gated for every HTML navigation page (confirmed via curl and WebFetch, both return 'Just a moment...' / 403), and over 20 filename guesses against the live /firstqreport/, /halfqreport/ and /priceseninfo/ directories -- following every naming pattern used in this dataset's own 2013-2025 UTTARABANK quarters plus the exact real disclosure dates found via web search (Q1 PSI approved/posted ~11-13 May 2026, per marketscreener.com and search-engine-cached listings of the bank's own Price-Sensitive-Information page) -- all returned HTTP 404. Wayback Machine has zero captures of any kind for uttarabank-bd.com after 2025-12-14, so no historical snapshot recovers a working 2026 filename either. FALLBACK: sourced LIVE from DSE's company page (dsebd.org/displayCompany.php?name=UTTARABANK, curl -k for a TLS chain issue, same workaround documented elsewhere in this dataset), whose 'Interim Financial Performance: 2026' table carries real Q1/Q2/Half-Yearly EPS and period-end market price figures -- the same live-DSE-table fallback used for RUPALIBANK's 2026_Q1.json/2026_Q2.json when its own site was Cloudflare-blocked. DATA IS THIN: EPS and market price only, no balance sheet, no NAV, no NOCFPS -- npl_pct, car_pct, total_assets, total_deposits, gross_loans, total_equity are all gaps for this quarter. BASIS CAVEAT: DSE's table does not label Solo vs Consolidated. Cross-checked against this bank's own primary-sourced 2025_Q2.json (SOLO, Jan-Jun 2025 cumulative EPS 1.88): the equivalent DSE-table Half-Yearly EPS for 2025 (recovered via a Wayback capture of this same DSE page dated 2025-10-07, before Q3 2025 was posted) was 1.820, a ~3.2% gap below the bank's own Solo figure -- consistent with this DSE table being CONSOLIDATED basis (Consolidated PAT typically runs below Solo for this dataset's banks with subsidiaries), NOT directly comparable to UTTARABANK's SOLO main series. SHARE-COUNT COMPLICATION: DSE's own page shows a 25% bonus share (stock dividend) declared for FY2025, taking paid-up capital from 9,702.69mn (970,269,000 shares, this dataset's 2025_Q4.json) to 12,128.36mn (1,212,836,090 shares) as of the retrieval date. Internal arithmetic on DSE's own reported EPS values confirms the Q1 column (1.320) is UNRESTATED (pre-bonus share base) while the Q2 and Half-Yearly columns (1.170, 2.230) are RESTATED to the post-bonus share base: Q1's implied profit at the OLD share count (1.320 x 970,269,000 = 1,280.76m) plus Q2's implied profit at the NEW share count (1.170 x 1,212,836,090 = 1,419.02m) sums to 2,699.77m, within 0.2% of the Half-Yearly column's own implied profit at the new share count (2.230 x 1,212,836,090 = 2,704.62m) -- the small residual is EPS-rounding, not a data error. This also broadly cross-validates against an independent secondary source (marketscreener.com, citing Q1 2026 net income of approx. BDT 1.29bn against this file's own derived BDT 1,280.76m). net_profit_after_tax_estimated below therefore uses the OLD (pre-bonus) share count specifically for Q1, per this reconciliation -- flagged accordingly, not a reported figure.",
+  "source": {
+    "source_document": "uttarabank-dse-interim-table-2026.txt (live page section, not retained as a separate annual_reports file -- extracted directly from the fetched HTML)",
+    "source_path": "not applicable -- data read directly from the live dsebd.org page, no PDF or OCR involved",
+    "source_url": "https://www.dsebd.org/displayCompany.php?name=UTTARABANK",
+    "source_page_lines": "\"Interim Financial Performance: 2026\" table, Q1 column (period-end code 202603); \"Basic Information\"/\"Dividend Information\" blocks on the same page for paid-up-capital/shares-outstanding/bonus-issue context",
+    "retrieval_date": "2026-09-12"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic / EPS - Continuing Operations, Basic (identical)",
+      "value": 1.32,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 25,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital (mn) [as shown on DSE company page at retrieval date -- POST the 25% FY2025 bonus issue, not specifically dated to 31 March 2026]",
+      "value": 12128.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_estimated",
+      "original_metric_name": "Derived: Basic EPS x pre-bonus shares outstanding (970,269,000, from 2025_Q4.json paid-up capital) -- see period_note for why the OLD share count, not the current 1,212,836,090, applies to this specific quarter",
+      "value": 1280.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_eps_and_pre_bonus_shares_outstanding",
+      "note": "Approximation only, not a reported figure. Broadly corroborated by an independent secondary source (marketscreener.com's Q1 2026 net income figure of ~BDT 1.29bn)."
+    }
+  ]
+}

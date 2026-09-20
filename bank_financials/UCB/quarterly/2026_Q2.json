@@ -1,0 +1,185 @@
+{
+  "bank_id": "UCB",
+  "bank_name": "United Commercial Bank PLC",
+  "reporting_date": "2026-06-30",
+  "financial_year": 2026,
+  "quarter": "Q2",
+  "period_note": "Extracted from UCB's own Half-Yearly unaudited financial statement PDF ('United Commercial Bank PLC Unaudited Financial Statements For the half year ended 30 June 2026'). Balance sheet is the period-end snapshot (reported, Solo/Standalone -- 'BALANCE SHEET' heading without the 'CONSOLIDATED' prefix, matching the project's Solo-over-Consolidated preference and the same convention used for 2026_Q1.json). Income-statement items are CUMULATIVE from 1 January 2026, flagged via the _cumulative suffix. UNUSUALLY, like TRUSTBANK's 2026_Q2.json and EBL's 2026_Q2.json, this filing ALSO discloses a discrete second-quarter-only column ('April to June 2026') as a bonus, not stored as separate line_items except net_profit_after_tax_q2_discrete/eps_q2_discrete, used for cross-validation: discrete Q2 Bank Net Profit after Tax of 220,070,261 plus 2026_Q1.json's net_profit_after_tax_cumulative of 192,339,361 (actually 192.34m) = 412,409,622, matching this filing's own H1-cumulative Bank Net Profit after Tax exactly -- confirms both quarters read correctly. EXTRACTION METHOD: figures read directly by visual inspection of 200dpi page renders (pdftoppm) of the specific Solo-labelled pages (this filing interleaves landscape SOCE pages with portrait BS/P&L/CF pages, unlike Q1's all-portrait layout, so pages were located by heading rather than assumed position). Confirmed correct basis: this filing's own 31-Dec-2025 Solo comparative column (Total Assets 884,056,454,596) matches this dataset's stored 2025_Q4.json exactly. As with Q1, this filing has NO loan-classification/NPL note and NO capital-adequacy (CAR/CRAR) note -- npl_ratio_pct, ldr_pct (regulatory basis) and car_pct remain unavailable. VALIDATED: balance-sheet identity holds (Total Liabilities 928,937,018,635 + Total Equity 42,331,719,623 = Total Assets 971,268,738,258, within BDT 1 of the reported 971,268,738,259 rounding); Total Operating Income (15,489,486,775) - Total Operating Expenses (10,895,209,043) = Profit & Loss before provision (4,594,277,732) exactly; minus Total Provision (2,077,550,316) = Total Profit before Income Tax (2,516,727,416) exactly; minus Total Tax (2,104,317,794) = Net profit after Tax, Bank (412,409,622) exactly; the same chain reconciles exactly for the discrete Apr-Jun column too. NAVPS-Bank of 27.30 (Note 7) and NOCFPS-Bank of (16.78) (Note 8, negative -- large loans/advances growth this half outpaced deposit growth in the cash-flow statement) both taken directly from the filing's own Selective Notes. Note 9 (Events after the reporting period) discloses BSEC approved a BDT 775.19 crore rights share issue on 07 July 2026 (after this reporting period) -- a capital-raise, not a risk signal, so not carried into insights.json per project convention (risk_signals only).",
+  "source": {
+    "source_document": "unaudited-financial-statements-q2-2026.pdf",
+    "source_path": "not retained locally (deleted after extraction per project policy; no annual_reports/UCB/*.txt was produced -- data was read directly from page images, not transcribed to a .txt)",
+    "source_url": "https://www.ucb.com.bd/reports/financial-statements/unaudited-financial-statements-q2-2026.pdf",
+    "source_page_lines": "Solo/Standalone 'BALANCE SHEET' (p.6), 'OFF-BALANCE SHEET ITEMS' (p.7), 'PROFIT AND LOSS ACCOUNT' (p.8), and 'Selective Notes to the financial statements' sections 06-08 (p.11)",
+    "retrieval_date": "2026-09-12"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 15503.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 42331.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 928937.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 971268.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 745135.40,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances (Loans, Cash Credit, Overdrafts etc. + Bills purchased and discounted)",
+      "value": 654332.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 194510.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises, furniture & fixture",
+      "value": 15862.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance sheet items including contingent liabilities",
+      "value": 209880.70,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (cumulative from Jan 1)",
+      "value": 2683.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Income from Investment + Commission, Exchange & Brokerage + Other Operating Income (cumulative from Jan 1)",
+      "value": 12806.43,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 10895.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit & Loss before provision (cumulative from Jan 1)",
+      "value": 4594.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_cumulative",
+      "original_metric_name": "Total Provision (Loans & Advances + diminution in value of investments + Other) (cumulative from Jan 1)",
+      "value": 2077.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit before Income Tax (cumulative from Jan 1)",
+      "value": 2516.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after Tax for the period (Bank) (cumulative from Jan 1, i.e. H1 2026)",
+      "value": 412.41,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Basic Earnings per share (EPS) - (Bank) (cumulative from Jan 1)",
+      "value": 0.27,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value Per Share (NAVPS) - Bank (Note 7)",
+      "value": 27.30,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nocfps_cumulative",
+      "original_metric_name": "Net Operating Cash Flow Per Share (NOCFPS) - Bank (Note 8, cumulative from Jan 1; negative this half-year)",
+      "value": -16.78,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_q2_discrete",
+      "original_metric_name": "Net profit after Tax, Bank, discrete April to June 2026 column (bonus cross-check column in this filing, not part of the cumulative series)",
+      "value": 220.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_q2_discrete",
+      "original_metric_name": "Basic Earnings per share (EPS) - Bank, discrete April to June 2026 column",
+      "value": 0.14,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

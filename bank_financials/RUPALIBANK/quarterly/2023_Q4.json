@@ -1,0 +1,123 @@
+{
+  "bank_id": "RUPALIBANK",
+  "bank_name": "Rupali Bank PLC",
+  "reporting_date": "2023-12-31",
+  "financial_year": 2023,
+  "quarter": "Q4",
+  "period_note": "PARTIAL YEAR - Solo basis. No FY2023 annual report (Directors' Report + audited Financial Statements) is recoverable from the Wayback archive (confirmed unavailable - see SOURCES.md). A separate, shorter document was recovered instead: Rupali Bank PLC's standalone Basel III Pillar 3 'Disclosures on Risk Based Capital ... For the Year Ended on December 31, 2023' (17 pages, image-scan, OCR'd to rupalibank-basel3-disclosure-2023.txt), found via a broader CDX sweep, not previously in this archive. This document covers ONLY capital structure/adequacy and loan classification - it has no balance sheet, profit & loss account, deposits, or most of the other metrics tracked for every other year in this series; total_equity, total_assets, total_deposits, total_liabilities, all income-statement lines, EPS, NAV/share, employees/branches/shareholders counts, export/import/remittance, and off-balance-sheet exposure are GAPS for FY2023 specifically, not because they don't exist but because this source document does not disclose them. Paid-up capital (464.69 crore) is essentially flat vs FY2022's 464.70. CRAR improved slightly to 5.28% (solo) from FY2022's 4.92%, still roughly half the 10% regulatory minimum. Loan classification: gross loans 47,760.12 crore (Government 36.59 + Other Public 1,256.11 + Private 46,467.42 components as disclosed), classified (NPA) 10,043.77 crore = 21.03% - this is the one year in the whole series where the reported NPL ratio reproduces exactly from the same document's classified and gross loan figures (no gap). This document also discloses a Bangladesh Bank forbearance letter dated 30 April 2024 covering a shortfall of BDT 4,499.38 crore against required provisions (smaller than FY2022's disclosed all-asset-category shortfall of 6,046.91 crore, suggesting some improvement, but not independently decomposable from this document alone).",
+  "source": {
+    "source_document": "rupalibank-basel3-disclosure-2023.txt",
+    "source_path": "annual_reports/RUPALIBANK/rupalibank-basel3-disclosure-2023.txt",
+    "source_url": "https://rupalibank.com.bd (via web.archive.org)",
+    "source_page_lines": "Page 03 (Capital Structure quantitative table), Page 05 (Capital Adequacy quantitative table), Page 08 (loan classification and NPA summary)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up capital",
+      "value": 4646.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Total Tier 1 Capital (Common Equity Tier 1; no Additional Tier 1)",
+      "value": 15571.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Tier 2 Capital",
+      "value": 9016.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "actual_capital",
+      "original_metric_name": "Total Regulatory capital",
+      "value": 24588.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "risk_weighted_assets",
+      "original_metric_name": "Total RWA (derived: total capital requirement / 10%)",
+      "value": 465269.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_capital_requirement_by_risk_type",
+      "note": "RWA = (Capital Requirement for Credit Risk + Market Risk + Operational Risk) / 10% minimum CRAR, per this disclosure's own quantitative table; not printed directly as a single RWA figure in this document."
+    },
+    {
+      "normalised_metric_name": "required_capital",
+      "original_metric_name": "10% of Total RWA (minimum CRAR)",
+      "value": 46526.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "capital_surplus_deficit",
+      "original_metric_name": "Total Regulatory capital less required capital (10% of RWA)",
+      "value": -21938.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital To Risk Weighted Assets Ratio (CRAR)",
+      "value": 5.28,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_ratio_pct",
+      "original_metric_name": "Tier-1 capital to RWA ratio",
+      "value": 3.35,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_ratio_pct",
+      "original_metric_name": "Tier-2 capital to RWA ratio",
+      "value": 1.94,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loan classification grand total (Government+Other Public+Private counterparties)",
+      "value": 477601.2,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Classified loans (Sub-standard+Doubtful+Bad&Loss)",
+      "value": 100437.7,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Non-Performing Assets (NPAs) to outstanding Loans & advance",
+      "value": 21.03,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Reproduces exactly from classified/gross loans as reported: 21.03%."
+    }
+  ]
+}

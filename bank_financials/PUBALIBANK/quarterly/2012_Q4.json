@@ -1,0 +1,225 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2012-12-31",
+  "financial_year": 2012,
+  "quarter": "Q4",
+  "period_note": "Year-end position sourced from a later annual report's own multi-year 'Key Financial Information' summary table (audited), Solo basis. Cross-validated against pubalibank-annual-report-2012.txt's own 'Key Financials' table and pubalibank-annual-report-2013.txt's comparative column, both of which agree exactly on Total Deposits (150,418.81), Total Advances (122,068.52) and Paid-up Capital (8,384.51); Total Assets is 192,947.93 per the FY2013/FY2014 reports vs 192,947.92 in the FY2012 report's own table (1,000-taka rounding difference, immaterial — the two-report-agreeing figure is used). profit_before_tax and gross_profit apply this dataset's resolution of a systematic mislabeling found in the FY2012/FY2013 reports' own abbreviated tables: those tables label pre-PROVISION operating profit as 'Pre-tax Profit' (showing 6,135.80 for FY2012), which is arithmetically impossible as a true profit-before-tax figure (PAT of 1,761.98 would imply a 71.3% effective tax rate against 6,135.80, versus a much more plausible 59.2% against the FY2014 table's 'Profit before tax' of 4,317.08). The FY2014 report's fuller table separates the two correctly; 4,317.08 is used as profit_before_tax here and 6,135.79 (effectively identical to the 2012/2013 reports' 6,135.80) is recorded as gross_profit (operating profit, pre-provision). total_liabilities is calculated as total_assets minus total_equity (not separately given in the summary table for this year). All other cross-checks (paid-up+reserve=equity, classified/loans=NPL%, loans/deposits=LDR%, actual-capital/RWA=CAR%, Tier1+Tier2=actual-capital, required-capital=10% of RWA) reconcile exactly for this year.",
+  "source": {
+    "source_document": "pubalibank-annual-report-2014.txt (\"Key Financial Information\" 5-year table, 2012 column), cross-validated against pubalibank-annual-report-2012.txt's own \"Key Financials\" table and pubalibank-annual-report-2013.txt's comparative column",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-annual-report-2014.txt",
+    "source_url": "https://www.pubalibangla.com",
+    "source_page_lines": "3496-3620 (\"Key Financial Information\", pages 55-56, 2012 column) in pubalibank-annual-report-2014.txt; cross-checked against pubalibank-annual-report-2012.txt lines 2080-2100 (own year) and pubalibank-annual-report-2013.txt lines 2702-2720 (2012 comparative column)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up capital",
+      "value": 8384.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "reserve_fund",
+      "original_metric_name": "Reserve fund & surplus",
+      "value": 10420.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total shareholders' equity",
+      "value": 18804.70,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits",
+      "value": 150418.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances",
+      "value": 122068.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 30691.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Property, plant & equipment (Fixed Assets)",
+      "value": 3502.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 192947.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities (derived)",
+      "value": 174143.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Classified loans & advances (Non-performing loans)",
+      "value": 6159.62,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Percentage of NPLs to total loans and advances",
+      "value": 5.05,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_income",
+      "original_metric_name": "Total income",
+      "value": 20778.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_expenditure",
+      "original_metric_name": "Total expenses",
+      "value": 14642.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_profit",
+      "original_metric_name": "Operating profit",
+      "value": 6135.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Profit before tax",
+      "value": 4317.08,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net profit after tax",
+      "value": 1761.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per share (EPS)",
+      "value": 2.10,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net asset value per share (NAVPS)",
+      "value": 22.43,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on assets (ROA)",
+      "value": 0.91,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Return on equity (ROE)",
+      "value": 9.37,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "cost_to_income_pct",
+      "original_metric_name": "Cost to income ratio",
+      "value": 25.87,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Credit deposit ratio",
+      "value": 81.15,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "cost_of_fund_pct",
+      "original_metric_name": "Cost of fund",
+      "value": 10.77,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital adequacy ratio (CAR)",
+      "value": 12.20,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "required_capital",
+      "original_metric_name": "Total required capital",
+      "value": 15967.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "actual_capital",
+      "original_metric_name": "Total regulatory capital maintained",
+      "value": 19483.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

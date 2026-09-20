@@ -1,0 +1,49 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2012-03-31",
+  "financial_year": 2012,
+  "quarter": "Q1",
+  "period_note": "Balance-sheet-free, income-statement-only interim snapshot -- Solo/Standalone presumed (see sources.json). Recovered via a Wayback Machine capture of DSE's OWN company page (dsebd.org/displayCompany.php?name=PUBALIBANK), NOT the bank's site -- the technique proven on RUPALIBANK, applied here for the first time to PUBALIBANK. This vintage of the table (titled 'Financial Performance: <year>', pre-2016) gives only Turn Over, Net Profit After Tax (Continuing Operations), Basic/Diluted EPS and NAV per share, ALL CUMULATIVE FROM JAN 1 per the table's own column headers (Q1=3 Months, Q2=6 Months, Q3=9 Months) -- no period-end market price is given in this table vintage (the top-of-page 'Last Trade' price reflects the capture date, not the quarter-end, so it is not usable and not recorded). Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). Cross-validated against an independent second Wayback capture one month later (2013-01-15, same 'Financial Performance: 2012' table, identical values -- see pubalibank-dse-interim-tables-2011-2026.txt). Q2/Q3 EPS reconcile cleanly against the 838.451mn share count on record for this year (1238.17/838.451=1.477; 1336.5/838.451=1.594). Q1's Basic EPS (0.680) does NOT reconcile against either the old (670.761mn, implying 0.905) or new (838.451mn, implying 0.724) share count -- implies ~892.6mn shares, not matching any independently known count for this bank at this time. Recorded as reported per this dataset's 'prefer contemporaneous, don't silently correct' rule; cause not independently determined (unlike 2011/2014's cleaner bonus-timing explanation, this one does not fit that pattern neatly).",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://web.archive.org/web/20121218115520id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Financial Performance: 2012\" table (OLD format), Q1 column (period-end 2012-03-31)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "turnover_revenue_cumulative",
+      "original_metric_name": "Turn Over in BDT (mn), cumulative 3 months",
+      "value": 1882.69,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit After Tax in BDT (mn) (Continuing Operations), cumulative 3 months",
+      "value": 606.96,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Basic EPS in BDT (Based on continuing operations), cumulative 3 months",
+      "value": 0.68,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_diluted_cumulative",
+      "original_metric_name": "Diluted EPS in BDT (Based on continuing operations), cumulative 3 months",
+      "value": 0.72,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

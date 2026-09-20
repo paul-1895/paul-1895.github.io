@@ -1,0 +1,165 @@
+{
+  "bank_id": "SHAHJABANK",
+  "bank_name": "Shahjalal Islami Bank PLC",
+  "reporting_date": "2015-03-31",
+  "financial_year": 2015,
+  "quarter": "Q1",
+  "period_note": "Balance sheet items are the period-end snapshot (reported) as of 2015-03-31. Income-statement items (Net Investment Income, Non Investment Income, Operating Expenses, Operating Profit, Net Profit After Taxation, EPS) and Net Operating Cash Flow Per Share are CUMULATIVE FROM 1 JANUARY 2015, as published in the annual report's own 'Evaluation of Quarterly Financials by the Audit Committee and Board' table (a BSEC-mandated corporate-governance disclosure) -- flagged via the _cumulative suffix, same convention as CITYBANK's embedded quarterly table. This interim table is SOLO/STANDALONE basis, matching SHAHJABANK's main Q4/annual series basis: verified because the same table's own 31-Dec-2015 column reproduces the already-validated quarterly/2015_Q4.json figures (e.g. Total Assets, Total Equity, Operating Profit, PAT) to rounding in every year checked -- confirming both that the table is Solo (not Consolidated) and that it needs no separate Q4 file (Q4 here is identical to the already-published annual figures, not new data). Cross-checked against the FY2016 annual report's own comparative column for the same period (the same methodology used for the annual Q4 series): see sources.json for the full per-year cross-check result.",
+  "source": {
+    "source_document": "shahjabank-annual-report-2015.txt",
+    "source_path": "annual_reports/SHAHJABANK/shahjabank-annual-report-2015.txt",
+    "source_url": "https://www.sjiblbd.com",
+    "source_page_lines": "6216-6260 (\"Evaluation of Quarterly Financials by the Audit Committee and Board\" table, Annual Report 2015)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "placement_with_banks_and_fis",
+      "original_metric_name": "Placement with other Banks & FI's",
+      "value": 5969.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_in_shares_securities",
+      "original_metric_name": "Inv in Shares & Securities",
+      "value": 7021.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_investment",
+      "original_metric_name": "Investment",
+      "value": 86333.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Total Shariah-compliant Investment (the Islamic-banking equivalent of gross loans)."
+    },
+    {
+      "normalised_metric_name": "placement_from_banks_and_fis",
+      "original_metric_name": "Placement from other Banks & FI's",
+      "value": 2805.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposit & Other accounts",
+      "value": 99773.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 7346.88,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholder's equity",
+      "value": 11879.94,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 126970.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 115090.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity",
+      "metric_note": "Not separately itemised in this interim table; derived as Total Assets minus Total Shareholders' equity, matching the convention used in this bank's own quarterly/<YEAR>_Q4.json files."
+    },
+    {
+      "normalised_metric_name": "contingent_liabilities",
+      "original_metric_name": "Off Balance Items",
+      "value": 45468.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Off-balance-sheet exposure total from the interim table; mapped to the same normalised name used for 'Total Contingent Liabilities and Commitment' in this bank's annual quarterly/<YEAR>_Q4.json files."
+    },
+    {
+      "normalised_metric_name": "net_investment_income_cumulative",
+      "original_metric_name": "Net Investment Income (cumulative from Jan 1)",
+      "value": 863.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_investment_income_cumulative",
+      "original_metric_name": "Non Investment Income (cumulative from Jan 1)",
+      "value": 425.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Operating Expenses (cumulative from Jan 1)",
+      "value": 539.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Operating Profit (cumulative from Jan 1)",
+      "value": 749.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit After Taxation (cumulative from Jan 1)",
+      "value": 181.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (cumulative from Jan 1)",
+      "value": 0.25,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per share",
+      "value": 16.17,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_operating_cash_flow_per_share",
+      "original_metric_name": "NOCFPS",
+      "value": -2.32,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Net Operating Cash Flow Per Share, cumulative from Jan 1, as disclosed in the interim table's 'Other Information' section."
+    }
+  ]
+}

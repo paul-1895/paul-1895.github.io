@@ -1,0 +1,227 @@
+{
+  "bank_id": "NRBCBANK",
+  "bank_name": "NRB Commercial Bank PLC",
+  "website": "https://www.nrbcommercialbank.com",
+  "investor_relations_url": "https://www.nrbcommercialbank.com/annual_report",
+  "reporting_basis": "MIXED, with a documented break. FY2013-FY2019 come from summary tables prepared on the CONSOLIDATED basis; FY2020-FY2025 from tables prepared on the SOLO basis. The magnitude is small \u2014 the FY2018 report's 67,142.86 is its consolidated balance-sheet total against 67,061.86 solo, a 0.12% difference \u2014 but the basis genuinely changes at FY2020 and any series crossing that point should treat it as a break. FY2025 is confirmed SOLO two ways: the FY2025 report's own tables are explicitly captioned 'Last Five years' (2021 to 2025) Balance Sheet (Solo)' / '...Profit & Loss Statement (Solo)', and its FY2024 comparative column for 'Size of Balance Sheet' (230,593.06) reproduces the existing stored solo FY2024 total_assets exactly. Q1-Q3 INTERIM UPDATE (this session): the FY2020-2025 interim (Q1/Half-Yearly/Q3) filings are SOLO throughout, consistent with the FY2020+ annual break, with exactly one exception -- 2021 Q2 and Q3, where the bank published only a consolidated single-page summary for those two quarters (no solo balance sheet available at all for those two dates); this is flagged per-item in quarterly/2021_Q2.json and 2021_Q3.json. FY2014-FY2019 interim data (also newly added this session, sourced from each year's own annual report) is CONSOLIDATED, consistent with those years' existing annual/Q4 basis.",
+  "notes": "NRB Commercial Bank opened in April 2013, so this 13-year series (FY2013-FY2025) is the bank's entire public history and FY2011/FY2012 are not applicable. Two extraction traps had to be resolved before any figure could be trusted, both settled arithmetically rather than by assumption. FIRST, the off-balance-sheet trap: the FY2022 report's summary table prints FY2018 total assets as 86,598.12, which is exactly that year's balance-sheet total (67,142.86) plus its off-balance-sheet items (19,455.25); the same holds for FY2017 (57,529.35 + 16,591.43 = 74,120.78) and FY2016 (53,619.10 + 12,934.95 = 66,554.05) in the FY2020 report's balance-sheet-analysis table. Those columns are inflated by roughly 29% against the balance-sheet total and are never used as a source here. SECOND, the FY2021 report is excluded entirely: its only extractable table is a horizontal analysis in which every value is a percentage of a base year, so a naive parse returns 100 for total assets in every year. These are recorded in detail because both would have put a silent ~29% step change into the middle of the series. THIRD (FY2025): the FY2025 annual report PDF is entirely image-based (0 lines from pdftotext -layout; native page images are only 845x1233px/72ppi) and its live-linked download host (sbplc.nrbcommercialbank.com) refuses or times out every connection attempt from every network path tried, including a third-party fetch service \u2014 the file was instead retrieved from the bank's older, still-live asset path (see sources list below) and all figures were read directly off the rendered table image rather than via pdftotext.",
+  "sources": [
+    {
+      "period": "2013-2015 (Q4/year-end, consolidated)",
+      "type": "annual_report_summary_table",
+      "source_document": "nrbcbank-annual-report-2015.txt",
+      "source_path": "annual_reports/NRBCBANK/nrbcbank-annual-report-2015.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013,
+        2014,
+        2015
+      ],
+      "note": "The FY2013 and FY2014 reports extract with no usable table, so those years are this report's comparative columns. FY2013 is a part-year (the bank opened in April 2013) and is recorded with nil classified loans: no classified-loan figure is printed for FY2013 or FY2014 and the first appears in FY2015 at 0.27%."
+    },
+    {
+      "period": "2016-2018 (Q4/year-end, consolidated)",
+      "type": "annual_report_summary_table",
+      "source_document": "nrbcbank-annual-report-2017.txt (FY2016) and nrbcbank-annual-report-2018.txt (FY2017, FY2018)",
+      "source_path": "annual_reports/NRBCBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016,
+        2017,
+        2018
+      ],
+      "note": "There is no FY2016 report in the archive, so FY2016 comes from the FY2017 report. The FY2017 report's table covers FY2013-FY2016 only and does not carry its own year, so FY2017 comes from the FY2018 report. These three years are exactly the ones the later reports inflate with off-balance-sheet items, which is why they are sourced here and never from FY2020-FY2022."
+    },
+    {
+      "period": "2019-2020 (Q4/year-end, basis changes)",
+      "type": "annual_report_summary_table",
+      "source_document": "nrbcbank-annual-report-2019.txt and nrbcbank-annual-report-2020.txt",
+      "source_path": "annual_reports/NRBCBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019,
+        2020
+      ],
+      "note": "Each year from its own report. The basis break sits here: the FY2019 table reports FY2019 total assets as 90,227.26 (consolidated) while the FY2020 report's 'Five Years' Key Performance Indicators' table reports 90,118.08 for the same year, which matches the FY2019 report's own SOLO balance sheet exactly. FY2019 is recorded on the consolidated basis from its own report; FY2020 onward is solo."
+    },
+    {
+      "period": "2021-2022 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "nrbcbank-annual-report-2022.txt ('Five Years Financial Summary', 2018-2022)",
+      "source_path": "annual_reports/NRBCBANK/nrbcbank-annual-report-2022.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021,
+        2022
+      ],
+      "note": "The FY2021 report carries no usable table (see notes), so FY2021 comes from this report. Its FY2018 column is excluded from sourcing because it is off-balance-sheet-inflated; its FY2019 onward columns are clean."
+    },
+    {
+      "period": "2023-2024 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "nrbcbank-annual-report-2024.txt (\"Five Years' Key Financial Summary [2020-2024]\")",
+      "source_path": "annual_reports/NRBCBANK/nrbcbank-annual-report-2024.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023,
+        2024
+      ],
+      "note": "The FY2023 report's summary table does not extract usable balance-sheet rows, so FY2023 comes from this report. FY2024 is contemporaneous."
+    },
+    {
+      "period": "Derived line items",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-26",
+      "note": "Total liabilities are total assets minus stockholder equity. Net interest income, where not printed, is interest income minus interest expense. Where the source report does not print total regulatory capital, it is derived as that same report's Tier-I plus Tier-II rather than borrowed from a later report, so the capital stack stays internally consistent \u2014 using the later report's total instead left a 0.7-0.8% gap at FY2018 and FY2019. Where CRAR is not printed it is derived as total capital over risk-weighted assets. Where classified loans are not printed as an absolute (the early tables give only the ratio) they are the reported ratio applied to reported loans and advances. Reported RoA and RoE rows were not captured from these tables, so ratios_timeseries.json carries period-end recomputations only."
+    },
+    {
+      "period": "2025 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "nrbcbank-annual-report-2025.txt (OCR transcript; original 'Annual Integrated Report 2025' PDF is image-based) \u2014 'Five Years' Key Performance Indicators' table, printed pages 49-50",
+      "source_path": "annual_reports/NRBCBANK/nrbcbank-annual-report-2025.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Retrieved from https://www.nrbcommercialbank.com/assets/form/report/NRBCBANK-2025-Annual-Report.pdf (35,836,001 bytes, 419 pages, verified with file/pdfinfo) after the live-linked CDN URL (https://sbplc.nrbcommercialbank.com/cdn/web/NRBCBANK-2025-Annual-Report.pdf, linked from https://www.nrbcommercialbank.com/about/annual_report) proved unreachable \u2014 DNS resolves (119.18.150.138) but every TCP connection on both 80 and 443 times out or is refused, reproduced from this sandbox, from WebFetch's own infrastructure, and from a third-party headless-browser fetch service (all three failed the same way), and the Wayback Machine has never crawled that subdomain (zero captures). The PDF has no extractable text layer (pdftotext -layout returns 0 lines; each page is one flat embedded JPEG at 845x1233px/72ppi), so every figure was read directly from the rendered table image (300dpi render, additional 2-3x crops on ambiguous cells) rather than parsed as text. DISCREPANCIES vs the existing FY2024 record (FY2024 file NOT edited \u2014 both values kept, see quarterly/2025_Q4.json period_note for full detail): Deposit (183,282.14 in FY2024's own report vs 169,737.39 in this report's FY2024 column, despite total assets and gross loans matching exactly \u2014 looks like a within-liabilities reclassification); Profit after tax (35.88 in FY2024's own report, which does not reconcile with that report's own PBT-tax, vs 44.77 here, which does reconcile against the same PBT/tax figures \u2014 same pattern as the ISLAMIBANK FY2024 capital precedent); and a purely definitional difference in 'Operating income' (FY2024's report used a gross-interest-income basis = 19,802.56, this report uses a net-interest-income basis = 7,508.33, for the identical year \u2014 every underlying component ties out exactly, so nothing was actually restated). INTERNAL INCONSISTENCY within this report's own table: printed Tier I (11,481.23) + Tier II (7,389.06) = 18,870.29 but the table's own printed Regulatory Capital total is 18,083.74; the printed CRAR (11.15%) and Capital Surplus/(Shortfall) (-2,183.36) both tie exactly to 18,083.74, and the printed Tier-II ratio (4.07%) implies Tier II is really approximately 6,599-6,603, not 7,389.06 \u2014 re-verified at 3x zoom, digits are unambiguous, so the printed Tier II capital amount is very likely a source-document typo. Recorded exactly as printed regardless; total_capital uses the table's own printed total (18,083.74), not a Tier1+Tier2 derivation, because that total independently reconciles with two other rows in the same table."
+    },
+    {
+      "period": "2014,2015,2016,2017,2018,2019 Q1-Q3 (interim, consolidated)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "nrbcbank-annual-report-2015.txt / -2017.txt (=FY2016 report, see note) / nrbcbank-annual-report-2017-real.txt (=genuine FY2017 report, newly found this session) / -2018.txt / -2019.txt",
+      "source_path": "annual_reports/NRBCBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ],
+      "note": "FREE WIN found by grepping annual_reports/NRBCBANK/*.txt for the BSEC-mandated 'quarterly financial performance' disclosure, per this task's step 1. Every annual report FY2014-FY2025 (i.e. every year with a real report in the archive except FY2013, the bank's part-year opening year) turns out to contain the bank's OWN retrospective 'Quarterly Performance study' table for its own year, headed 'D/E/F/G-4.0 or 5.0: Quarterly Performance study and any variance thereof' (section number varies by year) or, from FY2024, headed 'QUARTERLY FINANCIAL PERFORMANCE (STANDALONE)'. These are DISCRETE quarterly figures (not cumulative), confirmed because Q1+Q2+Q3+Q4 sums to the table's own 'Annual' column on every row checked, every year. Only income-statement rows are given (Net Interest Income, Non-Interest Income [see below], Operating Income, Operating Expenses, Operating Profit, and from FY2018 onward also Provisions/Tax Effect/Net Profit) -- no balance-sheet snapshot for any interim date. IMPORTANT DEFINITIONAL TRAP: this table's own 'Non-Interest Income' column is NOT the same thing as the 'non_interest_income' field used in this dataset's Q4/annual files -- it BUNDLES Investment Income in with Commission/Exchange/Brokerage and Other Operating Income (proved by cross-checking against the FY2020-2025 real interim statements, where the three components are itemised separately and sum exactly to this table's combined figure every quarter checked). Recorded here under the metric name 'non_interest_and_investment_income' to make the bundling unambiguous. FY2016's table lives inside the locally-archived file confusingly named 'nrbcbank-annual-report-2017.txt' -- that PDF's own title page and running footers read 'Annual Report - 2016' (confirmed at its line 148, 'Annual Report of NRB Commercial Bank Limited (NRBC Bank) for the period ended on 31st December 2016'), i.e. it genuinely IS the FY2016 report, just filed locally under a misleading name -- this matches how the existing 2016_Q4.json was already sourced. FY2017's table came from a genuinely NEW find this session (see the separate FY2017 source entry below) -- the archive had no real FY2017 report at all before now. FY2016 and FY2017's tables have only 5 rows (stop at Operating Profit, no Provisions/Tax/Net Profit breakdown); FY2014's table has the same 5 rows but its own printed column headers are corrupted by a pdftotext extraction artifact (duplicate 'Q1, 2014' label, stray 'Q3, 2013') -- relabelled Q1-Q4 2014 on the strength of an exact sum-check against the table's own Annual column. Basis is CONSOLIDATED for all of FY2014-2019, per the dataset's existing documented break at FY2020. Every Annual-column total in every one of these tables was cross-checked against the existing (already-committed, untouched) *_Q4.json files' own values and matches exactly in every case tested (e.g. FY2016 Net Interest Income 1037.25, FY2017 Operating Profit 1841.92, FY2019 Net profit 1148.26)."
+    },
+    {
+      "period": "2017 (Q4/year-end) -- NEWLY FOUND genuine annual report, informational only",
+      "type": "data_quality_finding",
+      "source_document": "nrbcbank-annual-report-2017-real.txt",
+      "source_path": "annual_reports/NRBCBANK/nrbcbank-annual-report-2017-real.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "found_not_applied",
+      "used_for_years": [],
+      "note": "The existing 2017_Q4.json's own period_note says the real FY2017 annual report 'is not usable as a source (it is absent from the archive...)', so that file was built from FY2018's comparative column instead. This session found and downloaded the GENUINE FY2017 Annual Report directly from https://www.nrbcommercialbank.com/assets/form/report/Annual%20Report%20-2017.pdf (17,906,185 bytes, 249 pages, confirmed by its own title page: 'Annual Report of NRB Commercial Bank Limited (NRBC Bank) for the year ended 31st December 2017') -- it is no longer linked from the site's current reports index, so was located via web search. Its own quarterly table (used for the 2017_Q1/Q2/Q3.json files above) independently reproduces the ALREADY-COMMITTED 2017_Q4.json's own net_interest_income (1570.87), operating_expenses (1683.93) and operating_profit (1841.92) exactly -- a clean confirmation, not a restatement, of the existing record. Per this task's scope rules 2017_Q4.json itself was NOT edited. Its text is saved to annual_reports/NRBCBANK/nrbcbank-annual-report-2017-real.txt (a different filename from the existing, differently-sourced nrbcbank-annual-report-2017.txt, which is genuinely the FY2016 report -- see the note on the entry above) as a resource for any future session that wants to re-source 2017_Q4.json from its own primary report instead of FY2018's comparative column."
+    },
+    {
+      "period": "2020 Q1-Q3 (interim, solo)",
+      "type": "bank_interim_financial_statements",
+      "source_document": "nrbcbank-2020-q1-financial-statements.txt / nrbcbank-2020-q2-financial-statements.txt / nrbcbank-2020-q3-financial-statements.txt",
+      "source_path": "annual_reports/NRBCBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020
+      ],
+      "note": "Found NRB Commercial Bank's own quarterly/interim financial-statements archive at https://www.nrbcommercialbank.com/about/reports (a different page from the annual-report archive, per this task's step 2) -- it goes back to FY2020 and (at time of retrieval) forward through FY2026 Q1/Q2. Q1 and Q2 2020 PDFs have clean native text layers and were parsed directly; both give a full SOLO Balance Sheet snapshot plus a Profit and Loss Account with a genuine cumulative-vs-discrete 4-column layout for Q2 onward (Jan-Jun / Jan-Jun-prior-year / Apr-Jun / Apr-Jun-prior-year). Q3 2020's PDF text layer is a badly OCR-corrupted transcription (spurious spaces and stray letter substitutions inside digit groups, e.g. 'Seotembet 2420'); only its Total Assets and NAV-per-share cells survived legible without relying on an unverified digit-correction assumption, so 2020_Q3.json's balance sheet carries just those two figures and its income statement falls back to the FY2020 annual report's own retrospective table instead. DISCREPANCY FOUND: the contemporaneous Q2 2020 interim filing's own Tax Effect (76.02) and Net profit (165.73) for the Apr-Jun quarter diverge from the FY2020 annual report's later retrospective table (85.54 / 156.33) by ~9.4-9.5m -- every other line for that quarter reconciles between the two sources to the cent. Kept the contemporaneous interim figure per this dataset's standing rule; recorded in 2020_Q2.json."
+    },
+    {
+      "period": "2021 Q1 (interim, solo)",
+      "type": "bank_interim_financial_statements",
+      "source_document": "nrbcbank-2021-q1-financial-statements.txt",
+      "source_path": "annual_reports/NRBCBANK/nrbcbank-2021-q1-financial-statements.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021
+      ],
+      "note": "Clean native text extraction, full solo Balance Sheet + Profit and Loss Account."
+    },
+    {
+      "period": "2021 Q2-Q3 (interim, consolidated -- basis exception)",
+      "type": "bank_interim_financial_statements",
+      "source_document": "(none saved -- single-page image-only PDFs with no text layer at all)",
+      "source_path": "(none)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2021
+      ],
+      "note": "For these two quarters only, the bank published a single-page 'newspaper disclosure' style PDF (NRBC_Bank_30_June2021.pdf, NRBC_3rd_Quarter_2021_Final_compressed.pdf) instead of a full multi-page interim financial statement -- pure image/graphic content, pdftotext returns 0 lines from either. These give a full CONSOLIDATED (not solo) balance sheet, read directly off the page image, plus a small 'Composition of Shareholders' Equity' note with a SOLO equity and NAV-per-share figure. The Q3 2021 note's solo figures passed an independent arithmetic check (equity / shares outstanding = the note's own printed solo NAV, exactly); the equivalent Q2 2021 note did NOT reconcile on re-verification and was therefore left OUT of 2021_Q2.json rather than risk publishing a misread digit as fact -- recorded here as a caution for anyone revisiting this specific filing. Income-statement figures for both quarters instead use the FY2021 annual report's own retrospective table, already shown solo-consistent by an exact match against the real solo Q1,2021 interim filing. This is the one basis exception in this bank's entire FY2020-2025 interim series -- every other interim quarter is solo."
+    },
+    {
+      "period": "2022 Q1 (interim, solo, image-based PDF)",
+      "type": "bank_interim_financial_statements",
+      "source_document": "nrbcbank-2022-q1-financial-statements.txt",
+      "source_path": "annual_reports/NRBCBANK/nrbcbank-2022-q1-financial-statements.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022
+      ],
+      "note": "This PDF's extracted text layer is almost empty (~78 lines from 64 pages) -- the filing is effectively a scan. Balance Sheet and Profit and Loss Account were both read directly off the rendered page images (175dpi) instead. Off-balance-sheet exposures were not located/legible in the pages rendered and are recorded as a gap rather than guessed."
+    },
+    {
+      "period": "2022 Q2-Q3, 2023 Q2-Q3, 2024 Q1 (interim, solo, clean text)",
+      "type": "bank_interim_financial_statements",
+      "source_document": "nrbcbank-2022-q2/-q3-financial-statements.txt, nrbcbank-2023-q2/-q3-financial-statements.txt, nrbcbank-2024-q1-financial-statements.txt",
+      "source_path": "annual_reports/NRBCBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022,
+        2023,
+        2024
+      ],
+      "note": "All five have clean native text layers, no OCR/visual reading needed. Each gives a full solo Balance Sheet plus a Profit and Loss Account with both cumulative-from-Jan-1 and discrete-quarter columns (Q1 2024's is naturally cumulative=discrete, being the first quarter). Every one cross-checked exactly (or to a trivial rounding cent) against the corresponding annual report's own retrospective 'Quarterly Performance' table."
+    },
+    {
+      "period": "2023 Q1, 2024 Q2-Q3, 2025 Q1-Q3 (interim, solo, font-corrupted PDFs -- read visually)",
+      "type": "bank_interim_financial_statements",
+      "source_document": "nrbcbank-2023-q1-financial-statements.txt, nrbcbank-2024-q2/-q3-financial-statements.txt, nrbcbank-2025-q1/-q2/-q3-financial-statements.txt",
+      "source_path": "annual_reports/NRBCBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023,
+        2024,
+        2025
+      ],
+      "note": "NEW EXTRACTION TRAP found this session, distinct from a plain OCR-of-a-scan corruption: these six PDFs have a genuine digital text layer (real embedded CID/TrueType fonts, not scanned images) but the fonts' glyph-to-Unicode mapping is broken for SOME glyphs -- e.g. the digit '1' silently extracts as the letter 'L' in some cells (e.g. '9,L89,498,L75') while other digits in the very same cell, and '1's in other cells of the same document, extract correctly. This is NOT a fixed substitution cipher (ruled out: tried plain pdftotext, pdftotext -raw, and mutool draw -F text, all reproduce the same corruption; a global 'L means 1' find-and-replace would corrupt the many cells where 'L'/'l' legitimately extract fine), so it cannot be reversed programmatically with confidence. All affected Balance Sheets and Profit and Loss Accounts were instead read directly off the rendered page images (175dpi) -- same methodology as this dataset's FY2025 annual report. Severity varies file to file (an automated scan for the corruption pattern counted roughly 38-136 affected digit-groups per file, heaviest in the FY2025 filings); off-balance-sheet exposures were legible in some of these visually-read pages (2023 Q1, 2025 Q1, 2025 Q3) but not others (2024 Q2, 2024 Q3, 2025 Q2), recorded as a per-file gap rather than guessed where illegible. Worth flagging in the shared parser/trap notes for other banks in this dataset, since it will recur wherever a bank's report was produced by whatever tool generated these ones' broken ToUnicode CMaps."
+    },
+    {
+      "period": "2026 Q1-Q2 (interim, SOLO, extracted this session)",
+      "type": "bank_interim_financial_statements",
+      "source_document": "NRBCBANK_2026_Q1.pdf, NRBCBANK_2026_Q2.pdf",
+      "source_path": "annual_reports/NRBCBANK/ (PDFs deleted per project convention after extraction; not saved as .txt since pdftotext output was unusable due to font-encoding corruption -- figures sourced from rendered page images instead)",
+      "source_url": "https://www.nrbcommercialbank.com/assets/form/report/NRBCBANK_2026_Q1.pdf ; https://www.nrbcommercialbank.com/assets/form/report/NRBCBANK_2026_Q2.pdf (the bank's own reports page at /about/reports links the Q2/Half-Yearly PDF twice, once labelled plain and once '(CFS)' -- both links point to the identical single file, a site display quirk, not two different documents)",
+      "source_priority": 1,
+      "retrieval_date": "2026-09-12",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2026
+      ],
+      "note": "Same pervasive font-encoding corruption in pdftotext output as the FY2023/2024/2025 filings noted above (digits/letters visually swapped) -- both filings' Solo Balance Sheet and Solo Profit and Loss Account pages were instead read directly off rendered page images (pdftoppm 300dpi), not tesseract OCR'd (direct visual reading was reliable and fast at this resolution). Both filings bundle a 'NRBC Bank PLC. & Its Subsidiary Consolidated' set of statements first, then a separate SOLO 'NRBC Bank PLC.' set later in the same PDF -- the SOLO set was used throughout, consistent with the FY2020+ annual basis and this bank's other 2020-2025 interim quarters. Both quarters' Dec-31-2025 comparative columns reproduce the existing 2025_Q4.json's total_assets (261,909.588791m) and total_equity (13,655.455232m) exactly. Q1 2026 balance-sheet identity and PBT/tax/PAT chain reconcile exactly; Q2 2026's H1-cumulative and discrete-Apr-Jun figures cross-validate against each other (discrete Q2 PAT 361.018925m + Q1 PAT 138.561145m = 499.580070m, matching the filing's own H1-cumulative PAT exactly) and against 2026_Q1.json. Net interest income collapsed to near-zero (37.86m cumulative through H1, and outright NEGATIVE in the discrete Apr-Jun quarter alone, -99.31m) -- a real, arithmetic-confirmed finding consistent with this bank's already-documented margin-compression trend, not an extraction error. As with every other interim quarter for this bank, no classified-loan/NPL breakdown is disclosed in either filing -- only available annually."
+    }
+  ]
+}

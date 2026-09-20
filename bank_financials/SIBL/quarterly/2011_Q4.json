@@ -1,0 +1,245 @@
+{
+  "bank_id": "SIBL",
+  "bank_name": "Social Islami Bank Limited",
+  "reporting_date": "2011-12-31",
+  "financial_year": 2011,
+  "quarter": "Q4",
+  "period_note": "Year-end position for Social Islami Bank Limited, Solo/Standalone basis (reporting_basis determined by matching this dataset's stored figures against the bank's own Solo-labeled Balance Sheet / 'Only Bank-Solo Basis' Highlights annexure / Note 16.5 'Capital Adequacy (Solo Basis)', as distinct from the parallel Consolidated Balance Sheet covering SIBL and its two wholly-owned subsidiaries, SIBL Securities Limited and SIBL Investment Limited). Shariah-based Islamic bank: 'Investments (General)' is the Shariah-compliant equivalent of conventional Loans and Advances, and 'Classified Investments' / 'Ratio of Classified Investments to Total Investments' is the equivalent of NPL / NPL ratio -- mapped to this dataset's gross_loans and npl_pct fields for cross-bank comparability, consistent with the convention already used for EXIMBANK, FIRSTSBANK and GIB in this dataset. Source: Balance Sheet (Solo) & Profit and Loss Account (Solo) lines ~3084-3200; Capital Base (Tier I&II) comparative table (own report) lines ~975-1005 -- Tier-2 subtotal figure in raw text is OCR-corrupted ('426081'); recomputed as 691.56+569.25=1260.81, which reproduces the reported Total (9534.52) exactly. Paid-up capital OCR note: this year's figure (6,393.93m) reproduces exactly from the bank's own FY2011 Balance Sheet; later reports' 'SIBL at a Glance' comparative tables (FY2013, FY2014) render this same figure as the OCR-garbled '63693.92' -- a clear digit-duplication artifact, not a restatement; the correct value is used throughout.",
+  "source": {
+    "source_document": "sibl-annual-report-2011.txt",
+    "source_path": "annual_reports/SIBL/sibl-annual-report-2011.txt",
+    "source_url": "https://www.siblbd.com",
+    "source_page_lines": "Balance Sheet (Solo) & Profit and Loss Account (Solo) lines ~3084-3200; Capital Base (Tier I&II) comparative table (own report) lines ~975-1005 -- Tier-2 subtotal figure in raw text is OCR-corrupted ('426081'); recomputed as 691.56+569.25=1260.81, which reproduces the reported Total (9534.52) exactly",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 6393.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 1168.48,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": 711.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 9412.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Total Deposits",
+      "value": 66852.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "client_deposits",
+      "original_metric_name": "Client Deposits",
+      "value": 56661.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General)",
+      "value": 53908.58,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Islamic bank convention: 'Investments (General)' is SIBL's Shariah-compliant equivalent of conventional Loans and Advances."
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments in Shares & Securities",
+      "value": 5241.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets",
+      "value": 2134.87,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 84406.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 74993.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off Balance Sheet Items including Contingent Liabilities",
+      "value": 20251.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Tier-I Capital (Core Capital / Going Concern Capital)",
+      "value": 8273.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Tier-II Capital (Supplementary Capital / Gone Concern Capital)",
+      "value": 1260.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_capital",
+      "original_metric_name": "Total Capital (Tier I + Tier II) / Capital Base",
+      "value": 9534.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "risk_weighted_assets",
+      "original_metric_name": "Total Risk Weighted Assets",
+      "value": 72389.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital to Risk Weighted Asset Ratio (CRAR)",
+      "value": 13.17,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Operating Profit / Profit before Provision",
+      "value": 2768.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total Profit before Tax",
+      "value": 1901.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Provision for Income Tax / Taxation",
+      "value": 817.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after Tax",
+      "value": 1083.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_investments",
+      "original_metric_name": "Amount of Classified Investment",
+      "value": 2118.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_reported_ratio",
+      "metric_note": "Calculated as the reported classified-investment ratio x Investments (General); this year's own source tables report only the ratio, not the absolute Taka amount. Methodology validated: applying the identical ratio x gross-investment calculation to FY2017/FY2018 (where both the ratio AND the directly-reported absolute amount are available) reproduces the reported absolute figure to within 0.01 percentage points."
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Ratio of Classified Investments to Total Investments",
+      "value": 3.93,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earning Per Share (EPS)",
+      "value": 1.81,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) Per Share",
+      "value": 14.72,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on Assets (ROA), after tax",
+      "value": 1.55,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated_avg_equity_assets"
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Return on Equity (ROE), after tax",
+      "value": 15.92,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated_avg_equity_assets",
+      "metric_note": "Calculated as Profit after Tax / average of period-start and period-end Total Shareholders' Equity (and, for ROA, / average Total Assets); this bank's own summary tables do not report ROA/ROE for this year (the 'Highlights of Performance' annexure only appears from FY2017 onward)."
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Investment-Deposit (ID) Ratio",
+      "value": 94.65,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "SIBL's own 'Investment-Deposit (ID) Ratio' / 'Investments as a % of Client Deposits' as reported; the bank's exact internal denominator basis is not fully disclosed and was not independently re-derived."
+    }
+  ]
+}

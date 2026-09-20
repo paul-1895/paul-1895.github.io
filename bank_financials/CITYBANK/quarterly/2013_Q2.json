@@ -1,0 +1,121 @@
+{
+  "bank_id": "CITYBANK",
+  "bank_name": "The City Bank PLC",
+  "reporting_date": "2013-06-30",
+  "financial_year": 2013,
+  "quarter": "Q2",
+  "period_note": "Sourced directly from the bank's own primary half-yearly interim financial statements (\"Balance Sheet as at 30 June 2013 (Unaudited)\" / \"Profit and Loss Account for the half year ended 30 June 2013 (Unaudited)\", filename 'Financial Statement June 30, 2013.pdf'), recovered via Wayback Machine capture of the bank's original thecitybank.com/AnnualReport archive (this quarter predates the legacy.citybankplc.com file archive, which has no 2013 entries at all). This copy is a scanned booklet (PFU ScanSnap-produced PDF, 4 pages: Consolidated Balance Sheet, Consolidated P&L, Solo Balance Sheet, Solo P&L) with no usable text layer; figures were read visually from page renders. Per project convention the SOLO ('Balance Sheet as at 30 June 2013' / 'Profit and Loss Account for the half year ended 30 June 2013', both unlabelled) figures are used, not the explicitly-labelled 'Consolidated' pages. Arithmetically verified: Total liabilities 124,129,219,136 + Shareholders' equity 18,805,422,283 = Total assets 142,934,641,418 exactly; Net interest income 2,458,173,741 + Investment income 753,220,535 + Commission 517,225,822 + Other operating income 550,679,205 = Total operating income 4,279,299,304 (source document's own subtotal, off by 1 taka from the component sum due to rounding in the original). Cumulative NPAT (380.09m) sits correctly between the already-recovered 2013_Q1 (107m) and 2013_Q3 (573m) cumulative figures, confirming a consistent monotonic series. Non Funded Income is calculated as Commission/exchange/brokerage + Other operating income (both individually reported). NAV per share is not disclosed in the primary interim statement and is left out as a genuine gap. The Wayback raw-file fetch required the archive's 'id_' replay mode; the standard 'if_' mode returned an HTML error page for this specific capture (noted for any future re-scrape of this era's captures).",
+  "source": {
+    "source_document": "citybank-2q-2013-financial-statements.txt",
+    "source_path": "annual_reports/CITYBANK/citybank-2q-2013-financial-statements.txt",
+    "source_url": "http://www.thecitybank.com/AnnualReport/Financial Statement June 30, 2013.pdf (via Wayback Machine capture 20140520220614, id_ replay mode)",
+    "source_page_lines": "4-page scanned booklet (pages 3-4: Solo Balance Sheet and Solo P&L); read visually via page render (pdftoppm -r 250)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 22109,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances / Investments",
+      "value": 90974,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 99635,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Shareholders' equity of The City Bank Limited",
+      "value": 18805,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 142935,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities",
+      "value": 44894,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest / net profit on investments (Year-to-Date)",
+      "value": 2458,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (Year-to-Date)",
+      "value": 753,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_funded_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (Year-to-Date)",
+      "value": 1068,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_sum_of_reported_lines"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (B) (Year-to-Date)",
+      "value": 2376,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit / (loss) before provision (C=A-B) (Year-to-Date)",
+      "value": 1903,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (Year-to-Date)",
+      "value": 380,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (Year-to-Date)",
+      "value": 0.6,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

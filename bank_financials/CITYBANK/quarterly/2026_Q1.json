@@ -1,0 +1,19 @@
+{
+  "bank_id": "CITYBANK",
+  "bank_name": "The City Bank PLC",
+  "reporting_date": "2026-03-31",
+  "financial_year": 2026,
+  "quarter": "Q1",
+  "period_note": "THIN/PARTIAL RECORD -- EPS ONLY, not a full quarterly filing extraction. City Bank's own Q1 2026 unaudited financial statements PDF could not be located or accessed despite an extensive, good-faith search: (1) the bank's legacy report-archive site (legacy.citybankplc.com/report/financialstatements), which is the source this dataset used for City Bank's own quarterly PDFs through 2021, has not been updated since 2021 and lists nothing for 2022-2026 (the bank's Q1-Q3 2022-2025 data in this dataset instead comes from each year's own annual report's embedded 'Quarterly Performance Review' table -- a shortcut not available yet for 2026, since no FY2026 annual report exists); (2) the bank's current website (citybankplc.com) is a client-side-rendered Next.js application whose report-listing page (citybankplc.com/reports) returns no server-rendered content and no discoverable data API via plain HTTP requests; (3) DSE's own company page (dsebd.org/displayCompany.php?name=CITYBANK) and CSE's company page both explicitly defer to the bank's own website for full financial statements and host no PDF; (4) the Wayback Machine (web.archive.org CDX API) has no capture of any 2026 quarterly-statement PDF or press-release page for this bank; (5) direct URL guessing against multiple plausible filename patterns on both the legacy and current domains returned HTTP 404 in every case. What IS available: DSE's own 'Interim Financial Performance' disclosure table on the company's live dsebd.org page (a primary regulatory disclosure, filed directly by the company) discloses Q1 2026 Basic EPS = 1.580 (and separately, Q2-discrete EPS = 1.630, H1-cumulative EPS = 3.010, and period-end market price 29.7 -- see 2026_Q2.json). DSE's table does not label whether this EPS is Solo/Standalone or Consolidated (this dataset's City Bank series is otherwise Solo throughout) -- basis is therefore UNCONFIRMED, a real caveat, not an oversight. Press coverage (The Business Standard, 'City Bank reports 162% net profit growth in Q1 2026') independently corroborates: PAT ~Tk241 crore (~2,410m) vs ~Tk92 crore a year earlier, EPS Tk1.6 (rounds to DSE's 1.580), total income grew >38% to ~Tk1,338 crore, cost-to-income improved to 44% from >52%. No balance sheet, no other income-statement line items, and no classified-loan data could be sourced for this quarter -- do not treat this file as balance-sheet-complete. Re-attempt with fresh site access in a future session; this is a genuine fetch-access gap, not a publication lag (the filing plainly exists and was board-approved).",
+  "source": {
+    "source_document": "N/A -- primary PDF not accessible; figures from DSE's live company-page disclosure table",
+    "source_path": "N/A",
+    "source_url": "https://www.dsebd.org/displayCompany.php?name=CITYBANK",
+    "source_page_lines": "'Interim Financial Performance: 2026' table, 'Q1' column, 'Earnings Per Share (EPS) - Basic' row",
+    "retrieval_date": "2026-09-12"
+  },
+  "line_items": [
+    { "normalised_metric_name": "eps", "original_metric_name": "Earnings Per Share (EPS) - Basic (Q1 2026)", "value": 1.58, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported", "note": "Basis (Solo vs Consolidated) not specified by DSE's disclosure table. See period_note." },
+    { "normalised_metric_name": "market_price_period_end", "original_metric_name": "Market price per share at period end", "value": 29.7, "unit": "BDT", "currency": "BDT", "basis": "reported" }
+  ]
+}

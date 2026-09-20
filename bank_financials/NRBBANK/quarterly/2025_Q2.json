@@ -1,0 +1,217 @@
+{
+  "bank_id": "NRBBANK",
+  "bank_name": "NRB Bank PLC",
+  "reporting_date": "2025-06-30",
+  "financial_year": 2025,
+  "quarter": "Q2",
+  "period_note": "Half-Yearly filing used as the Q2 data point, per project convention -- figures are H1-CUMULATIVE (1 January to 30 June 2025). BASIS BREAK FROM THE MAIN SERIES: Consolidated only, same as 2025_Q1.json (no Separate/Bank-only statement set is printed anywhere in this filing) -- flagged per the project's Solo-preference rule. Income-statement items are cumulative from 1 January 2025; the source also prints a discrete quarter-only column ('01 April to 30 June 2025': Net profit after tax -892,659,667, EPS -1.29) -- cross-checked: H1-cumulative NPAT -854,333,053 minus this dataset's own Q1 (2025_Q1.json) NPAT of 38,326,614 = -892,659,667, matching the discrete Q2 column exactly, confirming full internal consistency. EPS is plain 'Earnings per share (EPS)', not annualized. Consolidated Balance Sheet identity verified exactly (Total Liabilities 99,374,318,970 + Total Shareholders' Equity 7,908,912,483 = Total Assets 107,283,231,453). MAJOR RISK SIGNAL: Net interest income turned NEGATIVE this half (-290,807,407, cumulative; the discrete Q2-alone figure is even more negative at -797,619,348, meaning Q1 2025 alone was still positive at +506,811,941 -- consistent across this dataset's own 2025_Q1.json) as Interest paid on deposits and borrowings (3,725,905,907) grew faster than Interest income (3,435,098,500). Combined with a large increase in Specific provision (1,162,970,655 cumulative vs 75,815,156 in the same period of 2024, per the source's own comparative column -- a ~15x increase) and General provision turning strongly positive (241,148,474 vs 28,136,944 prior year), Total provision (D) rose to 1,483,516,964 (cumulative) from 246,871,251 in H1-2024, driving Net profit after tax from +105,541,064 (H1-2024) to -854,333,053 (H1-2025) -- Total shareholders' equity fell from 8,806,646,744 (31-Mar-2025) to 7,908,912,483 in this single quarter, and Retained earnings turned negative (-250,454,236). The bank's own FY2026-H1 filing (2026_Q2.json in this dataset) later explains this explicitly via a BSEC-mandated disclosure note: 'From 2025, Net Interest Income (NII) has a negative growth due to [a] non-performing loan (NPL) [event] in 2025 resulting decrease in interest income and transfer[s] to interest suspense of BDT 110.71 crore during the period January to June 2025.'",
+  "source": {
+    "source_document": "nrbbank-2025-q2-unaudited.txt ('Un-Audited Financial Statements for the Period Ended 30 June 2025')",
+    "source_path": "annual_reports/NRBBANK/nrbbank-2025-q2-unaudited.txt",
+    "source_url": "https://www.nrbbankbd.com/wp-content/uploads/2025/07/Financial-Statement-June-2025-Output.pdf",
+    "source_page_lines": "Single-page compact composite: Consolidated Balance Sheet/P&L/Cash Flow/Statement of Changes in Equity, plus explanatory notes on the same page",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 21216.88,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances",
+      "value": 71964.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 82016.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total shareholders' equity",
+      "value": 7908.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 107283.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 99374.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-Balance Sheet items including contingent liabilities",
+      "value": 15987.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net asset value per share (NAVPS)",
+      "value": 11.45,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up capital",
+      "value": 6905.87,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 1212.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "general_reserve",
+      "original_metric_name": "General reserve",
+      "value": 0.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserve",
+      "original_metric_name": "Other reserve",
+      "value": 40.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained earnings",
+      "value": -250.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (H1-cumulative, Consolidated)",
+      "value": -290.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Income from investments (H1-cumulative, Consolidated)",
+      "value": 1405.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage (H1-cumulative, Consolidated)",
+      "value": 187.11,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other operating income (H1-cumulative, Consolidated)",
+      "value": 33.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_income_cumulative",
+      "original_metric_name": "Total operating income (A) (H1-cumulative, Consolidated)",
+      "value": 1334.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_expenditure_cumulative",
+      "original_metric_name": "Total operating expenses (B) (H1-cumulative, Consolidated)",
+      "value": 1218.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_profit_cumulative",
+      "original_metric_name": "Profit before provision (C=A-B) (H1-cumulative, Consolidated)",
+      "value": 115.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provision_cumulative",
+      "original_metric_name": "Total provision (D) (H1-cumulative, Consolidated)",
+      "value": 1483.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total profit before tax (E=C-D) (H1-cumulative, Consolidated)",
+      "value": -1367.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_provision_cumulative",
+      "original_metric_name": "Total provision for tax (F) (H1-cumulative, Consolidated)",
+      "value": -513.39,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after tax (G=E-F) (H1-cumulative, Consolidated)",
+      "value": -854.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS)",
+      "value": -1.24,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

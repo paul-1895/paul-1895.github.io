@@ -1,0 +1,158 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2022-03-31",
+  "financial_year": 2022,
+  "quarter": "Q1",
+  "period_note": "Solo (bank-only, excluding subsidiaries) Balance Sheet and Profit and Loss Account, taken from National Bank's own Q1-2022 unaudited financial statements. The source document prints THREE statements per period: a 'Consolidated Balance Sheet'/'Consolidated Profit and Loss Account' (includes subsidiaries) followed by a plain 'Balance Sheet (Un-audited)'/'Profit and Loss Account (Un-audited)' with no 'Consolidated' prefix -- this plain, SOLO version is the one extracted here, because it is the basis this dataset's annual Q4 series uses for NBL ('Solo including the Offshore Banking Unit'). The comparative column (31 Dec 2021) reproduces this dataset's existing FY2021 Q4 figures exactly (total_assets 575060.76m, equity 51943.54m, gross_loans 445287.71m, total_deposits 473103.89m, nav_per_share 16.13), confirming the correct solo section was identified. Income-statement figures for Q1 are simply Jan-Mar 2022 (no cumulative-vs-discrete distinction applies to Q1 itself). Two figures required sign-correction: the OCR'd source text drops the negative sign/parentheses on 'Net interest income', 'Total operating income', 'Profit before provision' and 'Earnings per share' subtotal lines in this specific filing even though the underlying value is a loss -- corrected here using the balance-sheet/P&L identity chain (Total Operating Income = NII + Investment Income + Commission + Other Income; Profit Before Provision = Total Operating Income - Total Operating Expenses; Profit Before Tax = Profit Before Provision - Provision; PAT = PBT - Tax), which is fully self-consistent and also reproduces the explicitly-parenthesized 'Profit before taxes (630,207,411)' and EPS sign. Source PDF was image-only (scanned); text obtained via OCR (tesseract, 300dpi) and cross-validated against the balance-sheet identity and known annual comparatives before use.",
+  "source": {
+    "source_document": "1st_Quatar_2022-05162022171029.pdf (bank's own filename; 1st Quarter Un-Audited Financial Statements as at 31 March 2022)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-2022-q1-ocr.txt",
+    "source_url": "https://www.nblbd.com/public/assets/financial-statement/1712038859_1st_Quatar_2022-05162022171029.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections (pages 3-4 of the filing)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 557063.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 505456.11,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 51607.22,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 452016.26,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 430885.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 70346.94,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off B/S items (Including contingent liabilities)",
+      "value": 66234.46,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets value per share",
+      "value": 16.03,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest income",
+      "value": 6511.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest paid on deposits and borrowings",
+      "value": 7188.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income",
+      "value": -677.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_sign_corrected",
+      "note": "Source text printed 677,384,192 without a negative sign; the value is a loss (interest income 6511.15m minus interest expense 7188.54m = -677.38m)."
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income",
+      "value": 1245.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income",
+      "value": 482.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (419.48m) and other operating income (62.84m)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses",
+      "value": 1680.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit before provision",
+      "value": -630.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_sign_corrected",
+      "note": "Source text printed 630,207,411 without a negative sign; confirmed negative via identity (Total Op Income -677.38+1245.19+419.48+62.84=1050.12m minus Total Op Expenses 1680.33m = -630.21m), and equals Profit before taxes exactly since provision was zero this quarter."
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after taxation",
+      "value": -630.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Zero provision and zero tax this quarter, so PAT = Profit before provision = Profit before tax = -630.21m."
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per share (Re-stated)",
+      "value": -0.2,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "calculated_sign_corrected",
+      "note": "Source text printed 0.20 without a negative sign; PAT is a loss so EPS is -0.20, confirmed by PAT/shares outstanding (-630.21m / 3219.74m shares = -0.196, rounds to -0.20)."
+    }
+  ]
+}

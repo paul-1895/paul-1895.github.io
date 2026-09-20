@@ -1,0 +1,136 @@
+{
+  "bank_id": "PREMIERBAN",
+  "bank_name": "The Premier Bank Limited",
+  "reporting_date": "2018-06-30",
+  "financial_year": 2018,
+  "quarter": "Q2",
+  "period_note": "BASIS: CONSOLIDATED, not Solo. This source (the bank's own website newspaper-style quarterly disclosure, a genuinely different and richer source than the annual-report-embedded 'Evaluation of Quarterly Financials' BSEC table previously used for FY2019-2025, which is confirmed exhausted for FY2011-2018 -- no such table exists in any of those years' annual reports) presents ONLY a Consolidated Balance Sheet/Profit and Loss Statement/Cash Flow Statement/Statement of Changes in Equity in every quarter checked FY2011-2018 -- no Solo section is printed in the main 3-panel layout. This is a REAL, PERVASIVE basis mismatch against this dataset's Solo Q4/annual series for all of FY2011-2018 (the whole block newly added this session), matching the same CONSOLIDATED pattern already documented for FY2022/2024/2025's interim quarters (as opposed to the SOLO FY2019-2021/2023 interim quarters) -- see sources.json and insights.json's reporting_basis/data_gaps fields for the full picture across all years. (Bonus Solo cross-check figures are detailed in the notes below and are NOT used as this file's own line_items, which remain Consolidated throughout for internal consistency.) Cross-validated: this file's own figures satisfy Assets=Liabilities+Equity, NII=Interest Income-Interest Expense, Total Operating Income=NII+non-interest income, Profit before provision=TOI-TOE, Profit before taxation=PBP-Total provision, and Profit after taxation=PBT-Tax, all to the exact taka, and the equity components (paid-up capital+statutory reserve+other reserve+retained earnings+minority/non-controlling interest) sum exactly to Total Shareholders' Equity. BONUS SOLO CROSS-CHECK (from this file's own disclosure box, Solo Position column, cumulative Jan-Jun): NAV Jun-2018 1,384.37 crore / Jun-2017 1,253.19 crore; NAVPS Jun-2018 17.30 / Jun-2017 15.66; NOCFPS Jun-2018 1.31 / Jun-2017 1.30; EPS (cumulative, separate EPS sub-table) Jun-2018 0.95 / Jun-2017 0.86 -- genuinely different from this file's own Consolidated figures (EPS 0.97 cumulative, NAVPS 17.42). Provision for income tax rate is separately disclosed in this report's own notes as having changed to 37.5% (from 40% in the FY2017/early-2018 quarters), per Finance Act 2018.",
+  "source": {
+    "source_document": "PBL__Final-Half-Yearly-Financial-Statements-2018-02-01.jpg ('Half Yearly Financial Statements-2018 (Un-audited)', Consolidated Balance Sheet/P&L/Cash Flow/Statement of Changes in Equity plus Selected Explanatory Notes and TWO 'Disclosure on Un-audited Financial Statements' boxes (Q2-alone and H1-cumulative), both with Consolidated and Solo Position)",
+    "source_path": "N/A (sourced directly from the bank's website; PDF/JPG deleted after extraction per project convention, no annual_reports/PREMIERBAN archive text file involved for this source type)",
+    "source_url": "https://thepremierbankplc.com/wp-content/uploads/2025/07/PBL__Final-Half-Yearly-Financial-Statements-2018-02-01.jpg",
+    "retrieval_date": "2026-08-28"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 24741.46,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans, advances and lease/investments",
+      "value": 149132.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 154054.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up capital",
+      "value": 8000.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 13940.85,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 197206.49,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 183265.64,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet Items including contingent liabilities",
+      "value": 130449.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income/net profit on investments (cumulative Jan 1 to 2018-06-30)",
+      "value": 2474.78,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Investment income + Commission, exchange and brokerage + Other operating income (cumulative Jan 1 to 2018-06-30)",
+      "value": 2130.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expense_cumulative",
+      "original_metric_name": "Total Operating Expenses (B) (cumulative Jan 1 to 2018-06-30)",
+      "value": 2482.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (C = A-B) (cumulative Jan 1 to 2018-06-30)",
+      "value": 2123.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provision_cumulative",
+      "original_metric_name": "Total provision (D) (cumulative Jan 1 to 2018-06-30)",
+      "value": 750.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Profit after taxation (cumulative Jan 1 to 2018-06-30)",
+      "value": 773.22,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (cumulative Jan 1 to 2018-06-30)",
+      "value": 0.97,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DSE Live Market — Dhaka Stock Exchange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="homepage/index.css" />
+<link rel="stylesheet" href="watchlist/watchlist.css" />
+<link rel="stylesheet" href="notifications.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<script src="/shared/settings-modal.js"></script>
+<script src="/shared/nav-menu.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Live Market</h1>
+        <p>Dhaka Stock Exchange — All Listed Securities</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">LAST UPDATED</span>
+        <span class="meta-value" id="last-updated">—</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">TOTAL LISTED</span>
+        <span class="meta-value" id="total-count">—</span>
+      </div>
+
+      <!-- Watchlist toggle -->
+      <button class="wl-toggle-btn has-tooltip" id="wl-toggle-btn" onclick="openWatchlistPanel()" data-tooltip="Watchlists" aria-label="Watchlists">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        
+        <span class="wl-count-badge" id="wl-count-badge">0</span>
+      </button>
+
+      <!-- Menu + Settings, injected by shared/nav-menu.js (single source of truth) -->
+      <div id="gnav-mount"></div>
+
+      <button class="refresh-btn has-tooltip" id="refresh-btn" onclick="loadData()" data-tooltip="Refresh" aria-label="Refresh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+      </button>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- TICKER TAPE -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track">
+    <span class="ticker-loading">Loading market data…</span>
+  </div>
+</div>
+
+<!-- SUMMARY CARDS -->
+<div class="summary-row" id="summary-row">
+  <div class="summary-card">
+    <div class="sc-label">Total Gainers</div>
+    <div class="sc-value gain" id="sc-gainers">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Total Losers</div>
+    <div class="sc-value loss" id="sc-losers">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Unchanged</div>
+    <div class="sc-value" id="sc-unchanged">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Highest Price</div>
+    <div class="sc-value" id="sc-highest">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Lowest Price</div>
+    <div class="sc-value" id="sc-lowest">—</div>
+  </div>
+  <div class="summary-card">
+    <div class="sc-label">Total Turnover</div>
+    <div class="sc-value" id="sc-turnover">—</div>
+  </div>
+</div>
+
+<!-- RANKING CARDS: Top Volume / Top Gainers / Top Losers -->
+<div class="rank-row" id="rank-row">
+
+  <div class="rank-card" id="rank-card-volume">
+    <div class="rank-card-hd">
+      <span class="rank-card-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        Top by Volume
+      </span>
+    </div>
+    <div class="rank-list" id="rank-list-volume">
+      <div class="rank-empty">Loading…</div>
+    </div>
+    <button class="rank-seeall-btn" data-rank="volume" onclick="openRankModal('volume')">See All</button>
+  </div>
+
+  <div class="rank-card" id="rank-card-gainers">
+    <div class="rank-card-hd">
+      <span class="rank-card-title rank-title-gain">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+        Top Gainers
+      </span>
+    </div>
+    <div class="rank-list" id="rank-list-gainers">
+      <div class="rank-empty">Loading…</div>
+    </div>
+    <button class="rank-seeall-btn" data-rank="gainers" onclick="openRankModal('gainers')">See All</button>
+  </div>
+
+  <div class="rank-card" id="rank-card-losers">
+    <div class="rank-card-hd">
+      <span class="rank-card-title rank-title-loss">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg>
+        Top Losers
+      </span>
+    </div>
+    <div class="rank-list" id="rank-list-losers">
+      <div class="rank-empty">Loading…</div>
+    </div>
+    <button class="rank-seeall-btn" data-rank="losers" onclick="openRankModal('losers')">See All</button>
+  </div>
+
+  <div class="rank-card" id="rank-card-volatile">
+    <div class="rank-card-hd">
+      <span class="rank-card-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Top Volatile
+      </span>
+    </div>
+    <div class="rank-list" id="rank-list-volatile">
+      <div class="rank-empty">Loading…</div>
+    </div>
+    <button class="rank-seeall-btn" data-rank="volatile" onclick="openRankModal('volatile')">See All</button>
+  </div>
+
+  <div class="rank-card" id="rank-card-closed">
+    <div class="rank-card-hd">
+      <span class="rank-card-title rank-title-closed">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><line x1="5.5" y1="5.5" x2="18.5" y2="18.5"/></svg>
+        Closed / Non-Op <span id="closed-count-badge"></span>
+      </span>
+    </div>
+    <div class="rank-list" id="rank-list-closed">
+      <div class="rank-empty">Loading…</div>
+    </div>
+    <button class="rank-seeall-btn" data-rank="closed" onclick="openClosedModal()">See All</button>
+  </div>
+
+</div>
+
+<!-- CLOSED/NON-OPERATIONAL "SEE ALL" MODAL — separate from the shared rank
+     modal above since its columns (Company/Status/Since) don't fit that
+     one's fixed Range%/Day-Range/Volume header. -->
+<div class="rank-modal-backdrop" id="closed-modal-backdrop" onclick="closeClosedModal(event)">
+  <div class="rank-modal" id="closed-modal" onclick="event.stopPropagation()">
+    <div class="rank-modal-hd">
+      <span class="rank-modal-title">Closed / Non-Operational Companies</span>
+      <button class="rank-modal-close" onclick="closeClosedModal()">✕</button>
+    </div>
+    <div class="rank-modal-body">
+      <table class="rank-modal-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Code</th>
+            <th>Company</th>
+            <th>Status</th>
+            <th>Since</th>
+            <th class="rmt-num">LTP (৳)</th>
+            <th class="rmt-num">Change</th>
+          </tr>
+        </thead>
+        <tbody id="closed-modal-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls-bar">
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="search-input" placeholder="Search by code or company…"/>
+  </div>
+  <div class="filter-group">
+    <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" data-filter="gainer" onclick="setFilter('gainer', this)">↑ Gainers</button>
+    <button class="filter-btn" data-filter="loser" onclick="setFilter('loser', this)">↓ Losers</button>
+    <button class="filter-btn" data-filter="neutral" onclick="setFilter('neutral', this)">— Unchanged</button>
+  </div>
+
+  <div class="filter-select-wrap">
+    <label for="category-filter-select">Category</label>
+    <select id="category-filter-select" onchange="setCategoryFilter(this.value)">
+      <option value="">All</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="N">N</option>
+      <option value="Z">Z</option>
+    </select>
+  </div>
+
+  <div class="filter-select-wrap">
+    <label for="watchlist-filter-select">Watchlist</label>
+    <select id="watchlist-filter-select" onchange="setWatchlistFilter(this.value)">
+      <option value="">All Watchlists</option>
+    </select>
+  </div>
+
+  <div class="filter-select-wrap">
+    <label for="sector-filter-select">Sector</label>
+    <select id="sector-filter-select" onchange="setSectorFilter(this.value)">
+      <option value="">All Sectors</option>
+    </select>
+  </div>
+  <div class="sort-wrap">
+    <label for="sort-select">Sort by</label>
+    <select id="sort-select" onchange="sortTable()">
+      <option value="code-asc">Code A→Z</option>
+      <option value="code-desc">Code Z→A</option>
+      <option value="ltp-desc">Price High→Low</option>
+      <option value="ltp-asc">Price Low→High</option>
+      <option value="change-desc">Change High→Low</option>
+      <option value="change-asc">Change Low→High</option>
+    </select>
+  </div>
+
+  <!-- Column visibility picker button -->
+  <div class="mkt-col-picker-wrap" id="mkt-col-picker-wrap">
+    <button id="mkt-col-picker-btn" class="mkt-col-picker-btn" onclick="toggleMktColPicker(event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      Columns
+    </button>
+  </div>
+</div>
+
+<!-- RANKING "SEE ALL" MODAL (shared by all 3 cards) -->
+<div class="rank-modal-backdrop" id="rank-modal-backdrop" onclick="closeRankModal(event)">
+  <div class="rank-modal" id="rank-modal" onclick="event.stopPropagation()">
+    <div class="rank-modal-hd">
+      <span class="rank-modal-title" id="rank-modal-title">Top Stocks</span>
+      <button class="rank-modal-close" onclick="closeRankModal()">✕</button>
+    </div>
+    <div class="rank-modal-body">
+      <table class="rank-modal-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Code</th>
+            <th class="rmt-num">LTP (৳)</th>
+            <th class="rmt-num">Change</th>
+            <th class="rmt-num">Range %</th>
+            <th class="rmt-num">Day Range (৳)</th>
+            <th class="rmt-num">Volume</th>
+          </tr>
+        </thead>
+        <tbody id="rank-modal-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- TABLE AREA -->
+<main class="table-container">
+  <div id="loading-state" class="state-overlay">
+    <div class="spinner"></div>
+    <p>Fetching live market data from DSE…</p>
+  </div>
+  <div id="error-state" class="state-overlay hidden">
+    <div class="error-icon">!</div>
+    <p id="error-msg">Failed to load data.</p>
+    <button onclick="loadData()" class="retry-btn">Retry</button>
+  </div>
+  <div class="table-scroll">
+  <table id="stocks-table" class="hidden">
+    <thead>
+      <tr>
+        <th style="width:36px;"></th>
+        <th data-col="rank"     class="th-rank">#</th>
+        <th data-col="category" class="th-cat" onclick="toggleSort('category')" title="DSE Category (A/B/Z)">Cat <span class="sort-arrow" id="sort-category"></span></th>
+        <th data-col="code"     class="th-code" onclick="toggleSort('code')">Code <span class="sort-arrow" id="sort-code"></span></th>
+        <th data-col="sector"   class="th-sector" onclick="toggleSort('sector')">Sector <span class="sort-arrow" id="sort-sector"></span></th>
+        <th data-col="ltp"      onclick="toggleSort('ltp')" class="th-num">LTP (৳) <span class="sort-arrow" id="sort-ltp"></span></th>
+        <th data-col="high"     onclick="toggleSort('high')" class="th-num">High <span class="sort-arrow" id="sort-high"></span></th>
+        <th data-col="low"      onclick="toggleSort('low')" class="th-num">Low <span class="sort-arrow" id="sort-low"></span></th>
+        <th data-col="close"    onclick="toggleSort('close')" class="th-num">Close <span class="sort-arrow" id="sort-close"></span></th>
+        <th data-col="ycp"      onclick="toggleSort('ycp')" class="th-num">YCP <span class="sort-arrow" id="sort-ycp"></span></th>
+        <th data-col="change"   onclick="toggleSort('change')" class="th-num">Change <span class="sort-arrow" id="sort-change"></span></th>
+        <th data-col="trade"    onclick="toggleSort('trade')" class="th-num">Trades <span class="sort-arrow" id="sort-trade"></span></th>
+        <th data-col="value"    onclick="toggleSort('value')" class="th-num">Turnover <span class="sort-arrow" id="sort-value"></span></th>
+        <th data-col="volume"   onclick="toggleSort('volume')" class="th-num">Volume <span class="sort-arrow" id="sort-volume"></span></th>
+      </tr>
+    </thead>
+    <tbody id="stocks-tbody"></tbody>
+  </table>
+  </div>
+  <div class="table-footer" id="table-footer"></div>
+</main>
+
+<footer class="site-footer">
+  <p>Data sourced from <strong>dsebd.org</strong> · Prices in BDT (Taka) · For informational purposes only</p>
+</footer>
+
+<!-- WATCHLIST PANEL -->
+<div class="wl-overlay" id="wl-overlay" onclick="closeWatchlistPanel()"></div>
+
+<div class="wl-panel" id="wl-panel">
+  <div class="wl-panel-header">
+    <div class="wl-panel-title">⭐ My Watchlists</div>
+    <button class="wl-close-btn" onclick="closeWatchlistPanel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <!-- New watchlist -->
+  <button class="wl-new-btn" id="wl-new-btn" onclick="showCreateInput()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+    New Watchlist
+  </button>
+  <div class="wl-name-input" id="wl-create-input" style="display:none;">
+    <input type="text" id="wl-create-name" placeholder="Watchlist name…" onkeydown="if(event.key==='Enter')confirmCreate()" />
+    <button onclick="confirmCreate()">Create</button>
+    <button class="wl-cancel-btn" onclick="hideCreateInput()">✕</button>
+  </div>
+
+  <!-- List of watchlists -->
+  <div class="wl-lists" id="wl-lists"></div>
+</div>
+
+<div class="mkt-col-picker-backdrop" id="mkt-col-picker-backdrop" onclick="closeMktColModal(event)">
+  <div class="mkt-col-picker-modal" id="mkt-col-picker-modal" onclick="event.stopPropagation()">
+    <div class="mkt-cp-modal-hd">
+      <span class="mkt-cp-modal-title">Toggle Columns</span>
+      <button class="mkt-cp-modal-close" onclick="closeMktColModal()">✕</button>
+    </div>
+    <div class="mkt-cp-modal-body">
+      <div class="mkt-cpitem-grid" id="mkt-col-picker-body"></div>
+    </div>
+    <div class="mkt-cp-modal-ft">
+      <button class="mkt-cp-reset" onclick="resetMktColVis()">Show all</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+<script type="module" src="watchlist/watchlist.js"></script>
+<script src="notifications.js" defer></script>
+</body>
+</html>

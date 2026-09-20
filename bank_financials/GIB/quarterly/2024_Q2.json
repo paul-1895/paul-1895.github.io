@@ -1,0 +1,201 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2024-06-30",
+  "financial_year": 2024,
+  "quarter": "Q2",
+  "period_note": "Unaudited interim financial statements 'As at 30 June 2024'. IMPORTANT: this filing remains on the PRE-RESTATEMENT accounting basis -- see 2024_Q1.json's period_note for the full discovery (this filing's own '31 December 2023' comparative again shows Total Shareholders' Equity of +13,764,184,590, matching Q1-2024's comparative exactly and irreconcilable with the audited/restated -9,026,176,636 this dataset records in 2023_Q4.json). Equity at 30-Jun-2024 was 14,215.18m -- POSITIVE, a small dip from Q1's 14,556.29m but still solidly positive and giving no hint of what the eventual FY2024 audited figure (-21,492.36m) would show. Cumulative Jan-Jun 2024 figures are the primary dataset values; the filing also separately discloses the discrete Apr-Jun 2024 quarter, recorded below. All figures cross-validate exactly against the FY2024 annual report's own retrospective variance-disclosure table (Net Investment Income 3,362.62m, Non-investment income 388.37m, Total Operating Income 3,750.99m, Total Operating Expenses 2,262.02m, Profit before Provision 1,488.97m, Total Provision 76.62m, PBT 1,412.35m, Tax 458.09m, PAT 954.25m, EPS 0.97 -- all matching to the exact million). Cross-check: Q1 PAT (800.10m) + Q2 discrete PAT (154.15m) = 954.25m, matching this filing's own 6-month cumulative PAT exactly.",
+  "source": {
+    "source_document": "GIB-FS-30-June-2024.pdf (downloaded from globalislamibankbd.com, OCR'd for the P&L page; PDF deleted after extraction per project policy)",
+    "source_url": "https://www.globalislamibankbd.com/wp-content/uploads/2024/07/GIB-FS-30-June-2024.pdf",
+    "source_page": "Balance Sheet p.1 (pdftotext -layout), Profit and Loss Account p.3 (OCR'd at 300dpi, tesseract, due to garbled digits in the pdftotext layer)",
+    "retrieval_date": "2026-08-27",
+    "reporting_basis": "Solo / standalone, unaudited, PRE-RESTATEMENT basis (see 2024_Q1.json period_note)"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 180721.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General investment, etc. + Bills purchased and discounted)",
+      "value": 139156.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposit and other accounts",
+      "value": 134735.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity -- PRE-RESTATEMENT basis, see 2024_Q1.json period_note",
+      "value": 14215.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 166506.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-balance sheet items including contingent liabilities",
+      "value": 9353.87,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per Share",
+      "value": 14.4,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 9941.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_cumulative",
+      "original_metric_name": "Less: Profit paid on deposits (cumulative from Jan 1)",
+      "value": 6578.39,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Investment Income (cumulative from Jan 1)",
+      "value": 3362.62,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative from Jan 1)",
+      "value": 3750.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 2262.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit / (Loss) before Provision (cumulative from Jan 1)",
+      "value": 1488.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_cumulative",
+      "original_metric_name": "Total provision (cumulative from Jan 1)",
+      "value": 76.62,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit / (Loss) before tax (cumulative from Jan 1)",
+      "value": 1412.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Deferred tax + Current tax (cumulative from Jan 1)",
+      "value": 458.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit/(Loss) after Tax (cumulative from Jan 1)",
+      "value": 954.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (cumulative from Jan 1)",
+      "value": 0.97,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_discrete_quarter",
+      "original_metric_name": "Profit / (Loss) before Provision, discrete Apr-Jun 2024",
+      "value": 803.94,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_discrete_quarter",
+      "original_metric_name": "Total provision, discrete Apr-Jun 2024",
+      "value": 339.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_discrete_quarter",
+      "original_metric_name": "Total Profit / (Loss) before tax, discrete Apr-Jun 2024",
+      "value": 464.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_discrete_quarter",
+      "original_metric_name": "Net Profit/(Loss) after Tax, discrete Apr-Jun 2024",
+      "value": 154.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_discrete_quarter",
+      "original_metric_name": "Earnings per share (EPS), discrete Apr-Jun 2024",
+      "value": 0.16,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

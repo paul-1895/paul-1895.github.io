@@ -1,0 +1,169 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2022-03-31",
+  "financial_year": 2022,
+  "quarter": "Q1",
+  "period_note": "Unaudited interim financial statements 'As at 31 March 2022', headed 'Global Islami Bank Limited' -- now fully on Islamic-banking terminology ('Investments', 'Net Investment Income', 'Mudaraba' deposit categories). Balance sheet is the period-end snapshot (reported); comparative column is 31 March 2021 (year-over-year), which matches this dataset's own 2021_Q1.json total assets/liabilities/equity exactly. Paid-up capital (5,154.19m) is unchanged from Sep-2021, i.e. still pre-IPO -- the FY2022 IPO that later took paid-up capital to 9,404.19m had not yet occurred as of this quarter. Income-statement figures are for Jan-Mar 2022, both discrete and cumulative since it is the first quarter. 'Investment income' value was not legible in source (pdftotext dropped it); derived as Net Investment Income + Profit paid on Deposits (1,431,961,680 + 1,980,539,147 = 3,412,500,827), and 'Commission, exchange and brokerage' was similarly derived from the non-investment-income subtotal (41,713,314 - 3,661,500 - 12,242,425 = 25,809,389) -- both derivations cross-validate exactly against the March-2023 filing's own comparative column for this same quarter (Total Operating Income 1,473,674,994, Total Operating Expenses 691,924,599, Profit before Provision 781,750,395, Total Provision 462,043,896, and PBT 319,706,499 all match exactly). IMPORTANT RESTATEMENT ON TAX/PAT: this filing's own tax line is a single 137,404,255 (matching PBT minus this filing's own directly-printed PAT of 182,302,244 exactly), but the March-2023 filing's comparative column for this same quarter implies a smaller tax of 98,377,276 (PBT 319,706,499 minus its comparative PAT of 221,329,223), a difference of 39,026,979 in the tax provision alone with PBT unchanged between the two citations -- i.e. a genuine tax-provision restatement, not a rounding artifact. EPS was also apparently restated in the same later citation (0.19 vs this filing's own 0.35), consistent with retroactively using a higher share count after the FY2022 IPO and subsequent bonus issues roughly doubled paid-up capital. Per project policy, the contemporaneous original filing's figures (tax 137.40m, PAT 182.30m, EPS 0.35) are used as the dataset value; the later, different citation is recorded here as the divergence, not used.",
+  "source": {
+    "source_document": "March-Quarter-2022.pdf (downloaded from globalislamibankbd.com, OCR'd; PDF deleted after extraction per project policy)",
+    "source_url": "https://www.globalislamibankbd.com/wp-content/uploads/2023/03/March-Quarter-2022.pdf",
+    "source_page": "Balance Sheet p.1, Off-Balance Sheet Items p.2, Profit and Loss Account p.3 (OCR'd at 300dpi, tesseract)",
+    "retrieval_date": "2026-08-27",
+    "reporting_basis": "Solo / standalone, unaudited"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 135536.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General Investment etc. + Bills Purchased and Discounted)",
+      "value": 111151.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 118651.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 7941.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 127595.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 5154.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 1680.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Total Shareholders' Equity / (Paid-up Capital / 10)",
+      "value": 15.41,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income (label present, value illegible in source; derived as Net Investment Income + Profit paid on Deposits)",
+      "value": 3412.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits",
+      "original_metric_name": "Less: Profit paid on Deposits",
+      "value": 1980.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net Investment Income",
+      "value": 1431.96,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Total Operating Income",
+      "value": 1473.67,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total Operating Expenses",
+      "value": 691.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit / (Loss) before Provision",
+      "value": 781.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Total Provision",
+      "value": 462.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total Profit / (Loss) before tax",
+      "value": 319.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Deferred tax (this filing shows only a single combined tax line; see period_note for a later citation's different, higher implied tax)",
+      "value": 137.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit/(Loss) after Tax (see period_note: a later filing's comparative citation of this quarter shows a different, restated PAT of 221.33m via a lower tax figure -- contemporaneous value used here per project policy)",
+      "value": 182.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS) [previous year's figure restated]",
+      "value": 0.35,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

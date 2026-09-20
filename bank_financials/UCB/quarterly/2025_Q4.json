@@ -1,0 +1,361 @@
+{
+  "bank_id": "UCB",
+  "bank_name": "United Commercial Bank PLC",
+  "reporting_date": "2025-12-31",
+  "financial_year": 2025,
+  "quarter": "Q4",
+  "period_note": "SOURCE-QUALITY NOTE: UCB's FY2025 'Annual Report' proper was not yet available anywhere reachable (uds.ucb.com.bd/files/annual-report-2025.pdf, linked from the bank's own annual-report listing page, refused connections from this and an independent WebFetch path; the analogous ucb.com.bd/reports/shareholder-reports/annual-report/annual-report-2025.pdf URL resolves to a 1-page placeholder with no extractable text or images; Wayback Machine has no capture of either). The only substantive FY2025 primary source reachable was the 97-page 'Auditors Report & Audited Consolidated and Separate Financial Statements for the Year ended 31 December 2025' PDF (published 30 April 2026, retrieved from ucb.com.bd/reports/financial-statements/), which is a 150dpi SCAN with zero pdftotext-extractable text (confirmed via pdftotext -layout returning 0 lines; pdfimages confirms real embedded JPEG page images, not a Wayback 1MiB-truncation artifact -- file is 17,120,770 bytes). Per project convention a 0-line PDF is normally treated as unusable and recovered from an adjacent report instead, but no later UCB report exists yet to recover FY2025 from, so this year was extracted via OCR (tesseract 5.5.3, initial 150dpi pass then 500dpi re-render of the Balance Sheet/P&L/capital-adequacy/asset-quality pages) as an explicit, documented exception. Every figure below was cross-validated at least twice: (1) the same document's FY2024 comparative column was OCR'd and checked digit-for-digit against the already-stored, text-extracted 2024_Q4.json -- it reproduced total assets 768,779m, equity 41,791m, deposits 554,215m, operating profit 15,078m, PBT 2,145m, PAT 608m, CAR 10.59%, RWA 508,702m and every other 2024 figure exactly, confirming OCR reliability; (2) every FY2025 figure used here satisfies its own internal accounting identity (Total Assets = Total Liabilities + Equity to the taka; Total Operating Income/Expense/Provision/PBT/PAT chain reconciles exactly; Tier1+Tier2=Total Capital; Required-Held=Shortfall); and (3) the clean, non-scanned-quality 'Basis for Qualified Opinion' paragraph on page 2 of the same PDF (auditor's prose, crore-denominated) independently corroborates the note-level figures to the taka: gross loans 61,789.01 crore = 617,890.1m, classified loans 9,576.23 crore = 95,762.3m, required loan-loss provision 7,679.42 crore = 76,794.2m, provision maintained 2,524.38 crore = 25,243.8m, provision shortfall 5,155.04 crore = 51,550.4m, total capital 5,480.58 crore = 54,805.8m, capital shortfall 2,659.64 crore = 26,596.4m. One digit-level OCR error was caught and corrected this way: a 150dpi read of 'Stationery, printing, advertisements' gave 1,964,460,674, which broke the Total Operating Expenses identity by exactly BDT 600m; a 500dpi re-render corrected it to 1,364,460,674, which reconciles exactly. THE HEADLINE FINDING: UCB PLC received a QUALIFIED audit opinion for FY2025 (Aziz Halim Khair Choudhury, Chartered Accountants, PKF Global network, dated 30 April 2026). Basis for qualification: (1) required loan-loss provision of BDT 7,679.42 crore vs. BDT 2,524.38 crore actually maintained = a shortfall of BDT 5,155.04 crore (51,550.4m); (2) an unrecognized BDT 438.02 crore (4,380.2m) impairment on UCB Fintech Company Limited ('Upay', a 99.99%-owned subsidiary with cumulative losses of BDT 438.02 crore) plus BDT 1.87 crore against WCSP receivables from Bangladesh Bank, together a further BDT 439.89 crore (4,398.9m) other-assets shortfall; combined total provision shortfall BDT 5,594.93 crore (55,949.3m), which Bangladesh Bank explicitly permitted the Bank to finalize its FY2025 accounts WITHOUT recognizing, per letter BSD-5(Wing-3)/104/2026-410 dated 29 April 2026. The auditor states in its own report (page 3 and page 9) that WITHOUT this regulatory forbearance, UCB 'would have incurred an aggregate loss of BDT 3,278.88 crore' (a loss of ~32,788.8m, vs. the reported profit of just 635.8m -- a swing of roughly BDT 334bn) 'and the CRAR would have declined to 0.93%' (vs. the reported 8.42%, itself already below the 12.5% regulatory minimum with buffer). Separately, an Emphasis of Matter (not part of the qualification) flags a further, wholly unprovisioned BDT 155.48 crore (1,554.8m) of NBFI fixed deposits matured long ago and considered doubtful of recovery. Reported NPL ballooned again: classified loans/advances 95,762.32m of gross loans 617,890.10m = 15.50% (calculated; up from 14.90% in FY2024 and 5.50% in FY2023), while specific-provision coverage of NPL fell further to 20.13% (19,281.40/95,762.32), down from 26.18% (FY2024) and 49.99% (FY2023) -- a third consecutive year of eroding coverage even as the underlying problem loans grew. Capital adequacy deteriorated for a second straight year: CAR 8.42% (down from 10.59% FY2024 and 12.58% FY2023) against a required-with-buffer 81,402.18m, i.e. a widening reported capital shortfall of (26,596.35)m (nearly triple FY2024's (9,728.77)m). Market price per share and NAV/EPS were NOT in the audited-FS-only source; market_price_per_share is this project's own historical_prices/json_files/UCB.json DSE closing price for 30 December 2025 (last trading day of FY2025 -- 31 December 2025 itself was not a trading day); nav_per_share and eps (Solo) are taken from UCB's own Board-approved Price Sensitive Information notice dated 30 April 2026 (same board meeting that adopted the audited FS), and independently reconcile almost exactly against Total Equity/shares outstanding and PAT/shares outstanding computed from this same filing. ldr_pct here is a SIMPLE Gross Loans/Total Deposits calculation (basis 'calculated') because the audited-FS-only source does not publish the bank's own regulatory 'Credit-deposit ratio' the way its annual reports' five-year summaries do; applying this same simple formula to FY2024's audited-FS figures gives 103.36%, not the bank's own reported 91.31% for FY2024, confirming the bank's own historical ratio uses a different (broader, regulatory) denominator not fully reproducible from this source -- FY2025's 90.34% is therefore NOT directly YoY-comparable to the 2011-2024 ldr_pct series and should be treated as a distinct, narrower metric until a proper annual report / five-year summary is found for FY2025.",
+  "source": {
+    "source_document": "ucb-audited-fs-2025-OCR.txt (OCR transcript, tesseract 5.5.3; retained in annual_reports/UCB/ under a deliberately distinct filename from the other ucb-annual-report-*.txt files because it is not the bank's own annual report and is a lower-provenance, only-partly-verified derived artifact -- see the file's own header for exactly which pages were verified at 500dpi vs. lightly OCR'd only to locate section headings)",
+    "source_path": "annual_reports/UCB/ucb-audited-fs-2025-OCR.txt; the source PDF itself was downloaded, OCR'd, and deleted per project convention",
+    "source_url": "https://www.ucb.com.bd/reports/financial-statements/auditors-report-audited-consolidated-and-separate-financial.pdf",
+    "source_page_lines": "Independent Auditor's Report pp.1-9 (Qualified Opinion / Basis for Qualified Opinion p.2, Emphasis of Matter p.3, CRAR pro-forma p.9); Balance Sheet (Solo) p.15; Off-Balance Sheet Items (Solo) p.16; Profit and Loss Account (Solo) p.17; Note 7.10 Classification of Loans & Advances p.70; Note 7.11 / Note 13.1 Provision for loans & advances pp.70,74; Note 14.1 Authorized Capital and 14.6/14.7.1 Capital to Risk Weighted Asset Ratio (CRAR), Composition of Capital (Solo) pp.76-77. Supplementary: UCB Price Sensitive Information notice dated 30 April 2026 (https://www.ucb.com.bd/reports/shareholder-reports/price-sensetive-information/price-sensitive-information-of-annual.pdf) for EPS/NAV per share (Solo); this project's historical_prices/json_files/UCB.json for the 30-Dec-2025 DSE closing price.",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "authorized_capital",
+      "original_metric_name": "Authorized Capital (5,000,000,000 ordinary shares of Tk 10.00 each)",
+      "value": 25000,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 15503.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 42053.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 842002.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 884056.45,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 683941.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 617890.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 148714.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises, furniture & fixture",
+      "value": 16313.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest Income",
+      "value": 59184.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest paid on deposits and borrowings etc.",
+      "value": 49322.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net Interest Income",
+      "value": 9862.62,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income",
+      "original_metric_name": "Investment income + Commission, exchange and brokerage + Other Operating Income",
+      "value": 22664.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "non_interest_expenses",
+      "original_metric_name": "Total Operating Expenses (B)",
+      "value": 20745.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit/(Loss) before provision (C) = (A-B)",
+      "value": 11780.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total Profit/(Loss) before income taxes (C-D)",
+      "value": 2035.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after Taxation",
+      "value": 635.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "risk_weighted_assets",
+      "original_metric_name": "Risk Weighted Assets (note-14.8), Solo",
+      "value": 651217.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Total Tier-1 Capital, Solo",
+      "value": 37314.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Total Admissible Tier-2 Capital, Solo",
+      "value": 17491.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_capital",
+      "original_metric_name": "Total Regulatory Capital, Solo",
+      "value": 54805.83,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_ratio_pct",
+      "original_metric_name": "Tier-I Capital with Buffer (Held), Composition of Capital (Solo)",
+      "value": 5.73,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_ratio_pct",
+      "original_metric_name": "Tier-II Capital (Held), Composition of Capital (Solo)",
+      "value": 2.69,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Total CRAR (Held), Composition of Capital (Solo)",
+      "value": 8.42,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "required_capital",
+      "original_metric_name": "Minimum Capital Requirement with Capital Conservation Buffer (12.5% of Risk Weighted Assets), Solo",
+      "value": 81402.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "capital_surplus_deficit",
+      "original_metric_name": "Capital Surplus/(Shortfall), Solo",
+      "value": -26596.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Classified Loans & Advances (Sub-Standard + Doubtful + Bad & Loss), Note 7.10",
+      "value": 95762.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Classified loans and advances / Total loans and advances",
+      "value": 15.5,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "provision_unclassified",
+      "original_metric_name": "General provision (Note 13.1.1), maintained",
+      "value": 5962.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_classified",
+      "original_metric_name": "Specific Provision (Note 13.1.2), maintained",
+      "value": 19281.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet Items Including Contingent Liabilities",
+      "value": 211931.41,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per Share (EPS), Solo",
+      "value": 0.41,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per Share, Solo",
+      "value": 27.12,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "DSE closing price, 30 December 2025 (last trading day of FY2025)",
+      "value": 10.4,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Net Profit after Taxation / Average Total Assets",
+      "value": 0.08,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Net Profit after Taxation / Average Total Shareholders' Equity",
+      "value": 1.52,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "cost_to_income_pct",
+      "original_metric_name": "Total Operating Expenses (B) / Total Operating Income (A)",
+      "value": 63.78,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Loans and Advances / Deposits and other accounts (simple ratio -- see period_note on non-comparability with prior years' bank-reported Credit-deposit ratio)",
+      "value": 90.34,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "provision_shortfall_loans_advances",
+      "original_metric_name": "Provision shortfall against loans and advances (Basis for Qualified Opinion, para 1.i)",
+      "value": -51550.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_shortfall_other_assets",
+      "original_metric_name": "Provision shortfall against other assets, incl. BDT 438.02cr UCB Fintech Company Ltd ('Upay') impairment (Basis for Qualified Opinion, para 1.ii)",
+      "value": -4398.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_shortfall_total",
+      "original_metric_name": "Total provision shortfall not adjusted, per Bangladesh Bank forbearance letter BSD-5(Wing-3)/104/2026-410 dated 29 April 2026",
+      "value": -55949.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "proforma_loss_if_shortfall_recognized",
+      "original_metric_name": "Aggregate loss the Bank would have incurred absent regulatory forbearance (Auditor's Report, p.3/p.9)",
+      "value": -32788.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "proforma_car_if_shortfall_recognized_pct",
+      "original_metric_name": "CRAR if provision shortfall were fully recognized (Auditor's Report, p.3/p.9)",
+      "value": 0.93,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "bank_id": "PRIMEBANK",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "sustained_multi_year_turnaround",
+      "severity": "info",
+      "statement": "ROE more than tripled from a series-low 5.07% (FY2017) to 20.85% (FY2025), with NPL ratio falling from a series-high 7.67% (FY2015) to a series-low 2.73% (FY2025) over the same broad period. Unlike most other banks in this dataset, where recent years show emerging stress, Prime Bank shows a sustained, multi-year improvement in both profitability and asset quality simultaneously.",
+      "metrics": ["roe_pct", "npl_ratio_pct"],
+      "periods": ["2015_Q4", "2017_Q4", "2025_Q4"]
+    },
+    {
+      "category": "capital_adequacy_strength",
+      "severity": "info",
+      "statement": "CAR jumped from 14.01% (FY2017) to 17.04% (FY2018) and has stayed in a strong 16.78%-18.07% range every year since — one of the highest and most consistent capital cushions of any bank researched in this dataset, comfortably above the regulatory minimum throughout the full 12-year series.",
+      "metrics": ["car_pct"],
+      "periods": ["2017_Q4", "2018_Q4", "2025_Q4"]
+    },
+    {
+      "category": "mid_2010s_weak_patch",
+      "severity": "info",
+      "statement": "FY2016-2017 were the weakest years in the ANNUAL series (ROE 5.30% and 5.07% respectively, NPL 5.96% and 5.45%), a low point the bank has steadily moved away from in every year since. (Note: this characterization only holds within the FY2014-2025 annual/Q4 series -- see the newly-recovered 2013 quarterly result below, which is materially worse and predates this series entirely.)",
+      "metrics": ["roe_pct", "npl_ratio_pct"],
+      "periods": ["2016_Q4", "2017_Q4"]
+    },
+    {
+      "category": "pre_annual_series_loss_discovered_via_quarterly_backfill",
+      "severity": "info",
+      "statement": "A 2026-08-26 Q1-Q3 quarterly backfill recovered Prime Bank's true series low point, which predates its own annual/Q4 series entirely (that series only starts FY2014): Q1 2013 (Consolidated basis -- no separate Solo statement existed in that specific quarter's disclosure format) was a net LOSS of -1,517.36m (EPS -1.62). H1 2013 (Solo basis) was also a net loss, -679.33m (EPS -0.66) -- narrower than Q1 alone because Q2 2013 alone was profitable (~+838m, a figure that reconciles to within BDT 1 across three independently-sourced documents' comparative columns: the 2013 H1 filing itself, the 2014 Q1 filing's Jan-Mar'13 comparative, and the 2014 H1 filing's Apr-Jun'13 discrete comparative). Both losses were driven by a specific loan-loss provision spike (3,418m within H1 2013's 4,145m total provision, versus 436.7m in the prior-year H1). This is a materially worse single-period result than anything visible in the FY2014-2025 annual series, whose own 'weakest years' characterization (FY2016-2017, above) has zero visibility into 2011-2013.",
+      "metrics": ["profit_after_tax_cumulative", "eps_cumulative", "provision_charge_cumulative"],
+      "periods": ["2013_Q1", "2013_Q2"]
+    }
+  ],
+  "historical_context": "Prime Bank presents one of the strongest and most consistent long-run improvement stories in this dataset: from a mid-2010s low point (FY2016-2017, ROE ~5%, NPL ~6%) to FY2025's series-best ROE (20.85%) and NPL ratio (2.73%), backed by a capital cushion that has remained comfortably above 16.7% for eight consecutive years. This trajectory is the inverse of the deterioration patterns seen at several other banks in this dataset (AB Bank, ICB Islamic Bank, Al-Arafah Islami Bank) and stands out even among the healthier banks (Trust Bank, Jamuna Bank, EBL) for the size and consistency of the multi-year gain.",
+  "data_gaps": "UPDATED 2026-08-26: Q1/Q2/Q3 unaudited interim data now covers 2010-2025 (48 quarters, every year x 3 quarters) plus a bonus 2026 Q1, sourced from primebank.com.bd's own quarterly/half-yearly archive -- one of the most complete quarterly series in this dataset, extending 4 years further back (to 2010) than the bank's own Q4/annual series (FY2014-2025). Minor gaps within that quarterly series: nav_per_share not disclosed in 2012, 2014, 2016, 2017, and specifically the 2018 Q1 filing (present from 2018 H1 onward); 2010 Q1/Q3 and 2013 Q1 are Consolidated-only (those specific filings' disclosure format had no separate Solo section, unlike every neighboring quarter); npl_ratio_pct/roa_pct/roe_pct/car_pct/provision_coverage_pct are not disclosed at quarterly granularity at all in this bank's interim filings (only annual reports carry Basel III/asset-quality detail) and are left null throughout the quarterly series rather than estimated; 2026 H1 exists on the archive but was not processed (out of the 2010-2025 scope targeted this session, and itself an unexpectedly scanned/image PDF). Separately, on the ANNUAL/Q4 series: FY2011-2013 audited annual reports still could not be located within the time available (though the newly-added 2013 quarterly data now gives partial visibility into 2013, including a Q1/H1 2013 loss -- see risk_signals). FY2014-2015 data is comparatively thin (missing total equity, total liabilities, and full capital/EPS breakdown). FY2022-2023 income-statement detail (interest income/expense breakdown, operating income/expense split) not extracted, only balance-sheet aggregates and key ratios. FY2022-2023 total shareholders' equity differs by ~4% between the FY2023 report's own figures (used here) and the FY2025 report's later comparative figures, a restatement not reconciled further."
+}

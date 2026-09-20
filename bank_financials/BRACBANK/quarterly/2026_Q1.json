@@ -1,0 +1,20 @@
+{
+  "bank_id": "BRACBANK",
+  "bank_name": "BRAC Bank PLC",
+  "reporting_date": "2026-03-31",
+  "financial_year": 2026,
+  "quarter": "Q1",
+  "period_note": "PARTIAL entry, CONSOLIDATED basis (basis mismatch vs this bank's primary Standalone/Solo Q4-annual series — flagged, not adjusted). This filing was disclosed to DSE on 13 May 2026 (per news coverage) but as of this retrieval date (2026-08-27) no copy of the primary condensed-interim-FS PDF has appeared in Wayback Machine (checked via full-domain CDX search across bracbank.com, www.bracbank.com, and legacy.bracbank.com — legacy.bracbank.com is DNS-dead) or in the current live bracbank.com investor-relations document list (an S3-hosted list that, as of this check, tops out at the H1 2025 and FY2025-annual filings). Only EPS and cumulative PAT were recoverable: from The Business Standard's news coverage of the disclosure, cross-checked against DSE's own company page (dsebd.org displayCompany.php?name=BRACBANK), whose 'Interim Financial Performance: 2026' table independently confirms Basic EPS of exactly 2.900 for the Q1 (period ending 202603) column — an exact match, giving confidence in the figure despite the primary PDF being unavailable. No balance sheet, P&L breakdown, deposits, loans, or asset-quality figures could be recovered for this quarter — left as explicit gaps rather than estimated or backfilled from annual data. Consolidated net profit BDT 6,957m (Tk 695.68 crore) for Jan-Mar 2026, +44% YoY, attributed by the bank to higher investment and interest income.",
+  "source": {
+    "source_document": "not available (see period_note)",
+    "source_path": "annual_reports/BRACBANK/ (no file — primary PDF not located anywhere; DSE table is a live web page, not a downloadable document)",
+    "source_url": "https://www.tbsnews.net/economy/stocks/brac-banks-profit-grows-44-tk695cr-first-quarter-1437561 ; cross-checked against https://www.dsebd.org/displayCompany.php?name=BRACBANK ('Interim Financial Performance: 2026' table)",
+    "source_page_lines": "News article reporting the 13 May 2026 DSE disclosure; DSE company page's own EPS-by-quarter table (Basic EPS, Q1 column = 2.900)",
+    "retrieval_method": "WebSearch + WebFetch of DSE's live company page (news site itself returned HTTP 403 to WebFetch, so figures are from the search-result summary plus independent DSE-page cross-check, not a direct article fetch).",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {"normalised_metric_name": "profit_after_tax", "original_metric_name": "Consolidated net profit (Jan-Mar 2026, 'Tk 695.68 crore')", "value": 6957, "unit": "BDT_million", "currency": "BDT", "basis": "reported"},
+    {"normalised_metric_name": "eps", "original_metric_name": "Consolidated Earnings Per Share, Basic (Q1 2026)", "value": 2.90, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported"}
+  ]
+}

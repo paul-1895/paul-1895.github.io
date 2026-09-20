@@ -1,0 +1,297 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2023-12-31",
+  "financial_year": 2023,
+  "quarter": "Q4",
+  "period_note": "Sourced from the bank's 'ANNUAL REPORT 2023 (Revised)' — a genuinely usable text extraction now exists in this session (11,569 lines; the prior session's corrupted/truncated PDF has evidently been replaced with a working one in the archive). Auditor's report signed 8-10 July 2025, roughly 18 months after fiscal year-end, and the report bears a 'Revised' label — both consistent with the severe distress and regulatory scrutiny described below. Solo basis throughout, same as 2013-2022. Islamic-bank terminology maps to the pre-2021 conventional-bank fields exactly as in prior years ('Investment' -> gross_loans, 'Profit paid on deposits' -> profit_paid_on_deposits, etc.). FY2023 is a sharp break from FY2022: a Total Provision charge of BDT 20,282.62m (vs BDT 882.46m in FY2022) drove a net loss of BDT -21,520.25m and pushed Shareholders' Equity NEGATIVE for the first time in the bank's history (-9,026.18m, from +12,964.28m in FY2022 -- an BDT 21,990.46m single-year swing). CRAR fell to -9.28%, a deeper capital-adequacy breach than FY2021's. The FY2022 comparative column in this report reproduces the existing dataset's FY2022 figures exactly (total assets 153,810.90m, total liabilities 140,846.62m, equity 12,964.28m, deposits 118,809.22m, investment 118,680.54m, CRAR 16.49% -- no restatement found. profit_before_tax and tax_expense are recorded as calculated_from_pl_components: pdftotext -layout dropped the row labels for these two P&L lines (a known extraction trap for this report), but both values are independently confirmed three ways -- (1) they sit at the correct position in the P&L sequence immediately after 'Total provision' and before the tax lines, (2) profit_before_tax = operating_profit (-1,156.44m) minus provision_charge (20,282.62m) = -21,439.06m exactly, and (3) profit_before_tax minus tax_expense (81.19m) = -21,520.25m, which matches the explicitly-labeled 'Net profit after tax' in the Highlights table exactly. DISCREPANCY WITHIN THIS REPORT (not a cross-report restatement): the Independent Auditor's Report opinion-basis paragraph (line 7975-7976) states CRAR 'has stood at -8.70%', which conflicts with -9.28% as shown identically in three other places in the same report -- the Highlights table (row 39), the MD&A narrative (line 2423), and Note 14.7's BASEL-III capital adequacy table (line 10493-10582) -- and -9.28% is also exactly reproducible by dividing that note's own Total Regulatory Capital (-8,126.27m) by Total RWA (87,540.46m). -9.28% is used here as the reported car_pct value; -8.70% is preserved only in this note and in sources.json as an unresolved single-paragraph inconsistency in the source document itself. ROE: this dataset's established GIB convention computes roe_pct as PAT / period-end equity ('calculated_period_end_not_average'). That calculation is not meaningful for FY2023 because period-end equity is negative: a -21,520.25m loss divided by -9,026.18m equity would produce a nonsensically POSITIVE +238.4%, misrepresenting an insolvent loss year as a strong-return year. Per the dataset's negative-equity-breaks-ROE rule, roe_pct is recorded as null in ratios_timeseries.json for this period. For reference only: the bank's own Highlights table reports ROE of -1,092.92% for FY2023, which is computed on AVERAGE equity (average of FY2022's +12,964.28m and FY2023's -9,026.18m = +1,969.05m, still positive), not period-end equity -- the two conventions are not comparable and neither figure is stored as this dataset's roe_pct.",
+  "source": {
+    "source_document": "gib-annual-report-2023.txt",
+    "source_path": "annual_reports/GIB/gib-annual-report-2023.txt",
+    "source_url": "https://globalislamibankbd.com",
+    "source_page_lines": "768-825 (\"Summarized Key Operating & Financial Highlights\", 5-year table 2019-2023); 7975-7976 (Independent Auditor's Report opinion-basis paragraph -- CRAR figure conflicts with the other three sources, see period_note); 7994-8047 (own Balance Sheet, Solo, 'As at 31 December 2023'); 8067-8106 (Off-Balance Sheet Items / NAV per share); 8116-8163 (own Profit and Loss Account); 8170-8214 (retained-earnings appropriation continuation of P&L); 8278-8318 (Statement of Changes in Equity -- equity component breakdown); 10493-10582 (Note 14.7, Capital Adequacy Ratio as per BASEL-III); 2423 (MD&A narrative, CAR)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up capital",
+      "value": 9874.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 2020.64,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Shareholders' equity / Total Shareholders' Equity",
+      "value": -9026.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 174222.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 183248.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits / Deposit and other accounts",
+      "value": 130061.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investment",
+      "value": 131411.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments in Shares and Securities",
+      "value": 9296.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Property, plant and equipment",
+      "value": 2309.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total (Off-Balance Sheet Items / Contingent Liabilities)",
+      "value": 4654.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income",
+      "value": 12320.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits",
+      "original_metric_name": "Profit paid on deposits",
+      "value": 10505.37,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net Investment Income",
+      "value": 1815.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Total Operating Income",
+      "value": 2544.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Operating expenses",
+      "value": 3701.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Operating profit",
+      "value": -1156.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Total provision",
+      "value": 20282.62,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total profit before taxes (label lost to pdftotext layout; see period_note)",
+      "value": -21439.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Provision for taxation - current + deferred (labels lost to pdftotext layout; see period_note)",
+      "value": 81.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net profit after tax",
+      "value": -21520.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_risk_weighted_assets",
+      "original_metric_name": "Total Risk weighted assets (RWA)",
+      "value": 87540.46,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Total Tier - I Capital",
+      "value": -9102.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Total admissible Tier - 2 capital",
+      "value": 976.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_regulatory_capital",
+      "original_metric_name": "Total regulatory capital (a+b) / Total capital",
+      "value": -8126.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "required_capital",
+      "original_metric_name": "Required capital based on risk weighted assets (12.5% of RWA)",
+      "value": 10942.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "capital_surplus_deficit",
+      "original_metric_name": "Shortfall/Surplus Capital",
+      "value": -19068.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital Adequacy Ratio (CRAR) / Capital to risk weighted assets ratio (CRAR)",
+      "value": -9.28,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Ratio of Non-Performing Investments",
+      "value": 25.07,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_investments",
+      "original_metric_name": "Non-performing investments (NPIs)",
+      "value": 32949.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_classified",
+      "original_metric_name": "Provision for classified Investment",
+      "value": 21052.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Investment Deposit Ratio",
+      "value": 99.82,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "cost_of_fund_pct",
+      "original_metric_name": "Cost of Fund",
+      "value": 8.96,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on Assets (ROA)",
+      "value": -13.12,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (BDT)",
+      "value": -21.79,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value Per Share (BDT)",
+      "value": -9.14,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Growth Ledger — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="growth-ledger.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Growth Ledger</h1>
+        <p>Feature Inventory &amp; Build History</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/>
+        </svg>
+      </a>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="gl-page-root">
+  <div class="gl-hero">
+    <h1>What's Been Built, and How Fast</h1>
+    <p>A running inventory of every page this app ships, plus the commit history behind it — how a private Dhaka Stock Exchange research terminal went from an empty repo to a market table, three strategy backtests, and a 36-bank financial archive in <span id="glHeroWeeks">–</span> weeks.</p>
+  </div>
+
+  <div class="gl-stat-row" id="glStatRow"></div>
+
+  <div class="gl-content">
+
+    <section id="inventory" class="gl-card">
+      <div class="gl-card-eyebrow">01 · Inventory</div>
+      <div class="gl-card-hd">
+        <svg class="gl-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <h2>What it does now</h2>
+      </div>
+      <p>59 pages across six areas: live markets, backtested strategies, portfolio tracking, planning tools, the underlying datasets, and the platform plumbing that holds it together.</p>
+      <div class="gl-cat-grid" id="glCatGrid"></div>
+      <p class="gl-note">Not shown above: Adelaide Food Review (a YouTube business plan) — a personal page that shares the app but isn't part of the stock-analysis toolset.</p>
+    </section>
+
+    <section id="velocity" class="gl-card">
+      <div class="gl-card-eyebrow">02 · Velocity</div>
+      <div class="gl-card-hd">
+        <svg class="gl-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+        <h2>Growth, week by week</h2>
+      </div>
+      <p id="glVelocityText">Loading commit history…</p>
+
+      <div class="gl-chart-block">
+        <div class="gl-chart-title-row">
+          <span class="gl-chart-title">Commits per week</span>
+          <span class="gl-chart-sub">bars sized to weekly count</span>
+        </div>
+        <div class="gl-viz-wrap">
+          <svg class="gl-viz" id="glBarChart" viewBox="0 0 900 300" role="img" aria-label="Bar chart of commits per week"></svg>
+        </div>
+      </div>
+
+      <div class="gl-chart-block">
+        <div class="gl-chart-title-row">
+          <span class="gl-chart-title">Cumulative commits</span>
+          <span class="gl-chart-sub">running total since May 10</span>
+        </div>
+        <div class="gl-viz-wrap">
+          <svg class="gl-viz" id="glAreaChart" viewBox="0 0 900 200" role="img" aria-label="Line chart of cumulative commits over time"></svg>
+        </div>
+      </div>
+
+      <div class="gl-toggle-row">
+        <button class="gl-table-toggle" id="glTableToggle" aria-expanded="false" aria-controls="glTableWrap">View as table</button>
+      </div>
+      <div class="gl-table-wrap" id="glTableWrap"></div>
+    </section>
+
+    <section id="timeline" class="gl-card">
+      <div class="gl-card-eyebrow">03 · Build history</div>
+      <div class="gl-card-hd">
+        <svg class="gl-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <h2>What shipped, in order</h2>
+      </div>
+      <p>Every week since the first commit — recent weeks carry hand-written notes, older ones a plain commit digest.</p>
+      <div id="glTimeline"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p id="glFooterMeta">Loading…</p>
+</footer>
+
+<script type="module">
+  import { initTheme, toggleTheme } from '../theme/theme.js';
+  initTheme();
+  document.getElementById('theme-toggle-btn')?.addEventListener('click', () => toggleTheme());
+</script>
+<script src="growth-ledger.js" defer></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

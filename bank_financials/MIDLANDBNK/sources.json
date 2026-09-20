@@ -1,0 +1,172 @@
+{
+  "bank_id": "MIDLANDBNK",
+  "bank_name": "Midland Bank PLC",
+  "website": "https://www.midlandbankbd.net",
+  "investor_relations_url": "https://www.midlandbankbd.net/annual-report",
+  "reporting_basis": "SOLO / STANDALONE, from the bank's own 'MDB Financial Performance and Ratios: 5 Years Overview'.",
+  "notes": "Midland Bank was licensed in 2013, so FY2013 is its first year of operation and this 13-year series covers the bank's entire public history — there is no FY2011 or FY2012 to report, and the dataset's 15-year window is not applicable to it. Seven of the thirteen years come from the reporting year's own report. The FY2013, FY2014, FY2018, FY2019, FY2020 and FY2022 reports extract with no usable summary table (they are scans, or their embedded fonts defeat text extraction), so those years come from the nearest clean report. Three extraction quirks in this bank's reports were handled explicitly: the header carries a '% Changes in 2025 Over 2024' caption that repeats year tokens; the FY2021 report renders labels with typographic ligatures ('Proﬁt after tax'); and the FY2021 report uses a modifier-letter apostrophe in \"Total shareholders' equity\". All three are folded during parsing.",
+  "sources": [
+    {
+      "period": "2013-2015 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "midlandbnk-annual-report-2015.txt ('MDB Financial Performance and Ratios: Five Years Overview', 2013-2015)",
+      "source_path": "annual_reports/MIDLANDBNK/midlandbnk-annual-report-2015.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013,
+        2014,
+        2015
+      ],
+      "note": "The FY2013 and FY2014 reports extract with no usable table, so those two years are this report's comparative columns. FY2015 is contemporaneous.",
+      "cross_check": "FY2013-FY2015 reproduce identically in the FY2016 and FY2017 reports."
+    },
+    {
+      "period": "2016-2017 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "midlandbnk-annual-report-2016.txt and -2017.txt",
+      "source_path": "annual_reports/MIDLANDBNK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016,
+        2017
+      ],
+      "note": "Each year from its own report. The FY2017 report is also the source for the FY2015-FY2017 NPL ratios (see the credit-quality note below)."
+    },
+    {
+      "period": "2018-2021 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "midlandbnk-annual-report-2021.txt ('MDB Financial Performance and Ratios: Five Years Overview', 2017-2021)",
+      "source_path": "annual_reports/MIDLANDBNK/midlandbnk-annual-report-2021.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "note": "The FY2018, FY2019 and FY2020 reports extract with no usable table, so those three years are this report's comparative columns. FY2021 is contemporaneous. This report is the only source in the archive covering FY2018 at all.",
+      "cross_check": "Its FY2017 overlap column reproduces the FY2017 report, and FY2019-FY2021 reproduce in the FY2023 report."
+    },
+    {
+      "period": "2022-2023 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "midlandbnk-annual-report-2023.txt ('MDB Financial Performance and Ratios: 5 Years Overview', 2019-2023)",
+      "source_path": "annual_reports/MIDLANDBNK/midlandbnk-annual-report-2023.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022,
+        2023
+      ],
+      "note": "The FY2022 report extracts with no usable table, so FY2022 is this report's comparative column. FY2023 is contemporaneous."
+    },
+    {
+      "period": "2024-2025 (Q4/year-end, solo)",
+      "type": "annual_report_summary_table",
+      "source_document": "midlandbnk-annual-report-2024.txt and -2025.txt",
+      "source_path": "annual_reports/MIDLANDBNK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024,
+        2025
+      ],
+      "note": "Each year from its own report."
+    },
+    {
+      "period": "Credit-quality and derived line items",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-26",
+      "note": "Three points. (1) The NPL ratios for FY2015-FY2017 were read directly from the FY2017 report rather than parsed: that row reads '-, -, 1.01%, 0.68%, 1.68%' for FY2013-FY2017, and the two dashes leave the row with fewer numbers than year columns. The FY2016 report agrees on FY2015 and FY2016; the FY2021 report agrees on FY2017. (2) FY2013 and FY2014 are recorded with an NPL ratio of 0.00% because all three early reports print a dash there — for a bank in its first two years that is nil, not unknown, and the first reported classified loans appear in FY2015 (140m, 1.01%). (3) Two line items are calculated: classified loans, as the reported NPL percentage applied to reported loans and advances (the table prints the ratio but not the absolute figure in most years); and the annual provision charge, as profit before provision and tax minus profit after provision before tax, because that row's label wraps across two lines and is lost in extraction in several reports. The derivation reproduces the printed figure exactly wherever it is readable (FY2025 2,702 - 1,110 = 1,592; FY2024 2,114 - 1,125 = 989; FY2023 1,743 - 1,277 = 466)."
+    },
+    {
+      "period": "2013-2022 Q1/Q2/Q3",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "confirmed_unavailable",
+      "note": "No Q1/Q2/Q3 interim filings exist for Midland Bank before 2023. Reason confirmed, not assumed: historical_prices/json_files/MIDLANDBNK.json's earliest record is 2023-03-27, and the bank's own IPO documents (BSEC prospectus dated 29 Jan 2023; EBL Securities IPO note dated 23 Mar 2023) confirm Midland Bank Limited's IPO and DSE/CSE listing occurred in Q1 2023. BSEC's quarterly (IAS-34 interim) disclosure requirement applies to listed companies; before listing, the bank published only annual audited accounts (already covered in this dataset's Q4 series back to FY2013, its first year of operation). Checked: the bank's live 'Financial Statements' page (https://www.midlandbankbd.net/financial-statements/) lists quarterly PDFs back to Q1 2023 only; a Wayback Machine CDX search of the whole midlandbankbd.net domain (5000-row cap, both the old pre-2018 'assets/files' path and the 'wp-content/uploads' path) found zero quarterly-statement PDFs dated before 2023 of any kind."
+    },
+    {
+      "period": "2013-2025 Q1/Q2/Q3, embedded-table check",
+      "type": "annual_report_summary_table_check",
+      "status": "checked_all_years",
+      "retrieval_date": "2026-08-27",
+      "note": "Grepped annual_reports/MIDLANDBNK/*.txt for every year (2013-2025) for a BSEC-mandated 'Evaluation of the Quarterly Financials by the Audit Committee and Board' disclosure table (and close variants: 'evaluation.*quarterly', IAS-34/BAS-34 mentions, 'Q-1)/Q-2)/Q-3)' BSEC phrasing, and raw '31-Mar-/30-Jun-/30-Sep-' date-pattern tables). Confirms a prior research pass's finding: only the FY2025 annual report (midlandbnk-annual-report-2025.txt, lines 5252-5296, pp.100-101, heading 'EVALUATION OF QUARTERLY FINANCIALS BY THE AUDIT COMMITTEE AND BOARD') contains this table. It gives 31-Mar-25, 30-Jun-25 and 30-Sep-25 balance-sheet and P&L-cumulative figures plus a 31-Dec-24 comparative column. No other year (2013-2024) has this disclosure in any form -- the bank appears to have started including it only in the FY2025 report."
+    },
+    {
+      "period": "2022 Q1/Q2/Q3",
+      "type": "unaudited_quarterly_financial_statements_comparative_column",
+      "source_document": "midlandbnk-q1-2023.txt / midlandbnk-half-yearly-2023.txt / midlandbnk-q3-2023.txt",
+      "source_path": "annual_reports/MIDLANDBNK/",
+      "source_url": "https://www.midlandbankbd.net/financial-statements/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated_partial",
+      "used_for_years": [2022],
+      "note": "INCOME-STATEMENT ONLY, no balance sheet. Midland Bank was not yet listed in 2022 (see above), so there is no standalone 2022 Q1/Q2/Q3 filing; these figures are the prior-year comparative column of the bank's own genuinely-filed Q1/Q2/Q3 2023 quarterly reports (downloaded directly from the bank's live 'Financial Statements' page and visually read page-by-page, since the PDFs' embedded text extracts with corrupted digits -- see the 2023 entry below for the font-corruption finding). No Mar/Jun/Sep-2022 balance sheet survives as a comparative anywhere (only the Dec-2022 year-end balance sheet does, which is FY2022 Q4/annual and already in this dataset's existing annual series -- not duplicated here)."
+    },
+    {
+      "period": "2023 Q1/Q2/Q3",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "midlandbnk-q1-2023.txt, midlandbnk-half-yearly-2023.txt, midlandbnk-q3-2023.txt",
+      "source_path": "annual_reports/MIDLANDBNK/",
+      "source_url": "https://www.midlandbankbd.net/financial-statements/ (direct PDFs: Financial-Statements-Q1/Q2/Q3-2023-MIDLANDBNK.pdf)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2023],
+      "note": "SOLO basis -- Midland Bank had no Consolidated section in any filing until Q1 2024. EXTRACTION METHOD: pdftotext -layout on these three PDFs either produced zero lines (Q1 and Q3 -- pure image pages, no text layer) or systematically digit-corrupted text (Q2 -- labels extract cleanly but numerals are scrambled by a broken font/CMap, e.g. 'Total Liabilities 73,M7,SOZ,OOa' for what the image clearly shows as 73,447,502,008; this is a different and more severe corruption than the typographic-ligature issue previously found in this bank's annual reports). All three quarters were therefore read directly from the rendered PDF pages (image-quality is high/legible, not a genuine scan-quality problem) rather than trusted from pdftotext output. Every total was cross-checked against at least one internal arithmetic identity in the same document (Total Assets = Total Liabilities + Equity; PBT - Tax = PAT; Profit before provision - Total Provision = PBT; sum of income lines = Total Operating Income) and all reconcile to the taka. Independently reproduced: every one of these three quarters' full P&L (interest income/expense, NII, investment/commission/other income, opex, provision, PBT, tax, PAT, EPS) is repeated EXACTLY as the prior-year comparative column in the corresponding 2024 quarterly filing (Q1-2024 repeats Q1-2023; Q2-2024 repeats Q2-2023; Q3-2024 repeats Q3-2023) -- zero divergence found, confirming both the bank's own figures are stable across report vintages and this extraction is accurate."
+    },
+    {
+      "period": "2024 Q1/Q2/Q3",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "midlandbnk-q1-2024.txt, midlandbnk-half-yearly-2024.txt, midlandbnk-q3-2024.txt",
+      "source_path": "annual_reports/MIDLANDBNK/",
+      "source_url": "https://www.midlandbankbd.net/financial-statements/ (direct PDFs: Financial-Statements-Q1-2024_revised.pdf, -Q2-2024.pdf, -Q3-2024-MIDLANDBNK.pdf)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2024],
+      "note": "SOLO basis. Midland Bank prepared a CONSOLIDATED set of statements for the first time starting this quarter (covering its subsidiary Midland Bank Asset Management Company Ltd., incorporated 2019, BSEC-licensed as an Asset Management Company on 4 August 2024 -- the Consolidated Q1-2024 balance sheet has no prior-period comparative column at all, consistent with this being the first-ever consolidated period). Each filing presents Consolidated statements first, then a separate Solo 'Midland Bank Limited'/'Midland Bank PLC.' balance sheet and P&L -- this dataset uses the Solo statements only, matching the main annual series' basis. Q1-2024's own PDF extracts to almost no text via pdftotext (52 lines from 17 pages -- effectively a full-document scan/image); Q2 and Q3-2024 extract more text but with the same digit-corruption pattern as the 2023 filings. All three quarters were read directly from the rendered PDF pages and cross-checked via the same internal identities as 2023, plus an external cross-check: each quarter's prior-year (2023) comparative column reproduces this dataset's own 2023_Q1/Q2/Q3.json figures exactly (see the 2023 entry above), and each quarter's Dec-2023 balance-sheet comparative column (83,425,869,144 total assets, matching across all three 2024 filings) reproduces the existing 2023_Q4.json total_assets=83426m exactly."
+    },
+    {
+      "period": "2025 Q1/Q2/Q3",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "midlandbnk-q1-2025.txt, midlandbnk-half-yearly-2025.txt, midlandbnk-q3-2025.txt (primary); midlandbnk-annual-report-2025.txt (secondary cross-check)",
+      "source_path": "annual_reports/MIDLANDBNK/",
+      "source_url": "https://www.midlandbankbd.net/financial-statements/ (direct PDFs: Financial-Statements-Q1-2025_Updated.pdf, -Q2-2025.pdf, -Q3-2025.pdf)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2025],
+      "note": "SOLO basis. This dataset's 2025_Q1/Q2/Q3.json files were first built (in this same working session) from the FY2025 annual report's 'Evaluation of Quarterly Financials' table alone, then REGENERATED from the bank's own primary quarterly PDFs once downloaded and read (richer line items: separate interest income/expense, separate investment/commission/other income, and the report's own printed 'Total Provision'/'Provision for Tax' lines rather than derived figures). All three quarters' balance sheet and P&L totals from the primary filings reproduce the annual report table exactly for Q1 and Q3; Q2 has one finding, recorded in 2025_Q2.json's own period_note and repeated in this bank's insights.json: a LATER report (the Q2-2026 filing) shows a different net-interest-income/investment-income split for the SAME Jan-Jun-2025 period than either this original Q2-2025 filing or the FY2025 annual report show (which agree with each other exactly) -- kept the earlier/contemporaneous figures per this dataset's standing rule, divergence recorded verbatim. A second, minor finding: the Dec-2024 and Dec-2025 NAV-per-share figures shown as comparatives in SUBSEQUENT quarterly reports (14.69 and 15.44 respectively) do not match this dataset's existing 2024_Q4.json (15.13) and 2025_Q4.json (15.91) -- traced to a bonus-share issue each subsequent year, where the later report's NAVPS note appears to divide the OLD period's equity by the CURRENT (post-bonus) share count rather than the share count that actually applied at that date; confirmed by recomputing (e.g. 9,676,780,648 / 658,859,845 post-bonus shares = 14.69). This is a mechanical artifact of the ratio, not a restatement of equity or profit, so 2024_Q4.json/2025_Q4.json are left untouched and correct."
+    },
+    {
+      "period": "2026 Q1/Q2",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "midlandbnk-q1-2026.txt, midlandbnk-half-yearly-2026.txt",
+      "source_path": "annual_reports/MIDLANDBNK/",
+      "source_url": "https://www.midlandbankbd.net/financial-statements/ (direct PDFs: Financial-Statements-Q1-2026.pdf, -Q2-2026-updated.pdf)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2026],
+      "note": "SOLO basis. Q3 2026 does not exist yet (period not yet ended as of retrieval date). Q1-2026's own comparative column for Jan-Mar-2025 reproduces 2025_Q1.json exactly (no divergence, unlike the Q2 2025 finding above). A further ~3% bonus share issue occurred in each of these two quarters (191.9m and 197.7m BDT face value respectively, on top of the one already recorded during Q2 2025), consistent with a pattern of annual/semi-annual small bonus issues; paid-up capital progression across this whole 2023-2026 quarterly series is: 5,696,697,530 (pre-IPO, Dec-2022) -> 6,396,697,530 (post-IPO, Mar-2023 onward) -> 6,588,598,450 (post-bonus, Jun-2025 onward) -> 6,786,256,400 (post-bonus, Jun-2026)."
+    },
+    {
+      "period": "2023-2026, PDF handling",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-27",
+      "note": "Three of the eleven downloaded quarterly PDFs (Q1-2023, Q3-2023, Q2-2026) extracted to zero lines via pdftotext -layout -- genuine scanned/image pages, unlike the 2023-2025 'digit corruption' filings which do have a broken text layer. An OCR pass (pdftoppm 150dpi + tesseract) was attempted for these three purely to leave a searchable text record, but tesseract hung/stalled indefinitely on the first page in this environment and was aborted after several minutes with zero output; rather than retry, the retained .txt files for these three quarters were written manually, transcribing every balance-sheet and P&L line (not just the figures used in the JSON) directly from the rendered PDF pages, which is more useful and more reliable for a financial table than OCR text would have been in any case. The actual figures used in quarterly/2023_Q1.json, 2023_Q3.json and 2026_Q2.json come from this same direct visual reading, cross-checked via the same internal arithmetic identities as every other quarter and, where available, against later reports' comparative columns."
+    }
+  ]
+}

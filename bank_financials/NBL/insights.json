@@ -1,0 +1,183 @@
+{
+  "bank_id": "NBL",
+  "generated_at": "2026-08-27 (Q1-Q3 interim quarters added; original Q4/annual analysis from 2026-08-26 preserved above)",
+  "methodology": "Derived from bank_financials/NBL/quarterly/*.json (FY2011-FY2025 year-end, Solo basis including the Offshore Banking Unit) and ratios_timeseries.json. Every figure is a reported value from National Bank's own audited annual report 'Five Years Financial Summary', or an explicitly-labelled derivation from them. FY2025-sourced figures were converted from crore to million. Classified loans are calculated by applying the reported NPL ratio to reported loans and advances, since the table gives only the ratio. The table reports no provisions and no profit-before-tax line, so provision coverage and effective tax rate are unavailable for every year. No figure is interpolated or estimated.",
+  "risk_signals": [
+    {
+      "category": "insolvency_crossing_pinned_to_q2_2025",
+      "severity": "critical",
+      "statement": "Newly-sourced Q1-Q3 interim data pins down exactly when National Bank's balance sheet crossed from solvent to insolvent: Solo shareholders' equity was still positive at 31 March 2025 (939.67m Taka, itself down sharply from 3208.10m at the FY2024 year-end), and had become negative by 30 June 2025 (-6720.15m Taka). The crossing therefore happened during the SECOND QUARTER of calendar 2025 (April-June 2025), not gradually across FY2024-2025 as the annual-only data implied. It was driven almost entirely by that single quarter's own discrete net loss of 7659.92m Taka -- 2025 Q1's equity of 939.67m minus the Q2 loss of 7659.92m reproduces the quarter-end equity of -6720.15m almost exactly (within 0.1m), meaning essentially none of the swing came from dividends, write-downs, or other equity adjustments. The full quarterly equity trajectory through FY2024-2026, now fully reconstructed, is 23189.24m (Dec 2023) to 15473.99m (Mar 2024) to 12390.74m (Jun 2024) to 5469.19m (Sep 2024) to 3208.10m (Dec 2024) to 939.67m (Mar 2025) to -6720.15m (Jun 2025, first negative quarter) to -11352.77m (Sep 2025) to -24002.90m (Dec 2025) to -35333.77m (Mar 2026) to -46909.31m (Jun 2026) -- a monotonic decline for eleven consecutive quarters with no quarter of stabilisation, still accelerating a year and a half after crossing into insolvency.",
+      "metrics": [
+        "total_equity",
+        "profit_after_tax",
+        "nav_per_share"
+      ],
+      "periods": [
+        "2024_Q1",
+        "2024_Q2",
+        "2024_Q3",
+        "2024_Q4",
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3",
+        "2025_Q4",
+        "2026_Q1",
+        "2026_Q2"
+      ]
+    },
+    {
+      "category": "first_loss_quarter_pinned_to_q4_2021",
+      "severity": "high",
+      "statement": "Newly-sourced FY2019-FY2021 interim data resolves exactly when National Bank's profit trajectory first turned negative, three years before the annual-only data suggested. The first nine months of calendar 2021 were still solidly profitable on a cumulative basis: PAT of 309.75m (Q1), 749.83m (H1 cumulative, implying a Q2 discrete profit of about 440.08m), and 1093.69m (9-month cumulative, implying a Q3 discrete profit of about 343.86m) -- a declining but still-positive run rate. Yet the existing FY2021 annual PAT is only 195.28m. Since 195.28m (full year) minus 1093.69m (nine months) is -898.41m, National Bank's FOURTH QUARTER of 2021 alone was a loss of approximately 898.41m Taka -- the first loss-making quarter anywhere in this now-complete FY2019-2021 run, and a much sharper single-quarter reversal than the smooth full-year decline (4164.35m in FY2019, to 3485.54m in FY2020, to 195.28m in FY2021) implied on its own. This mirrors, on a smaller scale, the single-quarter-pinpointing pattern documented in the insolvency-crossing risk signal above, and marks Q4-2021 as the quarter the slow-motion deterioration this dataset documents throughout the 2010s first became an outright quarterly loss, a full year before the much larger FY2022 loss (-32,850m).",
+      "metrics": [
+        "profit_after_tax",
+        "eps"
+      ],
+      "periods": [
+        "2021_Q1",
+        "2021_Q2",
+        "2021_Q3",
+        "2021_Q4"
+      ]
+    },
+    {
+      "category": "negative_shareholders_equity",
+      "severity": "critical",
+      "statement": "National Bank's shareholders' equity is MINUS 24,003m at end-FY2025, against 52,094m at end-FY2020. The bank is balance-sheet insolvent on its own reported figures: total liabilities of 529,204m exceed total assets of 505,201m. Net asset value per share is -7.45 Taka, down from 16.99 in FY2020, and reserve fund and surplus stands at -56,200m against paid-up capital of 32,197m. Reported CRAR is -5.48% and Tier-I capital is -37,586m, so regulatory capital is not merely below the 10% minimum but negative in absolute terms.",
+      "metrics": [
+        "total_equity",
+        "total_liabilities",
+        "nav_per_share",
+        "car_pct",
+        "tier1_capital",
+        "reserve_fund"
+      ],
+      "periods": [
+        "2020_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "four_consecutive_loss_years_exceeding_capital",
+      "severity": "critical",
+      "statement": "Losses of 32,850m (FY2022), 15,156m (FY2023), 17,224m (FY2024) and 24,299m (FY2025) total 89,530m over four years — 1.7 times the 52,094m of equity the bank held at end-FY2020. EPS ran -10.20, -4.71, -5.35 and -7.55 across those years and reported return on equity reached -233.70% in FY2025. There is no year of stabilisation in the sequence; the FY2025 loss is larger than FY2023's and FY2024's.",
+      "metrics": [
+        "profit_after_tax",
+        "eps",
+        "roe_pct",
+        "total_equity"
+      ],
+      "periods": [
+        "2021_Q4",
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "npl_deterioration_was_gradual_and_visible_for_a_decade",
+      "severity": "critical",
+      "statement": "Unlike the other distressed banks in this dataset, National Bank's asset quality deteriorated visibly and continuously for a decade before the collapse. The reported NPL ratio went 2.83% (FY2011), 7.01% (FY2015), 10.35% (FY2016) and stayed in double digits every year from FY2016 onward, then 20.80% (FY2021), 25.10% (FY2022), 36.57% (FY2023) and 64.64% (FY2024), easing to 59.69% (FY2025). Classified loans now stand at roughly 255,480m of a 428,012m book. This was not a sudden reclassification event: the ratio had already tripled between FY2011 and FY2016.",
+      "metrics": [
+        "npl_pct",
+        "classified_loans",
+        "gross_loans"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2015_Q4",
+        "2016_Q4",
+        "2021_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "deeply_negative_net_interest_income",
+      "severity": "critical",
+      "statement": "In FY2025 National Bank earned 8,385m of interest income against 44,052m of interest expense — net interest income of MINUS 35,666m. Interest income has fallen 72.8% since FY2021 (30,847m to 8,385m) because roughly 60% of the loan book is non-accrual, while interest expense rose over the same period. The cost-to-income ratio is 244.10%, up from 77.23% in FY2021. The bank's core intermediation business now destroys value on every taka of deposits it holds.",
+      "metrics": [
+        "interest_income",
+        "interest_expense",
+        "net_interest_income",
+        "cost_income_ratio_pct"
+      ],
+      "periods": [
+        "2021_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "deposit_flight",
+      "severity": "critical",
+      "statement": "Deposits fell from 473,104m (FY2021) to 338,844m (FY2025), a 28.4% decline and 134,260m of net outflow. This is the opposite of IFIC and Islami Bank, which both kept growing deposits through their crises, and it is the clearest evidence in this dataset of depositors actually withdrawing. Because loans did not shrink with them, the advance-deposit ratio rose to 119.48% in FY2025 from 90.46% in FY2021 — the bank now lends more than it takes in deposits, and above the regulatory ceiling.",
+      "metrics": [
+        "total_deposits",
+        "ldr_pct",
+        "gross_loans"
+      ],
+      "periods": [
+        "2021_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "loan_book_frozen_while_deposits_ran_off",
+      "severity": "high",
+      "statement": "Loans and advances have barely moved since FY2020 — 408,511m then, 428,012m now, up just 4.8% across five years — while deposits fell 28.4% and NPLs went from 9.38% to 59.69%. A book that neither grows nor shrinks while its non-performing share multiplies sixfold indicates loans that cannot be recovered and are not being written off, rather than any new lending activity.",
+      "metrics": [
+        "gross_loans",
+        "total_deposits",
+        "npl_pct"
+      ],
+      "periods": [
+        "2020_Q4",
+        "2022_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "pre_crisis_returns_were_never_repeated",
+      "severity": "medium",
+      "statement": "FY2011 was National Bank's high-water mark and it never came close again: return on equity of 29.96%, return on assets of 4.01%, EPS of 4.29 and an NPL ratio of 2.83%. Return on equity then fell to 6.78% the very next year and never exceeded 15.96% (FY2016) again before turning negative. Total assets still compounded at 13.52% a year from FY2011 to FY2020, so the bank kept growing for a decade on steadily worsening returns and steadily worsening asset quality.",
+      "metrics": [
+        "roe_pct",
+        "roa_pct",
+        "npl_pct",
+        "total_assets"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2012_Q4",
+        "2016_Q4",
+        "2020_Q4"
+      ]
+    },
+    {
+      "category": "equity_market_has_written_the_bank_down",
+      "severity": "info",
+      "statement": "The share price fell from 66.80 Taka (FY2011) to 3.20 (FY2025), a 95.2% decline. With net asset value per share at -7.45 the price-to-book ratio is meaningless, and the reported price-earnings ratio of -0.42 simply reflects the loss. Headcount fell from 5,083 (FY2024) to 4,535 (FY2025) while the branch network held at 221.",
+      "metrics": [
+        "market_price_per_share",
+        "nav_per_share",
+        "pe_ratio",
+        "num_employees",
+        "num_branches"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    }
+  ],
+  "historical_context": "National Bank is the clearest case of slow-motion failure in this dataset. FY2011 was its best year on every measure — 29.96% return on equity, 4.01% return on assets, a 2.83% NPL ratio — and it was never repeated: return on equity fell to 6.78% in FY2012 and never again passed 16%. Asset quality deteriorated steadily and in plain view, with the NPL ratio reaching 7.01% by FY2015 and staying in double digits every year from FY2016. Yet total assets compounded at 13.52% a year to FY2020, so the balance sheet kept expanding on a worsening book. The break into loss came in FY2022 (-32,850m) and has continued every year since, with FY2025's -24,299m larger than either FY2023's or FY2024's. Cumulative losses of 89,530m over four years are 1.7 times the equity the bank held at end-FY2020, and shareholders' equity is now MINUS 24,003m with a reported CRAR of -5.48% and negative Tier-I capital. What distinguishes National Bank from IFIC and Islami Bank — the other two banks here showing post-FY2024 distress — is that depositors have actually left: deposits fell 28.4% from FY2021, pushing the advance-deposit ratio to 119.48%, while interest income fell 72.8% and net interest income reached -35,666m. There was no single reclassification event to point at; the reported numbers warned about this bank for ten years.",
+  "data_gaps": "UPDATE 2026-08-27: Q1/Q2/Q3 interim data has now been sourced for FY2015–FY2026 from National Bank's own quarterly financial-statement archive (a page distinct from the annual-report archive), resolving the equity-crossing question in the risk_signal above. FURTHER UPDATE (same day, later pass): the FY2019-FY2021 slice (2019 Q1-Q2, 2020 Q1-Q3, 2021 Q1-Q3) was completed and cross-validated in a follow-up pass -- see the corresponding entry in sources.json for a mis-read that this cross-validation caught and corrected (2020_Q2's net interest income) and two filings (2019_Q1, 2020_Q3) whose own text was too corrupted to trust without leaning on neighbouring quarters' comparative columns. FURTHER UPDATE (same day, concurrent pass now also complete): the pre-crisis 2016 Q2-Q3 / 2017 Q2-Q3 / 2018 Q1-Q3 slice has also been sourced and cross-validated -- see the corresponding sources.json entry for a reconstructed bonus-share/paid-up-capital timeline (three separate capital increases pinned to Q3-2016, Q3-2017 and Q3-2018) and a structural finding that interest_income/interest_expense were illegible in all seven of those quarters even where every other P&L line extracted cleanly. As of these passes, the only remaining interim-quarter gaps are: Q3-2022 and Q3-2023 (confirmed absent from the bank's own site, not an extraction failure), and FY2011-2014 (the bank's own interim archive starts at 2015). Unlike the annual series, the interim quarterly filings are internally labelled 'Solo' (a plain 'Balance Sheet'/'Profit and Loss Account' heading) versus 'Consolidated' within the same document; the Solo section was used throughout and its comparative (prior-year-end) column matches the existing annual Solo+OBU figures exactly in every quarter checked. See bank_financials/NBL/quarterly/2025_Q2.json and sources.json for the full quarter-by-quarter detail behind the new insolvency-crossing risk_signal above. FY2011-FY2014 annual figures are not from their own reports because the archive holds nothing before FY2015; FY2021-FY2023 annual figures are not from their own reports because those PDFs are image-only with no recoverable text. The FY2025 annual report prints its table in crore rather than million and all its figures were multiplied by 10, verified against four overlapping columns. The annual source table reports NO provision figures at all and no profit-before-tax line, so provision coverage, provision charge, tax expense and effective tax rate are unavailable for every one of the fifteen annual years — a significant gap for a bank whose central problem is credit losses (the quarterly filings DO show provision and tax detail, now captured in quarterly/*.json for FY2015 onward). Classified loans are derived by applying the reported NPL ratio to reported loans and advances rather than read directly. Restatements between reports were checked across all readable years and are recorded in each period_note; they are far fewer here than for IFIC or Islami Bank. KNOWN PRE-EXISTING ISSUE FOUND BUT NOT MODIFIED (out of scope for this pass, flagged for a future session): bank_financials/NBL/ratios_timeseries.json's FY2025 Q4 entry has 'roe_pct_period_end': 101.23, which is the exact negative-equity-breaks-ROE bug this dataset's standing rules warn about (PAT -24298.7m divided by equity -24002.9m gives a misleadingly positive 101.23%, when both figures are actually large losses/negative capital); it should be null, matching the bank-reported 'roe_pct': -233.7 sitting right next to it in the same record, which is unaffected because it is calculated on average rather than period-end equity. This session's own new quarterly entries all null ROE correctly the moment equity turns negative."
+}

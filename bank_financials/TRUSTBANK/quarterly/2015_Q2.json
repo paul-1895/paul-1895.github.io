@@ -1,0 +1,137 @@
+{
+  "bank_id": "TRUSTBANK",
+  "bank_name": "Trust Bank PLC",
+  "reporting_date": "2015-06-30",
+  "financial_year": 2015,
+  "quarter": "Q2",
+  "period_note": "Extracted from Trust Bank's own unaudited interim financial statement PDF for this quarter, downloaded from the bank's live website (tblbd.com/about-us/financial-statements). SOLO / Bank-only basis (same basis as this dataset's main Q4/annual series): this source document explicitly separates a 'Balance Sheet'/'Profit and Loss Account (Unaudited)' section (Bank-only / Solo) from a separate 'Consolidated Balance Sheet'/'Consolidated Profit and Loss Account' section earlier in the same PDF; the SOLO section is the one used here -- confirmed by exact match between this PDF's own 31-Dec-2014 comparative column and this dataset's stored 2014_Q4.json total_assets. No basis mismatch with this bank's main series (contrast with the CONSOLIDATED-basis 2017-2025 quarters sourced from the annual-report-embedded 'Evaluation of the Quarterly Financials' table). Balance-sheet items are the period-end snapshot (unaudited); income-statement items are CUMULATIVE FROM JAN 1 of the same year (the source's own column header reads e.g. '1 January to <quarter-end date>'), not discrete-quarter figures -- flagged via the _cumulative suffix. Balance-sheet identity (assets = liabilities + equity) and Total Operating Income - Total Operating Expenses = Profit Before Provision both verified exactly against this source.",
+  "source": {
+    "source_document": "FS-June-2015.pdf",
+    "source_path": "annual_reports/TRUSTBANK/trust-bank-interim-fs-2015-q2.txt",
+    "source_url": "https://www.tblbd.com/sites/default/files/FS/FS-June-2015.pdf",
+    "source_page_lines": "Balance Sheet + Profit and Loss Account (Unaudited) sections, pp.7-9 of the PDF (page numbers vary slightly by vintage)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 20107.46,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances/Islami Banking Investments",
+      "value": 122244.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 143867.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 159202.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 8878.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 168080.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities",
+      "value": 56751.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 4688.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises, furniture and fixtures",
+      "value": 630.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 1990.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total operating income (cumulative from Jan 1)",
+      "value": 3724.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 1361.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": 2363.22,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after Taxation (cumulative from Jan 1)",
+      "value": 934.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earning per share (EPS) (cumulative from Jan 1)",
+      "value": 1.99,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

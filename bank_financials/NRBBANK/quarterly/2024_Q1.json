@@ -1,0 +1,209 @@
+{
+  "bank_id": "NRBBANK",
+  "bank_name": "NRB Bank PLC",
+  "reporting_date": "2024-03-31",
+  "financial_year": 2024,
+  "quarter": "Q1",
+  "period_note": "Solo/Separate basis, chosen per the project's preference for Solo over Consolidated -- this filing prints BOTH a Consolidated set of statements (Group, i.e. NRB Bank PLC and its subsidiary NRB Bank Securities PLC) AND a Separate/Bank-only set, laid out as a compact single-page 'newspaper' composite (top half = Consolidated Balance Sheet/P&L/Cash Flow/Equity, bottom half = plain 'Balance Sheet'/'Profit and Loss Account'/'Cash Flow Statement'/'Statement of Changes in Equity' with no 'Consolidated' prefix = the Separate/Bank-only figures) -- resolved by page-image rendering (pdftoppm) since pdftotext's column ordering merges the two halves in a confusing interleaved order. Income-statement items are CUMULATIVE from 1 January 2024 (column headed '01 January to 31 March 2024'); the source ALSO separately prints a discrete quarter-only column for Q1 (identical to the cumulative column since Q1 is the year's first quarter). EPS is labelled plain 'Earnings per share (EPS)(Restated)' -- NOT annualized, a convention change from the 2016/2017 vintage filings (verified: 15,405,607 / 690,587,200 weighted-avg shares != 0.02 exactly due to weighted-average-share mechanics from the Jan/Feb-2024 IPO diluting mid-quarter, but is clearly NOT x4-annualized, consistent with the plain '(Restated)' label). Solo Balance Sheet identity verified exactly (Total Liabilities 78,656,560,794 + Total Shareholders' Equity 9,157,034,016 = Total Assets 87,813,594,810). The Statement of Changes in Equity independently confirms: Retained earnings 1,027,872,348 (1-Jan-2024) + Net profit after tax 15,405,607 = 1,043,277,955 (31-Mar-2024 closing), matching the Balance Sheet exactly; Paid-up capital increased from 5,905,872,000 to 6,905,872,000 via a 1,000,000,000 Initial Public Offering (IPO) during the quarter (the bank listed on DSE/CSE in February 2024). This is the first quarter for which NRB Bank's own unaudited interim filings are found on its website -- consistent with the bank's IPO/listing date (prospectus vetted 28 Dec 2023, subscription 28 Jan-1 Feb 2024, listed ~27 Feb 2024): before listing, the bank had no BSEC obligation to publish interim financials publicly, which is the genuine structural reason no earlier (2018-2023) interim filings could be found on the bank's site or via the Wayback Machine (confirmed via a full-domain Wayback CDX search) despite the bank continuously existing since 2013 -- see sources.json for the full research trail.",
+  "source": {
+    "source_document": "nrbbank-2024-q1-unaudited.txt ('Quarterly Financial Statements First Quarter-2024 (Unaudited)')",
+    "source_path": "annual_reports/NRBBANK/nrbbank-2024-q1-unaudited.txt",
+    "source_url": "https://www.nrbbankbd.com/wp-content/uploads/2024/05/Un-Audited-Financial-Statement-1st-Quarter-2024.pdf",
+    "source_page_lines": "Page 1 of 2 (compact composite page: Consolidated statements upper half, Separate/Bank-only statements lower half); page 2 is explanatory notes only",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 16379.59,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances",
+      "value": 60043.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 66097.64,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total shareholders' equity",
+      "value": 9157.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 87813.59,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 78656.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-Balance Sheet items including contingent liabilities",
+      "value": 14893.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net asset value per share (NAVPS)(Restated)",
+      "value": 13.26,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up capital",
+      "value": 6905.87,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 1199.96,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserve",
+      "original_metric_name": "Other reserve",
+      "value": 7.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained earnings",
+      "value": 1043.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 251.85,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Income from investments (cumulative from Jan 1)",
+      "value": 295.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage (cumulative from Jan 1)",
+      "value": 61.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other operating income (cumulative from Jan 1)",
+      "value": 14.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_income_cumulative",
+      "original_metric_name": "Total operating income (A) (cumulative from Jan 1)",
+      "value": 623.39,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_expenditure_cumulative",
+      "original_metric_name": "Total operating expenses (B) (cumulative from Jan 1)",
+      "value": 492.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_profit_cumulative",
+      "original_metric_name": "Profit before provision (C=A-B) (cumulative from Jan 1)",
+      "value": 131.37,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provision_cumulative",
+      "original_metric_name": "Total provision (D) (cumulative from Jan 1)",
+      "value": 80.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total profit before tax (E=C-D) (cumulative from Jan 1)",
+      "value": 50.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_provision_cumulative",
+      "original_metric_name": "Total provision for tax (F) (cumulative from Jan 1)",
+      "value": 35.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after tax (G=E-F) (cumulative from Jan 1)",
+      "value": 15.41,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS)(Restated)",
+      "value": 0.02,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

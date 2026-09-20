@@ -1,0 +1,907 @@
+{
+  "bank_id": "GIB",
+  "generated_at": "2026-08-25",
+  "notes": "ROE calculated throughout (not reported by the bank in its own summary tables). 'gross_loans' holds conventional loans (pre-2021) or Shariah-compliant investment (2021+). FY2023 and FY2024: shareholders' equity is negative (-9,026.18m and -21,492.36m respectively), so roe_pct.value is null for both periods per the negative-equity-breaks-ROE rule (PAT / period-end equity would otherwise compute to a nonsensically positive figure since both are negative) -- see the 'note' field inside each period's roe_pct object for the specific numbers. The same problem affects FY2024's equity yoy_growth_pct: its denominator (FY2023 equity, -9,026.18m) is itself negative, so the standard (V_t - V_t-4q)/V_t-4q formula would show further deterioration as a misleading positive percentage; it is null for FY2024 only (FY2023's equity yoy_growth_pct is safe to compute since its own base, FY2022 equity, is positive). No FY2025 period exists: confirmed on 2026-08-26 that GIB never published a standalone FY2025 annual report before being absorbed into the Bangladesh Bank-brokered 'Sammilito Islami Bank' merger (operational from 18 August 2026) -- see sources.json for the full finding. UPDATED 2026-08-27: Q1-Q3 interim quarters added for 2021-2025 (15 new periods), sourced from the bank's own unaudited interim financial statements (see quarterly/<year>_Q<n>.json for full sourcing and validation detail on each). npl_ratio_pct, provision_coverage_pct and car_pct are null throughout the new interim periods -- GIB's interim filings do not disclose Basel III / asset-quality detail, only the annual report does (matching the established convention for other banks' interim quarters in this dataset, e.g. CITYBANK). roa_pct/roe_pct for interim quarters use cumulative-from-Jan-1 PAT against the period-end balance sheet (not annualized), matching the dataset-wide interim convention. CRITICAL: 2024 Q1-Q3 are on GIB's PRE-FY2023-restatement interim reporting basis (equity/total_assets are NOT comparable to 2023 Q4/2024 Q4's audited, restated figures, or to 2025 Q1-Q3's fully-restated figures) -- see quarterly/2024_Q1.json for the full discovery. 2024 Q3's own total_equity and total_assets are additionally flagged low-confidence: that single filing is internally inconsistent between its own Balance Sheet and Profit and Loss Account by roughly the same ~22.8bn gap -- see quarterly/2024_Q3.json. yoy_growth_pct is nulled for total_assets and equity wherever the year-over-year comparison would cross this restatement boundary (2025 Q1 vs 2024 Q1, 2025 Q2 vs 2024 Q2, 2025 Q3 vs 2024 Q3); gross_loans/total_deposits YoY are unaffected and computed normally throughout.",
+  "periods": [
+    {
+      "financial_year": 2013,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 7497.19,
+      "gross_loans": 2580.02,
+      "total_deposits": 3176.75,
+      "equity": 4239.24,
+      "npl_ratio_pct": {
+        "value": 0,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 83.77,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -0.28,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": -0.25,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": {
+        "value": 71.22,
+        "basis": "reported"
+      },
+      "eps": -0.03,
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 18300.57,
+      "gross_loans": 10238.2,
+      "total_deposits": 13906.93,
+      "equity": 4178.07,
+      "npl_ratio_pct": {
+        "value": 0,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 76.83,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -0.17,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": -1.79,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": {
+        "value": 27.38,
+        "basis": "reported"
+      },
+      "eps": -0.18,
+      "yoy_growth_pct": {
+        "total_assets": 144.1,
+        "gross_loans": 296.83,
+        "total_deposits": 337.77,
+        "equity": -1.44
+      }
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 31430.03,
+      "gross_loans": 20846.13,
+      "total_deposits": 26687.08,
+      "equity": 4210.62,
+      "npl_ratio_pct": {
+        "value": 0.64,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 78.02,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": 0.02,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 0.45,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": {
+        "value": 16.04,
+        "basis": "reported"
+      },
+      "eps": 0.04,
+      "yoy_growth_pct": {
+        "total_assets": 71.74,
+        "gross_loans": 103.61,
+        "total_deposits": 91.9,
+        "equity": 0.78
+      }
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 49266.75,
+      "gross_loans": 34958.29,
+      "total_deposits": 42880.37,
+      "equity": 4616.46,
+      "npl_ratio_pct": {
+        "value": 0.42,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 81.69,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": 0.26,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 9.16,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": {
+        "value": 11.83,
+        "basis": "reported"
+      },
+      "eps": 1,
+      "yoy_growth_pct": {
+        "total_assets": 56.75,
+        "gross_loans": 67.7,
+        "total_deposits": 60.68,
+        "equity": 9.64
+      }
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 79132.6,
+      "gross_loans": 59328.38,
+      "total_deposits": 68981.11,
+      "equity": 5003.32,
+      "npl_ratio_pct": {
+        "value": 1.31,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 85,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": 0.15,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 7.79,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": {
+        "value": 11.26,
+        "basis": "reported"
+      },
+      "eps": 0.92,
+      "yoy_growth_pct": {
+        "total_assets": 60.62,
+        "gross_loans": 69.71,
+        "total_deposits": 60.87,
+        "equity": 8.38
+      }
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 92172,
+      "gross_loans": 71556,
+      "total_deposits": 82883,
+      "equity": 5316,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 86.33,
+        "basis": "calculated"
+      },
+      "roa_pct": {
+        "value": 0.58,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 9.97,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 16.48,
+        "gross_loans": 20.61,
+        "total_deposits": 20.15,
+        "equity": 6.25
+      }
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 106405,
+      "gross_loans": 82366,
+      "total_deposits": 96716,
+      "equity": 5688,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 85.16,
+        "basis": "calculated"
+      },
+      "roa_pct": {
+        "value": 0.34,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 6.45,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 15.44,
+        "gross_loans": 15.11,
+        "total_deposits": 16.69,
+        "equity": 7
+      }
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 120902,
+      "gross_loans": 92909,
+      "total_deposits": 106749,
+      "equity": 6700,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 87.04,
+        "basis": "calculated"
+      },
+      "roa_pct": {
+        "value": 0.85,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 15.36,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": null,
+      "yoy_growth_pct": {
+        "total_assets": 13.62,
+        "gross_loans": 12.8,
+        "total_deposits": 10.37,
+        "equity": 17.79
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 120191.69,
+      "gross_loans": 96338.16,
+      "total_deposits": 105915.34,
+      "equity": 7437.89,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 90.96,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.3,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 4.91,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 0.78,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 126188.17,
+      "gross_loans": 100763.07,
+      "total_deposits": 111039.42,
+      "equity": 7285.82,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 90.75,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": -0.06,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": -1.03,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": -0.15,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 127284.27,
+      "gross_loans": 103460.69,
+      "total_deposits": 112728.52,
+      "equity": 7513.39,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 91.78,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.3,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 5.07,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": null,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": null,
+        "total_deposits": null,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 132810,
+      "gross_loans": 107087,
+      "total_deposits": 117805,
+      "equity": 7761,
+      "npl_ratio_pct": {
+        "value": 2.23,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 90.71,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": 1.04,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 17,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 2.56,
+      "yoy_growth_pct": {
+        "total_assets": 9.85,
+        "gross_loans": 15.26,
+        "total_deposits": 10.36,
+        "equity": 15.84
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 135536.23,
+      "gross_loans": 111151.84,
+      "total_deposits": 118651.42,
+      "equity": 7941.24,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 93.68,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.13,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 2.3,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 0.35,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": 12.77,
+        "gross_loans": 15.38,
+        "total_deposits": 12.02,
+        "equity": 6.77
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 139212.91,
+      "gross_loans": 109274.19,
+      "total_deposits": 121375.85,
+      "equity": 8222.07,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 90.03,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.33,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 5.67,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 0.9,
+      "eps_basis": "calculated",
+      "yoy_growth_pct": {
+        "total_assets": 10.32,
+        "gross_loans": 8.45,
+        "total_deposits": 9.31,
+        "equity": 12.85
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 141186.1,
+      "gross_loans": 111268.46,
+      "total_deposits": 122280.67,
+      "equity": 8560.0,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 90.99,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.57,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 9.43,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 1.57,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": 10.92,
+        "gross_loans": 7.55,
+        "total_deposits": 8.47,
+        "equity": 13.93
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 153811,
+      "gross_loans": 118681,
+      "total_deposits": 118809,
+      "equity": 12964,
+      "npl_ratio_pct": {
+        "value": 4.48,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 89.1,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": 0.67,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 7.43,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": {
+        "value": 16.49,
+        "basis": "reported"
+      },
+      "eps": 1.02,
+      "yoy_growth_pct": {
+        "total_assets": 15.81,
+        "gross_loans": 10.83,
+        "total_deposits": 0.85,
+        "equity": 67.04
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 147172.52,
+      "gross_loans": 121179.63,
+      "total_deposits": 117605.1,
+      "equity": 13533.35,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 103.04,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.39,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 4.25,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 0.61,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": 8.59,
+        "gross_loans": 9.02,
+        "total_deposits": -0.88,
+        "equity": 70.42
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 151976.96,
+      "gross_loans": 124592.3,
+      "total_deposits": 121799.18,
+      "equity": 13649.92,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 102.29,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.46,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 5.07,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 0.74,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": 9.17,
+        "gross_loans": 14.02,
+        "total_deposits": 0.35,
+        "equity": 66.02
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 155826.22,
+      "gross_loans": 126410.77,
+      "total_deposits": 122341.72,
+      "equity": 13614.47,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 103.33,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.73,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 8.31,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 1.15,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": 10.37,
+        "gross_loans": 13.61,
+        "total_deposits": 0.05,
+        "equity": 59.05
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 174222.01,
+      "gross_loans": 131411.92,
+      "total_deposits": 130061.77,
+      "equity": -9026.18,
+      "npl_ratio_pct": {
+        "value": 25.07,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 99.82,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -13.12,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": null,
+        "basis": "calculated_period_end_not_average",
+        "note": "Null per the negative-equity-breaks-ROE rule: PAT (-21,520.25m) / period-end equity (-9,026.18m) would compute to a nonsensically positive +238.4%, since both are negative. The bank's own Highlights table reports ROE of -1,092.92% for FY2023 on an average-equity basis (average of FY2022's +12,964.28m and FY2023's -9,026.18m = +1,969.05m, still positive) -- not comparable to this dataset's period-end convention and not stored here."
+      },
+      "car_pct": {
+        "value": -9.28,
+        "basis": "reported"
+      },
+      "eps": -21.79,
+      "yoy_growth_pct": {
+        "total_assets": 13.27,
+        "gross_loans": 10.73,
+        "total_deposits": 9.47,
+        "equity": -169.62
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 166565.38,
+      "gross_loans": 134607.66,
+      "total_deposits": 127793.91,
+      "equity": 14556.29,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 105.33,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.48,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 5.5,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 0.81,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": 13.18,
+        "gross_loans": 11.08,
+        "total_deposits": 8.66,
+        "equity": 7.56
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 180721.91,
+      "gross_loans": 139156.12,
+      "total_deposits": 134735.15,
+      "equity": 14215.18,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 103.28,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.53,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": 6.71,
+        "basis": "calculated_period_end_not_average"
+      },
+      "car_pct": null,
+      "eps": 0.97,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": 18.91,
+        "gross_loans": 11.69,
+        "total_deposits": 10.62,
+        "equity": 4.14
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 173683.36,
+      "gross_loans": 142103.98,
+      "total_deposits": 134833.86,
+      "equity": -9020.32,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 105.39,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": 0.25,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": null,
+        "basis": "calculated_period_end_not_average",
+        "note": "Null per the negative-equity-breaks-ROE rule: PAT (428.43m) / period-end equity (-9020.32m) would compute to a nonsensically signed figure since equity is not positive."
+      },
+      "car_pct": null,
+      "eps": 0.43,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": 11.46,
+        "gross_loans": 12.41,
+        "total_deposits": 10.21,
+        "equity": -166.26
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 192203.56,
+      "gross_loans": 144278.12,
+      "total_deposits": 132905.66,
+      "equity": -21492.36,
+      "npl_ratio_pct": {
+        "value": 90.72,
+        "basis": "reported"
+      },
+      "ldr_pct": {
+        "value": 106.71,
+        "basis": "reported"
+      },
+      "roa_pct": {
+        "value": -6.8,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": null,
+        "basis": "calculated_period_end_not_average",
+        "note": "Null per the negative-equity-breaks-ROE rule: PAT (-12,466.18m) / period-end equity (-21,492.36m) would compute to a nonsensically positive +58.0%, since both are negative. The bank's own Highlights table reports ROE of -81.70% for FY2024 on an average-equity basis, but FY2024's average equity (-15,259.27m, averaging -9,026.18m and -21,492.36m) is itself negative, so even that convention is compromised (in the opposite direction) -- not stored here either."
+      },
+      "car_pct": {
+        "value": -11.0,
+        "basis": "reported"
+      },
+      "eps": -12.62,
+      "yoy_growth_pct": {
+        "total_assets": 10.32,
+        "gross_loans": 9.79,
+        "total_deposits": 2.19,
+        "equity": null
+      }
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 186227.64,
+      "gross_loans": 146379.26,
+      "total_deposits": 125777.21,
+      "equity": -28904.26,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 116.38,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": -3.98,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": null,
+        "basis": "calculated_period_end_not_average",
+        "note": "Null per the negative-equity-breaks-ROE rule: PAT (-7411.9m) / period-end equity (-28904.26m) would compute to a nonsensically positive figure since equity is not positive."
+      },
+      "car_pct": null,
+      "eps": -7.51,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": 8.75,
+        "total_deposits": -1.58,
+        "equity": null
+      },
+      "yoy_growth_pct_note": "total_assets and equity YoY growth vs 2024 Q1 are null: that prior period is on GIB's pre-FY2023-restatement interim basis (equity/assets reported before the ~BDT 22.8bn retroactive provisioning restatement discovered between the 2024 and 2025 interim filings -- see quarterly/2024_Q1.json), while this period is on the fully-restated basis matching the audited FY2024 annual report. The two are not comparable on a like-for-like basis. gross_loans and total_deposits YoY are unaffected (those balance-sheet lines were not restated) and are computed normally."
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 189611.33,
+      "gross_loans": 147078.69,
+      "total_deposits": 125042.42,
+      "equity": -37847.3,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 117.62,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": -8.63,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": null,
+        "basis": "calculated_period_end_not_average",
+        "note": "Null per the negative-equity-breaks-ROE rule: PAT (-16354.94m) / period-end equity (-37847.3m) would compute to a nonsensically positive figure since equity is not positive."
+      },
+      "car_pct": null,
+      "eps": -16.56,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": 5.69,
+        "total_deposits": -7.19,
+        "equity": null
+      },
+      "yoy_growth_pct_note": "total_assets and equity YoY growth vs 2024 Q2 are null: that prior period is on GIB's pre-FY2023-restatement interim basis (equity/assets reported before the ~BDT 22.8bn retroactive provisioning restatement discovered between the 2024 and 2025 interim filings -- see quarterly/2024_Q1.json), while this period is on the fully-restated basis matching the audited FY2024 annual report. The two are not comparable on a like-for-like basis. gross_loans and total_deposits YoY are unaffected (those balance-sheet lines were not restated) and are computed normally."
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 185628.07,
+      "gross_loans": 146674.01,
+      "total_deposits": 124151.15,
+      "equity": -43840.37,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 118.14,
+        "basis": "calculated"
+      },
+      "provision_coverage_pct": null,
+      "roa_pct": {
+        "value": -12.04,
+        "basis": "calculated_period_end_not_average"
+      },
+      "roe_pct": {
+        "value": null,
+        "basis": "calculated_period_end_not_average",
+        "note": "Null per the negative-equity-breaks-ROE rule: PAT (-22348.01m) / period-end equity (-43840.37m) would compute to a nonsensically positive figure since equity is not positive."
+      },
+      "car_pct": null,
+      "eps": -22.63,
+      "eps_basis": "reported",
+      "yoy_growth_pct": {
+        "total_assets": null,
+        "gross_loans": 3.22,
+        "total_deposits": -7.92,
+        "equity": null
+      },
+      "yoy_growth_pct_note": "total_assets and equity YoY growth vs 2024 Q3 are null: that prior period is on GIB's pre-FY2023-restatement interim basis (equity/assets reported before the ~BDT 22.8bn retroactive provisioning restatement discovered between the 2024 and 2025 interim filings -- see quarterly/2024_Q1.json), while this period is on the fully-restated basis matching the audited FY2024 annual report. The two are not comparable on a like-for-like basis. gross_loans and total_deposits YoY are unaffected (those balance-sheet lines were not restated) and are computed normally."
+    }
+  ]
+}

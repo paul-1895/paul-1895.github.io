@@ -1,0 +1,39 @@
+{
+  "bank_id": "EBL",
+  "bank_name": "Eastern Bank PLC",
+  "reporting_date": "2026-03-31",
+  "financial_year": 2026,
+  "quarter": "Q1",
+  "period_note": "SOLO/SEPARATE basis (the 'Condensed Balance Sheet'/'Condensed Profit & Loss Account' pages headed just 'Eastern Bank PLC.', as distinct from the 'Condensed Consolidated' pages earlier in the same PDF). Income-statement items are CUMULATIVE from 1 January 2026 (the filing's own column header reads '01 January 2026 to 31 March 2026'), flagged via the _cumulative suffix, same convention as CITYBANK's schema example. For Q1 specifically, cumulative-from-Jan-1 and discrete-quarter are numerically identical (first quarter of the year). EXTRACTION NOTE: this PDF's Solo-section font has a broken ToUnicode CMap — pdftotext -layout systematically mis-renders digits in that section only (e.g. '1'/'L', '5'/'s', '0'/'O' confusable; the Consolidated section earlier in the same file extracts cleanly). All figures below were therefore sourced via OCR (pdftoppm 300dpi + tesseract) of the Solo Balance Sheet/P&L/notes pages (physical PDF pages 7-9 and 16), not the raw pdftotext dump. Cross-validated three ways: (1) internal arithmetic — operating_income - operating_expenses = operating_profit exactly (7,714,488,947 - 3,547,765,881 = 4,166,723,066); operating_profit - total_provision = PBT exactly (4,166,723,066 - 510,282,967 = 3,656,440,099); PBT - tax = PAT exactly (3,656,440,099 - 1,653,976,362 = 2,002,463,737); assets = liabilities + equity exactly (716,554,099,166 + 53,052,753,521 = 769,606,852,687); classified_loans/gross_loans = 12,780,834,930/457,218,145,190 = 2.795%, matching the filing's own reported NPL% of 2.80%. (2) the comparative '31 December 2025' column in this filing matches bank_financials/EBL/quarterly/2025_Q4.json exactly for every line item checked (total_assets 761,604m, gross_loans 477,040m, total_deposits 556,454m, total_equity 50,850m, investments_securities 211,473m, borrowings 113,440m, fixed_assets 6,791m, classified_loans 10,675m, npl_pct 2.24% — no discrepancy). (3) cross-checked against the later 2026 H1 filing's own comparative Q1 columns and its discrete 'April-June 2026' column: Q1 PAT (2,002,463,737) + H1 filing's discrete Q2-only PAT (2,288,522,963) = 4,290,986,700, matching the H1 filing's cumulative H1 PAT (4,290,986,700) exactly.",
+  "source": {
+    "source_document": "ebl-q1-2026.txt",
+    "source_path": "annual_reports/EBL/ebl-q1-2026.txt",
+    "source_url": "https://www.ebl.com.bd/assets/reports/half/EBL-Q1-Financial-Statements-2026-Unaudited.pdf",
+    "source_page_lines": "Condensed Balance Sheet (Unaudited) as at 31 March 2026, Condensed Profit & Loss Account for the period ended 31 March 2026, and Note 7.4/Note 14 (PDF pages 7-9, 16 = txt lines ~464-703, ~1342-1355, ~1583-1590; figures OCR'd from these pages due to font-encoding corruption in the raw pdftotext extraction of this section)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    { "normalised_metric_name": "authorized_capital", "original_metric_name": "Authorized capital", "value": 25000, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "paid_up_capital", "original_metric_name": "Issued, subscribed and fully paid-up capital", "value": 15958, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_equity", "original_metric_name": "Total Shareholders' Equity", "value": 53053, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "gross_loans", "original_metric_name": "Loans and advances/investments", "value": 457218, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_deposits", "original_metric_name": "Deposits and other accounts", "value": 562070, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "borrowings", "original_metric_name": "Borrowing/placement from other Banks, financial institutions and agents etc. (incl. subordinated bond)", "value": 112614, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "investments_securities", "original_metric_name": "Investments (Government + Others)", "value": 225825, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "fixed_assets", "original_metric_name": "Fixed assets including premises, furniture and fixtures", "value": 6835, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_assets", "original_metric_name": "Total Assets", "value": 769607, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_liabilities", "original_metric_name": "Total Liabilities", "value": 716554, "unit": "BDT_million", "currency": "BDT", "basis": "calculated_from_assets_minus_equity" },
+    { "normalised_metric_name": "classified_loans", "original_metric_name": "Classified Loans & Advances/investments (Non-Performing loans/investments)", "value": 12781, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "npl_pct", "original_metric_name": "Percentage of Classified Loans & Advances/investments (Non-Performing loans/investments)", "value": 2.8, "unit": "percent", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "net_interest_income_cumulative", "original_metric_name": "Net interest income/profit on investments (cumulative from Jan 1)", "value": 1243, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "investment_income_cumulative", "original_metric_name": "Income from investments (cumulative from Jan 1)", "value": 4720, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "non_interest_income_cumulative", "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)", "value": 1751, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_income_cumulative", "original_metric_name": "Total operating income (cumulative from Jan 1)", "value": 7714, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_expenses_cumulative", "original_metric_name": "Total operating expenses (cumulative from Jan 1)", "value": 3548, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_profit_cumulative", "original_metric_name": "Profit before provisions (cumulative from Jan 1)", "value": 4167, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "provision_for_loans_cumulative", "original_metric_name": "Total provision (loans/investments, off-balance sheet and other) (cumulative from Jan 1)", "value": 510, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "profit_before_tax_cumulative", "original_metric_name": "Profit before tax for the period (cumulative from Jan 1)", "value": 3656, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "profit_after_tax_cumulative", "original_metric_name": "Profit after tax for the period (cumulative from Jan 1)", "value": 2002, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "eps_cumulative", "original_metric_name": "Earnings per share (EPS) (restated)", "value": 1.25, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported" }
+  ]
+}

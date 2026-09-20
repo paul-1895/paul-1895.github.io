@@ -1,0 +1,97 @@
+/* ─── HEADER ─────────────────────────────────────────────────────── */
+/* .site-header, .logo-block, .logo-text, .header-meta, .meta-*,
+   .refresh-btn, .theme-toggle, .wl-toggle-btn, .wl-count-badge are all
+   defined by the shared style.css — kept out of this file so the
+   homepage matches every other page. Only genuinely homepage-specific
+   overrides live here. */
+
+.header-inner {
+  /* style.css sets a fixed height:56px for pages without this wrapping
+     header skin; override it to auto (floored at the original 56px) so
+     a wrapped second row of nav icons grows the box instead of
+     overflowing past it into the ticker strip below — the homepage
+     header carries more buttons (Watchlist, Menu, notifications bell,
+     Refresh, Theme) than other pages and can wrap at medium widths. */
+  height: auto;
+  min-height: 56px;
+}
+
+/* Live pulsing dot on the logo tag — homepage-only flourish, not part
+   of the shared .logo-tag in style.css */
+.logo-tag {
+  position: relative;
+  box-shadow: 0 1px 3px var(--accent-dim);
+}
+.logo-tag::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+  animation: dotPulse 2s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+/* ─── HOVER TOOLTIPS (icon-only buttons) ─────────────────────────── */
+.has-tooltip {
+  position: relative;
+}
+
+.has-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  background: var(--text-primary);
+  color: var(--bg-base);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  padding: 5px 9px;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s var(--ease-out), transform 0.12s var(--ease-out);
+  z-index: 300;
+}
+
+.has-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-1px);
+  border: 5px solid transparent;
+  border-bottom-color: var(--text-primary);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s var(--ease-out);
+  z-index: 300;
+}
+
+.has-tooltip:hover::after,
+.has-tooltip:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.has-tooltip:hover::before,
+.has-tooltip:focus-visible::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 640px) {
+  .has-tooltip::after,
+  .has-tooltip::before {
+    display: none;
+  }
+}

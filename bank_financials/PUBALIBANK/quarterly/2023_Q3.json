@@ -1,0 +1,41 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2023-09-30",
+  "financial_year": 2023,
+  "quarter": "Q3",
+  "period_note": "Recovered via a Wayback Machine capture of DSE's OWN company page (dsebd.org/displayCompany.php?name=PUBALIBANK), NOT the bank's site. From this vintage onward DSE no longer publishes Turnover/Revenue or Profit-in-BDT on this page (the rows are present in the page's HTML but wrapped in a comment, rendering only placeholder zeros) -- only EPS and period-end market price remain, matching the identical presentation change already documented for RUPALIBANK from its own 2023 capture onward. Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). Reconciliation check: Half-Yearly (2.710) + this quarter's discrete EPS (3.250) = 5.960, exactly matching the reported 9-Months cumulative -- clean, no flags.",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://web.archive.org/web/20231029000246id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2023\" table, Q3 (discrete) and 9 Months (cumulative) columns (period-end 202309)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Jul-Sep",
+      "value": 3.25,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_9m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, 9 Months cumulative",
+      "value": 5.96,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 25.7,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

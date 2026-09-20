@@ -1,0 +1,132 @@
+{
+  "bank_id": "SIBL",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json (or the underlying quarterly/<YEAR>_Q4.json line items where a figure is not itself a ratio). All cited figures were verified programmatically against the written JSON files before this file was finalized.",
+  "risk_signals": [
+    {
+      "category": "asset_quality_collapse_2024",
+      "severity": "critical",
+      "statement": "The Ratio of Classified Investments to Total Investments (SIBL's Shariah-banking equivalent of the NPL ratio) exploded from 4.79% (FY2023) to 61.74% (FY2024) -- almost 13x in a single year, and one of the most severe single-year asset-quality deteriorations recorded anywhere in this dataset (comparable in scale to FIRSTSBANK's FY2024 jump to 91.75% and GIB's to 90.72%, both banks now merged with SIBL into Sammilito Islami Bank PLC). In absolute terms, classified investments rose from Taka 17,288.60m to Taka 236,579.50m against gross Investments (General) of Taka 383,165.07m.",
+      "metrics": [
+        "npl_ratio_pct",
+        "gross_loans"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "capital_adequacy_breach_2024",
+      "severity": "critical",
+      "statement": "Capital to Risk-weighted Asset Ratio (CRAR) fell from 12.66% (FY2023) to 6.43% (FY2024), breaching the 12.50% regulatory minimum (10% base plus 2.5% conservation buffer) by more than half. The bank's own auditors go further: the Independent Auditor's Report's Material Uncertainty paragraph states that if the deferred provision shortfall (see provision_shortfall_regulatory_forbearance_2024 below) were recognized, CRAR would deteriorate to NEGATIVE 33.95%, implying a total capital shortfall of Taka 22,850.14 crore against the requirement -- i.e. the reported 6.43% substantially overstates the bank's true capital position even before considering that Risk-Weighted Assets themselves nearly doubled the same year (Taka 305,922.96m to Taka 519,943.53m, +70.0%) while Total Assets grew only 0.07%, consistent with credit-risk-weight escalation driven by the asset-quality collapse rather than balance-sheet growth.",
+      "metrics": [
+        "car_pct",
+        "total_assets"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "provision_shortfall_regulatory_forbearance_2024",
+      "severity": "critical",
+      "statement": "Per Bangladesh Bank letter no. DBI-7/4(2)/2025-346 (29 April 2025), cited in the Auditors' Basis for Qualified Opinion, SIBL was required to maintain provisions of Taka 23,158.06 crore but had maintained only Taka 1,502.62 crore (plus Taka 78.18 crore paid and included in profit paid on borrowings). Bangladesh Bank letter no. DOS(CAMS)1157/41(Dividend)/2025-3109 (21 May 2025) permitted the Bank to finalize its FY2024 financial statements without provisioning the remainder -- the same recognition-vs-deferral pattern this dataset's methodology documents for ISLAMIBANK, GIB and FIRSTSBANK. At least four further shortfall figures appear elsewhere in the SAME audited report without reconciliation to each other or to the figures above: Taka 20,993.72 crore (Note 7.8 and Note 16.5's footnote, identically, against a directly-reported classified-investment provision base); Taka 21,626.58 crore and a 'permitted' Taka 21,577.26 crore (Note 14.11's footnote, citing the same two Bangladesh Bank letters); and Taka 21,655.44 crore (the Directors' Report). This dataset records every figure verbatim per its never-silently-reconcile convention -- see the FY2024 quarterly JSON's period_note for the full citation trail.",
+      "metrics": [
+        "car_pct",
+        "npl_ratio_pct"
+      ],
+      "periods": [
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "profitability_collapse_2024",
+      "severity": "critical",
+      "statement": "SIBL swung from a pre-tax profit of Taka 3,963.89m (FY2023) to a pre-tax LOSS of Taka -319.51m (FY2024), and from a post-tax profit of Taka 2,564.13m to a post-tax LOSS of Taka -532.74m -- the first reported net loss anywhere in this dataset's SIBL series (FY2010-FY2024). Return on Equity fell from 11.89% to -2.48% and Return on Assets from 0.56% to -0.11%. Equity itself remained positive throughout (Taka 20,613.45m at FY2024 year-end, down from Taka 22,383.44m), so this dataset's negative-equity-breaks-ROE rule was not triggered; the -2.48% ROE is a straightforward (and already severe) calculation. DSE's own disclosure table separately shows a larger Consolidated-basis FY2024 loss of Taka -1,017.03m (EPS -0.89) versus this dataset's Solo-basis Taka -532.74m (EPS -0.88), implying SIBL's two wholly-owned subsidiaries (SIBL Securities Limited, SIBL Investment Limited) were also loss-making in FY2024 or that consolidation adjustments amplified the loss -- not independently verified in this Solo-basis dataset.",
+      "metrics": [
+        "roe_pct",
+        "roa_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "deposit_flight_2024",
+      "severity": "warning",
+      "statement": "Client (customer) deposits fell 16.64% in FY2024, from Taka 345,955.93m to Taka 288,401.50m, per the Auditors' own Material Uncertainty paragraph -- confirmed exactly from this dataset's own stored figures ((345955.93-288401.50)/345955.93 = 16.64%). Total deposits (including interbank/placement-sourced deposits) fell a smaller 13.32% (Taka 357,388.85m to Taka 309,770.55m), while Placement from Other Banks & Financial Institutions more than doubled (Taka 43,280.00m to Taka 90,847.46m per the Balance Sheet), consistent with the Auditors' separate observation of 'increased placement liabilities of Taka 9,085 crore' -- i.e. the bank substantially replaced fleeing customer deposits with more expensive interbank/wholesale funding and Bangladesh Bank liquidity support (see going_concern_liquidity_support_2024 below). The Investment-Deposit (ID) Ratio consequently spiked to 121.15%, breaching Bangladesh Bank's 92.5% regulatory cap by nearly 29 percentage points.",
+      "metrics": [
+        "total_deposits",
+        "ldr_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "going_concern_liquidity_support_2024",
+      "severity": "critical",
+      "statement": "The Auditors' Emphasis of Matter paragraph (b) discloses that SIBL could not maintain its Cash Reserve Ratio (CRR) and Statutory Liquidity Ratio (SLR) on multiple occasions during FY2024, and only reported positive CRR/SLR at year-end by drawing Taka 9,084.75 crore of special liquidity support (Bangladesh Government Special Islamic Bond, Islami Bank Liquidity Facility, direct Bangladesh Bank liquidity support, Bangladesh Bank overdraft, and foreign-currency borrowing from other banks) -- a scale of central-bank-dependent liquidity support equal to roughly 4.4x the bank's own FY2024 Total Shareholders' Equity (Taka 20,613.45m) -- i.e. the emergency liquidity support alone was more than four times the bank's entire remaining capital base. The Auditors also separately noted 5.85% of FY2024 investment income (Taka 185.29 crore of Taka 3,169.67 crore total) was charged on irregular-investment clients identified by Bangladesh Bank in April 2024, who remained non-performing as of the report date. The Bank's opinion was not modified for these matters, but they were disclosed as Emphasis of Matter alongside the Material Uncertainty paragraph on capital adequacy.",
+      "metrics": [
+        "total_equity"
+      ],
+      "periods": [
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "merger_into_sammilito_islami_bank_series_end",
+      "severity": "critical",
+      "statement": "SIBL never published a standalone FY2025 annual report. It was declared a failed/non-viable institution and placed under resolution, then merged by Bangladesh Bank into a new state-owned entity, Sammilito Islami Bank PLC, together with four other crisis-hit Shariah banks already confirmed in this dataset to have no FY2025 report for the identical reason (EXIM Bank, First Security Islami Bank, Global Islami Bank, Union Bank). DSE's disclosure table shows SIBL continued filing unaudited quarterly results through Q3 2025 (9-month cumulative EPS -15.28, itself indicating continued severe losses through September 2025 -- roughly 17x FY2024's full-year per-share loss of -0.88 already registered in just three quarters) but its 'Annual' column for FY2025 was never populated, and its market price fell from Tk 10.1 to Tk 4.4 per share over the same three quarters. SIBL's own website (siblbd.com) has itself been rebranded to 'Sammilito Islami Bank PLC' as of this dataset's retrieval date (26 August 2026). This is a confirmed, permanent series-end for SIBL as a standalone reporting entity.",
+      "metrics": [
+        "eps"
+      ],
+      "periods": [
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "pre_2024_growth_and_stability",
+      "severity": "info",
+      "statement": "Prior to FY2024, SIBL's FY2010-FY2023 series shows sustained balance-sheet growth (Total Assets Taka 55,168.54m to Taka 476,051.86m, roughly 8.6x over 13 years) with generally stable capital adequacy (CRAR ranged 9.33%-14.27%, never breaching the regulatory minimum in any year shown) and healthy profitability (ROE ranged 8.78%-16.89%; ROA ranged 0.42%-2.39%). Asset quality fluctuated but stayed within a 3.33%-8.20% classified-investment-ratio band throughout FY2010-FY2022, ticking down again to 4.79% in FY2023 -- giving no indication in this dataset's own numbers, as late as the FY2023 year-end, of the scale of the FY2024 collapse that followed. This is consistent with the pattern this dataset's methodology has already observed at other Shariah banks now also part of the Sammilito Islami Bank merger (EXIMBANK, FIRSTSBANK, GIB): a long period of unremarkable, even healthy-looking reported metrics, followed by a single catastrophic recognition year once regulatory/political pressure (the post-2024 scrutiny of S-Alam-Group-linked and other distressed Islamic banks) forced disclosure.",
+      "metrics": [
+        "car_pct",
+        "roe_pct",
+        "npl_ratio_pct",
+        "total_assets"
+      ],
+      "periods": [
+        "2010_Q4",
+        "2016_Q4",
+        "2023_Q4"
+      ]
+    },
+    {
+      "category": "quarterly_backfill_when_the_collapse_became_visible",
+      "severity": "critical",
+      "statement": "Q1-Q3 2024/2025 interim filings (added 2026-08-27; the FY2024/FY2025 signals above were derived from annual/DSE data alone) show the crisis was visible in real time, well before either the FY2024 annual report (published mid-2025) or the risk signals above could reflect it. (1) LDR/Investment-Deposit ratio: this dataset's own calculation (SIBL's interim filings do not state the ratio themselves) already showed 108.90% at Q1 2024 (reviewed by the Audit Committee 05 May 2024, per that filing's own Note 2.6) -- above the 92.5% regulatory cap from the very first quarter of the crisis year, ten months before the FY2024 year-end figure of 121.15% was disclosed. It continued 104.95% (Q2) and 115.33% (Q3) through the rest of 2024, never returning below the cap. (2) Pre-provision operating profit (SIBL's own 'Profit/(Loss) before Provision' line) swung to a discrete-quarter LOSS of Taka -500.31m in Q3 2024 alone (Jul-Sep) -- Q3 2024's cumulative Jan-Sept figure of Taka 1,185.77m was actually LOWER than Q2 2024's cumulative Jan-June figure of Taka 1,686.08m, meaning the quarter itself was loss-making before any provisioning was even applied, a full quarter before the FY2024 audited loss (Taka -532.74m PAT) was reported. (3) The crisis did not end with FY2024: 2025's interim filings show continuous, worsening losses -- Q1 2025 PAT -1,482.82m (annualized ROA -1.25%, ROE -29.94%), Q2 2025 cumulative PAT -4,692.16m (annualized ROA -2.00%, ROE -51.72%), Q3 2025 cumulative PAT -17,036.84m (annualized ROA -4.85%, ROE -190.76%). Isolating Q3 2025 alone (cumulative minus H1): a discrete-quarter net loss of Taka -12,344.68m and a discrete-quarter pre-provision operating loss of Taka -8,322.93m -- the single worst quarter in this dataset's SIBL series, roughly 23.2x the size of the entire FY2024 full-year loss (Taka -532.74m) that had already triggered the qualified audit opinion, Material Uncertainty paragraph and eventual Sammilito Islami Bank merger. Total Shareholders' Equity (Solo), which stood at Taka 20,613.45m at FY2024 year-end, had fallen to just Taka 3,203.02m by Q3 2025 (30 September 2025) -- an 84.5% erosion in three quarters -- confirming the FY2024 qualified opinion was the beginning of the collapse, not its resolution. Cross-validated against DSE's own 'Interim Financial Performance: 2025' disclosure table (Basic EPS: Q1 -1.410, H1 cumulative -4.330, 9-month cumulative -15.280, with Q3 alone at -10.940 -- by far the single worst quarter shown), which independently confirms the same dramatic Q3 2025 deterioration on a per-share basis.",
+      "metrics": [
+        "ldr_pct",
+        "operating_profit_cumulative",
+        "net_profit_after_tax_cumulative",
+        "roa_pct",
+        "roe_pct",
+        "eps_cumulative"
+      ],
+      "periods": [
+        "2024_Q1",
+        "2024_Q2",
+        "2024_Q3",
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3"
+      ]
+    }
+  ],
+  "historical_context": "Social Islami Bank (SIBL, later Social Islami Bank PLC) presents, across FY2010-FY2024, one of the clearest 'stable-for-a-decade-plus-then-sudden-collapse' patterns in this dataset. From FY2010 to FY2023 the bank grew its balance sheet roughly 8.6x (Total Assets Taka 55,168.54m to Taka 476,051.86m) while keeping CRAR consistently above the regulatory minimum (range 9.33%-14.27%) and ROE in a healthy 8.78%-16.89% range, with a classified-investment ratio that never exceeded 8.20% in any of those fourteen years. FY2024 changed everything: the classified-investment ratio rocketed to 61.74%, CRAR fell to 6.43% (or an auditor-estimated -33.95% once a Taka 20,993.72-23,158.06 crore provision shortfall -- reported inconsistently across at least five places in the same audited report -- is fully recognized), and the bank posted its first-ever net loss in this dataset's series (Solo PAT -532.74m; Consolidated -1,017.03m per DSE). Client deposits fled (-16.64%), replaced by more than doubled interbank placement liabilities and by roughly Tk 9,085 crore of Bangladesh-Bank-brokered liquidity support just to maintain positive CRR/SLR at year-end. As with EXIM Bank, First Security Islami Bank and Global Islami Bank -- all already documented in this dataset -- SIBL's FY2024 shock proved to be a terminal event rather than a recoverable downturn: it was declared a failed institution, placed under Bangladesh Bank resolution, and merged into a new state-owned entity, Sammilito Islami Bank PLC, together with those same three banks plus Union Bank. No standalone FY2025 report exists or will exist; SIBL's own former website now identifies itself as Sammilito Islami Bank PLC. Ranking SIBL purely on FY2023 reported profitability (Taka 2,564.13m, ROE 11.89%) would have placed it among this dataset's healthier mid-sized banks one year before its collapse -- a caution this dataset's methodology has repeatedly found holds across the Shariah-banking segment (see also ISLAMIBANK's unprovisioned-NPL pattern in _cross_bank.json), and a reminder that a single audited year's reported profit is a poor predictor of the next year's solvency for this cohort of banks.",
+  "data_gaps": "Q4/year-end (audited) data covers FY2010-FY2024 (15/15 years, complete). UPDATE 2026-08-27: Q1/H1/Q3 unaudited interim data has now been researched and added -- 37 quarters covering 2012-2025. Confirmed remaining gaps: all of 2011, 2012 Q1/Q3, 2013 Q2/Q3, and 2020 Q1. See sources.json for the exact per-quarter sourcing, a shared-scratch-directory filename collision this pass caught and worked around, and the 11-of-37 quarters where a second arithmetic-chain validation pass caught extraction defects the balance-sheet-identity check alone had missed. FY2025 does not exist and will never be published for SIBL as a standalone entity -- confirmed via DSE's disclosure table (Annual column blank for 2025 despite populated quarterly data through Q3), a Wayback Machine crawl of siblbd.com's report-hosting paths (latest annual filing found: FY2024, under every naming convention used historically on the site), and the site's own current homepage (now self-identifying as 'Sammilito Islami Bank PLC'); see the merger_into_sammilito_islami_bank_series_end risk signal and sources.json for the full evidence trail. Total Liabilities is a calculated (assets-minus-equity) rather than directly-reported figure for FY2017-FY2022 (the 'Highlights of Performance' annexure used for those years does not itemize it separately; it IS directly reported and used as such for FY2010-FY2016, FY2023 and FY2024). Risk-Weighted Assets is similarly calculated (Total Capital / CRAR) for FY2011, FY2012 and FY2017-FY2022, versus directly reported for FY2010, FY2013-FY2016, FY2023 and FY2024. Tax expense is calculated as Profit before Tax minus Profit after Tax for FY2017-FY2022 (not separately itemized in the annexure tables used for those years), versus directly extracted from each year's own Profit and Loss Account for FY2010-FY2016, FY2023 and FY2024. The absolute Taka amount of classified investments for FY2010-FY2016 is calculated as the bank's own reported classified-investment ratio multiplied by Investments (General) -- the summary tables used for those years report only the ratio, not the absolute amount; this calculation method was validated by applying it to FY2017/FY2018 (where both the ratio and the directly-reported absolute amount are available), reproducing the reported absolute figure to within 0.01 percentage points. FY2017's main Balance Sheet was not directly extracted (an adjacent Off-shore Banking Unit statement shares an identical heading and risked being mis-extracted as the main Solo statement); FY2017 figures instead come from the FY2018 report's own audited comparative column plus FY2017's own Directors' Report capital table, which agree with each other exactly on Total Capital and CRAR. NAV per share is only available for FY2010, FY2011, FY2016 and FY2024 (not itemized in the summary tables used for other years). Client deposits (as distinct from total deposits, which include interbank/placement funding) are not available for FY2010. UPDATED 2026-08-27: Q1-Q3 interim (unaudited) quarterly data was subsequently backfilled for FY2012 H1 through FY2025 Q3 (37 of 41 quarters listed on SIBL's own quarterly/half-yearly financial-statements archive; see bank_financials/SIBL/quarterly/<YEAR>_Q<N>.json and this bank's sources.json for full detail). SIBL's interim filings do NOT disclose classified-investment/NPL or capital-adequacy (CRAR/Tier-1/Tier-2/RWA) figures at all, in any year -- confirmed absent, not an extraction gap -- so the FY2024/FY2025 asset-quality and capital-adequacy trajectory can only be measured at annual (Q4) granularity in this dataset; income-statement and balance-sheet interim data (used in the new risk signal above) fills that gap partially. Five quarters within the 2012-2025 span could not be sourced at all: 2012 Q1 (never published on SIBL's own site), 2012 Q3 and 2013 Q2 (the PDF hosted at SIBL's own published URL for these two periods is, on inspection, a different bank's [Standard Bank Limited] report, not SIBL's own -- a genuine mislabeling on SIBL's own site, or a since-corrected/reused URL slot; not something this dataset can resolve from the demand side), 2013 Q3 (the bank's own PDF's text layer was pervasively corrupted -- systematic digit-level corruption throughout, not just isolated cells -- beyond safe reconstruction), and 2020 Q1 (PDF had no extractable text layer at download time and the source file was subsequently overwritten by an unrelated concurrent research session before OCR could be attempted on the original). Basis note: SIBL's interim filings were Consolidated-only (no separate Solo statement) for FY2012 (H1)-FY2015 and FY2016 Q1/FY2017 Q1 specifically; Solo has been presented alongside Consolidated from FY2016 Q2 onward (with FY2017 Q1 as a one-off reversion) -- flagged per-quarter in each file's own period_note, per this dataset's 'prefer Solo, explicitly flag when only Consolidated is available' convention; FY2012 Q2 itself predates the bank presenting the two bases separately at all and is recorded with an 'unlabeled' basis. A second-pass internal-consistency audit (checking that P&L sub-components sum to stated totals, and that Operating Profit -> Profit Before Tax -> Net Profit After Tax chains arithmetically) found and corrected extraction defects (systematic font/character corruption, dropped leading digits, or wrong-row/column values) in 11 of the 37 quarters before finalizing; each corrected or added field carries its own metric_note. Two fields (Net Investment Income's sign in 2025 Q3, and the Total Operating Income/Expenses split in 2024 Q2's most severely corrupted page) required deriving one figure from others via arithmetic identity rather than reading it directly; this is flagged in the affected quarterly JSON files. Reference schema followed: bank_financials/CITYBANK/quarterly/2024_Q1.json."
+}

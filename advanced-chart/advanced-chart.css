@@ -1,0 +1,1069 @@
+/* ═══════════════════════════════════════════════════════════════════
+   advanced-chart.css
+   The Advanced Chart page's own stylesheet — loaded LAST, so it wins.
+
+   This page reuses the candlestick workstation's chrome verbatim:
+
+     ../candlestick_chart/candlestick-chart.css   tokens, header, toolbar,
+                                                  chart container, legend,
+                                                  modals, pane controls
+     ../candlestick_chart/tv-layout.css           left rail, right sidebar,
+                                                  range bar, breakpoints
+     ../candlestick_chart/{analysis,valuation,support-resistance,
+                           macd-backtest,tv-seasonals,stock-search}.css
+
+   …but swaps the renderer: a hand-rolled <canvas id="candleCanvas"> becomes
+   a Lightweight Charts v5 instance mounted into <div id="ac-chart-container">,
+   with that same canvas kept on top as a transparent overlay so
+   tv-drawing-tools.js / tv-trade-markers.js / sm-trade-overlay.js load here
+   completely unmodified.
+
+   Two things follow from that swap, and they are why this file exists.
+
+   1. A <canvas> has an INTRINSIC SIZE; a <div> has none. The shell sized the
+      canvas with `width:100%; height:auto` off its own width/height
+      attributes and centred it in a flex box. With a div there is nothing to
+      centre and nothing to derive a height from, so the chart area has to be
+      given a height and everything the shell positioned relative to the
+      centred canvas has to be re-anchored to the container box.
+
+   2. Those shared sheets lay the page out as a SCROLLING DOCUMENT — a stack
+      of rounded, detached cards separated by 16-28px gutters, each sticky
+      element pinned to a hard-coded header height. A charting workstation is
+      not a document. Section 2 below turns the page into a fixed app shell:
+      exactly one viewport tall, never scrolling, every region flush against
+      its neighbours and divided by a single 1px line in the --border token.
+
+   ── Geometry contract (do not break) ─────────────────────────────────
+   window._lastRender's coordinates — which every drawing tool, the trade
+   markers, the Super Model overlay and the pane-controls bar read — are
+   measured from ACChart.container(), i.e. #ac-chart-container's PADDING BOX
+   (ac-render.js uses containerEl.clientWidth/clientHeight).
+
+   Therefore, and this is load-bearing:
+     • .chart-container keeps padding:0 and #ac-chart-container keeps
+       padding:0/border:0, so the two boxes are exactly coincident. That is
+       what lets #candleCanvas, #chartLegend and #paneControlsBar sit in
+       EITHER parent with identical results.
+     • #ac-chart-container must never gain padding, a border, a `transform`,
+       a `filter`, `will-change` or `contain`. In the flush layout
+       .chart-container has no border or radius either, which makes the two
+       boxes identical rather than merely concentric — do not put one back.
+
+   ── Theme ────────────────────────────────────────────────────────────
+   The shell CSS is DARK-DEFAULT and keyed on `html.light-mode`
+   (`:root` = dark palette, `:root.light-mode, :root[data-theme="light"]`
+   = light override). ac-theme-bridge.js guarantees that BOTH the
+   `light-mode`/`dark-mode` class and the `data-theme` attribute are always
+   present and agree, so every colour added below is written once against the
+   tokens (which flip themselves) and only spelled out per-theme where a
+   token alone is not enough.
+
+   ── Ownership ────────────────────────────────────────────────────────
+   This file owns the page CHROME. It does NOT own the inside of
+   #chartLegend: ac-legend.js styles .legend-row / .legend-ind-* /
+   .legend-symbol / .legend-ohlc / .legend-toggle, and owns #chartLegend's
+   own `width`, `max-width` and `pointer-events`. Everything here positions
+   the legend BOX only (offset over the chart + stacking order).
+
+   Owned by agent 2. Pairs with ac-theme-bridge.js.
+   ═══════════════════════════════════════════════════════════════════ */
+
+
+/* ───────────────────────────────────────────────────────────────────
+   1. PAGE TOKENS
+   New custom properties only — nothing here shadows a shell token.
+   ─────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Stacking inside .chart-container. The shell already uses 20 for the
+     legend and 40 for the pane-controls bar; these slot in around them. */
+  --ac-z-chart: 0;
+  --ac-z-overlay: 10;
+  --ac-z-legend: 20;
+  --ac-z-panectl: 40;
+  --ac-z-loading: 60;
+
+  /* App-shell metrics. --ac-header-h is the slim top bar (section 2.1);
+     --ac-shell-min is the width at or above which the fixed, non-scrolling
+     shell is in force. Below it the page falls back to normal document flow
+     — /shared/mobile.css stacks .header-inner into a column at 780px, which
+     makes a viewport-height-bounded shell untenable. */
+  --ac-header-h: 48px;
+  --ac-line: 1px solid var(--border);
+}
+
+/* The chart-height trio lives on <body>, not :root, and that placement is
+   load-bearing: a custom property's own var() references are resolved on the
+   element that DECLARES it. With --ac-chart-h declared on :root, overriding
+   --ac-chart-reserve further down the tree does nothing at all — :root has
+   already resolved the clamp and only the finished string inherits.
+   Declaring both on <body> means any rule that also targets <body>
+   re-resolves the clamp.
+
+   These only drive the ≤780px fallback layout (section 10). In the app shell
+   the chart column is a flex child that absorbs the leftover height, so it
+   needs no computed height at all — which is the whole point: the range bar
+   can never be pushed below the fold by a mis-tuned reserve. */
+body {
+  --ac-chart-reserve: 300px;
+  --ac-chart-h: clamp(300px, calc(100vh - var(--ac-chart-reserve)), 1200px);
+  --ac-chart-min-h: 300px;
+}
+
+/* The shell is dark-by-default, so native scrollbars/controls must be too.
+   ac-theme-bridge.js always writes one of these classes, but the bare :root
+   fallback keeps the page correct for the one frame before it runs. */
+:root,
+:root.dark-mode,
+:root[data-theme="dark"] { color-scheme: dark; }
+
+:root.light-mode,
+:root[data-theme="light"] { color-scheme: light; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   2. THE APP SHELL
+   One surface, one viewport, no scrolling, nothing floating.
+
+   Everything in this section is inside `@media (min-width: 781px)` for one
+   reason: /shared/mobile.css turns .header-inner into a stacked column at
+   ≤780px (a ~200px tall header), and candlestick-chart.css reflows the
+   toolbar and info cards to match. A 100vh no-scroll shell under a 200px
+   header is not a layout, it is a trap. Below 781px the page stays a
+   scrolling document — it just keeps the flush, square, card-less skin from
+   section 3, which is width-independent.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (min-width: 781px) {
+
+  /* Safe to pin here: this stylesheet loads on exactly one page. */
+  html, body {
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+  }
+
+  /* <body> becomes the shell: a slim fixed band on top, and one flexible
+     row below it that eats the rest of the viewport. Every other body child
+     (modals, flyouts, the replay speed menu, <script>) is either display:none
+     or position:fixed, so none of them become stray flex items. */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  /* ── 2.1 TOP BAR ────────────────────────────────────────────────
+     97px → 48px. candlestick-chart.css pads .site-header 20px top and
+     bottom around a .header-inner that style.css fixes at height:56px, and
+     the logo block inside stacks an 18px <h1> over an 11px <p>. Drop the
+     padding, drop the subtitle, put the ticker pill and the title on one
+     inline row, and shrink every icon button from 40px to 30px. NOTHING is
+     hidden but the subtitle line: the nav-menu.js cluster (Menu / Settings /
+     Notebook), all five cross-page icon links and the theme toggle stay
+     exactly where they were and stay clickable.
+
+     `backdrop-filter: none` is not cosmetic — a backdrop-filter makes the
+     header the containing block for any position:fixed descendant, which
+     would trap a fixed dropdown opened from a header button. The header is
+     opaque --bg-card anyway, so the blur never showed. */
+  .site-header {
+    flex: 0 0 auto;
+    position: relative;
+    z-index: 100;
+    padding: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: var(--ac-line);
+  }
+
+  /* The only thing hidden outright. .site-footer is two lines of decorative
+     text — "rendered with TradingView Lightweight Charts v5" and a line of
+     usage hints — with no links and no controls, and as the third flex item
+     under <body> it was claiming 125px (85px + a 40px top margin) of the one
+     viewport this page gets. It stays in the ≤780px document layout. */
+  body > .site-footer { display: none; }
+
+  .site-header .header-inner {
+    max-width: none;
+    height: var(--ac-header-h);
+    min-height: 0;
+    padding: 0 12px;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .site-header .logo-block { gap: 8px; min-width: 0; }
+
+  /* h1 + p are block children of .logo-text; making it a baseline row and
+     hiding the <p> is what collapses the two-line logo into one line. The
+     <p> is a restatement of the page title ("Lightweight Charts v5 ·
+     Professional Analysis Platform"), not information. */
+  .site-header .logo-text {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .site-header .logo-text p { display: none; }
+
+  .site-header .logo-text h1 {
+    font-size: 13px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .site-header .logo-tag {
+    font-size: 10px;
+    line-height: 1.2;
+    padding: 3px 7px;
+  }
+
+  /* The bank-logo variant swaps an <img> in for the accent pill and sizes
+     itself off its own height, so it needs its own trim. */
+  .site-header .logo-tag--logo { height: 24px; padding: 2px 6px; }
+
+  .site-header .tv-header-nav { gap: 6px; margin-right: 8px; min-width: 0; }
+
+  .site-header .tv-header-nav-btn,
+  .site-header .theme-toggle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .site-header .tv-header-nav-btn svg,
+  .site-header .theme-toggle svg { width: 15px; height: 15px; }
+
+  /* nav-menu.js injects .gnav-cluster (Menu / Settings / Notebook) as the
+     first child of .tv-header-nav from its own <style> — which lands after
+     this file, so these need the extra .site-header class to win. */
+  .site-header .gnav-cluster { gap: 4px; }
+  .site-header .gnav-btn { padding: 5px 9px; font-size: 11.5px; }
+  .site-header .gnav-settings-btn,
+  .site-header .gnav-notebook-btn { padding: 5px 8px; }
+
+  /* ── 2.2 THE WORKSTATION ROW ────────────────────────────────────
+     tv-layout.css centres .tv-page-shell in an 1800px column and hangs its
+     children off `align-items:flex-start` + sticky offsets measured from a
+     hard-coded --tv-header-h:81px. Full-bleed and stretch instead: the rails
+     then run the full height of the chart region by construction, and no
+     sticky offset can drift out of sync with the real header height. */
+  .tv-page-shell {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-width: none;
+    margin: 0;
+    align-items: stretch;
+    --tv-header-h: var(--ac-header-h);
+  }
+
+  /* ── 2.3 LEFT TOOL RAIL ─────────────────────────────────────────
+     Flush against the chart's left edge, full height, one 1px divider.
+     Was: sticky at top:16px, rounded on its left corners, natural height
+     (619px against a 913px column), floating clear of the chart. */
+  .tv-left-rail {
+    position: relative;
+    top: auto;
+    align-self: stretch;
+    height: auto;
+    max-height: none;
+    margin: 0;
+    padding: 8px 8px;
+    border-radius: 0;
+    border-right: var(--ac-line);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+  }
+
+  /* ── 2.4 CHART COLUMN ───────────────────────────────────────────
+     The column is a flex box: fixed bands top and bottom, and exactly one
+     child (the chart, or the Seasonals panel that replaces it) absorbing
+     everything left over. That is what guarantees the range bar is on
+     screen at every viewport size without a single magic number. */
+  .tv-page-shell .main-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;   /* let the sidebar resizer actually shrink this column */
+    min-height: 0;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-card);
+  }
+
+  /* Default every band to "natural height, never shrink"; the two rules
+     after it name the ones that flex. A band the markup hides (the indicator
+     instance bar, #strategyTableWrap, the replay bar before it is opened)
+     generates no box at all, so nothing reserves space for it. */
+  .tv-page-shell .main-container > * { flex: 0 0 auto; }
+
+  .tv-page-shell .main-container > .chart-container,
+  .tv-page-shell .main-container > .tv-seasonals-panel {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  /* The strategy results table can be arbitrarily long. Cap it and let it
+     scroll internally rather than let it push the range bar off screen. */
+  .tv-page-shell .main-container > .strategy-table-wrap {
+    flex: 0 1 auto;
+    min-height: 0;
+    max-height: 45%;
+    overflow: auto;
+    margin: 0;
+  }
+
+  /* ── 2.5 TOOLBAR BAND ───────────────────────────────────────────
+     A band of the same surface, not a card: the shell's ±24px horizontal
+     bleed and 24px bottom margin (which existed to break out of
+     .main-container's padding) both go, leaving one 1px rule under it.
+     flex-wrap:nowrap is deliberate — a wrapping toolbar silently doubles
+     the chrome above the chart, which is the bug this whole restyle is
+     about. Anything that cannot fit is dropped by breakpoint instead
+     (section 10), starting with the strategy group.
+
+     ── Why every band states an exact px height ──────────────────
+     ac-render.js's sizeOverlay() sets #candleCanvas's inline width/height
+     from containerEl.clientWidth/clientHeight — which are INTEGERS, rounded
+     from the real box. A chart area whose height falls out of a flex division
+     of text-sized bands is fractional (e.g. 762.8px), and the overlay canvas
+     then measures 763px: the drawing surface and the chart it draws on are
+     no longer the same box. Stating an integer height on every fixed band
+     keeps `viewport - header - bands` whole, so clientHeight is exact and
+     #candleCanvas and #ac-chart-container are pixel-identical. If you retune
+     one of these, keep it an integer. */
+  .tv-toolbar {
+    margin: 0;
+    padding: 5px 10px;
+    height: 39px;          /* 28px controls + 2×5 padding + 1px rule */
+    min-height: 0;
+    flex-wrap: nowrap;
+    border-bottom: var(--ac-line);
+    background: var(--bg-card);
+  }
+
+  .tv-toolbar .tv-btn { width: 28px; height: 28px; }
+  .tv-toolbar .tv-btn svg { width: 15px; height: 15px; }
+  .tv-toolbar .tv-tf-trigger,
+  .tv-toolbar .tv-timeframe { height: 28px; padding: 4px 9px; }
+  .tv-toolbar .tv-divider { height: 18px; margin: 0 8px; }
+
+  /* .tv-symbol already carries a border-right and is immediately followed by
+     a .tv-divider — two parallel lines 16px apart. Keep the divider. */
+  .tv-toolbar .tv-symbol { padding-right: 0; border-right: 0; }
+
+  /* ── 2.6 STRATEGY GROUP, INSIDE THE TOOLBAR ─────────────────────
+     .strategy-controls was a 47px full-width band of its own
+     (candlestick-chart.css:626 gives it a negative ±24px margin, 8px
+     padding and a bottom border). It now ships as the last child of
+     .tv-group.tv-right, so every one of those band properties has to be
+     unwound before it can sit inline: no bleed margin, no bottom border, no
+     wrapping — a wrap here would put the toolbar back on two lines.
+
+     :has() hides the group entirely until strategy-engine.js has injected
+     its first button, so an empty "Strategy:" label and a stray divider
+     never ship on first paint. Browsers without :has() simply keep the
+     label, which is harmless. */
+  .tv-toolbar .tv-toolbar-strategy {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex: 0 1 auto;
+    min-width: 0;
+    gap: 6px;
+    margin: 0 0 0 8px;
+    padding: 0 0 0 8px;
+    background: transparent;
+    border: 0;
+    border-left: var(--ac-line);
+  }
+
+  .tv-toolbar .tv-toolbar-strategy .strategy-controls-label {
+    margin: 0;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .tv-toolbar .tv-toolbar-strategy .strategy-buttons {
+    flex-wrap: nowrap;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .tv-toolbar .tv-toolbar-strategy .strategy-btn {
+    padding: 4px 9px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .tv-toolbar .tv-toolbar-strategy:has(.strategy-buttons:empty) { display: none; }
+
+  /* ── 2.7 BOTTOM BANDS ───────────────────────────────────────────
+     The range bar (quick ranges + live clock + ac-range-bar.js's minimap)
+     and the info cards become two flush status strips divided by 1px lines,
+     pinned to the bottom of the chart column. The range bar used to be a
+     97px block with a 20px bottom margin that landed BELOW the fold at
+     2000x1010; here it is the last thing the flex box places, so it cannot
+     be pushed off screen by anything above it. */
+  #tvRangeBar,
+  .tv-page-shell .main-container > .tv-range-bar {
+    margin: 0;
+    padding: 4px 10px 5px;
+    gap: 4px;
+    height: 78px;   /* 4 + 24 row + 4 gap + 40 minimap + 5 + 1px rule */
+    overflow: hidden;
+    border-top: var(--ac-line);
+    background: var(--bg-card);
+  }
+
+  /* ac-range-bar.js injects `.ac-range-bar{padding:8px 4px 10px;gap:6px}`
+     from a runtime <style>, which lands after this file — hence the #id. */
+  #tvRangeBar.ac-range-bar { padding: 4px 10px 5px; gap: 4px; }
+
+  /* Both rows stop wrapping: a wrapped row inside a fixed-height band would
+     be clipped by the overflow above, and the clock is the expendable half. */
+  #tvRangeBar .ac-rb-top,
+  #tvRangeBar .tv-range-buttons { flex-wrap: nowrap; min-width: 0; }
+
+  #tvRangeBar .tv-range-datetime {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #tvRangeBar .tv-range-btn,
+  #tvRangeBar .ac-rb-btn { padding: 3px 9px; flex-shrink: 0; }
+
+  /* The minimap canvas is sized from miniEl.clientHeight, so its height is
+     safe to retune from CSS — but only a little: the backing store is only
+     re-measured on resize. */
+  #tvRangeBar .ac-rb-mini { height: 40px; }
+
+  /* Info cards → one compact status strip. The shell renders them as four
+     200px-minimum grid cards with 18px padding, a 16px gutter, a hover
+     lift and a 28px bottom margin: ~94px of floating chrome under a chart
+     that has no room for it. */
+  .tv-page-shell .main-container > .info-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    padding: 0 10px;
+    height: 27px;
+    overflow: hidden;
+    border-top: var(--ac-line);
+    background: var(--bg-card);
+  }
+
+  .main-container > .info-grid > .info-card {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 4px 16px 4px 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+
+  /* The shell's hover state lifts the card 2px — meaningless for a row of
+     inline readouts, and it would jitter the band's height. */
+  .main-container > .info-grid > .info-card:hover {
+    background: transparent;
+    border-color: transparent;
+    transform: none;
+  }
+
+  .main-container > .info-grid .info-label {
+    margin-bottom: 0;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .main-container > .info-grid .info-value {
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: nowrap;
+    word-break: normal;
+  }
+
+  /* ── 2.8 REPLAY BAR ─────────────────────────────────────────────
+     candlestick-chart.css:1537 docks it `position:fixed; bottom:0` with a
+     drop shadow — on a scrolling document that was the only way to keep it
+     reachable; in a fixed shell it just floats over the range bar. Dock it
+     into the column instead: it becomes another band and the chart above it
+     gives up exactly its height. Nothing measures it in page coordinates
+     (ac-replay.js reads getBoundingClientRect, which is position-agnostic). */
+  .tv-page-shell .main-container > .replay-bar {
+    position: static;
+    height: 64px;
+    margin: 0;
+    box-shadow: none;
+    border-top: var(--ac-line);
+  }
+
+  /* ── 2.9 SIDEBAR SEAM ───────────────────────────────────────────
+     tv-layout.css gives the resizer an 8px transparent gutter. Make the
+     gutter itself the 1px divider between the chart column and the sidebar,
+     and hand the drag its hit area back through the ::after, which is free
+     to be wider than its 1px parent. */
+  .tv-col-resizer {
+    flex: 0 0 1px;
+    width: 1px;
+    align-self: stretch;
+    background: var(--border);
+  }
+
+  .tv-col-resizer::after {
+    left: 50%;
+    width: 9px;
+    transform: translateX(-50%);
+  }
+
+  /* ── 2.10 RIGHT SIDEBAR ─────────────────────────────────────────
+     Was: sticky under a hard-coded 81px header, height-capped to
+     `100vh - 81px - 16px`, holding a 16px-gutter stack of rounded cards and
+     a rail floated 16px clear of them. Now: a full-height column flush
+     against the chart, its panels divided by 1px lines, scrolling
+     internally. The 1200/900px breakpoints in tv-layout.css are untouched
+     and still hide the sidebar and the left rail respectively. */
+  .tv-right-sidebar {
+    position: relative;
+    top: auto;
+    align-self: stretch;
+    height: auto;
+    max-height: none;
+    min-height: 0;
+  }
+
+  .tv-sidebar-panels {
+    min-height: 0;
+    gap: 0;
+    padding: 0;
+  }
+
+  /* Every stacked panel: square, borderless, one hairline between each.
+     .tv-volatility-panel is styled from tv-volatility.js's runtime <style>
+     at (0,1,0), so this needs the parent class to outrank it. */
+  .tv-right-sidebar .tv-sidebar-panels > * {
+    border: 0;
+    border-bottom: var(--ac-line);
+    border-radius: 0;
+  }
+
+  .tv-right-sidebar .tv-sidebar-panels > *:last-child { border-bottom: 0; }
+
+  .tv-right-rail {
+    align-self: stretch;
+    margin-left: 0;
+    padding: 8px 8px;
+    border-radius: 0;
+    border-left: var(--ac-line);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+  }
+
+  /* ── 2.11 THIN SCROLLBARS ───────────────────────────────────────
+     Three regions scroll internally now (both rails and the panel stack);
+     a 15px platform scrollbar in a 52px rail reads as a design error. */
+  .tv-left-rail::-webkit-scrollbar,
+  .tv-right-rail::-webkit-scrollbar { width: 4px; }
+  .tv-left-rail::-webkit-scrollbar-track,
+  .tv-right-rail::-webkit-scrollbar-track { background: transparent; }
+  .tv-left-rail::-webkit-scrollbar-thumb,
+  .tv-right-rail::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   3. CHART PANE AREA
+   candlestick-chart.css:805 gives .chart-container
+       padding:20px; display:flex; align-items:center; justify-content:center
+   — all three exist purely to centre a canvas whose height came from its own
+   intrinsic ratio. With a div there is nothing to centre and nothing to
+   derive a height from, so: stretch instead of centre, and drop the padding
+   (see the geometry contract at the top of this file).
+
+   The border, the 12px radius and the 28px bottom margin go too: in the app
+   shell the chart is not a card sitting on a page, it is the surface the
+   toolbar band, the rails and the range bar are attached to, and the 1px
+   lines on those neighbours are the only separation it needs. Removing the
+   border has a second benefit — .chart-container's border box now coincides
+   exactly with #ac-chart-container's, instead of being 1px outside it.
+
+   .ac-chart-shell / .ac-chart-wrap are aliases so the markup can name the
+   wrapper something other than the ported .chart-container.
+   ─────────────────────────────────────────────────────────────────── */
+
+.chart-container,
+.ac-chart-shell,
+.ac-chart-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  /* MUST stay 0 — _lastRender is measured from the container's padding box,
+     and #chartLegend / #candleCanvas / #paneControlsBar are placed against
+     whichever of the two boxes they happen to be a child of. */
+  padding: 0;
+
+  height: var(--ac-chart-h);          /* only bites in the ≤780px fallback */
+  min-height: var(--ac-chart-min-h);
+  overflow: hidden;
+
+  background: var(--bg-card);
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+}
+
+/* In the shell the column's flex box states the height; `auto` lets
+   flex-basis resolve from the leftover space instead of from the clamp. */
+@media (min-width: 781px) {
+  .tv-page-shell .main-container > .chart-container,
+  .tv-page-shell .main-container > .ac-chart-shell,
+  .tv-page-shell .main-container > .ac-chart-wrap {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+/* The Lightweight Charts mount point. ACChart.create() appends LWC's own DOM
+   here; #candleCanvas, #chartLegend and #paneControlsBar may be children of
+   this or of .chart-container — the two boxes coincide either way.
+
+   The markup ships it `position:absolute; inset:0` inside an equally
+   absolute .ac-chart-stack, so `height:100%` and the inset agree; the
+   explicit 100% is what keeps it correct if that inline positioning is ever
+   dropped and it becomes an ordinary flex child again. */
+#ac-chart-container {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;                       /* shrink below content inside flex */
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;                         /* see the geometry contract */
+  border: 0;
+  overflow: hidden;
+  background: var(--bg-card);
+  /* LWC owns wheel/drag inside; stop the page from rubber-banding with it. */
+  overscroll-behavior: contain;
+}
+
+.ac-chart-stack { min-width: 0; min-height: 0; }
+
+
+/* ───────────────────────────────────────────────────────────────────
+   4. OVERLAY CANVAS  (#candleCanvas)
+
+   On the candlestick page this canvas IS the chart. Here it is a fully
+   transparent sheet of glass over the Lightweight Charts instance, painted
+   by ACChart.repaintOverlay() → drawUserAnnotations / drawTradeMarkers /
+   drawSuperModelTrade. ac-render.js's sizeOverlay() writes explicit inline
+   px width/height matching the container, so the inset:0 below and those
+   inline values always describe the same box.
+
+   ── .ac-overlay-interactive — the contract for ac-drawings.js ──────
+   By DEFAULT the overlay is pointer-events:none, so every pointer event
+   falls straight through to Lightweight Charts and pan / zoom / crosshair
+   behave natively.
+
+   Add  .ac-overlay-interactive  to #candleCanvas the moment a drawing tool
+   is armed (or a drawing is selected / being dragged) and remove it the
+   moment it is disarmed. While it is present the overlay swallows pointer
+   events — which is exactly what routes them to tv-drawing-tools.js, and
+   also what suspends LWC's own pan/zoom for the duration.
+
+   Optional cursor modifiers, all additive to .ac-overlay-interactive and
+   none of which change hit-testing:
+     .ac-cursor-crosshair  (the default while interactive)
+     .ac-cursor-grab / .ac-cursor-grabbing   panning a drawing
+     .ac-cursor-move                         dragging a whole shape
+     .ac-cursor-pointer                      hovering a handle/anchor
+     .ac-cursor-nwse / .ac-cursor-nesw       resizing from a corner handle
+     .ac-cursor-ew / .ac-cursor-ns           resizing an edge handle
+   ─────────────────────────────────────────────────────────────────── */
+
+#candleCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: var(--ac-z-overlay);
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;      /* shell had `margin:0 auto` to centre the real chart */
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  pointer-events: none;   /* ← the default: events reach LWC underneath */
+  cursor: default;        /* shell had `cursor:grab`; LWC owns the grab now */
+
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+}
+
+#candleCanvas.ac-overlay-interactive {
+  pointer-events: auto;
+  cursor: crosshair;
+}
+
+#candleCanvas.ac-overlay-interactive.ac-cursor-crosshair { cursor: crosshair; }
+#candleCanvas.ac-overlay-interactive.ac-cursor-grab      { cursor: grab; }
+#candleCanvas.ac-overlay-interactive.ac-cursor-grabbing  { cursor: grabbing; }
+#candleCanvas.ac-overlay-interactive.ac-cursor-move      { cursor: move; }
+#candleCanvas.ac-overlay-interactive.ac-cursor-pointer   { cursor: pointer; }
+#candleCanvas.ac-overlay-interactive.ac-cursor-nwse      { cursor: nwse-resize; }
+#candleCanvas.ac-overlay-interactive.ac-cursor-nesw      { cursor: nesw-resize; }
+#candleCanvas.ac-overlay-interactive.ac-cursor-ew        { cursor: ew-resize; }
+#candleCanvas.ac-overlay-interactive.ac-cursor-ns        { cursor: ns-resize; }
+
+/* Same contract for any other element used as an overlay sheet, so the class
+   name means one thing everywhere on the page. */
+.ac-overlay-interactive { pointer-events: auto; }
+
+
+/* ───────────────────────────────────────────────────────────────────
+   5. HOVER LEGEND BOX  (#chartLegend)
+
+   POSITION ONLY. ac-legend.js owns everything inside the box, plus
+   #chartLegend's own width / max-width / pointer-events — do not add those
+   here, and do not style .legend-row or any .legend-* child.
+
+   The shell anchors the legend below a date-axis strip that
+   candlestick-draw.js reserves at the TOP of the canvas:
+       .chart-legend { --chart-date-axis-h: 34px;
+                       top: calc(var(--chart-date-axis-h) + 14px); }
+   Lightweight Charts puts its time scale at the BOTTOM, so that 34px gap is
+   dead space here. Zeroing the variable — rather than restating `top` — is
+   deliberate: the shell's own rule then resolves to 14px, AND its
+   `@media (max-width:768px)` override (which recomputes the same calc at
+   12px) keeps working untouched. Restating `top` at #id specificity would
+   have silently killed that breakpoint.
+   ─────────────────────────────────────────────────────────────────── */
+
+#chartLegend,
+.chart-legend {
+  --chart-date-axis-h: 0px;
+}
+
+#chartLegend {
+  z-index: var(--ac-z-legend);
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   6. LIGHTWEIGHT CHARTS' OWN DOM
+
+   LWC injects its own stylesheet and sizes its root element inline from the
+   ResizeObserver, so nothing here forces a size — these rules only stop the
+   page's inherited typography and the shell's global `* { box-sizing }` reset
+   from leaking into its table, and hand the pane separators the page's own
+   border tokens as a fallback under LWC's inline separatorColor.
+   ─────────────────────────────────────────────────────────────────── */
+
+#ac-chart-container .tv-lightweight-charts {
+  position: relative;
+  z-index: var(--ac-z-chart);
+  max-width: 100%;
+  background: transparent;
+}
+
+#ac-chart-container .tv-lightweight-charts table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  background: transparent;
+  /* body's line-height:1.6 otherwise inflates empty cells. */
+  line-height: normal;
+}
+
+/* Deliberately no `background` here. The pane separator IS a <td>, and LWC
+   paints it from layout.panes.separatorColor (ac-render.js feeds that the
+   --border token, and separatorHoverColor the accent). Writing
+   `background: transparent` on td would be a standing invitation to erase
+   every separator the day LWC stops setting that colour inline. */
+#ac-chart-container .tv-lightweight-charts tr,
+#ac-chart-container .tv-lightweight-charts td,
+#ac-chart-container .tv-lightweight-charts th {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: normal;
+  vertical-align: top;
+}
+
+/* Nothing sets touch-action here on purpose: Lightweight Charts writes it
+   onto its own canvases from the handleScroll options, and forcing `none`
+   would stop the page scrolling past the chart on touch devices. */
+#ac-chart-container .tv-lightweight-charts canvas { display: block; }
+
+/* Pane separators need no CSS at all, and that is worth recording: in v5.2.1
+   a separator is a 1px <tr> whose <td> carries `background:<separatorColor>`
+   inline, over two inline-styled `cursor:row-resize` grab divs. Both the
+   colour (--border) and the hover colour (--accent) come from ac-render.js's
+   layout.panes options, so the page tokens already reach them — the only
+   thing CSS can do here is break it, which is why the td rule above sets no
+   background.
+
+   The taller of those grab divs is `position:fixed` during a drag. Nothing in
+   this file may give #ac-chart-container or .chart-container a `transform`,
+   `filter`, `backdrop-filter`, `perspective`, `will-change` or `contain`:
+   any of those would make the container the containing block for that fixed
+   element and pin the drag overlay to the chart instead of the viewport.
+   (Section 2.1 strips the header's backdrop-filter for the same reason.) */
+
+/* LWC's attribution link is disabled via options; belt and braces so it can
+   never overlap the time scale if the option name changes. */
+#ac-chart-container #tv-attr-logo,
+#ac-chart-container a[href*="tradingview.com"] { display: none !important; }
+
+
+/* ───────────────────────────────────────────────────────────────────
+   7. THE REST OF THE CHART-AREA CHROME
+
+   All of these were positioned against the centred canvas; they now hang off
+   the container box.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Loading / empty state. The shell renders it in flow with `padding:60px 20px;
+   min-width:100%`, which as a flex sibling would steal height from the chart
+   and hand Lightweight Charts a wrong size at creation time. Float it instead
+   so #ac-chart-container is the ONLY in-flow child and gets the full box.
+   `display` is deliberately not set — JS toggles it inline. */
+.chart-container > .chart-loading,
+.ac-chart-shell > .chart-loading,
+.ac-chart-wrap > .chart-loading,
+#loadingState {
+  position: absolute;
+  inset: 0;
+  z-index: var(--ac-z-loading);
+  margin: 0;
+  padding: 24px;
+  min-width: 0;
+  background: var(--bg-card);
+  border-radius: inherit;
+}
+
+/* Pane-controls bar — absolutely placed by JS from _lastRender.subPanes[].y,
+   which is measured from the container. It already carries z-index:40 and
+   pointer-events:auto from the shell; this just guarantees it outranks the
+   overlay canvas whatever the shell does next. */
+#paneControlsBar,
+.pane-controls-bar { z-index: var(--ac-z-panectl); }
+
+/* Fullscreen. The shell's three rules set `min-height:100vh` plus
+   `justify-content:center; overflow:auto` — centring again, and a scrollable
+   box LWC would keep resizing inside. Written as three separate rules, never
+   grouped: a browser that does not know one of these prefixed pseudo-classes
+   drops the whole selector list. */
+.chart-container:fullscreen {
+  height: 100vh !important;
+  max-height: 100vh;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 0 !important;
+}
+.chart-container:-webkit-full-screen {
+  height: 100vh !important;
+  max-height: 100vh;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 0 !important;
+}
+.chart-container:-moz-full-screen {
+  height: 100vh !important;
+  max-height: 100vh;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.chart-container:fullscreen > #ac-chart-container {
+  height: auto;
+  flex: 1 1 auto;
+  border-radius: 0;
+}
+.chart-container:-webkit-full-screen > #ac-chart-container {
+  height: auto;
+  flex: 1 1 auto;
+  border-radius: 0;
+}
+.chart-container:-moz-full-screen > #ac-chart-container {
+  height: auto;
+  flex: 1 1 auto;
+  border-radius: 0;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   8. FLUSH SKIN AT EVERY WIDTH
+   The square, card-less treatment is width-independent, so it lives outside
+   the shell's media query: below 781px the page scrolls again, but it still
+   reads as one workstation surface rather than a stack of floating cards.
+   ─────────────────────────────────────────────────────────────────── */
+
+.tv-left-rail,
+.tv-right-rail { border-radius: 0; }
+
+.tv-right-sidebar .tv-watchlist,
+.tv-right-sidebar .tv-all-shares,
+.tv-right-sidebar .tv-symbol-info,
+.tv-right-sidebar .tv-news-panel,
+.tv-right-sidebar .tv-mf-holders,
+.tv-right-sidebar .tv-bank-details { border-radius: 0; }
+
+/* The chart column must be free to shrink when the sidebar resizer widens the
+   sidebar — otherwise #ac-chart-container's min-width would push the shell
+   wider and the sidebar drag would do nothing. */
+.tv-page-shell .main-container { min-width: 0; }
+
+/* Replay mode docks a fixed 80px bar to the bottom of the viewport
+   (candlestick-chart.css:1537, z-index 500). In the app shell that bar is
+   un-fixed into the column (section 2.8), so this only applies to the
+   ≤780px fallback: ac-replay.js should toggle `ac-replay-active` on <body>
+   while the bar is up — one knob shortens the chart and clears the bar. */
+body.ac-replay-active {
+  --ac-chart-reserve: 388px;
+  padding-bottom: 88px;
+}
+
+
+/* ───────────────────────────────────────────────────────────────────
+   9. SHELL LIGHT-MODE FIXES
+
+   candlestick-chart.css has the same mis-grouped selector in three places:
+   `:root.light-mode, :root[data-theme="light"] .x` means ":root.light-mode"
+   (which applies the declaration to <html> itself) plus
+   ":root[data-theme=light] .x". Harmless on the candlestick page, but this
+   page always carries BOTH the class and the attribute, so the stray <html>
+   declaration is guaranteed to land. Neutralise it and state what was meant.
+   ─────────────────────────────────────────────────────────────────── */
+
+:root.light-mode { background: var(--bg-primary); box-shadow: none; border-color: transparent; }
+
+:root.light-mode .tvcp-panel,
+:root[data-theme="light"] .tvcp-panel { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18); }
+
+:root.light-mode .tvcp-slider-thumb,
+:root[data-theme="light"] .tvcp-slider-thumb { border-color: rgba(0, 0, 0, 0.18); }
+
+/* The chart pane reads as one surface in both themes: LWC paints its own
+   background from --bg-card (ac-render.js colors()), so the container behind
+   it must not show a different card colour through the axis gutters. */
+:root.light-mode #ac-chart-container,
+:root[data-theme="light"] #ac-chart-container { background: var(--bg-card); }
+
+/* Same idea for the shell as a whole: with every gutter gone there is no
+   --bg-primary left showing between regions, so the one surface has to be
+   --bg-card the whole way across. */
+:root.light-mode .tv-page-shell .main-container,
+:root[data-theme="light"] .tv-page-shell .main-container { background: var(--bg-card); }
+
+
+/* ───────────────────────────────────────────────────────────────────
+   10. RESPONSIVE
+
+   tv-layout.css hides the right sidebar + column resizer below 1200px and
+   the left rail below 900px; candlestick-chart.css reflows the toolbar,
+   legend and modals at 1024 / 768 / 480. All of that still applies.
+
+   What is added here: the toolbar no longer wraps (section 2.5), so as the
+   viewport narrows its groups have to be dropped in priority order instead.
+   The symbol, the timeframe and the chart-type/indicator/replay controls are
+   never dropped.
+   ─────────────────────────────────────────────────────────────────── */
+
+/* Strategy group first — it is the one thing in the toolbar with a
+   full-size home elsewhere (the strategy results table). */
+@media (max-width: 1320px) {
+  .tv-toolbar .tv-toolbar-strategy { display: none; }
+}
+
+/* Then the decorative end of the right group: alert (no handler yet) and
+   the download/fullscreen pair, both reachable from the keyboard/menu. */
+@media (min-width: 781px) and (max-width: 1080px) {
+  .tv-toolbar .tv-group.tv-right > .tv-btn:nth-last-child(2),
+  .tv-toolbar .tv-group.tv-right > .tv-btn:nth-last-child(3) { display: none; }
+}
+
+@media (min-width: 781px) and (max-width: 960px) {
+  .site-header .logo-text h1 { display: none; }
+  .site-header .gnav-btn span:not(.gnav-chevron) { display: none; }
+  .site-header .gnav-btn { padding: 5px 7px; }
+}
+
+/* ≤780px: /shared/mobile.css stacks the header, the shell is off and the
+   page scrolls. The chart column then needs a stated height again, because
+   #ac-chart-container is a <div> with no intrinsic size (see the top of this
+   file). --ac-chart-reserve is the vertical space the rest of the page takes;
+   retuning it per breakpoint is what keeps every shell breakpoint intact. */
+@media (max-width: 780px) {
+  body {
+    --ac-chart-reserve: 300px;
+    --ac-chart-min-h: 300px;
+    --ac-chart-h: clamp(300px, calc(100vh - var(--ac-chart-reserve)), 760px);
+  }
+  .tv-page-shell .main-container > .chart-container { margin-bottom: 0; }
+  /* The strategy group is inline in the toolbar, which wraps again here. */
+  .tv-toolbar .strategy-controls.tv-toolbar-strategy {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    --ac-chart-reserve: 280px;
+    --ac-chart-min-h: 280px;
+    --ac-chart-h: clamp(280px, calc(100vh - var(--ac-chart-reserve)), 620px);
+  }
+}
+
+/* Short-but-wide viewports (landscape phones/tablets) in the ≤780px
+   fallback: the clamp floor would otherwise push the chart taller than the
+   screen. The app shell needs no equivalent — it is height-derived. */
+@media (max-width: 780px) and (max-height: 620px) {
+  body { --ac-chart-h: calc(100vh - 160px); --ac-chart-min-h: 240px; }
+}
+
+@media print {
+  html, body { height: auto; max-height: none; overflow: visible; display: block; }
+  .tv-page-shell { display: block; }
+  .chart-container,
+  .ac-chart-shell,
+  .ac-chart-wrap {
+    height: 520px;
+    min-height: 0;
+    border: none;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+  #ac-chart-container { height: 520px; min-height: 0; }
+  .tv-left-rail,
+  .tv-right-sidebar,
+  .tv-col-resizer,
+  .tv-range-bar,
+  .pane-controls-bar,
+  .replay-bar { display: none !important; }
+}

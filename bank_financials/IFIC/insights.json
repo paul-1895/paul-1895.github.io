@@ -1,0 +1,100 @@
+{
+  "bank_id": "IFIC",
+  "generated_at": "2026-08-26",
+  "methodology": "Derived from bank_financials/IFIC/quarterly/*.json (FY2011-FY2025 year-end, Solo basis) and ratios_timeseries.json. Every figure quoted is a reported value from IFIC's own audited annual report 'Key Financial Data and Indicators' table for that year, or an explicitly-labelled ratio computed from them (provision coverage = provision for loans and advances / classified loans; equity-to-assets = shareholders' equity / total assets; price-to-book = year-end DSE price / NAV per share). NPL%, CRAR%, cost-to-income, RoA, RoE and NIM are the bank's own reported ratios; note that IFIC computes RoA, RoE and NIM on AVERAGE balances, so they cannot be reproduced from this record's period-end balance sheet — period-end recomputations are stored separately in ratios_timeseries.json. Each year is sourced from its own contemporaneous report; where a later report restates a figure, the contemporaneous value is kept and the divergence recorded in that year's period_note. No figure is interpolated or estimated.",
+  "risk_signals": [
+    {
+      "category": "solvency_crisis_equity_almost_entirely_erased",
+      "severity": "critical",
+      "statement": "IFIC's shareholders' equity fell from 32,094m (FY2023) to 5,658m (FY2025), an 82.4% loss of capital in two years, against a balance sheet that grew to 586,402m. Equity-to-assets is now 0.96%, down from 6.12% in FY2023 and 7.21% in FY2011. Reserves and profit surplus have turned negative at -13,563m, meaning accumulated losses now exceed all retained reserves and the remaining equity is less than half of the 19,221m paid-up capital. Reported CRAR is 1.82% and the CET-1 ratio 0.42%, against a Basel III minimum of 10% — this is a capital deficiency of roughly 8 percentage points of risk-weighted assets, not a buffer shortfall.",
+      "metrics": ["total_equity", "reserve_fund", "car_pct", "tier1_ratio_pct", "paid_up_capital"],
+      "periods": ["2011_Q4", "2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "npl_ratio_above_sixty_percent",
+      "severity": "critical",
+      "statement": "Classified loans went from 33,034m (7.99% of the book) at end-FY2023 to 245,856m (54.97%) at end-FY2024 — a 644% increase in one year — and to 272,505m (61.47%) at end-FY2025. More than three fifths of IFIC's loan book is now non-performing. For context, the reported NPL ratio never left a 3.77%-7.99% band in the twelve years FY2011-FY2023. The FY2024 jump was reported by the FY2024 annual report itself and is repeated unchanged by the FY2025 report, so it reflects recognition in that year rather than a later revision.",
+      "metrics": ["classified_loans", "npl_ratio_pct", "gross_loans"],
+      "periods": ["2019_Q4", "2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "provision_coverage_collapse",
+      "severity": "critical",
+      "statement": "Provisions have not followed the NPLs. Provision for loans and advances was 14,351m against 33,034m of classified loans at end-FY2023 (43.4% cover); by end-FY2025 provisions had FALLEN to 9,934m against 272,505m of classified loans — 3.65% cover. The bank is carrying 262,571m of unprovided classified exposure, which is 46 times its remaining shareholders' equity of 5,658m. Even the FY2025 reported loss of 25,617m therefore understates the capital hole implied by full provisioning.",
+      "metrics": ["provision_for_loans", "classified_loans", "provision_coverage_pct", "total_equity"],
+      "periods": ["2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "negative_net_interest_income",
+      "severity": "critical",
+      "statement": "In FY2025 IFIC paid more interest than it earned: interest income 22,102m against interest expenses 44,197m, a net interest income of MINUS 22,095m and a reported net interest margin of -4.41%. Interest income fell 44.9% year on year (40,145m to 22,102m) even as deposits grew 8.97% — the mechanical consequence of 61% of the loan book being non-accrual while the deposits funding it continue to cost 8.38%. This is not a margin-compression problem that repricing can fix; the earning-asset base itself has stopped earning.",
+      "metrics": ["interest_income", "interest_expense", "net_interest_income", "nim_pct", "cost_of_deposit_pct", "total_deposits"],
+      "periods": ["2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "two_year_cumulative_loss",
+      "severity": "critical",
+      "statement": "IFIC lost 1,025m in FY2024 and 25,617m in FY2025 — 26,642m cumulatively, against the 32,094m of equity it held at end-FY2023. EPS went from 1.37 (FY2023) to -0.53 (FY2024) to -13.33 (FY2025), and reported RoE from 8.04% to -139.59%. Note that FY2025 records a tax CHARGE of 1,962m on a pre-tax loss of 23,655m (a 1,642m deferred tax expense plus 320m current tax), which deepened rather than offset the loss.",
+      "metrics": ["profit_after_tax", "profit_before_tax", "tax_expense", "eps", "roe_pct"],
+      "periods": ["2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "deposit_growth_despite_insolvency",
+      "severity": "high",
+      "statement": "Deposits grew 8.97% in FY2025 (474,592m to 517,162m) while the loan book shrank 0.89% and equity fell 82%. A bank funding a growing deposit base off a 0.96% equity cushion and a 61% NPL ratio is being sustained by depositor inertia or official support rather than by its own solvency; the 42,570m of net new deposits taken in during a year of a 25,617m loss is the single most important number for assessing depositor risk here.",
+      "metrics": ["total_deposits", "gross_loans", "total_equity", "profit_after_tax"],
+      "periods": ["2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "cost_base_exceeds_revenue",
+      "severity": "high",
+      "statement": "The cost-to-income ratio reached 99.04% in FY2024 — the bank spent essentially every taka of operating income on running costs before any provisioning — and is reported as -98.58% in FY2025, a meaningless figure arising from negative operating income. Operating expenses themselves were roughly flat (11,563m to 11,742m), so the ratio moved entirely because income collapsed. Across FY2011-FY2023 the ratio ran in a 48%-66% band.",
+      "metrics": ["cost_income_ratio_pct", "operating_expenses", "operating_profit"],
+      "periods": ["2021_Q4", "2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "capital_adequacy_was_always_thin",
+      "severity": "high",
+      "statement": "The FY2024-FY2025 capital collapse landed on a bank that had never held much surplus. Reported CRAR was at or barely above the 10% regulatory minimum for the first five years of the series — 10.13% (FY2011), 10.18% (FY2012), 10.37% (FY2013), 10.14% (FY2014), 10.07% (FY2015) — and its best-ever reading was 13.10% (FY2021). IFIC also leaned on subordinated debt as Tier-2 filler, carrying 10,700m in FY2022 and still 7,000m in FY2025. A bank operating within 0.1 percentage points of its minimum for five consecutive years had no capacity to absorb an asset-quality shock.",
+      "metrics": ["car_pct", "subordinated_debt", "tier2_capital"],
+      "periods": ["2011_Q4", "2015_Q4", "2021_Q4", "2025_Q4"]
+    },
+    {
+      "category": "fast_pre_crisis_balance_sheet_growth",
+      "severity": "medium",
+      "statement": "Total assets compounded at 15.65% a year from FY2011 to FY2023 (91,541m to 524,148m) and the loan book grew from 64,641m to 413,406m over the same span — a 6.4-fold expansion. That growth was funded on a capital ratio that never comfortably exceeded the minimum, and the loans written during it are what the FY2024 reclassification exposed. Rapid multi-year loan growth on thin capital is visible in this series a decade before the losses appeared.",
+      "metrics": ["total_assets", "gross_loans", "car_pct"],
+      "periods": ["2011_Q4", "2017_Q4", "2023_Q4"]
+    },
+    {
+      "category": "heavy_restatement_history_limits_comparability",
+      "severity": "medium",
+      "statement": "IFIC restates prior-year figures more than any other bank in this dataset — 85 individual restatements were found by comparing all fifteen reports against each other. The largest: FY2012 profit after tax was originally reported as 388m and appears as 1,105m in every report from FY2014 onward, with pre-tax profit identical at 1,390m in both, so the whole difference is a restated tax charge (1,002m to 285m); and FY2020 total assets were restated down 6,618m from 363,412m to 356,794m. EPS and NAV per share are restated in almost every year because later stock dividends change the share count, so the as-reported EPS series held here is not comparable year-to-year on a constant-share basis. Any trend analysis on IFIC should state which vintage of figures it uses.",
+      "metrics": ["profit_after_tax", "total_assets", "eps", "nav_per_share"],
+      "periods": ["2012_Q4", "2016_Q4", "2020_Q4"]
+    },
+    {
+      "category": "market_price_signal",
+      "severity": "info",
+      "statement": "The share price fell from 67.60 (FY2011) to 4.60 (FY2025), a 93.2% decline. Price-to-book reads 1.56x in FY2025, but that is an artefact of the denominator collapsing — NAV per share fell to 2.94 from 17.53 in FY2023 — not a re-rating. Market capitalisation of 8,842m against a book equity of 5,658m and 262,571m of unprovided classified loans implies the market is pricing in either recapitalisation or resolution rather than the current book.",
+      "metrics": ["market_price_per_share", "nav_per_share", "price_to_book"],
+      "periods": ["2011_Q4", "2023_Q4", "2025_Q4"]
+    },
+    {
+      "category": "quarterly_data_shows_six_consecutive_worsening_loss_quarters",
+      "severity": "critical",
+      "statement": "Newly-added Q1-Q3 interim data (added 2026-08-26) shows the FY2024/25 collapse was not two annual data points but an unbroken, worsening quarterly slide. Solo shareholders' equity fell every single quarter for seven quarters straight: 31,045m (FY2024 Q4) -> 26,173m (2025 Q1) -> 19,839m (2025 Q2) -> 13,239m (2025 Q3) -> 5,658m (2025 Q4) -> -2,969m (2026 Q1) -> -10,987m (2026 Q2), crossing from positive to negative equity between Dec 2025 and Mar 2026. Discrete quarterly net losses (derived from the cumulative figures) were 5,003m / 6,282m / 6,790m / 7,542m / 8,632m / 8,065m for 2025 Q1 through 2026 Q2 respectively -- five of the six quarters got worse than the one before, with no quarter showing a genuine recovery. The annual-only view (a 1,025m FY2024 loss followed by a 25,617m FY2025 loss) obscured that this was a continuously deteriorating trajectory, not two discrete shocks, and that it was still deepening (-16,697m cumulative through 2026 H1 alone, already 65% of all of FY2025's loss) well after the FY2024 reclassification that this dataset's other risk signals treat as 'the' crisis event.",
+      "metrics": ["total_equity", "net_profit_after_tax_cumulative"],
+      "periods": ["2024_Q4", "2025_Q1", "2025_Q2", "2025_Q3", "2025_Q4", "2026_Q1", "2026_Q2"]
+    },
+    {
+      "category": "provisioning_went_to_zero_during_active_losses",
+      "severity": "high",
+      "statement": "Across every 2025-2026 interim quarter for which Total Provision is separately disclosed, IFIC's 'Profit/(Loss) before provision' and 'Profit/(Loss) before taxes' are identical to the taka (e.g. 2025 Q1: both -4,988.7m; 2026 Q1/Q2: both -8,600.6m cumulative / effectively nil incremental provision), meaning net new loan-loss provisioning was zero or netted to zero in these periods even as the bank posted its largest losses in the dataset. This is consistent with -- and adds interim-quarter granularity to -- the FY2024/2025 provision-coverage-collapse signal above (cover fell to 3.65% by FY2025 with 262,571m unprovided): the interim data shows the bank was not topping up provisions at all during the two years its own losses and negative net interest income were at their worst, rather than provisioning heavily and losing money regardless.",
+      "metrics": ["provision_charge_cumulative", "operating_profit_cumulative", "profit_before_tax_cumulative"],
+      "periods": ["2025_Q1", "2025_Q2", "2025_Q3", "2026_Q1", "2026_Q2"]
+    }
+  ],
+  "historical_context": "IFIC's fifteen-year record is a growth story that ends in insolvency. From FY2011 to FY2023 the bank compounded total assets at 15.65% a year, from 91,541m to 524,148m, with the loan book growing 6.4-fold; reported NPLs stayed in a narrow 3.77%-7.99% band throughout and RoE ran between 2.3% and 16.0%. The persistent warning in that period is capital, not credit: reported CRAR sat within a tenth of a percentage point of the 10% regulatory minimum in each of FY2011-FY2015 and peaked at only 13.10%, with subordinated debt doing much of the Tier-2 work. The break comes in FY2024, when the bank's own annual report reclassified the loan book and NPLs went from 33,034m to 245,856m — 7.99% to 54.97% — in a single year, producing a 1,025m loss. FY2025 completed the collapse: NPLs 61.47%, a 25,617m loss, shareholders' equity down to 5,658m (0.96% of assets) with reserves negative at -13,563m, CRAR 1.82%, and interest expense exceeding interest income to give a negative net interest margin of -4.41%. Provisioning has not remotely kept pace — cover fell to 3.65%, leaving 262,571m of unprovided classified exposure against 5,658m of equity — so the reported losses are a floor, not a measure, of the capital shortfall. Deposits nonetheless grew 8.97% in FY2025. This series should be read as the anatomy of a bank whose reported asset quality and reported capital both remained acceptable until the year they did not.",
+  "data_gaps": "UPDATED 2026-08-26: Q1/Q2(or H1)/Q3 unaudited interim data has now been added for 2015-2026 (35 periods; see quarterly/<FY>_Q[123].json and sources.json), confirming the quarterly acceleration described in the risk signals above. Remaining interim gaps: 2011-2014 Q1/Q2/Q3 were not found in text-readable form (IFIC's own site lists nothing before 2016; several 2011-2014 Wayback Machine captures exist but are either scanned images not yet OCR'd, e.g. 2011 Q1/Q2, 2012 Q2, 2013 Q2/Q3, 2014 Q2/Q3, a real-data-but-unparsed newspaper-broadsheet 3-column layout, e.g. 2012 Q1, or a data-free newspaper notice, e.g. 2014 Q1 -- same issue as FY2017 Q1 below); FY2017 Q1 has income-statement figures only (recovered from FY2018 Q1's comparative column) because its own linked PDF is a data-free newspaper notice and no balance sheet as of that date exists in any report; FY2023 Q1 and FY2026 Q1 are OCR-recovered from scanned PDFs (cross-validated to the taka against internal arithmetic and the following year's comparative column, see sources.json). CAR, Tier-1, NPL ratio, provision coverage, NAV-per-share and market price are not disclosed in IFIC's condensed interim (Q1/Q2/Q3) statements at all -- these are annual-report-only disclosures in IFIC's own reporting -- so they are null in every interim quarterly record, not estimated. All figures are Solo/Standalone basis, which is this dataset's preferred basis. FY2011 is the only ANNUAL year not taken from its own annual report: that report is a scanned document with demonstrable character-level OCR corruption, so the FY2012 report's comparative column is used and the discrepancy documented in the FY2011 period_note and sources.json. Nine FY2014 share-information and profitability metrics (EPS, RoA, RoE, NAV, market price, P/E, and the shareholder, employee and branch counts) are gap-filled from the FY2015 report because the FY2014 report's table prints no such rows; risk-weighted assets for FY2011-FY2012 and total regulatory capital for FY2018 are gap-filled the same way. These are gap-fills, not overrides — no competing value exists in the primary report. Separately, IFIC reports a single 'Provision for loans and advances' line in most years rather than splitting specific and general provision, so provision_coverage_pct is total loan-loss cover of NPLs rather than a pure specific-provision ratio. Finally, the heavy restatement history means the as-reported series held here diverges from the latest-vintage series in 85 places, all documented per year; the two should not be mixed within a single trend line."
+}

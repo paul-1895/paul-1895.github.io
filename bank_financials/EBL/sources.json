@@ -1,0 +1,214 @@
+{
+  "bank_id": "EBL",
+  "bank_name": "Eastern Bank PLC",
+  "website": "https://www.ebl.com.bd",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2025 total assets of 761,604m match the figure under this report's 'Balance Sheet' (solo) heading; 767,225m is the consolidated total.",
+  "notes": "annual_reports/EBL archive covers all 15 years 2011-2025 with no gaps. Complete Q4/year-end coverage for all 15 years achieved from just three annual reports' embedded multi-year highlights tables: the 2015 report's 'Five-Year Progression of EBL' (2011-2015), the 2020 report's 'Five-Year Progression'/'Horizontal Analysis' (2016-2020), and the 2025 report's 'Five-year Progression of Financials' (2021-2025). These are unusually detailed tables (balance sheet, income statement, capital, asset quality, efficiency ratios all in one place), giving this bank one of the most complete datasets researched so far. Q1/Q2(Half-Yearly)/Q3 unaudited interim data has now been backfilled for 2017-2026 (30 quarters, all Solo/Standalone basis, sourced directly from ebl.com.bd's /quarterly-reports and /financial-reports archives) — see the 'unaudited_quarterly_financial_statements' entries below for the full per-year source list. 2011-2016 interim PDFs were located and confirmed live on the site (~18 more quarters) but were not parsed this pass; this is a time-boxing gap only, not a source-availability gap — see the 'not_yet_parsed' entry below for the exact URLs to resume from. The 2026-vintage filings (Q1 and Half-Yearly) use a different, fuller 24-page 'Condensed Consolidated and Separate Financial Statements' template than 2011-2025's compact 2-page press-release format, and this new template's Solo-section font has a pdftotext extraction bug (digit glyphs mis-map, e.g. '1'<->'L', '5'<->'s', '0'<->'O') — those two files' figures were sourced via OCR (pdftoppm 300dpi + tesseract) of the same PDF pages instead, cross-validated three independent ways (see 2026_Q1.json/2026_Q2.json period_note for full detail). A genuine one-time restatement was found affecting FY2023 year-end figures specifically: every 2024-vintage interim filing's 31-Dec-2023 comparative column shows total_equity=BDT 39,767m and fixed_assets=BDT 8,517m, vs this dataset's existing 2023_Q4.json (sourced from the FY2025 annual report's five-year table) showing total_equity=BDT 37,484m and fixed_assets=BDT 5,994m — see 2024_Q1.json's period_note for the full reconciliation (total_liabilities matches exactly, isolating the gap to equity/fixed-asset classification). A separate, much smaller (~0.12% of total assets) comparative gap was found for FY2017 only, isolated similarly. Neither existing Q4 file was edited to 'fix' either discrepancy, per project rule. A recurring seasonal pattern was also found: EBL's paid-up capital jumps between Q1 and Q2 in 8 of the 10 years checked (bonus share issue + AGM dividend, consistently landing in Q2/Apr-Jun), with only 2018 and 2020 as gap years (2020 plausibly COVID-related) — see insights.json.",
+  "sources": [
+    {
+      "period": "2011-2015 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "ebl-annual-report-2015.txt (\"Financial Highlights\" + \"Five-Year Progression of EBL\", p.61-63)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "note": "Table reports 'Total assets' and 'Loan/Credit to deposit ratio (Gross)' on a gross-loans-including-OBU basis; an alternative 'excluding OBU loans' LDR series is also given in the source but not used, for consistency with later years."
+    },
+    {
+      "period": "2016-2020 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "ebl-annual-report-2020.txt (\"Five-Year Progression\" + \"Horizontal Analysis\", p.56-57)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "cross_check": "2020/2019 columns independently match the same report's separate 'Financial Highlights' (Bank-only) summary box."
+    },
+    {
+      "period": "2021-2025 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "ebl-annual-report-2025.txt (\"Five-year Progression of Financials\", p.78-80)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "note": "EPS for these years cross-checked against a separate EPS-only comparative table elsewhere in the same report (p.30 area)."
+    },
+    {
+      "period": "2017 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/First_Quarter_2017web.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/half_yearly_report_2017.pdf (Q2/Half-Yearly)",
+        "https://www.ebl.com.bd/assets/reports/half/third_quarter_report_2017.pdf (Q3)"
+      ],
+      "used_for_files": ["2017_Q1.json", "2017_Q2.json", "2017_Q3.json"],
+      "note": "31-Dec-2016 comparative cross-checks exactly against 2016_Q4.json for every field in all three filings. Solo 31-Dec-2017 comparative (as later shown in the 2018-vintage filings) shows a small ~0.12% total_assets/total_liabilities gap vs 2017_Q4.json; total_equity matches exactly. See 2018_Q1.json period_note."
+    },
+    {
+      "period": "2018 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/EBL_1st_Quarterly_Report_2018.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/half_yearly_report_2018.pdf (Q2/Half-Yearly)",
+        "https://www.ebl.com.bd/assets/reports/half/third_quarter_report_2018.pdf (Q3)"
+      ],
+      "used_for_files": ["2018_Q1.json", "2018_Q2.json", "2018_Q3.json"],
+      "note": "31-Dec-2017 Solo comparative shows the small ~0.12% total_assets/total_liabilities gap vs 2017_Q4.json referenced above, consistently across all three 2018 filings; total_equity, gross_loans, total_deposits, investments_securities, fixed_assets, borrowings and paid_up_capital all match exactly. Not edited, only noted (2018_Q1.json/Q2/Q3 period_notes)."
+    },
+    {
+      "period": "2019 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/EBL_Q1_FS_2019.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/half_yearly_report_2019.pdf (Q2/Half-Yearly)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q3-FS-2019.pdf (Q3)"
+      ],
+      "used_for_files": ["2019_Q1.json", "2019_Q2.json", "2019_Q3.json"],
+      "note": "31-Dec-2018 comparative cross-checks exactly against 2018_Q4.json in all three filings. Paid-up capital jumped between Q1 and Q2 (bonus share issue) — earliest instance of the recurring Q2-bonus pattern documented in insights.json."
+    },
+    {
+      "period": "2020 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q1-2020-FS_v2.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL_Q2_FS_2020_For_Web_version.pdf (Q2/Half-Yearly)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL_Q3_Financial_Statement_2020_v2.pdf (Q3)"
+      ],
+      "used_for_files": ["2020_Q1.json", "2020_Q2.json", "2020_Q3.json"],
+      "note": "31-Dec-2019 comparative cross-checks exactly against 2019_Q4.json in all three filings. COVID-19-affected year (Bangladesh lockdown fell in Q2 2020); unlike every other year checked 2017-2026, no bonus share issue occurred this Q2 — plausibly an AGM delay."
+    },
+    {
+      "period": "2021 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q1-FS2021v3.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Half-Yearly-Financial-Statement-2021-final.pdf (Q2/Half-Yearly)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q3-FS-2021.pdf (Q3)"
+      ],
+      "used_for_files": ["2021_Q1.json", "2021_Q2.json", "2021_Q3.json"],
+      "note": "31-Dec-2020 comparative cross-checks exactly against 2020_Q4.json in all three filings."
+    },
+    {
+      "period": "2022 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q1-Financial-Statement-2022.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/Half-Yearly-Financial-Statements-2022-Unaudited.pdf (Q2/Half-Yearly)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q3-FS-2022.pdf (Q3)"
+      ],
+      "used_for_files": ["2022_Q1.json", "2022_Q2.json", "2022_Q3.json"],
+      "note": "31-Dec-2021 comparative cross-checks exactly against 2021_Q4.json in all three filings."
+    },
+    {
+      "period": "2023 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/EBL_Q1_FS2023_Unaudited.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL_H1_FS_2023.pdf (Q2/Half-Yearly)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q3-FS-web-version-2023.pdf (Q3)"
+      ],
+      "used_for_files": ["2023_Q1.json", "2023_Q2.json", "2023_Q3.json"],
+      "note": "31-Dec-2022 comparative cross-checks exactly against 2022_Q4.json in all three filings."
+    },
+    {
+      "period": "2024 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/EBL_Q1_FS_for_web_version_2024.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL_Q2_FS_2024_Un.pdf (Q2/Half-Yearly)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL_Q3_Financial_Statements_2024_Unaudited.pdf (Q3)"
+      ],
+      "used_for_files": ["2024_Q1.json", "2024_Q2.json", "2024_Q3.json"],
+      "note": "RESTATEMENT: 31-Dec-2023 Solo comparative shows total_equity=BDT 39,767m and fixed_assets=BDT 8,517m, consistently across all three 2024 filings, vs 2023_Q4.json's total_equity=BDT 37,484m and fixed_assets=BDT 5,994m — total_liabilities, gross_loans, total_deposits, investments_securities, borrowings and paid_up_capital all match exactly, isolating the gap to equity/fixed-asset classification specifically. Recorded verbatim, not reconciled; 2023_Q4.json was not edited. See 2024_Q1.json period_note for full figures."
+    },
+    {
+      "period": "2025 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q1-Financial-Statements-2025-Unaudited.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL_Q2_FS_2025_Unaudited.pdf (Q2/Half-Yearly)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q3-FS-for-web_2025.pdf (Q3)"
+      ],
+      "used_for_files": ["2025_Q1.json", "2025_Q2.json", "2025_Q3.json"],
+      "note": "31-Dec-2024 comparative cross-checks exactly against 2024_Q4.json in all three filings. EPS RESTATEMENT found for both Q1 and H1 2025: the 2026-vintage filings' comparative columns show lower restated EPS for the same periods (identical PAT both times) due to the intervening FY2025 bonus share issue — see 2025_Q1.json/2025_Q2.json period_notes."
+    },
+    {
+      "period": "2026 Q1/Q2 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "basis": "Solo/Standalone",
+      "source_documents": [
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Q1-Financial-Statements-2026-Unaudited.pdf (Q1)",
+        "https://www.ebl.com.bd/assets/reports/half/EBL-Half-Yearly-Financial-Statements-2026-Unaudited.pdf (Q2/Half-Yearly)"
+      ],
+      "used_for_files": ["2026_Q1.json", "2026_Q2.json"],
+      "note": "Q3 2026 not yet due as of the 2026-08-26 retrieval date. These two filings use a new, fuller 24-page template (first seen this vintage) whose Solo-section font has a pdftotext digit-extraction bug; figures were sourced via OCR (pdftoppm 300dpi + tesseract) of the same underlying PDF pages instead and cross-validated three ways (internal P&L/BS arithmetic identities, exact match against 2025_Q4.json's comparative column, and Q1-PAT + discrete-Q2-PAT = H1-cumulative-PAT reconciliation between the two filings). This is also the only vintage where NPL%/classified-loans are disclosed in the interim statement itself (a 'Classification status of loans' note not present in the 2011-2025 compact template) — hence npl_pct/classified_loans are populated only for 2026_Q1/Q2 in this dataset's interim series. 31-Dec-2025 comparative cross-checks exactly against 2025_Q4.json in both filings."
+    },
+    {
+      "period": "2011-2016 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "located_not_yet_parsed",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "notes": "PDFs confirmed live on ebl.com.bd and downloaded/verified (file, pdfinfo) this session, but not yet parsed into JSON — a time-boxing gap, not a source-availability gap. Exact URLs for a future session to resume from: https://www.ebl.com.bd/assets/reports/half/11_QFS_Press_Ad_Page-01_02.pdf (2011 Q1, press-ad landscape format), https://www.ebl.com.bd/assets/reports/half/EBL_Half_Yearly_Report_2011.pdf (2011 H1), https://www.ebl.com.bd/assets/reports/half/3rd_Quarter_report_2011.pdf (2011 Q3), https://www.ebl.com.bd/assets/reports/half/1st_Quarter_statement_2012.pdf (2012 Q1), https://www.ebl.com.bd/assets/reports/half/Half_Yearly_Report_2012.pdf (2012 H1), https://www.ebl.com.bd/assets/reports/half/3rd_Quarter_report_2012.pdf (2012 Q3), https://www.ebl.com.bd/assets/reports/half/1st_quarterly_report_2013.pdf (2013 Q1), https://www.ebl.com.bd/assets/reports/half/half_yearly_report_2013.pdf (2013 H1), https://www.ebl.com.bd/assets/reports/half/EBL_3rd_Quarterly_Report_2013.pdf (2013 Q3), https://www.ebl.com.bd/assets/reports/half/EBL_1st_Quarterly_Report_2014.pdf (2014 Q1), https://www.ebl.com.bd/assets/reports/half/half_yearly_report_2014.pdf (2014 H1), https://www.ebl.com.bd/assets/reports/half/EBL_3rd_Quarterly_Report_2014.pdf (2014 Q3), https://www.ebl.com.bd/assets/reports/half/First_Quarter_2015.pdf (2015 Q1), https://www.ebl.com.bd/assets/reports/half/half_yearly_report_2015.pdf (2015 H1), https://www.ebl.com.bd/assets/reports/half/third_quarter_report_2015.pdf (2015 Q3), https://www.ebl.com.bd/assets/reports/half/First_Quarter_2016.pdf (2016 Q1), https://www.ebl.com.bd/assets/reports/half/half_yearly_report_2016.pdf (2016 H1), https://www.ebl.com.bd/assets/reports/half/third_quarter_report_2016.pdf (2016 Q3). Note the 2011-2015 Half-Yearly filings in particular are a longer, richer 20-40 page format (vs 2016-2025's compact 2-page format), likely containing fuller disclosures worth extracting carefully. A handful of other PDFs on the site (EBL_FINANCIAL_STATEMENT_FOR_2016.pdf, EBL-FS-2020-PAPER-VERSION.pdf, Financial-Statements-2024_0512pdf.pdf, EBL_Financial_Statement_20181.pdf, EBL_FINANCIAL_STATEMENT_FOR_PAPER_AD_2016.pdf, and four 'Financial_Statements_*_Audited.pdf' files) were checked and confirmed to be full audited annual financial statements (duplicates of the annual report, 'for the year ended...'), not interim reports — correctly excluded. One additional PDF (1234_EBL_035_10_QFS_Press_Ad.pdf) is a scanned/image press ad dated May 2010 (pre-2011, out of this dataset's range) and extracts to ~0 text lines; not pursued."
+    }
+  ]
+}

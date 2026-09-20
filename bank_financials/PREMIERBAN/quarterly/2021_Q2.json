@@ -1,0 +1,137 @@
+{
+  "bank_id": "PREMIERBAN",
+  "bank_name": "The Premier Bank PLC",
+  "reporting_date": "2021-06-30",
+  "financial_year": 2021,
+  "quarter": "Q2",
+  "period_note": "Sourced from the Annual Report 2021's own 'Evaluation of quarterly performance' table. BASIS: SOLO. Every value in this report's own Dec-31-2021 column (Investment 56,603.12, Loans 249,829.58, Paid-up Capital 10,430.71, Total Shareholders' Equity 22,194.04, Total Assets 356,574.98, Off-Balance Items 234,200.40, Net Interest Income 4,808.17, Non-Interest Income 10,835.99, Operating Expenses 7,256.99, Operating Profit 8,387.16, Net Profit After Tax 3,269.13, EPS 3.13, NAV/share 21.28) reproduces exactly against this dataset's own independently-sourced FY2021 Solo Q4 figures (bank_financials/PREMIERBAN/quarterly/2021_Q4.json). NOCFPS independently corroborates Solo too: this report's own Note 41 (Solo NOCFPS, -2.30) vs Note 41(a) (Consolidated CNOCFPS, -2.49) shows the table's Dec-21 NOCFPS of -2.30 matches Solo exactly, not Consolidated. This year is NOT affected by the Consolidated-vs-Solo mismatch found in FY2022/2024/2025 (see those years' notes) -- FY2021 interim data is clean Solo throughout, fully consistent with the main Q4/annual series. CROSS-CHECK PERFORMED: this table's own Dec-2020/Sep-2020/Jun-2020 comparator columns match the FY2020 report's own contemporaneous figures exactly for Investment/Loans/Paid-up Capital (see 2020_Q1/Q2/Q3.json notes for the one Mar-2020-equity and EPS discrepancies found in this same comparator).",
+  "source": {
+    "source_document": "premierban-annual-report-2021.txt",
+    "source_path": "annual_reports/PREMIERBAN/premierban-annual-report-2021.txt",
+    "source_url": "https://www.premierbankltd.com",
+    "source_page_lines": "5359-5395 ('Evaluation of quarterly performance' table, current-year 2021 + prior-year 2020 comparator columns, Annual Report 2021 p.109-110)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investment",
+      "value": 38092.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans, Advances and Lease/Investments",
+      "value": 229508.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 10430.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholder's equity",
+      "value": 20593.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 328206.59,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Assets minus Total Shareholder's equity",
+      "value": 307613.02,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Off Balance Items",
+      "value": 191105.39,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (01 Jan 21 to 30 Jun 21, cumulative)",
+      "value": 2090.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Non-Interest Income (01 Jan 21 to 30 Jun 21, cumulative)",
+      "value": 3732.2,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expense_cumulative",
+      "original_metric_name": "Operating Expenses (01 Jan 21 to 30 Jun 21, cumulative)",
+      "value": 2861.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Operating Profit (01 Jan 21 to 30 Jun 21, cumulative)",
+      "value": 2961.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit After Taxation (01 Jan 21 to 30 Jun 21, cumulative)",
+      "value": 1633.37,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (01 Jan 21 to 30 Jun 21, cumulative)",
+      "value": 1.57,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per share",
+      "value": 19.74,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nocfps_cumulative",
+      "original_metric_name": "NOCFPS (01 Jan 21 to 30 Jun 21, cumulative)",
+      "value": -5.26,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

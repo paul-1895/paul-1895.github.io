@@ -1,0 +1,121 @@
+{
+  "bank_id": "PREMIERBAN",
+  "bank_name": "The Premier Bank PLC",
+  "reporting_date": "2019-09-30",
+  "financial_year": 2019,
+  "quarter": "Q3",
+  "period_note": "Sourced from the Annual Report 2020's own 'Evaluation of quarterly performance' table (a BSEC-mandated corporate-governance disclosure reviewed by the Audit Committee and Board; NOT labelled '(consolidated)', unlike the FY2022-2025 vintage of this same table), which shows FY2020 current-year columns alongside FY2019 prior-year comparator columns for Mar/Jun/Sep/Dec. This is the ONLY source located for FY2019 interim data anywhere in this bank's annual-report archive: annual reports 2011-2019 were checked and contain only narrative Audit-Committee text about quarterly review ('The Audit Committee of the Board reviewed...the quarterly, half yearly and annual financial statements'), never a numeric table; the numeric 'Evaluation of quarterly performance' table first appears in the FY2020 report. BASIS: SOLO, not Consolidated. Proof: every value in this Dec-31-2019 column (Investment 39,206.95, Loans 188,945.47, Paid-up Capital 9,240.94, Total Shareholders' Equity 18,604.45, Total Assets 261,900.49, Off-Balance Items 154,586.56, Net Interest Income 6,413.83, Non-Interest Income 6,537.95, Operating Expenses 5,634.32, Operating Profit 7,317.46, Net Profit After Tax 3,338.16) reproduces EXACTLY against this dataset's own independently-sourced FY2019 Solo Q4 figures (bank_financials/PREMIERBAN/quarterly/2019_Q4.json), which were derived from a completely unrelated source (the FY2019 report's own 'Financial Highlights' Solo column). This is NOT the Consolidated-vs-Solo mismatch that affects FY2022/2024/2025 (see those years' notes) -- FY2019 interim data is clean Solo, fully consistent with the main Q4/annual series' basis. ONE EXCEPTION: EPS. This table's Dec-31-2019 column shows 3.44, a bonus-share-retroactively-restated figure, not the contemporaneous, not-yet-restated 3.61 used in 2019_Q4.json. This is confirmed as a genuine, known restatement pattern (not an error): the FY2020 report's own Note 40 states verbatim 'Net operating cash flow per share (NOCFPS) has been restated due to issue of bonus share. Actual NOCFPS for 2019 was Taka 9.70' (vs the restated 9.24 used in that report's face figures) -- proving the FY2020 report systematically retro-restates FY2019 per-share figures for a 2020 bonus share issue. The Q1/Q2/Q3 2019 EPS values below are therefore also presented on this same bonus-adjusted basis (no contemporaneous FY2019 interim EPS source exists to compare against; none is fabricated here -- the table's own printed figure is used as-is with this caveat).",
+  "source": {
+    "source_document": "premierban-annual-report-2020.txt",
+    "source_path": "annual_reports/PREMIERBAN/premierban-annual-report-2020.txt",
+    "source_url": "https://www.premierbankltd.com",
+    "source_page_lines": "4653-4666 ('Evaluation of quarterly performance' table, current-year 2020 + prior-year 2019 comparator columns, Annual Report 2020 p.97-98)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investment",
+      "value": 30595.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans, Advances and Lease/Investments",
+      "value": 178183.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 9240.94,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholder's equity",
+      "value": 16844.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 241027.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Assets minus Total Shareholder's equity",
+      "value": 224182.22,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Off Balance Items",
+      "value": 155649.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (01 Jan 19 to 30 Sep 19, cumulative)",
+      "value": 4176.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Non-Interest Income (01 Jan 19 to 30 Sep 19, cumulative)",
+      "value": 4020.49,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expense_cumulative",
+      "original_metric_name": "Operating Expenses (01 Jan 19 to 30 Sep 19, cumulative)",
+      "value": 4289.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Operating Profit (01 Jan 19 to 30 Sep 19, cumulative)",
+      "value": 3906.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit After Taxation (01 Jan 19 to 30 Sep 19, cumulative)",
+      "value": 1597.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (01 Jan 19 to 30 Sep 19, cumulative; bonus-restated -- see period_note)",
+      "value": 1.65,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

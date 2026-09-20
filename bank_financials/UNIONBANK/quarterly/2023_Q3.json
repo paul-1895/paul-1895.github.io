@@ -1,0 +1,233 @@
+{
+  "bank_id": "UNIONBANK",
+  "bank_name": "Union Bank PLC",
+  "reporting_date": "2023-09-30",
+  "financial_year": 2023,
+  "quarter": "Q3",
+  "period_note": "RESTATEMENT-RELEVANT PERIOD -- the last interim filing before the FY2023 annual report (which reported a profit later restated to a loss). Balance sheet is the period-end snapshot (reported), Solo/standalone, Shariah-based Islamic bank. Income-statement items are CUMULATIVE from 1 January (9-month cumulative), as published in the bank's own 'CONDENSED PROFIT AND LOSS ACCOUNT (Un-audited) For the Period (Q-3) From 01 January 2023 to 30 September 2023'; the filing's own table also prints a discrete 'July'23-Sept'23' column, captured as the _discrete_quarter fields. Source PDF ('3rd_Quarter_Financial_Statement_as_on_30_September_2023.pdf', filed with a 'Date: 30 October 2023' signature block) is a SCANNED IMAGE document -- independently OCR'd (pdftoppm 300dpi + tesseract). Balance-sheet identity reconciles exactly: Total Liabilities (262,898,689,754) + Total Equity (16,102,314,103) = Total Assets (279,001,003,857). P&L chain reconciles exactly: Total Operating Income (5,869,879,173) - Total Operating Expenses (2,873,664,560) = Profit before Provision and Tax (2,996,214,613); - Total Provisions (553,500,000) = Total Profit before Tax (2,442,714,613); - Tax (1,075,211,231) = Net Profit after Tax (1,367,503,382). This filing's own 'Investments Income' and 'Profit Paid on Deposits' cells for the CURRENT period (Jan-Sep 2023) were not legibly OCR'd (the row rendered only the PRIOR-year comparative, Jan-Sep 2022, which duplicates this dataset's own 2022_Q3.json figures exactly -- confirming the OCR read the correct row, just the wrong column for this specific cell); the current-period gross Investments Income used here (16,760.23m) is instead cross-referenced from Union Bank's own 2024 Q3 filing, which reproduces 'Jan'23-Sept'23' as its prior-year comparative -- Profit Paid on Deposits (-11,688.60m) is then basis 'calculated_from_pl_components' (= Investments Income minus Net Investment Income, both independently confirmed). CROSS-CHECK AGAINST FY2023 ANNUAL (2023_Q4.json): 9-month cumulative Net Profit after Tax (1,367.50m) implies a Q4-2023-ALONE profit of 1,607.89m (FY2023 total, this dataset's stored ORIGINAL/contemporaneous figure) minus 1,367.50m = 240.39m -- a plausible, unremarkable Q4 profit consistent with the ORIGINAL FY2023 filing's own internal consistency; there is no way to test this against the LATER-RESTATED FY2023 figures (-2,875.22m loss) using only this Q1-Q3 data, since Union Bank's restated comparative was only ever published at the FY2023 BALANCE-SHEET-DATE level (a single point-in-time restatement in the FY2024 report), not as a restated quarterly trail -- i.e. no interim filing anywhere in this dataset shows a 'restated' Q1/Q2/Q3 2023 column. RESTATEMENT TIMING FINDING (the central point of this bank's Q1-Q3 backfill): like Q1 and Q2 2023, this filing shows continued healthy, GROWING cumulative profit (1,367.50m vs 1,324.62m in 9M-2022) and growing equity (16,102.31m, up from 15,584.84m in Q2) -- absolutely no visible sign of the classified-investment-data manipulation later disclosed in the FY2024 annual report. Every single 2023 interim filing (Q1, Q2, Q3) shows a smoothly improving trajectory; whatever went wrong was either not yet reflected in the underlying investment classifications as of these filing dates, or was already present but successfully concealed by the same manipulated system-generated reports that Bangladesh Bank's 29-April-2025 letter later found -- this dataset's data cannot distinguish between those two explanations, only confirm that neither the bank's interim disclosures nor (per the contemporaneous FY2023 audit opinion, unqualified) its year-end audit caught it at the time. The condensed quarterly filing does NOT disclose classified investments, NPL ratio, or CRAR/capital-adequacy figures.",
+  "source": {
+    "source_document": "unionbank-unaudited-2023-q3.txt",
+    "source_path": "annual_reports/UNIONBANK/unionbank-unaudited-2023-q3.txt",
+    "source_url": "https://unionbank.com.bd/assets/reports/half/3rd_Quarter_Financial_Statement_as_on_30_September_2023.pdf",
+    "source_page_lines": "p.1 (Condensed Balance Sheet), p.2 (Off-Balance Sheet Items), p.3 (Condensed Profit and Loss Account), OCR'd from a scanned-image PDF retrieved from the bank's 'Quarterly Statement' investor-relations page (https://unionbank.com.bd/quarterly-statement); investments_income_cumulative cross-referenced from unionbank-unaudited-2024-q3.txt's own 'Jan'23-Sept'23' comparative column",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments",
+      "value": 236900.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments in Shares & Securities",
+      "value": 10218.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 224196.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 10362.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 3517.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserve",
+      "original_metric_name": "Other Reserve",
+      "value": 145.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": 2076.43,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 16102.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 262898.69,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 279001.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet Items Including Contingent Liabilities",
+      "value": 6040.37,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per Share (Total Shareholders' Equity / 1,036,280,448 period-end shares)",
+      "value": 15.54,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated_period_end_not_average"
+    },
+    {
+      "normalised_metric_name": "investments_income_cumulative",
+      "original_metric_name": "Investments Income (cumulative from Jan 1) -- cross-referenced from Union Bank's own 2024 Q3 filing's comparative column",
+      "value": 16760.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported_cross_referenced"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_cumulative",
+      "original_metric_name": "Profit Paid on Deposits (cumulative from Jan 1) -- derived as Investments Income minus Net Investment Income",
+      "value": -11688.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "net_investment_income_cumulative",
+      "original_metric_name": "Net Investment Income (cumulative from Jan 1)",
+      "value": 5071.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_funded_income_cumulative",
+      "original_metric_name": "Income from Investment in Shares and Securities + Commission, Exchange and Brokerage + Other Operating Income (unlabeled subtotal row, combined; cumulative from Jan 1)",
+      "value": 798.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative from Jan 1)",
+      "value": 5869.88,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 2873.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit/(Loss) before Provision and Tax (cumulative from Jan 1)",
+      "value": 2996.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provisions_cumulative",
+      "original_metric_name": "Total Provisions (cumulative from Jan 1)",
+      "value": 553.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit/(Loss) before Tax (cumulative from Jan 1)",
+      "value": 2442.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Provision for Income Tax (cumulative from Jan 1)",
+      "value": 1075.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit/(Loss) after Tax (cumulative from Jan 1)",
+      "value": 1367.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) (cumulative from Jan 1)",
+      "value": 1.35,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_discrete_quarter",
+      "original_metric_name": "Total Profit before Tax, July'23 to Sept'23 (discrete quarter, as separately reported)",
+      "value": 846.26,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_discrete_quarter",
+      "original_metric_name": "Net Profit after Tax, July'23 to Sept'23 (discrete quarter, as separately reported)",
+      "value": 528.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_discrete_quarter",
+      "original_metric_name": "EPS, July'23 to Sept'23 (discrete quarter, as separately reported)",
+      "value": 0.52,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

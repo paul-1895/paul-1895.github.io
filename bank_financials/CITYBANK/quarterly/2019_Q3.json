@@ -1,0 +1,129 @@
+{
+  "bank_id": "CITYBANK",
+  "bank_name": "The City Bank PLC",
+  "reporting_date": "2019-09-30",
+  "financial_year": 2019,
+  "quarter": "Q3",
+  "period_note": "Sourced directly from the bank's own primary quarterly interim financial statements (\"Financial Statements for the 3rd Quarter ended 30 September 2019 (Unaudited)\"), downloaded directly from the bank's live financial-statements archive (legacy.citybankplc.com/report/financialstatements), not Wayback Machine. Per project convention the SOLO ('Balance Sheet as at 30 September 2019' / unlabelled 'Profit and Loss Account for the 3rd Quarter ended 30 September 2019') figures are used, not the explicitly-labelled 'Consolidated' panels (which include a 'Transferred to Minority Interest' line and different totals, e.g. Consolidated NPAT 2,621,645,091 and EPS 2.58 vs Solo NPAT 2,526,331,253 and EPS 2.49). Arithmetically verified: Total liabilities 320,615,219,876 + Shareholders' equity 25,586,182,792 = Total assets 346,201,402,668 exactly; Net interest income 8,040,783,078 + Investment income 1,379,120,944 + Commission 2,326,003,761 + Other operating income 1,775,376,949 = Total operating income 13,521,284,732 exactly. Year-to-date NPAT (2,526,331,253) minus the 2019_Q2.json H1 figure (1,701.58m) implies a Q3-alone NPAT of ~824.8m, which matches this filing's own 'Current Quarter' column net profit after taxation (824,752,728) closely -- cross-validated against the already-completed 2019_Q2 quarter; the 2018 comparative column here (2,081,709,071) also matches this session's newly-added 2018_Q3.json net_profit_after_tax_cumulative exactly. This filing includes an explicit Note 4.a 'Net Assets Value per Share (NAV) - The City Bank Limited' (Solo basis), so nav_per_share is reported here (not calculated). Non Funded Income is calculated as Commission/exchange/brokerage + Other operating income (both individually reported).",
+  "source": {
+    "source_document": "citybank-3q-2019-financial-statements.txt",
+    "source_path": "annual_reports/CITYBANK/citybank-3q-2019-financial-statements.txt",
+    "source_url": "https://legacy.citybankplc.com/files/3rd-Quarterly-Financial-Statements-as-on-30-September-2019_1572269827.pdf",
+    "source_page_lines": "Single-page landscape layout (multiple panels: Consolidated and Solo Balance Sheet/Cash Flow/P&L/Statement of Changes in Equity, plus Notes to the Financial Statements panel); read visually via high-resolution page render and targeted crops (pdftoppm -r 400), cross-checked against pdftotext output",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 32833,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances / Investments",
+      "value": 256004,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 239478,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Shareholders' equity of The City Bank Limited",
+      "value": 25586,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 346201,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities",
+      "value": 112184,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value per Share (NAV) - The City Bank Limited (Note 4.a)",
+      "value": 25.17,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest / net profit on investments (Year-to-Date)",
+      "value": 8041,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (Year-to-Date)",
+      "value": 1379,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_funded_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (Year-to-Date)",
+      "value": 4101,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_sum_of_reported_lines"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (B) (Year-to-Date)",
+      "value": 7588,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit / (loss) before provision (C=A-B) (Year-to-Date)",
+      "value": 5933,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (Year-to-Date)",
+      "value": 2526,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (Year-to-Date)",
+      "value": 2.49,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

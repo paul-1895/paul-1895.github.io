@@ -1,0 +1,177 @@
+{
+  "bank_id": "SOUTHEASTB",
+  "bank_name": "Southeast Bank PLC",
+  "reporting_date": "2018-06-30",
+  "financial_year": 2018,
+  "quarter": "Q2",
+  "period_note": "CONSOLIDATED (Group) basis, matching this bank's main Q4/annual series (see sources.json reporting_basis). Source: Southeast Bank's own BSEC-mandated 'Evaluation of the Quarterly Financials by the Audit Committee and by the Board' disclosure table, embedded in its annual report (a corporate-governance disclosure most banks answer with a checkbox, but which Southeast Bank answers with an actual Q1/Q2/Q3/Q4 balance-sheet-and-income-statement table for that report's own year, plus a comparative column for the prior year). Balance-sheet line items are the 1 January to 30 June 2018 period-end snapshot (basis reported). Income-statement line items and EPS are CUMULATIVE FROM 1 JANUARY 2018 (\"1 January to 30 June 2018\" exactly as the table's own column header states), not discrete-quarter figures -- flagged via the _cumulative suffix, basis reported, same convention as CITYBANK. Balance-sheet identity (Total assets = Total liabilities + Total equity) holds to within a consistent ~BDT 8-11m gap (~0.002-0.004% of total assets), most plausibly a small Non-controlling-interest balance not broken out as its own row in this vintage of the table -- see the 2021-2025 vintage, which adds an explicit NCI row and closes this same gap almost exactly. Cumulative net profit after tax increases monotonically Q1->Q2->Q3 within 2018 (validated; no violation). Cross-checked against the FY2019 report's comparative column: Q1/Q2/Q3 balance-sheet and net-profit figures match exactly. All four quarters' EPS are restated downward by the FY2019 report (0.68->0.59, 1.73->1.37, 2.34->2.13, 2.35->2.13), the same share-count-driven pattern already documented for this bank's annual EPS series; contemporaneous EPS is kept. Separately: this report's own Q4 (year-end) 'Deposits and other accounts' figure of 289,335m does not reconcile with this same report's own Q4 Total Liabilities (353,449m = Borrowings 11,212 + Subordinated bond 11,800 + Deposits X + Other liabilities 32,102 implies X=298,335, not 289,335) -- an internal arithmetic inconsistency confined to the Q4/year-end column of this specific table (corrected to 298,335 by the FY2019 report's comparative). This does not affect Q1-Q3 here, which are each internally self-consistent (deposits implied by Total Liabilities minus the other three components matches the reported deposits figure to within BDT 1m in every one of Q1, Q2 and Q3), and Q4 is not included in this file per the project's no-duplication rule.",
+  "source": {
+    "source_document": "southeastb-annual-report-2018.txt",
+    "source_path": "annual_reports/SOUTHEASTB/southeastb-annual-report-2018.txt",
+    "source_url": "https://www.southeastbank.com.bd/annual_report.php",
+    "source_page_lines": "8144-8198 (\"Evaluation of the Quarterly Financials by the Audit Committee and by the Board\" table, FY2018 Annual Report p.154)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "cash",
+      "original_metric_name": "Cash",
+      "value": 22072,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "call_money",
+      "original_metric_name": "Money at call and on short notice",
+      "value": 6468,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "loans_advances_and_investments_combined",
+      "original_metric_name": "Loans and advances/investments",
+      "value": 257314,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises, furniture and fixtures",
+      "value": 9342,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other assets",
+      "value": 3790,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 367868,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "borrowings",
+      "original_metric_name": "Borrowings from other banks, financial institutions and agents",
+      "value": 14531,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "subordinated_bonds",
+      "original_metric_name": "Subordinated bond",
+      "value": 7400,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 288782,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Other liabilities",
+      "value": 29887,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 340600,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up capital",
+      "value": 9170,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total shareholders' equity",
+      "value": 27258,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Off-Balance Sheet Items",
+      "value": 149990,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income/net profit on investments (cumulative from Jan 1)",
+      "value": 2288,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total operating income (A) (cumulative from Jan 1)",
+      "value": 6888,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (B) (cumulative from Jan 1)",
+      "value": 2375,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (C=A-B) (cumulative from Jan 1)",
+      "value": 4513,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (cumulative from Jan 1)",
+      "value": 1590,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) (cumulative from Jan 1)",
+      "value": 1.73,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

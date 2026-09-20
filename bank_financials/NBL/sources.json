@@ -1,0 +1,139 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "website": "https://www.nblbd.com",
+  "investor_relations_url": "https://www.nblbd.com/company/annualReport",
+  "reporting_basis": "SOLO basis including the Offshore Banking Unit. The source table is headed 'NBL and Its Offshore Unit' (from FY2025, 'NBPLC and Its Offshore Banking Units'), which is National Bank's standalone presentation rather than a consolidation of subsidiaries.",
+  "notes": "Two structural problems shaped the sourcing here. First, the archive holds no annual report before FY2015, so FY2011-FY2014 come from the FY2015 report's comparative column. Second, the FY2021, FY2022 and FY2023 PDFs are image-only — pdftotext recovers 0, 0 and 386 usable lines respectively and no table row survives — so those three years come from the FY2024 report. The remaining eight years are each taken from the reporting year's own report. A separate hazard is units: the FY2025 report prints the summary table in CRORE while every other report uses MILLION, so all FY2025-sourced figures were multiplied by 10 and the conversion verified against the overlap (the FY2025 report's FY2024 profit after tax of -1,722.42 crore equals the FY2024 report's -17,224.21 million, and FY2024 total assets of 57,297.82 crore equal 572,978.16 million). Several reports also render the summary table's row labels with a subsetted font that pdftotext cannot decode while the numbers survive; the two profit rows always sit immediately after 'Non-Interest Expenses', so they were recovered by position.",
+  "sources": [
+    {
+      "period": "2011-2015 (Q4/year-end, solo incl. OBU)",
+      "type": "annual_report_summary_table",
+      "source_document": "nbl-annual-report-2015.txt ('Five Years Financial Summary', 2011-2015, Taka in million)",
+      "source_path": "annual_reports/NBL/nbl-annual-report-2015.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015
+      ],
+      "note": "National Bank's FY2011-FY2014 annual reports are not in this archive, so those four years are this report's comparative columns. FY2015 is contemporaneous.",
+      "cross_check": "FY2012-FY2015 reproduce identically in the FY2016, FY2017, FY2018 and FY2019 reports."
+    },
+    {
+      "period": "2016-2020 (Q4/year-end, solo incl. OBU)",
+      "type": "annual_report_summary_table",
+      "source_document": "nbl-annual-report-<YEAR>.txt for 2016, 2017, 2018, 2019 and 2020 ('Five Years Financial Summary')",
+      "source_path": "annual_reports/NBL/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "note": "Each year from its own report. The FY2016 and FY2017 reports render the row labels as mojibake; their two profit rows were read positionally, and the FY2016 values (Profit before Tax and Provision 10,753.13, Profit after Tax 5,567.87) were taken directly from the report text and are corroborated unchanged by the FY2017, FY2018, FY2019 and FY2020 reports."
+    },
+    {
+      "period": "2021-2024 (Q4/year-end, solo incl. OBU)",
+      "type": "annual_report_summary_table",
+      "source_document": "nbl-annual-report-2024.txt ('Five Years Financial Summary', 2020-2024, Tk. in Million)",
+      "source_path": "annual_reports/NBL/nbl-annual-report-2024.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "note": "The FY2021, FY2022 and FY2023 annual reports are in the archive but are image-only PDFs with no recoverable text layer, so those three years come from this report. FY2024 is contemporaneous. This report's row labels are also mojibake and its two profit rows were recovered positionally.",
+      "cross_check": "Its FY2020 overlap column reproduces the FY2020 report exactly, and every FY2021-FY2024 figure reproduces in the FY2025 report once converted from crore to million."
+    },
+    {
+      "period": "2025 (Q4/year-end, solo incl. OBU)",
+      "type": "annual_report_summary_table",
+      "source_document": "nbl-annual-report-2025.txt ('Five Years Financial Summary', 2021-2025, BDT in CRORE)",
+      "source_path": "annual_reports/NBL/nbl-annual-report-2025.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "UNIT CHANGE: this is the only report in the series that prints the table in crore rather than million. Every figure taken from it has been multiplied by 10 to normalise to BDT million, verified against four overlapping FY2021-FY2024 columns against the FY2024 report."
+    },
+    {
+      "period": "Derived line items",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-26",
+      "note": "Three line items are calculated rather than reported, because the source table does not print them. Total liabilities are total assets minus shareholders' equity. Net interest income is interest income minus interest expenses. Classified loans are the reported NPL percentage applied to reported loans and advances — the table gives the ratio but never the absolute figure. Separately, the row mapped to operating_profit is the bank's 'Profit before Tax and Provision', i.e. PRE-PROVISION operating profit; the table reports no profit-before-tax line at all, so profit_before_tax, tax expense and every provision figure are unavailable for all fifteen years."
+    },
+    {
+      "period": "2015-2026 Q1/Q2/Q3 (interim quarterly statements)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "National Bank's own 'Financial Statement' archive page, a distinct page from its annual-report archive, holding every Q1/Half-Yearly-or-2nd-Quarter/Q3 unaudited filing back to 2015",
+      "source_path": "annual_reports/NBL/ (no permanent text files retained -- see note below)",
+      "source_url": "https://www.nblbd.com/investors-relations/financial-statement",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+      "note": "STEP 1 CHECKED FIRST, NO FREE WIN: grepped every annual_reports/NBL/*.txt for the BSEC 'Evaluation of the Quarterly Financials by the Audit Committee and Board' disclosure heading (and variants). NBL's annual reports DO contain this heading every year, but it is only a table-of-contents / corporate-governance-checklist entry ('Explanation of variances between Quarterly and Annual Financial performance: No major variances have been occurred...') with a checkbox, never an embedded table of actual Q1/Q2/Q3 figures -- unlike CITYBANK, SHAHJABANK, etc. So all quarterly data here came from STEP 2, National Bank's own financial-statement archive page (a different URL than the annual-report page), which lists every quarterly PDF filed since 2015 (nothing earlier is hosted). REPORTING BASIS DIFFERS FROM THE ANNUAL SERIES: each quarterly PDF contains, in sequence, a 'Consolidated Balance Sheet'/'Consolidated Profit and Loss Account' (includes subsidiaries) followed by a plain 'Balance Sheet (Un-audited)'/'Profit and Loss Account (Un-audited)' with no 'Consolidated' prefix -- the SOLO version was used throughout, and its comparative (prior year-end) column was cross-checked against this dataset's existing annual Solo+OBU figures for every single quarter extracted; every check matched exactly (or within a small, separately-flagged divergence -- see below), confirming the Solo interim series is on the same basis as the annual Q4 series. UNIT: all quarterly filings are in Taka (converted to BDT_million here), consistent with every year except FY2025's annual report (which alone used crore) -- the crore-vs-million trap did not recur in any interim filing. CUMULATIVE CONVENTION: Q1 filings show only the quarter itself (Jan-Mar); Half-Yearly/'2nd Quarter' (Q2 slot) and Q3 filings show FOUR P&L columns each -- [cumulative current year] [cumulative prior year] [discrete quarter current year] [discrete quarter prior year] -- the CUMULATIVE column was used for the Q2 and Q3 slots throughout, per this dataset's established convention. GAPS: Q3-2022 and Q3-2023 were never published on the bank's financial-statement page (confirmed absent, not an extraction failure -- the page lists every other quarter from 2015 to 2026 without a gap anywhere else). FY2011-2014 remain unavailable at the quarterly level (the bank's own archive starts at 2015; no independent source was found for pre-2015 quarters). PDF TEXT QUALITY: roughly 40% of the ~34 filings extracted cleanly with pdftotext; the rest were image-only scans requiring OCR (tesseract, 300dpi). Unusually, even several 'digital' (non-scanned) filings have a corrupted underlying text layer with scattered character-level garbling in individual cells (both digits and labels) -- most figures were still recoverable by cross-checking the balance-sheet identity (Assets = Liabilities + Equity) and the P&L waterfall identity (Total Operating Income - Total Operating Expenses = Profit Before Provision - Provision = Profit Before Tax - Tax = PAT); a small number of individual cells (interest_income/interest_expense in 2016_Q1 specifically) remain marked unavailable where no identity could recover them. SIGN-DROPPING PATTERN (2022 onward, OCR'd filings): 'Total operating income', 'Profit before provision' and occasionally NAV-per-share consistently print without their negative sign even when the underlying figure is a loss/negative value; every occurrence was caught and corrected by the identity chain and is flagged individually in each quarter's own period_note and line-item notes -- this is a systematic pattern worth knowing about before extracting any further NBL quarters."
+    },
+    {
+      "period": "IMPORTANT WEBSITE-ARCHIVE HAZARD (informational, not a data source)",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-27",
+      "note": "TRAP FOR FUTURE SESSIONS: on first attempting to bulk-download NBL's quarterly PDFs into a generically-named scratch folder (e.g. 'scratchpad/pdfs/2015_Q1.pdf'), every single downloaded file for 2015-2025 turned out, on verification, to actually contain SOCIAL ISLAMI BANK's financial statements instead of National Bank's, and a further batch contained STANDARD BANK LIMITED's -- both wrong-bank documents with generic filenames identical to what a concurrent session's NBL/SIBL/STANDBANKL research would produce. This was NOT a bug on National Bank's own website (confirmed: nblbd.com serves the correct file consistently, verified with 6 repeat fetches and a byte-for-byte OCR check of the true content once downloads were isolated to a uniquely-named directory). It was a cross-session file collision in a shared scratch/temp directory during a period when multiple concurrent sessions were apparently researching different banks using the same generic download-filename convention. LESSON: always verify the actual bank name appears in a newly-downloaded financial PDF's own text/OCR before trusting it, even when the URL and filename look correct and the download reports success -- and prefer a uniquely-named (not generically-named) scratch download directory when this repo is known to have concurrent sessions active."
+    },
+    {
+      "period": "Restatements found across interim filings",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-27",
+      "note": "Three restatement/divergence patterns were found and resolved per this dataset's standing rule (prefer the contemporaneous figure, record the divergence, never silently reconcile): (1) 2016_Q1 EPS is 0.22 as reported in the bank's own Q1-2016 filing; the 2017_Q1 filing's own Jan-Mar-2016 comparative column shows the identical PAT (384,147,170 Taka) but a retroactively bonus-share-adjusted EPS of 0.19 -- routine 'Re-stated EPS' practice following a bonus share issue between the two filing dates, not a data error; 0.22 is kept in 2016_Q1.json. (2) 2024_Q3's own filing reports a Jan-Sep-2024 Net Profit after Tax of -17,873.52m Taka; the 2025_Q3 filing's own Jan-Sep-2024 comparative column instead shows -13,605.71m Taka, a divergence of exactly 4,267.81m that traces to a deferred-tax credit visible elsewhere in the 2025 filings -- the contemporaneous -17,873.52m is kept in 2024_Q3.json. Cross-checked against contemporaneous press coverage: The Business Standard (30 Oct 2024) reported a CONSOLIDATED nine-month-2024 loss of Tk1,768 crore (17,680m) and consolidated EPS of -5.49, both close to but not identical to this dataset's SOLO figures of -17,873.52m and -5.55 -- consistent with an expected small solo-vs-consolidated gap, corroborating the overall magnitude rather than contradicting it. (3) The FY2025 year-end (31 Dec 2025) equity used throughout this dataset is -24,002.90m, taken from National Bank's own AUDITED annual report per this dataset's Q4 sourcing convention; the UNAUDITED Q1-2026 and Q2-2026 interim filings' own comparative columns instead show -23,966.13m for the same date, a difference of 36.77m (about 0.15%) -- immaterial and not reconciled, but recorded here; the audited figure remains authoritative."
+    },
+    {
+      "period": "THE INSOLVENCY CROSSING -- pinned down to a single quarter",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-27",
+      "note": "National Bank's Solo shareholders' equity was still positive at 31 March 2025 (939.67m Taka, per 2025_Q1.json's own Balance Sheet, itself down from 3208.10m at the FY2024 year-end) and had become negative by 30 June 2025 (-6720.15m Taka, per 2025_Q2.json). The crossing therefore happened during the SECOND QUARTER of calendar 2025 (April-June 2025), driven almost entirely by that single quarter's own discrete net loss of -7659.92m Taka (2025_Q2.json's supplementary discrete-quarter field) -- the loss alone accounts for 7659.82m of the 7659.82m total equity decline that quarter, essentially the entire movement. This is a genuinely new finding not previously in this dataset (the FY2024 and FY2025 annual/Q4 records alone could only show that the crossing happened SOMETIME between the two year-ends; the interim quarters resolve exactly when). See bank_financials/NBL/insights.json for the full risk_signal write-up. Equity continued deteriorating every quarter after the crossing: -11352.77m (Sep 2025), -24002.90m (Dec 2025, per the existing annual figure), -35333.77m (Mar 2026), -46909.31m (Jun 2026, the most recent quarter available at time of writing) -- a monotonic, accelerating decline with no quarter of stabilisation."
+    },
+    {
+      "period": "2019 Q1-Q2, 2020 Q1-Q3, 2021 Q1-Q3 (interim quarterly statements)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "National Bank's own Q1/Half-Yearly/Q3 unaudited financial statements for 2019-2021, from the same financial-statement archive page as the other interim quarters in this series",
+      "source_path": "annual_reports/NBL/nbl-unaudited-2019-q1.txt, nbl-unaudited-2019-q2.txt, nbl-unaudited-2020-q1.txt, nbl-unaudited-2020-q2.txt, nbl-unaudited-2020-q3.txt, nbl-unaudited-2021-q1-ocr.txt, nbl-unaudited-2021-q2-ocr.txt, nbl-unaudited-2021-q3-ocr.txt",
+      "source_url": "https://www.nblbd.com/investors-relations/financial-statement",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2019, 2020, 2021],
+      "note": "Fills the FY2019-FY2021 slice of the interim quarterly gap (2019 Q3 and all four years' Q4 were already in this dataset before this pass). Solo panel used throughout; every quarter's Dec-2018/2019/2020 comparative column matches this dataset's existing annual Solo+OBU figures (within the same small immaterial divergences already documented elsewhere in this file). NOTABLE FINDING -- A MIS-READ CAUGHT AND CORRECTED BY CROSS-QUARTER VALIDATION: 2020_Q2's own printed cumulative (Jan-Jun 2020) net_interest_income cell is missing its leading digit in the raw digital text ('  ,405,177,221'), which on a literal read gives 1,405,177,221; cross-referencing 2021_Q2's clean OCR comparative column for the identical period shows the true figure is 1,805,177,221 -- using the corrected figure makes Total Operating Income, Profit Before Provision, Profit Before Tax and Tax all reconcile exactly against both 2020_Q2's own other printed totals and 2021_Q2's comparative column, whereas the literal 1,405,177,221 reading does not reconcile with anything. The corrected value is used in 2020_Q2.json. SEVERE CORRUPTION IN TWO FILINGS: 2019_Q1's digital text layer is corrupted for almost every Balance Sheet cell in the current (Mar-2019) column; TOTAL ASSETS and TOTAL LIABILITIES were derived via the standard identity, and investments_securities could not be pinned down better than a residual plug carrying materially higher uncertainty than every other figure in this dataset -- flagged individually in 2019_Q1.json. 2020_Q3's digital text is similarly unreliable for total_liabilities, gross_loans, and the entire operating-expenses-through-PAT chain; all of these were instead read from 2021_Q3.json's own Jan-Sep-2020 comparative column, which is clean and internally consistent, rather than from 2020_Q3's own garbled printed cells. EQUITY DIVERGENCE PATTERN CONFIRMED ACROSS TWO CONSECUTIVE FILINGS: both 2021_Q2 and 2021_Q3 print an identical Dec-2020 comparative equity of 52,058,701,994, about 34.86m (0.07%) below this dataset's existing FY2020 equity of 52,093,557,421 -- immaterial and consistently reproduced rather than a one-off error, recorded rather than reconciled. After this pass, NBL's quarterly gap is limited to: FY2011-2014 (bank's own interim archive starts at 2015, unavailable at any quarterly grain), Q3-2022 and Q3-2023 (confirmed never published on the bank's own site), and 2016 Q2-Q3 / 2017 Q2-Q3 / 2018 Q1-Q3 (a separate, concurrently-running research pass covering those specific years)."
+    },
+    {
+      "period": "2016 Q2/Q3, 2017 Q2/Q3, 2018 Q1/Q2/Q3 (pre-crisis interim quarters, Solo basis)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "Half-Yearly-Financial-Statements2016.pdf, NBL3rdquarterFinancialStatements2016_Output.pdf, HalfYearlyFinancialStatements2017.pdf, FinancialStatementsSeptember2017.pdf, 1st_Quarter_Financial_Statements_2018.pdf, FS_June_2018.pdf, FS_Sep_2018.pdf (bank's own filenames)",
+      "source_path": "annual_reports/NBL/nbl-unaudited-h1-2016.txt, nbl-unaudited-2016-q3.txt, nbl-unaudited-h1-2017.txt, nbl-unaudited-2017-q3.txt, nbl-unaudited-2018-q1.txt, nbl-unaudited-h1-2018.txt, nbl-unaudited-2018-q3.txt",
+      "source_url": "https://www.nblbd.com/investors-relations/financial-statement",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2016, 2017, 2018],
+      "note": "Fills the concurrently-running research pass referenced in the note above -- the remaining pre-crisis interim gap between 2016_Q1/2017_Q1 (sourced earlier) and the existing FY2016/FY2017/FY2018 annual Q4 records. BONUS-SHARE TIMELINE RECONSTRUCTED: paid-up capital was 17,177,199,240 Taka (1717.72m shares) through 30 June 2016, unchanged since FY2015, then rose in three discrete steps identifiable from this batch and the surrounding filings -- to 19,753,779,120 (a 15% bonus) confirmed already in effect by 30 September 2016 via a 'Dividend (Bonus)' appropriation visible in that filing's own cumulative Jan-Sep P&L; to 23,704,534,940 (a further ~20% bonus, 'for the year 2016') confirmed in effect by 30 September 2017 but NOT yet by 30 June 2017 (that quarter's own appropriation row is blank); and to 26,549,079,130 ('for the year 2017') confirmed in effect by 30 September 2018. Each step was corroborated by at least two independent filings (the quarter where it first appears, plus a later filing's Statement of Changes in Equity showing the same balance as its opening position) before being used for NAV-per-share and EPS calculations. EPS/NAV VALUES ARE CONTEMPORANEOUS, NOT RETROSPECTIVELY RESTATED: per this dataset's standing rule, each quarter's own nav_per_share/eps uses the share count actually outstanding as of THAT quarter's own balance sheet date, not a later filing's retrospectively bonus-adjusted comparative (e.g. a LATER filing restates 2017_Q2's cumulative EPS down to 0.41 using a post-2018-bonus share count, whereas 2017_Q2.json itself correctly records 0.49, the contemporaneous figure using the share count actually in effect on 30 June 2017). INTEREST_INCOME/INTEREST_EXPENSE STRUCTURAL GAP: unlike every other P&L line, these two specific rows were completely illegible (pure box-drawing/extraction artifacts, no digits at all) in ALL SEVEN quarters processed in this batch, including filings like 2018_Q2 and 2018_Q3 where every other line -- down to individual expense sub-categories -- extracted cleanly. This is not random corruption; it appears specific to the top rows of NBL's P&L table across this multi-year span and is worth investigating directly against the PDF page image if these two fields are ever needed. Net interest income itself is unaffected and reliably legible or derivable in every quarter. Two Balance Sheet/P&L figures required a single-digit correction reconciled via identity: 2017_Q3's Investments subtotal printed as 68,357,474,765 but reconciles exactly to 68,457,474,765 (a 3-for-4 misread in the hundred-millions digit) against the independently-confirmed total_assets; 2018_Q1's Other Operating Income printed as approximately 48,840,475 but reconciles exactly to 88,640,475 (a 4-for-8 misread) via the full profit identity chain, independently confirmed character-for-character by 2019_Q1.txt's own comparative column. After this pass, combined with the concurrently-completed FY2019-FY2021 pass documented above, NBL's remaining quarterly gap is limited to FY2011-2014 (unavailable at any quarterly grain) and Q3-2022/Q3-2023 (confirmed never published)."
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Explorer Beta — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="../candlestick_chart/candlestick-chart.css" />
+<link rel="stylesheet" href="../candlestick_chart/candlestick-analysis.css" />
+<link rel="stylesheet" href="explorer-beta.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">XB</span>
+      <div class="logo-text">
+        <h1>Explorer Beta</h1>
+        <p>Locked rule set &middot; buy-only &middot; forward-tracked</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="/super_model/super-model.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Super Model — full Explorer backtest" title="Super Model — full Explorer backtest" aria-label="Super Model">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+        <span>Super Model</span>
+      </a>
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" title="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/>
+        </svg>
+      </a>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="xb-page">
+
+  <!-- Persistent beta banner: the standing caveat from /suggestions plus the freeze line -->
+  <aside class="xb-banner" id="xb-banner" aria-label="Beta notice">
+    <span class="xb-beta-pill">BETA</span>
+    <div class="xb-banner-body">
+      <p class="xb-banner-note" id="xb-banner-note">Loading the beta notice…</p>
+      <p class="xb-banner-frozen" id="xb-banner-frozen">Engine frozen &middot; rules are locked — this page only gains features</p>
+    </div>
+  </aside>
+
+  <!-- Stat strip -->
+  <section class="xb-statgrid xb-statgrid--strip" id="xb-strip" style="--xb-cols:6" aria-label="Today at a glance"></section>
+
+  <!-- Today's setups -->
+  <section class="xb-section" id="xb-setups-section">
+    <div class="xb-section-hd">
+      <h2>Today's setups</h2>
+      <span class="xb-section-count" id="xb-setups-count"></span>
+    </div>
+    <div id="xb-setups"></div>
+  </section>
+
+  <!-- Open trades managed under the beta's rules -->
+  <section class="xb-section" id="xb-trades-section">
+    <div class="xb-section-hd">
+      <h2>Your open trades — managed by Explorer Beta</h2>
+      <span class="xb-section-count" id="xb-trades-count"></span>
+      <button type="button" class="xb-refresh" id="xb-refresh-btn" aria-label="Refresh open trades">
+        <span class="xb-refresh-icon" aria-hidden="true">⟳</span><span id="xb-refresh-label">Refresh</span>
+      </button>
+    </div>
+    <div class="xb-market-line" id="xb-market-line"></div>
+    <p class="xb-note xb-note-muted" id="xb-trades-note"></p>
+    <div id="xb-trades"></div>
+  </section>
+
+  <!-- Forward record -->
+  <section class="xb-section" id="xb-record-section">
+    <div class="xb-section-hd">
+      <h2>Forward record</h2>
+      <span class="xb-section-count" id="xb-record-count"></span>
+    </div>
+    <div id="xb-record"></div>
+  </section>
+
+  <!-- Launch evidence -->
+  <section class="xb-section" id="xb-evidence-section">
+    <div class="xb-section-hd">
+      <h2>Launch evidence</h2>
+      <span class="xb-section-count" id="xb-evidence-count"></span>
+    </div>
+    <div id="xb-evidence"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Read-only, algorithmic rule set &middot; Prices in BDT (Taka) &middot; For informational purposes only</p>
+  <p class="xb-footer-disclaimer">Algorithmically generated. Not financial advice.</p>
+</footer>
+
+<script type="module" src="explorer-beta.js"></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

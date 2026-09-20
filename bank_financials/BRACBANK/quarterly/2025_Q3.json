@@ -1,0 +1,21 @@
+{
+  "bank_id": "BRACBANK",
+  "bank_name": "BRAC Bank PLC",
+  "reporting_date": "2025-09-30",
+  "financial_year": 2025,
+  "quarter": "Q3",
+  "period_note": "PARTIAL entry, CONSOLIDATED basis (basis mismatch vs this bank's primary Standalone/Solo Q4-annual series — flagged, not adjusted). The primary source PDF (brac-bank-3rd-quarter-un-audited-financial-statements-2025.pdf) is truncated at exactly 5,242,880 bytes in the only Wayback capture found, and unrecoverable by pdftotext/qpdf/mutool/ghostscript; no alternate capture exists, and the current live bracbank.com investor-relations document list (checked 2026-08-27) does not include a Q3 2025 filing either — see annual_reports/BRACBANK/bracbank-q3-2025.txt for the extraction-failure record. Only EPS, cumulative PAT, and NAV per share were recoverable, from the bank's own investor-relations 'insights' post (title: 'BRAC Bank posts strong results in nine months of 2025', referencing a virtual earnings-disclosure event held 3 November 2025) cross-checked against contemporaneous news coverage of the same disclosure (The Business Standard, The Daily Star, The Financial Express all report identical figures, confirming they derive from the same underlying DSE filing rather than independent estimates). No balance sheet, P&L breakdown, deposits, loans, or asset-quality figures could be recovered for this quarter — left as explicit gaps rather than estimated or backfilled from annual data. Cumulative Jan-Sep figures (9M): consolidated net profit BDT 15,360m (Tk 1,536 crore), +52% YoY; this made BRAC Bank the first Bangladeshi private bank to cross Tk 1,500 crore cumulative profit, and 9M 2025 profit alone already exceeded full-year 2024 profit. Consolidated EPS 6.09 (cumulative) vs 4.37 in the same 9M-2024 period. Consolidated NAV per share 51.73 as at 30 Sep 2025, up from 39.38 at 31 Dec 2024.",
+  "source": {
+    "source_document": "bracbank-q3-2025.txt",
+    "source_path": "annual_reports/BRACBANK/bracbank-q3-2025.txt",
+    "source_url": "https://bracbank.com/en/insights/brac-bank-posts-strong-results-in-nine-months-of-2025",
+    "source_page_lines": "Bank's own investor-relations 'insights' article summarizing the Q3'25 earnings-disclosure event; cross-checked against The Business Standard (\"BRAC Bank posts 52% rise in profit in first nine months of 2025\"), The Daily Star (\"BRAC Bank nine-month profit surpasses full-year 2024 earnings\"), and The Financial Express coverage of the same DSE disclosure",
+    "retrieval_method": "Primary condensed-interim-FS PDF unrecoverable (see period_note); figures instead sourced from the bank's own website coverage of its 3 November 2025 earnings-disclosure event, corroborated by three independent news outlets reporting the same figures from the underlying DSE filing.",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {"normalised_metric_name": "profit_after_tax_cumulative", "original_metric_name": "Consolidated net profit (cumulative Jan-Sep 2025, 'Tk 1,536 crore')", "value": 15360, "unit": "BDT_million", "currency": "BDT", "basis": "reported"},
+    {"normalised_metric_name": "eps_cumulative", "original_metric_name": "Consolidated Earnings Per Share (cumulative Jan-Sep 2025)", "value": 6.09, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported"},
+    {"normalised_metric_name": "nav_per_share", "original_metric_name": "Consolidated Net Asset Value (NAV) per share as at 30 September 2025", "value": 51.73, "unit": "BDT", "currency": "BDT", "basis": "reported"}
+  ]
+}

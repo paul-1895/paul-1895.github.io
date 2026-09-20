@@ -1,0 +1,1833 @@
+{
+  "bank_id": "SHAHJABANK",
+  "generated_at": "2026-08-26",
+  "notes": "'gross_loans' field holds total Shariah-compliant Investment (the Islamic-banking equivalent of loans); 'npl_ratio_pct' holds Percentage of Classified Investment. roe_pct is standardised to PAT / average book equity for FY2011-2013 (the bank's own reported figure for those 3 years used average Total Regulatory Capital instead -- see per-year metric_note); from FY2014 onward the bank's own reported ROE already matches this standardised formula exactly, so 'reported' is used directly. car_pct for FY2013 is the corrected 13.69% (see quarterly/2013_Q4.json), not the source PDF's internally-inconsistent printed 12.56%. Solo/Standalone basis throughout (see sources.json for the multi-year balance-sheet cross-check proving this). FY2011's roe_pct and yoy_growth_pct use FY2010 Total Assets/Investment/Deposits/Equity (78,800 / 61,440 / 62,965 / 6,748mn) as the averaging/growth base -- these FY2010 figures are printed comparative columns in the bank's own FY2011 and FY2012 annual reports (identical in both), not a fabricated prior period; no 2010_Q4.json exists or is implied. EXTENDED 2026-08-26 with Q1/Q2/Q3 interim periods for FY2014-FY2025 (36 quarters), sourced from the 'Evaluation of Quarterly Financials by the Audit Committee and Board' table embedded in each year's own annual report (FY2014 sourced from the FY2015 report's comparative column only, since FY2014's own report predates this disclosure -- see quarterly/2014_Q1.json period_note). Interim roa_pct/roe_pct use cumulative PAT over period-end (not average, not annualized) balances, matching the convention already established for CITYBANK's interim quarters in this dataset -- NOT directly comparable to the annualized/average-balance formula used for full-year Q4 rows. Interim npl_ratio_pct and car_pct are null (not disclosed at interim); ldr_pct is calculated from period-end balances (not reported directly). FY2013 and earlier have no interim source at all (this table does not exist before FY2014's comparative-column appearance) and remain gaps.",
+  "periods": [
+    {
+      "financial_year": 2011,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 107229,
+      "gross_loans": 80592,
+      "total_deposits": 83350,
+      "equity": 7917,
+      "npl_ratio_pct": {
+        "value": 1.89,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment."
+      },
+      "ldr_pct": {
+        "value": 93.0,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.26,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 15.93,
+        "basis": "calculated_avg_book_equity",
+        "metric_note": "Standardised to average book equity for cross-bank comparability (this project's documented formula). The bank's OWN reported ROE for FY2011 (13.8%) instead used average TOTAL REGULATORY CAPITAL (Tier1+Tier2/Core+Supplementary) as the denominator -- reverse-engineered and confirmed exactly (see quarterly/2011_Q4.json roe_pct metric_note). The bank itself switched to an average-book-equity denominator from FY2014 onward, at which point its own reported ROE matches this standardised figure exactly every year through FY2025."
+      },
+      "car_pct": {
+        "value": 11.4,
+        "basis": "reported"
+      },
+      "eps": 2.62,
+      "yoy_growth_pct": {
+        "total_assets": 36.08,
+        "gross_loans": 31.17,
+        "total_deposits": 32.38,
+        "equity": 17.32
+      }
+    },
+    {
+      "financial_year": 2012,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 132823,
+      "gross_loans": 96185,
+      "total_deposits": 102177,
+      "equity": 9646,
+      "npl_ratio_pct": {
+        "value": 2.96,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment."
+      },
+      "ldr_pct": {
+        "value": 89.64,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.44,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 19.7,
+        "basis": "calculated_avg_book_equity",
+        "metric_note": "Standardised to average book equity for cross-bank comparability (this project's documented formula). The bank's OWN reported ROE for FY2012 (17.01%) instead used average TOTAL REGULATORY CAPITAL (Tier1+Tier2/Core+Supplementary) as the denominator -- reverse-engineered and confirmed exactly (see quarterly/2012_Q4.json roe_pct metric_note). The bank itself switched to an average-book-equity denominator from FY2014 onward, at which point its own reported ROE matches this standardised figure exactly every year through FY2025."
+      },
+      "car_pct": {
+        "value": 12.31,
+        "basis": "reported"
+      },
+      "eps": 3.11,
+      "yoy_growth_pct": {
+        "total_assets": 23.87,
+        "gross_loans": 19.35,
+        "total_deposits": 22.59,
+        "equity": 21.84
+      }
+    },
+    {
+      "financial_year": 2013,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 121963,
+      "gross_loans": 85707,
+      "total_deposits": 96481,
+      "equity": 10951,
+      "npl_ratio_pct": {
+        "value": 6.47,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment."
+      },
+      "ldr_pct": {
+        "value": 88.88,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.02,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 12.67,
+        "basis": "calculated_avg_book_equity",
+        "metric_note": "Standardised to average book equity for cross-bank comparability (this project's documented formula). The bank's OWN reported ROE for FY2013 (11.25%) instead used average TOTAL REGULATORY CAPITAL (Tier1+Tier2/Core+Supplementary) as the denominator -- reverse-engineered and confirmed exactly (see quarterly/2013_Q4.json roe_pct metric_note). The bank itself switched to an average-book-equity denominator from FY2014 onward, at which point its own reported ROE matches this standardised figure exactly every year through FY2025."
+      },
+      "car_pct": {
+        "value": 13.69,
+        "basis": "calculated"
+      },
+      "eps": 1.95,
+      "yoy_growth_pct": {
+        "total_assets": -8.18,
+        "gross_loans": -10.89,
+        "total_deposits": -5.57,
+        "equity": 13.53
+      }
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 124060.98,
+      "gross_loans": 87032.92,
+      "total_deposits": 96816.75,
+      "equity": 10767.21,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 89.89,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": -0.15,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": -1.71,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": -0.25,
+      "yoy_growth_pct": null
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 129230.09,
+      "gross_loans": 86052.87,
+      "total_deposits": 103737.06,
+      "equity": 10352.58,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 82.95,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": -0.46,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": -5.78,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": -0.81,
+      "yoy_growth_pct": null
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 125957.51,
+      "gross_loans": 80492.32,
+      "total_deposits": 101882.84,
+      "equity": 11167.19,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 79.0,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.17,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 1.93,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.29,
+      "yoy_growth_pct": null
+    },
+    {
+      "financial_year": 2014,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 126758,
+      "gross_loans": 84062,
+      "total_deposits": 98601,
+      "equity": 11698,
+      "npl_ratio_pct": {
+        "value": 7.87,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment."
+      },
+      "ldr_pct": {
+        "value": 80.82,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.59,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 6.6,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 13.61,
+        "basis": "reported"
+      },
+      "eps": 1.02,
+      "yoy_growth_pct": {
+        "total_assets": 3.93,
+        "gross_loans": -1.92,
+        "total_deposits": 2.2,
+        "equity": 6.82
+      }
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 126970.1,
+      "gross_loans": 86333.21,
+      "total_deposits": 99773.38,
+      "equity": 11879.94,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 86.53,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.14,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 1.53,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.25,
+      "yoy_growth_pct": {
+        "total_assets": 2.34,
+        "gross_loans": -0.8,
+        "total_deposits": 3.05,
+        "equity": 10.33
+      }
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 130878.18,
+      "gross_loans": 87473.45,
+      "total_deposits": 103515.99,
+      "equity": 11514.5,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 84.5,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.42,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 4.78,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.75,
+      "yoy_growth_pct": {
+        "total_assets": 1.28,
+        "gross_loans": 1.65,
+        "total_deposits": -0.21,
+        "equity": 11.22
+      }
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 131691.75,
+      "gross_loans": 90900.47,
+      "total_deposits": 103774.57,
+      "equity": 11799.53,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 87.59,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.63,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 7.08,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.14,
+      "yoy_growth_pct": {
+        "total_assets": 4.55,
+        "gross_loans": 12.93,
+        "total_deposits": 1.86,
+        "equity": 5.66
+      }
+    },
+    {
+      "financial_year": 2015,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 137870,
+      "gross_loans": 96835,
+      "total_deposits": 109259,
+      "equity": 12254,
+      "npl_ratio_pct": {
+        "value": 6.47,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment."
+      },
+      "ldr_pct": {
+        "value": 82.77,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.98,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 10.78,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 13.52,
+        "basis": "reported"
+      },
+      "eps": 1.76,
+      "yoy_growth_pct": {
+        "total_assets": 8.77,
+        "gross_loans": 15.19,
+        "total_deposits": 10.81,
+        "equity": 4.75
+      }
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 146540.52,
+      "gross_loans": 100296.44,
+      "total_deposits": 112219.99,
+      "equity": 12519.69,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 89.37,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.18,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 2.12,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.36,
+      "yoy_growth_pct": {
+        "total_assets": 15.41,
+        "gross_loans": 16.17,
+        "total_deposits": 12.47,
+        "equity": 5.39
+      }
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 156682.55,
+      "gross_loans": 109915.13,
+      "total_deposits": 120257.72,
+      "equity": 11887.23,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 91.4,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.38,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 4.95,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.8,
+      "yoy_growth_pct": {
+        "total_assets": 19.72,
+        "gross_loans": 25.66,
+        "total_deposits": 16.17,
+        "equity": 3.24
+      }
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 156207.07,
+      "gross_loans": 109433.83,
+      "total_deposits": 121469.27,
+      "equity": 12192.33,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 90.09,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.57,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 7.33,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.22,
+      "yoy_growth_pct": {
+        "total_assets": 18.62,
+        "gross_loans": 20.39,
+        "total_deposits": 17.05,
+        "equity": 3.33
+      }
+    },
+    {
+      "financial_year": 2016,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 167245,
+      "gross_loans": 122998,
+      "total_deposits": 124410,
+      "equity": 12857,
+      "npl_ratio_pct": {
+        "value": 4.7,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment."
+      },
+      "ldr_pct": {
+        "value": 85.98,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.02,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 12.4,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 11.54,
+        "basis": "reported"
+      },
+      "eps": 2.12,
+      "yoy_growth_pct": {
+        "total_assets": 21.31,
+        "gross_loans": 27.02,
+        "total_deposits": 13.87,
+        "equity": 4.92
+      }
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 174368.2,
+      "gross_loans": 129309.84,
+      "total_deposits": 132431.91,
+      "equity": 13153.21,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 97.64,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.17,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 2.26,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.38,
+      "yoy_growth_pct": {
+        "total_assets": 18.99,
+        "gross_loans": 28.93,
+        "total_deposits": 18.01,
+        "equity": 5.06
+      }
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 188422.34,
+      "gross_loans": 140160.13,
+      "total_deposits": 135307.78,
+      "equity": 13497.04,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 103.59,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.34,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 4.75,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.83,
+      "yoy_growth_pct": {
+        "total_assets": 20.26,
+        "gross_loans": 27.52,
+        "total_deposits": 12.51,
+        "equity": 13.54
+      }
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 193228.32,
+      "gross_loans": 146654.78,
+      "total_deposits": 136353.17,
+      "equity": 13031.61,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 107.56,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.47,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 6.98,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.18,
+      "yoy_growth_pct": {
+        "total_assets": 23.7,
+        "gross_loans": 34.01,
+        "total_deposits": 12.25,
+        "equity": 6.88
+      }
+    },
+    {
+      "financial_year": 2017,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 207886,
+      "gross_loans": 158668,
+      "total_deposits": 145382,
+      "equity": 13318,
+      "npl_ratio_pct": {
+        "value": 3.97,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment."
+      },
+      "ldr_pct": {
+        "value": 90.17,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.64,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 9.14,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 12.19,
+        "basis": "reported"
+      },
+      "eps": 1.55,
+      "yoy_growth_pct": {
+        "total_assets": 24.3,
+        "gross_loans": 29.0,
+        "total_deposits": 16.86,
+        "equity": 3.59
+      }
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 217170.95,
+      "gross_loans": 168324.6,
+      "total_deposits": 154207.96,
+      "equity": 13615.23,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 109.15,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.14,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 2.18,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.39,
+      "yoy_growth_pct": {
+        "total_assets": 24.55,
+        "gross_loans": 30.17,
+        "total_deposits": 16.44,
+        "equity": 3.51
+      }
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 228188.72,
+      "gross_loans": 174329.42,
+      "total_deposits": 164850.62,
+      "equity": 14077.04,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 105.75,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.33,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 5.39,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.98,
+      "yoy_growth_pct": {
+        "total_assets": 21.1,
+        "gross_loans": 24.38,
+        "total_deposits": 21.83,
+        "equity": 4.3
+      }
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 228931.68,
+      "gross_loans": 175128.98,
+      "total_deposits": 164759.78,
+      "equity": 14409.27,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 106.29,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.48,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 7.57,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.29,
+      "yoy_growth_pct": {
+        "total_assets": 18.48,
+        "gross_loans": 19.42,
+        "total_deposits": 20.83,
+        "equity": 10.57
+      }
+    },
+    {
+      "financial_year": 2018,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 243660,
+      "gross_loans": 186090,
+      "total_deposits": 176862,
+      "equity": 14789,
+      "npl_ratio_pct": {
+        "value": 6.84,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment."
+      },
+      "ldr_pct": {
+        "value": 90.32,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.65,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 10.47,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 14.5,
+        "basis": "reported"
+      },
+      "eps": 1.73,
+      "yoy_growth_pct": {
+        "total_assets": 17.21,
+        "gross_loans": 17.28,
+        "total_deposits": 21.65,
+        "equity": 11.05
+      }
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 253265.79,
+      "gross_loans": 188940.94,
+      "total_deposits": 186897.47,
+      "equity": 15235.35,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 101.09,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.18,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 2.93,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.53,
+      "yoy_growth_pct": {
+        "total_assets": 16.62,
+        "gross_loans": 12.25,
+        "total_deposits": 21.2,
+        "equity": 11.9
+      }
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 262028.99,
+      "gross_loans": 194526.37,
+      "total_deposits": 193388.45,
+      "equity": 15846.95,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 100.59,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.4,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 6.68,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.25,
+      "yoy_growth_pct": {
+        "total_assets": 14.83,
+        "gross_loans": 11.59,
+        "total_deposits": 17.31,
+        "equity": 12.57
+      }
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 266458.59,
+      "gross_loans": 193090.54,
+      "total_deposits": 201762.51,
+      "equity": 16154.31,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 95.7,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.51,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 8.45,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.46,
+      "yoy_growth_pct": {
+        "total_assets": 16.39,
+        "gross_loans": 10.26,
+        "total_deposits": 22.46,
+        "equity": 12.11
+      }
+    },
+    {
+      "financial_year": 2019,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 266104,
+      "gross_loans": 197286,
+      "total_deposits": 203384,
+      "equity": 16507,
+      "npl_ratio_pct": {
+        "value": 4.91,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment."
+      },
+      "ldr_pct": {
+        "value": 87.47,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.67,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 10.98,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 16.02,
+        "basis": "reported"
+      },
+      "eps": 1.84,
+      "yoy_growth_pct": {
+        "total_assets": 9.21,
+        "gross_loans": 6.02,
+        "total_deposits": 15.0,
+        "equity": 11.62
+      }
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 266194.86,
+      "gross_loans": 192813.57,
+      "total_deposits": 200388.58,
+      "equity": 17117.86,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 96.22,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.23,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 3.57,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.65,
+      "yoy_growth_pct": {
+        "total_assets": 5.1,
+        "gross_loans": 2.05,
+        "total_deposits": 7.22,
+        "equity": 12.36
+      }
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 278677.02,
+      "gross_loans": 199903.05,
+      "total_deposits": 207799.35,
+      "equity": 17581.26,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 96.2,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.39,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 6.11,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.15,
+      "yoy_growth_pct": {
+        "total_assets": 6.35,
+        "gross_loans": 2.76,
+        "total_deposits": 7.45,
+        "equity": 10.94
+      }
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 292474.88,
+      "gross_loans": 200071.36,
+      "total_deposits": 216381.78,
+      "equity": 17583.32,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 92.46,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.53,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 8.77,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.57,
+      "yoy_growth_pct": {
+        "total_assets": 9.76,
+        "gross_loans": 3.62,
+        "total_deposits": 7.25,
+        "equity": 8.85
+      }
+    },
+    {
+      "financial_year": 2020,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 293518,
+      "gross_loans": 196513,
+      "total_deposits": 218443,
+      "equity": 17949,
+      "npl_ratio_pct": {
+        "value": 4.57,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment -- this bank is Shariah-based and does not extend conventional interest-bearing loans."
+      },
+      "ldr_pct": {
+        "value": 79.62,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.68,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 11.08,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 14.19,
+        "basis": "reported"
+      },
+      "eps": 1.95,
+      "yoy_growth_pct": {
+        "total_assets": 10.3,
+        "gross_loans": -0.39,
+        "total_deposits": 7.4,
+        "equity": 8.74
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 288932.47,
+      "gross_loans": 194339.74,
+      "total_deposits": 213924.72,
+      "equity": 17894.81,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 90.84,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.22,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 3.53,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.64,
+      "yoy_growth_pct": {
+        "total_assets": 8.54,
+        "gross_loans": 0.79,
+        "total_deposits": 6.75,
+        "equity": 4.54
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 294480.71,
+      "gross_loans": 199865.19,
+      "total_deposits": 216013.87,
+      "equity": 18981.17,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 92.52,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.58,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 9.05,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.67,
+      "yoy_growth_pct": {
+        "total_assets": 5.67,
+        "gross_loans": -0.02,
+        "total_deposits": 3.95,
+        "equity": 7.96
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 294793.46,
+      "gross_loans": 204800.58,
+      "total_deposits": 212212.37,
+      "equity": 19576.61,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 96.51,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.78,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 11.82,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 2.25,
+      "yoy_growth_pct": {
+        "total_assets": 0.79,
+        "gross_loans": 2.36,
+        "total_deposits": -1.93,
+        "equity": 11.34
+      }
+    },
+    {
+      "financial_year": 2021,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 313731,
+      "gross_loans": 216587,
+      "total_deposits": 217289,
+      "equity": 19803,
+      "npl_ratio_pct": {
+        "value": 4.42,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment -- this bank is Shariah-based and does not extend conventional interest-bearing loans."
+      },
+      "ldr_pct": {
+        "value": 84.48,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.85,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 13.7,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 15.04,
+        "basis": "reported"
+      },
+      "eps": 2.51,
+      "yoy_growth_pct": {
+        "total_assets": 6.89,
+        "gross_loans": 10.22,
+        "total_deposits": -0.53,
+        "equity": 10.33
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 324187.34,
+      "gross_loans": 229487.03,
+      "total_deposits": 212027.86,
+      "equity": 19713.32,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 108.23,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.29,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 4.81,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.92,
+      "yoy_growth_pct": {
+        "total_assets": 12.2,
+        "gross_loans": 18.09,
+        "total_deposits": -0.89,
+        "equity": 10.16
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 352204.48,
+      "gross_loans": 237855.53,
+      "total_deposits": 230059.15,
+      "equity": 21029.89,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 103.39,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.7,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 11.77,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 2.29,
+      "yoy_growth_pct": {
+        "total_assets": 19.6,
+        "gross_loans": 19.01,
+        "total_deposits": 6.5,
+        "equity": 10.79
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 355366.55,
+      "gross_loans": 237409.89,
+      "total_deposits": 238302.51,
+      "equity": 21895.4,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 99.63,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.97,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 15.76,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 3.19,
+      "yoy_growth_pct": {
+        "total_assets": 20.55,
+        "gross_loans": 15.92,
+        "total_deposits": 12.29,
+        "equity": 11.84
+      }
+    },
+    {
+      "financial_year": 2022,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 339819,
+      "gross_loans": 237230,
+      "total_deposits": 227982,
+      "equity": 21870,
+      "npl_ratio_pct": {
+        "value": 4.78,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment -- this bank is Shariah-based and does not extend conventional interest-bearing loans."
+      },
+      "ldr_pct": {
+        "value": 83.64,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.08,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 16.92,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 14.38,
+        "basis": "reported"
+      },
+      "eps": 3.26,
+      "yoy_growth_pct": {
+        "total_assets": 8.32,
+        "gross_loans": 9.53,
+        "total_deposits": 4.92,
+        "equity": 10.44
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 350401.3,
+      "gross_loans": 232628.68,
+      "total_deposits": 238331.06,
+      "equity": 22843.31,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 97.61,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.31,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 4.7,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 0.99,
+      "yoy_growth_pct": {
+        "total_assets": 8.09,
+        "gross_loans": 1.37,
+        "total_deposits": 12.41,
+        "equity": 15.88
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 356668.38,
+      "gross_loans": 233913.32,
+      "total_deposits": 244811.95,
+      "equity": 23095.46,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 95.55,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.76,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 11.81,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 2.45,
+      "yoy_growth_pct": {
+        "total_assets": 1.27,
+        "gross_loans": -1.66,
+        "total_deposits": 6.41,
+        "equity": 9.82
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 352186.23,
+      "gross_loans": 230234.52,
+      "total_deposits": 244216.98,
+      "equity": 23949.15,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 94.27,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.04,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 15.35,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 3.3,
+      "yoy_growth_pct": {
+        "total_assets": -0.89,
+        "gross_loans": -3.02,
+        "total_deposits": 2.48,
+        "equity": 9.38
+      }
+    },
+    {
+      "financial_year": 2023,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 351719,
+      "gross_loans": 241751,
+      "total_deposits": 249585,
+      "equity": 23760,
+      "npl_ratio_pct": {
+        "value": 4.42,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment -- this bank is Shariah-based and does not extend conventional interest-bearing loans."
+      },
+      "ldr_pct": {
+        "value": 85.13,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.05,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 15.89,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 15.06,
+        "basis": "reported"
+      },
+      "eps": 3.26,
+      "yoy_growth_pct": {
+        "total_assets": 3.5,
+        "gross_loans": 1.91,
+        "total_deposits": 9.48,
+        "equity": 8.64
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 363927.37,
+      "gross_loans": 253533.47,
+      "total_deposits": 258198.09,
+      "equity": 24836.39,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 98.19,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.33,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 4.85,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.08,
+      "yoy_growth_pct": {
+        "total_assets": 3.86,
+        "gross_loans": 8.99,
+        "total_deposits": 8.34,
+        "equity": 8.73
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 390407.58,
+      "gross_loans": 264854.26,
+      "total_deposits": 266955.33,
+      "equity": 24825.06,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 99.21,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.73,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 11.56,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 2.58,
+      "yoy_growth_pct": {
+        "total_assets": 9.46,
+        "gross_loans": 13.23,
+        "total_deposits": 9.05,
+        "equity": 7.49
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 383325.52,
+      "gross_loans": 263321.63,
+      "total_deposits": 276405.07,
+      "equity": 25879.31,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 95.27,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 1.06,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 15.64,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 3.64,
+      "yoy_growth_pct": {
+        "total_assets": 8.84,
+        "gross_loans": 14.37,
+        "total_deposits": 13.18,
+        "equity": 8.06
+      }
+    },
+    {
+      "financial_year": 2024,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 386850,
+      "gross_loans": 268946,
+      "total_deposits": 285654,
+      "equity": 23427,
+      "npl_ratio_pct": {
+        "value": 7.88,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment -- this bank is Shariah-based and does not extend conventional interest-bearing loans."
+      },
+      "ldr_pct": {
+        "value": 81.09,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.46,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 7.15,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 14.27,
+        "basis": "reported"
+      },
+      "eps": 1.52,
+      "yoy_growth_pct": {
+        "total_assets": 9.99,
+        "gross_loans": 11.25,
+        "total_deposits": 14.45,
+        "equity": -1.4
+      }
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 396324.36,
+      "gross_loans": 274824.3,
+      "total_deposits": 289330.46,
+      "equity": 24471.22,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 94.99,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.3,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 4.78,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.05,
+      "yoy_growth_pct": {
+        "total_assets": 8.9,
+        "gross_loans": 8.4,
+        "total_deposits": 12.06,
+        "equity": -1.47
+      }
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 413990.45,
+      "gross_loans": 283908.45,
+      "total_deposits": 295637.92,
+      "equity": 24842.14,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 96.03,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.67,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 11.21,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 2.5,
+      "yoy_growth_pct": {
+        "total_assets": 6.04,
+        "gross_loans": 7.19,
+        "total_deposits": 10.74,
+        "equity": 0.07
+      }
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q3",
+      "unit": "BDT_million",
+      "total_assets": 420135.41,
+      "gross_loans": 277491.99,
+      "total_deposits": 304510.41,
+      "equity": 26012.43,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 91.13,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim table does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.93,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 15.05,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for CITYBANK's Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 3.52,
+      "yoy_growth_pct": {
+        "total_assets": 9.6,
+        "gross_loans": 5.38,
+        "total_deposits": 10.17,
+        "equity": 0.51
+      }
+    },
+    {
+      "financial_year": 2025,
+      "quarter": "Q4",
+      "unit": "BDT_million",
+      "total_assets": 427425.71,
+      "gross_loans": 293078.36,
+      "total_deposits": 313122.65,
+      "equity": 25627.25,
+      "npl_ratio_pct": {
+        "value": 4.46,
+        "basis": "reported",
+        "metric_note": "Classified Investment as % of Total Investment -- this bank is Shariah-based and does not extend conventional interest-bearing loans."
+      },
+      "ldr_pct": {
+        "value": 81.59,
+        "basis": "reported",
+        "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.9,
+        "basis": "reported"
+      },
+      "roe_pct": {
+        "value": 15.0,
+        "basis": "reported",
+        "metric_note": "Reported by the bank using average book equity, which equals this project's standardised calculation exactly for FY2014 onward (verified)."
+      },
+      "car_pct": {
+        "value": 14.19,
+        "basis": "reported"
+      },
+      "eps": 3.31,
+      "yoy_growth_pct": {
+        "total_assets": 10.49,
+        "gross_loans": 8.97,
+        "total_deposits": 9.62,
+        "equity": 9.39
+      }
+    },
+    {
+      "financial_year": 2026,
+      "quarter": "Q1",
+      "unit": "BDT_million",
+      "total_assets": 429542.05,
+      "gross_loans": 296873.08,
+      "total_deposits": 307743.31,
+      "equity": 26775.47,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 96.47,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim filing does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.29,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for this bank's other Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 4.71,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for this bank's other Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 1.13,
+      "yoy_growth_pct": {
+        "total_assets": 8.38,
+        "gross_loans": 8.02,
+        "total_deposits": 6.36,
+        "equity": 9.42
+      },
+      "note": "Sourced from the bank's own full unaudited interim financial statements PDF (a scanned 24-page document, richer than the prior single-page BSEC evaluation table used for earlier quarters), Solo/Separate basis. See quarterly/2026_Q1.json period_note for full extraction and validation detail. No classified-investment/NPL or Capital Adequacy (CRAR) disclosure exists anywhere in this interim filing -- npl_ratio_pct/car_pct are null for that reason, consistent with this bank's other interim quarters."
+    },
+    {
+      "financial_year": 2026,
+      "quarter": "Q2",
+      "unit": "BDT_million",
+      "total_assets": 452158.63,
+      "gross_loans": 310957.16,
+      "total_deposits": 320524.12,
+      "equity": 27056.75,
+      "npl_ratio_pct": null,
+      "ldr_pct": {
+        "value": 97.02,
+        "basis": "calculated",
+        "metric_note": "Investment-to-Deposit ratio computed from this period's own period-end balances (the interim filing does not disclose LDR directly); Islamic-banking equivalent of LDR."
+      },
+      "roa_pct": {
+        "value": 0.69,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Assets -- same interim convention used for this bank's other Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-balance ROA reported for full years."
+      },
+      "roe_pct": {
+        "value": 11.48,
+        "basis": "calculated_period_end_not_average",
+        "metric_note": "Cumulative-from-Jan-1 PAT divided by period-end (not average, not annualized) Total Shareholders' Equity -- same interim convention used for this bank's other Q1-Q3 ratios in this dataset. Not directly comparable to the annualized/average-equity ROE reported for full years."
+      },
+      "car_pct": null,
+      "eps": 2.79,
+      "yoy_growth_pct": {
+        "total_assets": 9.22,
+        "gross_loans": 9.53,
+        "total_deposits": 8.42,
+        "equity": 8.91
+      },
+      "note": "Half-Yearly (Jan-Jun) filing used as the Q2 data point. Sourced from the bank's own full unaudited interim financial statements PDF (scanned 24-page document), Solo/Separate basis. See quarterly/2026_Q2.json period_note for full extraction and validation detail, including a bonus discrete Apr-Jun 2026 column used for cross-validation. No classified-investment/NPL or Capital Adequacy (CRAR) disclosure exists anywhere in this interim filing -- npl_ratio_pct/car_pct are null for that reason, consistent with this bank's other interim quarters."
+    }
+  ]
+}

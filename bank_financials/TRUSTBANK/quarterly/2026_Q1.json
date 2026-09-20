@@ -1,0 +1,169 @@
+{
+  "bank_id": "TRUSTBANK",
+  "bank_name": "Trust Bank PLC",
+  "reporting_date": "2026-03-31",
+  "financial_year": 2026,
+  "quarter": "Q1",
+  "period_note": "Extracted from Trust Bank's own unaudited interim financial statement PDF for this quarter, downloaded directly from the bank's live website (tblbd.com/reports/financial-statements/). SOLO / Bank-only basis (same basis as this dataset's main Q4/annual series and as the 2013-2016 interim filings sourced the same way): this source document explicitly separates a 'Consolidated Balance Sheet'/'Consolidated Profit and Loss Account' section (pp.2,4-6) from a plain 'Balance Sheet'/'Profit and Loss Account' section headed just 'TRUST BANK PLC.' (pp.7,9-11); the SOLO section is the one used here -- confirmed by exact match between this PDF's own 31-Dec-2025 comparative column (Total Assets 620,113,821,401) and this dataset's stored 2025_Q4.json total_assets (620113.82m). This is a BASIS IMPROVEMENT over 2017-2025's Q1-Q3 quarters in this dataset, which were sourced from the annual-report-embedded 'Evaluation of the Quarterly Financials' table and are CONSOLIDATED basis (a mismatch with the main series, flagged in each of those files) -- 2026 Q1 reverts to the bank's own primary SOLO filing, matching the main series basis directly with no gap to reconcile. EXTRACTION METHOD: this PDF is a pure scanned image (NAPS2-produced, pdftotext -layout returns 0 lines on every page, confirmed via pdffonts showing zero embedded fonts) -- rather than tesseract OCR, figures were read directly by visual inspection of 200dpi page renders (pdftoppm), which is more reliable than OCR for a document this dense with similar-looking numbers; this is the 'direct visual page-reads when OCR itself is unreliable' fallback documented in the project handoff. Balance-sheet items are the 31-March-2026 period-end snapshot (unaudited); income-statement items are CUMULATIVE FROM JAN 1, but since Q1 is the first quarter of the year this is numerically identical to the discrete quarter (both the P&L's own column, headed '1 January to 31 March 2026', and Q1 itself run Jan-Mar) -- flagged via the _cumulative suffix per project convention for consistency with later quarters. Unlike the 2017-2025 CONSOLIDATED interim table, this primary filing has NO loan-classification/NPL note and NO capital-adequacy (CAR/CRAR) note anywhere in its 15 pages (confirmed by reading every page) -- npl_pct and car_pct are therefore gaps for this quarter, not omissions; this matches the 2013-2016 solo interim filings from the same source, which also lacked these notes. VALIDATED: balance-sheet identity holds exactly (Total Liabilities 618,208,995,201 + Total Equity 29,050,821,546 = Total Assets 647,259,816,747); Total Operating Income (4,984,888,582) - Total Operating Expenses (2,274,415,669) = Profit Before Provision (2,710,472,913) exactly; Profit Before Provision - Total Provision (1,539,055,000) = Total Profit Before Taxes (1,171,417,913) exactly; PBT - Total Tax (858,088,247) = Net Profit After Taxation (313,329,666) exactly; NAV per share (Section 8, Solo) of 29.22 = Total Shareholders' Equity (29,050,821,546) / 994,079,482 shares outstanding, matches the filing's own reported figure exactly.",
+  "source": {
+    "source_document": "Financial_Statements_of_TBL_for_1st_Quarter_ended_on_31_March_2026.pdf",
+    "source_path": "not retained locally (deleted after extraction per project policy; no annual_reports/TRUSTBANK/*.txt was produced since pdftotext yielded 0 usable lines -- data was read directly from page images, not transcribed to a .txt)",
+    "source_url": "https://www.tblbd.com/media/financial_statements/q1/Financial_Statements_of_TBL_for_1st_Quarter_ended_on_31_March_2026.pdf",
+    "source_page_lines": "Balance Sheet (Solo), p.7; Profit and Loss Account (Solo, Provisional and Unaudited), p.9; Note 8 Net Asset Value (NAV) per Share (Solo), p.15",
+    "retrieval_date": "2026-09-12"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "authorized_capital",
+      "original_metric_name": "Authorized Capital (Note 4.1)",
+      "value": 25000,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 9940.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 29050.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 618209.00,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 647259.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 535009.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances/Islami Banking Investments (Loans, Cash Credit, Overdrafts etc. + Bills purchased and discounted)",
+      "value": 410598.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 169982.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises, furniture and fixtures",
+      "value": 3970.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities",
+      "value": 174975.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1; negative this quarter)",
+      "value": -457.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total operating income (cumulative from Jan 1)",
+      "value": 4984.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 2274.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": 2710.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_for_loans_cumulative",
+      "original_metric_name": "Total provision (Provision for loans & advances/Investments + Other provision) (cumulative from Jan 1)",
+      "value": 1539.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit before Taxes (cumulative from Jan 1)",
+      "value": 1171.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after Taxation (cumulative from Jan 1)",
+      "value": 313.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per Share (EPS) (cumulative from Jan 1)",
+      "value": 0.32,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per Share (Note 8, Solo)",
+      "value": 29.22,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

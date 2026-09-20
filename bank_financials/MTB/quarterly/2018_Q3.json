@@ -1,0 +1,249 @@
+{
+  "bank_id": "MTB",
+  "bank_name": "Mutual Trust Bank PLC",
+  "reporting_date": "2018-09-30",
+  "financial_year": 2018,
+  "quarter": "Q3",
+  "period_note": "Full balance sheet + P&L, as at September 30, 2018 / for the period Jan-Sep 2018 (cumulative from Jan 1, consistent with the _cumulative convention used throughout this dataset). Consolidated basis (document explicitly titled 'Consolidated Balance Sheet (Un-Audited)', states compliance with BSEC letter/notification and BAS 34 'Interim Financial Reporting', consolidating MTB (including its Off-shore Banking Unit) with MTB Securities Ltd, MTB Capital Ltd and MTB Exchange (UK) Ltd). Source: MTB's own contemporaneous Q3-2018 unaudited interim financial statement, downloaded from mutualtrustbank.com; a genuine text PDF (pdftotext -layout extracted 192 clean lines). NOTE: this document ALSO separately reports a discrete 'Jul to Sep 2018' quarter-only P&L column (Interest Income 4,030,841,945; Net Profit After Tax 281,763,792; EPS 0.49) alongside the Jan-Sep cumulative column used here -- the discrete-quarter figures are NOT stored as line items (kept out per this dataset's cumulative-only convention for consistency with the FY2019-2025 files), but are recorded here for reference since they are genuinely reported, not derived. VALIDATION: Total Liabilities + Total Shareholders' Equity + Minority Interest (201,421,986,116+12,754,539,133+127,592=214,176,652,841) reproduces Total Property and Assets EXACTLY. Profit Before Provision(3,570,028,567) - Total Provision(1,652,145,000) = 1,917,883,567 = Profit Before Tax as printed; Profit Before Tax - Income Tax Expenses(763,399,346) = 1,154,484,221 = Net Profit After Tax as printed -- chain internally consistent. Cross-checked against the already-stored 2017_Q4.json via this document's own Dec-31-2017 comparative column: Total Assets 201,753,934,194 vs stored 201,754m (exact), gross_loans 145,606,993,782 vs stored 145,607m (exact), total_deposits 151,776,065,501 vs stored 151,776m (exact), total_equity 11,761,962,068 vs stored 11,762m (exact) -- all four match exactly. Cumulative Net Profit After Tax for Jan-Sep 2018 (1,154,484,221) vs Jan-Sep 2017 comparative (484,393,063) shown in the same document -- both plausible, no anomaly. No discrepancies found.",
+  "source": {
+    "source_document": "mtb-unaudited-q3-2018.txt",
+    "source_path": "annual_reports/MTB/mtb-unaudited-q3-2018.txt",
+    "source_url": "https://www.mutualtrustbank.com/wp-content/uploads/2020/04/UN-AUDITED-FINANCIAL-STATEMENTS-Q3-2018.pdf",
+    "source_page_lines": "Consolidated Balance Sheet / Profit and Loss Account (Un-Audited), As at/for the period ended September 30, 2018 -- clean text PDF, pdftotext -layout",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "cash_and_balance_with_bangladesh_bank",
+      "original_metric_name": "Cash",
+      "value": 12485,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "balance_with_other_banks",
+      "original_metric_name": "Balance with Other Banks & Financial Institutions",
+      "value": 4893,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "money_at_call",
+      "original_metric_name": "Money at Call and Short Notice",
+      "value": 251,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 25845,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 158635,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets including Premises, Furniture & Fixtures",
+      "value": 3154,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other Assets",
+      "value": 8914,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Property and Assets",
+      "value": 214177,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "borrowings",
+      "original_metric_name": "Borrowing from other Banks, Financial Institutions & Agents",
+      "value": 19584,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 156957,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Other Liabilities",
+      "value": 16881,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "subordinated_debt",
+      "original_metric_name": "Subordinated Debts",
+      "value": 8000,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 201422,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 12755,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "contingent_liabilities",
+      "original_metric_name": "Total Off-Balance Sheet Items including Contingent Liabilities",
+      "value": 78441,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per share (2017 Restated)",
+      "value": 22.25,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest Income (cumulative from Jan 1)",
+      "value": 11610,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense_cumulative",
+      "original_metric_name": "Interest Paid on Deposits and Borrowings, etc. (cumulative from Jan 1)",
+      "value": 7854,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (cumulative from Jan 1)",
+      "value": 3756,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment Income (cumulative from Jan 1)",
+      "value": 1745,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_income_cumulative",
+      "original_metric_name": "Commission, Exchange and Brokerage (cumulative from Jan 1)",
+      "value": 1170,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other Operating Income (cumulative from Jan 1)",
+      "value": 361,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative from Jan 1)",
+      "value": 7033,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 3463,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit Before Provision (cumulative from Jan 1)",
+      "value": 3570,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_cumulative",
+      "original_metric_name": "Total Provision (cumulative from Jan 1)",
+      "value": 1652,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Income Tax Expenses (Current + Deferred, cumulative from Jan 1)",
+      "value": 763,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit After Tax (cumulative from Jan 1)",
+      "value": 1154,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) (2017 Restated) (cumulative from Jan 1)",
+      "value": 2.01,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

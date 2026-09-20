@@ -1,0 +1,241 @@
+{
+  "bank_id": "ALARABANK",
+  "bank_name": "Al-Arafah Islami Bank PLC",
+  "reporting_date": "2019-09-30",
+  "financial_year": 2019,
+  "quarter": "Q3",
+  "period_note": "Unaudited consolidated quarterly financial statements. Balance sheet is the 30-Sep-2019 snapshot (reported). Income-statement items below are the DISCRETE Jul-Sep 2019 quarter, taken directly from the statement's own 4-column layout (9M'19, 9M'18, Q3'19, Q3'18). Genuine text-layer PDF, extracted via pdftotext -layout. The source's own 'Total Equity' and 'Total Liability and Share holders equity' rows had their values smeared onto separate lines by column extraction (a known pdftotext -layout artifact for this filer); resolved by arithmetic: Total Equity attributable (20,401,898,763) + NCI (1,773,348,338) = 22,175,247,101, within BDT 1 of the recovered figure (22,175,247,102), and Total Liabilities (345,406,354,036) + that Total Equity = 367,581,601,138 exactly matching Total Assets. This is a LOSS quarter (net loss of 286,736,038) — the source's own note 8 attributes the year-over-year EPS decline to a large increase in specific provisioning (+BDT 147.82 crore) and tax provision (+BDT 68.00 crore) versus Q3 2018; this establishes that Q3 net-loss/near-loss quarters are a recurring, multi-year pattern for this bank (also separately observed in this dataset's 2022_Q3.json and 2024_Q3.json), not a one-off event.",
+  "source": {
+    "source_document": "2019.pdf (3rd Quarter)",
+    "source_url": "https://www.aibl.com.bd/download/financial-statement/3rd-Quarter/2019.pdf",
+    "source_page": "Consolidated Balance Sheet p.1 (left panel); Consolidated Profit or Loss Accounts p.1 (middle panel) — single large-format page; genuine embedded text layer, extracted via pdftotext -layout",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 367581601138,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 345406354036,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Equity",
+      "value": 22175247102,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 10649021850,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 8632812656,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": 142421419,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "placement_from_banks",
+      "original_metric_name": "Placement from Banks & Other Financial Institutions",
+      "value": 28553298209,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other Accounts",
+      "value": 285027011903,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deposits_savings",
+      "original_metric_name": "Mudaraba Savings Deposits",
+      "value": 45415966288,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deposits_term",
+      "original_metric_name": "Mudaraba Term Deposits",
+      "value": 157597294427,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deposits_other_mudaraba",
+      "original_metric_name": "Other Mudaraba Deposits",
+      "value": 52491841602,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deposits_current",
+      "original_metric_name": "Al-wadeeah Current Accounts and Other Accounts etc.",
+      "value": 26204764555,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deposits_bills_payable",
+      "original_metric_name": "Bills Payable",
+      "value": 3317145031,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Other Liabilities",
+      "value": 24965140734,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "aibl_mudaraba_bond",
+      "original_metric_name": "AIBL Mudaraba Subordinated Bond",
+      "value": 6800000000,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General Investments + Bills purchased and discounted)",
+      "value": 274931723075,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_shares_securities",
+      "original_metric_name": "Investment in Share & Securities",
+      "value": 15211073564,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets less Accumulated Depreciation",
+      "value": 4488325745,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other Assets",
+      "value": 17282975091,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment Income (Jul'19-Sep'19)",
+      "value": 7252596064,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_investment_income",
+      "original_metric_name": "Net Investment Income (Jul'19-Sep'19)",
+      "value": 2060016885,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income",
+      "original_metric_name": "Total operating income (Jul'19-Sep'19)",
+      "value": 3027946742,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses (Jul'19-Sep'19)",
+      "value": 1645452931,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_for_investment",
+      "original_metric_name": "Total provision (Jul'19-Sep'19)",
+      "value": 1150541714,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Profit before Tax (Jul'19-Sep'19)",
+      "value": 231952097,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax",
+      "original_metric_name": "Net Profit/(Loss) after tax (Jul'19-Sep'19)",
+      "value": -286736038,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earning per Ordinary Share (Jul'19-Sep'19)",
+      "value": -0.27,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_9m_cumulative",
+      "original_metric_name": "Net Profit after tax, Jan'19-Sep'19 cumulative",
+      "value": 257991346,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ],
+  "note": "Total Liabilities (345,406,354,036) + Total Equity (22,175,247,102) = Total Assets (367,581,601,138) exactly (after resolving the column-smearing artifact described above). Sum of asset-side line items = 367,581,601,136, within BDT 2 of Total Assets. Deposit sub-lines sum exactly to total_deposits. Equity components (paid-up + statutory + revaluation [not captured] + retained) = 20,401,898,764, within BDT 1 of the printed 'Total Equity attributable' subtotal. Income-statement chain for the discrete Q3 column validated end-to-end to exact or within-BDT-1 rounding throughout, including the loss flowing correctly through attributable split, appropriation (a negative/reversed Statutory Reserve appropriation of BDT -110,960,531), and EPS."
+}

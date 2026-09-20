@@ -1,0 +1,38 @@
+{
+  "bank_id": "ICBIBANK",
+  "bank_name": "ICB Islamic Bank Limited (formerly The Oriental Bank Limited / Al-Baraka Bank Bangladesh Limited)",
+  "reporting_date": "2017-03-31",
+  "financial_year": 2017,
+  "quarter": "Q1",
+  "period_note": "Balance sheet is the period-end snapshot (reported) vs 31-Dec-2016. Income-statement items are CUMULATIVE from 1 January 2017 (for Q1, cumulative = discrete). SOLO/STANDALONE basis. Source PDF is a scanned/photocopied filing (multi-column newspaper-style layout: Balance Sheet | P&L | Cash Flow side by side) that returns near-zero usable text under pdftotext; extracted via OCR (pdftoppm 300dpi -> tesseract 5.5.3). OCR quality is imperfect (e.g. commas misread as periods, occasional dropped digits/signs), so every figure below was cross-checked before being recorded: (1) balance-sheet identity liabilities+equity=assets closes for both periods once an OCR-mangled 'Total assets' figure is corrected (OCR read '112.042.060.146' / '112.257.720.009'; the correct values, 12,042,060,146 / 12,257,720,009, were confirmed by summing reported liabilities+equity exactly); (2) the 31-Dec-2016 comparative column (total assets 12,257.72m, equity -10,045.08m, deposits 10,893.98m, investments 9,352.43m) matches this dataset's own already-stored 2016_Q4.json to the exact million on every field, giving high confidence in both the OCR and the parse; (3) the income-statement chain (A-B=C, C=PBT since provision and tax were both nil this quarter, PBT/664,702,300 shares=EPS) closes exactly; (4) retained earnings for 31-Mar-2017 was illegible in this file's own balance sheet (OCR: '17,407,803,32', a truncated/garbled read) but was reconstructed via the balance-sheet identity (equity minus paid-up capital, statutory reserve and other reserve) to -17,407,803,327, then INDEPENDENTLY corroborated exactly by the 2018_Q1 filing's own Statement of Changes in Equity comparative row for 'Balance as at 31 March 2017', which reads the same figure. Total provision and tax were both nil for this quarter (Total profit before tax equals Total operating income minus Total operating expenses, with no provision or tax line populated).",
+  "source": {
+    "source_document": "icbibank-quarterly-2017-q1.txt",
+    "source_path": "annual_reports/ICBIBANK/icbibank-quarterly-2017-q1.txt",
+    "source_url": "https://icbislamic-bd.com/wp-content/uploads/2022/12/ICIBL-1st-quarter-un-audited-statements-2017.pdf",
+    "source_page_lines": "OCR full-page text (single scanned page combining Balance Sheet, P&L, Cash Flow, Statement of Changes in Equity and Notes)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    { "normalised_metric_name": "paid_up_capital", "original_metric_name": "Paid up capital", "value": 6647.023, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "statutory_reserve", "original_metric_name": "Statutory reserve", "value": 78.81, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "other_reserve", "original_metric_name": "Other reserve", "value": 553.95, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "retained_earnings_deficit", "original_metric_name": "Surplus in profit and loss account / Retained earnings", "value": -17407.8, "unit": "BDT_million", "currency": "BDT", "basis": "calculated_from_balance_sheet_identity", "metric_note": "OCR of this line was garbled/truncated; value reconstructed as total equity minus paid-up capital, statutory reserve and other reserve, then independently corroborated by the 2018_Q1 filing's comparative Statement of Changes in Equity." },
+    { "normalised_metric_name": "total_equity", "original_metric_name": "Total Shareholders' equity", "value": -10128.02, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_liabilities", "original_metric_name": "Total liabilities", "value": 22170.08, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_assets", "original_metric_name": "Total assets", "value": 12042.06, "unit": "BDT_million", "currency": "BDT", "basis": "reported", "metric_note": "OCR misread as '112,042,060,146'; corrected to 12,042,060,146 via balance-sheet identity (liabilities 22,170,078,590 + equity -10,128,018,444 = 12,042,060,146)." },
+    { "normalised_metric_name": "total_deposits", "original_metric_name": "Deposits and other accounts", "value": 10893.18, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "borrowings", "original_metric_name": "Borrowing from banks & other financial institutions", "value": 4970.67, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "gross_investments", "original_metric_name": "Investments (General Investments etc. + Bills purchased and discounted)", "value": 9542.58, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "off_balance_sheet_exposures", "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities", "value": 203.81, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "nav_per_share", "original_metric_name": "Net Asset Value (NAV) Per Share", "value": -15.24, "unit": "BDT", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_operating_income_cumulative", "original_metric_name": "Total operating income (A) (cumulative from Jan 1)", "value": 36.51, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_expenses_cumulative", "original_metric_name": "Total operating expenses (B) (cumulative from Jan 1)", "value": 119.45, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_profit_cumulative", "original_metric_name": "Profit / (loss) before provision (C=A-B) (cumulative from Jan 1)", "value": -82.94, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "provision_charge_cumulative", "original_metric_name": "Total provision (D) (cumulative from Jan 1)", "value": 0.0, "unit": "BDT_million", "currency": "BDT", "basis": "calculated", "metric_note": "Derived as C minus reported PBT (both -82,941,712), which are equal, implying no provision charge this quarter; the source's own (D) cell was blank/illegible under OCR." },
+    { "normalised_metric_name": "profit_before_tax_cumulative", "original_metric_name": "Total profit / (loss) before taxes (C-D) (cumulative from Jan 1)", "value": -82.94, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "tax_expense_cumulative", "original_metric_name": "Provision for taxation (cumulative from Jan 1)", "value": 0.0, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "net_profit_after_tax_cumulative", "original_metric_name": "Net profit/(loss) after taxation (cumulative from Jan 1)", "value": -82.94, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "eps_cumulative", "original_metric_name": "Earnings per share (EPS) (cumulative from Jan 1)", "value": -0.12, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "nocfps_cumulative", "original_metric_name": "Net Operating Cash Flows per share (Taka) (cumulative from Jan 1)", "value": -0.46, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported" }
+  ]
+}

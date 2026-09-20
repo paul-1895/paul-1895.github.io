@@ -1,0 +1,138 @@
+{
+  "bank_id": "PREMIERBAN",
+  "bank_name": "The Premier Bank Limited",
+  "reporting_date": "2011-09-30",
+  "financial_year": 2011,
+  "quarter": "Q3",
+  "period_note": "BASIS: CONSOLIDATED, not Solo. This source (the bank's own website newspaper-style quarterly disclosure, a genuinely different and richer source than the annual-report-embedded 'Evaluation of Quarterly Financials' BSEC table previously used for FY2019-2025, which is confirmed exhausted for FY2011-2018 -- no such table exists in any of those years' annual reports) presents ONLY a Consolidated Balance Sheet/Profit and Loss Statement/Cash Flow Statement/Statement of Changes in Equity in every quarter checked FY2011-2018 -- no Solo section is printed in the main 3-panel layout. This is a REAL, PERVASIVE basis mismatch against this dataset's Solo Q4/annual series for all of FY2011-2018 (the whole block newly added this session), matching the same CONSOLIDATED pattern already documented for FY2022/2024/2025's interim quarters (as opposed to the SOLO FY2019-2021/2023 interim quarters) -- see sources.json and insights.json's reporting_basis/data_gaps fields for the full picture across all years. Cross-validated: this file's own figures satisfy Assets=Liabilities+Equity, NII=Interest Income-Interest Expense, Total Operating Income=NII+non-interest income, Profit before provision=TOI-TOE, Profit before taxation=PBP-Total provision, and Profit after taxation=PBT-Tax, all to the exact taka, and the equity components (paid-up capital+statutory reserve+other reserve+retained earnings+minority/non-controlling interest) sum exactly to Total Shareholders' Equity. Recovered via Wayback Machine (capture 2015-04-07) of the bank's old pre-2016 domain structure (premierbankltd.com/pbl/financial highlight/), not the current thepremierbankplc.com/financial-reports/ listing which does not go back this far (earliest Q1/Q3 entries there start at 2013). This is the ONLY 2011 or 2012 quarterly filing located anywhere on either domain after an exhaustive CDX search (~49,000 captures scanned on premierbankltd.com plus ~3,200 on thepremierbankplc.com) -- see sources.json for the full negative-result documentation on 2011 Q1/Q2 and all of 2012. NOTE: the Off-Balance Sheet Items exhibit page (equity.jpg's sibling, obs page) prints its comparative-period column headers as '30.06.2011 / 30.12.2010' instead of '30.09.2011 / 31.12.2010' used everywhere else in the same four-exhibit set -- this is treated as a typo in the bank's own original document (the figures themselves tie out exactly to the Total Off-Balance Sheet Items figure and to no other period), not a sign this is actually Q2 data. Figures independently cross-checked three ways within the document set itself: the Statement of Changes in Equity's own 'Net profit for the year' (327,586,072) matches the P&L's Profit after taxation + minority interest split exactly, and the equity roll-forward (Balance at 01 Jan 2011 6,277,115,732 + net profit 327,586,072 - transfers - bonus shares issued + minority = Balance at 30 Sep 2011 6,085,325,375) reconciles to the taka.",
+  "source": {
+    "source_document": "qy3_2011.zip -> bs.jpg/con_pl.jpg/cash_flow.jpg/equity.jpg (four scanned exhibit images: Consolidated Balance Sheet, Consolidated Profit and Loss Account, Consolidated Cash Flow Statement, Statement of Changes in Equity, each 'for the quarter ended 30 September' / 'as at 30 September 2011')",
+    "source_path": "N/A (sourced directly from the bank's website; PDF/JPG deleted after extraction per project convention, no annual_reports/PREMIERBAN archive text file involved for this source type)",
+    "source_url": "https://web.archive.org/web/20150407185935/http://www.premierbankltd.com/pbl/financial%20highlight/qy3_2011.zip",
+    "retrieval_date": "2026-08-28",
+    "original_url": "http://www.premierbankltd.com/pbl/financial%20highlight/qy3_2011.zip",
+    "note": "Retrieved via Wayback Machine capture of the original bank-hosted URL (live URL no longer resolves / file not linked from the current site)."
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 12091.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans, advances and lease/investments",
+      "value": 46464.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 59299.59,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up capital",
+      "value": 3818.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 6085.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 74114.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 68029.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet Items",
+      "value": 26223.58,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income/net profit on investments (cumulative Jan 1 to 2011-09-30)",
+      "value": 1223.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Investment income + Commission, exchange and brokerage + Other operating income (cumulative Jan 1 to 2011-09-30)",
+      "value": 1728.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expense_cumulative",
+      "original_metric_name": "Total Operating Expenses (B) (cumulative Jan 1 to 2011-09-30)",
+      "value": 1337.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (C = A-B) (cumulative Jan 1 to 2011-09-30)",
+      "value": 1614.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provision_cumulative",
+      "original_metric_name": "Total provision (D) (cumulative Jan 1 to 2011-09-30)",
+      "value": 638.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Profit after taxation (cumulative Jan 1 to 2011-09-30)",
+      "value": 327.59,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (cumulative Jan 1 to 2011-09-30)",
+      "value": 0.86,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

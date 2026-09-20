@@ -1,0 +1,133 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2015-06-30",
+  "financial_year": 2015,
+  "quarter": "Q2",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account from National Bank's Half-Yearly 2015 unaudited financial statements (clean digital pdftotext, some scattered character-level corruption in individual cells typical of this bank's PDFs). Plain 'Balance Sheet (Un-audited)'/'Profit and Loss Account (Un-audited)' sections used. Comparative column (31 Dec 2014) reproduces this dataset's existing FY2014 equity of 26963.95m exactly. total_assets was not directly legible (corrupted cell) and was derived as Total Liabilities + Total Equity (235445.77 + 28086.63 = 263532.40), which also matches the separately-legible 'TOTAL LIABILITIES AND SHAREHOLDERS EQUITY' total. Income-statement items are CUMULATIVE from 1 January 2015 (this Half-Yearly filing's first of four P&L columns: [Jan-Jun 2015] [Jan-Jun 2014] [Apr-Jun 2015 discrete] [Apr-Jun 2014 discrete]). 'Profit before provision' was garbled in the source text ('...170' fragment survived) and was derived via the identity chain (Total Operating Income 6195.02m minus Total Operating Expenses 2243.68m = 3951.34m), then cross-confirmed because Profit Before Tax (3951.34m minus Total Provision 1511.00m = 2440.34m) matches a partially-legible '2,4?0,343,797' fragment in the source text, and PAT (2440.34m minus Tax 1350.00m = 1090.34m) matches the directly-legible 'Net Profit after taxation' and EPS (0.70) figures exactly. No NAV-per-share line is printed in this early filing; nav_per_share is calculated.",
+  "source": {
+    "source_document": "Half Yearly Financial Statements 2015.pdf (bank's own filename)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-h1-2015.txt",
+    "source_url": "https://www.nblbd.com/public/assets/financial-statement/1702889649_Half%20Yearly%20Financial%20Statements%202015.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 263532.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity",
+      "note": "Source cell corrupted; derived as Total Liabilities + Total Equity, which also matches the separately-legible grand-total figure exactly."
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 235445.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 28086.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 210004.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 176154.7,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 57601.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per share",
+      "value": 17.99,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Not printed in this early filing; computed as equity 28086.63m / shares outstanding (paid-up capital 15615.64m / 10 Taka face value = 1561.56m shares) = 17.99."
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 2046.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 3061.999,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)",
+      "value": 1086.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (721.19m) and other operating income (365.52m)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 2243.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": 3951.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Source cell showed only a surviving digit fragment; derived and cross-confirmed via the full identity chain -- see period_note."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after taxation (cumulative from Jan 1)",
+      "value": 1090.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (Re-stated) (cumulative from Jan 1)",
+      "value": 0.7,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

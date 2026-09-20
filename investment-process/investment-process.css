@@ -1,0 +1,577 @@
+/* ═══════════════════════════════════════════════════════════
+   INVESTMENT PROCESS — client-facing operating playbook for a
+   Bangladesh equity portfolio-management business: positioning,
+   philosophy, scoring model, risk framework, track record,
+   onboarding, reporting, fees, and the pitch itself. Companion
+   to startup-plan.html (the BSEC-licensing/financial case).
+   Static long-form content + a scrollspy table of contents —
+   structurally mirrors startup-plan.css's component patterns
+   under an "ip-" prefix so the two pages can evolve independently.
+═══════════════════════════════════════════════════════════ */
+
+.ip-page-root {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+.ip-hero {
+  max-width: 780px;
+  margin: 0 auto 14px;
+  text-align: center;
+}
+.ip-hero h1 {
+  font-family: var(--sans);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.ip-hero p {
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.ip-hero-companion {
+  font-size: 14px !important;
+  color: var(--text-muted) !important;
+  margin-top: 10px;
+}
+.ip-hero-companion a { color: var(--accent); text-decoration: none; }
+.ip-hero-companion a:hover { text-decoration: underline; }
+
+.ip-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ─── Table of contents ─────────────────────────────────────── */
+.ip-toc {
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 16px);
+  padding: 16px 14px;
+}
+.ip-toc-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  padding: 0 8px;
+}
+.ip-toc-link {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  line-height: 1.4;
+  transition: background 0.12s, color 0.12s;
+}
+.ip-toc-num { font-family: var(--mono); font-size: 12px; color: var(--text-muted); flex: none; }
+.ip-toc-link:hover { background: var(--bg-row-hover, rgba(255,255,255,0.04)); color: var(--text-primary); }
+.ip-toc-link.active { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-weight: 600; }
+.ip-toc-link.active .ip-toc-num { color: var(--accent); }
+
+/* ─── Content sections ───────────────────────────────────────── */
+.ip-content { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+
+.ip-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 16px);
+  padding: 24px 26px;
+  scroll-margin-top: 20px;
+}
+
+.ip-card-eyebrow {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.ip-card h2 {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.ip-card-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.ip-card-hd h2 { margin-bottom: 0; }
+.ip-card-icon { flex: none; width: 24px; height: 24px; color: var(--accent); }
+
+.ip-card h3 {
+  font-family: var(--sans);
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 18px 0 8px;
+}
+.ip-card h3:first-of-type { margin-top: 0; }
+
+.ip-card h4 {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.ip-card p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+.ip-card p:last-child { margin-bottom: 0; }
+
+.ip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 12px;
+}
+.ip-list li {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  padding-left: 16px;
+  position: relative;
+}
+.ip-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.ip-list li b, .ip-card p b { color: var(--text-primary); font-weight: 700; }
+
+.ip-list-numbered { counter-reset: ip-num; }
+.ip-list-numbered li::before { content: counter(ip-num); counter-increment: ip-num; width: auto; height: auto; border-radius: 50%; background: none; top: 0; left: -2px; font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); }
+.ip-list-numbered li { padding-left: 20px; }
+
+/* ─── Blockquotes (the pitch, the credible line) ─────────────── */
+.ip-quote {
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 10px 0 14px;
+}
+.ip-quote-danger {
+  border-left-color: var(--loss);
+  background: color-mix(in srgb, var(--loss) 8%, transparent);
+}
+
+/* ─── Fact tables ─────────────────────────────────────────────── */
+.ip-table-wrap { overflow-x: auto; margin-bottom: 12px; }
+.ip-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.ip-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 8px 12px 8px 0;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.ip-table td {
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+.ip-table tr:last-child td { border-bottom: none; }
+.ip-table td b { color: var(--text-primary); }
+
+/* ─── Stat row (headline figures) ────────────────────────────── */
+.ip-stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.ip-stat {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.ip-stat-val { font-family: var(--mono); font-size: 21px; font-weight: 700; color: var(--text-primary); }
+.ip-stat-label { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+.ip-gain { color: var(--gain) !important; }
+.ip-loss { color: var(--loss) !important; }
+td.ip-gain, td.ip-loss { font-family: var(--mono); font-weight: 700; }
+
+/* ─── Phase / roadmap timeline ───────────────────────────────── */
+.ip-phase { border-left: 2px solid var(--border); padding: 2px 0 2px 18px; margin-bottom: 18px; position: relative; }
+.ip-phase:last-child { margin-bottom: 0; }
+.ip-phase::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+}
+.ip-phase-hd { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; flex-wrap: wrap; }
+.ip-phase-title { font-family: var(--sans); font-size: 16.5px; font-weight: 700; color: var(--text-primary); }
+.ip-phase-when { font-family: var(--mono); font-size: 12.5px; color: var(--accent); }
+.ip-phase p { font-size: 15.5px; }
+
+/* ─── Horizontal bar-chart rows ───────────────────────────────── */
+.ip-barchart { margin: 16px 0; display: flex; flex-direction: column; gap: 10px; }
+.ip-bar-row { display: grid; grid-template-columns: 156px 1fr 66px; align-items: center; gap: 10px; }
+.ip-bar-label { font-size: 13.5px; color: var(--text-secondary); line-height: 1.3; }
+.ip-bar-label b { color: var(--text-primary); }
+.ip-bar-track {
+  height: 15px;
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--text-muted) 14%, transparent);
+  overflow: hidden;
+}
+.ip-bar-fill { height: 100%; border-radius: 7px; background: var(--accent); transition: width 0.4s ease-out; }
+.ip-bar-fill.dim { background: color-mix(in srgb, var(--accent) 40%, var(--text-muted)); }
+.ip-bar-value { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--text-primary); text-align: right; white-space: nowrap; }
+
+/* ─── Vertical event timeline (first-meeting agenda) ─────────── */
+.ip-timeline { margin: 16px 0; }
+.ip-timeline-item { display: grid; grid-template-columns: 92px 20px 1fr; column-gap: 12px; position: relative; }
+.ip-timeline-item:not(:last-child) { padding-bottom: 18px; }
+.ip-timeline-date { font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: var(--accent); text-align: right; padding-top: 2px; white-space: nowrap; }
+.ip-timeline-rail { position: relative; display: flex; justify-content: center; }
+.ip-timeline-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--accent); z-index: 1; margin-top: 3px; flex: none; }
+.ip-timeline-line {
+  position: absolute;
+  top: 15px;
+  bottom: -18px;
+  left: 50%;
+  width: 2px;
+  background: var(--border);
+  transform: translateX(-50%);
+}
+.ip-timeline-item:last-child .ip-timeline-line { display: none; }
+.ip-timeline-desc { font-size: 14px; line-height: 1.6; color: var(--text-secondary); padding-top: 2px; }
+
+/* ─── Five pillars grid (positioning) ────────────────────────── */
+.ip-pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin: 12px 0 4px;
+}
+.ip-pillar {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 10px;
+  text-align: center;
+}
+.ip-pillar-num {
+  width: 26px; height: 26px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.ip-pillar-label { font-size: 13px; font-weight: 600; color: var(--text-primary); line-height: 1.35; }
+
+/* ─── Key/value mandate grid (mandate spec, fee models, IPS-lite) ── */
+.ip-mandate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.ip-mandate-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.ip-mandate-k {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+.ip-mandate-v { font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); }
+
+/* ─── Tag grid (factor lists, checklists) ────────────────────── */
+.ip-tag-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 6px; }
+.ip-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--text-muted) 10%, transparent);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+}
+.ip-tag-accent {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+
+/* ─── Formula / equation callout ─────────────────────────────── */
+.ip-formula {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 10px 0;
+}
+
+/* ─── Data-schema three-column grid (stock database) ─────────── */
+.ip-schema-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 12px 0;
+}
+.ip-schema-col .ip-list { margin-bottom: 0; }
+.ip-schema-col .ip-list li { font-size: 14.5px; }
+
+/* ─── Investment memo template ───────────────────────────────── */
+.ip-memo {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+.ip-memo-hd {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.ip-memo-title { font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent); }
+.ip-memo-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px 16px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.ip-memo-fields div { font-size: 14px; color: var(--text-primary); font-weight: 600; }
+.ip-memo-fields span { display: block; font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
+.ip-memo-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 16px; }
+.ip-memo-block .ip-list { margin-bottom: 0; }
+.ip-memo-block .ip-list li { font-size: 14px; }
+.ip-memo-block p { font-size: 14px; margin-bottom: 0; }
+
+/* ─── Red-flag warning callout (custody section) ─────────────── */
+.ip-redflag {
+  border: 1px solid color-mix(in srgb, var(--loss) 40%, var(--border));
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-top: 14px;
+  background: color-mix(in srgb, var(--loss) 5%, transparent);
+}
+.ip-redflag-hd { font-weight: 700; color: var(--loss); font-size: 14.5px; margin-bottom: 8px; }
+.ip-redflag p { margin-bottom: 0; }
+.ip-redflag p a, .ip-card p a, .ip-note a { color: var(--accent); text-decoration: none; }
+.ip-redflag p a:hover, .ip-card p a:hover, .ip-note a:hover { text-decoration: underline; }
+
+/* ─── IPS key/value list ──────────────────────────────────────── */
+.ip-ips-list { display: flex; flex-direction: column; margin: 12px 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.ip-ips-row { display: grid; grid-template-columns: 180px 1fr; gap: 14px; padding: 12px 16px; }
+.ip-ips-row:not(:last-child) { border-bottom: 1px solid var(--border); }
+.ip-ips-k { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.02em; color: var(--accent); }
+.ip-ips-v { font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); }
+.ip-ips-v b { color: var(--text-primary); }
+
+/* ─── Pitch-deck slide grid ───────────────────────────────────── */
+.ip-slide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.ip-slide {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  position: relative;
+  padding-left: 42px;
+}
+.ip-slide-num {
+  position: absolute;
+  left: 14px; top: 14px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.ip-slide-title { font-size: 14.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+.ip-slide-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+/* ─── System-architecture pipeline diagram ───────────────────── */
+.ip-pipeline { display: flex; flex-direction: column; align-items: center; margin: 18px 0 6px; }
+.ip-pipe-node {
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-card));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.ip-pipe-node-sm { font-size: 12.5px; padding: 8px 16px; font-weight: 600; }
+.ip-pipe-node-final { background: var(--accent); color: #fff; border-color: var(--accent); }
+.ip-pipe-rail { width: 2px; height: 18px; background: var(--border); }
+.ip-pipe-branch {
+  display: flex;
+  gap: 32px;
+  position: relative;
+  padding-top: 0;
+}
+.ip-pipe-branch::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 2px;
+  height: 18px;
+  background: var(--border);
+  transform: translateX(-50%);
+}
+.ip-pipe-branch .ip-pipe-node { position: relative; }
+.ip-pipe-branch .ip-pipe-node::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 2px;
+  height: 18px;
+  background: var(--border);
+  transform: translateX(-50%);
+}
+.ip-pipe-branch::after {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 25%;
+  right: 25%;
+  height: 2px;
+  background: var(--border);
+}
+.ip-pipe-branch-3::after { left: 16.6%; right: 16.6%; }
+.ip-pipe-branch-3 { gap: 14px; }
+
+/* ─── Confidence / verify-before-acting notes ────────────────── */
+.ip-note {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  background: color-mix(in srgb, var(--text-muted) 8%, transparent);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 10px;
+}
+.ip-note b { color: var(--text-secondary); }
+
+@media (max-width: 860px) {
+  .ip-layout { grid-template-columns: 1fr; }
+  .ip-toc {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ip-toc-title { display: none; }
+  .ip-toc-link { padding: 6px 10px; }
+
+  .ip-bar-row { grid-template-columns: 104px 1fr 60px; }
+  .ip-timeline-item { grid-template-columns: 70px 20px 1fr; }
+  .ip-pillar-grid { grid-template-columns: repeat(2, 1fr); }
+  .ip-schema-grid { grid-template-columns: 1fr; }
+  .ip-memo-body { grid-template-columns: 1fr; }
+  .ip-pipe-branch, .ip-pipe-branch-3 { flex-direction: column; align-items: center; gap: 10px; }
+  .ip-pipe-branch::after, .ip-pipe-branch-3::after { display: none; }
+  .ip-pipe-branch .ip-pipe-node::before { display: none; }
+}
+
+/* ─── Bengali translation toggle ──────────────────────────────── */
+body.lang-bn {
+  --sans: 'Noto Sans Bengali', 'DM Sans', system-ui, sans-serif;
+  --mono: 'Noto Sans Bengali', 'Space Mono', 'Menlo', monospace;
+}
+
+.ip-lang-note {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 780px;
+  margin: 0 auto 20px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: var(--text-muted);
+  background: var(--accent-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.ip-lang-revert-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+#lang-toggle-btn:disabled { opacity: 0.6; cursor: default; }

@@ -1,0 +1,237 @@
+{
+  "bank_id": "NCCBANK",
+  "bank_name": "National Credit and Commerce Bank PLC",
+  "website": "https://www.nccbank.com.bd",
+  "notes": "annual_reports/NCCBANK archive originally contained 15 PDFs (2011-2025), none previously text-extracted. Extracted 11 of 15 cleanly via pdftotext (2011, 2013-2018, 2022-2025); 2012, 2019, 2020, 2021 failed extraction entirely (likely scanned/image-based PDFs) but were fully recoverable via other years' reports' multi-year comparative tables, achieving complete Q4/year-end coverage for all 15 years (2011-2025) with no gaps. Only Q4/year-end (audited) data was extracted; Q1/H1/Q3 unaudited interim data was not researched. Q1/Q2/Q3 (interim) coverage subsequently completed for essentially the entire available history: 44 of 44 interim periods for which nccbank.com.bd (live site or, for one 2020 Q3 gap, the Wayback Machine) ever posted a report were successfully sourced and validated -- spanning 2011 Q2 through 2026 Q2 (Q1 archive begins 2013, Q3 archive begins 2012, Half-Yearly begins 2011; 2011 Q1/Q3 and 2012 Q1 were never published by the bank and are not extraction failures). Standalone/Solo basis throughout, matching the existing Q4 series. A genuine deferred-tax restatement was discovered and documented for FY2025 Q1 and H1 (see the dedicated entry above); a recurring but smaller interim-vs-annual-report balance-sheet divergence was also documented for several other years (see the 'data_quality_note' entry above). No existing _Q4.json file, and no file outside bank_financials/NCCBANK/ and annual_reports/NCCBANK/, was modified.",
+  "sources": [
+    {
+      "period": "2011 (Q4)",
+      "type": "annual_report_own_balance_sheet",
+      "source_document": "nccbank-annual-report-2011.txt (own Balance Sheet, Solo; 'Financial Highlights of the Bank' annexure)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2011
+      ],
+      "note": "Only balance-sheet aggregates and key ratios located; income-statement/capital-tier breakdown not extracted for this year."
+    },
+    {
+      "period": "2012 (Q4)",
+      "type": "cross_report_comparative",
+      "source_document": "nccbank-annual-report-2013.txt (comparative Balance Sheet and 'Financial Highlights of the Bank' annexure)",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2012
+      ],
+      "note": "FY2012's own annual report PDF failed text extraction entirely (likely scanned); figures sourced from the FY2013 report's comparative columns. Only balance-sheet aggregates and key ratios available."
+    },
+    {
+      "period": "2013-2017 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "nccbank-annual-report-2017.txt (\"Five Years Performance at a Glance\", p.67)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "note": "Total liabilities not directly reported in this table for any year; calculated as total assets minus shareholders' equity."
+    },
+    {
+      "period": "2018-2022 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "nccbank-annual-report-2022.txt (\"Five Years Performance at a Glance\", p.145-146)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "note": "Recovers FY2019-2021 entirely (those years' own report PDFs failed text extraction). Total liabilities not directly reported; calculated as total assets minus shareholders' equity."
+    },
+    {
+      "period": "2023-2025 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "nccbank-annual-report-2025.txt (\"Five Years Performance At a Glance\", p.180-181)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023,
+        2024,
+        2025
+      ],
+      "note": "FY2021/FY2022 also appear in this table as comparative columns but show restated profit-after-tax/ROE figures differing from the FY2022 report's contemporaneous figures (used instead for those two years, see their quarterly records' period_notes). Total liabilities not directly reported; calculated as total assets minus shareholders' equity."
+    },
+    {
+      "period": "2011 Q2, 2012 Q2-Q3, 2013 Q1-Q3, 2014 Q1-Q3, 2015 Q1-Q3, 2016 Q1-Q3, 2017 Q1-Q3, 2021 Q1-Q2, 2022 Q1-Q3 (unaudited interim financial statements)",
+      "type": "unaudited_quarterly_financial_statements_native_pdf",
+      "source_document": "nccbank.com.bd quarterly_report/ and halfyearly_report/ archive PDFs (1st_quarter_<year>.pdf, 3rd_quarter_<year>.pdf, half_yearly_report_<year>.pdf) -- native digital PDFs with embedded fonts, clean pdftotext -layout extraction",
+      "source_url": "https://www.nccbank.com.bd/NccbFinancialReports/quarterlyReports and /NccbFinancialReports/halfYearlyReports",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        "2011_Q2",
+        "2012_Q2",
+        "2012_Q3",
+        "2013_Q1",
+        "2013_Q2",
+        "2013_Q3",
+        "2014_Q1",
+        "2014_Q2",
+        "2014_Q3",
+        "2015_Q1",
+        "2015_Q2",
+        "2015_Q3",
+        "2016_Q1",
+        "2016_Q2",
+        "2016_Q3",
+        "2017_Q1",
+        "2017_Q2",
+        "2017_Q3",
+        "2021_Q1",
+        "2021_Q2",
+        "2022_Q1",
+        "2022_Q2",
+        "2022_Q3"
+      ],
+      "note": "Standalone (Solo) Balance Sheet and Profit and Loss Account extracted directly via pdftotext -layout. Every period's balance sheet identity (Assets = Liabilities + Equity) and PBT - tax = PAT tie exactly to the taka, and each period's comparative prior-year-end balance-sheet column was cross-checked against the corresponding existing quarterly/<year-1>_Q4.json. The 2016 Q1/Q2/Q3 filings (native PDFs) had column-alignment extraction defects on specific deep P&L rows only (Total provisions/PBT/tax/PAT for the current-period column); those specific cells were re-verified via a 300dpi visual render of the same source page before use -- see each period's own period_note for detail."
+    },
+    {
+      "period": "2018 Q1-Q3, 2019 Q1-Q3, 2021 Q3, 2023 Q1-Q3, 2024 Q1-Q2, 2025 Q3, 2026 Q1-Q2 (unaudited interim financial statements)",
+      "type": "unaudited_quarterly_financial_statements_scanned_ocr",
+      "source_document": "nccbank.com.bd quarterly_report/ and halfyearly_report/ archive PDFs (scanned/OCR documents with a corrupted or unusably sparse embedded text layer)",
+      "source_url": "https://www.nccbank.com.bd/NccbFinancialReports/quarterlyReports and /NccbFinancialReports/halfYearlyReports",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_via_visual_verification",
+      "used_for_years": [
+        "2018_Q1",
+        "2018_Q2",
+        "2018_Q3",
+        "2019_Q1",
+        "2019_Q2",
+        "2019_Q3",
+        "2021_Q3",
+        "2023_Q1",
+        "2023_Q2",
+        "2023_Q3",
+        "2024_Q1",
+        "2024_Q2",
+        "2025_Q3",
+        "2026_Q1",
+        "2026_Q2"
+      ],
+      "note": "pdftotext -layout on these PDFs produced systematically corrupted digits (1/l/L and 0/O confusion, dropped minus signs on bracketed figures, occasional Indian-style lakh/crore digit grouping in the 2019 Q3 filing, and a literal spreadsheet-overflow '#########' cell in the 2023 Q3 filing). All figures were instead sourced via direct visual inspection of 350dpi page renders of each PDF's own standalone Balance Sheet and Profit and Loss Account pages. Every period's balance sheet identity and PBT - tax = PAT were verified to tie exactly (or, for the one overflowed cell in 2023 Q3, recomputed from its components and cross-checked against the adjacent subtotal) before use. The 2023 Q3 filing is additionally notable as the first in this series to carry external auditor review (ACNABIN Chartered Accountants), unlike all other interim filings which are self-declared 'Un-audited'."
+    },
+    {
+      "period": "2020 Q1, 2020 Q2 (Balance Sheet only)",
+      "type": "unaudited_quarterly_financial_statements_scanned_no_text_layer",
+      "source_document": "1st_quarter_2020.pdf, half_yearly_report_2020.pdf",
+      "source_url": "https://www.nccbank.com.bd/assets/files/quarterly_report/1st_quarter_2020.pdf ; https://www.nccbank.com.bd/assets/files/halfyearly_report/half_yearly_report_2020.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_via_visual_verification",
+      "used_for_years": [
+        "2020_Q1",
+        "2020_Q2"
+      ],
+      "note": "Both source PDFs are Canon-scanner outputs with a genuinely empty pdftotext extraction (0 lines, no text layer whatsoever). Balance sheet figures were read directly from a 350dpi visual render of each PDF's own Balance Sheet page and verified to tie exactly (Assets = Liabilities + Equity)."
+    },
+    {
+      "period": "2020 Q1, 2020 Q2 (Profit and Loss Account only, recovered from the following year's comparative column)",
+      "type": "cross_report_comparative",
+      "source_document": "1st_quarter_2021.pdf and half_yearly_report_2021.pdf (comparative 'prior period' P&L columns)",
+      "source_url": "https://www.nccbank.com.bd/assets/files/quarterly_report/1st_quarter_2021.pdf ; https://www.nccbank.com.bd/assets/files/halfyearly_report/half_yearly_report_2021.pdf",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        "2020_Q1",
+        "2020_Q2"
+      ],
+      "note": "Since the Q1/H1 2020 source PDFs' own income-statement pages were not separately re-derived (balance sheet sufficed to confirm those PDFs are genuine scans; see the entry above), income-statement figures for these two periods were instead taken from the FY2021 Q1/H1 filings' comparative 'prior period' column (both clean native-digital PDFs), with every subtotal verified to tie exactly (Profit before provisions, Total provisions, PBT, tax, PAT) before use. This mirrors the project's established precedent (documented in this bank's own Q4 series) of recovering a scanned year's figures from an adjacent, cleanly-extractable report's comparative table."
+    },
+    {
+      "period": "2020 Q3 (Balance Sheet and Profit and Loss Account)",
+      "type": "wayback_archive_recovery",
+      "source_document": "3rd_quarter_2020.pdf",
+      "source_url": "https://web.archive.org/web/20221203095558/https://www.nccbank.com.bd/assets/files/quarterly_report/3rd_quarter_2020.pdf (live URL now returns 404)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_via_visual_verification_partial_archive",
+      "used_for_years": [
+        "2020_Q3"
+      ],
+      "note": "The live nccbank.com.bd URL for this file now 404s; the only available source is a single Wayback Machine capture, which Internet Archive's own response headers confirm was truncated at exactly 1,048,576 bytes versus an original crawled size of 1,304,704 bytes ('warning: 299 wayback content truncated by length') -- a permanent gap in Internet Archive's own stored copy (reproduced identically via the if_, id_, and plain replay modes), not a retrieval-side issue, and no second capture exists in the CDX index to substitute. The truncation affects only later note/schedule pages (roughly pages 26-33 of 33); the standalone Balance Sheet (page 5) and Profit and Loss Account (pages 7-8), which are what this project's record uses, are both fully intact and were verified to tie exactly before use."
+    },
+    {
+      "period": "2024 Q3 (Balance Sheet from own filing via 350dpi render; Profit and Loss Account cross-validated between own filing and the FY2025 Q3 filing's comparative column, which agree exactly)",
+      "type": "unaudited_quarterly_financial_statements_scanned_ocr_cross_validated",
+      "source_document": "3rd_quarter_2024.pdf (Balance Sheet, own P&L page); FS_Q3_2025.pdf (P&L comparative column, cross-check only)",
+      "source_url": "https://www.nccbank.com.bd/assets/files/quarterly_report/3rd_quarter_2024.pdf ; https://www.nccbank.com.bd/assets/files/quarterly_report/FS_Q3_2025.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        "2024_Q3"
+      ],
+      "note": "3rd_quarter_2024.pdf's own pdftotext extraction was 0 lines (Canon-scanner, no text layer); the Balance Sheet was read via a 350dpi visual render of its own page 7 and the Profit and Loss Account via its own page 9 (dated 28 October 2024). Both were independently cross-validated against FS_Q3_2025.pdf's 'Jan-Sep 2024' comparative column, which matches exactly to the taka (Net Profit after tax BDT 2,660,621,629 in both), confirming this period was NOT subject to the deferred-tax restatement later found affecting the FY2025 Q1/H1 comparatives."
+    },
+    {
+      "period": "2025 Q1, Q2, Q3 (unaudited interim financial statements, plus discovery of a genuine deferred-tax restatement for Q1 and H1 2025)",
+      "type": "unaudited_quarterly_financial_statements_scanned_ocr_with_restatement",
+      "source_document": "1st_quarter_2025.pdf, half_yearly_report_2025.pdf, FS_Q3_2025.pdf (all own filings; FS_Q1_2026.pdf and half_yearly_report_2026.pdf used only as later comparative columns to discover the restatement)",
+      "source_url": "https://www.nccbank.com.bd/assets/files/quarterly_report/1st_quarter_2025.pdf ; https://www.nccbank.com.bd/assets/files/halfyearly_report/half_yearly_report_2025.pdf ; https://www.nccbank.com.bd/assets/files/quarterly_report/FS_Q3_2025.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated_with_restatement_flagged",
+      "used_for_years": [
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3"
+      ],
+      "note": "All three periods' own filings are scanned/OCR PDFs (1st_quarter_2025.pdf's pdftotext extraction was sparse/corrupted at 73 lines; half_yearly_report_2025.pdf's was 0 lines); figures were sourced via direct visual inspection of 350dpi page renders of each filing's own Balance Sheet and Profit and Loss Account pages, every subtotal verified to tie exactly. RESTATEMENT: when the FY2026 Q1 and H1 filings' comparative columns for these same 2025 periods were read (as a routine prior-year-end/prior-period cross-check), they showed materially different, explicitly-labelled '[previous period's figure restated]' deferred-tax and PAT figures for Q1 and H1 2025 (contemporaneous PAT BDT 280.81mn/1,151.59mn vs later-restated BDT 1,041.30mn/2,142.59mn) -- per project convention the contemporaneous (earlier) figures from each period's own original filing were retained as authoritative and the later restated figures were NOT adopted; see each period's own period_note for full detail. Q3 2025 was not subject to this specific restatement (no later comparative exists yet to check it against) but does show a smaller, separately-noted ~BDT 121mn equity classification difference ('Start-up Equity Investment Fund') versus the Q1/Q2 2025 filings' own equity breakdown."
+    },
+    {
+      "period": "2026 Q1, Q2 (unaudited interim financial statements; also the source of the FY2025 Q1/H1 restatement discovery)",
+      "type": "unaudited_quarterly_financial_statements_scanned_ocr",
+      "source_document": "FS_Q1_2026.pdf, half_yearly_report_2026.pdf",
+      "source_url": "https://www.nccbank.com.bd/assets/files/quarterly_report/FS_Q1_2026.pdf ; https://www.nccbank.com.bd/assets/files/halfyearly_report/half_yearly_report_2026.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        "2026_Q1",
+        "2026_Q2"
+      ],
+      "note": "Both are scanned/OCR PDFs with badly corrupted pdftotext text layers (systematic digit-substitution errors); figures sourced via direct visual inspection of 350dpi page renders of each filing's own Balance Sheet and Profit and Loss Account pages. Comparative '31 December 2025' balance-sheet columns match the existing bank_financials/NCCBANK/quarterly/2025_Q4.json exactly (no discrepancy) -- unlike the FY2021/FY2023/FY2024 comparatives found elsewhere in this project, FY2025's year-end figures are consistent between the annual report and these interim filings."
+    },
+    {
+      "period": "2011 Q1, 2011 Q3, 2012 Q1 (never available)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "not_available_site_never_posted",
+      "retrieval_date": "2026-08-26",
+      "notes": "Confirmed via both the live nccbank.com.bd quarterly_report/ archive listing and a Wayback Machine CDX search (no capture exists for any guessed filename pattern, e.g. 1st_quarter_2011.pdf, 1st_quarter_2012.pdf, 3rd_quarter_2011.pdf -- all 404). NCCBANK's Q1 interim-report archive begins at 1st_quarter_2013.pdf and its Q3 archive begins at 3rd_quarter_2012.pdf; no evidence these earlier Q1/Q3 reports were ever published online, as opposed to an extraction failure on this project's part. Half-Yearly reports, by contrast, are available back to 2011 (half_yearly_report_2011.pdf), which was successfully sourced (see the native-PDF entry above)."
+    },
+    {
+      "period": "Interim-vs-annual-report divergence pattern (cross-cutting observation, not a separate source)",
+      "type": "data_quality_note",
+      "retrieval_date": "2026-08-26",
+      "notes": "Across several fiscal years (FY2014/2015 Q1-Q3 comparatives showing Total Shareholders' Equity ~0.7% above the corresponding _Q4.json; FY2021 Q1-Q3 2022 comparatives showing Total Assets ~1.0% above _Q4.json while Equity matches exactly; and FY2023 Q1-Q3 2024 comparatives showing Total Assets ~0.14% and Total Equity ~4.5% below _Q4.json), this bank's own interim filings' 'prior year-end' comparative balance-sheet column does not always exactly match the figure later used in bank_financials/NCCBANK/quarterly/<year>_Q4.json (which is itself sourced from a LATER annual report's own multi-year summary table, not always that year's own annual report). Per project convention, no existing _Q4.json file was modified to reconcile any of these; each affected interim quarterly JSON's own period_note documents the specific divergence found for that period."
+    }
+  ],
+  "reporting_basis": "Solo/Standalone (Bank-only, not Consolidated) throughout, for both the existing Q4/annual series and all Q1/Q2/Q3 interim data added in this pass. Every source filing that presents both a Consolidated and a Standalone/Solo statement was read from its Standalone section specifically; no filing in this series presented Consolidated-only figures."
+}

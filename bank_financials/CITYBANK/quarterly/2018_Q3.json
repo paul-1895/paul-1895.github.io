@@ -1,0 +1,121 @@
+{
+  "bank_id": "CITYBANK",
+  "bank_name": "The City Bank PLC",
+  "reporting_date": "2018-09-30",
+  "financial_year": 2018,
+  "quarter": "Q3",
+  "period_note": "Sourced directly from the bank's own primary quarterly interim financial statements (\"Financial Statements for the 3rd Quarter ended 30 September 2018 (Unaudited)\"), downloaded directly from the bank's live financial-statements archive (legacy.citybankplc.com/report/financialstatements), not Wayback Machine. Per project convention the SOLO ('Balance Sheet as at 30 September 2018' / unlabelled 'Profit and Loss Account for the 3rd Quarter ended 30 September 2018') figures are used, not the explicitly-labelled 'Consolidated' panels (Consolidated total operating income of 11,613.42m [sic -- Consolidated is actually 12,156.41m; Solo is 11,613.42m] and Consolidated NPAT of 2,249.61m are materially different from Solo and were not used). Arithmetically verified: Total liabilities 303,153,340,501 + Shareholders' equity 24,158,874,911 = Total assets 327,312,215,412 exactly; Net interest income 6,630,115,526 + Investment income 1,323,261,527 + Commission 2,239,408,153 + Other operating income 1,420,637,430 = Total operating income 11,613,422,636 exactly. Year-to-date NPAT (2,081,709,071) minus the 2018_Q2.json H1 figure (1,220.77m) implies a Q3-alone NPAT of ~860.9m, which matches this filing's own 'Current Quarter' column net profit after taxation (860,935,210) closely -- cross-validated against the already-completed 2018_Q2 quarter. Solo and Consolidated off-balance-sheet totals are identical (139,767,594,678) since the bank issues its contingent liabilities/commitments directly rather than through subsidiaries. Non Funded Income is calculated as Commission/exchange/brokerage + Other operating income (both individually reported). NAV per share is not disclosed in the primary interim statement and is left out as a genuine gap. 2018 Q1 could not be recovered (see 2018_Q2.json note: the bank's own archive lists only a corrupted placeholder file for that quarter and no other capture exists on Wayback Machine); independently re-confirmed this session by downloading the placeholder file directly -- it is a generic 4-paragraph 'Adobe Acrobat PDF Files' sample document with no financial content, not a truncation or access issue.",
+  "source": {
+    "source_document": "citybank-3q-2018-financial-statements.txt",
+    "source_path": "annual_reports/CITYBANK/citybank-3q-2018-financial-statements.txt",
+    "source_url": "https://legacy.citybankplc.com/files/3rd%20Quarter%20Financial%20Statement%20as%20on%2030%20September%202018_1543468303.pdf",
+    "source_page_lines": "Single-page landscape layout (multiple panels: Consolidated and Solo Balance Sheet/Cash Flow/P&L/Statement of Changes in Equity); read visually via high-resolution page render and targeted crops (pdftoppm -r 400), cross-checked against pdftotext output",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 28260,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances / Investments",
+      "value": 231717,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 219749,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Shareholders' equity of The City Bank Limited",
+      "value": 24159,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 327312,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities",
+      "value": 139768,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest / net profit on investments (Year-to-Date)",
+      "value": 6630,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (Year-to-Date)",
+      "value": 1323,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_funded_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (Year-to-Date)",
+      "value": 3660,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_sum_of_reported_lines"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (B) (Year-to-Date)",
+      "value": 7099,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit / (loss) before provision (C=A-B) (Year-to-Date)",
+      "value": 4515,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (Year-to-Date)",
+      "value": 2082,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (Year-to-Date)",
+      "value": 2.15,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

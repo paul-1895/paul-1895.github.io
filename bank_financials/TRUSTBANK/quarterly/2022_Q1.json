@@ -1,0 +1,137 @@
+{
+  "bank_id": "TRUSTBANK",
+  "bank_name": "Trust Bank PLC",
+  "reporting_date": "2022-03-31",
+  "financial_year": 2022,
+  "quarter": "Q1",
+  "period_note": "Extracted from Trust Bank's own annual-report-embedded 'Audit Committee and the Board Evaluation of the Quarterly Financials' table (a BSEC corporate-governance-mandated disclosure). Income-statement items are CUMULATIVE FROM JAN 1 of the same year (the source table's own column header reads '01 Jan to <quarter-end date>'), not discrete-quarter figures, flagged via the _cumulative suffix; balance-sheet items are the period-end snapshot. BASIS MISMATCH FLAGGED: this table's own text states the Board approved the CONSOLIDATED financial statements for quarterly disclosure every year it appears (2018, 2020-2025) \u2014 this differs from Trust Bank's main Q4/annual series in this dataset, which is SOLO (Bank-only, unconsolidated) basis for balance-sheet/income-statement items (see sources.json top-level reporting_basis, confirmed 2026-08-26). Verified numerically for FY2022: this table's own Q4/full-year column reports Total Assets 421,960 (Consolidated) vs this dataset's SOLO-basis FY2022 Q4 Total Assets 417,902.46 \u2014 a 0.97% gap, consistent with Trust Bank's small subsidiaries (Trust Bank Investment Ltd, Trust Bank Securities Ltd, Trust Axiata Digital Ltd) being added net of intercompany eliminations on consolidation, not a data error. Do not directly mix these CONSOLIDATED Q1-Q3 figures with this bank's SOLO-basis Q4/annual figures without adjusting for this basis gap. Source document is FY2022's own annual report (contemporaneous). Cross-checked against the FY2023 report's comparative column for the same quarter: all line items shown here match exactly. (Note: the FY2023 report's comparative column for FY2022 Q4 \u2014 outside this file's scope \u2014 shows Total Shareholders' Equity 20,124 vs 20,214 in FY2022's own report, an isolated ~0.4% discrepancy recorded in sources.json; it does not affect Q1-Q3, which match exactly.)",
+  "source": {
+    "source_document": "trust-bank-annual-report-2022.txt",
+    "source_path": "annual_reports/TRUSTBANK/trust-bank-annual-report-2022.txt",
+    "source_url": "https://www.tblbd.com",
+    "source_page_lines": "5104-5158 (\"Audit Committee and the Board Evaluation of the Quarterly Financials\" table, 2022 own columns, Annual Report 2022 printed p.103-105)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investment",
+      "value": 66987,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances/Islami Banking investments",
+      "value": 271000,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 294683,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 366520,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total shareholders' equity",
+      "value": 19618,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 386138,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Off-Balance Sheet Items",
+      "value": 152350,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up capital",
+      "value": 7076,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises, furniture and fixtures",
+      "value": 2368,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income/net profit on investments (cumulative from Jan 1)",
+      "value": 2036,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total operating income (A) (cumulative from Jan 1)",
+      "value": 4169,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (B) (cumulative from Jan 1)",
+      "value": 1324,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (C=A-B) (cumulative from Jan 1)",
+      "value": 2845,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (cumulative from Jan 1)",
+      "value": 844,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS) (cumulative from Jan 1)",
+      "value": 1.19,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

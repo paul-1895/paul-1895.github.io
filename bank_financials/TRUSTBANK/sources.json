@@ -1,0 +1,151 @@
+{
+  "bank_id": "TRUSTBANK",
+  "bank_name": "Trust Bank PLC",
+  "website": "https://www.tblbd.com",
+  "reporting_basis": "SOLO / STANDALONE (Bank-only, unconsolidated) for balance-sheet and income-statement items; CONSOLIDATED for capital-adequacy/Basel-III measures only, as explicitly labeled in the source tables. Determined 2026-08-26 (previously blank) by matching this dataset's Q4 total_assets against both the labelled 'Balance Sheet' and 'Consolidated Balance Sheet' sections of Trust Bank's own annual reports. Evidence: the FY2018 annual report's own audited Balance Sheet section gives Total Assets Taka 259,638,370,242 (line 13504 of trust-bank-annual-report-2018.txt, under the 'Balance Sheet' i.e. solo heading) vs a separate Consolidated Balance Sheet section headed 'Consolidated Balance Sheet' (line 12969) whose summary total (261,076.40m, appearing at line 603's 'Balance Sheet Matrix') is different for the SAME Dec-31-2018 date; this dataset's FY2018 Q4 total_assets (259,638.37) matches the SOLO figure to the taka, not the consolidated one. The same ~0.5-1.1% gap (Consolidated minus Solo, always positive) recurs at every year-end 2017-2025 when cross-checked against the bank's separate 'Audit Committee and the Board Evaluation of the Quarterly Financials' table (itself explicitly captioned every year 2018-2025 as 'the Board approved the consolidated financial statements'): FY2017 +0.65%, FY2018 +0.55%, FY2019 +0.53%, FY2020 +0.47%, FY2021 +1.09%, FY2022 +0.97%, FY2023 +0.94%, FY2024 +0.72%, FY2025 +0.58% — small and consistent with Trust Bank's modest subsidiaries (Trust Bank Investment Ltd, Trust Bank Securities Ltd, Trust Axiata Digital Ltd) being added net of intercompany eliminations on consolidation, not a data error or an undocumented basis break. This confirms the main Q4/annual series in this dataset (sourced from the annual reports' 'Five Years' Financial Summary' tables) is SOLO, and that the 2018/2020-2025 'Evaluation of the Quarterly Financials' table used for the Q1-Q3 backfill (quarterly/*_Q1.json, *_Q2.json, *_Q3.json) is on a DIFFERENT (Consolidated) basis — flagged in every one of those files' period_note.",
+  "notes": "annual_reports/TRUSTBANK archive (2011-2025, 15 years) was already text-extracted by a parallel session working on this project before this session began processing it. Complete Q4/year-end coverage for all 15 years achieved from three overlapping annual reports' unusually detailed 'Five Years' Financial Summary' tables (balance sheet, income statement, capital measures, credit quality, and share information all in one place). Q1/Q2/Q3 unaudited interim data for 2017-2025 was added 2026-08-26 by mining a second embedded table already present in the same downloaded report text (see below) — no new web research was required for those 9 years. Q1/Q2/Q3 for 2014-2016 (plus P&L-only for 2013) was added the same day from the bank's live website (tblbd.com/about-us/financial-statements), which hosts the bank's own unaudited interim financial statement PDFs back to 2014 with only mild rate-limiting; these are SOLO basis (matching the main series directly, no basis caveat needed) and of higher precision than the embedded table. Combined, Q1-Q3 coverage now spans 2013-2025 (13 of 15 years); only 2011-2012 remain unresearched. 2026 Q1 and Q2 (Half-Yearly) added 2026-09-12 from the bank's own live website (now at tblbd.com/reports/financial-statements/ — the site's URL structure changed since the 2026-08-26 pass), SOLO basis, both scanned-image PDFs read via direct visual inspection of page renders (see quarterly/2026_Q1.json and 2026_Q2.json for full detail) — a basis IMPROVEMENT over the CONSOLIDATED-basis 2017-2025 Q1-Q3 series, since this year the bank's own primary interim filing (not the annual-report-embedded table) was reachable again.",
+  "sources": [
+    {
+      "period": "2011-2015 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "trust-bank-annual-report-2015.txt (\"Five Years Financial Summary\")",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2011, 2012, 2013, 2014, 2015]
+    },
+    {
+      "period": "2015-2019 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "trust-bank-annual-report-2019.txt (\"Five Years Financial Summary\")",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2016, 2017, 2018, 2019]
+    },
+    {
+      "period": "2020-2024 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "trust-bank-annual-report-2024.txt (\"Five Years' Financial Summary\")",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2020, 2021, 2022, 2023, 2024],
+      "note": "FY2024 figures used here are as originally reported in the FY2024 report; the FY2025 report's comparative column for FY2024 shows a modest restatement (Total Assets ~1.8% lower, Profit After Tax ~5.2% lower) not reconciled further — see the FY2024 quarterly record's period_note. CORROBORATED 2026-08-26: the CONSOLIDATED-basis 'Evaluation of the Quarterly Financials' table shows the identical pattern at nearly the identical absolute magnitude on a completely independent basis (FY2024 Q4 Total Assets 561,362 in the FY2024 report's own table vs 551,099 in the FY2025 report's comparative column, a gap of 10,263m, essentially equal to the SOLO-basis gap of 10,262.23m between 557,376.91 and 547,114.68; Net Profit After Tax gap of 197m matches the SOLO-basis PAT gap of 197.23m almost exactly too). This strongly suggests a real, specific ~BDT 10,262-10,263m asset adjustment and ~BDT 197m profit adjustment between the two report vintages, present on both bases, rather than independent errors. Still not reconciled to a specific disclosed cause — flagged for a future session.",
+      "note_2": "A separate, isolated equity discrepancy was also found in the FY2022 Q4 comparative: the FY2023 report's comparative column shows Total Shareholders' Equity 20,124m for FY2022 Q4 vs 20,214m in FY2022's own report (a ~0.4% gap, single-digit transposition pattern). Q1-Q3 of both FY2022 and FY2023 are unaffected (match exactly across both reports); FY2022's own contemporaneous value (20,214) is preferred per project convention."
+    },
+    {
+      "period": "2025 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "trust-bank-annual-report-2025.txt (\"Five Years' Financial Summary\")",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2025],
+      "note": "This report also contains a chart/infographic 'Performance at a Glance' page whose text extraction scrambles label-to-data alignment (a common failure mode for bar-chart PDF pages); the reliable tabular 'Five Years' Financial Summary' was used instead, and cross-checked to be internally consistent (chart figures matched once correctly re-aligned)."
+    },
+    {
+      "period": "2017-2018 (Q1, Q2, Q3)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "trust-bank-annual-report-2018.txt (\"Evaluation of the Quarterly Financials by the Audit Committee and by the Board\", lines 6179-6210; own 2018 columns + 2017 comparative columns)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_partial_degraded_quality",
+      "used_for_years": [2017, 2018],
+      "note": "CONSOLIDATED basis (table's own text states the Board approved consolidated financial statements) — differs from this bank's SOLO main series; see top-level reporting_basis. This is the FIRST year this BSEC disclosure appears in Trust Bank's annual report (confirmed absent in 2011-2017 reports by direct grep of all seven, including for row-label variants and the '4th Qtr'/'1st Qtr' column headers — the requirement was evidently not yet part of the bank's report format before FY2018), so no earlier comparative exists and none of 2011-2016 could be backfilled this way. Source-page text extraction is visibly degraded relative to every later vintage of this same table (garbled/reversed-looking fragments elsewhere on the same page, consistent with a rotated/landscape original layout) — Total Assets, Deposits, Total Liabilities, Total Equity, Off-Balance Sheet Items, and Net Interest Income (cumulative) extracted cleanly (8/8 values, balance-sheet identity holds exactly for all 6 quarters produced); Net Profit After Tax (cumulative) recovered for 7 of 8 cells (2017 Q1 missing, left as a gap, not guessed); Total Operating Expenses, Total Operating Income, Profit Before Provision, EPS, Loans and Advances, and Investments could not be reliably recovered at all for 2017/2018 and are omitted from those quarters' JSON files rather than fabricated."
+    },
+    {
+      "period": "2019 (Q1, Q2, Q3)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "trust-bank-annual-report-2020.txt (\"Evaluation of the Quarterly Financials by the Audit Committee and the Board\", lines 8485-8837; 2019 comparative columns)",
+      "source_priority": 2, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2019],
+      "note": "Trust Bank's own FY2019 annual report (trust-bank-annual-report-2019.txt) is present in the archive only as a short 1,613-line partial extraction that does NOT contain this table at all (confirmed by grep) — this is the '2019 report itself appears to be missing entirely' gap. Sourced instead from the FY2020 report's comparative column. CONSOLIDATED basis (table's own text: 'the Board approved the consolidated financial statements in 2020'). Independently corroborated: this table's FY2019 Q4 Total Assets (296,453), Deposits (241,822), and Loans and Advances (212,836) match trust-bank-annual-report-2019.txt's own front-page 'Financial Highlights' figures EXACTLY, confirming this comparative column is reliable for FY2019 despite FY2019's own report's incomplete text. Balance-sheet identity holds exactly for all three quarters. Loans and Advances and Fixed Assets for FY2019 Q1-Q3 are single-source (no other report's comparative column reaches back to FY2019) — moderate confidence, included as reported (not internally contradictory) but not independently cross-validated the way FY2020-2024 are below."
+    },
+    {
+      "period": "2020 (Q1, Q2, Q3)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "trust-bank-annual-report-2021.txt (\"Evaluation of the Quarterly Financials by the Audit Committee and the Board\", lines 5214-5259; 2020 comparative columns)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2020],
+      "note": "CONSOLIDATED basis. Deliberately sourced from the FY2021 report's comparative column rather than FY2020's own copy of this same table: FY2020's own PDF text lost row-boundary structure for several balance-sheet sub-items and contains an internal inconsistency (its 'Loans and Advances' row shows an identical value, 204,479, for both FY2019 Q3 and FY2020 Q3, which cannot both be correct). The core aggregates (Total Assets, Deposits, Total Liabilities, Total Equity, Off-Balance Sheet, Net Interest Income, Operating Income/Expenses, Profit Before Provision, Net Profit After Tax, EPS) are IDENTICAL between the FY2020 report's own table and the FY2021 report's comparative column for all of FY2020 Q1-Q4, so those are high confidence regardless of source; Loans/Investments/Fixed-Assets/Paid-up-Capital use the FY2021 report specifically to avoid the corrupted FY2020-report cell."
+    },
+    {
+      "period": "2021 (Q1, Q2, Q3)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "trust-bank-annual-report-2021.txt (\"Evaluation of the Quarterly Financials by the Audit Committee and the Board\", lines 5214-5259; own 2021 columns)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2021],
+      "note": "CONSOLIDATED basis. Cross-checked against the FY2022 report's comparative column for the same quarters: all Q1-Q3 line items match exactly."
+    },
+    {
+      "period": "2022 (Q1, Q2, Q3)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "trust-bank-annual-report-2022.txt (\"Audit Committee and the Board Evaluation of the Quarterly Financials\", lines 5104-5158; own 2022 columns)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2022],
+      "note": "CONSOLIDATED basis. Cross-checked against the FY2023 report's comparative column for the same quarters: all Q1-Q3 line items match exactly (Q4 has an isolated equity discrepancy, see note_2 on the 2020-2024 Q4 source entry above; irrelevant to Q1-Q3)."
+    },
+    {
+      "period": "2023 (Q1, Q2, Q3)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "trust-bank-annual-report-2023.txt (\"Audit Committee and the Board Evaluation of the Quarterly Financials\" / \"Quarterly Financial Data Summary (BDT in Million, Consolidated)\", lines 1190-1218; own 2023 columns)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2023],
+      "note": "CONSOLIDATED basis — this vintage of the table is the only one to say so explicitly in its own sub-heading ('BDT in Million, Consolidated'), confirming the pattern found numerically in every other year. Cross-checked against the FY2024 report's comparative column for the same quarters: all Q1-Q3 line items match exactly."
+    },
+    {
+      "period": "2024 (Q1, Q2, Q3)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "trust-bank-annual-report-2024.txt (\"Audit Committee and the Board Evaluation of the Quarterly Financials\", lines 7058-7143; own 2024 columns)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2024],
+      "note": "CONSOLIDATED basis. This table was initially missed by a substring search for 'Evaluation of the Quarterly' because the heading is split across two lines in this vintage ('...EVALUATION' / 'OF THE QUARTERLY FINANCIALS') and a follow-up search for the '4th Qtr.' column header also missed it (apparent non-breaking-space byte between '4th' and 'Qtr.' in this PDF's text layer) — found instead via a search for the distinctive row label 'Profit before provision'. Cross-checked against the FY2025 report's comparative column for the same quarters: all Q1-Q3 line items match exactly (Q4 shows a ~1.8% restatement, see note on the 2020-2024 Q4 source entry above; irrelevant to Q1-Q3)."
+    },
+    {
+      "period": "2025 (Q1, Q2, Q3)",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "trust-bank-annual-report-2025.txt (\"Audit Committee and the Board Evaluation of the Quarterly Financials\", lines 7467-7531; own 2025 columns)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2025],
+      "note": "CONSOLIDATED basis. No later annual report exists yet to cross-check against (FY2025 is the most recent year in the archive); internally validated via balance-sheet identity, which holds to within rounding for all three quarters. Notable: FY2025 Q4 Net Interest Income (cumulative, 4,138m) is ~51% below FY2024 Q4's 8,476m on the same table — a large compression worth a closer look in a future session (see insights.json)."
+    },
+    {
+      "period": "2014 (Q1, Q2, Q3)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS-March-2014.pdf, FS-June-2014.pdf, FS-September-2014.pdf",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2014],
+      "note": "SOLO basis — the bank's own live-website unaudited interim financial statements, downloaded directly (tblbd.com/about-us/financial-statements/sites/default/files/FS/...), pdftotext -layout'd, figures transcribed, then the PDFs deleted per project policy (no .txt retained in annual_reports/TRUSTBANK/, since these are not part of the annual-report archive). Each PDF's own 'Balance Sheet' section (explicitly distinct from an earlier 'Consolidated Balance Sheet' section in the same PDF) was used. Cross-checked three ways: (1) balance-sheet identity (assets = liabilities + equity) holds exactly for all three quarters; (2) each quarter's own 31-Dec-2013 comparative column (116,739,573,848 Taka = 116,739.57m) matches this dataset's stored 2013_Q4.json total_assets to the taka; (3) each PDF's Profit & Loss Account also carries a prior-year-same-period comparative column, independently recovering 2013 Q1/Q2/Q3 P&L figures (see the 2013 source entry below) that are mutually consistent across all three 2014 PDFs and monotonically increasing Q1->Q2->Q3."
+    },
+    {
+      "period": "2015 (Q1, Q2, Q3)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS-March-2015.pdf, FS-June-2015.pdf, FS-Sep-2015.pdf",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2015],
+      "note": "SOLO basis, same source/method as 2014 above. Each quarter's own 31-Dec-2014 comparative column (145,346,118,393 Taka = 145,346.12m) matches this dataset's stored 2014_Q4.json total_assets to the taka. Each PDF's P&L comparative column also reproduces the corresponding 2014 Q1/Q2/Q3 cumulative figures already recovered directly from the 2014 PDFs themselves — exact match in every case, e.g. the 2015 Q1 PDF's 'January to March 31, 2014' comparative Net Profit After Tax (155,823,993) matches the 2014 Q1 PDF's own figure exactly."
+    },
+    {
+      "period": "2016 (Q1, Q2, Q3)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "FS-March-2016 .pdf, FS-June-2016.pdf, FS-September-2016.pdf",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2016],
+      "note": "SOLO basis, same source/method as 2014-2015 above. Each quarter's own 31-Dec-2015 comparative column (180,229,572,689 Taka = 180,229.57m) matches this dataset's stored 2015_Q4.json total_assets to the taka."
+    },
+    {
+      "period": "2013 (Q1, Q2, Q3) -- P&L only",
+      "type": "unaudited_quarterly_financial_statements_comparative_column",
+      "source_document": "FS-March-2014.pdf, FS-June-2014.pdf, FS-September-2014.pdf (prior-year comparative columns in the Profit and Loss Account only)",
+      "source_priority": 2, "retrieval_date": "2026-08-26", "status": "extracted_partial_pl_only",
+      "used_for_years": [2013],
+      "note": "SOLO basis. No 2013 Q1/Q2/Q3 balance sheet is recoverable: the bank's website archive itself only goes back to 2014, and each year's interim Balance Sheet only ever shows a comparison against the immediately preceding audited Dec-31 year-end, never a prior-year same-quarter date — so there is no route to a 2013 Q1/Q2/Q3 balance-sheet snapshot short of an actual 2013 interim PDF, which does not exist on the live site. The Profit and Loss Account, by contrast, always shows a genuine prior-year-same-period cumulative comparative column, so 2013 Q1 (from the 2014 Q1 PDF), Q2 (from the 2014 Q2 PDF), and Q3 (from the 2014 Q3 PDF) cumulative income-statement figures ARE recoverable this way and are internally consistent (monotonically increasing Q1->Q2->Q3, and Q3-2013's EPS of 0.52 sits consistently below the already-stored FY2013 annual EPS of 0.85 in ratios_timeseries.json)."
+    },
+    {
+      "period": "2026 (Q1, Q2/Half-Yearly)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "Financial_Statements_of_TBL_for_1st_Quarter_ended_on_31_March_2026.pdf; Financial_Statement_of_TBPLC_for_Jun-2026.pdf",
+      "source_url": "https://www.tblbd.com/media/financial_statements/q1/Financial_Statements_of_TBL_for_1st_Quarter_ended_on_31_March_2026.pdf ; https://www.tblbd.com/media/financial_statements/q2/Financial_Statement_of_TBPLC_for_Jun-2026.pdf",
+      "source_priority": 1, "retrieval_date": "2026-09-12", "status": "extracted_and_validated",
+      "used_for_years_quarters": ["2026_Q1", "2026_Q2"],
+      "note": "SOLO basis (both filings' own plain 'Balance Sheet'/'Profit and Loss Account' sections, distinct from an earlier Consolidated section in the same PDF). The bank's financial-statements page moved to tblbd.com/reports/financial-statements/ (previously tblbd.com/about-us/financial-statements, which now 404s -- confirmed via the site's own generic 404 page, which links to the new /reports/financial-statements/ path). Both PDFs are pure scanned images (NAPS2-produced, zero embedded fonts, pdftotext -layout returns 0 lines) -- read directly via visual inspection of 200dpi page renders rather than tesseract OCR, since this method is more reliable than OCR for a document this dense with similarly-formatted number columns; no annual_reports/TRUSTBANK/*.txt was produced for either quarter as a result. Neither filing contains a loan-classification/NPL note or a capital-adequacy (CAR/CRAR) note, unlike the CONSOLIDATED-basis annual-report-embedded table used for 2017-2025 -- npl_pct and car_pct are gaps for both 2026 quarters. Full validation detail (balance-sheet identity, PBT-tax=PAT chain, NAV/share cross-check, and for Q2 the discrete-vs-cumulative Q1+Q2=H1 cross-check) is in each quarter's own quarterly/*.json period_note."
+    },
+    {
+      "period": "2011-2012 (Q1, Q2, Q3, unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "not_yet_researched",
+      "notes": "Confirmed (2026-08-26) that neither of this dataset's two available shortcuts reaches these two years: Trust Bank's own annual reports for 2011-2017 do not contain the 'Evaluation of the Quarterly Financials' embedded table (confirmed absent by direct grep of all seven), and the bank's live website's financial-statements archive (tblbd.com/about-us/financial-statements) itself only goes back to 2014 (confirmed via WebFetch of the page's full listing) — even the 2013 comparative columns recovered via the 2014 PDFs do not reach back a further year to 2012. Recovering 2011/2012 would require a different source entirely (Wayback Machine capture of the bank's site from that era, or DSE/Bangladesh Bank filing archives) — not attempted this session; time was prioritized on 2013-2025, which is now essentially complete (only 2011-2012 remain of the original 15-year span)."
+    }
+  ]
+}

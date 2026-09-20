@@ -1,0 +1,44 @@
+{
+  "bank_id": "DHAKABANK",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "asset_quality_volatility",
+      "severity": "info",
+      "statement": "NPL ratio has been volatile rather than trending in one direction across the full 15-year series: 3.45% (FY2011) -> peak of 6.28% (FY2012) -> a low of 3.13% (FY2020) -> back up to 5.33% (FY2024) -> down again to 3.77% (FY2025). Unlike AB Bank or Al-Arafah Islami Bank, Dhaka Bank shows no sustained multi-year deterioration; each rise has been followed by a recovery within 1-3 years.",
+      "metrics": ["npl_ratio_pct"],
+      "periods": ["2011_Q4", "2012_Q4", "2020_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "profitability_pressure_2024",
+      "severity": "warning",
+      "statement": "FY2024 was the weakest year in the series for profitability: ROE fell to 5.71% (from 8.14% in FY2023), the lowest point since at least FY2011, driven by provisioning for loans nearly doubling to BDT 7,155mn against a smaller net interest income base. This aligns with the broader FY2024 stress seen across several other DSE banks in this dataset (e.g. AB Bank, Al-Arafah Islami Bank).",
+      "metrics": ["roe_pct"],
+      "periods": ["2023_Q4", "2024_Q4"]
+    },
+    {
+      "category": "recovery_2025",
+      "severity": "info",
+      "statement": "FY2025 shows a sharp one-year recovery from FY2024's stress: NPL ratio improved from 5.33% to 3.77%, ROE more than doubled from 5.71% to 11.62%, and profit after tax more than doubled (BDT 1,251mn to BDT 2,688mn) even as CAR held broadly steady (13.41% -> 13.39%).",
+      "metrics": ["npl_ratio_pct", "roe_pct"],
+      "periods": ["2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "capital_adequacy_strength",
+      "severity": "info",
+      "statement": "CAR has stayed comfortably above the regulatory minimum (10%) throughout the full 15-year series, ranging narrowly between 10.46% (FY2015) and 16.12% (FY2019), never approaching the stress levels seen at AB Bank (which went negative) or Al-Arafah Islami Bank over the same period.",
+      "metrics": ["car_pct"],
+      "periods": ["2015_Q4", "2019_Q4", "2025_Q4"]
+    },
+    {
+      "category": "quarterly_profitability_deceleration_2025_2026",
+      "severity": "warning",
+      "statement": "The newly-added Q1-Q3 quarterly series (2026-08-26) shows that FY2025's headline recovery (ROE 11.62% for the full year) masked a within-year deceleration that has continued into FY2026: annualized quarterly ROE fell from 14.03% in Q1 2025 to 7.51% by Q3 2025, recovered only partially to 9.15% in Q1 2026, and fell again to 7.80% in Q2 2026. Cost-to-income ratio (calculated from cumulative operating income/expenses, not annualized) rose every quarter across the same window: 43.75% (Q1 2025) -> 45.71% (Q2 2025) -> 46.79% (Q3 2025) -> 50.75% (Q1 2026) -> 48.72% (Q2 2026), versus 40% for FY2025 as a whole. The FY2025 annual figure was disproportionately carried by strong late-year performance, not a sustained improvement in run-rate profitability or efficiency.",
+      "metrics": ["roe_pct", "cost_to_income_pct"],
+      "periods": ["2025_Q1", "2025_Q2", "2025_Q3", "2025_Q4", "2026_Q1", "2026_Q2"]
+    }
+  ],
+  "historical_context": "Dhaka Bank presents a materially different risk profile from AB Bank and Al-Arafah Islami Bank in this dataset: rather than a sustained multi-year deterioration, its NPL and profitability metrics cycle within a bounded range, with FY2024 as a single weak year followed by a FY2025 recovery rather than continued decline. Capital adequacy has remained consistently well above the regulatory floor across all 15 years.",
+  "data_gaps": "As of 2026-08-26, Q1/Q2/Q3 unaudited interim data has been added for 2014-2026 (37 of a possible 39 quarters), sourced from the bank's own dhakabank.com.bd un-audited interim filings, closing what was previously this bank's largest coverage gap. Remaining gaps: 2018 Q2 has no filing published on the bank's site at all (confirmed absent, not fabricated). 2020 Q2's balance sheet, 2021 Q1's balance sheet, 2021 Q3's balance-sheet detail lines (cash/investments/loans breakdown), and 2025 Q2's balance-sheet totals could not be legibly recovered even after an OCR fallback pass on the specific source pages (severe font-encoding corruption in those particular PDFs) - each period's own file documents exactly what is/isn't included rather than guessing. Two small unresolved balance-sheet items are flagged in their own files: a digit conflict in 2021 Q3's source PDF (resolved using the internally-consistent reading) and an unreconciled 0.097% gap in 2023 Q3 that persists in the source document itself. CRAR/Tier-1/Tier-2/RWA and NAV-per-share are only available for the quarters where Dhaka Bank's own interim filing happens to disclose them (2025 Q1, 2025 Q3, and 2015 Q3 for NAVPS only) - Bangladesh Bank does not require full Basel III disclosure in every quarterly filing, and this was not chased down via the notes pages for every 2021-2026 quarter this session (time-boxed). 2014 annual report itself is not in the local archive, but 2014 data (including now its full Q1-Q3) is fully available via other reports' comparative tables, so there is no actual data gap for that year."
+}

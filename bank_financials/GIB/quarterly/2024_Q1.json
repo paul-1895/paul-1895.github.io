@@ -1,0 +1,161 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2024-03-31",
+  "financial_year": 2024,
+  "quarter": "Q1",
+  "period_note": "Unaudited interim financial statements 'As at 31 March 2024'. Income-statement figures below are FULLY VALIDATED and cross-check exactly against the FY2024 annual report's own 'Explanation on any significant variance...between Quarterly Financial performances and Annual Financial Statements' summary table (which itself was found with its row labels lost to a pdftotext layout issue -- this filing's clean, directly-labelled figures let all 10 of that table's unlabelled rows be identified with certainty: Net Investment Income, Non-investment income, Total Operating Income, Total Operating Expenses, Profit before Provision, Total Provision, PBT, Tax, PAT, EPS, in that order). *** MAJOR FINDING -- READ BEFORE USING ANY GIB 2024 INTERIM DATA *** This filing's own comparative column for '31 December 2023' shows: Total Shareholders' Equity = 13,764,184,590 (POSITIVE, i.e. +13.76 BILLION Taka), Retained earnings = 1,452,999,619, Statutory reserve = 2,436,788,091. This is WILDLY different from -- and irreconcilable with -- this dataset's own audited 2023_Q4.json, which records Dec-31-2023 equity as -9,026,176,636 (NEGATIVE 9.03 billion), sourced from the bank's own 'ANNUAL REPORT 2023 (Revised)', auditor-signed 8-10 July 2025. The gap is BDT 22,790,361,226 (about 22.8 billion Taka, roughly 2.5x GIB's entire FY2022 equity base). The explanation: this Q1-2024 interim filing was prepared and published in 2024, well over a year BEFORE the 'Revised' FY2023 annual report was finalised (July 2025). The original, contemporaneous books throughout 2024 continued to show FY2023 as a solidly positive-equity year; it was only during the very late audit of FY2023 (18 months after year-end) that a massive retroactive restatement -- the same one this dataset's sources.json already documents as driven by a Total Provision charge of BDT 20,282.62mn recognised in the 'Revised' report -- brought Dec-2023 equity down to -9,026.18m. PRACTICAL CONSEQUENCE: this quarter's own balance sheet (31 March 2024, equity +14,556.29m) and income-statement figures (PAT +800.10m) are being reported here EXACTLY AS FILED, on this same pre-restatement basis as their own Dec-2023 comparative -- they are NOT on the same accounting basis as this dataset's audited 2023_Q4.json or 2024_Q4.json, and should not be treated as a smooth continuation of that series. By the time GIB's Q1-2025 interim filing was prepared, the restated basis HAD fully propagated into interim reporting (see 2025_Q1.json, whose own Dec-2024 comparative matches the audited 2024_Q4.json exactly) -- see 2024_Q3.json for the specific quarter where the transition first shows up, in an internally-inconsistent way. THE ANSWER TO 'WHEN DID EQUITY ACTUALLY CROSS NEGATIVE': on the bank's own contemporaneous books, it did not appear to cross negative at all during Q1-Q2 2024 (equity stayed positive, +14.56bn then +14.22bn) -- the negative-equity reality was discovered/recognised only retroactively, at the audit stage, more than a year later. See 2024_Q3.json for the first (partial, internally-contradictory) sign of the restatement appearing in an interim filing.",
+  "source": {
+    "source_document": "GIB-FS-31-March-2024.pdf (downloaded from globalislamibankbd.com, pdftotext -layout extracted; PDF deleted after extraction per project policy)",
+    "source_url": "https://www.globalislamibankbd.com/wp-content/uploads/2024/05/GIB-FS-31-March-2024.pdf",
+    "source_page": "Balance Sheet p.1, Off-balance Sheet Items p.1-2, Profit and Loss Account p.2-3",
+    "retrieval_date": "2026-08-27",
+    "reporting_basis": "Solo / standalone, unaudited, PRE-RESTATEMENT basis (see period_note)"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Liabilities and Shareholders' Equity",
+      "value": 166565.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General investment, etc. + Bills purchased and discounted)",
+      "value": 134607.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposit and other accounts",
+      "value": 127793.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity -- PRE-RESTATEMENT basis, see period_note",
+      "value": 14556.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 152009.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-balance sheet items including contingent liabilities",
+      "value": 8650.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per Share",
+      "value": 14.74,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income",
+      "value": 4730.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits",
+      "original_metric_name": "Less: Profit paid on deposits",
+      "value": 3185.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net Investment Income",
+      "value": 1544.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Total Operating Income",
+      "value": 1738.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total Operating Expenses",
+      "value": 1053.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit / (Loss) before Provision",
+      "value": 685.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Total provision (a net reversal this quarter)",
+      "value": -263.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total Profit / (Loss) before tax",
+      "value": 948.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Deferred tax + Current tax",
+      "value": 148.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit/(Loss) after Tax",
+      "value": 800.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per share (EPS)",
+      "value": 0.81,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

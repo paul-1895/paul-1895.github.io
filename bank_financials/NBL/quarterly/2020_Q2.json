@@ -1,0 +1,155 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2020-06-30",
+  "financial_year": 2020,
+  "quarter": "Q2",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account, read from National Bank's own half-yearly Q2-2020 unaudited financial statements (clean digital text with scattered character-level corruption). TOTAL ASSETS (476,230,212,176), TOTAL LIABILITIES (426,096,537,978) and TOTAL DEPOSITS (371,295,236,653) are all cleanly printed for the current period; comparative (31 Dec 2019) figures for deposits, gross_loans and investments_securities all match this dataset's existing FY2019 figures exactly. TOTAL SHAREHOLDERS' EQUITY's own printed cell is a garbled fragment consistent with, but not identical to, Total Assets minus Total Liabilities (50,133,674,198); the identity-derived figure is used and cross-checks against NAV per share (50,133.67m / 2,920,398,704 shares = 17.16, matching the filing's own printed NAV of ~17.17 once its leading-digit OCR noise is corrected). IMPORTANT CORRECTION DURING CROSS-VALIDATION: this filing's own printed cumulative (Jan-Jun 2020) net_interest_income cell is missing its leading digit(s) in the raw text ('  ,405,177,221'); read at face value this would give 1,405,177,221, which was the initial reading, but cross-referencing 2021_Q2.json's own Jan-Jun-2020 comparative column shows this figure cleanly as 1,805,177,221 -- and using 1,805,177,221 makes Total Operating Income (5,237,641,957), Profit Before Provision (2,018,095,709), Profit Before Tax (1,518,095,709, which matches this filing's own directly-printed 'r,518,095,709' fragment exactly) and PAT (1,018,095,709) all reconcile exactly against both this filing's own printed totals and 2021_Q2.json's comparative column -- so 1,805,177,221 (not 1,405,177,221) is used here as the correct value. Tax (500,000,000) is derived as Profit Before Tax minus PAT, a clean round number confirming the correction. interest_income and interest_expense are not legible in this filing's own P&L (that row is corrupted across all four columns) and were recovered from 2021_Q2.json's own Jan-Jun-2020 comparative column (15,999,274,337 and 14,194,097,116 respectively; their difference reproduces the corrected net_interest_income exactly). EPS is the filing's own printed cumulative figure; note it implies a higher share count than Dec-2019's paid-up capital would suggest, consistent with this dataset's documented 'Re-stated EPS' phenomenon (retroactive bonus-share adjustment) seen elsewhere in this series -- the printed figure is kept rather than a naive recomputation.",
+  "source": {
+    "source_document": "National Bank's own half-yearly (2nd Quarter) 2020 unaudited financial statements",
+    "source_path": "annual_reports/NBL/nbl-unaudited-2020-q2.txt",
+    "source_url": "https://www.nblbd.com/investors-relations/financial-statement",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections (second occurrence of each heading, following the Consolidated sections)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 476230.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 426096.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 50133.67,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_liabilities",
+      "note": "Own printed cell garbled; derived as Total Assets minus Total Liabilities, cross-validated against NAV per share."
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 371295.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 383431.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 50192.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value per share (NAV)",
+      "value": 17.17,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Printed as a garbled '1117'; 17.17 is the OCR-corrected reading, cross-validated against equity/shares = 17.16."
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest income (cumulative from Jan 1)",
+      "value": 15999.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Not legible in this filing's own P&L; recovered from 2021_Q2.json's own Jan-Jun-2020 comparative column."
+    },
+    {
+      "normalised_metric_name": "interest_expense_cumulative",
+      "original_metric_name": "Interest paid on deposits and borrowings (cumulative from Jan 1)",
+      "value": 14194.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Recovered from 2021_Q2.json's comparative column; difference from interest income reproduces net_interest_income_cumulative exactly."
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 1805.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "CORRECTED from an initial mis-read of 1,405.18m (leading digit missing in the raw text); 1,805.18m is confirmed by 2021_Q2.json's comparative column and reconciles Total Operating Income to this filing's own printed total exactly."
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 2601.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)",
+      "value": 831.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (585.63m) and other operating income (245.68m)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 3219.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": 2018.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Derived as Total Operating Income (5,237.64m, using the corrected net_interest_income) minus Total Operating Expenses; matches 2021_Q2.json's comparative column (2,018,095,709) almost exactly."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after taxation (cumulative from Jan 1)",
+      "value": 1018.1,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Matches 2021_Q2.json's comparative column exactly."
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (Re-stated) (cumulative from Jan 1)",
+      "value": 0.22,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ],
+  "fields_derived_via_identity": ["total_equity", "net_interest_income_cumulative", "operating_profit_cumulative"],
+  "fields_unavailable": []
+}

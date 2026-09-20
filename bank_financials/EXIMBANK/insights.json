@@ -1,0 +1,119 @@
+{
+  "bank_id": "EXIMBANK",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "asset_quality_collapse_2024",
+      "severity": "critical",
+      "statement": "Gross Non-Performing Investment (NPI) ratio jumped from 3.64% (FY2023) to 28.40% (FY2024) \u2014 nearly 8x in a single year, and by far the sharpest single-year asset-quality deterioration of any bank researched in this dataset (compare Dhaka Bank's and Dutch-Bangla Bank's roughly 1.3-1.9x FY2024 NPL increases). Net NPI ratio also spiked from 2.06% to 25.53%.",
+      "metrics": [
+        "npl_ratio_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "capital_adequacy_breach",
+      "severity": "critical",
+      "statement": "CAR fell from 14.48% (FY2023) to 9.71% (FY2024), dropping below the 12.5% regulatory minimum (Basel III, including capital conservation buffer) for the first time in the researched period \u2014 the only bank in this dataset observed to breach the regulatory minimum outright in FY2024 (AB Bank's CAR breach happened earlier, in prior years).",
+      "metrics": [
+        "car_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "profitability_collapse_2024",
+      "severity": "critical",
+      "statement": "ROE collapsed from 10.08% (FY2023) to 1.46% (FY2024), and profit after tax fell 86% (BDT 3,233.25mn to BDT 464.83mn), driven by the NPI spike's provisioning impact. This is consistent with, and likely connected to, the well-documented exposure of large related-party lending concentrations at EXIM Bank that came to light following Bangladesh's August 2024 political transition.",
+      "metrics": [
+        "roe_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "pre_2024_stability",
+      "severity": "info",
+      "statement": "Prior to FY2024, EXIM Bank showed a fairly stable, unremarkable profile: CAR ranged 10.9%-14.5%, ROE ranged 6.2%-14.9%, with no NPI data available for 2011-2021 to assess longer-run asset-quality trend. The FY2024 shock therefore appears to be a discrete, severe event rather than the culmination of a multi-year deterioration visible in this dataset.",
+      "metrics": [
+        "car_pct",
+        "roe_pct"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2021_Q4",
+        "2023_Q4"
+      ]
+    },
+    {
+      "category": "intra_year_2024_collapse_timing",
+      "severity": "critical",
+      "statement": "The FY2024 annual figures (small full-year profit of BDT 464.83mn) completely mask a severe intra-year collapse only visible at quarterly granularity: cumulative 9-month (Jan-Sept 2024) net profit after tax was actually a LOSS of BDT -4,100.33mn, meaning Q4-2024 alone contributed a discrete recovery of +4,565.16mn. The discrete Jul-Sept 2024 quarter alone was a loss of BDT -5,691.15mn (derived as 9M cumulative -4,100.33mn minus H1 cumulative +1,590.82mn) -- versus a +504.16mn discrete profit in the same Jul-Sept quarter of 2023 (2023 Q3 cumulative 2,170.40mn minus H1 1,666.24mn). Operating profit (pre-provision) remained solidly positive throughout Q3-2024 (discrete +1,608.35mn), so the loss was driven by provisioning/tax below the operating-profit line, not a revenue collapse -- consistent with the bank recognising the NPI shock (3.64%->28.40% for the full year) via a large provisioning charge concentrated in the quarter immediately following Bangladesh's August-2024 political transition.",
+      "metrics": [
+        "net_profit_after_tax_cumulative",
+        "operating_profit_cumulative"
+      ],
+      "periods": [
+        "2024_Q2",
+        "2024_Q3",
+        "2023_Q2",
+        "2023_Q3",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "q3_2025_funding_cost_crisis",
+      "severity": "critical",
+      "statement": "The most recent quarter recovered (Jul-Sept 2025, filed 30-Oct-2025, one week before Bangladesh Bank's 9-Nov-2025 Letter of Intent for the Sammilito Islami Bank merger) shows a genuine OPERATING-level collapse, not just a provisioning choice: discrete-quarter Total Operating Income was itself NEGATIVE (BDT -2,455.61mn) for the only time in this bank's entire researched history, because discrete-quarter Net Investment Income went to BDT -3,141.47mn -- i.e. profit paid on deposits and borrowings exceeded investment income earned that quarter. This produced a discrete net loss of BDT -3,384.68mn (EPS -2.34), following Q1-2025's still-positive +261.95mn and Q2-2025's smaller loss of -139.15mn -- an accelerating, three-quarter deterioration path visible only in the interim data (no FY2025 annual report will ever be filed).",
+      "metrics": [
+        "net_investment_income_cumulative",
+        "total_operating_income_discrete_q3",
+        "net_profit_after_tax_discrete_q3"
+      ],
+      "periods": [
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3"
+      ]
+    },
+    {
+      "category": "provisioning_stopped_amid_operating_collapse",
+      "severity": "high",
+      "statement": "Even as operating income collapsed, EXIM Bank's cumulative Total Provision charge for the first 9 months of 2025 was effectively NIL (individual provision/release line items summed to exactly BDT 0mn), versus a BDT 10,460.39mn cumulative provisioning charge over the same 9 months of 2024. The discrete Jul-Sept 2025 quarter alone recorded a net provision RELEASE of BDT -2,072.99mn (versus a BDT 7,974.66mn charge in the same quarter of 2024) -- provisioning provided a partial offset to the operating loss rather than reflecting further recognised deterioration. This narrowed the reported 9-month loss (-3,261.88mn) relative to what it would have been at 2024's provisioning intensity, echoing the same pattern already flagged for Islami Bank in this dataset (cutting provisioning while the underlying book deteriorates) -- though unlike Islami Bank, EXIM Bank's operating-level results were bad enough that a net loss was still reported despite the provisioning pullback.",
+      "metrics": [
+        "total_provision_cumulative",
+        "net_profit_after_tax_cumulative"
+      ],
+      "periods": [
+        "2024_Q3",
+        "2025_Q3"
+      ]
+    },
+    {
+      "category": "deposit_flight_2025",
+      "severity": "high",
+      "statement": "Total deposits fell from BDT 429,931.46mn (FY2024 year-end) to BDT 367,327.91mn (30-Sept-2025) -- a 14.56% decline in 9 months (annualized run-rate roughly -19%) -- while Placement from Other Banks & FIs (a costlier, shorter-term wholesale/interbank funding source) grew from BDT 111,263.46mn to BDT 149,968.97mn (+34.79%) over the same period. The Investment-to-Deposit (ID) ratio, this bank's Islamic-banking equivalent of LDR, consequently rose from 122.04% (FY2024, already above 100%) to 132.13% (Q1-2025), 137.25% (Q2-2025), and 147.72% (Q3-2025) -- a pattern consistent with deposit withdrawals being replaced by more expensive interbank borrowing, which is the most direct balance-sheet explanation for Q3-2025's net investment income turning negative (see the q3_2025_funding_cost_crisis signal).",
+      "metrics": [
+        "total_deposits",
+        "placements_from_other_banks_fis",
+        "ldr_pct"
+      ],
+      "periods": [
+        "2024_Q4",
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3"
+      ]
+    }
+  ],
+  "historical_context": "EXIM Bank's FY2024 asset-quality and capital-adequacy shock is the most severe single-year deterioration of any bank researched in this dataset so far \u2014 more severe than the broader FY2024 sector stress seen at Dhaka Bank and Dutch-Bangla Bank, and distinct in kind from AB Bank's slower multi-year decline. As a Shariah-based Islamic bank, EXIM Bank's asset-quality metric (Non-Performing Investment, NPI) is not directly comparable to conventional banks' NPL ratios in formula, though both measure the same underlying concept (impaired credit exposure as a share of total credit extended). UPDATE 2026-08-26: the FY2024 shock proved to be a terminal event for EXIM Bank as an independent institution rather than a recoverable downturn. EXIM Bank is being merged into a newly formed state-owned entity, Sammilito Islami Bank PLC, together with four other crisis-hit Shariah banks (First Security Islami Bank, Global Islami Bank, Union Bank, Social Islami Bank), under Bangladesh Bank's resolution plan for S Alam Group-linked banks (BB Letter of Intent issued 9-Nov-2025). No standalone FY2025 annual report exists or is expected; see sources.json for the full evidence trail. UPDATE 2026-08-27: Q1-Q3 quarterly backfill (2011-2025, 45 quarter-files) confirms the FY2024 annual figures substantially UNDERSTATE the severity and mistiming of the collapse -- the crisis was concentrated in a single catastrophic quarter (Jul-Sept 2024, -5,691.15mn) that a Q4 rebound (+4,565.16mn) then papered over into a small full-year profit. The pattern continued and intensified into 2025: quarterly PAT went +261.95mn (Q1) -> -139.15mn (Q2) -> -3,384.68mn (Q3), with Q3-2025 marking the first quarter in this bank's researched history where discrete Total Operating Income itself went negative, on the back of a deposit-flight/funding-cost dynamic (deposits -14.56% in 9 months, interbank placements +34.79%). This is the clearest intra-year confirmation available in this dataset of the deterioration that precipitated the Sammilito Islami Bank merger -- see the new risk_signals above for full detail. 2011-2023 Q1-Q3 data, by contrast, shows a fairly ordinary, non-alarming quarterly cadence (occasional single-quarter losses tied to disclosed one-off events -- e.g. a new BB loan-classification formula in Q1-2013 -- but no sustained deterioration), consistent with the FY2024 shock being a genuinely discrete event rather than a slow-building trend visible earlier.",
+  "data_gaps": "Only Q4/year-end (audited) data is available; Q1/H1/Q3 unaudited interim data was not researched for this bank. Gross/Net NPI ratio only located for FY2022-2024; not available for FY2011-2021 in the summary tables used. Total Capital (Tier I + Tier II) breakdown omitted for FY2011 only due to unreliable OCR extraction. FY2025 is not covered and very likely never will be under the EXIMBANK identity: as of 2026-08-26 no annual report or audited financial statements exist for EXIM Bank as a standalone entity (confirmed via the bank's own website, the Wayback Machine, and DSE's disclosure table, which all stop at FY2024) because EXIM Bank is being absorbed into the newly formed state-owned Sammilito Islami Bank PLC (with First Security Islami Bank, Global Islami Bank, Union Bank, and Social Islami Bank) under Bangladesh Bank's resolution of S Alam Group-linked banks (BB Letter of Intent 9-Nov-2025). Any FY2025 EXIM-legacy figures will likely appear only inside Sammilito Islami Bank PLC's own combined reporting. Future sessions should re-verify EXIM Bank's legal/reporting status rather than assuming a routine late filing. UPDATE 2026-08-27: Q1-Q3 interim data is now populated for all 15 years (2011-2025) in bank_financials/EXIMBANK/quarterly/ -- see that bank's sources.json for full sourcing/basis/validation detail. Remaining gaps: (1) a genuine Solo balance sheet as at 30-Sept-2021 could not be recovered by any route (EXIM's interim filings only ever show balance-sheet comparatives vs the prior Dec year-end, never vs the prior same-quarter, so no later filing reproduces a Sept-2021 balance sheet -- only the P&L was recoverable, via the 2022 Q3 filing's comparative column); (2) several quarters (2018 Q1, 2019 Q1/Q3, 2020 Q1-Q3, 2022 Q1) have only ratio-level detail (NAV/EPS/NOCFPS per share) rather than a full statement -- a fuller filing was not locatable for those specific quarters despite a genuine search; (3) CAR and NPI/NPL ratios are not disclosed at all in any of this bank's quarterly interim filings (only in the audited annual report), so ratios_timeseries.json's new 2025 Q1-Q3 entries carry null car_pct/npl_ratio_pct -- this is a real reporting-content gap, not a research gap. FY2025 remains confirmed unavailable as an ANNUAL filing (see above) -- however, genuine quarterly interim filings exist through 30-Sept-2025 and are now fully captured; no Q4/FY2025 filing of any kind is expected."
+}

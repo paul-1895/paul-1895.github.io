@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Minervini Model — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="../candlestick_chart/candlestick-chart.css" />
+<link rel="stylesheet" href="../candlestick_chart/candlestick-analysis.css" />
+<link rel="stylesheet" href="minervini.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Minervini Model</h1>
+        <p>Trend Template on daily, weekly &amp; monthly bars</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="/super_model/super-model.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Super Model" aria-label="Super Model">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        <span>Super Model</span>
+      </a>
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>
+      </a>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="mv-page-root">
+
+  <!-- What the backtest did and did not establish. Deliberately first. -->
+  <section class="mv-evidence" id="mv-evidence"></section>
+
+  <!-- The numbers behind that verdict, in the Super Model's layout -->
+  <section class="mv-panel" id="mv-panel">
+    <div class="mv-panel-tabs">
+      <button class="mv-tab active" data-pane="backtest" onclick="window.mvShowPane(this)">Backtest</button>
+      <button class="mv-tab" data-pane="runs" onclick="window.mvShowPane(this)">Training &amp; test data</button>
+      <button class="mv-tab" data-pane="rule" onclick="window.mvShowPane(this)">What's tested</button>
+    </div>
+    <div class="mv-pane active" id="mv-pane-backtest"></div>
+    <div class="mv-pane" id="mv-pane-runs"></div>
+    <div class="mv-pane" id="mv-pane-rule"></div>
+  </section>
+
+  <div class="mv-meta-row" id="mv-meta-row"></div>
+
+  <div class="mv-filter-bar" id="mv-filter-bar">
+    <div class="filter-select-wrap mv-search-wrap">
+      <label for="mv-search">Search</label>
+      <input type="search" id="mv-search" class="mv-search" placeholder="Code or company…" autocomplete="off" spellcheck="false" />
+    </div>
+    <div class="filter-select-wrap">
+      <span class="mv-filter-label">Passes on</span>
+      <div class="mv-seg" id="mv-filter-tf">
+        <button type="button" class="mv-seg-btn active" data-tf="any">Any</button>
+        <button type="button" class="mv-seg-btn" data-tf="daily">Daily</button>
+        <button type="button" class="mv-seg-btn" data-tf="weekly">Weekly</button>
+        <button type="button" class="mv-seg-btn" data-tf="monthly">Monthly</button>
+        <button type="button" class="mv-seg-btn" data-tf="all">All three</button>
+      </div>
+    </div>
+    <div class="filter-select-wrap">
+      <label for="mv-sector">Sector</label>
+      <select id="mv-sector"><option value="">All Sectors</option></select>
+    </div>
+    <button type="button" id="mv-clear" class="mv-clear">Clear</button>
+    <span class="mv-count" id="mv-count"></span>
+  </div>
+
+  <div class="mv-grid" id="mv-grid"></div>
+  <div class="mv-empty" id="mv-empty" style="display:none;">No stocks match the current filters.</div>
+
+</main>
+
+<div id="mv-modal" class="an-panel" style="display:none;">
+  <div class="an-panel-overlay" onclick="window.closeMvModal()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2 id="mv-modal-title">—</h2>
+      <button class="modal-close" onclick="window.closeMvModal()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="mv-modal-body"></div>
+  </div>
+</div>
+
+<!-- Metric detail: what a backtest number means and how it was computed -->
+<div id="mv-info-modal" class="an-panel" style="display:none;">
+  <div class="an-panel-overlay" onclick="window.closeMvInfo()"></div>
+  <div class="an-panel-content">
+    <div class="an-panel-hd">
+      <h2 id="mv-info-title">—</h2>
+      <button class="modal-close" onclick="window.closeMvInfo()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="an-panel-body" id="mv-info-body"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>Minervini Trend Template &middot; Prices in BDT (Taka) &middot; For informational purposes only</p>
+</footer>
+
+<script type="module" src="minervini.js"></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

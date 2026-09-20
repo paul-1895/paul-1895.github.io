@@ -1,0 +1,93 @@
+{
+  "bank_id": "PREMIERBAN",
+  "generated_at": "2026-08-26",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json or a named line_item in quarterly/<YEAR>_Q4.json. All figures verified programmatically against those files before finishing.",
+  "risk_signals": [
+    {
+      "category": "fy2024_fy2025_asset_quality_collapse",
+      "severity": "critical",
+      "statement": "NPL ratio rose from a low of 4.99% (FY2023) to 22.92% (FY2024) to 31.01% (FY2025) in consecutive years - classified loans grew from 14,451.50m to 75,527.14m (5.2x) to 103,893.95m over the same span, while gross loans grew only modestly (289,392.27m to 329,534.65m to 335,008.32m). This is the same FY2024-2025 sector-wide asset-quality recognition event documented across this dataset's other banks, and Premier Bank is among the more severely affected.",
+      "metrics": ["npl_ratio_pct", "classified_loans", "gross_loans"],
+      "periods": ["2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "fy2025_capital_adequacy_breach",
+      "severity": "critical",
+      "statement": "CRAR fell from 13.58% (FY2023) to 10.54% (FY2024) to 5.70% (FY2025) - the FY2025 figure is roughly half of Bangladesh Bank's minimum capital requirement plus capital conservation buffer (~12.5%), and even the FY2024 figure (10.54%) is below that combined threshold. Total Regulatory Capital fell in absolute terms from 39,941.64m (FY2023) to 35,967.64m (FY2024) to 23,903.08m (FY2025) even as Total Risk Weighted Assets kept growing (294,144.79m to 341,087.45m to 419,256.80m), a double squeeze of shrinking capital against a growing risk base.",
+      "metrics": ["car_pct", "total_capital"],
+      "periods": ["2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "fy2025_net_interest_margin_turned_negative",
+      "severity": "critical",
+      "statement": "Interest Expense (29,805.39m) exceeded Interest Income (23,799.62m) in FY2025, producing a negative Net Interest Income of -6,005.77m - the only year in the 15-year series where NII is negative. Combined with Total Operating Income collapsing 92% year-on-year (16,077.26m in FY2024 to 1,238.42m in FY2025), this points to a severe funding-cost or deposit-flight problem layered on top of the credit-quality crisis, not just higher provisioning.",
+      "metrics": ["net_interest_income", "interest_income", "interest_expense", "total_operating_income"],
+      "periods": ["2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "fy2025_loss_and_balance_sheet_contraction",
+      "severity": "critical",
+      "statement": "Premier Bank posted a Solo net loss of -9,785.41m in FY2025 (EPS -7.93) versus a profit of +1,454.59m in FY2024 and +4,345.53m in FY2023. Total assets contracted 5.80% year-on-year (449,626.03m to 423,551.38m) - the only year-on-year decline in the series - and deposits fell 5.22% (347,625.28m to 329,402.48m) while loans kept growing, pushing the loan-to-deposit ratio to 101.70% (loans now exceed deposits, versus 94.80% the year before). Equity nearly halved from the loss alone (27,042.86m to 17,146.71m) but stayed positive, so ROE (-57.06%, period-end) and ROA (-2.31%, period-end) are valid, extreme-negative numbers rather than null.",
+      "metrics": ["profit_after_tax", "eps", "total_assets", "total_deposits", "ldr_pct", "roe_pct", "roa_pct"],
+      "periods": ["2023_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "fy2024_solo_consolidated_divergence",
+      "severity": "info",
+      "statement": "In FY2024, the Solo/Bank entity was profitable (PAT +1,454.59m) while its subsidiary Premier Bank Securities Ltd posted a loss (-112.98m per the report's own Segment Reporting note), pulling Consolidated/Group PAT down to 1,341.61m. This is the first year in the series where Solo and Consolidated profitability diverge by more than rounding, and coincides exactly with the onset of the asset-quality shock.",
+      "metrics": ["profit_after_tax"],
+      "periods": ["2024_Q4"]
+    },
+    {
+      "category": "fy2013_interim_provisioning_event",
+      "severity": "info",
+      "statement": "Newly-sourced Q1-Q3 2013 interim data (Consolidated basis) reveals a large specific-provision event mid-year that this dataset's Q4/annual-only series could not show: cumulative Profit After Tax was already slightly positive at +16.40m through Q1 2013, then swung to -1,997.79m (EPS -3.90) by H1 2013 on a Specific Provision of 1,747.42m (cumulative), before partially recovering to -1,131.17m (EPS -2.21) by Q3 2013 as an implied discrete Jul-Sep 2013 profit of approximately +866.6m was earned. Retained earnings was negative on the balance sheet at both the Jun-2013 (-2,005.28m) and Sep-2013 (-1,139.90m) dates as a direct consequence, before recovering to positive again (+661.32m) by Q1 2014. Full-year FY2013 Solo Profit After Tax (796.36m, per 2013_Q4.json) was nonetheless positive, implying Q4 2013 alone was a strong recovery quarter - consistent with the pattern (also seen in FY2024) of this bank's annual results masking sharp intra-year swings that only the interim data reveals. Note this interim series is Consolidated, not Solo like the Q4 figure quoted for comparison, so the two are not perfectly comparable in magnitude - but the sign pattern (loss reversing to a full-year profit) is the notable finding regardless of basis.",
+      "metrics": ["profit_after_tax_cumulative", "total_provision_cumulative", "eps_cumulative"],
+      "periods": ["2013_Q1", "2013_Q2", "2013_Q3", "2013_Q4"]
+    },
+    {
+      "category": "2011_2019_growth_and_gradual_deleveraging_phase",
+      "severity": "info",
+      "statement": "From FY2014 to FY2018, Premier Bank grew total assets at 17.85%-23.74% per year while NPL ratio fell steadily from a local peak of 9.03% (FY2014) to a series-low-to-date of 3.99% (FY2018), and ROE rose from 9.64% to 15.71% over the same span - a sustained improvement phase. FY2015 was a capital-adequacy low point (CRAR 9.01%, the lowest in the pre-crisis series) even as NPL was still elevated at 6.64%, consistent with loan growth (+30.7% in FY2015 per gross_loans) outpacing capital formation that year.",
+      "metrics": ["npl_ratio_pct", "roe_pct", "car_pct", "yoy_growth_pct"],
+      "periods": ["2014_Q4", "2015_Q4", "2018_Q4"]
+    },
+    {
+      "category": "2019_credit_cycle_bump_and_2020_profitability_dip",
+      "severity": "info",
+      "statement": "NPL ratio jumped back up to 6.70% in FY2019 (from 3.99% in FY2018, classified loans roughly doubling from 6,267.00m to 12,658.13m) before falling to a series-low 2.51%-2.58% in FY2020. ROE fell from a series-high 19.70% (FY2019) to 10.62% (FY2020) and ROA from 1.40% to 0.72%, even as total assets kept growing 19.63% - a profitability dip in a year of continued balance-sheet expansion and improving reported asset quality.",
+      "metrics": ["npl_ratio_pct", "classified_loans", "roe_pct", "roa_pct"],
+      "periods": ["2018_Q4", "2019_Q4", "2020_Q4"]
+    },
+    {
+      "category": "2021_2023_pre_crisis_growth_deceleration",
+      "severity": "info",
+      "statement": "Asset growth decelerated markedly from 13.81% (FY2021) to 7.91% (FY2022) to 7.70% (FY2023), the slowest sustained pace in the series to that point, while ROE stayed strong (15.40%-17.17%) and NPL ratio crept up from 2.73% to 4.99% - a gradually cooling growth phase immediately preceding the FY2024 shock, though nothing in these three years' numbers alone signals the scale of what followed.",
+      "metrics": ["yoy_growth_pct", "roe_pct", "npl_ratio_pct"],
+      "periods": ["2021_Q4", "2022_Q4", "2023_Q4"]
+    },
+    {
+      "category": "fy2025_collapse_speed_revealed_by_new_q1_q3_data",
+      "severity": "critical",
+      "statement": "Newly-sourced Q1-Q3 2025 interim data (Consolidated basis -- see data_gaps) shows the FY2025 collapse was not a gradual full-year trend but a sudden onset after a still-healthy Q1: cumulative Net Interest Income was +968.65m through Q1 but had swung to -930.03m by Q2 (an implied Q2-alone NII of approximately -1,898.68m, derived by subtracting the Q1 cumulative from the Q2 cumulative) and -3,106.06m by Q3, ending the year at -5,949.83m. Cumulative Net Profit After Tax was still positive at +278.56m (EPS +0.23) through Q1, then fell to -1,365.65m by Q2 (an implied Q2-alone loss of approximately -1,644.21m), -6,777.50m by Q3, and -9,925.90m for the full year. The bank was reporting a normal quarterly profit as late as end-March 2025 and had swung to the most severe single-year deterioration in this 36-bank dataset within two more quarters.",
+      "metrics": ["net_interest_income_cumulative", "profit_after_tax_cumulative", "eps_cumulative"],
+      "periods": ["2025_Q1", "2025_Q2", "2025_Q3", "2025_Q4"]
+    },
+    {
+      "category": "fy2024_provisioning_shock_concentrated_in_q4",
+      "severity": "warning",
+      "statement": "Newly-sourced Q1-Q3 2024 interim data (Consolidated basis) shows the FY2024 asset-quality shock's provisioning charge was heavily back-loaded: cumulative Total Provision was only 2,901.29m through Q3 2024 but reached 6,333.76m for the full year -- an implied discrete Q4-2024 provision charge of approximately 3,432.47m, or roughly 54% of the entire year's provisioning recognised in the final quarter alone. Consistent with this, cumulative Consolidated Net Profit After Tax was still 2,501.63m through Q3 2024 (higher than the 1,341.61m full-year Consolidated figure), implying a discrete Q4-2024 Consolidated loss of approximately -1,160.02m -- the classified-loan jump documented in 2024_Q4.json (14,451.50m to 75,527.14m) was evidently recognised, and provisioned against, predominantly in the December quarter rather than building evenly across the year.",
+      "metrics": ["total_provision_cumulative", "profit_after_tax_cumulative"],
+      "periods": ["2024_Q3", "2024_Q4"]
+    },
+    {
+      "category": "credit_rating_downgrade",
+      "severity": "warning",
+      "statement": "Premier Bank's own disclosed credit ratings were downgraded during the crisis: Long-Term (Local) from AAA (FY2023-FY2024) to AA (FY2025), and Short-Term (Local) from ST-1 (FY2023-FY2024) to ST-2 (FY2025), consistent with the CRAR breach and net loss reported the same year.",
+      "metrics": ["car_pct", "profit_after_tax"],
+      "periods": ["2024_Q4", "2025_Q4"]
+    }
+  ],
+  "historical_context": "Premier Bank's 15-year public history splits cleanly into three phases. FY2011-FY2013 (Solo basis, sourced directly from audited financial statements since the bank's own summary tables in this era are Consolidated) show a smaller bank (Total Assets 74,780.50m to 89,691.98m) with volatile but improving profitability (ROE, recalculated Solo: 6.96% to 9.94%) and elevated NPL (4.28%-5.73%). FY2014-FY2023 was a decade of strong, fairly steady growth: total assets grew from 110,984.04m to 414,401.58m (roughly 3.7x) at 7.70%-23.74% per year, ROE improved from the high single digits to a peak of 19.70% (FY2019), NPL fluctuated in a 2.51%-9.03% range without a sustained upward trend, and CRAR stayed within a 9.01%-14.18% band, generally above the regulatory minimum-plus-buffer. That run ended abruptly in FY2024-FY2025: NPL ratio rose more than 6x in two years (4.99% to 31.01%), CRAR fell by more than half (13.58% to 5.70%), and the bank swung from a 4,345.53m profit (FY2023) to a 9,785.41m loss (FY2025), with FY2025 alone producing a negative net interest margin, a 5.80% contraction in total assets, and a loan book that for the first time exceeds deposits (LDR 101.70%). Reported profit is a poor guide to the underlying trend across this transition: FY2024 still showed a small profit (1,454.59m) even as classified loans had already grown 5.2x, and it was FY2025 - not FY2024 - when the accumulated provisioning need was finally reflected in the bottom line.",
+  "data_gaps": "UPDATED (2026-08-28 session): Q1/Q2/Q3 unaudited interim data has now ALSO been added for 16 of the 24 possible FY2011-FY2018 quarters (bank_financials/PREMIERBAN/quarterly/2011_Q3.json, 2013_Q1-Q3.json, 2014_Q1-Q3.json, 2015_Q1.json, 2016_Q1-Q3.json, 2017_Q1-Q3.json, 2018_Q1-Q2.json), sourced from a THIRD interim source found this session: the bank's own website 'Financial Reports' archive (thepremierbankplc.com/financial-reports/) plus Wayback Machine captures of its pre-2016 predecessor domain structure for quarters no longer linked live -- NOT the annual-report-embedded BSEC table below, which remains confirmed non-existent for FY2011-FY2018 (re-verified this session, not just carried forward). Every one of these 16 quarters is CONSOLIDATED basis (the bank's newspaper-style quarterly disclosure format used throughout FY2011-2018 prints only a Consolidated Balance Sheet/P&L/Cash Flow/Statement of Changes in Equity, never a Solo section, in every quarter checked) -- a REAL, PERVASIVE mismatch against this dataset's Solo Q4/annual series for the entire FY2011-2018 span, on top of (and separate from) the FY2022/2024/2025 mismatch described below for the FY2019-2025 block. Four quarters (2016 Q1, 2017 Q3, 2018 Q1, 2018 Q2) carry a bonus disclosure box also giving Solo EPS/NAVPS/NOCFPS, independently confirming the gap is real (e.g. Q1 2016: Consolidated EPS 0.16 vs Solo EPS 0.21) -- recorded in each affected file's own period_note, not as separate line_items. REMAINING GENUINE GAPS after this session (8 of 24 quarters, each individually confirmed unrecoverable via exhaustive Wayback CDX search across both premierbankltd.com and thepremierbankplc.com, not merely unattempted): 2011 Q1, 2011 Q2/H1 (zero captures of any kind found -- 2011 Q3 is the earliest interim quarter that exists anywhere in this bank's public record); all of 2012 Q1/Q2/Q3 (zero captures); 2015 Q2/H1 (the only known filename for this filing returns a genuine HTTP 404 in both of its two Wayback captures -- broken on the bank's own server both times it was crawled, not an access problem); 2015 Q3 (the live site's download link for this slot is a mislabelled duplicate of the Q1-2016 file, confirmed via byte-identical MD5 hash -- not genuine Q3 2015 content, and no real Q3 2015 file was found elsewhere); 2018 Q3 (empty/unlinked row on the live site, and the corresponding current-site 'financialreport'/'investors_relation' pages for this period are empty template pages with no embedded data). A large FY2013 specific-provision event was discovered in this newly-added data: cumulative H1 2013 Profit after taxation was -1,997.79m (EPS -3.90) on a Specific Provision of 1,747.42m, partially reversing to -1,131.17m (EPS -2.21) by Q3 2013 -- see the historical_context field and sources.json for full detail. Historic Q1-Q3 2011-2018 interim ratios in ratios_timeseries.json have car_pct/npl_ratio_pct/roa_pct/roe_pct left null for the same reason as the FY2019-2025 interim quarters (not reported in this disclosure format), but DO include total_deposits and a calculated ldr_pct, unlike the FY2019-2021 portion of the newer block, since this older disclosure format prints deposits directly. IMPORTANT CAVEAT CARRIED FORWARD (concerning the separate FY2019-FY2025 block, sourced from the annual-report-embedded table): the interim series' reporting basis is NOT uniform and does not always match the Q4/annual series above -- Solo for FY2019, FY2020, FY2021 and FY2023 (consistent with the Q4/annual series), but genuinely CONSOLIDATED for FY2022, FY2024 and FY2025 (a real mismatch against the Solo Q4/annual figures for those three years, independently proven via exact matches to each year's own full Consolidated Balance Sheet/P&L -- see sources.json and each affected quarter file's own period_note before comparing Q1-Q3 to Q4 for those years). FY2023's table is captioned '(consolidated)' but is proven to actually contain Solo figures -- a mislabelling in the bank's own report. Ratios requiring NPL/CAR (npl_ratio_pct, car_pct) and annualized-return ratios (roa_pct, roe_pct) are not available for any interim quarter -- not reported in this disclosure and not estimated in ratios_timeseries.json. Tier-1/Tier-2/Total Capital absolute Taka breakdown is a gap for FY2014 and FY2015 specifically (CAR% alone is available and reliable for those two years). Foreign Correspondents count is a gap for FY2016-FY2018 (available for FY2011-2015 and FY2019 onward). Branches/Employees for FY2011-2013 and FY2016-2018 are sourced from later reports' comparative columns rather than each year's own report, since those specific reports did not print the figures in extractable tabular form (values cross-checked where a second source existed). reserve_fund uses two different but individually-documented conventions across the series: for FY2011-2013 it is Statutory reserve + Other reserve only (excluding retained earnings, because the granular breakdown was directly available and this narrower definition was used first); for FY2014-2025 it is the fuller 'everything in equity except paid-up capital' (including retained earnings and, where present, general reserve and FX translation reserve), which is what most years' own five-year tables label 'Reserve and Surplus'. FY2020 has two documented restatements (Total Assets/Deposits, and a presentational Operating Income/Expense gross-up) and an unreconciled 0.07pp NPL% denominator gap; FY2022 has an unreconciled 0.14pp NPL% denominator gap; FY2023's reported loan-to-deposit ratio uses a Bangladesh-Bank-specific formula that differs by 10.5pp from a simple loans/deposits division (documented in each year's own period_note and in sources.json, not treated as an error). FY2024's 'Reserve and Surplus' required using a later report's figure because the contemporaneous one was arithmetically impossible against its own report's other rows (documented in sources.json and the FY2024 quarterly file). Solo vs Consolidated determination required checking each year's own labelled Balance Sheet/Segment Reporting note individually, because the bank's own compact multi-year summary table silently changes basis partway through the series (Consolidated in the FY2011-2015 vintage, Solo by the FY2022-2025 vintage) without ever stating which basis it uses."
+}

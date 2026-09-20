@@ -1,0 +1,205 @@
+{
+  "bank_id": "SIBL",
+  "bank_name": "Social Islami Bank PLC",
+  "reporting_date": "2024-09-30",
+  "financial_year": 2024,
+  "quarter": "Q3",
+  "period_note": "Balance sheet is the period-end snapshot (reported), Solo/Standalone basis, matching this dataset's main Q4/annual series basis (see sources.json reporting_basis).  Income-statement items are CUMULATIVE from 1 January 2024 (Jan-1 through the end of this quarter), not discrete-quarter figures, per this project's convention (flagged via the _cumulative suffix, matching bank_financials/CITYBANK/quarterly/2024_Q1.json). Shariah-based Islamic bank: 'Investments' is the Shariah-compliant equivalent of conventional Loans and Advances; 'Profit paid on Deposits' is the equivalent of Interest Expense; 'Net Investment Income' is the equivalent of Net Interest Income -- consistent with the convention already used for this bank's Q4/annual series. Classified-investment (asset-quality/NPL) and Capital Adequacy (CRAR/Tier-1/Tier-2) figures are NOT disclosed in SIBL's interim quarterly/half-yearly filings at all (confirmed absent from every quarter's notes checked in this pass) -- this is a genuine limitation of the source documents themselves, not an extraction gap, so no classified_investments/npl_pct/car_pct/tier1/tier2/RWA fields are populated for any Q1-Q3 period in this dataset.\n\nPOST-GENERATION CORRECTION NOTE: several income-statement sub-line-items in this quarter's source page had systematic extraction defects (font/character corruption, dropped leading digits, or a wrong-column/wrong-row value) that were not caught by the balance-sheet-identity check alone. These were found and corrected using a second-pass internal-consistency audit (checking that Net Investment Income + Income from Shares + Commission + Other Operating Income sums to Total Operating Income, and that Total Operating Income minus Expenses minus Provision minus Tax chains correctly to Net Profit After Tax) before this file was finalized; corrected/added fields carry their own metric_note explaining the specific fix. Values that could not be reconstructed with confidence were omitted rather than guessed.",
+  "source": {
+    "source_document": "3rd_Quarter_Financial_Statements_(Un-audited),_September_2024.pdf",
+    "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_Quarter_Financial_Statements_(Un-audited),_September_2024.pdf",
+    "source_page_lines": "Condensed Balance Sheet and Profit and Loss Account, 3rd Quarter 2024 unaudited financial statements",
+    "extraction_method": "pdftotext",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 421462.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 399470.59,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 21991.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 10858.62,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 9568.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "revaluation_reserve",
+      "original_metric_name": "Revaluation Reserve on Fixed Assets",
+      "value": 529.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": 1034.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 328109.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General Investment etc. + Bills Purchased and Discounted)",
+      "value": 378417.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Islamic bank convention: 'Investments' is SIBL's Shariah-compliant equivalent of conventional Loans and Advances."
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) Per Share",
+      "value": 20.25,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment Income (cumulative from Jan 1)",
+      "value": 23303.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_cumulative",
+      "original_metric_name": "Profit Paid on Deposits (cumulative from Jan 1)",
+      "value": 18513.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_investment_income_cumulative",
+      "original_metric_name": "Net Investment Income (cumulative from Jan 1)",
+      "value": 4789.58,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "CORRECTION (post-generation review): this quarter's raw text extraction had a systematic row/column defect (garbled digits, a dropped leading digit, or values landing on the wrong line) that was not caught by the initial balance-sheet-identity check alone; the value here was corrected using the P&L's own internal arithmetic identities (Total Operating Income = Net Investment Income + Income from Shares + Commission + Other Operating Income; Operating Profit = Total Operating Income - Total Operating Expenses; Profit Before Tax = Operating Profit - Total Provision; Net Profit After Tax = Profit Before Tax - Tax) and, where available, an independent restatement of the same figure elsewhere in the same filing (e.g. a tax-reconciliation note) or in an adjacent quarter's comparative column."
+    },
+    {
+      "normalised_metric_name": "income_from_investment_in_shares_cumulative",
+      "original_metric_name": "Income from Investment in Shares/Securities (cumulative from Jan 1)",
+      "value": 1109.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_cumulative",
+      "original_metric_name": "Commission, Exchange and Brokerage (cumulative from Jan 1)",
+      "value": 1032.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Added in post-generation review: this quarter's source label reads 'Commission Exchange and Brokerage' without the comma after 'Commission' that other quarters use, which the original extraction pass's label-matching regex required, so this field was initially missed. Value confirmed via the Total Operating Income identity (Net Investment Income + Income from Shares + Commission + Other Operating Income = 4789.58 + 1109.79 + 1032.01 + 526.34 = 7457.72, matching exactly)."
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other Operating Income (cumulative from Jan 1)",
+      "value": 526.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative from Jan 1)",
+      "value": 7457.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 6271.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit/(Loss) before Provision (cumulative from Jan 1)",
+      "value": 1185.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "CORRECTION (post-generation review): this quarter's raw text extraction had a systematic row/column defect (garbled digits, a dropped leading digit, or values landing on the wrong line) that was not caught by the initial balance-sheet-identity check alone; the value here was corrected using the P&L's own internal arithmetic identities (Total Operating Income = Net Investment Income + Income from Shares + Commission + Other Operating Income; Operating Profit = Total Operating Income - Total Operating Expenses; Profit Before Tax = Operating Profit - Total Provision; Net Profit After Tax = Profit Before Tax - Tax) and, where available, an independent restatement of the same figure elsewhere in the same filing (e.g. a tax-reconciliation note) or in an adjacent quarter's comparative column."
+    },
+    {
+      "normalised_metric_name": "total_provision_cumulative",
+      "original_metric_name": "Total Provision (cumulative from Jan 1)",
+      "value": 445.43,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit/(Loss) before Income Taxes (cumulative from Jan 1)",
+      "value": 740.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Provision for Income Tax (cumulative from Jan 1)",
+      "value": 235.96,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit/(Loss) after Tax (cumulative from Jan 1)",
+      "value": 504.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "generatedAt": "2026-08-30",
+  "faceValueAssumed": 10.0,
+  "source": "Derived from bank_financials/_cross_bank.json, bank_financials/_quality_scores.json, data/dividends.json, historical_prices/json_files/*.json",
+  "methodologyNotes": [
+    "Dividend Yield and Dividend Growth are cash dividends only. Stock dividends (bonus shares) are not included: this project's stock_dividend field/table exists but has no data entered for any ticker, and per-bank narrative notes (bank_financials/<TICKER>/insights.json) document bonus-share events as prose, not as a structured %-per-year figure, so they can't be blended in mechanically. Banks that issue bonus shares regularly (e.g. EBL) will understate total shareholder distribution here."
+  ],
+  "warnings": [
+    "Excluded (merged into Sammilito Islami Bank, trading suspended): EXIMBANK, FIRSTSBANK, GIB, SIBL, UNIONBANK",
+    "ICBIBANK: no dividend history found (set to 0)",
+    "ICBIBANK: only 0/5 years of ROE data",
+    "NRBBANK: no dividend history found (set to 0)",
+    "PUBALIBANK: only 3/5 years of ROE data",
+    "PUBALIBANK: only 1/5 years of asset-quality data",
+    "RUPALIBANK: no dividend history found (set to 0)",
+    "RUPALIBANK: only 4/5 years of ROE data"
+  ],
+  "banks": [
+    {
+      "ticker": "ABBANK",
+      "name": "AB Bank PLC",
+      "yield": 4.26,
+      "divGrowth": -10.82,
+      "roe": -78.46,
+      "assetGrowth": 1.65,
+      "assetQuality": 17.96
+    },
+    {
+      "ticker": "ALARABANK",
+      "name": "Al-Arafah Islami Bank PLC",
+      "yield": 5.81,
+      "divGrowth": -7.79,
+      "roe": 6.3,
+      "assetGrowth": 9.06,
+      "assetQuality": 43.4
+    },
+    {
+      "ticker": "BANKASIA",
+      "name": "Bank Asia PLC",
+      "yield": 5.0,
+      "divGrowth": -3.2,
+      "roe": 10.0,
+      "assetGrowth": 7.6,
+      "assetQuality": 63.1
+    },
+    {
+      "ticker": "BRACBANK",
+      "name": "BRAC Bank PLC",
+      "yield": 2.37,
+      "divGrowth": 8.45,
+      "roe": 12.68,
+      "assetGrowth": 20.93,
+      "assetQuality": 82.7
+    },
+    {
+      "ticker": "CITYBANK",
+      "name": "The City Bank PLC",
+      "yield": 4.95,
+      "divGrowth": -3.04,
+      "roe": 18.1,
+      "assetGrowth": 17.11,
+      "assetQuality": 74.84
+    },
+    {
+      "ticker": "DHAKABANK",
+      "name": "Dhaka Bank PLC",
+      "yield": 8.26,
+      "divGrowth": 10.76,
+      "roe": 8.57,
+      "assetGrowth": 8.55,
+      "assetQuality": 75.36
+    },
+    {
+      "ticker": "DUTCHBANGL",
+      "name": "Dutch-Bangla Bank PLC",
+      "yield": 5.42,
+      "divGrowth": 10.76,
+      "roe": 14.1,
+      "assetGrowth": 11.6,
+      "assetQuality": 66.54
+    },
+    {
+      "ticker": "EBL",
+      "name": "Eastern Bank PLC",
+      "yield": 10.46,
+      "divGrowth": 7.39,
+      "roe": 16.2,
+      "assetGrowth": 17.72,
+      "assetQuality": 57.32
+    },
+    {
+      "ticker": "ICBIBANK",
+      "name": "ICB Islamic Bank Limited (formerly The Oriental Bank Limited / Al-Baraka Bank Bangladesh Limited)",
+      "yield": 0.0,
+      "divGrowth": 0.0,
+      "roe": 0.0,
+      "assetGrowth": -5.16,
+      "assetQuality": 9.06
+    },
+    {
+      "ticker": "IFIC",
+      "name": "IFIC Bank PLC",
+      "yield": 5.32,
+      "divGrowth": -6.11,
+      "roe": -86.22,
+      "assetGrowth": 10.04,
+      "assetQuality": 31.74
+    },
+    {
+      "ticker": "ISLAMIBANK",
+      "name": "Islami Bank Bangladesh PLC",
+      "yield": 3.64,
+      "divGrowth": 0.0,
+      "roe": 5.48,
+      "assetGrowth": 10.75,
+      "assetQuality": 44.06
+    },
+    {
+      "ticker": "JAMUNABANK",
+      "name": "Jamuna Bank PLC",
+      "yield": 11.98,
+      "divGrowth": 10.63,
+      "roe": 13.15,
+      "assetGrowth": 12.13,
+      "assetQuality": 54.9
+    },
+    {
+      "ticker": "MERCANBANK",
+      "name": "Mercantile Bank PLC",
+      "yield": 14.29,
+      "divGrowth": -8.46,
+      "roe": 7.5,
+      "assetGrowth": 7.64,
+      "assetQuality": 37.5
+    },
+    {
+      "ticker": "MIDLANDBNK",
+      "name": "Midland Bank PLC",
+      "yield": 1.7,
+      "divGrowth": -11.99,
+      "roe": 8.6,
+      "assetGrowth": 14.88,
+      "assetQuality": 81.94
+    },
+    {
+      "ticker": "MTB",
+      "name": "Mutual Trust Bank PLC",
+      "yield": 7.52,
+      "divGrowth": -4.0,
+      "roe": 12.34,
+      "assetGrowth": 13.41,
+      "assetQuality": 50.12
+    },
+    {
+      "ticker": "NBL",
+      "name": "National Bank PLC",
+      "yield": 13.89,
+      "divGrowth": 0.0,
+      "roe": -134.81,
+      "assetGrowth": -0.92,
+      "assetQuality": 7.7
+    },
+    {
+      "ticker": "NCCBANK",
+      "name": "National Credit and Commerce Bank PLC",
+      "yield": 11.26,
+      "divGrowth": 17.78,
+      "roe": 13.89,
+      "assetGrowth": 9.13,
+      "assetQuality": 67.3
+    },
+    {
+      "ticker": "NRBBANK",
+      "name": "NRB Bank PLC",
+      "yield": 0.0,
+      "divGrowth": 0.0,
+      "roe": 5.01,
+      "assetGrowth": 15.24,
+      "assetQuality": 63.58
+    },
+    {
+      "ticker": "NRBCBANK",
+      "name": "NRB Commercial Bank PLC",
+      "yield": 12.5,
+      "divGrowth": 13.62,
+      "roe": 9.36,
+      "assetGrowth": 17.56,
+      "assetQuality": 44.96
+    },
+    {
+      "ticker": "ONEBANKPLC",
+      "name": "ONE Bank PLC",
+      "yield": 4.43,
+      "divGrowth": -21.54,
+      "roe": 5.07,
+      "assetGrowth": 3.48,
+      "assetQuality": 16.38
+    },
+    {
+      "ticker": "PREMIERBAN",
+      "name": "The Premier Bank PLC",
+      "yield": 21.55,
+      "divGrowth": 3.24,
+      "roe": -0.96,
+      "assetGrowth": 6.21,
+      "assetQuality": 43.3
+    },
+    {
+      "ticker": "PRIMEBANK",
+      "name": "Prime Bank PLC",
+      "yield": 8.45,
+      "divGrowth": 10.76,
+      "roe": 15.45,
+      "assetGrowth": 13.31,
+      "assetQuality": 77.16
+    },
+    {
+      "ticker": "PUBALIBANK",
+      "name": "Pubali Bank PLC",
+      "yield": 2.63,
+      "divGrowth": -4.36,
+      "roe": 12.54,
+      "assetGrowth": 15.85,
+      "assetQuality": 98.3
+    },
+    {
+      "ticker": "RUPALIBANK",
+      "name": "Rupali Bank PLC",
+      "yield": 0.0,
+      "divGrowth": 0.0,
+      "roe": 1.88,
+      "assetGrowth": 12.42,
+      "assetQuality": 16.58
+    },
+    {
+      "ticker": "SBACBANK",
+      "name": "South Bangla Agriculture & Commerce Bank PLC",
+      "yield": 2.94,
+      "divGrowth": -20.63,
+      "roe": 3.22,
+      "assetGrowth": 8.5,
+      "assetQuality": 46.4
+    },
+    {
+      "ticker": "SHAHJABANK",
+      "name": "Shahjalal Islami Bank PLC (SJIBL / SJIBPLC)",
+      "yield": 7.39,
+      "divGrowth": 13.18,
+      "roe": 13.2,
+      "assetGrowth": 7.81,
+      "assetQuality": 63.14
+    },
+    {
+      "ticker": "SOUTHEASTB",
+      "name": "Southeast Bank PLC",
+      "yield": 2.63,
+      "divGrowth": -21.4,
+      "roe": 5.88,
+      "assetGrowth": 3.57,
+      "assetQuality": 59.68
+    },
+    {
+      "ticker": "STANDBANKL",
+      "name": "Standard Islami Bank PLC",
+      "yield": 5.32,
+      "divGrowth": -9.43,
+      "roe": 5.53,
+      "assetGrowth": 3.98,
+      "assetQuality": 29.14
+    },
+    {
+      "ticker": "TRUSTBANK",
+      "name": "Trust Bank PLC",
+      "yield": 5.37,
+      "divGrowth": -4.36,
+      "roe": 15.31,
+      "assetGrowth": 11.82,
+      "assetQuality": 63.6
+    },
+    {
+      "ticker": "UCB",
+      "name": "United Commercial Bank PLC",
+      "yield": 5.43,
+      "divGrowth": -10.91,
+      "roe": 5.51,
+      "assetGrowth": 12.38,
+      "assetQuality": 50.98
+    },
+    {
+      "ticker": "UTTARABANK",
+      "name": "Uttara Bank PLC",
+      "yield": 2.38,
+      "divGrowth": -16.74,
+      "roe": 15.23,
+      "assetGrowth": 7.62,
+      "assetQuality": 46.66
+    }
+  ]
+}

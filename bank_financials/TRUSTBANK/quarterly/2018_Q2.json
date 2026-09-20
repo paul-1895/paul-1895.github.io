@@ -1,0 +1,73 @@
+{
+  "bank_id": "TRUSTBANK",
+  "bank_name": "Trust Bank PLC",
+  "reporting_date": "2018-06-30",
+  "financial_year": 2018,
+  "quarter": "Q2",
+  "period_note": "Extracted from Trust Bank's own annual-report-embedded 'Audit Committee and the Board Evaluation of the Quarterly Financials' table (a BSEC corporate-governance-mandated disclosure). Income-statement items are CUMULATIVE FROM JAN 1 of the same year (the source table's own column header reads '01 Jan to <quarter-end date>'), not discrete-quarter figures, flagged via the _cumulative suffix; balance-sheet items are the period-end snapshot. BASIS MISMATCH FLAGGED: this table's own text states the Board approved the CONSOLIDATED financial statements for quarterly disclosure every year it appears (2018, 2020-2025) \u2014 this differs from Trust Bank's main Q4/annual series in this dataset, which is SOLO (Bank-only, unconsolidated) basis for balance-sheet/income-statement items (see sources.json top-level reporting_basis, confirmed 2026-08-26). Verified numerically for FY2018: this table's own Q4/full-year column reports Total Assets 261,076 (Consolidated) vs this dataset's SOLO-basis FY2018 Q4 Total Assets 259,638.37 \u2014 a 0.55% gap, consistent with Trust Bank's small subsidiaries (Trust Bank Investment Ltd, Trust Bank Securities Ltd, Trust Axiata Digital Ltd) being added net of intercompany eliminations on consolidation, not a data error. Do not directly mix these CONSOLIDATED Q1-Q3 figures with this bank's SOLO-basis Q4/annual figures without adjusting for this basis gap. Source document is FY2018's own annual report (contemporaneous). No second report available to cross-check against: FY2019's own annual report is present in the archive only as a short 1,613-line partial extraction that lacks this table (see sources.json), and FY2020's report's comparative columns only reach back to FY2019. This quarter's figures rest on the FY2018 report's own column alone. Source-page extraction quality is degraded relative to later vintages (apparent rotated/landscape table layout): Total Operating Income/Expenses, Profit Before Provision, EPS, Loans and Advances, and Investments could not be reliably recovered for any 2017/2018 quarter and are omitted rather than guessed.",
+  "source": {
+    "source_document": "trust-bank-annual-report-2018.txt",
+    "source_path": "annual_reports/TRUSTBANK/trust-bank-annual-report-2018.txt",
+    "source_url": "https://www.tblbd.com",
+    "source_page_lines": "6179-6210 (\"Evaluation of the Quarterly Financials by the Audit Committee and by the Board\" table, 2018 own columns, Annual Report 2018 printed p.108)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 212138,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 240969,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total shareholders' equity",
+      "value": 11958,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 252927,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Off-Balance Sheet Items",
+      "value": 92613,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income/net profit on investments (cumulative from Jan 1)",
+      "value": 3069,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (cumulative from Jan 1)",
+      "value": 601,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

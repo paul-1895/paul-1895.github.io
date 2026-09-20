@@ -1,0 +1,377 @@
+{
+  "bank_id": "ONEBANKPLC",
+  "bank_name": "ONE Bank PLC",
+  "website": "https://www.onebank.com.bd",
+  "notes": "annual_reports/ONEBANKPLC contains 15 PDFs-turned-text (FY2011-FY2025), pre-extracted with pdftotext -layout by a prior session before this bank was assigned; no downloading was needed for this task. Reporting basis confirmed Solo (Standalone) for all 15 years: each year's own report's 'Five Years' Financial Highlights' / 'Financial Highlights on the Overall Activities of the Bank' Total Assets figure was checked directly against that same report's own labelled 'Balance Sheet' (Solo) vs 'Consolidated Balance Sheet' - the Solo figure matches in every year checked (2012, 2016, 2020, 2023, 2025 spot-checked exactly; Consolidated is consistently higher, by roughly 0.04%-1.3% on total assets, reflecting two majority/wholly-owned subsidiaries - ONE Securities Limited and ONE Investments Limited - consolidated from around FY2012-2013 onward). Every one of the 15 reports' own multi-year summary table(s) was parsed and cross-checked against the same figures as republished in adjacent reports (per project methodology); this surfaced one large, IAS-8-disclosed restatement (FY2022/FY2023 balance sheet and FY2023 P&L, see the 2023_Q4 and 2022_Q4 entries below), several smaller reclassifications (FY2020 equity, FY2025 Start-up Fund), one retroactively-disclosed provision shortfall (FY2021), and one apparent isolated compilation error in the FY2024/FY2025 reports' five-year table (Net Profit After Taxation column for FY2020-2022). All of these are recorded below and in each affected year's period_note; contemporaneous (each year's own report) figures are used throughout the dataset per project policy, never the later restated/divergent figure, except where noted. UPDATE (2026-08-27): Q1/Q2/Q3 unaudited interim financial statements for 2012-2025 (42 quarters) were subsequently found and extracted from onebank.com.bd/financial-statement/ (a page distinct from the annual-report archive), Solo basis throughout, confirming reporting-basis continuity with the Q4/annual series; see the '<year> Q1/Q2/Q3 (unaudited interim)' entries below and quarterly/<year>_Q{1,2,3}.json. 2011 has no interim filings on the bank's own site (genuine absence). The single highest-value finding from this pass: ONE Bank's FY2024 and FY2025 deferred-tax-driven profit rescues are NOT visible in the unaudited interim filings at all -- both years' 9-month cumulative results were a healthy, tax-unremarkable profit, and the entire pre-tax collapse plus the entire deferred-tax credit that rescued reported PAT are concentrated in Q4 alone (the audited period) -- see insights.json.",
+  "sources": [
+    {
+      "period": "2011 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2011.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2011 Annual Report, Solo basis. Own 'Five Years' Financial Highlights' table (as at 31 Dec 2011) covers 2007-2011; own 'Financial Highlights on the Overall Activities of the Bank' (BB BRPD-format, exact Taka) covers 2010-2011. Income-statement breakdown (provision for loans / profit-before-tax / tax) is not separately split out in this vintage's summary table (only from FY2014's report onward); operating_profit and PAT are both directly reported so this is a disclosure-format gap, not a missing fact."
+    },
+    {
+      "period": "2012 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2012.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2012
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2012 Annual Report, Solo basis. Two internal copies of the same 'Five Years' Financial Highlights' table appear in the report (front-matter and again inside the Directors' Report, byte-identical); figures cross-checked and consistent. EPS reported here (2.55) contemporaneously; the FY2013 report's comparative column restates FY2012 EPS to 2.21 for bonus-share dilution (routine, not a data error - not applied here per 'prefer contemporaneous')."
+    },
+    {
+      "period": "2013 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2013.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2013 Annual Report, Solo basis (Basel II Annexure-E explicitly labelled 'Solo Basis' from this vintage onward). Provision-for-loans/PBT/tax breakdown not separately disclosed in this vintage's summary table (gap, see FY2011 note); operating_profit and PAT are directly reported."
+    },
+    {
+      "period": "2014 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2014.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2014 Annual Report, Solo basis. First vintage whose 'Five Years' Financial Highlights' table splits Profit-before-provision / Provision-for-loans / Profit-before-tax / Tax / PAT as distinct rows, enabling full PBT-tax=PAT validation from this year forward."
+    },
+    {
+      "period": "2015 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2015.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2015 Annual Report, Solo basis. Credit-Deposit ratio reported here as 81.33%; every later report's comparative column for FY2015 instead shows 80.58% (a persistent, unexplained 0.75pp divergence first appearing in the FY2016 report) - contemporaneous 81.33% is kept per 'prefer contemporaneous', divergence recorded in sources.json."
+    },
+    {
+      "period": "2016 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2016.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2016 Annual Report, Solo basis. Report's own 'Five Years' Financial Highlights' table duplicated verbatim (front matter + Directors' Report) - confirmed byte-identical."
+    },
+    {
+      "period": "2017 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2017.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2017 Annual Report, Solo basis. All BB-format 'Financial Highlights on Overall Activities' figures cross-confirmed against FY2016's and FY2018's own reports for the overlapping years - no discrepancies found for FY2017 itself."
+    },
+    {
+      "period": "2018 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2018.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2018 Annual Report, Solo basis. Total Deposits reported here as 202,631.234m; the FY2019 report's comparative column instead shows 202,546.468m for FY2018 (a small, 84.8m/0.04% divergence, unexplained) - contemporaneous figure kept, divergence recorded in sources.json."
+    },
+    {
+      "period": "2019 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2019.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2019 Annual Report, Solo basis. Total Operating Income reported here as 9,335m; the FY2020 report's comparative column instead shows 9,331m for FY2019 (4m/0.04% divergence, immaterial) - contemporaneous figure kept."
+    },
+    {
+      "period": "2020 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2020.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2020 Annual Report, Solo basis. MAJOR FINDING: Total Shareholders' Equity reported here as 16,946.727m (Revaluation Reserve for Securities component: 11.908m); the FY2021 report's comparative balance sheet for 31.12.2020 instead shows Total Shareholders' Equity of 17,413.005m (Revaluation Reserve: 478.186m), with the entire +466.278m difference exactly offset by an equal decrease in Other Liabilities (28,862.725m to 28,396.447m) - i.e. a pure reclassification of part of a securities revaluation surplus out of 'Other Liabilities' into the equity-side 'Revaluation Reserve' line, with Total Assets and reported profit unaffected. Contemporaneous (16,946.727m) figure is retained per 'prefer contemporaneous'; both figures independently satisfy the balance-sheet identity. SECOND FINDING: Capital Surplus/(deficit) reported here as 1,030.704m (implying required capital = 24,919.851m, i.e. ~12.5% of this report's own RWA of 199,358.810m); the FY2021 report's comparative for FY2020 instead shows 6,014.674m (implying ~10.0% of the same RWA figure) - the RWA and Tier1/Tier2/Total Capital figures themselves are identical between the two reports, only the required-capital percentage embedded in the disclosed surplus changed. This is consistent with Bangladesh Bank's Capital Conservation Buffer having reached full phase-in (2.5%, i.e. 12.5% total) by FY2019/FY2020 before an apparent COVID-era relaxation back toward a 10% effective requirement reflected in later reports' comparatives - see sources.json. Contemporaneous 1,030.704m figure is retained. Provision surplus/(deficit) reported as nil ('-') in both this report and the FY2021 report's own comparative for FY2020 - see FY2021 note for the subsequent retroactive restatement of this specific figure starting with the FY2022 report."
+    },
+    {
+      "period": "2021 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2021.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2021 Annual Report, Solo basis. Total Deposits reported here as 231,122.861m; the FY2022 report's comparative column instead shows 230,658.777m for FY2021 (463.084m/0.20% divergence, unexplained) - contemporaneous figure kept. MAJOR FINDING: Provision surplus/(deficit) reported as nil ('-', i.e. fully provisioned per Bangladesh Bank requirement) in both this FY2021 report and the prior FY2020 report's own disclosure. The FY2022 Annual Report's comparative column for FY2021 instead retroactively shows a provision DEFICIT of (9,384.450m) - a shortfall not disclosed at the time. From FY2022 onward this line is consistently negative and worsening every year (see FY2022-2025 notes) - a major, well-evidenced risk signal (see insights.json). Contemporaneous nil figure is retained for FY2021 itself per 'prefer contemporaneous'."
+    },
+    {
+      "period": "2022 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2022.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022
+      ],
+      "note": "Year-end position from ONE Bank Limited's FY2022 Annual Report, Solo basis. Provision surplus/(deficit) of (10,244.081m) is this report's own contemporaneous figure (also reproduced identically in the FY2023 report's comparative column - no restatement of this particular figure at this step). MAJOR RESTATEMENT (identified via the FY2024 report, see FY2023 note and sources.json): this year's closing Total Assets (314,841.324m) and Total Shareholders' Equity (18,379.799m) were later restated upward, in the FY2024 Annual Report's IAS-8 three-column presentation (as the 01.01.2023 opening balance), to 318,788.927m and 22,057.158m respectively - driven overwhelmingly by a 'Surplus in Profit & Loss Account' (retained earnings) restatement from 1,119.630m to 4,796.989m (+3,677.359m), far larger than any single year's profit. FY2022's own reported net profit after tax (1,391.852m) was NOT itself restated (only the FY2023 P&L was restated under IAS 8's minimum comparative requirement) - the equity effect flows through a direct prior-period retained-earnings adjustment. Contemporaneous FY2022 figures are retained throughout this dataset per 'prefer contemporaneous'; see sources.json for full figures and the FY2023 note for the parallel FY2023 restatement."
+    },
+    {
+      "period": "2023 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2023.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023
+      ],
+      "note": "Year-end position from ONE Bank PLC's FY2023 Annual Report, Solo basis (the company was renamed from 'ONE Bank Limited' to 'ONE Bank PLC' this year following the Companies Act's PLC designation change). MAJOR RESTATEMENT: the FY2024 Annual Report presents a three-column Balance Sheet/P&L (31.12.2024, 31.12.2023 Restated, 01.01.2023 Restated) under IAS 8, explicitly labelling Other Assets, Other Liabilities, Surplus in P&L Account, Deferred Tax and EPS as '(Prior year's balance restated)'. FY2023 Total Assets: originally reported 317,770.682m -> restated 321,580.396m (+3,809.714m, +1.20%). FY2023 Total Shareholders' Equity: originally reported 19,242.966m -> restated 22,716.633m (+3,473.667m, +18.05%), again overwhelmingly a retained-earnings ('Surplus in P&L Account': 1,260.760m -> 4,734.427m) effect rather than a profit restatement. FY2023 Net Profit After Tax: originally reported 1,357.381m -> restated (in the FY2024 report's own comparative P&L Account) 1,151.631m (-205.750m, -15.16%) - this IS a formal restatement of the income statement itself (unlike FY2022, which had its balance sheet but not its P&L restated). FY2023 Total Regulatory Capital was correspondingly revised from 30,581.721m (original, internally consistent with this report's own Tier1 22,880.472m + Tier2 7,701.248m) to 30,307.962m per the FY2024 report's tables (a ~274m reduction consistent with the retained-earnings/Tier-1 impact of the profit restatement). Both the original and restated balance sheets independently satisfy the accounting identity (assets=liabilities+equity) exactly, so the original figures are not arithmetically impossible; contemporaneous (original) figures are retained throughout this dataset per 'prefer contemporaneous'. This restatement pattern recurs again in the FY2025 report (which re-restates the FY2023/FY2024 boundary using yet other 'Other Assets' figures), indicating an ongoing/recurring restatement practice at this bank rather than a single one-off correction - flagged as a data-quality caveat in insights.json."
+    },
+    {
+      "period": "2024 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2024.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Year-end position from ONE Bank PLC's FY2024 Annual Report, Solo basis; this is the report's OWN current-year column (i.e. not subject to the restatement described in the FY2023 note, which concerns FY2022/FY2023 closing balances only). Profit before tax was only 608.870m, but a large net deferred-tax INCOME of 670.915m (current tax expense 670.105m offset by a deferred-tax credit of 1,341.019m, explicitly labelled 'Prior year's balance restated') flipped this to a Net Profit After Tax of 1,279.785m - i.e. reported profit is dominated by a one-off deferred-tax recognition, not operating performance (Total Provision for loans/advances rose to 7,299.516m from 2,049.323m the prior year). SEPARATE FINDING: this report's 'Five Years' Financial Highlights' exhibit shows Net Profit After Taxation for FY2020/FY2021/FY2022 as 1,462m/1,047m/2,042m respectively - these do NOT match the originally-reported contemporaneous PAT for those years (1,313.022m/756.030m/1,391.852m), the Consolidated PAT for those years (1,394.706m/845.185m/1,558.631m), nor this SAME report's own internally-consistent 'Financial Highlights on Overall Activities of the Bank' (BB-format) table, which instead correctly reproduces the original 2022 PAT (1,391.852081m) in its own comparative column. This is treated as an isolated compilation error in that one exhibit (see sources.json) and is not used anywhere in this dataset; FY2020/2021/2022 PAT in this dataset use each of those years' own contemporaneous, internally-corroborated figures."
+    },
+    {
+      "period": "2025 (Q4)",
+      "type": "annual_report_summary_tables",
+      "source_document": "onebankplc-annual-report-2025.txt (\"Five Years' Financial Highlights\" and \"Financial Highlights on the Overall Activities of the Bank\", both Solo basis; own Balance Sheet and Profit & Loss Account used for cross-validation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Year-end position from ONE Bank PLC's FY2025 Annual Report, Solo basis. Profit before tax was NEGATIVE (loss of 1,827.040m, driven by Total Provision of 6,465.126m against Total Operating Income of only 11,749.977m - Net Interest Income collapsed to 2,487.582m from 6,081.025m the prior year on rising cost of funds), but a large net deferred-tax income of 2,043.847m (current tax expense 556.344m offset by a deferred-tax credit of 2,600.190m) flipped this to a small positive Net Profit After Tax of 216.806m - the third consecutive year (2023, 2024, 2025 all show sharply declining or negative pre-tax profit rescued by deferred-tax credits, see insights.json) that reported PAT is dominated by tax accounting rather than operating performance. Same 'Five Years' Financial Highlights' PAT-anomaly caveat as FY2024 applies to this report's comparative columns for FY2020-2022 (this report simply reproduces the FY2024 report's exhibit for those columns unchanged). Balance-sheet finding: a new equity line 'Start-up Equity Investment Fund' (98.236m for FY2025, 96.068m for the FY2024 comparative) appears for the first time in this report; FY2024's OWN report had booked this fund within provisions/Other Liabilities (note 12.10 'Provision for Start up Fund'), not as equity - this exactly explains the entire difference between FY2024's own reported Total Shareholders' Equity (23,454.178m) and this report's restated FY2024 comparative (23,550.247m = 23,454.178m + 96.068m). A minor, fully-traced reclassification, not a profit or asset-quality restatement."
+    },
+    {
+      "period": "2011 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "unavailable",
+      "used_for_years": [],
+      "note": "ONE Bank's own financial-statement archive (onebank.com.bd/home/financial/financial-statements/) lists quarterly/half-yearly interim filings starting only from '1st Quarter Report 2012' / 'Half Yearly Report 2012' / '3rd Quarter Report 2012' -- no 2011 interim filings are listed or linked. Genuine absence, not a retrieval failure; not fabricated."
+    },
+    {
+      "period": "2012 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2012.txt, onebankplc-half-yearly-2012.txt, onebankplc-q3-2012.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2012
+      ],
+      "note": "First year with Q1/Q3 filings sourced (Q1 predates ONE Bank's first consolidated-subsidiary presentation, so it shows only a single, de-facto-Solo statement; Q2/Q3 onward show Consolidated then Solo). Clean, non-scanned pdftotext extraction; no OCR needed. All three quarters' 31-Dec-2011 comparative columns match 2011_Q4.json exactly."
+    },
+    {
+      "period": "2013 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2013.txt, onebankplc-half-yearly-2013.txt, onebankplc-q3-2013.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013
+      ],
+      "note": "Clean, non-scanned pdftotext extraction; no OCR needed. Q1's tax line is a rare NET CREDIT quarter (a positive/non-expense 'Provision for tax' of 15.3m). All three quarters' 31-Dec-2012 comparative columns match 2012_Q4.json exactly."
+    },
+    {
+      "period": "2014 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2014.txt, onebankplc-half-yearly-2014.txt, onebankplc-q3-2014.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014
+      ],
+      "note": "Clean, non-scanned pdftotext extraction; no OCR needed. First vintage whose interim P&L fully splits Total Provision (D) and Profit-before-taxes (E=C-D) as explicit subtotals (matching the format used through 2020); Q1 also introduces a 'Subordinated Debt' balance-sheet line. All three quarters' 31-Dec-2013 comparative columns match 2013_Q4.json exactly."
+    },
+    {
+      "period": "2015 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2015.txt, onebankplc-half-yearly-2015.txt, onebankplc-q3-2015.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015
+      ],
+      "note": "Clean, non-scanned pdftotext extraction; no OCR needed. H1-2015 is the first interim filing in this dataset to disclose a 'Net Asset Value Per Share' line. All three quarters' 31-Dec-2014 comparative columns match 2014_Q4.json exactly."
+    },
+    {
+      "period": "2016 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2016.txt, onebankplc-half-yearly-2016.txt, onebankplc-q3-2016.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016
+      ],
+      "note": "Clean, non-scanned pdftotext extraction; no OCR needed. All three quarters' 31-Dec-2015 comparative columns match 2015_Q4.json (to the nearest million, since that annual exhibit itself rounds equity/statutory-reserve to whole millions)."
+    },
+    {
+      "period": "2017 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2017.txt, onebankplc-half-yearly-2017.txt, onebankplc-q3-2017.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017
+      ],
+      "note": "Clean, non-scanned pdftotext extraction; no OCR needed. All three quarters' 31-Dec-2016 comparative columns match 2016_Q4.json exactly (assets/deposits/loans) and to the nearest million (equity/reserve)."
+    },
+    {
+      "period": "2018 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2018.txt, onebankplc-half-yearly-2018.txt, onebankplc-q3-2018.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018
+      ],
+      "note": "Clean, non-scanned pdftotext extraction; no OCR needed. All three quarters' 31-Dec-2017 comparative columns match 2017_Q4.json exactly."
+    },
+    {
+      "period": "2019 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2019.txt, onebankplc-half-yearly-2019.txt, onebankplc-q3-2019.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019
+      ],
+      "note": "Clean, non-scanned pdftotext extraction; no OCR needed. All three quarters' 31-Dec-2018 comparative columns match 2018_Q4.json exactly."
+    },
+    {
+      "period": "2020 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2020.txt, onebankplc-half-yearly-2020.txt, onebankplc-q3-2020.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020
+      ],
+      "note": "Clean, non-scanned pdftotext extraction; no OCR needed. Covers the COVID-19 pandemic onset (Q1) through height of lockdown (H1, NII down 31% YoY) and partial recovery (Q3). All three quarters' 31-Dec-2019 comparative columns match 2019_Q4.json exactly; Q1's current/deferred tax split is independently cross-confirmed by the following year's (2021_Q1) comparative column."
+    },
+    {
+      "period": "2021 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2021.txt, onebankplc-half-yearly-2021.txt, onebankplc-q3-2021.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021
+      ],
+      "note": "OCR'd (pdftoppm 300dpi + tesseract): the raw pdftotext text layer for the Q1 and Q3 filings has severe scattered digit corruption (missing leading digits, '1'/'l' confusion) even though it superficially looks like real (non-empty) text -- a more insidious failure mode than a pure 0-line scan, caught only by cross-checking comparative figures against 2020_Q4.json. The H1 filing's page layout (three statements side-by-side) badly corrupts a fresh OCR pass on some rows, so its RAW pdftotext was used instead, corroborated by an independent 'Statement of Changes in Equity' exhibit within the same document. All three quarters' 31-Dec-2020 comparative columns, once correctly read, match 2020_Q4.json exactly. MINOR RESTATEMENT FOUND: the 2021 Q3 filing's own contemporaneous 9-month profit-before-tax (2,174.535353m) and profit-after-tax (1,372.555198m) differ modestly (~1.6%) from the same Jan-Sep-2021 period as later shown as a comparative column in the 2022 Q3 filing (PBT 2,208.406707m, PAT 1,393.724795m); contemporaneous figures are used per project convention."
+    },
+    {
+      "period": "2022 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2022.txt, onebankplc-half-yearly-2022.txt, onebankplc-q3-2022.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022
+      ],
+      "note": "OCR'd (pdftoppm 300dpi + tesseract) for reliability, matching the 2021 treatment. All three quarters' 31-Dec-2021 comparative columns match 2021_Q4.json exactly for total_assets/total_equity/paid_up_capital/statutory_reserve/gross_loans. MINOR CROSS-FILING DISCREPANCY FOUND (comparative-column only): the Q3-2022 filing's own 31-Dec-2021 comparative for off_balance_sheet_exposures (57,912.795422m, driven by a different 'Acceptances and Endorsements' figure) diverges from the same date as shown in the Q1-2022 and H1-2022 filings' own comparative columns (65,075.728293m, which matches 2021_Q4.json) -- does not affect any quarter's own current-period figures. Paid-up capital rose from 9,340.40456m to 9,807.42478m between 30-Jun-2022 and 30-Sep-2022 (a bonus share issue)."
+    },
+    {
+      "period": "2023 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2023.txt, onebankplc-half-yearly-2023.txt, onebankplc-q3-2023.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023
+      ],
+      "note": "Q1 and H1 (half-yearly) sourced via fresh OCR (pdftoppm 300dpi + tesseract) in preference to their raw pdftotext text, which has the same scattered-corruption problem documented for 2021-2022 (e.g. pdftotext misread paid_up_capital's 31-Dec-2022 comparative as 9,801,424,190 and gross_loans as 225,709,296,939; OCR correctly reads 9,807,424,780 and 225,709,286,939, both matching 2022_Q4.json exactly). Q3 sourced from a scanned-image PDF with no text layer at all (pdftotext extracted 0 lines); OCR'd cleanly. All three quarters' 31-Dec-2022 comparative columns match 2022_Q4.json exactly. Paid-up capital rose from 9,807.42478m to 10,297.79601m between 30-Jun-2023 and 30-Sep-2023 (a bonus share issue); this was also the year the company's own quarterly-filing letterhead was still 'ONE Bank Limited' even though its FY2023 Annual Report already uses 'ONE Bank PLC' (see bank_name field per quarter)."
+    },
+    {
+      "period": "2024 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2024.txt, onebankplc-half-yearly-2024.txt, onebankplc-q3-2024.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Q1 and H1 sourced from clean, non-scanned pdftotext text (no OCR needed, though the balance sheet's statutory_reserve row was dropped by the PDF's own text layer in both quarters and had to be derived -- see individual period_notes). Q3 sourced from a scanned-image PDF with no text layer (pdftotext extracted 0 lines); OCR'd cleanly. All three quarters' 31-Dec-2023 comparative columns match 2023_Q4.json exactly (ORIGINAL, not IAS-8-restated, figures -- e.g. total_assets 317,770.681881m -- confirming these interim filings used the then-current, pre-restatement comparative, consistent with 'prefer contemporaneous'). KEY FINDING (see insights.json): 9-month cumulative profit-before-tax (2,390.542286m) vastly exceeds the audited FY2024 annual profit-before-tax (608.870334m, per 2024_Q4.json), implying a Q4-2024-alone pre-tax LOSS of approximately 1,781.67m that is completely invisible in these unaudited interim filings; the bank's own BRPD-mandated 20%-of-cumulative-PBT statutory-reserve transfer (confirmed exactly at every 2024 interim checkpoint) also shows this dynamic -- the audited full-year reserve transfer (121.774m, 20% of 608.870m) is far below what the 9-month interim trajectory (478.108m) implied."
+    },
+    {
+      "period": "2025 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "onebankplc-q1-2025.txt, onebankplc-half-yearly-2025.txt, onebankplc-q3-2025.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "All three quarters sourced from scanned-image PDFs with no text layer (pdftotext extracted 0 lines in every case); OCR'd cleanly (pdftoppm 300dpi + tesseract) -- among the cleanest OCR results in this dataset, including full 'Selected Explanatory Notes' sections that let several figures be independently cross-derived (e.g. gross interest income via Note 15, NAV/share via Note 20). All three quarters' 31-Dec-2024 comparative columns match 2024_Q4.json exactly for total_assets/total_liabilities/total_equity/total_deposits/gross_loans/fixed_assets/off_balance_sheet_exposures. The Q3-2025 filing's own comparative column already shows the 'Start-up Equity Investment Fund' reclassification (see 2025_Q4.json note) in place before year-end, confirming it is a reporting-practice change introduced during the year rather than an audit-only adjustment. CRITICAL FINDING (see insights.json): 9-month cumulative profit-before-tax is a healthy positive 1,822.464576m with only a modest tax expense (717.883711m, mostly current tax); the audited FY2025 annual result (2025_Q4.json) is a full-year PRE-TAX LOSS of 1,827.040478m rescued by a 2,600.19m deferred-tax credit -- both figures imply the ENTIRE deferred-tax rescue and the entire pre-tax collapse happened in the unaudited-interim-invisible Q4 alone (by subtraction: ~-3,649.5m Q4-alone PBT, ~+2,886.2m Q4-alone deferred-tax credit). One anomaly noted but not fully explained: the H1-2025 statutory-reserve appropriation (327.796895m) implies a 25% (not the otherwise-universal 20%) rate against cumulative PBT; Q1-2025 and 9M-2025 both cleanly imply 20%, so this looks like an isolated H1 event rather than a permanent rate change, but no BB circular explaining it was found."
+    },
+    {
+      "period": "2026 Q1/Q2 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "OBPLC-1st-quarter-report-2026.pdf, ONE-Bank-PLC-Half-Yearly-Report-2026.pdf",
+      "source_url": "https://www.onebank.com.bd/financial-statement/OBPLC-1st-quarter-report-2026.pdf ; https://www.onebank.com.bd/financial-statement/half-yearly-report-2026.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-09-12",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2026
+      ],
+      "note": "Q1 2026 source is an unusual 2-page, very-high-resolution (3000x4400px at 200dpi) newspaper-spread-style scan (22MB for 2 pages) that bundles Consolidated and Solo statements side-by-side on the same pages; pdftotext extracted 0 lines despite the large file size. Q2/Half-Yearly 2026 source is a more conventional 19-page scan (Consolidated statements on pages 3-6, Solo on pages 7-9); pdftotext also extracted 0 lines. Both were read directly off rendered page images (pdftoppm 200dpi, Q1's oversized pages cropped into quadrants for legibility) -- not tesseract OCR'd, since direct visual reading was reliable at this resolution. Both quarters' 31-Dec-2025 comparative columns match 2025_Q4.json exactly for total_assets/total_liabilities/total_equity/paid_up_capital/off_balance_sheet_exposures. Q1 balance-sheet identity and full P&L chain (operating income - expenses = operating profit; less provision = PBT; less tax = PAT) reconcile exactly; Q2/H1 reconciles within BDT ~1,000 of rounding at each step. STRONGEST cross-check: the H1 filing's bonus discrete Apr-Jun column gives PAT of 337.647529m, which plus Q1's own cumulative PAT (328.131179m) equals 665.778708m -- exactly the H1 filing's own cumulative PAT, confirming both quarters were read correctly. As with every 2025 quarter, no classified-loan/NPL breakdown is disclosed in either interim filing -- only available annually."
+    }
+  ],
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching this dataset's stored total assets against the annual report's own labelled Balance Sheet (Solo) vs Consolidated Balance Sheet, spot-checked across 5 years (2012, 2016, 2020, 2023, 2025): the Solo figure matches exactly every time; Consolidated is consistently higher by roughly 0.04%-1.3% on total assets, reflecting two subsidiaries (ONE Securities Limited and ONE Investments Limited) consolidated from around FY2012-2013 onward."
+}

@@ -1,0 +1,137 @@
+{
+  "bank_id": "ONEBANKPLC",
+  "generated_at": "2026-08-26",
+  "methodology": "Every risk signal below cites the specific value(s) and financial_year period(s) it is derived from in ratios_timeseries.json and quarterly/<year>_Q4.json; every number was verified programmatically against those files before this file was written (script: build_ratios_insights.py / build_sources_insights.py in the working session). All figures are Solo (standalone) basis - confirmed by matching each report's own summary-table Total Assets against that report's own labelled Balance Sheet (Solo vs Consolidated); Consolidated is consistently higher (two subsidiaries, ONE Securities Limited and ONE Investments Limited, consolidated from ~FY2012-2013). Negative-equity/ROE check: Total Shareholders' Equity never approached zero or went negative in any of the 15 years (minimum BDT 6,346.21 million in FY2011, rising every year thereafter), so ROE is a valid, non-degenerate metric throughout this series - the negative-equity-breaks-ROE trap does not apply to ONE Bank in this dataset.",
+  "risk_signals": [
+    {
+      "category": "sustained_asset_quality_deterioration",
+      "severity": "high",
+      "statement": "NPL ratio (classified loans and advances / gross loans and advances, Solo, as reported) rose from 7.05% in FY2018 to 19.61% in FY2025 - a 2.78x increase over seven years. The climb was not monotonic (FY2020 dipped to 8.60% from FY2019's 9.24%, and FY2023 dipped to 11.95% from FY2022's 13.97%) but every dip reversed: FY2023's 11.95% nearly doubled to FY2025's 19.61% in just two further years, the sharpest acceleration in the whole series.",
+      "metrics": [
+        "npl_ratio_pct"
+      ],
+      "periods": [
+        "2018_Q4",
+        "2019_Q4",
+        "2020_Q4",
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "hidden_then_widening_provision_shortfall",
+      "severity": "critical",
+      "statement": "ONE Bank's own Bangladesh Bank BRPD-format 'Provision surplus/(deficit)' (against classified loans) was reported as nil in both FY2020's and FY2021's own annual reports. The FY2022 Annual Report's comparative column instead retroactively showed a FY2021 shortfall of BDT 9,384.45 million, undisclosed at the time. From FY2022 onward the figure has been continuously negative: FY2022 -10,244.08m, FY2023 -6,410.09m (a partial, temporary improvement), FY2024 -17,974.54m, FY2025 -39,030.37m. FY2025's shortfall of BDT 39,030.37 million is 1.67x the bank's entire FY2025 Total Shareholders' Equity of BDT 23,367.33 million - full regulatory provisioning against classified loans would erase more than the bank's whole capital base.",
+      "metrics": [
+        "provision_surplus_deficit_bdt_million",
+        "equity"
+      ],
+      "periods": [
+        "2021_Q4",
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "earnings_quality_deferred_tax_dependency",
+      "severity": "high",
+      "statement": "In FY2024, Profit Before Tax was only BDT 608.87 million, but a net tax INCOME of BDT 670.91 million (a 1,341.02m deferred-tax credit against 670.10m of current tax expense) lifted Net Profit After Tax to BDT 1,279.79 million. In FY2025 this intensified to the point of reversing sign: Profit Before Tax was NEGATIVE BDT 1,827.04 million (Net Interest Income collapsed to BDT 2,487.58 million from BDT 6,081.02 million the prior year, against a rising cost of funds), but a net tax income of BDT 2,043.85 million (a 2,600.19m deferred-tax credit) converted this into a small positive Net Profit After Tax of BDT 216.81 million. Absent these deferred-tax credits, ONE Bank's headline results in FY2024 would have been far weaker and FY2025 would have been a pre-tax loss of over BDT 1.8 billion.",
+      "metrics": [
+        "profit_before_tax",
+        "tax_expense",
+        "profit_after_tax"
+      ],
+      "periods": [
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "profitability_collapse",
+      "severity": "high",
+      "statement": "Return on Assets fell from 2.29% (FY2011, the series high) to 0.06% (FY2025, the series low - effectively zero). Reported Return on Equity fell from 7.62% (FY2020) to 0.92% (FY2025). EPS fell from BDT 4.54 (FY2011) to BDT 0.20 (FY2025), a 95.6% decline, while shares outstanding grew only about 3.3x over the same span (paid-up capital BDT 3,188.68m in FY2011, ~319 million shares at Tk10 par, versus BDT 10,658.22m and 1,066 million shares as reported by FY2024-25) - the EPS decline is overwhelmingly an earnings collapse, not dilution.",
+      "metrics": [
+        "roa_pct",
+        "roe_pct",
+        "eps"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2020_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "thinning_capital_buffer",
+      "severity": "medium",
+      "statement": "The bank's disclosed capital surplus over its own required capital fell from BDT 5,688.32 million (FY2016) to BDT 2,521.82 million (FY2025) even as Risk-Weighted Assets grew 53.9% (from BDT 146,207.84 million to BDT 225,059.21 million) over the same span. CRAR fell from 13.89% (FY2016) to 11.12% (FY2025) and Tier-1 ratio from 8.72% to 8.13%, though both remain above Bangladesh Bank's minimum requirements as of FY2025.",
+      "metrics": [
+        "car_pct",
+        "tier1_ratio_pct"
+      ],
+      "periods": [
+        "2016_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "recurring_prior_period_restatements",
+      "severity": "medium",
+      "statement": "The FY2024 Annual Report restated FY2023 closing Total Shareholders' Equity upward by 18.05% (BDT 19,242.97m to BDT 22,716.63m) and FY2022 closing equity upward by 20.01% (BDT 18,379.80m to BDT 22,057.16m) under an IAS 8 three-column presentation, driven overwhelmingly by a retained-earnings ('Surplus in Profit & Loss Account') correction far larger than any single year's profit. FY2023's own Net Profit After Tax was separately restated downward by 15.16% (BDT 1,357.38m to BDT 1,151.63m) in the same report's comparative P&L. The FY2025 Annual Report then re-restates the FY2023/FY2024 'Other Assets' boundary again with yet different figures. This dataset retains each year's original contemporaneous figures throughout (see sources.json), but the frequency and size of these restatements is itself a governance/data-quality signal worth tracking.",
+      "metrics": [
+        "total_equity",
+        "profit_after_tax"
+      ],
+      "periods": [
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "deferred_tax_rescue_invisible_in_interim_filings",
+      "severity": "critical",
+      "statement": "The deferred-tax-driven profit rescues already flagged in the 'earnings_quality_deferred_tax_dependency' signal above are NOT visible at all in ONE Bank's own unaudited Q1-Q3 interim filings -- they are concentrated entirely in the audited fourth quarter. In FY2024, 9-month cumulative profit-before-tax (reported in the bank's own 3rd-Quarter-2024 filing) was a healthy BDT 2,390.542286 million; the audited full-year figure was only BDT 608.870334 million (2024_Q4.json) -- implying a Q4-2024-ALONE pre-tax LOSS of approximately BDT 1,781.67 million that first became visible only in the annual report. In FY2025 this is far more severe: 9-month cumulative profit-before-tax was still a healthy positive BDT 1,822.464576 million with a net tax EXPENSE (not a credit) of BDT 717.883711 million (current tax BDT 431.820297m, deferred tax an EXPENSE of BDT 286.063414m); the audited full-year result was a pre-tax LOSS of BDT 1,827.040478 million rescued by a net tax INCOME of BDT 2,043.846586 million (a BDT 2,600.19 million deferred-tax credit). By subtraction, Q4-2025-ALONE swung to a pre-tax loss of approximately BDT 3,649.51 million while the net tax line swung by approximately BDT 2,761.7 million from a 9-month expense to a full-year credit within that single quarter -- i.e. the entire year's deferred-tax rescue AND the entire year's pre-tax collapse both happened in the fourth quarter alone, invisible to anyone reading only the unaudited interim statements through September. A shareholder or analyst relying solely on the Q1-Q3 filings for FY2024 or FY2025 would have seen a bank on a normal, modestly profitable trajectory right up until the audited year-end figures were published.",
+      "metrics": [
+        "profit_before_tax_cumulative",
+        "tax_expense_cumulative",
+        "profit_after_tax_cumulative",
+        "profit_before_tax",
+        "tax_expense",
+        "profit_after_tax"
+      ],
+      "periods": [
+        "2024_Q3",
+        "2024_Q4",
+        "2025_Q3",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "q4_alone_earnings_volatility_recurring_pattern",
+      "severity": "medium",
+      "statement": "The Q4-alone profit collapse seen in FY2024 and FY2025 (see above) is an extreme instance of a recurring pattern, not a first-time event: computing implied Q4-alone profit-before-tax as (audited annual PBT) minus (the bank's own reported 9-month cumulative PBT) across all 14 years with quarterly data (2012-2025) shows Q4-alone PBT was also NEGATIVE in FY2018 (approximately -BDT 142.8 million), FY2020 (approximately -BDT 165.2 million, the COVID-19 disruption year), and FY2021 (approximately -BDT 721.5 million, with Q4-alone profit-after-tax also negative at approximately -BDT 616.5 million) -- three prior instances of a weak or loss-making fourth quarter in an otherwise-profitable year, before the much larger FY2024 (-BDT 1,781.67 million) and FY2025 (-BDT 3,649.51 million) instances. This is consistent with this dataset's existing historical_context note that ONE Bank's asset-quality decline started as early as FY2018, rather than being purely a FY2024-25 phenomenon.",
+      "metrics": [
+        "profit_before_tax_cumulative",
+        "profit_before_tax"
+      ],
+      "periods": [
+        "2018_Q4",
+        "2020_Q4",
+        "2021_Q3",
+        "2021_Q4",
+        "2024_Q3",
+        "2024_Q4",
+        "2025_Q3",
+        "2025_Q4"
+      ]
+    }
+  ],
+  "historical_context": "ONE Bank's 15-year public history splits into three phases. FY2011-FY2017 was a stable growth phase: NPL held in a 4.5-5.5% band, ROA ran 1.0-2.3%, and CAR moved in a 10-14% range as the balance sheet grew from BDT 67.6 billion to BDT 227.2 billion in total assets. FY2018-FY2021 was a gradual deterioration phase overlapping the COVID-19 period: NPL rose from 7.05% to 11.55%, ROA fell below 1% for the first time (0.56% in FY2018) and continued down to 0.25% by FY2021, and EPS fell from 1.82 to 0.81. FY2022-FY2025 is a full-blown, still-unresolved crisis phase: NPL reached 19.61%, a large and growing regulatory provisioning shortfall was disclosed (retroactively from FY2021, then continuously through FY2025), headline profit became dependent on one-off deferred-tax credits rather than operating income (explicitly true in FY2024 and, more severely, FY2025, where pre-tax results were a loss), and the bank's own reported financial statements needed a large IAS-8 restatement of FY2022/FY2023 retained earnings. Unlike some peer banks in this dataset whose asset-quality shock is concentrated in the single FY2024 sector-wide recognition event, ONE Bank's decline started earlier (FY2018) and had not stabilized by FY2025, its worst year on record across nearly every metric in this series (NPL, ROA, EPS, provision shortfall, and pre-tax profitability).",
+  "data_gaps": "Q1/H1/Q3 unaudited interim data for 2012-2025 has now been researched and added (quarterly/<year>_Q{1,2,3}.json) -- see the quarterly_data_note and the two new risk_signals above for what it showed. Remaining interim-data gap: no 2011 interim filings exist on the bank's own site (genuine absence, not a retrieval failure). Provision-for-loans / profit-before-tax / tax breakdown is not available for FY2011-FY2013 (the source summary tables do not split it out that far back); operating profit and net profit after tax are still directly reported for those years, so this is a presentation gap, not a missing headline figure. ROE was not disclosed by the bank itself for FY2011-FY2019 (calculated here as PAT / average of consecutive year-end equity, basis 'calculated_average_equity') and for FY2020-FY2023 is sourced from the FY2024/FY2025 reports' retrospective tables rather than each of those years' own contemporaneous report, since the bank did not publish a Return-on-Equity line before its FY2024 report's format change. Total Liabilities is not directly reported in the source tables for FY2013-FY2018; calculated as Total Assets minus Total Equity for those years (basis 'calculated_from_assets_minus_equity'). The percentage embedded in each year's own disclosed 'Capital Surplus/(deficit)' (and therefore in this dataset's derived 'required_capital') is not a constant share of Risk-Weighted Assets across the 15 years - computed values imply roughly 10% for FY2011-FY2018 and FY2021-FY2025 but roughly 12.5% for FY2019 and FY2020's own report, consistent with Bangladesh Bank's phased-in Capital Conservation Buffer and an apparent partial COVID-era relaxation reflected in the FY2021 report's recalculation of FY2020's own figure (BDT 1,030.70m originally vs BDT 6,014.67m per the FY2021 comparative, on an unchanged RWA and Total Capital) - see sources.json for both figures. NIM% and Cost-to-Income% are only available for FY2020-FY2025 (introduced in the FY2024/FY2025 report format, applied retrospectively to FY2020-2023 in those reports). Multiple smaller cross-report figure discrepancies were found and are fully documented in sources.json and in each affected year's period_note: FY2015 Credit-Deposit ratio (81.33% contemporaneous vs 80.58% in every later report), FY2018 Total Deposits (202,631.23m vs 202,546.47m in the FY2019 report), FY2019 Total Operating Income (9,335m vs 9,331m in the FY2020 report), FY2021 Total Deposits (231,122.86m vs 230,658.78m in the FY2022 report). The FY2024/FY2025 reports' 'Five Years' Financial Highlights' exhibit shows Net Profit After Taxation figures for FY2020/FY2021/FY2022 (BDT 1,462m/1,047m/2,042m) that reconcile with neither the originally-reported Solo PAT, the Consolidated PAT, nor those same reports' own internally-consistent BRPD-format table for the same years; treated as an isolated compilation error in that one exhibit and not used anywhere in this dataset (see sources.json and the 2024_Q4/2025_Q4 period_notes).",
+  "quarterly_data_note": "Q1/Q2/Q3 unaudited interim data for 2012-2025 (42 quarter-files) was added in a later session (2026-08-27), sourced from onebank.com.bd/financial-statement/ (Solo basis throughout, consistent with the annual series). See quarterly/<year>_Q{1,2,3}.json and the corresponding sources.json entries for full extraction/validation detail per quarter. The two risk_signals appended just above (deferred_tax_rescue_invisible_in_interim_filings and q4_alone_earnings_volatility_recurring_pattern) are the direct output of this quarterly work and were verified programmatically against the quarterly and annual JSON files (see the assertions in update_insights.py, run at generation time) before being written here."
+}

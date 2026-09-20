@@ -1,0 +1,42 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2024-06-30",
+  "financial_year": 2024,
+  "quarter": "Q2",
+  "period_note": "Recovered via a Wayback Machine capture of DSE's OWN company page (dsebd.org/displayCompany.php?name=PUBALIBANK), NOT the bank's site. From this vintage onward DSE no longer publishes Turnover/Revenue or Profit-in-BDT on this page (the rows are present in the page's HTML but wrapped in a comment, rendering only placeholder zeros) -- only EPS and period-end market price remain, matching the identical presentation change already documented for RUPALIBANK from its own 2023 capture onward. Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). FLAG: Q1 (1.740) + Q2 (2.190) = 3.930, vs the reported Half-Yearly cumulative of 3.730 (a 0.20 BDT/share gap, not DSE-tooltip-flagged). This is consistent with a discovered pattern in this bank's series: the 05-06-2024 AGM (for FY2023) fell between Q1 and Q2 2024, and share count rose from a smaller pre-AGM count to 1,156,830,995 by the time of this capture -- when the AGM declares a bonus/stock dividend, Q1's EPS (filed pre-AGM) and Q2/HY's EPS (filed post-AGM) are apparently computed on different share-count bases without a retroactive Q1 restatement (same mechanism identified for 2011 and 2014 -- see insights.json). Recorded as reported, not silently reconciled.",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://web.archive.org/web/20250108191824id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2024\" table, Q2 (discrete) and Half Yearly (cumulative) columns (period-end 202406)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Apr-Jun",
+      "value": 2.19,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_6m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, Half Yearly cumulative",
+      "value": 3.73,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Does not reconcile exactly with Q1+Q2 (3.930) -- see period_note for the likely AGM/bonus-share-timing cause."
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 25.8,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

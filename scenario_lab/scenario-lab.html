@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Scenario Lab — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<link rel="stylesheet" href="scenario-lab.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Scenario Lab</h1>
+        <p>Stress-test your portfolio against real and hypothetical shocks</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-label">PRICE DATA THROUGH</span>
+        <span class="meta-value" id="sl-data-range">—</span>
+      </div>
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/></svg>
+        <span>Home</span>
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="sl-page">
+
+  <!-- CONTROLS -->
+  <section class="sl-card">
+    <div class="sl-field">
+      <label for="sl-portfolio">Portfolio</label>
+      <select id="sl-portfolio"></select>
+    </div>
+
+    <div class="sl-field">
+      <label>Scenario Type</label>
+      <div class="sl-seg" id="sl-type-seg">
+        <button type="button" class="sl-seg-btn active" data-type="historical">Historical</button>
+        <button type="button" class="sl-seg-btn" data-type="hypothetical">Hypothetical</button>
+      </div>
+    </div>
+
+    <!-- HISTORICAL PANEL -->
+    <div class="sl-panel" id="sl-panel-historical">
+      <div class="sl-field">
+        <label>Auto-detected drawdowns <span class="sl-field-note">(computed from your own price history — not a hardcoded list)</span></label>
+        <div class="sl-presets" id="sl-presets"></div>
+      </div>
+      <div class="sl-field-row">
+        <div class="sl-field">
+          <label for="sl-start-date">Start Date</label>
+          <input type="date" id="sl-start-date" />
+        </div>
+        <div class="sl-field">
+          <label for="sl-end-date">End Date</label>
+          <input type="date" id="sl-end-date" />
+        </div>
+      </div>
+    </div>
+
+    <!-- HYPOTHETICAL PANEL -->
+    <div class="sl-panel" id="sl-panel-hypothetical" style="display:none;">
+      <div class="sl-field">
+        <label for="sl-shock-pct">Uniform shock, applied to every holding</label>
+        <div class="sl-shock-row">
+          <div class="sl-presets" id="sl-shock-presets">
+            <button type="button" class="sl-pill" data-pct="-5">-5%</button>
+            <button type="button" class="sl-pill" data-pct="-10">-10%</button>
+            <button type="button" class="sl-pill" data-pct="-20">-20%</button>
+            <button type="button" class="sl-pill" data-pct="-30">-30%</button>
+          </div>
+          <input type="number" id="sl-shock-pct" step="0.5" value="-10" />
+          <span class="sl-shock-suffix">%</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="sl-run-btn" id="sl-run-btn">▶ Run Scenario</button>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="sl-results" style="display:none;">
+    <div class="sl-kpis" id="sl-kpis"></div>
+
+    <div class="sl-table-wrap">
+      <table class="sl-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Qty</th>
+            <th>Current Price</th>
+            <th>Current Value</th>
+            <th>Shocked Price</th>
+            <th>Shocked Value</th>
+            <th>Change</th>
+            <th>Impact</th>
+          </tr>
+        </thead>
+        <tbody id="sl-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <div id="sl-empty" class="sl-empty">Pick a portfolio and a scenario, then run it.</div>
+
+  <div class="sl-disclaimer">
+    ⚠️ A simplified linear stress test: each holding's own historical % change over the chosen window (or the flat
+    hypothetical shock) is applied straight to today's price. It does not model dividends, corporate actions,
+    liquidity limits, or correlation beyond what each stock actually did. A holding with no price history covering
+    the chosen window falls back to the market-wide average change for that window (marked with <span class="sl-flag">†</span>).
+    Not financial advice.
+  </div>
+
+</main>
+
+<script type="module" src="scenario-lab.js"></script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

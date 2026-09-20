@@ -1,0 +1,238 @@
+{
+  "bank_id": "NRBBANK",
+  "bank_name": "NRB Bank PLC",
+  "website": "https://www.nrbbankbd.com",
+  "reporting_basis": "Solo / Separate (not Consolidated)",
+  "reporting_basis_evidence": "NRB Bank Securities PLC (the sole subsidiary) was incorporated 16 March 2021, so no consolidated statements exist before FY2021; a Consolidated Balance Sheet first appears in the FY2022 Annual Report. Determined by the project's standard method (matching the recorded five-year/summary-table total assets against the annual report's own labelled Balance Sheet columns) on the two years where both a Consolidated and a Separate Balance Sheet are printed side by side: FY2022 report shows Total Assets of 74,224,372,282 (Consolidated) vs 74,676,046,707 (Separate/Solo) for 31 Dec 2022 -- the bank's own 'Five Years at a Glance' table for FY2022 reports Total Assets = 74,676m, matching the Separate/Solo column exactly (Consolidated is 452m lower). FY2023 report shows 85,305,292,244 (Consolidated) vs 85,680,280,234 (Separate/Solo) for 31 Dec 2023 -- the bank's own 'Five-Year Progression' table for FY2023 reports Total Assets = 85,680m, again matching Separate/Solo exactly. All years in this dataset (FY2013-FY2025) are therefore sourced on a Solo/Separate basis, consistent with the project's general preference for Solo over Consolidated.",
+  "notes": "annual_reports/NRBBANK/ contained 12 pre-extracted annual reports (FY2013-FY2024) at the start of this work; no bank_financials/NRBBANK/ directory existed. FY2013's own report and FY2024's own 'Annual Report' (glossy) PDF are both affected by embedded-font/encoding corruption in their pdftotext extraction (see per-year notes below and each year's period_note) and were recovered via adjacent reports / freshly-sourced alternative documents instead. FY2025 was not in the archive and was freshly researched and downloaded from the bank's investor-relations page (a Dec-31 FY2025 Financial Statement had been published, signed 30 April 2026; no glossy 'Annual Report 2025' was live yet as of retrieval). All FY2013-FY2025 Q4/year-end (audited) data now has confirmed Solo-basis coverage. Q1/H1/Q3 unaudited interim data was not researched (time-boxed to prioritize completing the full annual Q4 series and its cross-report validation, per the project's stated priority order).",
+  "sources": [
+    {
+      "period": "2013 (Q4)",
+      "type": "annual_report_comparative_table",
+      "source_document": "nrbbank-annual-report-2014.txt ('TWO-YEAR PROGRESSION OF NRB BANK' and 'FINANCIAL HIGHLIGHTS' tables, FY2013 comparative column, p.92-93)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013
+      ],
+      "note": "nrbbank-annual-report-2013.txt (the bank's own FY2013 report, already in the archive) is corrupted by an embedded-font encoding fault: pdftotext -layout substitutes a consistent but non-standard Unicode code point for most Latin letters/digits across ~56% of its 5,032 lines (2,844 lines match the corrupted-glyph signature), including its own Balance Sheet and Financial Highlights table. The substitution is a stable 1:1 cipher and was spot-decoded manually (digits and several words verified character-by-character) to confirm Total Assets=5,966 and Total Shareholders' Equity=4,011 reproduce exactly from the cipher, cross-validating the figures taken from the FY2014 report's comparative column instead of attempting a full document re-decode. This is treated analogously to the project's 'PDF extracts to ~0 lines -> recover from an adjacent report' rule, since the specific tables needed were unusable even though the file overall is not empty. NRB Bank commenced banking operations 4 August 2013, so FY2013 covers under 5 months of trading; ROE/ROA are flagged as not comparable to later full years."
+    },
+    {
+      "period": "2014 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2014.txt (own Balance Sheet p.66, 'FINANCIAL HIGHLIGHTS'/'TWO-YEAR PROGRESSION' tables p.92-93); nrbbank-annual-report-2015.txt (comparative column, cross-check only)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014
+      ],
+      "note": "Fully legible, no encoding issues. Total Assets, Total Liabilities and Total Shareholders' Equity read directly from the bank's own report; Statutory/Other Reserve and Retained Earnings split taken from the FY2015 report's exact-taka comparative column, which reproduces the FY2014 report's own Total Shareholders' Equity (3,969,300,585) exactly -- no restatement found."
+    },
+    {
+      "period": "2015 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2015.txt (own Balance Sheet p.114, Profit and Loss Account, Basel II/III capital note p.108-109)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015
+      ],
+      "note": "Cross-checked as stable against the FY2016 report's comparative column (Total Assets, Equity, PAT all reproduce exactly). Tier-2 Capital and Tier-2 Ratio are calculated as the residual after the directly-reported Tier-1 figure, since no separate Tier-2 Taka figure is printed for this year."
+    },
+    {
+      "period": "2016 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2016.txt (own Balance Sheet p.?, Profit and Loss Account, Basel III capital disclosure)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016
+      ],
+      "note": "Cross-checked as stable against the FY2017 report's comparative column. DATA-QUALITY FINDING: this report's own five-year summary table shows FY2015 'General provision' = 35m; the FY2018/FY2019 report vintages' five-year tables restate the same FY2015 figure to 100m (+186%) and additionally introduce a separate 'Specific provision' balance (3.8m) not shown at all in the FY2015-FY2017 vintages. This appears to be a redefinition/regrouping of the provision-balance categories between report vintages rather than a value correction (see FY2019 period_note for the fuller explanation of general/specific provision BALANCE vs EXPENSE); this dataset does not carry a 'provision_maintained' line item for NRBBANK as a result."
+    },
+    {
+      "period": "2017 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2017.txt (own Balance Sheet p.83, Profit and Loss Account, Basel III capital disclosure p.83)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017
+      ],
+      "note": "Cross-checked as stable against the FY2018 report's comparative column (Total Assets, Equity 4,669,370,227, PAT 442,923,095 all reproduce exactly). Equity fell year-on-year from FY2016 (5,059.09m to 4,669.37m) despite positive FY2017 net profit; confirmed genuine (reproduces identically in FY2018's comparative), not a data error."
+    },
+    {
+      "period": "2018 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2018.txt (own Balance Sheet p.92, Profit and Loss Account p.93, Basel III capital disclosure p.92-93)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018
+      ],
+      "note": "DISCREPANCY FOUND: this report's own P&L reports 'Total operating income (a)' = 2,310.41m and 'Total operating expenses (b)' = 1,400.94m; the FY2019-FY2022 report vintages' five-year comparative tables all restate both to 2,289m / 1,380m (both down ~21m). 'Profit before provision' is unchanged at 909.47m either way (2,310.41-1,400.94 = 2,289-1,380 = 909.47, within rounding), confirming this is a gross/net reclassification between two P&L lines, not a profit restatement. Per the project's 'prefer contemporaneous figures' rule, the original FY2018 figures (2,310.41 / 1,400.94) are used in this dataset; later vintages' 2,289/1,380 are not used."
+    },
+    {
+      "period": "2019 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2019.txt (own Balance Sheet p.125-126, Profit and Loss Account p.127, capital adequacy table)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019
+      ],
+      "note": "Cross-checked as stable against the FY2020 report's comparative column (exact match to the taka). DATA-QUALITY FINDING (documented here once, applies across FY2015-FY2022): the 'General provision'/'Specific provision' rows in the five-year summary tables are cumulative BALANCE-SHEET provision-maintained stock figures, not the current year's P&L provision EXPENSE -- e.g. this report's own P&L shows a FY2019 General provision *expense* of 75.09m and Specific provision *expense* of 814.08m, which only reconcile to the five-year table's FY2019 closing balances (~348m / ~1,110m) after adding the FY2018 opening stock (273m general + 295m specific, per the FY2018 five-year table). The two concepts share near-identical row labels across different tables in the same report and are easy to conflate; combined with the FY2015/FY2016 redefinition noted above, this dataset deliberately does not carry a single 'provision_maintained' line item for NRBBANK."
+    },
+    {
+      "period": "2020 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2020.txt (own Balance Sheet p.?, Profit and Loss Account, Basel III capital disclosure)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020
+      ],
+      "note": "Cross-checked as stable against the FY2021 report's comparative column. Total provision for the year was only BDT 655,769 (a near-zero net charge / effective release), consistent with the five-year table's negative FY2020 specific-provision entry."
+    },
+    {
+      "period": "2021 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2021.txt (own Balance Sheet, Solo -- last year before NRB Bank Securities PLC required consolidation)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021
+      ],
+      "note": "MATERIAL DISCREPANCY FOUND: the FY2022 report's own comparative column for 31 Dec 2021 shows Retained Earnings of 813,753,331 (Total Equity 7,507,523,939) instead of this report's own 308,711,762 (Total Equity 7,002,482,370) -- a difference of exactly 505,041,569 -- while Total Liabilities is essentially unchanged between the two presentations (54,139,901,192 in the FY2022 report's comparative vs 54,137,791,957 here, a separate and immaterial ~2.1m difference). Because Total Liabilities was not adjusted to offset the equity change, the FY2022 report's own FY2021 comparative column FAILS the balance-sheet identity (Total Liabilities + Equity = 61,647,425,131 vs its own stated Total Assets of 61,140,274,327, a 507.15m/0.83% gap), whereas this FY2021 report's own figures balance exactly (54,137,791,957 + 7,002,482,370 = 61,140,274,327). Per the project's exception for arithmetically-impossible figures, this dataset uses the contemporaneous, internally-consistent FY2021 report's own figures; the FY2022 report's comparative for FY2021 is not used anywhere."
+    },
+    {
+      "period": "2022 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2022.txt (own Solo Balance Sheet p.147, Consolidated Balance Sheet used only for reporting-basis determination, capital disclosure, 'Five Years at a Glance' table p.121)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022
+      ],
+      "note": "MATERIAL DISCREPANCY FOUND: the FY2023 report's own comparative column for 31 Dec 2022 shows Total Assets of 73,252,176,417 / Total Liabilities of 65,485,843,841, versus this report's own 74,676,046,707 / 66,909,714,131 -- a difference of exactly 1,423,870,290 in both lines, fully traced to a single reclassified line: 'Other assets' is 3,418,399,553 here but 1,994,529,263 in the FY2023 comparative (every other Balance Sheet line -- Cash, Investments, Loans, Fixed Assets, Deposits, Borrowings, Equity -- is identical between the two presentations of 31 Dec 2022, and both columns balance internally). This is a genuine restatement, not an error; per 'prefer contemporaneous figures', this dataset uses the original FY2022 report's figures. Off-balance-sheet exposures show a further, separate restatement for the same date (11,879,207,266 here vs 12,817,928,273 in the FY2023 comparative, ~938.7m difference) -- again, the contemporaneous figure is used."
+    },
+    {
+      "period": "2023 (Q4)",
+      "type": "annual_report_own_statements",
+      "source_document": "nrbbank-annual-report-2023.txt (own Solo Balance Sheet p.140, Consolidated Balance Sheet p.132 used only for reporting-basis determination, 'Five-Year Progression' table p.118-122, 'Five Year comparison of Financials' narrative table p.44)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023
+      ],
+      "note": "Two different 'income' concepts appear in the source and are not interchangeable: 'Total income' (7,156m, gross of interest expense) vs 'Operating Income' (3,242m, net of interest expense, structurally consistent with every other year's gross_income in this dataset) -- this dataset uses Operating Income for gross_income and separately records the broader figure as 'total_income_gross' since the source's own 'Net profit margin (PAT/total income)' ratio is defined against it. All FY2023 figures independently cross-checked against the FY2024 report's comparative column for 31 Dec 2023 -- Total Assets, Deposits, Loans, Equity, Operating Income/Expense, PBT and PAT all reproduce to the exact taka; no restatement found for this year."
+    },
+    {
+      "period": "2024 (Q4)",
+      "type": "financial_statements_and_basel3_disclosure",
+      "source_document": "nrbbank-financial-statement-2024.txt (Consolidated & Separate Financial Statements 2024, Audited) and nrbbank-basel3-disclosure-2024.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "This archive's own nrbbank-annual-report-2024.txt (the glossy Annual Report, 11,501 lines, already present before this session) is unusable: unlike FY2013's single-cipher issue, spot checks at lines ~3000/~6000/~9000/~11000 show at least three different, mutually-inconsistent Unicode-substitution patterns (consistent with multiple broken embedded font subsets across different design sections), and a majority of its lines fail a plain-English legibility check -- not corrected, left in place for reference. A second, separately-hosted 'Audited-Financial-Statements-2024.pdf' also exists on nrbbankbd.com but is a pure image scan (0 characters extracted by pdftotext; Creator metadata 'RICOH MP 3555' confirms a photocopier scan) and was discarded per the scanned-PDF rule; it was never saved. FY2024 was instead recovered from two clean documents downloaded fresh from nrbbankbd.com during this session, text-extracted (pdftotext -layout) and page-image cross-checked (pdftoppm, to resolve the compact newspaper layout's non-linear column ordering), then saved as nrbbank-financial-statement-2024.txt (from https://www.nrbbankbd.com/wp-content/uploads/2025/06/Financial-Statement-2024-Final.pdf, Adobe InDesign export) and nrbbank-basel3-disclosure-2024.txt (from https://www.nrbbankbd.com/wp-content/uploads/2025/06/Disclosures-on-Risk-Based-Capital-Basel-III-2024.pdf, Microsoft Word export) under annual_reports/NRBBANK/; both source PDFs were deleted per the project's cleanup rule. Balance Sheet and P&L: nrbbank-financial-statement-2024.txt page 2 of 8 (own Solo statements). Capital: nrbbank-basel3-disclosure-2024.txt pp.5-6 (Tier-1/Tier-2/CRAR) and p.12 (Gross NPA movement schedule). All figures independently reproduce exactly in the FY2025 report's comparative column (no restatement found for FY2024). NPL% is 'calculated' (classified/gross loans) because the source's 'Non-Performing Assets (NPAs) to outstanding loans & advances' label is present but its value cell did not extract from either the FY2024 or FY2025 vintage of the Basel III disclosure (apparently a blank template cell in both filings)."
+    },
+    {
+      "period": "2025 (Q4)",
+      "type": "financial_statements_and_basel3_disclosure",
+      "source_document": "nrbbank-financial-statement-2025.txt (Consolidated & Separate Financial Statements 2025) and nrbbank-basel3-disclosure-2025.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Not previously in the archive; freshly located via https://www.nrbbankbd.com/investors-relation/ during this session, downloaded (https://www.nrbbankbd.com/wp-content/uploads/2026/05/Financial-Statement-2025.pdf and .../Disclosures-on-Risk-Based-Capital-Basel-III-2025.pdf, same compact InDesign / Word-export formats as FY2024's), text-extracted (pdftotext -layout) and page-image cross-checked (pdftoppm), then saved as nrbbank-financial-statement-2025.txt and nrbbank-basel3-disclosure-2025.txt under annual_reports/NRBBANK/; both source PDFs deleted per the project's cleanup rule. Balance Sheet and P&L: nrbbank-financial-statement-2025.txt page 2 of 8 (own Solo statements, signed 30 April 2026). Capital: nrbbank-basel3-disclosure-2025.txt pp.5-6 and p.12. No glossy 'Annual Report 2025' (Directors' Report / five-year table / photographs) had been published on the bank's investor-relations page as of the Financial Statements' own sign-off date -- only the two documents above were available -- so Authorised Capital, Number of Branches/ATMs/Employees and other narrative-report-only fields are gaps for FY2025 only. A large-loan-exposure note elsewhere in this filing states 'Total capital of the Bank was Taka 9,094.53 million as at 31 December 2025' -- this is actually the FY2024 Total Regulatory Capital carried over verbatim in error from the prior year's boilerplate text; the correct 31 Dec 2025 figure, per this same filing's own Basel III disclosure, is 10,059.86m, which is what is used in this dataset. NPL% is 'calculated' for the same blank-cell reason as FY2024."
+    },
+    {
+      "period": "2013-2023 and 2018-2023 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "confirmed_unavailable_structural_gap",
+      "notes": "RESEARCHED (2026-08-27 session): no genuine 'Quarterly Financial Statements' filings exist for 2013-2015 or 2018-2023. A full-domain Wayback Machine CDX search (cdx api, url=nrbbankbd.com, matchType=domain, all-time, ~385 distinct PDF captures reviewed) found only two isolated real filings before 2024: 'Quarterly Financial Statements Third Quarter 2016' and a March/June/September-2017 trio (all used, see below). A separate, superficially similar series of PDFs ('1st/2nd/3rd/4th Quarter Report YYYY-YYYY', July-June Bangladesh-government-fiscal-year-labelled, 2021-2024) was investigated and REJECTED: two sample downloads (4th-Quarter-Report-2021-2022.pdf, 1st-Quarter-Report-2022-2023.pdf) are RICOH-photocopier scans, only 3-4 pages long, and OCR (tesseract, Bangla text visible) confirms they are National Integrity Strategy (NIS) / Citizen's Charter compliance progress reports -- mandatory Bangladesh Bank governance filings with no balance-sheet or P&L content -- NOT financial statements, evidenced further by 'NIS-' and 'Citizen-Chartered' prefixed filenames sitting in the exact same upload folders. The genuine structural reason for the 2018-2023 gap: NRB Bank's IPO subscription ran 28 Jan-1 Feb 2024 (prospectus vetted 28 Dec 2023) and it listed on DSE/CSE around 27 Feb 2024 -- before that, as an unlisted PCB, it had no BSEC obligation to publish interim financials publicly (Bangladesh Bank's own audit-committee review of quarterly financials, referenced throughout the FY2014-2023 annual reports' governance sections, is an internal/regulatory requirement, not a public-disclosure one). This is treated as a genuine, permanent gap, not a research failure -- consistent with this project's standing rule to distinguish structural non-existence from incomplete research."
+    },
+    {
+      "period": "2016 (Q3)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "nrbbank-2016-q3-unaudited-ocr.txt ('Quarterly Financial Statements (unaudited) - Third Quarter 2016')",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016
+      ],
+      "note": "Solo basis (no subsidiary existed). Recovered via Wayback Machine (capture 2017-09-08 of a URL no longer live on nrbbankbd.com: oldsite/wp-content/uploads/2016/10/Quarterly-Financial-Statements-Third-Quarter-2016.pdf). Source is a genuine scanned image (Adobe Acrobat 7.0 Image Conversion Plug-in, 0 characters via pdftotext) -- OCR'd (pdftoppm + tesseract) per the project's scan-recovery rule. Every Balance Sheet subtotal cross-checked by resummation; Total Assets (24,900,704,482) and Loans and advances (12,598,831,145) additionally confirmed via a 300dpi precision crop-and-reread. DISCREPANCY FOUND vs the FY2017-Q3 filing's own comparative column for the same date (30 Sep 2016): that later filing shows Total Assets=24,912,543,812 (+0.048%) and Loans and advances=12,604,862,038 (+0.048%) -- both confirmed genuine (not an OCR artefact) via the same precision crop-check, so per the project's contemporaneous-preferred rule this quarter's own figures are used; the later comparative is not used anywhere in this dataset. One OCR digit (Interest income) was corrected from an ambiguous read to 1,282,785,100 via a targeted crop, which also matches the FY2017-Q3 comparative exactly -- treated as an OCR-error fix, not a restatement. EPS is explicitly 'Annualized' in the source (0.86), not a plain cumulative EPS."
+    },
+    {
+      "period": "2017 (Q1, Q2/H1, Q3)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "nrbbank-2017-q1-unaudited.txt, nrbbank-2017-q2-unaudited.txt, nrbbank-2017-q3-unaudited.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017
+      ],
+      "note": "Solo basis (no subsidiary existed). All three recovered via Wayback Machine captures (2017-09-08 for Q1/H1, 2018-02-05 for Q3) of URLs no longer live on nrbbankbd.com. All three are clean text exports (Microsoft Excel 2010 for Q1, Adobe InDesign CC 2017 for H1/Q3) -- no scan or font-corruption issues, pdftotext -layout extracted cleanly. Balance-sheet identity verified exactly for all three quarters. Each quarter's own Statement of Changes in Equity independently reconciles opening Retained Earnings + Net Profit After Tax to the closing Balance Sheet figure exactly in all three filings. EPS is explicitly 'Annualized' in all three (0.58, 0.95, 1.09) -- a convention that changes to plain (non-annualized) EPS from the 2024-vintage filings onward (see below). The Q3 filing's own comparative column for 30-Sep-2016 was cross-checked against the independently-OCR'd 2016_Q3.json -- see that period's note for the one discrepancy found (Total Assets/Loans and advances, ~0.048% higher in this later comparative); all other 30-Sep-2016 figures in the Q3 filing's comparative (deposits, contingent liabilities, PBT, PAT, interest income) reproduce 2016_Q3.json exactly."
+    },
+    {
+      "period": "2018-2023 Q4/annual",
+      "type": "cross_reference_only",
+      "status": "not_applicable",
+      "notes": "No new research needed or performed for these years' Q4/annual data during this session -- already complete in the existing FY2013-FY2025 Q4 series (see the per-year entries above). Listed here only to make explicit that the 2018-2023 gap documented above applies to Q1-Q3 interim data only, not to Q4/annual coverage."
+    },
+    {
+      "period": "2024 (Q1, Q2/H1, Q3)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "nrbbank-2024-q1-unaudited.txt, nrbbank-2024-q2-unaudited.txt, nrbbank-2024-q3-unaudited.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Downloaded directly from nrbbankbd.com/wp-content/uploads/... (still live). These are the first interim filings the bank published, coinciding with its Jan/Feb-2024 IPO and DSE/CSE listing. BASIS: each filing is a single compact 'newspaper-layout' composite page containing BOTH a full Consolidated statement set (Group, upper half) AND a full Separate/Bank-only statement set (lower half, plain-labelled 'Balance Sheet'/'Profit and Loss Account' with no 'Consolidated' prefix) -- resolved via pdftoppm page-image rendering since pdftotext's column-merging garbles the two halves together. SOLO figures are used in this dataset's quarterly/2024_Q1-Q3.json, per the project's Solo-preference rule and for continuity with the Solo-basis Q4/annual series. Balance-sheet identity verified exactly for Solo in all three quarters. Cross-quarter internal consistency verified: Q2 cumulative NPAT minus Q1 cumulative NPAT equals the source's own discrete-Q2 column exactly; Q3 cumulative NPAT minus Q2 cumulative NPAT equals the source's own discrete-Q3 column exactly. EPS convention CHANGED from this vintage onward: plain 'Earnings per share (EPS)(Restated)', not annualized (contrast with the 2016/2017 vintage's 'Annualized' EPS) -- flagged explicitly in each file's period_note. Minor unresolved item: 2024_Q2's Separate Statement of Changes in Equity does not visibly reconcile opening Retained Earnings + NPAT to the closing Retained Earnings figure from the data printed on the page (a blank/unlabelled 'Cash dividend paid for 2023' row may explain the gap but no value is printed) -- the Balance Sheet's own Retained Earnings figure is used regardless and the overall balance-sheet identity still holds exactly."
+    },
+    {
+      "period": "2025 (Q1, Q2/H1, Q3)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "nrbbank-2025-q1-unaudited.txt, nrbbank-2025-q2-unaudited.txt, nrbbank-2025-q3-unaudited.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Downloaded directly from nrbbankbd.com/wp-content/uploads/... (still live). BASIS BREAK: unlike the 2024 vintage, none of these three filings prints a Separate/Bank-only statement set at all -- each is a single compact page containing ONLY Consolidated statements plus explanatory notes. This dataset's quarterly/2025_Q1-Q3.json are therefore CONSOLIDATED, explicitly flagged per the project's Solo-preference rule as a basis break from the Solo-basis Q4/annual series and from 2024's Solo-basis interim quarters. Balance-sheet identity verified exactly (or to within 1 taka rounding) for all three quarters. Cross-quarter internal consistency verified exactly (Q2-cumulative minus Q1-cumulative = source's own discrete-Q2 column; Q3-cumulative minus Q2-cumulative = source's own discrete-Q3 column) across all three files. MAJOR FINDING: this is the quarter-by-quarter unfolding of the asset-quality/funding-cost event already flagged in this bank's FY2025 Q4 period_note (Net Interest Income first turning negative on a full-year basis) -- these interim filings show it began specifically in Q2 2025 (Net Interest Income swung from +506.81m in Q1 to -797.62m discrete in Q2) alongside a ~15x jump in Specific provision expense (H1: 1,162.97m vs 75.82m in H1-2024), producing a cumulative loss of -854.33m by H1 and -1,389.60m by Q3 2025 -- far more severe intra-year than the eventual full-year FY2025 result of +108.52m profit (meaning Q4 2025 alone was a very large recovery: +108.52m minus -1,389.60m = +1,498.12m swing in the final quarter alone). This Q1-Q3 quarterly detail was not visible from the annual Q4 filing alone and materially enriches the FY2025 risk narrative already in insights.json."
+    },
+    {
+      "period": "2026 (Q1, Q2/H1)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "nrbbank-2026-q1-unaudited-ocr.txt, nrbbank-2026-q2-unaudited.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2026
+      ],
+      "note": "Downloaded directly from nrbbankbd.com/wp-content/uploads/... (still live); Q3 2026 does not yet exist as the quarter had not ended as of retrieval. BASIS: Consolidated only, continuing the 2025 pattern (no Separate/Bank-only statements printed). Q1 2026's source PDF is a RICOH MP 3555 photocopier scan (the same scanner model that produced an unusable scanned 'Audited-Financial-Statements-2024.pdf' discarded during the FY2024 annual-report research, per this bank's Q4-2024 note) -- pdftotext extracted only the cover title, so OCR (pdftoppm 250dpi + tesseract) was used; every Balance Sheet subtotal was independently verified by resumming its own component lines (all matched to within BDT 1-2, rounding), and the P&L's own '01 January to 31 March 2025' comparative column was cross-checked against this dataset's independently-sourced 2025_Q1.json and matches exactly line-for-line, giving high confidence in the OCR. Q2 2026 (H1) is a clean text export, no issues. RECOVERY CONFIRMED WITH THE BANK'S OWN EXPLANATION: the H1-2026 filing includes a BSEC-mandated 'Additional Disclosure' (its own section 3.7) explicitly attributing the FY2025 Net Interest Income decline to a non-performing-loan event that required transferring BDT 110.71 crore of interest income to interest suspense during Jan-Jun 2025, and states the NPL ratio was brought down to 7.49% by mid-2026 through management effort, resulting in a large fall in provisioning (Total provision (D): 13.41m H1-2026 cumulative vs 1,483.52m H1-2025) and a return to profit (NPAT +87.75m H1-2026 vs -854.33m H1-2025). Also newly disclosed in this vintage: a 'Start-up equity Investment' equity line item (reclassified from Other Liabilities per SMESPD Circular No. 02, per the filing's own note 3.8, with FY2025 comparatives restated accordingly and NAVPS for 31-Dec-2025 restated from 12.89 to 12.93 as a result -- noted for awareness, not used to alter this dataset's own already-finalized 2025_Q4.json, which predates and is unaffected by this later reclassification note)."
+    }
+  ]
+}

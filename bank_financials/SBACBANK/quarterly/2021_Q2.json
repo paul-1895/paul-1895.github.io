@@ -1,0 +1,315 @@
+{
+  "bank_id": "SBACBANK",
+  "bank_name": "South Bangla Agriculture & Commerce Bank PLC",
+  "reporting_date": "2021-06-30",
+  "financial_year": 2021,
+  "quarter": "Q2",
+  "period_note": "SOUTH BANGLA AGRICULTURE AND COMMERCE BANK LIMITED (pre-2023 name). CONSOLIDATED basis (this quarter's own statements are explicitly titled 'Consolidated Balance Sheet' / 'Consolidated Profit and Loss Account', unlike Q1-2021's unqualified, single-entity statements) -- SBAC Bank Investment Limited, the Bank's investment/brokerage subsidiary, appears for the first time this quarter (Note 9's Fixed Assets and Note 10's Other Assets both newly itemise 'SBAC Bank Investment Limited' rows, and the Statement of Changes in Equity shows a 'Paid-up Capital Issued' of Tk.400,000 to a new Non-controlling interest holder) -- consistent with sources.json's finding that the subsidiary 'first appears in the FY2021 annual report'. UNLIKE FY2023-2025 quarterly filings, this interim filing does NOT separately present a Solo/Standalone statement alongside the Consolidated one, so Consolidated figures are used here as the only available basis for this quarter; the difference from a hypothetical Solo basis is negligible (non-controlling interest of just Tk.400,166 against total equity of Tk.10,463.59m, i.e. 0.004%, and PAT attributable to NCI of only Tk.166 against total PAT of Tk.209,503,693). Total assets (93,648,752,234), total liabilities (83,185,165,555) and total equity (10,463,586,679 = Tk.10,463,186,513 attributable to the Bank's own shareholders + Tk.400,166 non-controlling interest, confirmed both by total_assets-minus-total_liabilities and by summing equity components) all reconcile. Income-statement items are CUMULATIVE from 1 January 2021 (H1). Provision shortfall (Note 8.4, same Bangladesh Bank letter DBI-1/132/2021-1002 already found in this bank's own 2021_Q1.json) DECREASED slightly to Tk.387.07m (from Tk.371.44m at 31-Mar-2021 -- both years' worth of gap being repaid on schedule). Classified loans (Note 8.5) were Tk.3,398,841,971 (NPL 5.70%). No capital-adequacy disclosure in this filing. BAS-33-STYLE RESTATEMENT: this filing's own Note 2.7 restates the 30-Jun-2020 comparative NAV and its own Note 37 restates the H1-2020 comparative EPS to 0.49 (PAT 338,884,030/CURRENT 684,645,517 shares) vs that quarter's own contemporaneous EPS of 0.54 (2020_Q2.json, using its own then-current 622,405,016 shares) -- the same enlarged-share-count mechanism already documented elsewhere in this dataset.",
+  "source": {
+    "source_document": "sbacbank-quarterly-2021-q2.txt",
+    "source_path": "annual_reports/SBACBANK/sbacbank-quarterly-2021-q2.txt",
+    "source_url": "https://cdn.sbacbank.com/files/investors-relations/financial-statement-2021-q2.pdf",
+    "source_page_lines": "PDF p.1: Consolidated Balance Sheet (Un-audited); PDF p.2: Off-Balance Sheet Items + NAV; PDF p.3: Consolidated Profit and Loss Account (Un-audited); PDF p.20: Note 8.4 Required provision for loans and advances / Note 8.5 Classification of loans and advances. Fully scanned document with no usable embedded text layer; all figures read directly off 130dpi page images, cross-validated via balance-sheet identity and component-sum reconciliation.",
+    "retrieval_date": "2026-08-28"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 93648.752234,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Consolidated (includes newly-formed subsidiary SBAC Bank Investment Limited); no Solo alternative presented in this interim filing."
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 83185.165555,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY + Non-controlling interest",
+      "value": 10463.586679,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "10,463.186513m attributable to the Bank's own shareholders + 0.400166m non-controlling interest."
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up capital",
+      "value": 6846.45517,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 1753.397543,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserve",
+      "original_metric_name": "Other reserve (revaluation reserve on Govt. Securities)",
+      "value": 966.362549,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Surplus in profit and loss account",
+      "value": 896.971251,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (Current + Special notice + Bills payable + Savings + Fixed + Other deposits)",
+      "value": 66441.617617,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (Main Operation + Off-shore Banking Unit)",
+      "value": 59649.318805,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 9836.03456,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises, furniture and fixtures",
+      "value": 1456.839383,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other assets",
+      "value": 2280.724004,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-balance sheet items including contingent liabilities",
+      "value": 16372.028085,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net asset value (NAV) per share - Consolidated",
+      "value": 15.28,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Classified loans and advances (Note 8.5, Main Operation + Off-shore Banking Unit)",
+      "value": 3398.841971,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Classified loans / total loans and advances",
+      "value": 5.7,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "3,398.841971/59,649.318805; not printed as a single ratio cell in this filing."
+    },
+    {
+      "normalised_metric_name": "provision_required",
+      "original_metric_name": "Total provision required (Note 8.4)",
+      "value": 2064.207935,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_maintained",
+      "original_metric_name": "Total provision maintained (Note 8.4)",
+      "value": 1677.139526,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_surplus_deficit",
+      "original_metric_name": "Provision to be maintained (i.e. shortfall) (Note 8.4)",
+      "value": -387.068409,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Reconciles exactly to provision_maintained minus provision_required. Same DBI-1/132/2021-1002 forbearance letter as this bank's own 2021_Q1.json."
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest income (01 Jan 2021 to 30 Jun 2021)",
+      "value": 2681.767389,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense_cumulative",
+      "original_metric_name": "Less: Interest paid on deposits and borrowings etc.",
+      "value": 2000.342404,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income",
+      "value": 681.424985,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income",
+      "value": 789.340044,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage",
+      "value": 201.335072,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other operating income",
+      "value": 60.690117,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total operating income",
+      "value": 1732.790218,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses",
+      "value": 1053.526438,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision",
+      "value": 679.26378,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_cumulative",
+      "original_metric_name": "Total provision (Specific + Special general COVID-19 + General incl. off-balance sheet items + Start-up fund)",
+      "value": 190.237393,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "First appearance of a 'Provision for start-up fund' component (9,519,545), alongside Specific 40,519,918, Special general-COVID-19 60,338,806 and General 79,859,124."
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit before taxes",
+      "value": 489.026387,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Current tax",
+      "value": 279.522694,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation",
+      "value": 209.503693,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "209,503,527 attributable to equity holders of SBAC Bank Ltd. + 166 non-controlling interest."
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS)",
+      "value": 0.31,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Plain (non-annualized) EPS, matching PAT/weighted-average shares directly (209,503,693/684,645,517=0.3060)."
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on Assets (ROA), annualized",
+      "value": 0.45,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated_period_end_not_average",
+      "note": "H1 cumulative PAT (209.503693m) annualized x2 = 419.007386m, divided by period-end total assets (93,648.752234m)."
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Return on Equity (ROE), annualized",
+      "value": 4.0,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated_period_end_not_average",
+      "note": "H1 cumulative PAT (209.503693m) annualized x2 = 419.007386m, divided by period-end total equity (10,463.586679m)."
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Loans-to-deposits ratio",
+      "value": 89.78,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "gross_loans/total_deposits; not printed as a single ratio cell in this filing."
+    }
+  ]
+}

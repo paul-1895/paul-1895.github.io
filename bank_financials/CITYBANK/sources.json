@@ -1,0 +1,209 @@
+{
+  "bank_id": "CITYBANK",
+  "bank_name": "The City Bank PLC",
+  "website": "https://www.thecitybank.com",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2023 total assets of 555,738m match the figure under this report's 'Balance Sheet' (solo) heading; 564,929m is the consolidated total. Re-confirmed 2026-08-26 against the FY2024 and FY2025 annual reports: both reports' own 'Five Year Performance' tables reproduce 555,738m for FY2023 identically (a solo-basis figure), and their FY2024/FY2025 columns (697,349m and 843,341m respectively) are drawn from the same solo-basis table, so basis is unchanged across the whole 2011-2025 series stored here.",
+  "notes": "annual_reports/CITYBANK archive covers 2013-2025 (missing only 2011, 2012 detail; those two years have total-assets-only data recovered from later reports' comparative charts). City Bank's annual reports from FY2023 onward each publish an intra-year 'Quarterly Performance'/'Quarterly Performance Review' table within the annual report itself, giving real Q1/Q2/Q3 data without needing separate quarterly PDFs. As of 2026-08-26, the bank's public website has migrated from thecitybank.com (now 301-redirects) to citybankplc.com, a Next.js single-page app whose report-listing pages render client-side and are not scrapable by a plain HTTP fetch; the actual PDFs are served from a 'legacy' Laravel-based site at legacy.citybankplc.com/report/annualreports, which lists direct download links for every annual report back to 2013.",
+  "sources": [
+    {
+      "period": "2011-2013 (Q4, partial: total assets only)",
+      "type": "annual_report_chart_data",
+      "source_document": "citybank-annual-report-2013.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2011,
+        2012,
+        2013
+      ]
+    },
+    {
+      "period": "2014 (Q4, partial: total assets only)",
+      "type": "annual_report_comparative_balance_sheet",
+      "source_document": "citybank-annual-report-2015.txt (2014 comparative column)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2014
+      ]
+    },
+    {
+      "period": "2011, 2012, 2014, 2015, 2016 Q1/Q2/Q3 (full detail)",
+      "type": "primary_interim_financial_statements",
+      "source_document": "citybank-1q/2q/3q-<year>-financial-statements.txt (per-quarter files in annual_reports/CITYBANK/)",
+      "source_url": "https://www.thecitybank.com/AnnualReport/<filename>.pdf, recovered via Wayback Machine (bank's original pre-2018 domain); some 2016 quarters cross-confirmed on legacy.citybankplc.com/files/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011,
+        2012,
+        2014,
+        2015,
+        2016
+      ],
+      "note": "Recovered by an earlier pass of this backfill (session interrupted mid-task; transcript lost but file output intact and independently spot-checked as sound in this session). SOLO basis used throughout (Solo Balance Sheet / Solo Profit and Loss Account, unlabelled in the source PDFs, as opposed to the explicitly-labelled 'Consolidated' panels). Several quarters (e.g. 2012 Q2/Q3, 2014 Q2) were scanned booklets with no text layer, read visually via high-resolution page renders."
+    },
+    {
+      "period": "2013 Q1/Q2/Q3 (full detail)",
+      "type": "primary_interim_financial_statements",
+      "source_document": "citybank-1q-2013-financial-statements.txt, citybank-2q-2013-financial-statements.txt, citybank-3q-2013-financial-statements.txt",
+      "source_url": "http://www.thecitybank.com/AnnualReport/City_Bank_First_Quarterly_Report_2013.pdf (Wayback 20140520222012); http://www.thecitybank.com/AnnualReport/Financial Statement June 30, 2013.pdf (Wayback 20140520220614, id_ replay mode); http://www.thecitybank.com/AnnualReport/3rd_quearter_2013.pdf (Wayback 20140520220607)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013
+      ],
+      "note": "2013 was a genuine full-year gap (Q1, Q2, and Q3 all missing) at the start of this session; filled from Wayback Machine captures of the bank's pre-2018 thecitybank.com/AnnualReport archive, since legacy.citybankplc.com's financial-statements listing has no 2013 entries at all. All three quarters are scanned/image PDFs (no text layer); figures read visually via high-resolution page renders and cross-verified arithmetically (assets = liabilities + equity; operating-income components sum to reported total) and against adjoining quarters (2013 Q1's Dec-2012 comparative column matches the existing 2012_Q4.json total assets almost exactly; NPAT is monotonically increasing Q1->Q2->Q3). SOLO basis used throughout.",
+      "solo_basis_confirmed": "2013 Q1 filing's own 31-Dec-2012 Solo comparative total assets (130,185,631,812) matches the dataset's existing 2012_Q4.json value (130,186m) almost exactly."
+    },
+    {
+      "period": "2017, 2018, 2019, 2020, 2021 Q2 (Half-Yearly)",
+      "type": "primary_interim_financial_statements",
+      "source_document": "citybank-2q-<year>-financial-statements.txt",
+      "source_url": "https://legacy.citybankplc.com/files/ (see each quarter's quarterly/*.json source.source_url for the exact per-year filename)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "note": "Recovered by an earlier pass of this backfill (session interrupted mid-task) which replaced this dataset's original source for these 5 Q2 data points -- the FY2019/FY2021 annual reports' 5-year summary tables and/or an embedded BSEC disclosure table -- with the bank's own primary Half-Yearly interim financial statements downloaded directly from legacy.citybankplc.com/report/financialstatements. SOLO basis used throughout. 2019 Q2 onward discloses an explicit Net Assets Value (NAV) per Share note; earlier quarters do not."
+    },
+    {
+      "period": "2017 Q1/Q3, 2018 Q3, 2019 Q1/Q3, 2020 Q1 (full detail)",
+      "type": "primary_interim_financial_statements",
+      "source_document": "citybank-1q/3q-<year>-financial-statements.txt (per-quarter files in annual_reports/CITYBANK/)",
+      "source_url": "https://legacy.citybankplc.com/report/financialstatements (live archive listing) -> https://legacy.citybankplc.com/files/<filename>.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017,
+        2018,
+        2019,
+        2020
+      ],
+      "note": "These 5 quarters were missing (only each year's Q2 existed) because the bank's FY2017-2021 annual reports do not embed a discrete-quarter BSEC disclosure table (that convention only started with the FY2022 annual report). Recovered directly from the bank's own live financial-statements archive at legacy.citybankplc.com/report/financialstatements (a static HTML listing, fully enumerated and confirmed exhaustive -- no pagination/AJAX). SOLO basis used throughout; each cross-validated arithmetically (assets = liabilities + equity; operating-income components sum to the reported total) and against the adjoining already-completed Q2 of the same year (year-to-date NPAT minus H1 NPAT matches the filing's own 'Current Quarter' column in every case)."
+    },
+    {
+      "period": "2018 Q1, 2020 Q3, 2021 Q1, 2021 Q3 -- confirmed unrecoverable",
+      "type": "gap_confirmation",
+      "status": "genuinely_unavailable",
+      "retrieval_date": "2026-08-27",
+      "note": "2018 Q1: legacy.citybankplc.com/report/financialstatements links a file for this slot ('pdf-sample_1537438895.pdf') that was downloaded and confirmed to be a generic 4-paragraph 'Adobe Acrobat PDF Files' sample/placeholder document with no financial content whatsoever -- not a truncation, corruption, or access problem, just the wrong file uploaded by the bank. 2020 Q3, 2021 Q1, 2021 Q3: absent from legacy.citybankplc.com's financial-statements listing (which is confirmed exhaustive/static, not paginated) and not found in Wayback Machine CDX searches across all three of the bank's domains (thecitybank.com incl. www/ftp/islamic subdomains, citybankplc.com, legacy.citybankplc.com -- the last of which Wayback does not crawl/index at all, 0 captures). No DSE (dsebd.org) archive reaches back this far (rolling ~2-year window). These four quarters are left unavailable per project convention -- not backfilled from annual or adjacent-quarter data."
+    },
+    {
+      "period": "2015-2019 (Q4, full detail)",
+      "type": "annual_report_summary_table",
+      "source_document": "citybank-annual-report-2019.txt (5-year Balance Sheet/Income Statement/Capital/Credit Quality table)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019
+      ]
+    },
+    {
+      "period": "2020-2021 (Q4, full detail)",
+      "type": "annual_report_summary_table",
+      "source_document": "citybank-annual-report-2021.txt (\"Five-Year performance at a glance\")",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020,
+        2021
+      ],
+      "cross_check": "2019/2018/2017 columns independently match the 2019 report's own table."
+    },
+    {
+      "period": "2022-2023 Q1/Q2/Q3/Q4",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "citybank-annual-report-2023.txt (\"Quarterly Performance of City Bank\" table, p.132)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022,
+        2023
+      ],
+      "note": "Income-statement figures for Q1/Q2/Q3 are cumulative-from-Jan-1 as originally published (not discrete quarters) — flagged via _cumulative field names, not converted to discrete quarters to avoid introducing calculation error."
+    },
+    {
+      "period": "2019-2023 ratios (NIM, ROE, ROA, CAR, Tier1/2, NPL, cost-income, LDR)",
+      "type": "annual_report_summary_table",
+      "source_document": "citybank-annual-report-2023.txt (\"Key Ratios\" table, p.128-129)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-24",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022,
+        2023
+      ]
+    },
+    {
+      "period": "2024 Q1/Q2/Q3/Q4",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "citybank-annual-report-2024.txt (\"Quarterly Performance of City Bank\" table, p.134)",
+      "source_url": "https://legacy.citybankplc.com/files/City-Bank-Annual-Report-2024.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Income-statement figures for Q1/Q2/Q3 are cumulative-from-Jan-1 as originally published (not discrete quarters), same convention as 2022/2023. This report's own FY2024 comparative figures are also cross-checked against the FY2025 annual report's FY2024 comparative column (see discrepancies below); per project convention the contemporaneous FY2024 report is kept as the primary source for all of FY2024."
+    },
+    {
+      "period": "2024-2025 Five-Year Performance / Key Ratios / Balance Sheet & P&L horizontal-analysis tables",
+      "type": "annual_report_summary_table",
+      "source_document": "citybank-annual-report-2024.txt (\"Five Year Performance\" p.144-145, \"Key Ratios\" p.133, Balance Sheet horizontal analysis p.145-146); citybank-annual-report-2025.txt (\"Five Year Performance\" p.115-116, \"Key Ratios\" p.108, Balance Sheet horizontal analysis p.120-121)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024,
+        2025
+      ],
+      "cross_check": "2023/2022/2021 columns in both reports' Five Year Performance tables independently match the previously-stored 2023/2022/2021 values exactly. Within each report, paid-up capital + reserve fund = total equity, Tier I + Tier II = total regulatory capital, operating income - operating expenses = operating profit, and NPL% recomputed from classified loans / gross loans all reconcile to within rounding (<=1 unit on figures in the hundreds-of-thousands range) for both FY2024 and FY2025."
+    },
+    {
+      "period": "2025 Q1/Q2/Q3/Q4",
+      "type": "annual_report_embedded_quarterly_table",
+      "source_document": "citybank-annual-report-2025.txt (\"Quarterly Performance Review\" table, p.109)",
+      "source_url": "https://legacy.citybankplc.com/files/City-Bank-AR-2025.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Income-statement figures for Q1/Q2/Q3 are cumulative-from-Jan-1 as originally published (not discrete quarters), same convention as 2022-2024. This is currently the only source for FY2025 (no later annual report exists yet to restate it). FY2025's own Key Ratios / Five Year Performance table has an internal inconsistency: the Cash Reserve Ratio 'Surplus' printed for FY2025 (23,740) does not equal Actual reserve maintained (22,870) minus Required reserve (24,609) — every other year in the same table (2021-2024) reconciles exactly by that formula. CRR/SLR are not part of this dataset's stored schema so this does not affect any stored value; noted here for visibility only."
+    },
+    {
+      "period": "restatement discrepancies found: FY2024 figures, own report vs FY2025 report's comparative column",
+      "type": "discrepancy_note",
+      "status": "recorded_not_reconciled",
+      "note": "FY2024's own annual report (contemporaneous) vs the FY2025 annual report's FY2024 comparative column disagree on: Investments (133,644 vs 134,357, +713m), Total Assets (697,349 vs 698,062, +713m), Total Shareholders' Equity (45,818 vs 46,121, +303m), Total liabilities (651,531 vs 651,942, +411m), Net Interest Income (14,490 vs 14,742, +252m), Operating Income (39,536 vs 39,789, +253m), Operating Expenses (16,483 vs 16,736, +253m), Cost-to-Income Ratio (41.7% vs 42.1%). Operating Profit (23,053), Profit Before Tax (17,799), Profit After Tax (10,851), EPS (8.1), NAV/share (34.0), Deposits (514,204) and Loans (444,978) are identical in both reports. Interim-quarter cumulative figures for Q2 2024 and Q3 2024 show smaller reclassifications between Net Interest Income and Investment Income (BDT 52m and 76m respectively, opposite-signed, netting to zero at Operating Profit); Q3 2024 cumulative EPS also differs (3.2 as originally reported vs 2.8 in the FY2025 comparative column) while Q1/Q2/full-year 2024 EPS match exactly across both reports. Per the project's standing rule, the contemporaneous (FY2024 report's own) figures were kept in bank_financials/CITYBANK/quarterly/2024_Q1-Q4.json; the restated figures are recorded here and in each affected quarter's period_note, never silently averaged or overwritten."
+    },
+    {
+      "period": "2026 Q1/Q2 -- PRIMARY PDF INACCESSIBLE, thin DSE-sourced EPS-only record",
+      "type": "access_failure",
+      "status": "partial_thin_record",
+      "retrieval_date": "2026-09-12",
+      "note": "City Bank's own Q1 2026 and Half-Yearly 2026 unaudited financial statements PDFs could not be located or downloaded despite an extensive multi-route search: (1) legacy.citybankplc.com/report/financialstatements (this dataset's own source for City Bank's quarterly PDFs through 2021) has not been updated since 2021 and lists nothing for 2022-2026; the site's own nav only links an 'Annual Report' category now, suggesting the quarterly-filing category was deprecated on this CMS, not merely unindexed; (2) the bank's current site (citybankplc.com/reports, discovered via sitemap.xml since it isn't linked from legacy.citybankplc.com) is a client-side-rendered Next.js App Router page -- its server response and every JS chunk fetched were inspected for an embedded data payload or API route and none was found; the site returns HTTP 200 with an empty content shell to both a browser UA and a Googlebot UA; (3) dsebd.org and cse.com.bd company pages both explicitly state 'For detail financial statements, please visit company's website' / point back to the bank's own investor-relation URL, hosting no PDF themselves; (4) Wayback Machine CDX search for citybankplc.com found no capture of any 2025-2026 quarterly-statement PDF or 'city-bank-declares-its-Nth-quarter' press page (a URL pattern that exists for 2021-2022 quarters but was never archived for later years); (5) direct filename guessing against ~15 plausible URL patterns on both legacy.citybankplc.com/files/ and www.citybankplc.com/files/ all returned HTTP 404. What WAS recovered: DSE's own live 'Interim Financial Performance' disclosure table on dsebd.org/displayCompany.php?name=CITYBANK (a primary regulatory disclosure filed directly by the company, independent of the bank's own website) discloses Q1 2026 EPS 1.580, Q2-discrete EPS 1.630, H1-cumulative EPS 3.010, and period-end market prices (29.7, 32.0) -- recorded in quarterly/2026_Q1.json and 2026_Q2.json. DSE's table does not label Solo vs Consolidated; independent press coverage (The Business Standard for Q1: PAT ~Tk241cr, EPS Tk1.6; Prothom Alo/TBS for H1, citing an Aug-2026 earnings-disclosure webcast: CONSOLIDATED H1 PAT Tk526.69cr, CONSOLIDATED EPS Tk3.01, matching DSE's 3.010 almost exactly) suggests the DSE-disclosed EPS may be Consolidated rather than Solo (this dataset's City Bank series is otherwise Solo throughout) -- flagged as an unconfirmed-basis caveat, not resolved. No balance sheet or other income-statement line items were obtainable for either quarter. This should be re-attempted in a future session, ideally with a way to execute the current site's client-side JS or a more targeted search for where the bank now actually publishes its quarterly PDFs."
+    }
+  ]
+}

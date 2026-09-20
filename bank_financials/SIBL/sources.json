@@ -1,0 +1,753 @@
+{
+  "bank_id": "SIBL",
+  "bank_name": "Social Islami Bank PLC (Social Islami Bank Limited prior to 2022 name change; formerly Social Investment Bank Limited prior to 2009)",
+  "website": "https://www.siblbd.com",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching this dataset's stored figures against the bank's own Solo-labeled financial statements, cross-checked five independent ways across the archive: (1) FY2010's own report presents both a 'CONSOLIDATED BALANCE SHEET' (Total Assets Taka 54,665,814,961) and a separate 'BALANCE SHEET' (Total Assets Taka 55,168,540,937) -- this dataset's stored FY2010 total assets (55,168.54m) is the Solo figure, not the Consolidated one; (2) the FY2012-FY2022 archive's recurring 'SIBL at a Glance' / '5 Years Key Financial Data' multi-year summary tables reproduce this dataset's stored figures for every overlapping year exactly; (3) the FY2018-FY2023 archive's 'Highlights of Performance' Annexure (Annexure-H / Annexure-I) is explicitly headed 'ONLY BANK-SOLO BASIS', and its figures (e.g. FY2018 Total Assets 307,305,321,444) match this dataset exactly; (4) FY2024's Note 16.5 is explicitly headed 'Capital Adequacy (Solo Basis)' as distinct from a separately-presented 'Capital Adequacy (Consolidated basis)' a few lines below it in the same note, and every FY2024 figure in this dataset (Total Eligible Capital 33,430,151,356; CRAR 6.43%; Total Tier I Capital 24,898,915,222) reproduces the Solo sub-table, not the Consolidated one (Consolidated Total eligible capital was 33,489,085,643 and Consolidated CRAR was also 6.43% to 2 d.p. but derived from a different RWA base of 521,134,540,732 vs Solo's 519,943,533,778); (5) SIBL has two wholly-owned subsidiaries consolidated throughout the archive (SIBL Securities Limited and SIBL Investment Limited, each 99.99% owned), so a Solo/Consolidated split exists in every year 2010-2024, and this dataset uses Solo throughout for consistency with the convention already used for other banks in this dataset (prefer Solo/Standalone; see _HANDOFF.md).",
+  "notes": "annual_reports/SIBL archive covers 2010-2024 (15 text files, extracted by a prior session; sanity-checked here -- all 15 files are large (5,472 to 23,946 lines), none are empty/scanned stubs). Shariah-based Islamic bank: reports 'Investment' / 'Investments (General)' rather than conventional 'Loans and Advances', and 'Classified Investment' / 'Ratio of Classified Investments to Total Investments' rather than 'NPL' / 'NPL ratio' -- mapped to this dataset's gross_loans and npl_pct fields respectively, consistent with the convention already used for EXIMBANK, FIRSTSBANK and GIB in this dataset. Complete Q4/year-end coverage achieved for FY2010-FY2024 (15/15 years) from a combination of: each year's own Balance Sheet (Solo) and Profit and Loss Account (Solo) where directly extracted (FY2010, FY2011, FY2013, FY2015, FY2016, FY2024 in full; FY2012 partially); each year's own Capital Adequacy / Basel II-III disclosure (Tier-I/Tier-II/CRAR breakdown, extracted for every year FY2010-FY2024 without exception); and the recurring multi-year summary tables ('SIBL at a Glance' FY2012-FY2019 vintage, '5 Years Key Financial Data' FY2022/FY2024 vintage, 'Highlights of Performance' Annexure-H/I FY2018-FY2023 vintage), cross-checked against overlapping reports. Only Q4/year-end (audited) data was extracted; Q1/H1/Q3 unaudited interim data was not researched (see the dedicated source entry below). UPDATE 2026-08-26: FY2025 was researched and confirmed unavailable -- Social Islami Bank PLC was declared a failed/non-viable institution and placed under resolution, then absorbed into the newly formed state-owned Sammilito Islami Bank PLC together with four other crisis-hit Shariah banks (EXIM Bank, First Security Islami Bank, Global Islami Bank, Union Bank), all five already confirmed in this dataset to have no FY2025 annual report for the same reason. See the '2025 (Q4)' entry below for the full evidence trail. This bank's independent standalone-reporting series ends at FY2024.",
+  "sources": [
+    {
+      "period": "2010 (Q4)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sibl-annual-report-2010.txt (own 'Balance Sheet' (Solo) p.61-62 [lines 2456-2515]; own 'Profit and Loss Account' (Solo) p.63 [lines 2517-2585]; own 'Comparative Analysis of Capital maintained throughout the year 2010' [lines ~2020-2045])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2010
+      ],
+      "note": "Fully extracted from FY2010's own primary financial statements (not a later comparative). Balance-sheet identity, Tier1+Tier2=Total Capital, and PBT-tax=PAT all reproduce exactly. Classified-investment ratio (4.76%) is FY2010's own reported figure (from the FY2012 report's retrospective 'SIBL at a Glance' table, which covers 2005-2012); the absolute Taka amount is not separately disclosed for this year and is calculated as ratio x Investments (General) -- see the FY2010 quarterly JSON's classified_investments basis note."
+    },
+    {
+      "period": "2011 (Q4)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sibl-annual-report-2011.txt (own 'Balance Sheet' (Solo) [lines 3084-3145]; own 'Profit and Loss Account' (Solo) [lines 3160-3200]; own 'Capital Base (Tier I & II)' comparative table [lines 975-1005])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2011
+      ],
+      "note": "Fully extracted from FY2011's own primary financial statements. All four validation checks pass exactly. Data-quality finding: the FY2011 Capital Base table's raw pdftotext output shows the Tier-2 subtotal as the corrupted token '426081' (OCR digit-scramble); recomputed from its own itemized components (691.56 + 569.25 = 1,260.81), which reproduces the table's own reported Total (9,534.52) exactly -- used in place of the corrupted raw token, consistent with the project's 'arithmetically impossible contemporaneous figure' exception. Separately, this year's Paid-up Capital (6,393.93m, confirmed exactly from FY2011's own Balance Sheet) is later reproduced by the FY2013 and FY2014 reports' 'SIBL at a Glance' comparative columns as the OCR-garbled '63693.92' (an extra digit inserted) -- a clear typographic artifact, not a restatement; flagged here per the project's cross-report-divergence convention even though the underlying primary-source figure is unambiguous."
+    },
+    {
+      "period": "2012 (Q4)",
+      "type": "annual_report_summary_table_and_partial_statements",
+      "source_document": "sibl-annual-report-2012.txt ('SIBL at a Glance' table, own report, covering 2005-2012 [lines 1384-1420]; own Balance Sheet (Solo) [lines 5689-5760]; Pillar III 'Quantitative Disclosures' Solo/Consolidated Tier-1/Tier-2 breakdown [lines 4290-4360])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2012
+      ],
+      "note": "Total Assets/Deposits/Equity/Investments/Fixed Assets confirmed exactly via FY2012's own 'SIBL at a Glance' table AND independently via the FY2013 report's own Balance Sheet comparative column (Total Assets 115,165,953,013 reproduces to the Taka). Tier-1 (9,071.99m) and Tier-2 (1,524.52m) confirmed from FY2012's own Pillar III Solo-basis disclosure, summing exactly to the reported Total Capital (10,596.51m). Profit before Tax, tax and Net Profit after Tax (2,747.89m / 1,306.76m / 1,441.13m) confirmed from FY2013's own Profit and Loss Account comparative column, which reproduces FY2012's own P&L exactly to the Taka."
+    },
+    {
+      "period": "2013 (Q4)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sibl-annual-report-2013.txt (own 'Balance Sheet' (Solo) [lines 8877-8930]; own 'Profit and Loss Account' (Solo) [lines 9000-9030]; own 'Comparative Analysis of Capital maintained throughout the year 2013' [lines 7040-7060])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013
+      ],
+      "note": "Fully extracted from FY2013's own primary financial statements, including the full equity breakdown (Paid-up/Statutory Reserve/Revaluation Reserve/Retained Earnings) and its own FY2012 comparative column, which reproduces the FY2012 figures used above exactly. All four validation checks pass (Tier1+Tier2 vs reported Total Capital differs by 0.02m / 0.0002%, i.e. rounding, well under the 0.05% threshold)."
+    },
+    {
+      "period": "2014 (Q4)",
+      "type": "annual_report_partial_statements_plus_later_comparative",
+      "source_document": "sibl-annual-report-2014.txt (own 'Profit and Loss Account' (Solo) [lines 10545-10570]); sibl-annual-report-2015.txt (own 'Balance Sheet' (Solo) FY2014 comparative column [lines 12803-12840])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014
+      ],
+      "note": "DATA-QUALITY FINDING: FY2014's own 'SIBL at a Glance' table (in sibl-annual-report-2014.txt) renders its own year's Total Assets cell as the OCR-garbled '1537374.67' (an extraneous '4' before the decimal point). The FY2015 report's own Balance Sheet (Solo) FY2014-comparative column resolves this unambiguously and cleanly: Total Liabilities & Shareholders' Equity = 153,737,467,324 Taka = 153,737.47m -- used here in place of the garbled figure, per the project's 'prefer the arithmetically consistent source when the contemporaneous figure is corrupted' exception (the ISLAMIBANK FY2024-capital pattern). This also supplies FY2014's Total Liabilities (141,594,083,930), Statutory Reserve (2,784,497,917), Revaluation Reserve (1,055,679,727) and Retained Earnings (1,271,790,110), all of which independently reproduce FY2014's own report's Tier-1 Capital Base table (Core capital 11,087.77m = Paid-up 7,031.42 + Statutory 2,784.50 + Retained 1,271.79m [component of the 11,087.77 CET-1 subtotal alongside a de-minimis rounding adjustment]) and PBT/tax/PAT (3,307.52m / 1,403.79m / 1,903.72m) figures extracted directly from FY2014's own P&L. Balance sheet identity, Tier1+Tier2, and PBT-tax=PAT all reproduce exactly using the corrected total-assets figure."
+    },
+    {
+      "period": "2015 (Q4)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sibl-annual-report-2015.txt (own 'Balance Sheet' (Solo) [lines 13043-13110]; own 'Profit and Loss Account' (Solo) [lines 13195-13220]; own quarterly Basel III 'Total Regulatory Capital' comparative table, 31-12-15 column [lines 9268-9285])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015
+      ],
+      "note": "Fully extracted from FY2015's own primary financial statements, including the full Basel III Tier-1 (CET-1 11,920.78m, no AT-1)/Tier-2 (4,995.31m) breakdown and RWA (137,155.24m). All four validation checks pass exactly. FY2015's own EPS (2.95, unrestated at the time) is later shown as 2.81 in the FY2016 report's 'Restated' comparative column (routine bonus-share-issue dilution adjustment, not a data error); the contemporaneous 2.95 figure is used here per the project's 'prefer contemporaneous over later-restated' rule."
+    },
+    {
+      "period": "2016 (Q4)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sibl-annual-report-2016.txt (own 'Balance Sheet' (Solo) [lines 12072-12140]; own 'Profit and Loss Account' (Solo) [lines 12195-12245]; own quarterly Basel III 'Total Regulatory Capital' comparative table, 31-12-16 column [lines 8803-8825])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016
+      ],
+      "note": "Fully extracted from FY2016's own primary financial statements. All four validation checks pass exactly (Total Operating Income 9,629,998,973 minus Total Operating Expenses 3,931,915,088 = 5,698,083,884 = reported Operating Profit, to the Taka)."
+    },
+    {
+      "period": "2017 (Q4)",
+      "type": "annual_report_directors_report_table_plus_later_annexure",
+      "source_document": "sibl-annual-report-2017.txt (own Directors' Report 'Comparative position of Capital Base' Tier-I/Tier-II table [lines 4415-4460]); sibl-annual-report-2018.txt (Annexure-H 'Highlights of Performance (Only Bank-Solo Basis)' FY2017 comparative column [lines 15670-15695]; 'SIBL at a Glance' FY2017 column [lines 1706-1735])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017
+      ],
+      "note": "FY2017's own report's main Balance Sheet could not be quickly isolated from an adjacent Off-shore Banking Unit ('Annexure-G', dual USD/Taka columns) statement sharing an identical 'BALANCE SHEET / AS AT 31 DECEMBER 2017' heading; rather than risk mis-extracting OBU figures as the main Solo balance sheet, FY2017's Total Assets/Deposits/Investment/Equity/PAT/classified-investment figures are instead sourced from the FY2018 report's own Annexure-H comparative column (a standard, audited prior-year comparative, explicitly headed 'Only Bank-Solo Basis'), while Tier-1 (13,187.23m)/Tier-2 (8,537.85m)/CRAR (11.57%) are independently confirmed from FY2017's own Directors' Report table -- both sources agree exactly on Total Capital (21,725.08m) and CRAR (11.57%). Total Liabilities is calculated as Total Assets minus Total Equity (not separately itemized in the Annexure-H source). RWA is calculated as Total Capital / CRAR (not separately itemized in the sources used for this year). Tax expense is calculated as Profit before Tax minus Profit after Tax. EPS (1.79) is the FY2018 report's restated comparative figure for FY2017, not independently re-verified against FY2017's own originally-reported (pre-bonus-adjustment) EPS."
+    },
+    {
+      "period": "2018 (Q4)",
+      "type": "annual_report_summary_annexures",
+      "source_document": "sibl-annual-report-2018.txt (Annexure-H 'Highlights of Performance (Only Bank-Solo Basis)' [lines 15670-15695]; own Directors' Report Capital Base comparative table [lines 3355-3400]; 'SIBL at a Glance' 5-year table [lines 1706-1735])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018
+      ],
+      "note": "Total Assets/Deposits/Investment/Equity/PAT/classified-investment/CRAR all from FY2018's own Annexure-H (explicitly 'Only Bank-Solo Basis'); Tier-1 (14,794.88m)/Tier-2 (11,316.63m) from FY2018's own Directors' Report table, summing exactly to Annexure-H's Total Capital (26,111.51m/26,111.52m, 0.01m rounding). Total Liabilities and RWA are calculated (assets-minus-equity; capital/CRAR respectively), and tax expense is calculated as PBT-PAT, since none of these three are separately itemized in the sources used for this year."
+    },
+    {
+      "period": "2019 (Q4)",
+      "type": "annual_report_summary_annexures",
+      "source_document": "sibl-annual-report-2019.txt (Annexure 'Highlights of Performance (Only Bank-Solo Basis)' [lines 18265-18310]; own Directors' Report Capital Base (Tier-I & II) comparative table [lines 4300-4350]; 'SIBL at a Glance' 5-year table [lines 2057-2100])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019
+      ],
+      "note": "Same sourcing pattern as FY2018. Tier-1 (16,339.95m)/Tier-2 (11,561.85m) sum exactly to the reported Total Capital (27,901.80m). The FY2019 Annexure's own FY2018 comparative column reproduces this dataset's stored FY2018 figures exactly (Total Assets 307,305,321,444; PAT 1,583,430,756), confirming no restatement between the FY2018 and FY2019 reports. Total Liabilities, RWA and tax expense are calculated as in FY2018 (see that year's note)."
+    },
+    {
+      "period": "2020 (Q4)",
+      "type": "annual_report_summary_annexures",
+      "source_document": "sibl-annual-report-2020.txt (Annexure 'Highlights of Performance (Only Bank-Solo Basis)' [lines 16720-16765]; own Directors' Report Capital Base comparative table [lines 3715-3755]); sibl-annual-report-2024.txt ('5 Years Key Financial Data' table, FY2020 column [lines 6640-6680])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020
+      ],
+      "note": "Tier-1 (18,967.25m, including SIBL's first Additional Tier-1 issuance of 1,500.00m via its Mudaraba Perpetual Bond programme)/Tier-2 (11,401.65m) sum exactly to the reported Total Capital (30,368.90m). The FY2024 report's own retrospective 5-year table independently reproduces this year's Total Assets (384,999.71m), Equity (18,038.39m), CRAR (13.50%) and classified-investment ratio (6.05%) exactly, confirming no restatement across four intervening report cycles. Total Liabilities, RWA and tax expense calculated as in FY2018."
+    },
+    {
+      "period": "2021 (Q4)",
+      "type": "annual_report_summary_annexures",
+      "source_document": "sibl-annual-report-2021.txt (Annexure 'Highlights of Performance (Only Bank-Solo Basis)' [lines 16618-16665]; own Directors' Report Capital Base comparative table, including the 'Adjustment in CET-1 (Intangible Assets)' deduction introduced this year [lines 3195-3220]); sibl-annual-report-2024.txt ('5 Years Key Financial Data' table, FY2021 column)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021
+      ],
+      "note": "Tier-1 (22,682.46m = CET-1-after-adjustment 18,485.84m + AT-1 4,196.62m)/Tier-2 (9,765.48m) sum to 32,447.94m vs reported Total Capital 32,447.95m (0.01m rounding). Retained Earnings (1,226.05m, derived as the CET-1 sub-total residual) independently matches a separate MD&A narrative figure ('Retained earnings (Balance Sheet) for payment as dividend...1,226.05') found elsewhere in the same report, confirming the derivation. Total Liabilities, RWA and tax expense calculated as in FY2018."
+    },
+    {
+      "period": "2022 (Q4)",
+      "type": "annual_report_summary_annexures",
+      "source_document": "sibl-annual-report-2022.txt (Annexure 'Highlights of Performance (Only Bank-Solo Basis)' [lines 20860-20905]; own Directors' Report Capital Base comparative table [lines 5300-5375]); sibl-annual-report-2024.txt ('5 Years Key Financial Data' table, FY2022 column)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2022
+      ],
+      "note": "Tier-1 (24,291.19m)/Tier-2 (9,694.93m) sum exactly to reported Total Capital (33,986.12m). MINOR DISCREPANCY FOUND: FY2022's own Annexure states PAT as 2,429,782,845 Taka; the FY2023 report's own comparative column for FY2022 instead shows 2,429,762,845 Taka -- a ~20,000-Taka (0.0008%) divergence, almost certainly a digit-transposition OCR/typesetting artifact rather than a real restatement, and far under this project's 0.05% flag threshold. Per the project's 'prefer contemporaneous figures, record divergence verbatim' rule, FY2022's own contemporaneous figure (2,429,782,845 / 2,429.78m) is used, and the divergence is recorded here rather than silently reconciled. Total Liabilities, RWA and tax expense calculated as in FY2018."
+    },
+    {
+      "period": "2023 (Q4)",
+      "type": "annual_report_summary_annexure_plus_later_comparative",
+      "source_document": "sibl-annual-report-2023.txt (Annexure-I 'Highlights of Performance (Only Bank-Solo Basis)' [lines 17810-17858]); sibl-annual-report-2024.txt (own Balance Sheet (Solo) and Profit & Loss Account (Solo) FY2023 comparative columns [lines 11712-11900]; Note 16.5 'Capital Adequacy (Solo Basis)' FY2023 comparative column [lines 15093-15140])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023
+      ],
+      "note": "FY2023's own report has severe OCR/table-extraction corruption in its Pillar III capital-disclosure note (columns misaligned, some figures illegible in the raw text -- e.g. 'Fully Paid-up Capital 10,858.62 10,858.62' with an apparently duplicated value, 'Retained Earnings 1,574.25' with no second column visible). Total Assets/Liabilities/Equity/Deposits/Investment (all to the Taka), the full Tier-1/Tier-2/CRAR breakdown, and PBT/tax/PAT are instead sourced from the FY2024 report's own primary financial statements' FY2023 comparative columns, which are clean and internally consistent (balance sheet identity, Tier1+Tier2, and PBT-tax=PAT all reproduce exactly), and these independently match FY2023's own (less-corrupted) Annexure-I figures for every field that annexure does report clearly (Paid-up Capital 10,858.62m, Total Capital 38,744.63m, CRAR 12.66%, Total Assets 476,051.86m, Total Deposit 357,388.85m, PAT 2,564.13m, classified investment 17,288.60m at 4.79%) -- no restatement found, only an extraction-quality issue in the FY2023 archive file itself."
+    },
+    {
+      "period": "2024 (Q4)",
+      "type": "annual_report_primary_statements_and_auditors_report",
+      "source_document": "sibl-annual-report-2024.txt (own Balance Sheet (Solo) [lines 11712-11800]; own Profit & Loss Account (Solo) [lines 11836-11900]; Note 16.5 'Capital Adequacy (Solo Basis)' [lines 15093-15190]; Note 7.8 'Particulars of provision for Investments' [lines 14150-14225]; Note 14.11 footnote on provision shortfall [lines 14660-14700]; Annexure 'Financial Highlights (Solo)' [lines 16985-17010]; Independent Auditor's Report -- Qualified Opinion, Basis for Qualified Opinion, Emphasis of Matter, Material Uncertainty [lines 10725-10800]; '5 Years Key Financial Data' table [lines 6640-6680]; Directors' Report Capital Base comparative table [lines 3790-3850])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Fully extracted from FY2024's own primary financial statements; all four validation checks (balance-sheet identity, Tier1+Tier2=Total Capital, PBT-tax=PAT, classified%-reproduction) pass exactly to the Taka. MAJOR FINDING -- QUALIFIED AUDIT OPINION WITH MATERIAL UNCERTAINTY: see the FY2024 quarterly JSON's period_note for the full citation trail. In summary: Bangladesh Bank letter DBI-7/4(2)/2025-346 (29-Apr-2025) required provisions of Tk 23,158.06 crore against Tk 1,502.62 crore maintained (+ Tk 78.18 crore paid); Bangladesh Bank letter DOS(CAMS)1157/41(Dividend)/2025-3109 (21-May-2025) permitted finalizing without the shortfall (forbearance); the Auditors' Material Uncertainty paragraph states CRAR would fall from the reported 6.43% to NEGATIVE 33.95% if the deferred shortfall were recognized, implying a Tk 22,850.14 crore total capital shortfall against the 12.50% requirement. AT LEAST FOUR further, non-reconciled shortfall figures appear elsewhere in the same audited report (Tk 20,993.72 crore per Note 7.8 and Note 16.5's footnote identically; Tk 21,626.58 crore and a 'permitted' Tk 21,577.26 crore per Note 14.11's footnote citing the same two BB letters; Tk 21,655.44 crore per the Directors' Report) -- none reconciled to each other or to the Auditors'-Report figures; all recorded verbatim in the quarterly JSON's period_note per this project's never-silently-reconcile convention. FY2024 is also the first reported net loss (PAT -532.74m Solo; DSE's disclosure table separately shows a larger Consolidated loss of -1,017.03m) in this dataset's SIBL series, and RWA nearly doubled year-on-year (305,922.96m to 519,943.53m) despite near-flat total-asset growth (+0.07%), consistent with credit-risk-weight escalation from the asset-quality collapse (classified-investment ratio 4.79% to 61.74%)."
+    },
+    {
+      "period": "2025 (Q4 / full year)",
+      "type": "confirmed_nonexistent",
+      "status": "researched_confirmed_unavailable",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "notes": "No FY2025 (year ended 31 December 2025) annual report or standalone audited financial statements exist for Social Islami Bank as an independent entity, confirmed via a time-boxed check across three independent channels (approx. 15-20 minutes of research, consistent with this dataset's precedent for the other four banks in the same merger): (1) DSE's own dynamically-updated company page (dsebd.org/displayCompany.php?name=SIBL, fetched via curl due to a WebFetch TLS-certificate error on the domain) shows the 'Financial Performance as per Audited Financial Statements' table stopping at FY2024 (EPS -0.89 consolidated, NAV/share 18.15, Profit for the year -1,017.03m -- all consistent with this dataset's independently-sourced FY2024 Solo figures), and its 'Interim Financial Performance: 2025' table shows populated quarterly EPS through Q3 2025 (Q1 -1.410, Half-Yearly cumulative -4.330, 9-Months cumulative -15.280, market price collapsing from Tk 10.1 to Tk 4.4 over the year) with the 'Annual' column explicitly blank ('-') for every row -- the same 'quarterly data continues, annual column stays blank' signature already documented for EXIMBANK and GIB; (2) a Wayback Machine CDX search of siblbd.com's report-hosting paths (annual_report/*, assets/reports/annual/*, assets/reports/annual_statements/*; ~110 report-related URLs found across all naming conventions used over the site's history) finds 'SIBL_Annual_Report_2024.pdf' and 'Annual_Financial_Statements_2024.pdf' as the latest crawled annual filings under every tested naming convention, with no 2025-year file of any kind; (3) SIBL's own live homepage (siblbd.com, fetched 2026-08-26) has itself been rebranded and now identifies the institution as 'Sammilito Islami Bank PLC', referencing an 11th Board of Directors meeting of 'Sammilito Islami Bank PLC, a state-owned Shariah-based bank' dated 25 August 2026 (the day before this retrieval) -- the single strongest piece of evidence found across this dataset's five merged-bank investigations, since it is the bank's own current self-identification rather than a third-party report. REASON: per WebSearch results (The Daily Star, BSS News, Wikipedia's 'Sammilito Islami Bank' article), Social Islami Bank PLC was declared a failed/non-viable institution and placed under resolution under the Bank Resolution Ordinance 2025, then merged into a newly formed state-owned entity, Sammilito Islami Bank PLC, together with four other crisis-hit Shariah banks already confirmed in this dataset to have no FY2025 report for the identical reason (EXIM Bank, First Security Islami Bank, Global Islami Bank, Union Bank). Bangladesh Bank issued a Letter of Intent and no-objection certificate for Sammilito Islami Bank on 9 November 2025 (before FY2025/Dec-2025 had even closed); press coverage variously describes Sammilito Islami Bank beginning operations in early December 2025 and, per the concurrently-researched GIB/EXIMBANK sessions in this dataset, 18 August 2026 as a date associated with the transition to fully independent (non-administrator-led) operations -- the exact operational-handover date differs slightly across sources and was not further reconciled, as it does not change the conclusion. CONCLUSION: this is a confirmed, permanent series-end for SIBL as an independently reporting entity, not an ordinary reporting lag. Total time spent on this FY2025 investigation: approximately 20 minutes (one WebSearch, two WebFetch calls, one DSE curl fetch, one Wayback CDX pass), consistent with the task's time-boxing instruction given the strong prior expectation from the other four merged banks already in this dataset.",
+      "sources_checked": [
+        "https://www.dsebd.org/displayCompany.php?name=SIBL",
+        "https://www.siblbd.com/",
+        "http://web.archive.org/cdx/search/cdx?url=siblbd.com&matchType=domain&filter=original:.*Annual.*",
+        "https://en.wikipedia.org/wiki/Sammilito_Islami_Bank",
+        "https://en.wikipedia.org/wiki/Social_Islami_Bank",
+        "https://www.thedailystar.net/business/news/sammilito-islami-bank-gets-final-licence-4047446",
+        "https://www.bssnews.net/business/337974"
+      ]
+    },
+    {
+      "period": "2010-2024 (embedded quarterly-performance tables in own annual reports)",
+      "type": "annual_report_embedded_quarterly_table",
+      "status": "checked_limited_value",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "notes": [
+        "Per this dataset's standing 'mine already-downloaded annual-report text first' rule: grepped all 15 files in annual_reports/SIBL/*.txt for the BSEC-mandated quarterly-disclosure heading and its variants. Found TWO distinct embedded tables, present in most (not all) years: (a) 'Significant variance in operating results between Quarterly and Annually' / 'Variance Analysis -- Quarterly and Annually' -- an income-statement-only cumulative Q1/H1/9M/Annual table (Investment Income, Profit Paid on Deposits, Net Investment Income, Income from Shares, Commission/Exchange/Brokerage, Other Operating Income, Total Operating Income, Operating Expenses, Salaries, Other Opex, Operating Profit before provisions & taxes), present with genuine data in FY2013-FY2022 and FY2024 (not FY2010-FY2012, not FY2023 [present but severely OCR-corrupted/unreadable], not FY2011); (b) 'Comparative Analysis of Capital maintained throughout the year' -- a quarterly Capital Requirement/Maintained/Tier-1/Tier-2/RWA/CRAR table, present only in FY2010, FY2012, FY2013, FY2014 (discontinued in later annual reports). VALUE ASSESSMENT: this table only ever provides INCOME-STATEMENT and (for 4 years only) CAPITAL data -- never a quarterly Balance Sheet snapshot (no quarterly Total Assets/Deposits/Investments/Equity anywhere in any annual report) -- so it could not, by itself, produce a CITYBANK-schema-equivalent quarterly file. It was used instead as (i) a preview of expected figures before fetching SIBL's own quarterly PDF archive, and (ii) a cross-validation source once the PDFs were fetched: every income-statement figure checked this way (dozens of cross-checks, e.g. 2024 Q1 Investment Income 7,087.49m / Net Investment Income 1,557.80m / Total Operating Income 2,515.42m / Operating Profit 626.60m, all matching the interim PDF's own Solo P&L exactly) matched the primary-source interim PDF, and confirmed FY2024's Q3-alone (Jul-Sep) pre-provision operating profit was already NEGATIVE (Q3 cumulative 1,185.77m < Q2 cumulative 1,686.08m) -- see insights.json. Where the two sources disagreed by a small, consistent margin (a few percent, e.g. FY2013/FY2014 Q1), the gap is explained by this table being Solo-basis while several years' own interim PDF was Consolidated-only (see the reporting_basis field and each quarter's own period_note) -- not a data error."
+      ]
+    },
+    {
+      "period": "2012-2025 Q1/Q2/Q3 (unaudited interim) -- primary source",
+      "type": "bank_website_quarterly_halfyearly_archive",
+      "status": "extracted_and_validated",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "source_url_index": "https://www.siblbd.com/about/financialreports#Quarterly",
+      "notes": "SIBL's own 'Quarterly/Half-yearly Statements' tab (distinct from its 'Annual Reports' and 'Annual Financial Statements' tabs on the same page) lists 43 items spanning Q3 2012/H1 2012 through Q3 2025 (41 PDFs + 2 JPG newspaper-disclosure images for a 2021 Q3/Q2 compliance ad, not used). Verified still live and working as of 2026-08-27 (re-confirmed via a raw HTML href scrape, not just a WebFetch summary, to rule out truncation). Downloaded all 41 PDFs directly from this archive (base URL https://www.siblbd.com/assets/reports/quarterly_halfyearly/), extracted with pdftotext -layout, OCR'd (pdftoppm 300dpi + tesseract) the 9 that had no extractable text layer, deleted all PDFs after extraction per project policy. 37 of the 41 quarters yielded usable, validated data; 4 did not (see the two 'unavailable' entries below). Reporting basis is per-quarter, not uniform across the whole archive: SIBL's own interim filings presented CONSOLIDATED ONLY (no separate Solo statement at all) for every quarter FY2012 H1 through FY2015, plus FY2016 Q1 and FY2017 Q1 specifically; a separate SOLO statement has been presented alongside the Consolidated one from FY2016 Q2 onward (FY2017 Q1 is a one-off reversion back to Consolidated-only, then Solo resumes from FY2017 Q2). Where only Consolidated was available, it is used and flagged per this dataset's convention (30 of 37 quarters are Solo-basis, matching the main Q4/annual series; 6 are Consolidated-only [2013 Q1, 2014 Q1-Q3, 2015 Q1-Q3, 2016 Q1, 2017 Q1 -- 8 quarters total across that list]; FY2012 Q2 predates the Solo/Consolidated distinction being drawn at all and is recorded as 'unlabeled' basis; 2022 Q2 is a MIXED-basis exception -- see its own dedicated note below). Capital adequacy (CRAR/Tier-1/Tier-2/RWA) and classified-investment/NPL figures are NOT disclosed in ANY interim filing checked in this archive (confirmed absent, not a parsing gap) -- SIBL only discloses these annually."
+    },
+    {
+      "period": "2012 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Half_Yearly_Financials_2012.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Half_Yearly_Financials_2012.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2012
+      ],
+      "note": "Own single unlabelled 'BALANCE SHEET (UN-AUDITED)' / 'PROFIT AND LOSS ACCOUNT (UN-AUDITED)' statement (no Consolidated/Solo qualifier) -- SIBL's earliest surviving interim filing; no Q1 2012 exists on the site."
+    },
+    {
+      "period": "2013 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_Quarterly_2013.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_Quarterly_2013.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013
+      ],
+      "note": "Consolidated only."
+    },
+    {
+      "period": "2013 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "half_yearly_financials_2013.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/half_yearly_financials_2013.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "unavailable_wrong_bank",
+      "used_for_years": [
+        2013
+      ],
+      "note": "The PDF at this exact URL on SIBL's own site is Standard Bank Limited's own H1 2013 report, not SIBL's -- confirmed via its own header text ('Standard Bank Limited / Consolidated Balance Sheet / As at 30 June 2013') and full page-by-page bank-name check. A genuine mislabeling/misrouting on SIBL's own site (or the URL slot has since been repointed to a different file); not resolvable from the requesting side. Treated as a permanent gap for this quarter."
+    },
+    {
+      "period": "2013 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "3rd_quarter_reports_2013.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_quarter_reports_2013.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "unavailable_corrupted",
+      "used_for_years": [
+        2013
+      ],
+      "note": "This PDF genuinely is SIBL's own report (confirmed via header and SIBL-specific terminology throughout), but its text layer has pervasive digit-level corruption across nearly every numeric cell in both the Consolidated and Solo Balance Sheet sections (e.g. Total Assets rendered as '_--rEee46!L ---U4S29,U0JE0-'; dozens of similarly garbled cells elsewhere on the same pages) -- unlike other quarters' isolated single-cell corruption, this was judged too pervasive to safely hand-reconstruct. A later re-render of the same PDF for OCR found the file had, by then, been overwritten (via a shared scratch-directory collision with an unrelated concurrent research session working on a different bank) with Standard Bank Limited's own Q3 2013 report, so OCR recovery of the true original was also not possible in this session. Treated as a gap."
+    },
+    {
+      "period": "2014 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_Quarter_Report_2014.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_Quarter_Report_2014.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014
+      ],
+      "note": "Consolidated only."
+    },
+    {
+      "period": "2014 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "half_yearly_financials_2014.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/half_yearly_financials_2014.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014
+      ],
+      "note": "Consolidated only. Heading uses '&' ('PROFIT & LOSS ACCOUNT') rather than 'AND'; this and other years' label-wording variants (e.g. 'Commission Exchange and Brokerage' without the comma used in other years, 'Shareholders' Equity for SIBL and its Subsidiaries' instead of 'Total Shareholders' Equity') are noted here since they are exactly the kind of variant that breaks naive label-matching."
+    },
+    {
+      "period": "2014 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "3rd_quarter_reports_2014.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_quarter_reports_2014.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2014
+      ],
+      "note": "Consolidated only. Net Investment Income's current-period column was blank/unreadable in the raw table; recovered via Investment Income minus Profit Paid on Deposits (both cleanly reported) and cross-validated against the Total Operating Income identity and against this exact figure's own restatement in the FY2025 Q3 filing's prior-year comparative column."
+    },
+    {
+      "period": "2015 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_quarter_reports_2015.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_quarter_reports_2015.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015
+      ],
+      "note": "Consolidated only."
+    },
+    {
+      "period": "2015 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "half_yearly_financials_2015.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/half_yearly_financials_2015.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015
+      ],
+      "note": "Consolidated only."
+    },
+    {
+      "period": "2015 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "3rd_quarter_reports_2015.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_quarter_reports_2015.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2015
+      ],
+      "note": "Consolidated only."
+    },
+    {
+      "period": "2016 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_quarter_reports_2016.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_quarter_reports_2016.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016
+      ],
+      "note": "Consolidated only -- last Q1 to be so; Q2 2016 onward presents Solo too."
+    },
+    {
+      "period": "2016 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "2nd_quarter_reports_2016.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/2nd_quarter_reports_2016.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016
+      ],
+      "note": "First quarter in the archive to present a separate Solo statement alongside Consolidated."
+    },
+    {
+      "period": "2016 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "3rd_quarter_reports_2016.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_quarter_reports_2016.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2016
+      ],
+      "note": "Solo basis."
+    },
+    {
+      "period": "2017 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_quarter_reports_2017.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_quarter_reports_2017.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017
+      ],
+      "note": "Consolidated only -- a one-off reversion; Q2/Q3 2017 both present Solo."
+    },
+    {
+      "period": "2017 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Half_Year_Accounts_June_2017_SIBL.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Half_Year_Accounts_June_2017_SIBL.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017
+      ],
+      "note": "Solo basis."
+    },
+    {
+      "period": "2017 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "3rd_quarter_reports_2017.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_quarter_reports_2017.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2017
+      ],
+      "note": "Solo basis."
+    },
+    {
+      "period": "2018 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_quarter_reports_2018.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_quarter_reports_2018.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018
+      ],
+      "note": "Solo basis."
+    },
+    {
+      "period": "2018 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Half_Year_Un-audited_Accounts_June_2018.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Half_Year_Un-audited_Accounts_June_2018.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018
+      ],
+      "note": "Solo basis. Commission/Exchange/Brokerage label lacks the comma other years use ('Commission Exchange and Brokerage'); missed on first extraction pass, added on review."
+    },
+    {
+      "period": "2018 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Un-audited_Accounts_Sept_2018.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Un-audited_Accounts_Sept_2018.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018
+      ],
+      "note": "Solo basis; same comma-label fix as Q2 2018."
+    },
+    {
+      "period": "2019 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_quarter_reports_2019.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_quarter_reports_2019.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019
+      ],
+      "note": "Solo basis."
+    },
+    {
+      "period": "2019 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Half_Year_Un-audited_Accounts_June_2019.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Half_Year_Un-audited_Accounts_June_2019.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019
+      ],
+      "note": "Solo basis; comma-label fix applied."
+    },
+    {
+      "period": "2019 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Un-Audited_Accounts_September-2019.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Un-Audited_Accounts_September-2019.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2019
+      ],
+      "note": "Solo basis; comma-label fix applied."
+    },
+    {
+      "period": "2020 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_quarter_accounts_(un_audited)_2020.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_quarter_accounts_(un_audited)_2020.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "unavailable_corrupted_and_lost",
+      "used_for_years": [
+        2020
+      ],
+      "note": "pdftotext returned no usable text at initial extraction (heavy font-encoding corruption: 'CONSOLTDATED', 'PROFTT', 'AUDTTED' throughout, plus digit-level corruption in every number checked). Queued for OCR as a remediation step, but by the time OCR was attempted the source PDF had been overwritten (shared scratch-directory collision with an unrelated concurrent research session on a different bank) with Standard Bank Limited's own Q1 2020 report. Treated as a gap."
+    },
+    {
+      "period": "2020 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "2nd-Quarter-(Half_Yearly)Report,2020.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/2nd-Quarter-(Half_Yearly)Report,2020.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_via_ocr_and_validated",
+      "used_for_years": [
+        2020
+      ],
+      "note": "pdftotext returned garbled/incomplete text (font-encoding corruption similar to Q1 2020, e.g. Total Assets rendered with stray periods as thousands-separators: '357.815.535,792'). Recovered via OCR (pdftoppm 300dpi + tesseract) of the Balance Sheet/P&L pages; balance-sheet identity and the full P&L arithmetic chain both reproduce exactly on the OCR'd figures, giving high confidence the digits were read correctly. Solo basis."
+    },
+    {
+      "period": "2020 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Third_Quarter_Report_2020.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Third_Quarter_Report_2020.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2020
+      ],
+      "note": "Solo basis; comma-label fix applied."
+    },
+    {
+      "period": "2021 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_quarter_accounts_(un_audited)_2021.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_quarter_accounts_(un_audited)_2021.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_via_ocr_and_validated",
+      "used_for_years": [
+        2021
+      ],
+      "note": "No extractable text layer (scanned/image PDF) -- recovered via OCR. Solo basis. Investment Income and Profit Paid on Deposits cells had OCR spacing artifacts (stray spaces near thousands-separator commas); corrected via a general normalization pass, then cross-validated against the P&L arithmetic identity."
+    },
+    {
+      "period": "2021 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "2nd-Quarter_Report_2021.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/2nd-Quarter_Report_2021.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2021
+      ],
+      "note": "Solo basis. Investment Income cell had a dropped leading digit ('1 1,530.390.229' decoded as 11,530,390,229); Commission/Exchange/Brokerage was not directly legible and was derived from the Total Operating Income identity (cross-checked to close exactly)."
+    },
+    {
+      "period": "2021 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "3rd_quarter_accounts_report_2021.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_quarter_accounts_report_2021.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_via_ocr_and_validated",
+      "used_for_years": [
+        2021
+      ],
+      "note": "No extractable text layer -- recovered via OCR. Notably, this quarter's PDF presents the SOLO statement FIRST (page 1) and Consolidated second -- the reverse of the usual order -- which required a parsing-logic fix (search the whole document for a Solo heading rather than assuming it always follows Consolidated). Several OCR'd cells had a single dropped leading digit (a section-mark glyph '\u00a7' substituting for the digit; e.g. Net Investment Income, Income from Shares), each recovered via the Total Operating Income identity and cross-checked to close exactly."
+    },
+    {
+      "period": "2022 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_Quarter_Report_2022.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_Quarter_Report_2022.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_via_ocr_and_validated",
+      "used_for_years": [
+        2022
+      ],
+      "note": "No extractable text layer -- recovered via OCR. Solo basis. Investment Income and Commission/Exchange/Brokerage cells were blank/illegible in the OCR text; both derived via the P&L arithmetic identity (Commission cross-checked to close the Total Operating Income sum exactly)."
+    },
+    {
+      "period": "2022 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Half_yearly_closing_report_2022.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Half_yearly_closing_report_2022.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_partial_mixed_basis",
+      "used_for_years": [
+        2022
+      ],
+      "note": "This PDF's text layer has a severe, pervasive font-encoding defect distinct from other quarters' (e.g. 'CONDENSED (\u2019ONSOLIDAI\u2019ED BALANCE SilI;ET', 'l3ank' for 'Bank', \"'l'otal assets\" for 'Total assets', mixed comma/period digit-grouping throughout nearly every cell of its own SOLO Balance Sheet page specifically). Balance-sheet line items in this dataset's file are therefore sourced from the CONSOLIDATED Balance Sheet instead (its TOTAL rows, though not its own sub-line-items, are clean; balance-sheet identity reproduces to within 1,964 Taka / 0.0000005% of Total Assets), while income-statement items are Solo (that page extracted far more cleanly and its own arithmetic chain -- Total Operating Income minus Expenses minus Provision -- reproduces exactly). This is therefore the one quarter in this dataset's SIBL series with a genuinely mixed basis across the balance sheet and income statement; both are flagged per line item and explained at length in this quarter's own period_note. Off-balance-sheet exposure could not be independently re-confirmed and is left as a gap for this quarter."
+    },
+    {
+      "period": "2022 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "SIBLFin_statement-Q3-_2022.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/SIBLFin_statement-Q3-_2022.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_via_ocr_and_validated",
+      "used_for_years": [
+        2022
+      ],
+      "note": "No extractable text layer -- recovered via OCR. Solo basis. Total Operating Expenses cell had a dropped leading digit (OCR read a section-mark glyph '\u00a7' in place of the digit '5'); recovered via the Total Operating Income minus Operating Profit identity and cross-checked to close exactly; Commission/Exchange/Brokerage derived the same way."
+    },
+    {
+      "period": "2023 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Financial_Statements_1st_Qtr_2023.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Financial_Statements_1st_Qtr_2023.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023
+      ],
+      "note": "Solo basis."
+    },
+    {
+      "period": "2023 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Financial_Statements_(Q_2)2023_for_web_upload.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Financial_Statements_(Q_2)2023_for_web_upload.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023
+      ],
+      "note": "Solo basis. Investment Income and Commission/Exchange/Brokerage cells missing from the initial extraction pass (comma-label variant / row-position issue respectively); both added on review, cross-validated against the Total Operating Income identity."
+    },
+    {
+      "period": "2023 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "3rd_Quarter_Financial_Statements_(Un-audited)_September_2023.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_Quarter_Financial_Statements_(Un-audited)_September_2023.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023
+      ],
+      "note": "Solo basis. Net Investment Income and Operating Profit before Provision cells were blank/wrong-column in the raw table for the current period specifically (both had populated comparative and quarter-alone columns, but not the current 9-month cumulative column); both recovered via arithmetic identity, and Operating Profit additionally cross-confirmed against an independent restatement of the identical figure (Taka 2,656,889,650) in this same filing's own tax-reconciliation note (Note 13.1.1 equivalent) two different places in the document."
+    },
+    {
+      "period": "2024 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "Q1_Financial_Statements_2024_(Un-audited).pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/Q1_Financial_Statements_2024_(Un-audited).pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Solo basis. Every figure independently cross-checked against this same bank's own embedded FY2024 annual-report quarterly-performance table and found to match exactly (Investment Income, Net Investment Income, Total Operating Income, Operating Profit before Provision, etc.) -- see the embedded-table source entry above."
+    },
+    {
+      "period": "2024 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "2nd_Quarter_Financial_Statements_(Un-audited),_June_2024.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/2nd_Quarter_Financial_Statements_(Un-audited),_June_2024.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Solo basis, but this quarter's own primary P&L table (unlike every other quarter in the archive) renders each row's LABEL on the physical line below its VALUES rather than the usual label-then-value order, and the page's own totals row for Operating Profit/Provision/Tax is itself only partially legible -- a layout defect unique to this one page. Total Operating Income, Total Operating Expenses, Operating Profit, Total Provision, Profit Before Tax, Tax Expense and Net Profit After Tax were all recoverable with high confidence by (a) reading the correctly-associated value rows directly once the label-below-value pattern was identified, and (b) independently cross-confirming Operating Profit, Tax and Net Profit After Tax against this same filing's own tax-reconciliation note (Note 13.1.1) and against this exact quarter's own restatement as the prior-year comparative column in the FY2025 Q2 filing (which independently reproduces Net Profit After Tax of Taka 775,210,806 exactly). Investment Income, Profit Paid on Deposits, Net Investment Income, Income from Shares and Other Operating Income could NOT be reconstructed with confidence from this page's scrambled row order and are omitted from this quarter's file rather than guessed."
+    },
+    {
+      "period": "2024 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "3rd_Quarter_Financial_Statements_(Un-audited),_September_2024.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_Quarter_Financial_Statements_(Un-audited),_September_2024.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Solo basis. Two cells had an isolated single-stray-period-instead-of-comma defect (Operating Profit before Provision, Net Investment Income's current-period column); both corrected via the P&L arithmetic identity. This quarter's Q3-alone (discrete) pre-provision operating profit computes to a LOSS of Taka -500.31m (Q3 cumulative 1,185.77m minus Q2 cumulative 1,686.08m) -- see insights.json."
+    },
+    {
+      "period": "2025 (Q1)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "1st_Quarter_Financial_Statements_(Un-audited)_,_March_2025.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/1st_Quarter_Financial_Statements_(Un-audited)_,_March_2025.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Solo basis. First quarter of this dataset's SIBL series to report a net loss on an interim (as opposed to only annual) basis."
+    },
+    {
+      "period": "2025 (Q2)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "2nd_Quarter_Financial_Statements_(Un-audited),_June_2025_(1).pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/2nd_Quarter_Financial_Statements_(Un-audited),_June_2025_(1).pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_partial",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Solo basis. This quarter's own P&L table has multiple cells with dropped leading digits from an apparent column-width/negative-kerning defect (e.g. Total Provision's current-period column rendered as ',424,593' with the leading '74' lost; Total Operating Expenses similarly missing leading digits). Total Operating Income (a NEGATIVE Taka -434.71m -- confirmed via its own component sum: Net Investment Income + Income from Shares + Commission + Other Operating Income), Net Investment Income (also negative, Taka -2,123.01m -- Investment Income now being smaller than Profit Paid on Deposits, both individually clean and legible), Profit Before Tax and Net Profit After Tax (both clean and legible, and PAT cross-validated against DSE's own published Q2-2025 disclosure) are all directly reported or straightforwardly derived. Total Provision (Taka 74.42m, recovered from the clean 'Provisions for others' sub-line once 'Provisions for investments' was confirmed nil this half), Total Operating Expenses (Taka 4,116.02m) and Operating Profit before Provision (a LOSS of Taka -4,550.73m) were reconstructed via the full arithmetic chain (Operating Profit = Profit Before Tax + Total Provision; Total Operating Expenses = Total Operating Income - Operating Profit), internally consistent across every check performed."
+    },
+    {
+      "period": "2025 (Q3)",
+      "type": "quarterly_financial_statements_unaudited",
+      "source_document": "3rd_Quarter_Financial_Statements_(Un-audited),_September_2025.pdf",
+      "source_url": "https://www.siblbd.com/assets/reports/quarterly_halfyearly/3rd_Quarter_Financial_Statements_(Un-audited),_September_2025.pdf",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2025
+      ],
+      "note": "Solo basis. Operating Profit before Provision's current-period column showed the WRONG (prior-year comparative) figure in the raw extraction; corrected to Taka -12,873.66m via the Total Operating Income minus Total Operating Expenses identity, independently confirmed by an exact restatement of the same figure in this filing's own tax-reconciliation-style note elsewhere in the document. Net Investment Income's sign was not marked negative in the raw text (no minus sign or parentheses captured) despite being arithmetically negative (Investment Income Taka 14,424.43m minus the larger Profit Paid on Deposits Taka 24,429.64m = -10,005.21m); recorded as negative per the arithmetic, flagged in the quarterly file. This is the single most severe quarter in this dataset's SIBL series: discrete Q3-alone net loss of Taka -12,344.68m (cumulative minus H1), about 23.2x the size of SIBL's entire FY2024 full-year loss -- see insights.json."
+    },
+    {
+      "period": "2012-2025 Q1/Q2/Q3 (unaudited interim) -- extraction/validation methodology",
+      "type": "methodology_note",
+      "status": "n/a",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "notes": "Extraction: pdftotext -layout for 32 of 41 PDFs; pdftoppm (300dpi) + tesseract OCR for 9 that had no extractable text layer (2012 Q3 [see unavailable entry], 2020 Q1 [see unavailable entry], 2020 Q2, 2021 Q1, 2021 Q3, 2022 Q1, 2022 Q3, plus 2 more attempted for the two unavailable quarters). All 41 downloaded PDFs were deleted after extraction per project policy; no PDFs or extracted raw-text files were retained in the repository -- only the resulting structured quarterly/*.json files and this sources.json entry's provenance metadata (matching this dataset's 'only structured data, source URLs/metadata, and provenance are kept long-term' rule). Validation: (1) balance-sheet identity (Total Assets = Total Liabilities + Total Equity) checked for all 37 quarters, passing to within rounding (typically 0-2 Taka, i.e. non-controlling-interest rounding) in every case; (2) a second-pass internal-consistency audit checking that Net Investment Income + Income from Shares + Commission + Other Operating Income sums to Total Operating Income, and that Total Operating Income minus Expenses minus Provision minus Tax chains arithmetically to Net Profit After Tax -- this second pass caught extraction defects in 11 of the 37 quarters that the balance-sheet-identity check alone had missed (see each affected quarter's own note above and each affected line item's own metric_note); (3) cross-validation against DSE's own 'Interim Financial Performance: 2025' disclosure table for FY2025 EPS, and against this bank's own embedded FY2024 annual-report quarterly-performance table for FY2024 Q1-Q3 income-statement figures -- both matched exactly. A DATA-INTEGRITY TRAP specific to this session's shared scratch environment: two PDFs downloaded fresh from SIBL's own site (2012 Q3, 2013 Q2) and re-derived pdftotext output later re-read for OCR purposes (2013 Q3, 2020 Q1) were found, upon re-inspection, to have been silently overwritten on local disk by an unrelated, concurrently-running research session working on a different bank (Standard Bank Limited) that happened to reuse the exact same generic scratch filenames -- caught only because this dataset independently verifies the bank-identity header text of every source page rather than trusting a filename. This affected only local scratch-directory files, never anything in this repository; it is recorded here as a general caution for any future session reusing generic scratch filenames for PDF downloads in a shared environment."
+    }
+  ]
+}

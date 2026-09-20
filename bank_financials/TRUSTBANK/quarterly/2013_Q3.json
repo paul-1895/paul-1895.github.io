@@ -1,0 +1,65 @@
+{
+  "bank_id": "TRUSTBANK",
+  "bank_name": "Trust Bank PLC",
+  "reporting_date": "2013-09-30",
+  "financial_year": 2013,
+  "quarter": "Q3",
+  "period_note": "P&L-ONLY, no balance sheet available for this quarter. Sourced as the prior-year comparative column inside Trust Bank's own 2014 Q3 unaudited interim financial statement PDF (tblbd.com/about-us/financial-statements) -- the bank's website archive itself only reaches back to 2014, and its interim Balance Sheet always compares the current unaudited date against the immediately preceding audited Dec-31 year-end (never a prior-year same-quarter date), so no 2013 Q1/Q2/Q3 balance-sheet snapshot is recoverable this way. The P&L comparative column, by contrast, IS a same-quarter-prior-year comparison and is fully usable. SOLO / Bank-only basis (same basis as this dataset's main Q4/annual series -- this source document explicitly separates a 'Balance Sheet'/'Profit and Loss Account' section, the Bank-only or 'Solo' statement, from a separate 'Consolidated Balance Sheet'/'Consolidated Profit and Loss Account' section earlier in the same PDF; the SOLO section is the one used here). Income-statement items are CUMULATIVE FROM JAN 1 of the same year, not discrete-quarter figures, per this source's own column header -- flagged via the _cumulative suffix. No basis mismatch with this bank's main series (contrast with the CONSOLIDATED-basis 2017-2025 quarters sourced from the annual-report-embedded table).",
+  "source": {
+    "source_document": "FS-September-2014.pdf",
+    "source_path": "annual_reports/TRUSTBANK/trust-bank-interim-fs-2014-q3.txt",
+    "source_url": "https://www.tblbd.com/sites/default/files/FS/FS-September-2014.pdf",
+    "source_page_lines": "Profit and Loss Account (Unaudited) section's prior-year comparative column only, pp.7-9 of the PDF (no Balance Sheet used -- see period_note)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 610.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total operating income (cumulative from Jan 1)",
+      "value": 2516.58,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 1342.93,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": 1173.64,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after Taxation (cumulative from Jan 1)",
+      "value": 221.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earning per share (EPS) (cumulative from Jan 1)",
+      "value": 0.52,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

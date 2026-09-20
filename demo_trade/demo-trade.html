@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Demo Trade — DSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="demo-trade.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <a href="../index.html" class="logo-back" title="Back to Market">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </a>
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Demo Trade</h1>
+        <p>Chart trend prediction quiz</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="hdr-icon-btn has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle theme">
+        <span id="theme-icon">☀️</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="dt-main">
+  <div class="dt-scorebar">
+    <div class="dt-score-item"><span class="dt-score-label">Score</span><span class="dt-score-value" id="dt-score">0/0</span></div>
+    <div class="dt-score-item"><span class="dt-score-label">Accuracy</span><span class="dt-score-value" id="dt-accuracy">—</span></div>
+    <div class="dt-score-item"><span class="dt-score-label">Streak</span><span class="dt-score-value" id="dt-streak">0</span></div>
+    <div class="dt-score-item"><span class="dt-score-label">Best Streak</span><span class="dt-score-value" id="dt-best-streak">0</span></div>
+    <div class="dt-score-item"><span class="dt-score-label">Points</span><span class="dt-score-value" id="dt-points">0</span></div>
+    <button class="dt-reset-btn" id="dt-reset-btn" title="Reset score">Reset</button>
+  </div>
+
+  <div class="dt-quiz-card">
+    <div class="dt-quiz-hd">
+      <div class="dt-quiz-title">What happens next?</div>
+      <div class="dt-quiz-sub" id="dt-quiz-sub">Loading a chart…</div>
+      <div class="dt-indicator-legend" id="dt-indicator-legend"></div>
+    </div>
+
+    <div class="dt-chart-wrap">
+      <canvas id="dt-canvas"></canvas>
+    </div>
+
+    <div class="dt-guess-row" id="dt-guess-row">
+      <button class="dt-guess-btn dt-guess-down" data-guess="down">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 18l-9.5-9.5-5 5L1 6"/><path d="M17 18h6v-6"/></svg>
+        Down
+      </button>
+      <button class="dt-guess-btn dt-guess-sideways" data-guess="sideways">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"/></svg>
+        Sideways
+      </button>
+      <button class="dt-guess-btn dt-guess-up" data-guess="up">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+        Up
+      </button>
+    </div>
+
+    <div class="dt-confidence-row" id="dt-confidence-row" style="display:none">
+      <div class="dt-confidence-label">How confident are you? <span id="dt-confidence-direction"></span> — wager points on it:</div>
+      <div class="dt-confidence-btns">
+        <button class="dt-conf-btn dt-conf-low" data-confidence="low">Low<span class="dt-conf-pts">±1</span></button>
+        <button class="dt-conf-btn dt-conf-medium" data-confidence="medium">Medium<span class="dt-conf-pts">±2</span></button>
+        <button class="dt-conf-btn dt-conf-high" data-confidence="high">High<span class="dt-conf-pts">±3</span></button>
+      </div>
+    </div>
+
+    <div class="dt-result" id="dt-result" style="display:none">
+      <div class="dt-result-banner" id="dt-result-banner"></div>
+      <div class="dt-result-detail" id="dt-result-detail"></div>
+      <div class="dt-explanation" id="dt-explanation"></div>
+      <button class="dt-next-btn" id="dt-next-btn">Next Round →</button>
+    </div>
+
+    <div class="dt-rule-note">Real historical price data — the stock's identity is hidden until you guess. "Sideways" means the price 10 trading days later is within ±2% of the cutoff price. Indicators (when shown) are computed only from the visible window, never from the hidden future.</div>
+  </div>
+</main>
+
+<script src="demo-trade.js"></script>
+<script type="module">
+  // Shared theme module — the one `dse-theme` key and [data-theme] contract
+  // every page uses. This page used to keep its own copy keyed on `dse_theme`,
+  // which also defaulted to dark instead of following the system preference.
+  import { initTheme, toggleTheme } from '/theme/theme.js';
+  initTheme();
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => toggleTheme());
+</script>
+  <script src="/shared/nav-menu.js"></script>
+</body>
+</html>

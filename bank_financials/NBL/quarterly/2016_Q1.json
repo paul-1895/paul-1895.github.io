@@ -1,0 +1,154 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2016-03-31",
+  "financial_year": 2016,
+  "quarter": "Q1",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account from National Bank's Q1-2016 unaudited financial statements (clean digital pdftotext, no OCR needed, but the source PDF's own text layer has scattered character-level corruption in some cells). Plain 'Balance Sheet (Un-audited)'/'Profit and Loss Account (Un-audited)' sections used. Comparative column (31 Dec 2015) reproduces this dataset's existing FY2015 equity of 33557.96m exactly. total_assets and total_deposits were not directly legible (corrupted cells) and were derived: total_assets = Total Liabilities + Total Equity (243932.01 + 33606.12 = 277538.12, which also matches the separately-legible 'TOTAL LIABILITIES AND SHAREHOLDERS EQUITY' figure of 277,538,122,698 exactly); total_deposits = Total Liabilities - Borrowings - Subordinated bond - Other liabilities (243932.01 - 7564.18 - 1280.00 - 23755.01 = 211332.82), consistent with a garbled '211...' fragment visible in the source text. interest_income and interest_expense are marked unavailable: the source text's 'Interest income' row shows only a single legible number (4,819,797,107) which, on cross-checking against this dataset's own 2015_Q1.json, turns out to be the PRIOR-YEAR (Jan-Mar 2015) comparative value that bled into the wrong column during text extraction, not the current period's own figure -- the current period's interest income and interest paid cells are both unrecoverable from this particular filing's corrupted text. net_interest_income (390.27m) is NOT affected by this issue: it is confirmed independently via the full downstream identity chain (Total Operating Income = NII + Investment Income + Commission + Other Income = 3490.83m; minus Total Operating Expenses 1176.68m = Profit Before Provision 2314.15m, which matches a surviving '...147,170' text fragment; minus Total Provision 1630.00m = Profit Before Tax 684.15m, which matches a directly-legible figure exactly; minus Tax 300.00m = PAT 384.15m, exactly matching the directly-legible 'Net Profit after taxation' figure). RESTATEMENT: EPS is 0.22 as reported contemporaneously in this filing; a LATER filing (2017_Q1's own Jan-Mar-2016 comparative column, read directly from a clean page image) shows the SAME PAT of 384,147,170 but a retroactively bonus-share-adjusted 'Earnings per share (Re-stated)' of 0.19 instead. Per this dataset's standing rule, the contemporaneous 0.22 is kept; both figures are recorded here and in sources.json. No NAV-per-share line was legible in this filing; nav_per_share is calculated.",
+  "source": {
+    "source_document": "1st-Quarter-Financial-Statements-2016.pdf (bank's own filename)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-2016-q1.txt",
+    "source_url": "https://www.nblbd.com/public/assets/financial-statement/1708415469_1st-Quarter-Financial-Statements-2016.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 277538.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity",
+      "note": "Source cell corrupted; derived as Total Liabilities + Total Equity, which also matches the separately-legible 'TOTAL LIABILITIES AND SHAREHOLDERS EQUITY' figure exactly."
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 243932.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 33606.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 211332.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Source subtotal cell corrupted (only a '211...' fragment survived); derived as Total Liabilities minus Borrowings, Subordinated Bond and Other Liabilities."
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 187533.67,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 53216.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per share",
+      "value": 19.56,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Not legible in this filing; computed as equity 33606.12m / shares outstanding (paid-up capital 17177.20m / 10 Taka face value = 1717.72m shares) = 19.56."
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest income",
+      "value": null,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "unavailable",
+      "note": "Source cell corrupted and cross-check showed the one legible number on this row actually belongs to the prior-year comparative column, not this period -- see period_note."
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest paid on deposits and borrowings",
+      "value": null,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "unavailable",
+      "note": "Source cell corrupted beyond recovery ('7.018.376' -- too small to be plausible, likely missing leading digits)."
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income",
+      "value": 390.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Directly legible despite interest_income/interest_expense being unavailable; independently confirmed via the full downstream identity chain (see period_note)."
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income",
+      "value": 2657.41,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income",
+      "value": 443.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (318.29m) and other operating income (124.86m)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses",
+      "value": 1176.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit before provision",
+      "value": 2314.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Source cell showed only a surviving '...147,170' fragment; confirmed via identity (Total Operating Income 3490.83m minus Total Operating Expenses 1176.68m)."
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after taxation",
+      "value": 384.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per share (Re-stated)",
+      "value": 0.22,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "RESTATEMENT: a later filing (2017_Q1.json's own Jan-Mar-2016 comparative) shows this same period's EPS re-stated to 0.19 following bonus share issuance. Contemporaneous 0.22 is kept per this dataset's standing rule."
+    }
+  ]
+}

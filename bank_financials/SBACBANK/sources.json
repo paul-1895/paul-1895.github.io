@@ -1,0 +1,225 @@
+{
+  "bank_id": "SBACBANK",
+  "bank_name": "South Bangla Agriculture & Commerce Bank PLC",
+  "website": "https://sbacbank.com",
+  "investor_relations_url": "https://sbacbank.com/annual-report",
+  "reporting_basis": "SOLO / STANDALONE throughout FY2013-FY2025. For FY2013-FY2020 the bank had no subsidiary, so its single 'Balance Sheet' / 'Profit and Loss Account' / 'Highlights on the overall activities of the bank' annexure are unambiguously Solo (=Consolidated by construction). SBAC Bank Investment Limited (a small, non-lending investment/brokerage subsidiary) first appears in the FY2021 annual report, from which point each report publishes both a 'Consolidated Balance Sheet'/'Consolidated Financial Highlights on the overall activities of the bank' AND a separate plain 'Balance Sheet'/'Highlights on the overall activities of the bank' (Solo). This dataset uses the Solo figures throughout FY2021-FY2025, per the project's standing preference for Solo over Consolidated. Confirmed by matching total assets, total deposits and total loans recorded in the Solo 'Highlights' annexure against the same year's own unlabelled ('Solo') Balance Sheet -- they are identical (e.g. FY2021 Solo Balance Sheet total assets 98,172,322,252 = Solo Highlights annexure total assets 98,172,322,252), whereas the Consolidated Balance Sheet for the same year (line ~14240 of the FY2021 report) shows a different total assets figure (97,813,747,714 Consolidated Financial Highlights). Solo vs Consolidated total assets differ by under 0.4% in every year FY2021-2025 (the subsidiary is small and does not lend -- 'Total loans and advances' is identical Solo vs Consolidated in FY2021), so the choice of basis is confirmed but not decision-critical to any conclusion in this dataset. FY2025's classified-loans/NPL-ratio figures are the one exception: they were only found in extractable text on a Consolidated basis (from the Directors' Report's own 5-year table and the auditor's narrative); given the subsidiary does not lend, this is treated as a close proxy for Solo and is flagged in that year's quarterly file and below. Q1-Q3 UNAUDITED QUARTERLY INTERIM FILINGS (FY2016, FY2023-FY2025, sourced in a later pass) independently confirm the same basis choice: each interim filing's own 'Balance Sheet (Unaudited)'/'Profit and Loss Account (Unaudited)' pages (used throughout this dataset) are explicitly the plain, non-Consolidated statements, printed immediately after (and clearly distinguished from) a separate 'Consolidated Balance Sheet (Unaudited)'/'Consolidated Profit and Loss Account (Unaudited)' section earlier in the same PDF from FY2023 onward; FY2016 predates the subsidiary entirely and has no Consolidated section to distinguish from. Unlike the FY2025 ANNUAL report (whose classified-loans citation was Consolidated-only, see above), each 2025 quarter's classified-loans/NPL figures come from the interim filing's own Note 8.11 'Classification of loans', positioned within the Solo notes section of the document (well before that filing's separate, later Consolidated notes package) -- confirmed Solo-basis by an explicit 'on solo basis' capital-related sentence on or near the same note page in the quarters spot-checked for this phrase (2024_Q1.json, 2025_Q2.json), and by consistent document-structure position in the remainder.",
+  "notes": "South Bangla Agriculture and Commerce Bank Ltd. (renamed SBAC Bank PLC in 2023) was incorporated on 20 February 2013 and obtained its banking licence on 25 March 2013, so FY2013 is its first year of operation; there is no FY2011 or FY2012 for this bank and this 13-year series (FY2013-FY2025) is its entire public history. All 13 years were sourced from annual reports already present in annual_reports/SBACBANK/ (extracted by a prior session; this session performed no downloading, only extraction/structuring). Twelve of the thirteen years come from that year's own annual report; FY2017 is the exception (see below). A pervasive, well-diagnosed and non-erroneous data-quality pattern affects EPS and (less consistently) Net Asset Value per share across almost every year: this bank issues near-annual stock dividends (bonus shares) at rates disclosed in its own dividend-history table (6% in 2016, 15% in 2016-for-2017-issue, 13.50% in 2017-for-2018-issue, 10% in 2018-for-2019-issue, 10% in 2019-for-2020-issue, 4% in 2020-for-2021-issue, 1% in 2021-for-2022-issue), and under BAS 33 each bonus issue requires EPS for ALL prior comparative periods to be recalculated using the enlarged share count. This dataset independently reproduced the mechanism for four separate years (FY2015: 0.88 original vs 0.83 restated in the FY2016 report, reconciling to PAT/post-6%-bonus-shares exactly; FY2016: 2.19 original vs 1.90 restated in the FY2019 report; FY2017: 1.97 (derived, at FY2017 year-end share count) vs 1.74 restated in the FY2019 report; FY2018: 1.55 original vs 1.41 restated in the FY2019 report's own audited P&L comparative column) and found every restatement to be arithmetically exact once the correct post-bonus share count is applied. Separately, and NOT explained by the bonus mechanism, this bank's own Directors'-Report narrative 'Key Financial Indicators' 5-year tables are internally inconsistent with its own audited P&L comparative column in the SAME annual report on this point (e.g. the FY2019 report's audited P&L restates FY2018 EPS to 1.41, but that same report's own 5-year narrative table still shows FY2018 as 1.55, unrestated) and are inconsistent with EACH OTHER across report vintages for the same historical year (the FY2019 report's 5-year table shows FY2016=1.90 and FY2017=1.74; the FY2020 report's 5-year table instead shows FY2016=2.19 and FY2017=1.97 -- i.e. UNrestated -- for the identical years). This dataset resolves the ambiguity by using each fiscal year's own first-published (contemporaneous, pre-future-bonus) EPS as reported in that year's own annual report throughout, and documents every specific instance of divergence found in that year's quarterly JSON's period_note rather than silently reconciling. Net Asset Value per share shows the same pattern in at least two instances (FY2018: 13.13 original vs 11.94 restated in the FY2019 report; FY2019: 13.44 original vs 12.22 restated in the FY2020 report) but NOT in others (FY2015's NAV of 11.93 is unchanged in the FY2016 report despite the 6% bonus that same year) -- i.e. the bank's own restatement practice for NAV is itself inconsistent from year to year, unlike EPS where every checked instance was bonus-adjusted.",
+  "sources": [
+    {
+      "period": "2013 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2013.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2013.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2013],
+      "note": "First year of operation. Balance Sheet, Profit and Loss Account, Cash Flow Statement and the Basel II Pillar III 'Capital Structure'/'Capital Adequacy' disclosure all extracted cleanly and reconcile exactly (assets=liabilities+equity; income-expense=operating profit; PBT-tax=PAT; Tier1+Tier2=Total Capital at the crore level). No classified loans (NPL 0%, first year). ROE and NAV per share are not printed in this report's own Annexure-D 'Highlights' table (it ends at Price-Earnings Ratio) and are calculated (period-end, not average, since no prior-year balance exists)."
+    },
+    {
+      "period": "2014 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2014.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2014.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2014],
+      "note": "Balance Sheet, Profit & Loss Statement and Basel II Pillar III disclosure extracted cleanly; the report's own Annexure-C 'Highlights' table extracted with numeric columns garbled/misaligned and was not used. RECLASSIFICATION found vs FY2013's own report: this report's FY2013 comparative column shows interest paid Tk.137,539,300 (was Tk.144,331,954 in FY2013's own report) and investment income Tk.12,540,399 (was Tk.19,333,053) -- both differ by exactly Tk.6,792,654, a pure reclassification between the two P&L lines with zero effect on net interest income + investment income combined and no effect on profit before provision, PBT or PAT. FY2013's tax is also newly split into current + deferred components here (same total). FY2013's own contemporaneous figures were kept for FY2013; this reclassification is recorded on FY2014's record. NAV per share (10.37) is taken from the FY2015 report's comparative column since FY2014's own Annexure-C NAV cell did not extract; ROA/ROE calculated (average-balance basis) since not legibly reported."
+    },
+    {
+      "period": "2015 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2015.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2015.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2015],
+      "note": "Balance Sheet, Profit and Loss Account and Basel III Pillar III 'Quantitative Disclosures' (CET1/AT1/Tier2 breakdown) extracted cleanly and fully reconcile. The report's own Annexure-D 'Highlights' table extracted with most numeric cells garbled; cost_of_fund_pct, roi_pct and roa_pct for this year are instead taken from the FY2019 annual report's own 5-year 'Financial Indications' table (a bank-published retrospective, used only because the contemporaneous cells were unreadable). Classified loans/NPL amount not found in extractable text for FY2015 specifically (bracketed by confirmed nil in FY2013 and FY2016); left as an explicit gap rather than assumed nil. EPS-restatement discovery for this bank was first made here: see the bank-wide note above."
+    },
+    {
+      "period": "2016 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2016.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2016.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2016],
+      "note": "Balance Sheet, Profit and Loss Account and Basel III Pillar III disclosure extracted cleanly and fully reconcile, including a resolved OCR error in the market-risk RWA sub-table (a printed '8,420.52' only reconciles against its own stated 10%-capital-charge column of 342.05 if read as '3,420.52'; the corrected figure was used and the total RWA of 31,311.96m reproduces exactly across two independent citations). Classified loans/NPL confirmed NIL (multiple citations). Cross-checked against both the FY2019 and FY2020 reports' own 5-year tables for ROA/ROE/EPS."
+    },
+    {
+      "period": "2017 (Q4/year-end, solo)",
+      "type": "recovered_from_adjacent_report",
+      "source_document": "sbacbank-annual-report-2018.txt (FY2017 comparative column) and sbacbank-annual-report-2017.txt (narrative capital figure only)",
+      "source_path": "annual_reports/SBACBANK/",
+      "source_priority": 2,
+      "retrieval_date": "2026-08-26",
+      "status": "recovered_and_validated",
+      "used_for_years": [2017],
+      "note": "FY2017's own annual report's Balance Sheet, Profit and Loss Account, Cash Flow Statement and Capital Structure/Adequacy pages all extract with section headings but NO data rows (a pdftotext table-extraction failure specific to that report's page layout, not a scan -- the rest of the FY2017 report, e.g. its Basel II/III qualitative disclosures, extracts normally). Every FY2017 balance-sheet and P&L figure in this dataset is therefore the FY2018 report's own audited comparative column (a primary source: the bank's own audited comparative, not a later restatement). Total shareholders' equity is corrected to 6,538,992,142 (the sum of its own reported components, which also exactly reconciles Total assets - Total liabilities); the FY2018 report's balance sheet page prints a likely-OCR-garbled 6,538,997,141 for the same cell. Interest expense (2,802,476,484) is calculated as interest income minus net interest income (both reported; the interest-expense row itself did not extract). Total Capital (7,012,696,176) and Capital Surplus (2,296,840,000) come from narrative text in FY2017's own report and the FY2019/FY2020 5-year tables respectively, and independently cross-check (7,012.70/42,389.71 RWA = 16.545% = the reported 16.54% CRAR exactly). Tier-I/Tier-II split not found in extractable text this year. EPS is calculated at 1.97 using FY2017's own year-end share count; two later reports disagree with each other on the bonus-restated figure for this year (1.74 in the FY2019 report, 1.97 -- i.e. unrestated -- in the FY2020 report); see the bank-wide EPS note above."
+    },
+    {
+      "period": "2018 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2018.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2018.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2018],
+      "note": "Balance Sheet and Profit and Loss Account extract with heavy OCR noise (this report appears to be a lower-quality scan-to-text conversion than its neighbours) but all figures used reconcile exactly once corrected (e.g. 'AQ2.500' read as an audit-fee figure was excluded in favour of the clean 'Total operating expenses' line). EPS (1.55) did not extract from this report's own P&L (a garbled cell) and is instead corroborated by three independent means: the FY2019 report's own 5-year table, the FY2020 report's own 5-year table (both agree on 1.55), and PAT/period-end-shares (879,587,136/565,822,742=1.5546). Capital Structure sub-table's absolute Tier-I/Tier-II Tk. figures are OCR-corrupted; Tier1 (7,367.6m) and Tier2 (474.05m) are instead calculated as the clearly-legible reported CET1%/Tier2% ratios multiplied by the clearly-legible reported RWA, and are flagged 'calculated' rather than 'reported' for that reason. Total Capital (7,841,833,142) and CRAR (15.88%) are directly and legibly reported and are unaffected by this."
+    },
+    {
+      "period": "2019 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2019.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2019.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2019],
+      "note": "Balance Sheet, Profit and Loss Account, and own Annexure 'Highlights on the overall activities of the bank' all extract cleanly and reconcile. INTERNAL INCONSISTENCY found and resolved within this single report: the Capital Adequacy Pillar III narrative text states a minimum-capital-requirement (with buffer) of Tk.7,184.17m and surplus of Tk.1,186.90m, which does NOT reconcile against the report's own, doubly-confirmed RWA of Tk.56,834,432,585 at the stated 12.50% rate (56,834.43 x 0.125 = 7,104.30m). This report's own Annexure table AND its own Directors'-Report 5-year table both independently state a capital surplus of Tk.1,266,759,532 (implying the arithmetically-consistent MCR of 7,104.30m); this dataset uses that figure and treats the Pillar III narrative's '7,184.17m' as an isolated typo in that one paragraph. Investment income (1,217,521,317) is calculated as total operating income minus its other three reported components (the investment-income row itself is blank/merged in the extraction). EPS: this report's own audited P&L states 1.55 for FY2019 and restates FY2018 (its own comparative column) to 1.41, while this SAME report's Directors' 5-year table still shows FY2018 as 1.55 unrestated -- see the bank-wide note."
+    },
+    {
+      "period": "2020 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2020.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2020.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2020],
+      "note": "Cleanest extraction in the archive: Balance Sheet, Profit and Loss Account, Capital Adequacy disclosure and own Annexure 'Highlights' table all extract with no numeric corruption and fully reconcile (CRAR, CET1%, Tier2%, RWA and MCR are all mutually exact to the reported decimal). COVID-19 special general provision of Tk.84,370,703 recognised this year as a separate P&L line. FY2019 comparative column reproduces FY2019's own report exactly for every balance-sheet and P&L total; only the bonus-driven per-share figures differ (EPS restated to 1.41 from 1.55; NAV restated to 12.22 from 13.44)."
+    },
+    {
+      "period": "2021 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2021.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2021.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2021],
+      "note": "First year both a Consolidated and a Solo set of statements/annexures are published (SBAC Bank Investment Limited); the Solo Balance Sheet, Profit and Loss Account and 'Highlights' annexure (Annexure-E) were used throughout, per the standing Solo-preference rule -- see 'reporting_basis' above for the confirmation method. FY2020 comparative column reproduces FY2020's own report exactly for all totals (no restatement) other than the usual per-share bonus adjustment. 'Other expenses' rose 281% (394.78m to 1,503.16m); not separately explained in extractable text. Tier-I/Tier-II split specific to Solo not found (only a Solo-vs-Consolidated TOTAL-capital comparison, in crore); Total Capital and CRAR are directly reported and reconcile exactly (10,834.47/77,701.66 RWA = 13.94%, matching the narrative-stated Solo CRAR)."
+    },
+    {
+      "period": "2022 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2022.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2022.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2022],
+      "note": "Balance Sheet, Profit and Loss Account and own Annexure 'Highlights' (Solo) all extract cleanly. Interest income (5,883,296,742) is calculated as net interest income plus interest paid (both reported); independently confirmed identical and directly reported as a single figure in the FY2023 report's own FY2022 comparative column. FY2021 comparative in this report reproduces FY2021's own report exactly for total assets/loans/off-balance-sheet/equity; total deposits differ by 0.058% (73,061,632,190 here vs 73,103,763,048 in FY2021's own report) -- flagged as a minor (sub-threshold) discrepancy, contemporaneous FY2021 value kept. Tier-I/Tier-II split specific to Solo not found in extractable text (only a Consolidated-basis CET1 narrative elsewhere); Total Capital and CRAR directly reported and reconcile exactly."
+    },
+    {
+      "period": "2023 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2023.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2023.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2023],
+      "note": "Balance Sheet, Profit and Loss Account and own Annexure 'Highlights' (Solo) all extract cleanly and fully reconcile. FY2022 comparative column in this report reproduces FY2022's own report exactly for every balance-sheet and P&L total (no restatement) other than the usual per-share bonus adjustment. Tier-I/Tier-II split specific to Solo not found in extractable text (only a Consolidated-basis CET-1=13.18%-of-13.82%-total narrative); Total Capital and CRAR directly reported and reconcile exactly (11,546.96/84,222.66 RWA = 13.71%, matching the narrative-stated Solo CRAR exactly)."
+    },
+    {
+      "period": "2024 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2024.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2024.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2024],
+      "note": "MAJOR DATA-QUALITY FINDING (asset-quality recognition event, this bank's version of the sector-wide FY2024 pattern documented in _HANDOFF.md): Balance Sheet, Profit and Loss Account and own Annexure 'Highlights' (Solo) all extract cleanly and reconcile, and jointly show classified loans jumping 178.3% (5,149,565,968 to 14,332,622,928), NPL ratio jumping from 5.93% to 16.17%, and -- reported directly in this year's own Annexure table -- a provision deficit ('Surplus/(deficit) provision against loans and advances') of -6,558,390,257, equal to 59.4% of this year's total shareholders' equity (11,045,530,488). PAT fell 79.7% (536,611,584 to 108,727,037) and ROE fell to 0.98% from 4.89%, while CRAR barely moved (13.80% vs 13.71%) -- i.e. capital ratios did not yet reflect the asset-quality deterioration this year (they do, partially, start to bite in FY2025; see below). The FY2025 report's comparative column for FY2024 shows small reclassifications: total shareholders' equity restated to 11,075,579,274 (+30,048,786, +0.27%, mostly a newly-separately-disclosed 'Start-up Equity Investment fund' equity line) and PAT restated to 112,406,475 (+3,679,438, +3.4% of a very small base, from small changes to total operating income and total provision) -- both immaterial in absolute terms; FY2024's own contemporaneous figures are used here."
+    },
+    {
+      "period": "2025 (Q4/year-end, solo)",
+      "type": "annual_report_primary_statements",
+      "source_document": "sbacbank-annual-report-2025.txt",
+      "source_path": "annual_reports/SBACBANK/sbacbank-annual-report-2025.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [2025],
+      "note": "MAJOR DATA-QUALITY FINDING: the Independent Auditor issued a QUALIFIED OPINION for FY2025, the only qualified opinion in this bank's archive. The full Emphasis of Matter is quoted and reproduced in the quarterly file's period_note: required provision Tk.1,379.40 crore (13,794.0m) vs provision maintained (all categories) Tk.355.83 crore (3,558.3m) = a shortfall of Tk.1,023.57 crore (10,235.7m), equal to 91.6% of total shareholders' equity (11,174,656,661); of this, Tk.158.66 crore relates to fixed deposits placed with NBFIs that matured long ago and are doubtful of recovery, against which the Bank held ZERO provision. Required capital was Tk.1,135.00 crore (11,350.0m) against total eligible (Solo) capital of Tk.1,216.84 crore (12,168.4m), a reported surplus of Tk.81.84 crore (818.4m) and CRAR of 13.40%; the auditors explicitly state that recognising the full provision shortfall would push CRAR below the 12.50% regulatory minimum. Provision coverage of classified loans (provision held against classified loans specifically, kept on the same basis as prior years) fell to 12.60% (2,371,250,000/18,814,940,000) from 30.22% in FY2024 -- i.e. the Bank reduced classified-loan provisioning in absolute terms (2,371.25m vs 4,331.35m) even as classified loans grew 31.3%. Bangladesh Bank directed no FY2025 dividend (letter BSD-5/106/2026-403), and the resulting consecutive non-dividend years triggered a technical 'Z-Category' reclassification on the exchange. Classified loans (18,814,940,000) and NPL ratio (19.87%) were only found in extractable text on a Consolidated basis (the Directors' 5-year table and auditor narrative); treated as a close Solo proxy since the subsidiary does not lend (confirmed: Solo vs Consolidated total loans differ by only 0.22% this year). Interest income (8,565,552,982) is calculated as net interest income plus interest paid (both reported); corroborated by the Consolidated 5-year table's Total Interest Income of Tk.8,607.26m for the same year. Advance-deposit ratio (87.67%) is calculated (gross loans / total deposits); not found as a directly reported cell this year. ROA (0.01%) and ROE (0.06%) are calculated on a period-end basis; not found as directly reported cells this year, but the Consolidated 5-year table's own ROA(0.01%)/ROE(0.06%) figures for 2025 independently agree."
+    },
+    {
+      "period": "Bank-wide data-quality finding: EPS/NAV bonus-share restatement pattern",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-26",
+      "note": "See the long-form note under 'notes' above. This affects only per-share figures (EPS, and NAV in some years); it never affects any absolute Taka figure (assets, deposits, loans, equity, income-statement lines, capital, provisions) because the bonus-share mechanism is purely a change in the shares-outstanding denominator, not a restatement of any underlying balance or flow. This dataset always uses each fiscal year's own first-published EPS/NAV."
+    },
+    {
+      "period": "Credit-quality gaps, FY2014-FY2015",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-26",
+      "note": "Classified loans / NPL ratio for FY2014 and FY2015 were not found in any extractable text (the relevant Annexure table cells are garbled in both years' own reports, and no later report's comparative or 5-year table reaches back that far for this specific metric). FY2013 (the bank's first partial year) and FY2016 are both independently confirmed NIL/0% from multiple sources, so a nil-or-near-nil FY2014/FY2015 is plausible but NOT confirmed; this dataset records both years as an explicit gap rather than assuming nil."
+    },
+    {
+      "period": "2016 Q2/Q3 (unaudited quarterly financial statements)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "sbacbank-quarterly-2016-q2.txt, sbacbank-quarterly-2016-q3.txt",
+      "source_path": "annual_reports/SBACBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2016],
+      "note": "SBAC Bank Limited's investors-relations 'Financial Statements & Annual Reports' page (https://www.sbacbank.com/investors-relations, a Next.js app whose full document list is embedded in a React Server Component JSON payload in the page source rather than exposed via a simple listing page) lists documents back to 2013, but the earliest quarterly interim statements it lists are 2016 Q2 and Q3 (no Q1 2016, and no quarterly statements at all for 2013-2015 -- only Annual Report + Auditors' Report PDFs for those years, confirming no interim filings exist to source for that span; recorded as unavailable rather than backfilled, per project policy). Both PDFs extracted natively via pdftotext but with a badly interleaved two-column layout (labels separated from values); all figures were instead read directly off 200dpi page images. Q2 is a Half-Yearly filing (cumulative Jan-Jun) placed in the _Q2 slot per convention; Q3 is cumulative Jan-Sep. No subsidiary existed yet (SBAC Bank Investment Limited was incorporated in 2021), so both are unambiguously Solo. No classified-loans/NPL or capital-adequacy disclosure in either filing (simple 4-page documents, no notes section) -- recorded as a gap. Equity uses a six-component layout that year (paid-up capital, statutory reserve, general reserve, other/revaluation reserve, 'Current year's profit', retained earnings) rather than the four/five-component layout seen in FY2023-2025 filings; components sum exactly to total_equity in both quarters."
+    },
+    {
+      "period": "2023 Q1/Q2/Q3 (unaudited quarterly financial statements)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "sbacbank-quarterly-2023-q1.txt, sbacbank-quarterly-2023-q2.txt, sbacbank-quarterly-2023-q3.txt",
+      "source_path": "annual_reports/SBACBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2023],
+      "note": "All three sourced from https://cdn.sbacbank.com/files/investors-relations/financial-statement-2023-qN.pdf (Solo Balance Sheet/Off-balance+NAV/P&L consistently at PDF pages 8/9/10 of these 62-64 page scanned board-agenda-style documents; Note 8.10 Required-provision and 8.11 Classification-of-loans tables at PDF pages ~32-35). All figures read off page images (300dpi for Q1; 150dpi triage-pass renders for Q2/Q3 after their source PDFs and higher-resolution renders were lost to a shared-scratchpad collision with a concurrent session mid-task -- both fully legible and cross-validated, see below). Asset quality was modest and IMPROVING all year: classified loans/NPL 4,170.33m/5.27% (Q1) to 4,090.08m/4.96% (Q2) to 4,335.46m/5.11% (Q3), against a 31-Dec-2022 base of 4,031.22m; the loans-only provision shortfall (Note 8.10, referencing Bangladesh Bank forbearance letter DOS(CAMS)1157/41(dividend)/2023-2113 dated 25 April 2023) fell steadily from Tk.370.0m (Q1, flat vs Dec-2022) to Tk.369.9m (Q2) to Tk.277.4m (Q3). Cross-quarter PAT reconciliation is EXACT: Q1 131,772,992 + discrete-Q2 189,717,411 (~=H1-Q1 189,717,381, Tk.30 rounding) = H1 321,490,373; + discrete-Q3 138,247,282 (=9M-H1 exactly) = 9M 459,737,655 -- all of which independently match the comparative columns later printed in this bank's own 2024_Q1/Q2/Q3.json filings. Paid-up capital rose from 8,160.31m (Q1) to 8,241.92m (Q2-Q3), a bonus share issue. No capital-adequacy disclosure in any of the three filings (annual-report-only in this dataset)."
+    },
+    {
+      "period": "2024 Q1/Q2/Q3 (unaudited quarterly financial statements)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "sbacbank-quarterly-2024-q1.txt, sbacbank-quarterly-2024-q2.txt, sbacbank-quarterly-2024-q3.txt",
+      "source_path": "annual_reports/SBACBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2024],
+      "note": "All three sourced from https://cdn.sbacbank.com/files/investors-relations/financial-statement-2024-qN.pdf (same PDF-page layout as the 2023 vintage; 300dpi page images used throughout). MAJOR FINDING: these three filings prove the entire FY2024 asset-quality/provisioning crisis (already known from 2024_Q4.json: NPL 5.93%->16.17%, provision shortfall exploding to Tk.6,558.39m) was concentrated ENTIRELY in Q4 2024. Classified loans/NPL were essentially flat and low all through Q1-Q3: 5,174.08m/5.90% (Q1) to 5,408.97m/6.16% (Q2) to 5,611.34m/6.52% (Q3) -- barely above the 31-Dec-2023 base of 5,149.57m/5.93%. The loans-only provision shortfall (Note 8.10) actually DECREASED across all three quarters: Tk.266.73m (Q1) to Tk.182.68m (Q2) to just Tk.77.39m (Q3) -- versus Tk.355.64m at 31-Dec-2023. Comparing Q3's 9-month cumulative PAT (770,597,440) against the already-known FY2024 annual PAT (108,727,037) implies Q4 2024 ALONE swung to a net LOSS of approximately Tk.661.87m, and classified loans grew by Tk.8,721.29m in that single quarter (NPL 6.52%->16.17%) -- the largest single-quarter deterioration found anywhere in this bank's dataset, most likely surfaced by the year-end external audit. Each quarter's own Note 8.10 footnote documents a SECOND, smaller, separate regulatory-forbearance episode predating the FY2024/FY2025 one already known from the 2025-vintage filings: Bangladesh Bank letter DOS(CAMS)1157/41(dividend)/2024-1836 (30 April 2024) deferred a much smaller Tk.35.56 crore shortfall (carried over from FY2023) into FY2024, of which Tk.27.82 crore had already been provided by Q3-2024 -- i.e. the Bank was on track to clear this earlier, smaller gap shortly before the much larger FY2024-native gap emerged in Q4. DATA-QUALITY FINDING: unlike FY2023's exact cross-quarter reconciliation, FY2024's discrete-quarter columns do NOT exactly reconcile against cumulative-minus-prior-cumulative (Q2: printed 178,857,876 vs implied 184,697,288, a Tk.5.84m/~3% gap; Q3: printed 420,840,444 vs implied 391,813,085, a Tk.29.0m/~7% gap) -- each filing is internally consistent on its own, so this is recorded as an unexplained minor cross-report inconsistency specific to FY2024, not a transcription error. No capital-adequacy disclosure in any of the three filings."
+    },
+    {
+      "period": "2025 Q1/Q2/Q3 (unaudited quarterly financial statements)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "sbacbank-quarterly-2025-q1.txt, sbacbank-quarterly-2025-q2.txt, sbacbank-quarterly-2025-q3.txt",
+      "source_path": "annual_reports/SBACBANK/",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2025],
+      "note": "All three sourced from https://cdn.sbacbank.com/files/investors-relations/financial-statement-2025-qN.pdf (same PDF-page layout; 300dpi page images throughout). MAJOR FINDING: unlike FY2024's single-quarter (Q4-only) collapse, FY2025's deterioration was PROGRESSIVE across the year. Classified loans/NPL (Solo): 14,332.62m/16.17% (31-Dec-2024) to 14,409.67m/16.37% (Q1, +0.20pp) to 15,490.46m/16.98% (Q2, +0.61pp) to 17,977.00m/19.80% (Q3, +2.82pp -- by far the largest single-quarter move) to ~18,814.94m/19.87% (Q4/FY2025 year-end, Consolidated-basis proxy, +0.07pp). The loans-only provision shortfall (Note 8.10) similarly accelerated: Tk.6,558.39m (Dec-2024) to Tk.6,556.94m (Q1, flat) to Tk.7,361.52m (Q2, +804.6m) to Tk.8,019.93m (Q3, +658.4m) -- i.e. NPL/shortfall growth was concentrated in Q2-Q3, while the P&L/profit impact was then concentrated in Q4: 9-month cumulative PAT was a still-plausible Tk.117.69m (annualizing to roughly the FY2024 full-year level), but full-year FY2025 PAT (2025_Q4.json) was only Tk.6.50m, implying an approximately Tk.111.19m NET LOSS in Q4-2025 alone, driven by a Q4 provision charge (~Tk.340.2m implied) nearly two-thirds the size of the ENTIRE first nine months' combined charge (Tk.526.71m). Quarter-by-quarter discrete PAT (Q1 109.51m, Q2 4.31m, Q3 3.88m, implied Q4 -111.19m) shows profitability was already sharply down YoY in Q1 (-43.6% vs Q1-2024's 194.09m) and then collapsed to near-zero for two more quarters before turning negative. Cross-quarter PAT reconciliation across all three filings is essentially EXACT (Q1 109,505,419 + discrete-Q2 4,312,858 (~=H1-Q1 4,312,857) = H1 113,818,276; + discrete-Q3 3,876,100 (=9M-H1 exactly) = 9M 117,694,376). Q2-2025's Note 8.10 contains an explicit, striking management-provisioning-management disclosure: 'Maximum allowable provision has been made in current quarter keeping EPS only Taka 0.005.' DATA-QUALITY FINDING: 2025_Q1.json's own 31-Dec-2024 comparative NAV cell (13.23) is arithmetically inconsistent with that report's own equity/share-count and disagrees with both 2024_Q4.json (13.40) and 2025_Q2.json/2025_Q3.json's own Dec-2024 comparatives (both 13.40) -- treated as an isolated typo in the Q1 filing only, not used. No capital-adequacy disclosure in any of the three filings."
+    },
+    {
+      "period": "Bank-wide finding: multi-year regulatory-forbearance letter pattern on the loans-and-advances provision shortfall",
+      "type": "data_quality_finding",
+      "status": "documented",
+      "retrieval_date": "2026-08-27",
+      "note": "Every quarterly filing's Note 8.10 (Required provision for loans, advances and lease/investments) footnote cites a Bangladesh Bank Department of Off-site Supervision letter (ref. DOS(CAMS)1157/41(dividend)/YYYY-NNNN) approving deferral of that year's provision shortfall until the next annual financial statements are finalized. Three consecutive years of these letters were found: 2023-2113 (25 Apr 2023, ~Tk.370m gap for FY2022/23), 2024-1836 (30 Apr 2024, ~Tk.355.6m gap for FY2023, later a much larger Tk.6,558.4m gap emerged within FY2024 itself, disclosed via a separate DBI-3/132/2024-640 letter and a subsequent 2025-3115 DOS letter), and 2025-3115 (22 May 2025, the resulting Tk.11,430.1m all-loans-and-advances gap allowing FY2024 to be finalized without full provisioning -- this is the same letter quoted in the FY2025 quarterly filings and reflected in 2025_Q4.json's auditor's qualified opinion). The FULL loans-and-advances-only shortfall trajectory reconstructed across all quarterly and annual filings in this dataset: -370.0m (Dec-2022) -> -370.0m (Mar-2023) -> -369.9m (Jun-2023) -> -277.4m (Sep-2023) -> -355.64m (Dec-2023, per 2024_Q1.json's comparative) -> -266.73m (Mar-2024) -> -182.68m (Jun-2024) -> -77.39m (Sep-2024) -> -6,558.39m (Dec-2024, an approximately 85x single-quarter explosion) -> -6,556.94m (Mar-2025, flat) -> -7,361.52m (Jun-2025) -> -8,019.93m (Sep-2025). This full multi-year, multi-quarter series is the single clearest, most granular evidence in this dataset of how a provisioning gap can be repeatedly deferred by regulatory letter while compounding underneath, and of exactly which reporting periods concealed vs. revealed the deterioration."
+    },
+    {
+      "period": "2013-2015, 2016 Q1, 2017-2022, 2026 Q1/Q2 (unaudited quarterly financial statements)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "gap",
+      "retrieval_date": "2026-08-27",
+      "note": "2013-2015 and 2016 Q1: confirmed UNAVAILABLE, not merely unresearched -- the bank's own investors-relations document list (see the 2016 Q2/Q3 entry above) shows no quarterly interim filings exist for these periods at all (only Annual Report + Auditors' Report). 2017 Q1-Q3, 2018 Q1-Q3, 2019 Q1-Q3, 2020 Q1-Q3, 2021 Q1-Q3, 2022 Q1-Q2 (2022 Q3 also confirmed unavailable/not listed on the bank's site) DO exist as listed, downloadable PDFs at the same https://cdn.sbacbank.com/files/investors-relations/financial-statement-YYYY-qN.pdf URL pattern (confirmed present in the site's own document listing) but were not reached in this pass -- prioritization went to FY2023-2025 per the task's explicit instruction, plus 2016 Q2/Q3 as a low-cost bonus already in hand from the same site-discovery step. 2026 Q1/Q2 also exist on the site (most recent filings, dated within this dataset's 'current date') but were similarly not reached. All of these remain a genuine, addressable gap for a future session -- not a case of non-existence like 2013-2015Q1/2016Q1."
+    }
+  ]
+}

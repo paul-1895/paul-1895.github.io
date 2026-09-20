@@ -1,0 +1,129 @@
+{
+  "bank_id": "CITYBANK",
+  "bank_name": "The City Bank PLC",
+  "reporting_date": "2020-03-31",
+  "financial_year": 2020,
+  "quarter": "Q1",
+  "period_note": "Sourced directly from the bank's own primary quarterly interim financial statements (\"Financial Statements as at and for the 1st Quarter ended 31 March 2020\"), downloaded directly from the bank's live financial-statements archive (legacy.citybankplc.com/report/financialstatements), not Wayback Machine. Per project convention the SOLO ('Balance Sheet as at 31 March 2020' / unlabelled 'Profit and Loss Account for the 1st Quarter ended 31 March 2020') figures are used, not the explicitly-labelled 'Consolidated' panels. Arithmetically verified: Total liabilities 349,677,519,435 + Shareholders' equity 25,879,692,458 = Total assets 375,557,211,893 exactly; Net interest income 2,672,580,201 + Investment income 819,377,690 + Commission 727,297,099 + Other operating income 613,889,062 = Total operating income 4,833,144,051 (source document's own subtotal, off by 1 taka from the component sum due to rounding in the original); Profit before provision of 1,873,074,315 also reconciles exactly to the Cash Flow Statement's own 'Profit before provision' starting line. Income-statement figures are cumulative-from-Jan-1 (identical to a discrete quarter for Q1 specifically). Non Funded Income is calculated as Commission/exchange/brokerage + Other operating income (both individually reported). This filing includes an explicit Note 4.a 'Net Assets Value per Share (NAV) - The City Bank Limited' (Solo basis), so nav_per_share is reported here (not calculated); it also discloses (Note 7) a BSEC-mandated 'significant deviation between two quarterly periods' explanation attributing the YoY rise in investment income to higher interest income on government securities from increased Treasury Bill/Bond holdings.",
+  "source": {
+    "source_document": "citybank-1q-2020-financial-statements.txt",
+    "source_path": "annual_reports/CITYBANK/citybank-1q-2020-financial-statements.txt",
+    "source_url": "https://legacy.citybankplc.com/files/1st-Quarterly-FS-2020-Final_1594174885.pdf",
+    "source_page_lines": "Single-page landscape layout (multiple panels: Consolidated and Solo Balance Sheet/Cash Flow/P&L/Statement of Changes in Equity, plus Notes to the Financial Statements panel); read visually via high-resolution page render and targeted crops (pdftoppm -r 400), cross-checked against pdftotext output",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 27485,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances / Investments",
+      "value": 276123,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 269832,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Shareholders' equity of The City Bank Limited",
+      "value": 25880,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 375557,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities",
+      "value": 140110,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value per Share (NAV) - The City Bank Limited (Note 4.a)",
+      "value": 25.46,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest / net profit on investments (cumulative from Jan 1)",
+      "value": 2673,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 819,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_funded_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)",
+      "value": 1341,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_sum_of_reported_lines"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (B) (cumulative from Jan 1)",
+      "value": 2960,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit / (loss) before provision (C=A-B) (cumulative from Jan 1)",
+      "value": 1873,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net profit after taxation (cumulative from Jan 1)",
+      "value": 657,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS)",
+      "value": 0.65,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

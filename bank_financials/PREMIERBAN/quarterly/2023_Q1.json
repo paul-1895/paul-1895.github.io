@@ -1,0 +1,265 @@
+{
+  "bank_id": "PREMIERBAN",
+  "bank_name": "The Premier Bank PLC",
+  "reporting_date": "2023-03-31",
+  "financial_year": 2023,
+  "quarter": "Q1",
+  "period_note": "Sourced from the Annual Report 2023's own 'Evaluation of the Quarterly Financials (consolidated) by the Audit Committee and by the Board' table. *** MISLABELLING FOUND: despite this table's caption saying '(consolidated)' -- the same caption wording used in FY2022/FY2024/FY2025 -- the figures actually populated in THIS SPECIFIC YEAR's table are SOLO, not Consolidated. This is the opposite of what the label says, and the opposite of the FY2022/2024/2025 pattern (see those years' notes, where the '(consolidated)' label is genuinely accurate). *** PROOF: this table's Dec-31-2023 column (Total Property and Assets 414,401.58m, Total Capital & Shareholders' Equity 27,353.85m, Net Profit After Tax 4,345.53m, NAV per share 22.18) reproduces EXACTLY against this dataset's own independently-sourced FY2023 Solo Q4 figures (bank_financials/PREMIERBAN/quarterly/2023_Q4.json, from the audited Solo Balance Sheet/P&L) and DIVERGES from the FY2023 report's own separate, full Consolidated Balance Sheet/Consolidated Profit and Loss Account (Total Assets 414,966.38m, Profit after taxation 4,154.77m -- materially different from this table's 4,345.53m). This is GOOD NEWS for series consistency: FY2023 Q1-Q3 below are on the SAME Solo basis as this dataset's main Q4/annual series, UNLIKE FY2022/2024/2025 which carry a genuine Consolidated-vs-Solo mismatch. Per project instruction to prefer Solo-basis interim data when found and to record any basis-related finding explicitly: this is a mislabelling inside the bank's own report, not a data-sourcing choice made here, and it is recorded here precisely so a future reader does not assume FY2023 shares FY2022/2024/2025's Consolidated-mismatch problem. No independent same-period comparator table exists to cross-check FY2023 Q1-Q3 for restatement (single-current-year-only table, as with FY2022/2024/2025).",
+  "source": {
+    "source_document": "premierban-annual-report-2023.txt",
+    "source_path": "annual_reports/PREMIERBAN/premierban-annual-report-2023.txt",
+    "source_url": "https://www.premierbankltd.com",
+    "source_page_lines": "4266-4337 ('Evaluation of the Quarterly Financials (consolidated)' table -- figures actually Solo, see period_note; Annual Report 2023 p.105-106)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "cash_and_balances_with_bb",
+      "original_metric_name": "Cash In Hand (With Bangladesh Bank and its agent Bank)",
+      "value": 28446.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "balance_with_other_banks",
+      "original_metric_name": "Balance with other Banks & Financial Institutions",
+      "value": 7331.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "money_at_call",
+      "original_metric_name": "Money at Call and Short Notice",
+      "value": 5990.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 59151.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 262207.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Asset including Premises, Furniture & Fixture",
+      "value": 3339.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other Assets",
+      "value": 24674.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Property and Assets",
+      "value": 391141.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "borrowings",
+      "original_metric_name": "Borrowing from other Banks, Financial Institutions & Agents",
+      "value": 32942.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "subordinated_bonds",
+      "original_metric_name": "Non-convertible Subordinated bonds",
+      "value": 11558.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "perpetual_bond",
+      "original_metric_name": "Premier Bank Perpetual Bond",
+      "value": 2000.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 293782.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Provision & Other Liabilities",
+      "value": 25292.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 365575.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Capital & Shareholders' Equity",
+      "value": 25566.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet Items including Contingent Liabilities",
+      "value": 234667.2,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest Income (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 4792.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense_cumulative",
+      "original_metric_name": "Interest Paid on Deposits and Borrowings, etc. (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 3790.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 1001.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment Income (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 1040.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_income_cumulative",
+      "original_metric_name": "Commission, Exchange and Brokerage (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 1485.7,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other Operating Income (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 606.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 4134.43,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expense_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 2414.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit Before Provision (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 1720.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_provision_cumulative",
+      "original_metric_name": "Total Provision for Loans, Investment & Other (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 500.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Tax including deferred tax (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 488.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit After Tax (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 731.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earning Per Share (EPS) (cumulative 01 Jan 23 to 31 Mar 23)",
+      "value": 0.64,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) Per Share",
+      "value": 22.28,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nocfps_cumulative",
+      "original_metric_name": "Net Operating Cash Flows (NOCFPS) Per Share (cumulative from Jan 1)",
+      "value": 6.2,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

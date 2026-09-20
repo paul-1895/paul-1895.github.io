@@ -1,0 +1,130 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "website": "https://globalislamibankbd.com",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual report. Evidence: FY2022 total assets of 153,811m match the figure under this report's 'Balance Sheet' (solo) heading; 159,101m is the consolidated total. Reconfirmed for FY2023-FY2024: both years' own 'Balance Sheet' (Solo) headings tie out exactly to total assets, total liabilities and equity reported in each year's own Highlights table (see below).",
+  "notes": "annual_reports/GIB archive covers 2013-2024 (12 text files); no FY2025 annual report exists (see the FY2025 source entry below for the full finding). The 2018 annual report PDF is severely damaged (multiple repair tools - qpdf, ghostscript, mutool - all failed to recover a usable text layer beyond the cover page); FY2018 data was instead sourced from the 2022 report's 5-year comparative tables. A prior session flagged the 2023 annual report PDF as truncated/corrupted-unrecoverable; as of this session (2026-08-26) a genuinely usable 11,569-line text extraction for gib-annual-report-2023.txt exists in the archive (the bank's own 'ANNUAL REPORT 2023 (Revised)', auditor-signed 8-10 July 2025) and FY2023 has been fully parsed and validated from it - this supersedes the earlier 'unavailable' status. FY2024 was parsed from gib-annual-report-2024.txt (auditor-signed 9-12 July 2025, 12th AGM held 21-09-2025 per DSE). The bank converted from a conventional bank (NRB Global Bank) to a Shariah-based Islamic bank (Global Islami Bank) during 2021. GIB entered severe financial distress from FY2023 onward: shareholders' equity went negative in FY2023 (-9,026.18m) and deepened further in FY2024 (-21,492.36m); CRAR fell to -9.28% (FY2023) and -11.00% (FY2024); the NPL-equivalent ratio (Ratio of Non-Performing Investments) rose from 4.48% (FY2022) to 25.07% (FY2023) to 90.72% (FY2024). GIB was subsequently absorbed into the Bangladesh Bank-brokered 'Sammilito Islami Bank' merger of five distressed Islamic banks (First Security Islami Bank, Global Islami Bank, Social Islami Bank, EXIM Bank, Union Bank); Sammilito Islami Bank began independent operations 18 August 2026, 8 days before this session's retrieval date, which is almost certainly why no standalone GIB FY2025 annual report was ever published (see FY2025 source entry).\n\nUPDATED 2026-08-27: Q1-Q3 interim (unaudited) quarterly data has now been fully researched and added for 2021-2025 (15 quarters: quarterly/2021_Q1.json through quarterly/2025_Q3.json), superseding the 'not_yet_researched' status below. See the dedicated source entries below for full detail. HEADLINE FINDING: a genuine, major restatement was discovered. GIB's own Q1-Q3 2024 interim filings (and their own comparative columns) show Dec-31-2023 equity as POSITIVE +13,764,184,590 -- flatly irreconcilable with this dataset's audited 2023_Q4.json figure of -9,026,176,636 (a gap of ~BDT 22.8 billion), because those interim filings were prepared in 2024, well over a year BEFORE the 'ANNUAL REPORT 2023 (Revised)' was finally audited (auditor-signed July 2025) and retroactively imposed the large provisioning charge that produced the negative figure. On the bank's own real-time books, equity did NOT visibly cross negative during 2023 or the first half of 2024 -- it was discovered/recognised only at the very late FY2023 audit stage. The bank's Sep-2024 interim filing (2024_Q3.json) shows the FIRST attempt at reflecting this on a Balance Sheet (equity -9,020.32m) but is internally self-contradictory against its own Profit and Loss Account (which rolls forward to a positive +13.4bn) by almost exactly the same ~22.8bn gap -- an incomplete, in-progress restatement, not a clean data point. By Q1-2025 the restated basis had fully propagated and become internally consistent (matching the audited FY2024 annual report exactly), and the interim data for 2025 shows an accelerating collapse: -7,411.90m (Q1 2025 alone), -8,943.05m (Q2 2025 alone, exceeding the ENTIRE FY2024 annual loss in one quarter), -5,993.07m (Q3 2025 alone) -- equity reached -43,840.37m by 30-Sep-2025, GIB's last quarterly filing before the Sammilito Islami Bank merger absorbed it. See quarterly/2024_Q1.json's period_note for the fullest writeup of this finding, and insights.json for the dataset-level risk signal.",
+  "sources": [
+    {
+      "period": "2013-2017 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "gib-annual-report-2017.txt (\"Highlights\" Annexure-E, p.168; \"Summarized key operating and financial data of preceding 5 (five) years\", p.168)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017
+      ],
+      "note": "Total liabilities not separately reported in this table for any year; calculated as total assets minus shareholders' equity (shareholders' equity itself sourced from each year's own Balance Sheet, cross-checked against the FY2013 loss implying equity = paid-up capital minus accumulated loss)."
+    },
+    {
+      "period": "2018-2022 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "gib-annual-report-2022.txt (\"5 Years - Horizontal Analysis\" Balance Sheet + Profit and Loss Account, p.105-110; \"Highlights\" Annexure-F, p.446)",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-25",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "note": "FY2018 sourced entirely from this report since the bank's own 2018 annual report PDF is unrecoverable (see notes above). FY2021 shows a negative capital surplus/(deficit) against the Bangladesh Bank minimum capital requirement (BDT -1,528.21mn) — a capital-adequacy breach; precise CAR% for FY2021 not located, only the underlying capital-fund and surplus/deficit figures. This FY2022 data was independently reproduced (to the exact million) by both the FY2023 and FY2024 reports' comparative columns in this session — no restatement found."
+    },
+    {
+      "period": "2018 (Q4) — bank's own annual report",
+      "type": "corrupted_unrecoverable",
+      "status": "unavailable",
+      "notes": "gib-annual-report-2018.pdf: xref/structure errors on open (qpdf, ghostscript both attempted repair); ghostscript reported successfully processing 180 pages but the resulting file still yields only the cover page via pdftotext (content-stream-level corruption, not just an index/xref issue), and mutool clean produced the same result. pdftoppm CAN rasterize individual pages from the original file, so a full vision-based re-extraction of specific pages was technically possible but not pursued given FY2018 data was already available from the 2022 report's comparative columns."
+    },
+    {
+      "period": "2023 (Q4)",
+      "type": "annual_report_summary_table_and_financial_statements",
+      "source_document": "gib-annual-report-2023.txt (\"ANNUAL REPORT 2023 (Revised)\" — Summarized Key Operating & Financial Highlights p.19-20 [lines 768-825]; own Balance Sheet, Solo, p.170 [lines 7994-8047]; own Profit and Loss Account, p.172-173 [lines 8116-8214]; Statement of Changes in Equity, p.176 [lines 8278-8318]; Note 14.7 Capital Adequacy Ratio as per BASEL-III, p.217-218 [lines 10493-10582])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2023
+      ],
+      "note": "A prior session's sources.json (2026-08-25) flagged this year's source PDF as truncated/corrupted-unrecoverable. As of this session (2026-08-26) a genuinely usable 11,569-line text extraction exists in the archive (the bank's own 'ANNUAL REPORT 2023 (Revised)', a re-issued/corrected version, auditor-signed 8-10 July 2025 — roughly 18 months after fiscal year-end). All figures cross-validated exactly: balance-sheet identity ties to the Taka (Total Liabilities 183,248,186,109 + Total Equity -9,026,176,636 = Total Assets 174,222,009,473); Tier1+Tier2=Total Regulatory Capital exactly; PBT-tax=PAT exactly; NPL% reproduces exactly from classified investment / gross investment (25.07%). Its own FY2022 comparative column reproduces the dataset's existing FY2022 figures exactly, no restatement found. DISCREPANCY WITHIN THIS REPORT: the Independent Auditor's Report opinion-basis paragraph (line 7975-7976) states CRAR 'has stood at -8.70%', conflicting with -9.28% as shown identically in three other places in the same report (Highlights table row 39, MD&A narrative line 2423, and Note 14.7's BASEL-III table, which arithmetically reproduces -9.28% from Total Regulatory Capital / Total RWA). -9.28% was used as the dataset value; -8.70% is recorded here as an unresolved single-paragraph inconsistency in the source document itself, not a cross-report restatement. Shareholders' equity went NEGATIVE for the first time in the bank's history (-9,026.18mn, from +12,964.28mn in FY2022), driven by a Total Provision charge of BDT 20,282.62mn (vs BDT 882.46mn in FY2022) and a net loss of BDT -21,520.25mn. roe_pct is recorded as null in ratios_timeseries.json per the dataset's negative-equity-breaks-ROE rule (PAT and period-end equity are both negative, so their ratio would be nonsensically positive); the bank's own average-equity-basis ROE of -1,092.92% is preserved as context only in ratios_timeseries.json's note, not as the stored value."
+    },
+    {
+      "period": "2024 (Q4)",
+      "type": "annual_report_summary_table_and_financial_statements",
+      "source_document": "gib-annual-report-2024.txt (\"ANNUAL REPORT 2024\" — Summarized Key Operating & Financial Highlights p.22-24 [lines 899-1030]; own Balance Sheet, Solo, p.177 [lines 9874-9930]; own Profit and Loss Account, p.179-180 [lines 9997-10095]; Statement of Changes in Equity, p.182 [lines 10159-10198]; Note 14.7 Capital Adequacy Ratio as per BASEL-III, p.224-225 [lines 12558-12660])",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-26",
+      "status": "extracted_and_validated",
+      "used_for_years": [
+        2024
+      ],
+      "note": "Auditor's report signed 9-12 July 2025; 12th AGM held 21-09-2025 per DSE's company page. Its own FY2023 comparative column reproduces gib-annual-report-2023.txt's FY2023 figures exactly to the Taka — no restatement found between the two reports. All figures cross-validated exactly: balance-sheet identity ties to the Taka (Total Liabilities 213,695,921,209 + Total Equity -21,492,359,291 = Total Assets 192,203,561,918); Tier1+Tier2=Total Regulatory Capital exactly; PBT-tax=PAT exactly; NPL% reproduces exactly from classified investment / gross investment (90.72%). FY2024 deepens FY2023's crisis: net loss BDT -12,466.18mn, equity to -21,492.36mn, CRAR to -11.00%, NPL-equivalent ratio to 90.72% (BDT 130,885.70mn non-performing against BDT 144,278.12mn gross investment). Note 14.7 discloses that per Bangladesh Bank letter no. DBI-6/51(3)/2025-480 (14 May 2025), required provision was BDT 113,583.89mn against BDT 24,772.46mn maintained — an BDT 88,811.43mn shortfall for which Bangladesh Bank's Department of Off-Site Supervision granted deferral (ref# DOS(CAMS)1157/41(DIVIDEND)/2025-3299). This is the same category of finding the methodology flags for ISLAMIBANK's unprovided-NPL pattern, except GIB's equity base is already negative so the shortfall cannot be meaningfully expressed as a multiple of equity. roe_pct is recorded as null per the negative-equity-breaks-ROE rule, same as FY2023; the bank's own average-equity-basis ROE of -81.70% is preserved as context only — noting that FY2024's average equity (-15,259.27mn) is itself negative, so even the bank's own average-equity convention is compromised in the opposite direction from FY2023."
+    },
+    {
+      "period": "2025 (Q4 / full year)",
+      "type": "confirmed_nonexistent",
+      "status": "researched_confirmed_unavailable",
+      "retrieval_date": "2026-08-26",
+      "notes": "No FY2025 (year ended 31 December 2025) annual report exists for GIB as a standalone entity, confirmed three independent ways on 2026-08-26: (1) live fetch of https://www.globalislamibankbd.com/annual-reports/ and /financial-statement/ lists GIB-Annual-Report-2024_Final.pdf (uploaded 2025/09) as the latest annual report and FS-30-June-2025.pdf / F3-2025-One.pdf (Q3 2025) as the latest financial statement of any kind — no FY2025 annual filing; (2) a Wayback Machine snapshot of the annual-reports page from 2026-05-15 (three months prior) lists the identical set of PDFs, confirming no FY2025 report was ever posted and later removed; (3) DSE's own company page (dsebd.org/displayCompany.php?name=GIB) shows 'Last AGM held on: 21-09-2025, For the year ended: Dec 31, 2024' and its 'Interim Financial Performance: 2025' table shows the 'Annual' column as blank/dash across every row, while quarterly EPS is populated through Q3 2025 (9-month cumulative EPS -22.630 per DSE, itself indicating continued severe losses through September 2025). This finding was independently corroborated by the concurrent session working EXIMBANK, which hit the identical merger explanation from its own research. GIB was one of five distressed Islamic banks (with First Security Islami Bank, Social Islami Bank, EXIM Bank, Union Bank) merged by Bangladesh Bank into 'Sammilito Islami Bank' PLC, a new state-owned entity, under the resolution of S Alam Group-linked banks — Letter of Intent issued 9 November 2025 (before FY2025 even closed), independent operations began 18 August 2026 (8 days before this retrieval). This merger timeline almost certainly preempted the normal FY2025 audit/AGM/annual-report cycle (which for GIB has run 12-18 months behind fiscal year-end in each of the last two years) before it could complete. This is very likely a permanent series-end for GIB as a standalone reporting entity, not a routine reporting lag — any future FY2025+ figures for this business would appear (if at all) consolidated under Sammilito Islami Bank PLC, a distinct legal entity not covered by this dataset. No 2025_Q4.json was written; this is a confirmed absence of a source document, not a search failure."
+    },
+    {
+      "period": "2013-2020 Q1/Q2/Q3 (unaudited interim)",
+      "type": "confirmed_nonexistent_on_current_site",
+      "status": "researched_confirmed_unavailable",
+      "retrieval_date": "2026-08-27",
+      "notes": "The bank's /financial-statement/ page (crawled in full 2026-08-27, working around a broken TLS certificate chain with curl -k and a browser User-Agent) lists quarterly PDFs back to March-2021 only (March-Quarter-2021.pdf being the earliest); nothing for 2013-2020 is hosted there. Genuinely not sourceable from the bank's own site as it exists today; not pursued further via Wayback Machine given the higher priority of the FY2022-2024 crisis window, which was fully covered. Reported as a gap, not fabricated."
+    },
+    {
+      "period": "2021 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2021],
+      "note": "Source PDFs: March-Quarter-2021.pdf, June-Quarter-2021.pdf, September-Quarter-2021.pdf (all downloaded from globalislamibankbd.com/wp-content/uploads/2023/03/, all image-scanned PDFs with 0 lines of extractable text via pdftotext -- OCR'd via pdftoppm+tesseract at 300dpi, PDFs deleted after extraction per project policy). Q1 headed 'Global Islami Bank Limited' despite the FY2021 annual report's own account that the conventional-to-Islamic conversion happened 'during 2021'; Q3 (30-Sep-2021) is still headed 'NRB Global Bank Limited' with transitional dual-labelled line items, confirming the conversion fell between Q3 and Q4 2021. All three quarters' balance-sheet and P&L figures cross-validate exactly (or within 1 Taka of rounding) against their own repetition as comparative columns in the March/June/September-2022 filings. Two data-quality findings recorded in each quarter's own quarterly/2021_Q<n>.json period_note: (1) Q2-2021's own filing shows an internally-consistent net LOSS of -75.09m, while the June-2022 filing's later citation of this same period is itself internally inconsistent (its own Deferred+Current tax components don't sum to its own stated total) and implies a different, unused +12.82m profit -- the contemporaneous, internally-consistent loss figure is used. (2) Q3-2021's own tax/PAT figures were partly illegible in the source and had to be calculated from other legible P&L components; a later citation (Sep-2022 filing) implies a ~102m higher PAT via an additional tax credit not present in the original filing -- recorded as an unresolved divergence, original figure used."
+    },
+    {
+      "period": "2022 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2022],
+      "note": "Source PDFs: March-Quarter-2022.pdf, June-Quarter-2022.pdf (both image-scanned, OCR'd), 3rd-Q-Financial-Statements-2022.pdf (image-scanned, OCR'd; this filing's own Jan-Sep and Jul-Sep 2022 comparative columns also gave a free independent cross-check of the same period). Paid-up capital was unchanged at 5,154.19m through all three quarters, confirming the FY2022 IPO (which took it to 9,404.19m) happened in Q4 2022 specifically, between the September filing and FY2022 year-end. Q2-2022 is discrete-quarter-only in its native format (no cumulative Jan-Jun column, unlike later filings); Q3-2022 is the first filing found with the bank's now-standard four-column format (cumulative Jan-Sep + comparative, discrete Jul-Sep + comparative). DATA-QUALITY FINDING: Q1-2022's own filing shows tax expense of 137.40m and PAT of 182.30m (both internally consistent with its own PBT and directly-printed figures); the March-2023 filing's later comparative citation of this same quarter implies a lower tax of 98.38m and a higher, restated PAT of 221.33m -- a genuine ~39m tax-provision restatement, not a rounding artifact. Per project policy the contemporaneous original figures are used; see quarterly/2022_Q1.json for full detail. All other Q2/Q3-2022 figures cross-validate exactly against their own later citations with no restatement found."
+    },
+    {
+      "period": "2023 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2023],
+      "note": "Source PDFs: First-Quarter-Un-Audited-Financial-Statements-31-March-2023.pdf (pdftotext -layout, digit corruption in shaded/boxed total-row cells worked around via component-sum cross-validation), Financial-Statements-as-on-30-June-2023.pdf (P&L used an embedded, non-Unicode-mapped subset font -- pdffonts confirms 'uni: no' -- unique among all GIB interim filings checked; OCR'd instead), 3rd-Q-Financial-Statements-2023-of-GIB.pdf (image-scanned, OCR'd). CENTRAL FINDING OF THIS RESEARCH PASS: all three quarters show GIB's equity POSITIVE and its own quarterly profit consistently positive throughout 2023 (Q1 +574.81m, Q2 discrete +117.75m, Q3 discrete +439.15m, summing exactly to the reported 9-month cumulative +1,131.71m) on an as-originally-filed basis -- Sep-30-2023 equity was still +13,614.47m. This is flatly inconsistent with the audited FY2023 annual report's eventual figures (full-year loss -21,520.25m, Dec-31-2023 equity -9,026.18m), confirming the huge provisioning loss behind that restatement was recognised entirely at the very-late (18-months-after-year-end) audit stage, not reflected at all in the bank's own contemporaneous quarterly disclosure. See quarterly/2024_Q1.json's period_note for the fullest writeup connecting this to the 2024 interim filings' own comparative-column evidence."
+    },
+    {
+      "period": "2024 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated_with_major_caveat",
+      "used_for_years": [2024],
+      "note": "Source PDFs: GIB-FS-31-March-2024.pdf, GIB-FS-30-June-2024.pdf (P&L pages OCR'd due to garbled pdftotext digits), GIB-FS-30-September-2024.pdf (P&L OCR'd). *** MAJOR FINDING: these three filings are on GIB's PRE-FY2023-restatement accounting basis. *** Q1 and Q2's own '31 December 2023' comparative columns both show Total Shareholders' Equity of +13,764,184,590 -- POSITIVE, matching each other exactly but flatly irreconcilable with the audited/restated 2023_Q4.json figure of -9,026,176,636 (gap of ~BDT 22.8 billion). This confirms the FY2023 restatement (see the 2023 Q1-Q3 entry above and the 'ANNUAL REPORT 2023 (Revised)' cited in the FY2023 annual-report source entry, auditor-signed 8-10 July 2025) happened AFTER these interim filings were prepared and published in 2024. Q1 and Q2-2024's own balance sheets (equity +14,556.29m and +14,215.18m respectively) are correspondingly on this same pre-restatement basis and should not be spliced with the audited annual series. The September-2024 filing is the pivotal document: its Balance Sheet shows the FIRST negative equity in any GIB interim filing (-9,020,317,883), via a statutory reserve that reverted to an old FY2022-level figure -- but this is INTERNALLY INCONSISTENT with the SAME filing's own Profit and Loss Account, which rolls retained earnings forward to a POSITIVE +1,387.71m (implying equity of approximately +13,417.84m), a self-contradiction of almost exactly the same ~22.8bn gap. This looks like an incomplete, in-progress attempt to reflect the coming restatement on the Balance Sheet before the Income Statement had been correspondingly reworked. Per project policy (prefer the internally-consistent figure when a contemporaneous document is arithmetically impossible against its own other rows), the AS-FILED Balance Sheet equity/assets for this quarter are recorded but flagged low-confidence in quarterly/2024_Q3.json; the Income Statement itself is fully internally consistent and separately validated. Also found: the discrete Jul-Sep 2024 quarter (isolated from the still-positive 9-month cumulative figure) was itself a LOSS of -540.72m -- the earliest sign of the deterioration that produced FY2024's audited full-year loss of -12,466.18m -- and this filing's own printed EPS sign for that discrete loss quarter (+0.55) is itself an apparent error, corrected to -0.55 using the Q3-2025 filing's own comparative citation of the same historical quarter. See quarterly/2024_Q1.json, 2024_Q2.json and 2024_Q3.json for full detail, and insights.json for the dataset-level risk signal on this whole restatement discovery."
+    },
+    {
+      "period": "2025 Q1/Q2/Q3 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2025],
+      "note": "Source PDFs: FS-31-March-2025.pdf (pdftotext -layout), FS-30-June-2025.pdf (P&L OCR'd), F3-2025-One.pdf (P&L OCR'd; this is GIB's Q3-2025 filing despite its generic filename -- confirmed via its own 'As at 30 September 2025' headers). GIB's final three quarterly filings as a standalone entity before the Sammilito Islami Bank merger absorbed it (Letter of Intent 9 November 2025). All three are on the FULLY-RESTATED basis: each filing's own comparative '31 December 2024' column matches this dataset's audited 2024_Q4.json exactly, to the Taka, across every balance-sheet line checked. The collapse accelerated dramatically past what the audited FY2024 annual figures alone would suggest: single-quarter losses of -7,411.90m (Q1), -8,943.05m (Q2 -- exceeding the ENTIRE FY2024 audited annual loss of -12,466.18m by itself), and -5,993.07m (Q3), taking equity from -21,492.36m (Dec-2024, audited) to -43,840.37m by 30-Sep-2025. Q3-2025's own cumulative EPS of -22.63 matches, to the second decimal, the figure this dataset's own notes field above already had on record from DSE's disclosure table, independently corroborating this filing as correct. Q2-2025's Balance Sheet equity cell (-37,841,301,824) was superseded by a calculated figure (-37,847,301,824) that reconciles exactly via three independent paths (this filing's own P&L retained-earnings roll-forward, and the quarter-over-quarter equity roll-forward from Q1-2025) -- an apparent ~6-million-Taka transcription slip in the source document, immaterial and noted in quarterly/2025_Q2.json. No FY2025 annual report exists or ever will for GIB as a standalone entity (already confirmed above); these three interim quarters are therefore GIB's only FY2025 data, and its last published financial disclosures of any kind."
+    }
+  ]
+}

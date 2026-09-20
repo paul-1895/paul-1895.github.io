@@ -1,0 +1,65 @@
+{
+  "bank_id": "EXIMBANK",
+  "bank_name": "Export Import Bank of Bangladesh PLC (EXIM Bank, Shariah-based Islami Bank)",
+  "reporting_date": "2012-06-30",
+  "financial_year": 2012,
+  "quarter": "Q2",
+  "period_note": "CONSOLIDATED basis (no separate Solo statement in this filing). NOTE ON SOURCE-DOCUMENT ANOMALY: the equity section of this specific PDF visually mis-renders the 'EXIM Bank's shareholders' equity' / 'Minority Interest' / 'Total shareholders' equity' row labels one row out of alignment with their values in the rendered page (confirmed by cross-referencing the unambiguous Dec-2011 comparative column against the clean Q1-2012 filing's own Dec-2011 figures, and by the balance-sheet identity Assets=Liabilities+Equity, which only closes with Minority Interest=87,767 and EXIM Bank's own equity=15,398,954,575 -- both values independently corroborated against the smooth Q1(14,755,553,764)->Q3(15,603,415,172) equity trend for this bank in 2012). total_equity below is the corrected, identity-verified figure. Income-statement items cumulative from Jan 1 (Jan-Jun).",
+  "source": {
+    "source_document": "EXIM_2012_Q2.pdf (hyfs_june2012.pdf)",
+    "source_path": "downloaded and deleted per project policy; retained as this JSON record",
+    "source_url": "https://www.eximbankbd.com/report/hyfs_june2012.pdf",
+    "source_page_lines": "'Consolidated Balance Sheet as at 30 June 2012' and 'Consolidated Profit and Loss Account' (image-read; pdftotext returned 0 usable lines)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Liabilities and Shareholders' Equity",
+      "value": 148671.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 133272.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 9223.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "EXIM Bank's shareholders' equity (corrected -- see period_note)",
+      "value": 15398.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "minority_interest",
+      "original_metric_name": "Minority Interest (corrected -- see period_note)",
+      "value": 0.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit/(Loss) after tax (cumulative from Jan 1)",
+      "value": 929.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

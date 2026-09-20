@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explorer Beta — Learning Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="learning.css" />
+  <link rel="stylesheet" href="guide.css" />
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>Explorer Beta</h1>
+        <p>A locked, buy-only rule set with a forward record — every entry gate, every management rule, and why each one is there</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="learning.html" class="back-btn-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Learning Hub
+      </a>
+      <button class="theme-toggle" id="theme-toggle-btn" title="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="cd-page">
+
+  <nav class="cd-toc">
+    <div class="cd-toc-title">Contents</div>
+    <a href="#what">What it is</a>
+    <a href="#signal">Where the signal comes from</a>
+    <a href="#gates">The entry gates</a>
+    <a href="#management">Managing the trade</a>
+    <a href="#ladder">The profit-lock ladder</a>
+    <a href="#settlement">Settlement</a>
+    <a href="#page">Reading the page</a>
+    <a href="#actions">The action labels</a>
+    <a href="#example">A worked example</a>
+    <a href="#caveats">Caveats</a>
+    <a href="#honest">Reading it honestly</a>
+  </nav>
+
+  <main class="cd-main">
+
+    <!-- ─── What it is ─── -->
+    <section id="what" class="cd-sec">
+      <h2 class="cd-h2">What it is</h2>
+      <p class="cd-lead">
+        Explorer Beta is a complete, mechanical set of rules for buying DSE stocks and managing
+        the position afterwards. It takes its candidates from the
+        <a href="../super_model/super-model.html">Super Model</a>, refuses most of them through a
+        series of gates, and for the few it accepts it prescribes an entry, a stop, a target, a
+        ladder that raises the stop as the trade works, and the exact conditions under which it
+        will exit. It buys only — there is no short mechanism on the DSE, so a sell side would be
+        theoretical. It has its own page: <a href="../explorer_beta/explorer-beta.html">Explorer
+        Beta</a>.
+      </p>
+      <div class="cd-callout">
+        <b>Why "Beta".</b> The rules were chosen by measuring them on 2024–2026 price history and
+        checking each one across four windows of that same history. That is in-sample selection:
+        every rule has already seen the data it is scored on. The only genuine test is what happens
+        to trades issued <i>after</i> the rules were fixed — the forward record — and at launch
+        that record is empty. "Beta" is a promise not to claim more than that until the record
+        exists.
+      </div>
+      <div class="cd-callout" style="margin-top:16px">
+        <b>Why "locked".</b> The rule set was frozen on <b>2026-09-06</b> and the files that
+        implement it are pinned by a test that fails if any of them changes. A forward record is
+        only meaningful if the rules that produce it do not move: if a rule were tweaked each time
+        a trade went badly, the live record would become the same kind of after-the-fact fit as
+        the backtest. Improvements are therefore made to the Super Model's live Explorer variant,
+        which keeps evolving as the research version. If a future rule set earns a launch, it
+        becomes a new beta rather than a patch to this one.
+      </div>
+    </section>
+
+    <!-- ─── Signal ─── -->
+    <section id="signal" class="cd-sec">
+      <h2 class="cd-h2">Where the signal comes from</h2>
+      <p class="cd-lead">
+        Explorer Beta does not have its own indicator. Its candidates are the stocks the Super
+        Model's composite score rates as a buy with a <b>conviction of 25 or more</b> — the same
+        threshold the rule set was measured with. The composite is a weighted sum of many
+        detectors (moving-average structure, candlestick patterns, volume surges and the rest); the
+        <a href="../super_model/super-model.html">Super Model page</a> and its guide explain how
+        that score is built. Explorer Beta's own contribution begins <i>after</i> the score: it
+        decides which of those candidates may actually be bought, and how each one is managed once
+        it is.
+      </p>
+      <div class="cd-callout">
+        A conviction score of 25 is necessary but nowhere near sufficient. On a typical day the
+        gates below decline most of the candidates that reach them; on a weak-index day they can
+        decline every one. The page reports how many were declined and by which gate, and it
+        <b>never relaxes a gate to produce a list</b>.
+      </div>
+    </section>
+
+    <!-- ─── Gates ─── -->
+    <section id="gates" class="cd-sec">
+      <h2 class="cd-h2">The entry gates</h2>
+      <p class="cd-lead">
+        Every one of these must pass on the signal day for a buy to be issued. Each row gives the
+        rule and — from the notes recorded in the frozen plan when it was adopted — the one-line
+        reason it is there. The chips are honest about which kind of reason that is:
+        <span class="cd-chip">measured</span> means the rule improved the backtest across the
+        validation windows, <span class="cd-chip cd-chip--warn">preference</span> means it was
+        adopted as a risk or identity choice with its cost on record, and
+        <span class="cd-chip cd-chip--real">validity</span> means it fixes something the
+        simulation could not otherwise trust.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Gate</th><th>Rule</th><th>Why it is there</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Candle closed green <span class="cd-chip">measured</span></td>
+              <td>The signal day's own candle must close at or above its open.</td>
+              <td class="cd-t-why">A same-day confirmation that cannot go stale, unlike the
+                  multi-day trend reads that were tried and rejected. Improved the buy average in
+                  all four validation windows — the cleanest sweep of any gate tested.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Volume above the prior day <span class="cd-chip">measured</span></td>
+              <td>The signal day must trade more shares than the day before it.</td>
+              <td class="cd-t-why">Participation behind the move rather than a signal firing into
+                  a quiet tape. A small improvement here, and notably one that <i>hurt</i> the
+                  shipped Super Model plan — an Explorer-specific adoption, not a market-wide law.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Upper wick ≤ 40% of range <span class="cd-chip">measured</span></td>
+              <td>The signal candle's upper shadow may be at most 40% of the day's high-to-low range.</td>
+              <td class="cd-t-why">A long upper wick means the rally was sold into, so "closed
+                  green" overstates what happened. Beat the ungated version in all four windows,
+                  with a monotonic threshold sweep — the signature of a real effect.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Momentum floor <span class="cd-chip">measured</span></td>
+              <td>Price must already be up at least 20% over the prior 30 sessions.</td>
+              <td class="cd-t-why">The opposite of what was first asked ("avoid extended
+                  entries"). Buys that were <i>not</i> yet moving averaged a loss; buys already up
+                  20% or more averaged a gain, and the effect reproduced across several lookbacks.
+                  Flat entries are the illiquid ones whose signals fire off stale history. Cost: it
+                  declines roughly 70% of long entries.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Defended lows <span class="cd-chip">measured</span></td>
+              <td>The signal candle's <i>lower</i> shadow must be at least 40% of the day's range.</td>
+              <td class="cd-t-why">Sellers pushed price down and buyers took it back before the
+                  close. The opposite wick from the ceiling above: together they describe a bar that
+                  closed green, held its gains and was defended at its lows. The strongest single
+                  result measured on this model, though the mechanism is less cleanly understood
+                  than the momentum floor's.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Tighter wick when stretched <span class="cd-chip cd-chip--warn">preference</span> <span class="cd-chip">measured</span></td>
+              <td>If the entry sits more than 20% above its own 20-day simple moving average, the
+                  upper-wick ceiling tightens from 40% to 20%.</td>
+              <td class="cd-t-why">A user directive with a rationale — an entry already far from
+                  its mean has less room to absorb a rejection. The trades it removes earned
+                  nothing in the backtest (none reached target), and neighbouring thresholds give
+                  the same result, so it is a plateau rather than a knife-edge.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">No Bank-sector buys <span class="cd-chip cd-chip--warn">preference</span> <span class="cd-chip">measured</span></td>
+              <td>Stocks in the Bank sector are never bought.</td>
+              <td class="cd-t-why">A momentum model holding the market's least-momentum sector:
+                  banks were the book's worst sector by total damage — big floats, slow tape,
+                  regulatory overhang. Won three of four windows. Combined with the merger
+                  exclusions below, Explorer Beta holds no banking exposure at all, by design.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Mutual Fund weekly rule <span class="cd-chip">measured</span></td>
+              <td>For Mutual Funds only: the last <i>completed</i> week must have closed green
+                  <i>and</i> traded more than the week before.</td>
+              <td class="cd-t-why">Fund units are NAV-anchored and thinly traded, so a momentum
+                  signal without weekly participation behind it is usually stale-history noise.
+                  The same weekly gate was rejected market-wide (it idles capital); for funds
+                  specifically it improved every measure. The sector was probed <i>because</i> it
+                  flagged, which is a post-hoc selection risk.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Dead-tape rule <span class="cd-chip cd-chip--real">validity</span></td>
+              <td>Refuse any signal on a stock whose close has been unchanged for ten sessions in a row.</td>
+              <td class="cd-t-why">Floor-pinned, suspended or zero-liquidity stocks still produce
+                  signals off stale history, but they cannot actually move. A validity fix, not an
+                  edge claim: ten in a row is unambiguous, where a quiet penny stock can legitimately
+                  close flat for a few days.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">DSEX index regime <span class="cd-chip">measured</span></td>
+              <td>Buys are refused while the DSEX index's own 14-day RSI is <b>below 45</b>.</td>
+              <td class="cd-t-why">A per-stock signal only says whether <i>that stock</i> is
+                  strong; it says nothing about the tape it trades on. Buy performance tracked
+                  index momentum monotonically — the weaker the index RSI, the worse the buy did —
+                  and the rule improved buy results in four of four windows with a clean
+                  dose-response.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Max-risk veto (30%) <span class="cd-chip">measured</span></td>
+              <td>A trade whose honest, level-based stop would sit more than 30% below entry is refused outright.</td>
+              <td class="cd-t-why">Trades of that shape risked a great deal to make a capped 12%
+                  and carried a large share of the dataset's losses. It rarely binds now that the
+                  5% cap below pulls every stop in, but it stays as a guard in case that cap is
+                  ever lifted.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Excluded: FASFIN <span class="cd-chip cd-chip--warn">preference</span></td>
+              <td>FAS Finance is never traded.</td>
+              <td class="cd-t-why">A decade-long decline whose momentum signals fire on
+                  dead-cat bounces, on a share priced so low that a single tick is a double-digit
+                  percentage. No stop distance can hold there — the backtest recorded gap losses
+                  straight through the 5% cap.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Excluded: merger banks <span class="cd-chip cd-chip--real">validity</span></td>
+              <td>GIB, SIBL, EXIMBANK, FIRSTSBANK and UNIONBANK cannot be signalled on or after 2025/11/05.</td>
+              <td class="cd-t-why">The five Shariah banks folded into the regulator-forced
+                  Sammilito Islami Bank merger. Their earlier history is real tape and stays in the
+                  backtest; the cut-off is the day trading froze, so no future run can signal a
+                  ticker that no longer trades on its own terms.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout cd-warn">
+        <b>Two things the gates cannot see.</b> A limit-up day with no range at all (high equals
+        low) has no measurable wick, so it passes every wick rule by default — a known gap the plan
+        notes but does not fix. And the momentum floor's cost is opportunity, not accuracy: it
+        declines most of the entries the Super Model generates, which is acceptable only because
+        the model produces far more signals than a fixed amount of capital can hold.
+      </div>
+    </section>
+
+    <!-- ─── Management ─── -->
+    <section id="management" class="cd-sec">
+      <h2 class="cd-h2">Managing the trade</h2>
+      <p class="cd-lead">
+        Once a buy is issued the rules below take over. They are the same rules the page prints
+        under each suggestion's "Rules" heading, in the order they matter. The stop only ever
+        moves in the trade's favour; nothing here can loosen it.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Rule</th><th>What it does</th><th>Why, and the cost</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">5% stop cap <span class="cd-chip cd-chip--warn">preference</span></td>
+              <td>The protective stop is placed at the nearest honest support below entry, then
+                  pulled in so that it is never more than 5% away.</td>
+              <td class="cd-t-why">A user directive — "no stop-loss should be greater than 5%" —
+                  adopted with its cost on record: it <i>lowered</i> the backtested average and win
+                  rate, because a 5% stop sits inside ordinary DSE daily noise, while it reduced the
+                  spread of outcomes. A risk-preference choice, not an edge improvement.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Close-confirmed stop <span class="cd-chip cd-chip--warn">preference</span> <span class="cd-chip">measured</span></td>
+              <td>The stop books only when a daily <b>close</b> finishes below it, and the exit
+                  price is that close — not the stop price. A dip through it during the day that
+                  recovers by the close is ignored.</td>
+              <td class="cd-t-why">Also a user directive, and the strongest validated change in
+                  this rule set's history — better in all four windows and at every portfolio size.
+                  The documented price: when a day does close through the stop, the loss books
+                  <b>deeper</b> than 5%, because the fill is wherever that close lands. The 5%
+                  figure now bounds where the stop <i>sits</i>, not what a losing exit costs.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Target caps: 1:2.5 and 12% <span class="cd-chip cd-chip--warn">preference</span></td>
+              <td>The target is the tighter of 2.5 times the stop distance and 12% above entry.
+                  An intrabar touch of the target takes profit there, and it outranks a
+                  close-confirmed stop on the same day.</td>
+              <td class="cd-t-why">With a 5% stop the 1:2.5 cap gives 12.5%, so in practice the
+                  12% cap almost always binds. These caps are stated on the page as a risk
+                  preference rather than measured edge: they bound every winner, which is also why
+                  the blended result stays modest regardless of entry quality.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Profit-lock ladder <span class="cd-chip">measured</span></td>
+              <td>As the day's high reaches each trigger, the stop rises to the paired lock. The
+                  rungs are listed in the <a href="#ladder">next section</a>.</td>
+              <td class="cd-t-why">Locks in an increasing floor of profit as the move extends. The
+                  rungs arm off the intrabar high — this is how profits are booked, and it keeps
+                  that mechanic even though the losing stop is close-confirmed.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">S/R rungs <span class="cd-chip">measured</span></td>
+              <td>Crossing each resistance level between entry and target also locks the stop at
+                  that level.</td>
+              <td class="cd-t-why">A level price has already cleared is a natural place to defend;
+                  these rungs sit alongside the percentage rungs and whichever is higher wins.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">1% lock fill floor <span class="cd-chip">measured</span></td>
+              <td>A lock only closes the trade if the price it can <i>actually</i> fill at is at
+                  least 1% in profit. Otherwise it stands aside and the ordinary protective stop
+                  governs.</td>
+              <td class="cd-t-why">Rungs arm off the high, fills are taken at the next open, and
+                  settlement can freeze the shares in between — so a rung could arm on a wick that
+                  was never sellable and then execute far below it, booking a loss under the name
+                  "profit lock". The <a href="#ladder">MBL1STMF case</a> below is the worked
+                  example. Improved all four windows and every portfolio size, with the same trades
+                  simply exiting better.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Support-break exit <span class="cd-chip">measured</span></td>
+              <td>A daily close below the nearest support between entry and the stop exits at that
+                  close, even though the stop was not reached. Role-reversed levels count: a
+                  resistance that price broke through on the way up is watched as support.</td>
+              <td class="cd-t-why">A risk-control trade-off: slightly lower average return, bought
+                  with a materially smaller average losing trade and a narrower spread. Adding the
+                  role-reversed levels shrank the average loss again and resolved trades faster,
+                  freeing the one-trade-per-stock slot sooner.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">60-session holding window <span class="cd-chip cd-chip--real">validity</span></td>
+              <td>If none of the above has fired within 60 trading days, the plan books an exit at
+                  that day's close.</td>
+              <td class="cd-t-why">The window every Explorer backtest used. A trade that has gone
+                  nowhere for three months is not the trade the entry gates described, and the slot
+                  is worth more to the next candidate.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout">
+        <b>Order of precedence on a single day.</b> A target touch wins over everything. Then a
+        binding profit lock touched during the day exits at its fill (subject to the 1% floor).
+        Then, at the close, the protective stop and the support-break level are checked — both
+        book only on the close. Nothing can execute while the shares are still settling.
+      </div>
+    </section>
+
+    <!-- ─── Ladder ─── -->
+    <section id="ladder" class="cd-sec">
+      <h2 class="cd-h2">The profit-lock ladder</h2>
+      <p class="cd-lead">
+        Nine rungs. Each is a pair: once the day's high is at least the trigger distance above
+        entry, the stop moves to the lock distance above entry. Note the first step: reaching
+        +2.1% locks +2%, and the next rung is not +3 but +4. From there the rungs run one percent
+        apart up to +11%, just under the 12% target.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Rung</th><th>Trigger (day's high reaches)</th><th>Stop moves to</th><th>On a ৳100 entry</th></tr></thead>
+          <tbody>
+            <tr><td class="cd-t-name">1</td><td>+2.1%</td><td><b>+2%</b></td><td class="cd-t-why">high ৳102.10 → stop ৳102.00</td></tr>
+            <tr><td class="cd-t-name">2</td><td>+4.1%</td><td><b>+4%</b></td><td class="cd-t-why">high ৳104.10 → stop ৳104.00</td></tr>
+            <tr><td class="cd-t-name">3</td><td>+5.1%</td><td><b>+5%</b></td><td class="cd-t-why">high ৳105.10 → stop ৳105.00</td></tr>
+            <tr><td class="cd-t-name">4</td><td>+6.1%</td><td><b>+6%</b></td><td class="cd-t-why">high ৳106.10 → stop ৳106.00</td></tr>
+            <tr><td class="cd-t-name">5</td><td>+7.1%</td><td><b>+7%</b></td><td class="cd-t-why">high ৳107.10 → stop ৳107.00</td></tr>
+            <tr><td class="cd-t-name">6</td><td>+8.1%</td><td><b>+8%</b></td><td class="cd-t-why">high ৳108.10 → stop ৳108.00</td></tr>
+            <tr><td class="cd-t-name">7</td><td>+9.1%</td><td><b>+9%</b></td><td class="cd-t-why">high ৳109.10 → stop ৳109.00</td></tr>
+            <tr><td class="cd-t-name">8</td><td>+10.1%</td><td><b>+10%</b></td><td class="cd-t-why">high ৳110.10 → stop ৳110.00</td></tr>
+            <tr><td class="cd-t-name">9</td><td>+11.1%</td><td><b>+11%</b></td><td class="cd-t-why">high ৳111.10 → stop ৳111.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cd-lead" style="margin-top:18px">
+        On top of these, every resistance level that sits between entry and target becomes an
+        extra rung: when price crosses it, the stop locks at that level. The ladder and the S/R
+        rungs are combined by taking whichever stop is higher, and the stop never moves back down.
+      </p>
+      <div class="cd-callout cd-warn">
+        <b>The 1% fill floor, and the case that produced it.</b> On MBL1STMF, entered on
+        2026/07/12, the +2% rung armed on the next day's high of ৳4.70. But the shares were still
+        settling and could not be sold until 07/14, and that day opened at ৳4.50 — so the
+        "profit lock" would have filled at a loss of about 2.2%. With the floor in place the lock
+        declines that fill, the ৳4.37 hard stop is never threatened, and the trade goes on to exit
+        two days later at ৳4.784 for a gain of 4%. The floor exists so that a rule named "profit
+        lock" can never book a loss.
+      </div>
+    </section>
+
+    <!-- ─── Settlement ─── -->
+    <section id="settlement" class="cd-sec">
+      <h2 class="cd-h2">Settlement: T+2 and T+3</h2>
+      <p class="cd-lead">
+        On the DSE, shares bought on day T are not in your account — and cannot be sold — until
+        T+2 for A, B and N category stocks, or T+3 for Z category. Explorer Beta's simulation
+        enforces this, and so does the live guidance: no exit of any kind can execute before the
+        shares settle. A stop breached while the position is frozen books on the first sellable day
+        it still stands breached, at that day's price.
+      </p>
+      <div class="cd-callout">
+        <b>Why it matters more than it sounds.</b> Two of the rules above exist because of
+        settlement. The 1% lock floor was written after a rung armed during the freeze and would
+        have filled far below its level. And the backtest's single worst trade in eleven years of
+        history is a gap that opened during a settlement freeze — a loss no stop rule could have
+        prevented, because nothing could be sold. An earlier version of the simulation ignored
+        settlement and looked considerably better; that version's results are no longer trusted.
+      </div>
+    </section>
+
+    <!-- ─── Page ─── -->
+    <section id="page" class="cd-sec">
+      <h2 class="cd-h2">Reading the Explorer Beta page</h2>
+      <p class="cd-lead">
+        The <a href="../explorer_beta/explorer-beta.html">page</a> has four parts: a row of
+        status tiles, today's setups, your open trades under the plan's rules, and the evidence
+        (the forward record and the launch backtest). Top to bottom:
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Part</th><th>What it shows</th><th>How to read it</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Market gate tile</td>
+              <td>The DSEX index's current 14-day RSI, and whether buys are <b>blocked</b> (below
+                  45) or <b>allowed</b>.</td>
+              <td class="cd-t-why">This is the index regime gate from the table above. When it
+                  reads "Buys blocked", no setup can appear regardless of how strong any individual
+                  stock looks. It is the first thing to check when the setups table is empty.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Prices through / Today's setups / Declined by gates</td>
+              <td>The last date in the price archive; how many candidates passed everything; how
+                  many conviction candidates reached the gates and were refused, with the two gates
+                  that refused most.</td>
+              <td class="cd-t-why">"Declined" counts each candidate once, by the <i>first</i> gate
+                  it failed. On a weak-index day the index gate will dominate that count.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Setups table</td>
+              <td>Each passing stock with its entry, stop, target, reward-to-risk, settlement
+                  class, the signals that scored it, and a gate-by-gate checklist.</td>
+              <td class="cd-t-why">An empty table is a valid, common result — especially while the
+                  index is weak — and the page says so explicitly rather than loosening a rule to
+                  fill it. Empty is information, not a fault.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Open trades</td>
+              <td>Your own open positions from the Trades page, each managed under Explorer Beta's
+                  rules from <i>your</i> entry price and date, with a live quote, an action label,
+                  the current stop, lock, target and support-break levels, and a candle read.</td>
+              <td class="cd-t-why">The plan does not ask whether it would have entered your trade;
+                  it answers how it would manage the trade from here. Grouped into "Managed",
+                  "Plan-exited" and "Outside the rules" (short positions, unknown dates, or no price
+                  history). The action labels are explained in the
+                  <a href="#actions">next section</a>.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Candle reads</td>
+              <td>Two readings per trade: the patterns detected on the <b>last completed</b>
+                  session's bar, and — only while quotes are live — a <b>provisional</b> read of
+                  today's still-forming bar.</td>
+              <td class="cd-t-why">The live bar's open is <i>approximated</i> by yesterday's close,
+                  because the quote source does not carry today's true open. Treat the live read as
+                  a sketch that can change by the close; the completed-bar read is the reliable one.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Forward record</td>
+              <td>Every suggestion Explorer Beta has issued since launch, resolved through the
+                  frozen rules on every read: open, target, stop, locked stop, or expired, with the
+                  running win rate and average.</td>
+              <td class="cd-t-why">This is the only out-of-sample evidence there is. It starts
+                  empty and is not worth interpreting until it holds a meaningful number of
+                  resolved trades. Nothing about the live rules can be said before then.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Launch backtest</td>
+              <td>The two-year Explorer backtest the beta launched on: trade count, net win rate,
+                  net average per trade, target and stop rates, spread, average bars held, period.</td>
+              <td class="cd-t-why">Served live from the backtest file, with its caveats printed
+                  under it. The page's own words: read these numbers as an upper bound — the
+                  ceiling, not the expectation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Actions ─── -->
+    <section id="actions" class="cd-sec">
+      <h2 class="cd-h2">The action labels</h2>
+      <p class="cd-lead">
+        Each managed open trade carries one label. It is the plan's instruction for today, worked
+        out from the current quote, the stop after every rung the tape has armed so far, and
+        whether the shares have settled.
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Label</th><th>Meaning</th><th>What the plan does</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">Frozen · settlement</td>
+              <td>The shares have not settled yet (fewer than T+2 or T+3 completed sessions).</td>
+              <td class="cd-t-why">Nothing can be sold. The plan keeps tracking the tape; if the
+                  stop is breached in the meantime it books on the first sellable day it still
+                  stands breached.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Hold</td>
+              <td>Price is inside the plan: above the current stop, below the target, and not
+                  below the support-break level.</td>
+              <td class="cd-t-why">Do nothing. The card shows how far the stop and target sit from
+                  the current price, and whether a profit lock is already binding.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Take profit</td>
+              <td>Today's high has touched the target.</td>
+              <td class="cd-t-why">The plan sells at the target. A target touch outranks a
+                  close-confirmed stop on the same day.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Lock hit — sell</td>
+              <td>A binding profit lock has been touched today, and the fill available is at least
+                  1% in profit.</td>
+              <td class="cd-t-why">The plan books the exit at the lock. If the available fill were
+                  <i>under</i> the 1% floor the label would stay at Hold, with a note explaining
+                  that the lock stood aside and the protective stop governs.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Stop if close below</td>
+              <td>Price is currently trading below the protective stop.</td>
+              <td class="cd-t-why">Not an exit yet. If today's <b>close</b> finishes below the
+                  stop the plan exits at that close; if price recovers above the stop by the close,
+                  nothing happens.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Support break if close</td>
+              <td>Price is above the stop but below the nearest support the plan watches.</td>
+              <td class="cd-t-why">Same close-confirmation logic: a close below that support exits
+                  at the close even though the stop was never reached.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Plan-exited (no instruction)</td>
+              <td>Replaying your trade from its entry date, the plan would already have closed it —
+                  at a target, a stop, or the end of the holding window — on a date the card shows.</td>
+              <td class="cd-t-why">The position is now outside the plan and carries no further
+                  instruction. The card tells you when and at what price the plan would have
+                  exited, and leaves the decision to you.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd-callout">
+        Two of these labels — "Stop if close below" and "Support break if close" — are
+        <b>conditional</b>. They describe what will happen if the day closes where price is now,
+        not something to act on the moment they appear. That is the close-confirmed rule doing
+        exactly what it was adopted to do: refusing to be shaken out by an intraday dip.
+      </div>
+    </section>
+
+    <!-- ─── Example ─── -->
+    <section id="example" class="cd-sec">
+      <h2 class="cd-h2">A worked example</h2>
+      <p class="cd-lead">
+        A hypothetical A-category stock, bought at <b>৳100</b> on the signal day. Suppose the
+        nearest honest support is at ৳91 — 9% away, inside the 30% veto — so the 5% cap pulls the
+        stop in to <b>৳95</b>. The target is the tighter of 1:2.5 (৳112.50) and 12% (৳112), so
+        <b>৳112</b>. Say there is a support at ৳97 between entry and stop (the support-break
+        level) and a resistance at ৳106 between entry and target (an S/R rung).
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>Day</th><th>High / Low / Close</th><th>What happens</th><th>Stop now</th><th>Label</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">T (signal)</td>
+              <td>entry ৳100.00</td>
+              <td>Bought at the signal-day price. Stop ৳95, target ৳112, support-break ৳97.</td>
+              <td><b>৳95.00</b></td>
+              <td class="cd-t-why">Frozen · settlement</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">T+1</td>
+              <td>101.60 / 99.20 / 100.90</td>
+              <td>The high did not reach ৳102.10, so no rung arms. Still not sellable.</td>
+              <td><b>৳95.00</b></td>
+              <td class="cd-t-why">Frozen · settlement</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">T+2</td>
+              <td>102.70 / 100.60 / 102.30</td>
+              <td>High ৳102.70 clears the +2.1% trigger: the stop rises to ৳102. Shares have settled
+                  and are sellable from today.</td>
+              <td><b>৳102.00</b></td>
+              <td class="cd-t-why">Hold (profit locked)</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">T+3</td>
+              <td>104.50 / 102.90 / 104.10</td>
+              <td>High clears +4.1%: stop rises to ৳104. The low never touched ৳102, so the earlier
+                  lock was not tested.</td>
+              <td><b>৳104.00</b></td>
+              <td class="cd-t-why">Hold</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">T+4</td>
+              <td>106.40 / 104.80 / 106.10</td>
+              <td>High clears +5.1% and +6.1%, and crosses the ৳106 resistance rung. The highest of
+                  the three locks wins: stop ৳106.</td>
+              <td><b>৳106.00</b></td>
+              <td class="cd-t-why">Hold</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">T+5</td>
+              <td>opens 105.20 · 105.60 / 104.90 / 105.10</td>
+              <td>The day opens below the ৳106 lock. The fill is gap-aware — the open, ৳105.20, or
+                  +5.2% — which clears the 1% floor, so the lock books the exit.</td>
+              <td><b>exit ৳105.20</b></td>
+              <td class="cd-t-why">Lock hit — sell</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cd-lead" style="margin-top:18px">
+        Result: <b>+5.2%</b> before costs, roughly +4.4% after a 0.8% round-trip commission.
+        The same trade under different tape, to show the other rules firing:
+      </p>
+      <div class="cd-table-wrap">
+        <table class="cd-table">
+          <thead><tr><th>If instead…</th><th>Then</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="cd-t-name">T+5 had opened at ৳100.60</td>
+              <td>The lock's available fill would be only +0.6%, under the 1% floor. The lock
+                  stands aside; the trade runs on under the ৳95 hard stop. This is the MBL1STMF
+                  case in miniature.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">On T+3 price touched ৳112 intraday</td>
+              <td><b>Take profit</b> at ৳112 (+12%), even if that same day later closed below the stop.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">On T+3 price dipped to ৳94.20 but closed at ৳96.10</td>
+              <td>Nothing. The stop is close-confirmed and the close was above ৳95. (Under an
+                  intrabar stop this would have been a −5% exit.)</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">On T+3 price closed at ৳94.20</td>
+              <td><b>Stop</b>: exit at the close, ৳94.20, a loss of 5.8% — deeper than the 5% the
+                  stop was placed at. This is the documented cost of close confirmation.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">On T+3 price closed at ৳96.50</td>
+              <td><b>Support break</b>: ৳96.50 is below the ৳97 support the plan watches, so it
+                  exits at the close (−3.5%) even though the ৳95 stop was never reached.</td>
+            </tr>
+            <tr>
+              <td class="cd-t-name">Price drifted sideways for 60 sessions</td>
+              <td>The holding window closes the trade at the 60th session's close, whatever the
+                  price.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ─── Caveats ─── -->
+    <section id="caveats" class="cd-sec">
+      <h2 class="cd-h2">Caveats</h2>
+      <p class="cd-lead">
+        These are the standing caveats recorded alongside the rule set itself, restated in plain
+        language. They apply to every number on the Explorer Beta page.
+      </p>
+      <div class="cd-callout cd-warn" style="margin-top:0">
+        <b>The rules were chosen in-sample.</b> Every gate and every knob was selected by measuring
+        it on 2024–2026 price data, then validated on windows drawn from that same history. The
+        backtest is therefore the best the rules could look on the data that chose them. The
+        forward record is the first out-of-sample test, and it did not exist at launch.
+      </div>
+      <div class="cd-callout cd-warn">
+        <b>Several rules are preferences, not measured edge.</b> The 5% stop cap lowered the
+        backtested average and win rate. The close-confirmed stop exchanged a bounded same-day
+        loss for fewer but deeper losses. The target caps bound every winner. The Bank exclusion
+        and the tighter wick rule for stretched entries began as directives, even where the
+        measurement later agreed. The plan records each of these as a choice, with its cost.
+      </div>
+      <div class="cd-callout cd-warn">
+        <b>The returns are concentrated.</b> A large share of the backtested gain comes from a
+        handful of thinly traded non-bank financial names. The simulation assumes fills at those
+        prices; a real order in a thin book may not get them, and a few good trades in a few
+        names is a fragile foundation.
+      </div>
+      <div class="cd-callout cd-warn">
+        <b>No forward record at launch.</b> Until the tracked record holds enough resolved
+        trades to compare against the backtest, nothing can be said about how the rules behave on
+        unseen data — good or bad.
+      </div>
+      <div class="cd-callout cd-warn">
+        <b>No shorting on the DSE.</b> The rule set is buy-only. The backtest's blended figure
+        includes a theoretical sell book that cannot be traded; ignore it in favour of the buy
+        figures, which are the ones the page shows.
+      </div>
+      <div class="cd-callout cd-warn">
+        <b>Not financial advice.</b> Explorer Beta is a research tool that applies a fixed set of
+        rules to price data. It does not know your circumstances, your costs or your risk
+        tolerance, and its guidance for your open trades is a mechanical replay of those rules
+        from your entry — not a recommendation.
+      </div>
+    </section>
+
+    <!-- ─── Honest ─── -->
+    <section id="honest" class="cd-sec">
+      <h2 class="cd-h2">Reading it honestly</h2>
+      <div class="cd-honest">
+        <div class="cd-honest-item">
+          <h4>Locking the rules is the point, not a limitation</h4>
+          <p>It is tempting to read "frozen" as "cannot improve". The value of Explorer Beta is
+          precisely that its record cannot be edited after the fact. Every improvement anyone
+          thinks of goes to the live research variant, where it can be measured without
+          contaminating this record.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Four-of-four is the bar, and it is a low one</h4>
+          <p>"Improved in all four validation windows" sounds decisive, but the windows overlap in
+          regime and are drawn from the same two years. Several rules that once passed that test
+          were later found to fail when re-measured against a changed baseline — the plan's own
+          notes record two such reversals. The bar filters noise; it does not prove edge.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>Most of what it does is refuse</h4>
+          <p>The momentum floor alone declines about seven in ten candidates. A rule set this
+          selective can only be judged with capital in mind: a gate that lifts the average per
+          trade while leaving the account idle for half the year is a worse gate, which is why two
+          strong-looking filters (an index trend gate and a market-wide weekly volume gate) were
+          measured and left out.</p>
+        </div>
+        <div class="cd-honest-item">
+          <h4>The "why" column is the record, not a guarantee</h4>
+          <p>The reasons in the gates table are the reasons recorded when each rule was adopted.
+          They are honest about what was measured and what was chosen, but a measured effect on
+          2024–2026 data is a description of that period, not a law of the market.</p>
+        </div>
+      </div>
+      <p class="cd-foot">
+        See it live: the <a href="../explorer_beta/explorer-beta.html">Explorer Beta page</a>
+        shows today's gate status, the setups, your open trades under the plan, the forward record
+        and the launch backtest. Related reading: the
+        <a href="../super_model/super-model.html">Super Model</a>, where the conviction score comes
+        from; <a href="candles.html">Candlestick patterns</a>, for the wick and body vocabulary the
+        entry gates use; <a href="rsi.html">RSI</a>, the index regime gate's instrument; and
+        <a href="macd-ema.html">MACD + EMA</a> and <a href="minervini.html">Minervini</a>, two
+        strategies tested on this same archive with less flattering results.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<script src="guide-videos.js"></script>
+<script>
+  (function(){
+    const t = localStorage.getItem('dse-theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    const icon  = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (icon)  icon.textContent  = t === 'dark' ? '☀️' : '🌙';
+    if (label) label.textContent = t === 'dark' ? 'Light' : 'Dark';
+  })();
+
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    const curr  = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next  = curr === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('dse-theme', next);
+    document.getElementById('theme-icon').textContent  = next === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-label').textContent = next === 'dark' ? 'Light' : 'Dark';
+  });
+
+  // Contents-rail scroll-spy — the same observer the other guides run from
+  // their companion scripts; this guide is static text, so it lives inline.
+  (function(){
+    const links = [...document.querySelectorAll('.cd-toc a')];
+    const targets = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    if (targets.length && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      targets.forEach(t => io.observe(t));
+    }
+  })();
+</script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

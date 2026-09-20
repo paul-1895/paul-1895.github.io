@@ -1,0 +1,42 @@
+{
+  "bank_id": "RUPALIBANK",
+  "bank_name": "Rupali Bank PLC",
+  "reporting_date": "2023-06-30",
+  "financial_year": 2023,
+  "quarter": "Q2",
+  "period_note": "Unaudited interim financial performance. Discrete Apr-Jun 2023 and cumulative Jan-Jun 2023 (Half Yearly) EPS both directly reported by the source table. Reconciliation check: Q1 (0.380) + this quarter's discrete EPS (0.420) = 0.800, vs reported Half-Yearly cumulative of 0.790 - a small 0.010 BDT/share gap, not flagged by DSE with a tooltip but noted here as an imperfect reconciliation. No profit-in-BDT figures available from this source from 2023 onward (see 2023_Q1.json note). Q3 2023 is NOT available - the only 2023 Wayback capture found (2023-10-28/29) predates that quarter's publication, and a dedicated CDX sweep of dsebd.org for the gap window 2021-12-23 to 2023-10-27 found no other capture of this URL; no later 2023 or 2024 capture exists either. FY2023 Q3 is a confirmed gap, not fabricated.",
+  "source": {
+    "source_document": "rupalibank-dse-interim-tables-2020-2026.txt (Capture 3 of 6)",
+    "source_path": "annual_reports/RUPALIBANK/rupalibank-dse-interim-tables-2020-2026.txt",
+    "source_url": "https://web.archive.org/web/20231028221133id_/https://www.dsebd.org/displayCompany.php?name=RUPALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2023\" table, Q2 (discrete) and Half Yearly (cumulative) columns (period-end code 202306)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Apr-Jun",
+      "value": 0.42,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_6m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, Half Yearly cumulative",
+      "value": 0.79,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Q1 (0.380) + Q2 (0.420) = 0.800 arithmetically, a 0.010 BDT/share gap vs this reported 0.790 cumulative figure. Not DSE-flagged; recorded as reported per the dataset's 'prefer contemporaneous, flag don't silently correct' rule."
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 25.2,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

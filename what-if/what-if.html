@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>What-if Calculator — DSE Live Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+<style>
+/* ── WHAT-IF CALCULATOR PAGE ────────────────────────────────────── */
+.calc-shell { max-width: 1100px; margin: 28px auto 60px; padding: 0 16px; }
+
+.calc-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
+  color: var(--text-secondary); text-decoration: none; margin-bottom: 18px;
+  transition: color 0.15s;
+}
+.calc-back:hover { color: var(--accent); text-decoration: none; }
+.calc-back svg { width: 15px; height: 15px; }
+
+.calc-hero { margin-bottom: 24px; }
+.calc-hero h1 { font-size: 24px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.3px; margin-bottom: 6px; }
+.calc-hero p { font-family: var(--sans); font-size: 13px; color: var(--text-muted); }
+
+.wi-mode-tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+.wi-mode-tab {
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); font-family: var(--sans); font-size: 12.5px; font-weight: 600; cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.wi-mode-tab:hover:not(.active) { border-color: var(--accent); color: var(--text-primary); }
+.wi-mode-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.calc-grid { display: grid; grid-template-columns: 360px 1fr; gap: 18px; align-items: start; }
+
+.calc-panel {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.calc-field { margin-bottom: 16px; position: relative; }
+.calc-field:last-child { margin-bottom: 0; }
+.calc-label {
+  display: flex; align-items: baseline; justify-content: space-between;
+  font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 7px;
+}
+.calc-label .calc-unit { font-family: var(--mono); font-size: 11px; color: var(--text-muted); font-weight: 400; }
+
+.calc-input-wrap { position: relative; display: flex; align-items: center; }
+.calc-input-prefix { position: absolute; left: 13px; font-family: var(--mono); font-size: 13px; color: var(--text-muted); pointer-events: none; }
+.calc-field input[type="number"],
+.calc-field input[type="date"],
+.calc-field input[type="text"] {
+  width: 100%; padding: 10px 13px; background: var(--bg-base); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text-primary); font-family: var(--mono); font-size: 14px;
+  font-weight: 600; outline: none; transition: border-color 0.15s, box-shadow 0.15s;
+}
+.calc-field input.has-prefix { padding-left: 30px; }
+.calc-field input:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-dim); }
+.calc-field input::-webkit-outer-spin-button, .calc-field input::-webkit-inner-spin-button { opacity: 0.6; }
+
+.wi-ticker-hint {
+  margin-top: 6px; font-family: var(--sans); font-size: 11.5px; color: var(--text-muted); min-height: 15px;
+}
+.wi-ticker-hint.ok { color: var(--gain); }
+.wi-ticker-hint.err { color: var(--loss); }
+
+/* ── STOCK PICKER (combobox) ── */
+.wi-combo { position: relative; }
+.wi-combo-input-wrap { position: relative; display: flex; align-items: center; }
+.wi-combo-icon { position: absolute; left: 12px; width: 15px; height: 15px; color: var(--text-muted); pointer-events: none; }
+.wi-combo input[type="text"] { padding-left: 34px; padding-right: 32px; }
+.wi-combo-clear {
+  position: absolute; right: 6px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+  background: transparent; border: none; border-radius: 50%; color: var(--text-muted); cursor: pointer; padding: 0;
+}
+.wi-combo-clear:hover { background: var(--bg-row-hover); color: var(--text-primary); }
+.wi-combo-clear svg { width: 13px; height: 13px; }
+
+.wi-combo-panel {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 60;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
+  box-shadow: 0 16px 32px rgba(15,17,23,0.18);
+  max-height: 320px; overflow-y: auto; padding: 6px;
+}
+.wi-combo-option {
+  display: flex; align-items: center; gap: 10px; padding: 7px 8px; border-radius: var(--radius-sm);
+  cursor: pointer; font-family: var(--sans);
+}
+.wi-combo-option:hover, .wi-combo-option.active { background: var(--bg-row-hover); }
+.wi-combo-option.active { background: var(--accent-dim); }
+.wi-combo-avatar { width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0; object-fit: cover; background: var(--bg-base); }
+.wi-combo-avatar-fallback {
+  width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  background: var(--accent-dim); color: var(--accent); font-family: var(--mono); font-size: 10px; font-weight: 700;
+}
+.wi-combo-text { min-width: 0; flex: 1; }
+.wi-combo-code { font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: var(--text-primary); }
+.wi-combo-name { font-family: var(--sans); font-size: 11.5px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wi-combo-option mark { background: var(--accent-dim); color: var(--accent); border-radius: 2px; padding: 0 1px; }
+.wi-combo-empty { padding: 16px 10px; text-align: center; font-family: var(--sans); font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── ETF BASKET ROWS ── */
+.wi-etf-rows { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
+.wi-etf-row { display: grid; grid-template-columns: 1fr 90px 38px; gap: 8px; align-items: start; }
+.wi-etf-row .wi-combo { position: relative; }
+.wi-etf-shares input { width: 100%; text-align: center; }
+.wi-etf-remove {
+  width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+  background: var(--bg-base); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text-muted); cursor: pointer; padding: 0; flex-shrink: 0;
+}
+.wi-etf-remove:hover { color: var(--loss); border-color: var(--loss); }
+.wi-etf-remove svg { width: 14px; height: 14px; }
+.wi-etf-add {
+  width: 100%; padding: 9px; background: var(--bg-base); border: 1px dashed var(--border); border-radius: var(--radius-sm);
+  color: var(--text-secondary); font-family: var(--sans); font-size: 12.5px; font-weight: 600; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.wi-etf-add:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── SAVED BASKETS ── */
+.wi-saved-baskets { display: flex; flex-direction: column; gap: 6px; }
+.wi-saved-empty { padding: 10px 2px; font-family: var(--sans); font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+.wi-saved-basket { display: flex; align-items: stretch; gap: 6px; }
+.wi-saved-basket-load {
+  flex: 1; min-width: 0; display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+  padding: 9px 12px; background: var(--bg-base); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  cursor: pointer; text-align: left; transition: border-color 0.15s, background 0.15s;
+}
+.wi-saved-basket-load:hover { border-color: var(--accent); background: var(--bg-row-hover); }
+.wi-saved-basket-name { font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--text-primary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wi-saved-basket-meta { flex-shrink: 0; font-family: var(--mono); font-size: 10.5px; color: var(--text-muted); }
+.wi-saved-basket-delete {
+  width: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  background: var(--bg-base); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text-muted); cursor: pointer; padding: 0;
+}
+.wi-saved-basket-delete:hover { color: var(--loss); border-color: var(--loss); }
+.wi-saved-basket-delete svg { width: 13px; height: 13px; }
+
+.wi-basket-save-row { display: flex; gap: 8px; }
+.wi-basket-save-row input { flex: 1; min-width: 0; }
+.wi-basket-save-btn {
+  flex-shrink: 0; padding: 0 18px; background: var(--bg-base); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text-secondary); font-family: var(--sans); font-size: 12.5px; font-weight: 700; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.wi-basket-save-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── TIME FRAME ── */
+.wi-range-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wi-range-sublabel { display: block; font-family: var(--sans); font-size: 10.5px; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; }
+.wi-range-presets { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.wi-preset-btn {
+  padding: 5px 11px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-base);
+  color: var(--text-muted); font-family: var(--mono); font-size: 11px; font-weight: 600; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.wi-preset-btn:hover, .wi-preset-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+.calc-divider { height: 1px; background: var(--border); margin: 18px 0; }
+
+.calc-btn {
+  width: 100%; padding: 11px; background: var(--accent); border: none; border-radius: var(--radius-sm);
+  color: #fff; font-family: var(--sans); font-size: 13.5px; font-weight: 700; cursor: pointer;
+  transition: filter 0.15s;
+}
+.calc-btn:hover { filter: brightness(1.08); }
+.calc-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.wi-error {
+  margin-top: 12px; padding: 10px 12px; border-radius: var(--radius-sm);
+  background: rgba(209, 63, 63, 0.08); border: 1px solid var(--loss); color: var(--loss);
+  font-family: var(--sans); font-size: 12.5px; display: none;
+}
+.wi-error.show { display: block; }
+
+.wi-note {
+  margin-top: 14px; padding: 10px 12px; border-radius: var(--radius-sm);
+  background: var(--bg-base); border: 1px solid var(--border); color: var(--text-muted);
+  font-family: var(--sans); font-size: 11px; line-height: 1.55;
+}
+.wi-note strong { color: var(--text-secondary); }
+
+/* ── RESULTS ── */
+.calc-results { display: flex; flex-direction: column; gap: 14px; }
+.wi-placeholder {
+  background: var(--bg-card); border: 1px dashed var(--border); border-radius: var(--radius-md);
+  padding: 60px 24px; text-align: center; font-family: var(--sans); font-size: 13px; color: var(--text-muted);
+}
+
+.calc-summary-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.calc-summary-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 12px 14px; position: relative; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.calc-summary-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: var(--accent); }
+.calc-summary-card.principal::before { background: var(--text-muted); }
+.calc-summary-card.priceonly::before { background: var(--text-muted); }
+.calc-summary-card.total::before { background: var(--accent); }
+.calc-summary-card.returnpct::before { background: var(--accent); }
+.calc-summary-card.dividends::before { background: var(--accent); }
+.calc-summary-card.holdings::before { background: var(--accent); }
+.calc-summary-label { font-family: var(--sans); font-size: 10.5px; color: var(--text-muted); font-weight: 500; margin-bottom: 5px; }
+.calc-summary-value { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--text-primary); letter-spacing: -0.3px; }
+.calc-summary-sub { font-family: var(--mono); font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+.calc-summary-card.dividends .calc-summary-value { color: var(--accent); }
+.calc-summary-value.pos, .calc-summary-sub.pos { color: var(--gain); }
+.calc-summary-value.neg, .calc-summary-sub.neg { color: var(--loss); }
+
+.calc-chart-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+.calc-chart-hd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.calc-chart-title { font-family: var(--sans); font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.calc-chart-legend { display: flex; gap: 14px; }
+.calc-legend-item { display: flex; align-items: center; gap: 5px; font-family: var(--sans); font-size: 11px; color: var(--text-muted); }
+.calc-legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+.calc-legend-dot.priceonly { background: var(--text-muted); }
+.calc-legend-dot.total { background: var(--gain); }
+
+.wi-bars-wrap { display: flex; align-items: flex-end; gap: 28px; height: 180px; border-bottom: 1px solid var(--border); padding: 0 20px 2px; justify-content: center; }
+.wi-bar-col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; width: 90px; }
+.wi-bar-val { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; white-space: nowrap; }
+.wi-bar-fill { width: 100%; border-radius: 4px 4px 0 0; transition: height 0.4s ease; }
+.wi-bar-fill.priceonly { background: var(--text-muted); opacity: 0.55; }
+.wi-bar-fill.total { background: var(--gain); }
+.wi-bars-labels { display: flex; gap: 28px; margin-top: 8px; justify-content: center; padding: 0 20px; }
+.wi-bar-label { width: 90px; text-align: center; font-family: var(--sans); font-size: 11px; color: var(--text-muted); }
+
+.calc-table-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+.calc-table-hd { padding: 14px 18px; border-bottom: 1px solid var(--border); font-family: var(--sans); font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.calc-table-scroll { max-height: 360px; overflow-y: auto; overflow-x: auto; }
+.calc-table { width: 100%; border-collapse: collapse; }
+.calc-table thead th {
+  position: sticky; top: 0; background: var(--bg-card); padding: 10px 16px; font-family: var(--sans);
+  font-size: 11px; font-weight: 600; color: var(--text-muted); text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.calc-table thead th:first-child { text-align: left; }
+.calc-table tbody td {
+  padding: 9px 16px; font-family: var(--mono); font-size: 12px; color: var(--text-secondary);
+  text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+.calc-table tbody td:first-child { text-align: left; font-family: var(--sans); font-weight: 600; color: var(--text-primary); }
+.calc-table tbody tr:last-child td { border-bottom: none; }
+.calc-table tbody tr:hover { background: var(--bg-row-hover); }
+.calc-table-empty { padding: 24px 18px; text-align: center; font-family: var(--sans); font-size: 12.5px; color: var(--text-muted); }
+
+.wi-table-hint { font-family: var(--sans); font-size: 11px; font-weight: 400; color: var(--text-muted); }
+
+.wi-row-clickable { cursor: pointer; }
+.wi-row-clickable td:first-child::after { content: '\203A'; margin-left: 6px; color: var(--text-muted); font-weight: 700; }
+.wi-row-clickable:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* ── CUSTOM ETF DETAIL MODAL ── */
+.wi-modal-overlay {
+  position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.55);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+  animation: wi-modal-overlay-in 0.18s ease both;
+}
+.wi-modal {
+  width: 100%; max-width: 940px; max-height: 82vh; display: flex; flex-direction: column;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4); font-family: var(--sans);
+  animation: wi-modal-in 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes wi-modal-overlay-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes wi-modal-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wi-modal-overlay, .wi-modal { animation: none; }
+}
+.wi-modal-header {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  padding: 18px 20px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.wi-modal-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.wi-modal-subtitle { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+.wi-modal-close {
+  width: 30px; height: 30px; border-radius: 50%; border: none; background: transparent;
+  color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.wi-modal-close svg { width: 16px; height: 16px; }
+.wi-modal-close:hover { background: var(--bg-row-hover); color: var(--text-primary); }
+.wi-modal-body { overflow-y: auto; padding: 14px 20px 20px; }
+.wi-modal-body .calc-table-scroll { max-height: none; }
+
+@media (max-width: 860px) {
+  .calc-grid { grid-template-columns: 1fr; }
+  .calc-summary-row { grid-template-columns: 1fr; }
+}
+</style>
+<script src="/shared/display-settings.js"></script>
+<script src="/shared/session-guard.js"></script>
+<script src="/shared/bank-logos.js"></script>
+<link rel="stylesheet" href="/shared/mobile.css" />
+<meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-tag">DSE</span>
+      <div class="logo-text">
+        <h1>What-if</h1>
+      </div>
+    </div>
+    <div class="header-meta">
+      <a href="/index.html" class="wl-toggle-btn has-tooltip" style="text-decoration:none;" data-tooltip="Home" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/>
+        </svg>
+      </a>
+      <button class="theme-toggle has-tooltip" id="theme-toggle-btn" data-tooltip="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+        <span class="toggle-icon" id="theme-icon">☀️</span>
+        <span id="theme-label">Light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="calc-shell">
+  <a href="/index.html" class="calc-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Live Market
+  </a>
+
+  <div class="calc-hero">
+    <h1>What if I had bought this stock?</h1>
+    <p>See how much a DSE stock investment would be worth today, including cash dividends reinvested net of a 15% tax.</p>
+  </div>
+
+  <div class="wi-mode-tabs" id="wi-mode-tabs">
+    <button type="button" class="wi-mode-tab active" data-mode="single">Single Stock</button>
+    <button type="button" class="wi-mode-tab" data-mode="etf">Custom ETF</button>
+  </div>
+
+  <div class="calc-grid">
+
+    <!-- INPUT PANEL — SINGLE STOCK -->
+    <form class="calc-panel" id="wi-form" data-panel="single">
+
+      <div class="calc-field wi-combo" id="wi-combo">
+        <div class="calc-label">Stock</div>
+        <div class="wi-combo-input-wrap">
+          <svg class="wi-combo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="wi-ticker" class="wi-combo-input" placeholder="Search ticker or company name…" autocomplete="off"
+                 role="combobox" aria-expanded="false" aria-controls="wi-combo-panel" aria-autocomplete="list" required />
+          <button type="button" class="wi-combo-clear" id="wi-combo-clear" aria-label="Clear stock" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="wi-combo-panel" id="wi-combo-panel" role="listbox" hidden></div>
+        <div class="wi-ticker-hint" id="wi-ticker-hint"></div>
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Amount Invested <span class="calc-unit">BDT</span></div>
+        <div class="calc-input-wrap">
+          <span class="calc-input-prefix">৳</span>
+          <input type="number" id="wi-amount" class="has-prefix" value="10000" min="1" step="any" required />
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Purchase Date</div>
+        <input type="date" id="wi-date" required />
+      </div>
+
+      <div class="calc-divider"></div>
+
+      <button type="submit" class="calc-btn" id="wi-submit">Calculate</button>
+
+      <div class="wi-error" id="wi-error"></div>
+
+      <div class="wi-note">
+        <strong>Assumptions:</strong> shares are bought in whole units only (leftover cash that can't buy another
+        whole share sits uninvested and rolls into the next purchase), and every purchase — the initial buy and
+        each dividend reinvestment — pays a 0.4% buy commission; face value of ৳10/share for dividend-percentage
+        conversion; a company's yearly cash and stock dividends are both applied at the first trading price
+        on/after 1 July of that year (exact record/payment dates aren't tracked in the underlying data). Bonus
+        shares from stock dividends are added automatically; cash dividends are reinvested net of a 15% tax.
+        Stock-dividend history comes from each company's live DSE listing page (same source the Fundamentals
+        page uses) — if that page doesn't return a value for a given year, only the cash dividend is modeled
+        for that year.
+      </div>
+    </form>
+
+    <!-- INPUT PANEL — CUSTOM ETF -->
+    <form class="calc-panel" id="wi-etf-form" data-panel="etf" hidden>
+
+      <div class="calc-field">
+        <div class="calc-label">Saved Baskets</div>
+        <div class="wi-saved-baskets" id="wi-saved-baskets">
+          <div class="wi-saved-empty">No saved baskets yet — build one below, name it, and hit Save.</div>
+        </div>
+      </div>
+
+      <div class="calc-divider"></div>
+
+      <div class="calc-field">
+        <div class="calc-label">Basket <span class="calc-unit" id="wi-etf-count">0 stocks</span></div>
+        <div class="wi-etf-rows" id="wi-etf-rows"></div>
+        <button type="button" class="wi-etf-add" id="wi-etf-add">+ Add stock</button>
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Save This Basket</div>
+        <div class="wi-basket-save-row">
+          <input type="text" id="wi-basket-name" placeholder="Name this basket…" maxlength="60" autocomplete="off" />
+          <button type="button" class="wi-basket-save-btn" id="wi-basket-save-btn">Save</button>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <div class="calc-label">Time Frame</div>
+        <div class="wi-range-row">
+          <div>
+            <label class="wi-range-sublabel" for="wi-etf-start">Start</label>
+            <input type="date" id="wi-etf-start" required />
+          </div>
+          <div>
+            <label class="wi-range-sublabel" for="wi-etf-end">End</label>
+            <input type="date" id="wi-etf-end" />
+          </div>
+        </div>
+        <div class="wi-range-presets" id="wi-etf-presets">
+          <button type="button" class="wi-preset-btn" data-years="1">1Y</button>
+          <button type="button" class="wi-preset-btn" data-years="3">3Y</button>
+          <button type="button" class="wi-preset-btn" data-years="5">5Y</button>
+          <button type="button" class="wi-preset-btn" data-years="0">Max</button>
+        </div>
+        <div class="wi-ticker-hint">Leave End blank to value the basket at the latest available session.</div>
+      </div>
+
+      <div class="calc-divider"></div>
+
+      <button type="submit" class="calc-btn" id="wi-etf-submit">Calculate ETF Return</button>
+
+      <div class="wi-error" id="wi-etf-error"></div>
+
+      <div class="wi-note">
+        <strong>Assumptions:</strong> a custom ETF is a hypothetical basket built from a fixed number of shares
+        of each stock, held as of the start date — same mechanics as the single-stock calculator applied per
+        constituent. Every purchase — the initial lot and each dividend reinvestment — pays a 0.4% buy
+        commission; cash dividends are reinvested net of a 15% tax and bonus shares from stock dividends are
+        added automatically. Only dividends paid on/before the end of the chosen time frame are reinvested.
+        Basket return is the combined value of all constituents against their combined cost. Saved baskets
+        (composition, share counts, and time frame) are shared across anyone using this site — not private
+        per-user data.
+      </div>
+    </form>
+
+    <!-- RESULTS -->
+    <div class="calc-results" id="wi-results">
+      <div class="wi-placeholder">Pick a stock, amount and date, then hit Calculate.</div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>What-if &middot; For informational purposes only &middot; Not financial advice</p>
+</footer>
+
+<!-- CUSTOM ETF — PER-STOCK DIVIDEND DETAIL MODAL -->
+<div class="wi-modal-overlay" id="wi-etf-detail-modal" style="display:none;">
+  <div class="wi-modal">
+    <div class="wi-modal-header">
+      <div>
+        <div class="wi-modal-title" id="wi-etf-detail-title"></div>
+        <div class="wi-modal-subtitle" id="wi-etf-detail-sub"></div>
+      </div>
+      <button type="button" class="wi-modal-close" id="wi-etf-detail-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="wi-modal-body" id="wi-etf-detail-body"></div>
+  </div>
+</div>
+
+<script type="module" src="what-if.js"></script>
+<script src="/shared/nav-menu.js"></script>
+</body>
+</html>

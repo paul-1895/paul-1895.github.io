@@ -1,0 +1,193 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2024-09-30",
+  "financial_year": 2024,
+  "quarter": "Q3",
+  "period_note": "Unaudited interim financial statements 'As at 30 September 2024', uploaded to the bank's website in December 2024. *** THIS FILING'S BALANCE SHEET EQUITY/RETAINED-EARNINGS FIGURES ARE FLAGGED AS UNRELIABLE -- READ IN FULL BEFORE USING *** This is the pivotal filing in the FY2023/2024 restatement story documented across 2024_Q1.json, 2024_Q2.json and 2025_Q1.json. Its Balance Sheet shows Total Shareholders' Equity of -9,020,317,883 (the FIRST negative-equity figure to appear in ANY GIB interim filing) via a Statutory reserve of 2,020,644,859 (identical to the FY2022 year-end figure -- i.e. LOWER than the 2,436,788,091 this same bank's own Q1/Q2-2024 filings had been carrying forward, an appropriation reserve moving backwards, which does not happen through normal operations) and Retained earnings of -20,915,359,622. However, this filing's OWN Profit and Loss Account, on the SAME page range of the SAME document, rolls retained earnings forward correctly and gives a completely different, POSITIVE answer: opening retained earnings 1,452,999,619 (carried from Q1/Q2-2024's own basis) + this period's own 9-month cumulative PAT of +428,433,730 = Profit available for appropriation of 1,881,433,349 (an exact match to the P&L's own printed subtotal) - a cash dividend appropriation of 493,719,844 = Retained surplus (i.e. closing retained earnings) of 1,387,713,505 -- POSITIVE, and itself an exact match to the P&L's own printed closing figure. Reconstructing equity from the P&L's own numbers (paid-up capital 9,874,396,880 + statutory reserve carried forward unchanged at 2,155,727,406, since no reserve appropriation happened this period + retained earnings 1,387,713,505) gives +13,417,837,791 -- POSITIVE, consistent with Q1/Q2-2024's trajectory, and about BDT 22.4 BILLION away from the Balance Sheet's own -9,020,317,883. In other words: this single unaudited filing is internally self-contradictory by roughly the same ~22.8 billion Taka gap that the eventual FY2023 restatement (see 2024_Q1.json) would later formalise -- it looks like an incomplete, in-progress attempt to reflect the coming restatement on the Balance Sheet before the Income Statement had been correspondingly reworked, rather than a deliberate, considered figure. Per project policy (prefer the internally consistent figure when a contemporaneous document is arithmetically impossible against its own other rows), the Balance Sheet equity/retained-earnings/total-assets figures below are recorded AS FILED (for transparency and completeness) but flagged low-confidence; the P&L-reconciled alternative equity of +13,417.84m is recorded in the period_note as the internally-consistent figure, not stored as the dataset's total_equity value, since neither can be confirmed against an audited source for this specific date. Total Liabilities (182,703.67m) is clean and directly stated, uninvolved in this contradiction. The Income Statement itself IS internally consistent and fully arithmetic-validated (every relationship down to the Taka) via OCR of the source PDF (garbled pdftotext layer, same issue as other 2023-2024 filings), and cross-validates exactly against the FY2024 annual report's own retrospective variance table for Net Investment Income, Non-investment income, Total Operating Income, Profit before Provision, Total Provision, PBT, Tax, PAT and EPS -- EXCEPT Total Operating Expenses, where this filing's own, fully self-consistent figure (3,144.38m, reconciling exactly from its 12 component expense lines) differs by an immaterial ~3 million Taka (0.1%) from the annual report's later table (3,141.38m), an unresolved minor divergence between report vintages, not used. DISCRETE Jul-Sep 2024 alone was a LOSS of -540.72m, masked by the still-positive 9-month cumulative figure (+428.43m) -- the first sign, in the P&L itself, of the deterioration that would culminate in FY2024's audited full-year loss of -12,466.18m. Note also: this filing's own discrete-quarter EPS is printed as +0.55 (a POSITIVE value), which is arithmetically impossible given the discrete loss of -540.72m at this filing's own paid-up capital -- the sign is corrected to -0.55 here, confirmed independently by the Q3-2025 filing's own comparative column, which cites this same historical quarter's EPS as -0.55.",
+  "source": {
+    "source_document": "GIB-FS-30-September-2024.pdf (downloaded from globalislamibankbd.com, OCR'd for the P&L page due to a garbled pdftotext layer; PDF deleted after extraction per project policy)",
+    "source_url": "https://www.globalislamibankbd.com/wp-content/uploads/2024/12/GIB-FS-30-September-2024.pdf",
+    "source_page": "Balance Sheet p.1 (pdftotext -layout), Profit and Loss Account p.3 (OCR'd at 300dpi, tesseract)",
+    "retrieval_date": "2026-08-27",
+    "reporting_basis": "Solo / standalone, unaudited; Balance Sheet equity/retained-earnings/total-assets flagged low-confidence (see period_note), Income Statement fully validated"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Liabilities and Shareholders' Equity (source cell corrupted; calculated as Total Liabilities + the AS-FILED Total Shareholders' Equity, itself flagged low-confidence -- see period_note for a P&L-consistent alternative of ~196,121.51m)",
+      "value": 173683.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_liabilities_plus_equity"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General investment, etc. + Bills purchased and discounted)",
+      "value": 142103.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposit and other accounts",
+      "value": 134833.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity -- AS FILED, but FLAGGED LOW-CONFIDENCE: internally inconsistent with this same filing's own P&L retained-earnings roll-forward by approximately BDT 22.4 billion (see period_note for the full reconciliation and the P&L-consistent alternative of approximately +13,417.84m)",
+      "value": -9020.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 182703.67,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-balance sheet items including contingent liabilities",
+      "value": 9080.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 12563.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_cumulative",
+      "original_metric_name": "Less: Profit paid on deposits (cumulative from Jan 1)",
+      "value": 10035.11,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Investment Income (cumulative from Jan 1)",
+      "value": 2528.26,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income_cumulative",
+      "original_metric_name": "Total Operating Income (cumulative from Jan 1)",
+      "value": 3120.06,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1; see period_note for an immaterial ~3m divergence from the annual report's later retrospective table)",
+      "value": 3144.38,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit / (Loss) before Provision (cumulative from Jan 1)",
+      "value": -24.32,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_cumulative",
+      "original_metric_name": "Total provision (cumulative from Jan 1; a net reversal)",
+      "value": -446.5,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total Profit / (Loss) before tax (cumulative from Jan 1)",
+      "value": 422.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Deferred tax (cumulative from Jan 1; no current tax provision this period, a net credit)",
+      "value": -6.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit/(Loss) after Tax (cumulative from Jan 1) -- still positive despite the discrete Q3 loss (see profit_after_tax_discrete_quarter)",
+      "value": 428.43,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (cumulative from Jan 1)",
+      "value": 0.43,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_discrete_quarter",
+      "original_metric_name": "Profit / (Loss) before Provision, discrete Jul-Sep 2024",
+      "value": -284.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_discrete_quarter",
+      "original_metric_name": "Total provision, discrete Jul-Sep 2024",
+      "value": 259.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_discrete_quarter",
+      "original_metric_name": "Total Profit / (Loss) before tax, discrete Jul-Sep 2024",
+      "value": -544.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_discrete_quarter",
+      "original_metric_name": "Net Profit/(Loss) after Tax, discrete Jul-Sep 2024 -- the first LOSS quarter of the deteriorating trajectory, masked in the cumulative figure by Q1/Q2's larger profits",
+      "value": -540.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_discrete_quarter",
+      "original_metric_name": "Earnings per share (EPS), discrete Jul-Sep 2024 -- sign corrected from this filing's own printed +0.55 (arithmetically impossible against the discrete loss) to -0.55, confirmed by the Q3-2025 filing's own comparative citation of this historical quarter",
+      "value": -0.55,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    }
+  ]
+}

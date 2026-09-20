@@ -1,0 +1,42 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2026-06-30",
+  "financial_year": 2026,
+  "quarter": "Q2",
+  "period_note": "Sourced LIVE from DSE's company page (not a Wayback capture -- this is the page's current content), fetched 2026-08-27 via curl -k (dsebd.org has a broken TLS certificate chain requiring -k/--insecure, the same workaround already documented elsewhere in this dataset for NCCBANK and RUPALIBANK). Beyond this task's original FY2011-2016/FY2021-2024 scope, but recovered at zero extra cost in the same session and consistent with the RUPALIBANK precedent of also capturing bonus current-year data when available. Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). FLAG: Q1 (1.720) + Q2 (2.950) = 4.670, vs the reported Half-Yearly cumulative of 4.390 (a 0.28 BDT/share gap) -- a THIRD consecutive year (after 2024, 2025) of this same AGM/bonus-timing pattern: the 16-06-2026 AGM (for FY2025) fell between Q1 and Q2 2026, with share count rising to 1,561,721,842 by this fetch (up from 1,301,434,869 a year earlier, a ~20% increase consistent with a bonus share dividend). Recorded as reported, not silently reconciled. Q3 2026 has not occurred yet as of the retrieval date -- not a gap.",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2026\" table, Q2 (discrete) and Half Yearly (cumulative) columns (period-end 202606)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, discrete Apr-Jun",
+      "value": 2.95,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_6m_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS), Basic, Half Yearly cumulative",
+      "value": 4.39,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Does not reconcile exactly with Q1+Q2 (4.670) -- see period_note for the likely AGM/bonus-share-timing cause."
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 36.9,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

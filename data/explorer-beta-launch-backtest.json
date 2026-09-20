@@ -1,0 +1,227 @@
+{
+  "generatedAt": "2026-09-06T03:56:09.287Z",
+  "weights": {
+    "macd": 0,
+    "hm": 0,
+    "sweep": 0,
+    "srProximity": 0,
+    "minerviniDown": 0,
+    "valuationMax": 0,
+    "heikinAshi": 0,
+    "breakoutRetest": 0,
+    "rsi": 0,
+    "marubozu": 0,
+    "marubozuBuy": 0,
+    "pinBar": 0,
+    "dojiReversal": 0,
+    "harami": 0,
+    "volumeSurge": 0,
+    "orderBlock": 0,
+    "emaRibbon": 0,
+    "minerviniPass": -20,
+    "sma50": 12,
+    "supertrend": 12,
+    "seasonalityMax": 8
+  },
+  "threshold": 25,
+  "planOverrides": {
+    "maxTargetRR": 2.5,
+    "maxTargetPct": 12,
+    "breakevenLadder": [
+      [
+        2.1,
+        2
+      ],
+      [
+        4.1,
+        4
+      ],
+      [
+        5.1,
+        5
+      ],
+      [
+        6.1,
+        6
+      ],
+      [
+        7.1,
+        7
+      ],
+      [
+        8.1,
+        8
+      ],
+      [
+        9.1,
+        9
+      ],
+      [
+        10.1,
+        10
+      ],
+      [
+        11.1,
+        11
+      ]
+    ],
+    "breakevenLadderSR": true,
+    "profitLockMinFillPct": 1,
+    "exitOnSRBreak": true,
+    "srBreakFlipLevels": true,
+    "maxRiskPct": 30,
+    "maxStopPct": 5,
+    "stopCloseConfirm": true,
+    "candleMatchGate": true,
+    "volumeUpGate": true,
+    "maxWickRatio": 0.4,
+    "wickGateSides": "buy",
+    "minRunUpPct": 20,
+    "runUpBars": 30,
+    "runUpSides": "buy",
+    "minSupportWickRatio": 0.4,
+    "supportWickSides": "buy",
+    "extendedAboveSmaPct": 20,
+    "extendedSmaBars": 20,
+    "extendedMaxWickRatio": 0.2,
+    "extendedSides": "buy",
+    "sectorOverrides": {
+      "Bank": {
+        "refuseEntry": "buy"
+      },
+      "Mutual Funds": {
+        "weeklyCandleGate": true,
+        "weeklyCandleGateSides": "buy",
+        "weeklyVolumeUpGate": true
+      }
+    },
+    "excludeCodes": [
+      "FASFIN"
+    ],
+    "excludeCodesFrom": {
+      "GIB": "2025/11/05",
+      "SIBL": "2025/11/05",
+      "EXIMBANK": "2025/11/05",
+      "FIRSTSBANK": "2025/11/05",
+      "UNIONBANK": "2025/11/05"
+    }
+  },
+  "maxHoldBars": 60,
+  "stocks": 394,
+  "barsScored": 181819,
+  "periodFrom": "2024/09/08",
+  "periodTo": "2026/08/13",
+  "baseline": {
+    "5": 0.22,
+    "10": 0.44,
+    "20": 1.15,
+    "40": 2.9
+  },
+  "ranking": {
+    "n": 166492,
+    "topDecile": 4.26,
+    "botDecile": -1.54,
+    "topEdge": 3.11,
+    "botEdge": -2.69,
+    "spread": 5.8
+  },
+  "overall": {
+    "n": 175,
+    "targetPct": 12.6,
+    "stopPct": 87.4,
+    "lossStopPct": 19.4,
+    "breakevenPct": 68,
+    "expiredPct": 0,
+    "winRate": 80.6,
+    "winRateNet": 80.6,
+    "avgPnl": 3.41,
+    "avgPnlNet": 2.61,
+    "medianPnl": 3.65,
+    "medianPnlNet": 2.85,
+    "pnlStdev": 6.96,
+    "costPct": 0.8,
+    "avgBarsToTarget": 3.68,
+    "avgBarsToStop": 3.25,
+    "avgBarsHeld": 3.31
+  },
+  "buy": {
+    "n": 175,
+    "targetPct": 12.6,
+    "stopPct": 87.4,
+    "lossStopPct": 19.4,
+    "breakevenPct": 68,
+    "expiredPct": 0,
+    "winRate": 80.6,
+    "winRateNet": 80.6,
+    "avgPnl": 3.41,
+    "avgPnlNet": 2.61,
+    "medianPnl": 3.65,
+    "medianPnlNet": 2.85,
+    "pnlStdev": 6.96,
+    "costPct": 0.8,
+    "avgBarsToTarget": 3.68,
+    "avgBarsToStop": 3.25,
+    "avgBarsHeld": 3.31
+  },
+  "sell": {
+    "n": 2791,
+    "targetPct": 2,
+    "stopPct": 97.9,
+    "lossStopPct": 29.5,
+    "breakevenPct": 68.5,
+    "expiredPct": 0.1,
+    "winRate": 70.5,
+    "winRateNet": 70.5,
+    "avgPnl": 0.1,
+    "avgPnlNet": -0.7,
+    "medianPnl": 1.72,
+    "medianPnlNet": 0.92,
+    "pnlStdev": 5.3,
+    "costPct": 0.8,
+    "avgBarsToTarget": 5.23,
+    "avgBarsToStop": 5.55,
+    "avgBarsHeld": 5.59
+  },
+  "blended": {
+    "n": 2966,
+    "targetPct": 2.6,
+    "stopPct": 97.3,
+    "lossStopPct": 28.9,
+    "breakevenPct": 68.4,
+    "expiredPct": 0.1,
+    "winRate": 71.1,
+    "winRateNet": 71.1,
+    "avgPnl": 0.29,
+    "avgPnlNet": -0.51,
+    "medianPnl": 1.76,
+    "medianPnlNet": 0.96,
+    "pnlStdev": 5.47,
+    "costPct": 0.8,
+    "avgBarsToTarget": 4.79,
+    "avgBarsToStop": 5.43,
+    "avgBarsHeld": 5.45
+  },
+  "perWindow": [],
+  "coverage": null,
+  "expiryBreakdown": {
+    "expired": 2,
+    "ranFullWindow": 2,
+    "truncatedByDataEnd": 0,
+    "truncatedMedianBars": null
+  },
+  "edgeByPeriod": [],
+  "edgeSummary": {
+    "periodsMeasured": 0,
+    "positive": 0,
+    "negative": 0,
+    "min": null,
+    "max": null,
+    "median": null
+  },
+  "method": {
+    "lookahead": "None in price signals — every indicator is a causal series, verified against the live detectors by scripts/verify-engine-parity.js.",
+    "sameBar": "When one bar contains both the stoploss and the target, the stoploss is counted as hit first, since daily bars do not record the intrabar path.",
+    "overlap": "At most one open simulated trade per stock at a time, so a single move is not counted repeatedly.",
+    "excluded": "The DDM valuation signal is unscored: data/dividends.json holds only current figures, so any historical test of it would be contaminated by lookahead."
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "bank_id": "FIRSTSBANK",
+  "bank_name": "First Security Islami Bank PLC",
+  "reporting_date": "2024-12-31",
+  "financial_year": 2024,
+  "quarter": "Q4",
+  "period_note": "Year-end position from the Audited Financial Statements' own 'Financial Highlights (Solo)' (Annexure-B) summary table, cross-checked against the Bank's own Balance Sheet (Solo) and Profit and Loss Account (Solo), Solo basis. No separate glossy 'Annual Report' PDF for FY2024 is published on fsibplc.com (or was found via Wayback) as of retrieval date (2026-08-26); the source used here ('Yearly_statement2024.pdf') is the standalone Audited Financial Statements package (balance sheet, P&L, notes, Annexure A/B/C), which is what the bank itself files. This was a catastrophic year: the auditor (Khan Wahab Shafique Rahman & Co.) issued a Qualified Opinion with a 'Material Uncertainty Related to Going Concern' paragraph, citing Solo CRAR of 4.92% (required 12.50%), an LCR of 22.75% (required >=100%), an NSFR of 71.80% (required >100%), and an Investment-Deposit Ratio of 122.25% (required <=92%). Percentage of Classified Investments against total Investments (Annexure-B) = 91.75% (BDT 559,203.17mn classified out of BDT 609,513.24mn total investment) -- up from 3.95% in FY2023, the sharpest single-year deterioration of any bank/year found in this dataset so far. Bangladesh Bank letter no. DBI-06/51(2)/2025-373 dated 27/04/2025 assessed a large deficit provision; per Note 8.9 of the financial statements, required provision against investments as per CL = BDT 494,979.21mn (49,497.92 crore) against provision maintained of BDT 16,361.94mn (1,636.19 crore) -- a shortfall of BDT 478,617.27mn (47,861.73 crore). Bangladesh Bank letter no. DOS(CAMS)1157/41(Dividend)/2025-3100 dated 21/05/2025 permitted the Bank to finalize these audited financial statements WITHOUT addressing this deficit provision (regulatory forbearance). NOTE: the Auditors' Report itself (Basis for Qualified Opinion, para 1) cites DIFFERENT figures for the SAME Bangladesh Bank letter (DBI-06/51(2)/2025-373 dated 27/04/2025): required provision BDT 50,994.06 crore, provision maintained BDT 1,895.34 crore, shortfall BDT 49,098.71 crore -- these are recorded verbatim here rather than reconciled with Note 8.9's figures, per project convention of never silently reconciling divergent source figures. The Auditors' going-concern paragraph separately estimates total investments at ~Tk 60,915 crore of which ~Tk 49,439 crore (~81%) are classified/impaired -- a third, independently-worded figure, again different from both Note 8.9's CL-schedule classified base (BDT 507,341.46mn = 83.24% of total investment) and Annexure-B's 'Amount of Classified Investments' (BDT 559,203.17mn = 91.75%). All three classified-investment figures coexist within the same audited financial statements; none is corrected or superseded by another as far as this document shows. The auditor also disclosed extensive fraud-pattern findings under 'Other Matters': irregular investment disbursements using borrower identities that may not reflect actual customers, ACC (Anti-Corruption Commission) legal proceedings and asset freezes against bank officials, a Bangladesh Bank forensic audit and special task force, overvalued collateral (esp. land), and investment disbursements exceeding sanctioned limits via unauthorized internal Commitment IDs. Sponsors/Directors shareholding fell from 30.14% (FY2023) to 5.90% (FY2024). Subsequent to this balance-sheet date (per DSE disclosures, outside the scope of this filing): Bangladesh Bank declared the Bank 'non-viable' effective 5 November 2025 and placed it under the Bank Resolution Ordinance, 2025 (trading suspended same day); on 9 November 2025 Bangladesh Bank issued a Letter of Intent for a new state-owned entity ('Sammilito Islami Bank') merging this bank with Global Islami Bank, Social Islami Bank, Union Bank, and EXIM Bank (also in this dataset); a Capital Reduction Order dated 21 December 2025 wrote the Bank's entire paid-up capital (BDT 1,208.14 crore) down to zero effective 5 November 2025, cancelling all shares and extinguishing all shareholder rights; the Bank was placed in 'Z' category on 4 January 2026 for failing to hold its FY2024 AGM (last held 24-06-2024; the FY2024 AGM was scheduled for 15-09-2025 and then postponed indefinitely). See sources.json and insights.json for the full citation trail.",
+  "source": {
+    "source_document": "firstsbank-annual-report-2024.txt (downloaded as Yearly_statement2024.pdf)",
+    "source_path": "annual_reports/FIRSTSBANK/firstsbank-annual-report-2024.txt",
+    "source_url": "https://fsibplc.com/File/statement/yearly/Yearly_statement2024.pdf",
+    "source_page_lines": "PDF p.79 (\"Financial Highlights (Solo)\", Annexure-B); PDF p.6 (\"Balance Sheet\", Solo); PDF p.8 (\"Profit and Loss Account\", Solo); PDF p.51 (Note 8.9, \"Particulars of Required Provision for Investments as per CL\"); PDF p.62-63 (Note 17.5/17.5(a), \"Capital to Risk Weighted Assets Ratio (CRAR) Under Basel-III\", Consolidated and Solo Basis). These are printed page numbers; add 21 to get the position in the pdftotext-extracted .txt file's form-feed-delimited pages (e.g. printed p.79 = extracted page 100). Supplementary: annual_reports/FIRSTSBANK/firstsbank-auditors-opinion-2024.txt (downloaded from https://www.dsebd.org/Auditors_opinion/2024/FIRSTSBANK_2024.pdf), the Auditors' full qualified-opinion text referenced by DSE disclosure dated 2025-06-19.",
+    "retrieval_date": "2026-08-26",
+    "extraction_method": "This PDF's text layer is a poor-quality OCR pass (systematic digit/letter substitution, e.g. '9'->'i'/'t', '1'->'|', stray inserted spaces/commas) -- the same pattern previously seen in this bank's FY2019/FY2021 reports. All figures in this file were read directly from rendered page images (pdftoppm -r 250, vision-read), NOT taken from the raw pdftotext output, and cross-checked: (a) internally against this report's own balance-sheet/P&L identities, and (b) against this dataset's already-stored FY2023 figures via this report's FY2023 comparative column (all matched to within 0.00001%, confirming no restatement)."
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 12081.39,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity (Balance Sheet, Solo)",
+      "value": 20069.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_capital",
+      "original_metric_name": "Total Capital Fund / A. Total Regulatory Capital (Tier-1 + Tier-2)",
+      "value": 28361.26,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Tier-1 Capital (CET-1 + Additional Tier-1), Solo Basis",
+      "value": 24952.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Tier-2 Capital, Solo Basis",
+      "value": 3408.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "risk_weighted_assets",
+      "original_metric_name": "B. Total Risk Weighted Assets, Solo Basis",
+      "value": 575894.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "required_capital",
+      "original_metric_name": "H. Required Minimum Capital Plus Capital Conservation Buffer",
+      "value": 71986.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "capital_surplus_deficit",
+      "original_metric_name": "Capital Surplus/(deficit) against Minimum Capital Requirement",
+      "value": -29228.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Negative = capital DEFICIT against Minimum Capital Requirement (MCR), i.e. G. MCR (57,589.40mn) exceeds A. Total Regulatory Capital (28,361.26mn)."
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 691205.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 671136.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Total Deposits / Deposits and Other Accounts",
+      "value": 431431.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_investment",
+      "original_metric_name": "Total Investments",
+      "value": 609513.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "contingent_liabilities",
+      "original_metric_name": "Total Contingent Liabilities and Commitments",
+      "value": 13045.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Profit after tax & provision / Net Profit/(Loss) after Tax",
+      "value": -3993.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total Profit/(Loss) before Taxes",
+      "value": -3818.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_investments",
+      "original_metric_name": "Amount of Classified Investments",
+      "value": 559203.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Annexure-B figure (91.75% of total investments). Two other classified-investment figures appear elsewhere in the same audited financial statements and are NOT reconciled with this one: Note 8.9's CL-classification base of BDT 507,341.46mn (83.24%), and the Auditors' going-concern paragraph's estimate of ~Tk 49,439 crore / ~BDT 494,390mn (~81%). See period_note."
+    },
+    {
+      "normalised_metric_name": "provision_classified",
+      "original_metric_name": "Provision kept against Classified Investments",
+      "value": 15753.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_required_per_cl",
+      "original_metric_name": "Note 8.9: Total Required Provision against Investments as per CL",
+      "value": 494979.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "The Auditors' Report (Basis for Qualified Opinion) cites BDT 509,940.6mn (50,994.06 crore) for the same underlying regulatory letter -- recorded verbatim, not reconciled. See period_note."
+    },
+    {
+      "normalised_metric_name": "provision_maintained_total",
+      "original_metric_name": "Note 8.9: Total Provision Maintained (against Investments as per CL, all categories)",
+      "value": 16361.94,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_deficit_per_cl",
+      "original_metric_name": "Note 8.9: Provision (Surplus)/Deferred",
+      "value": 478617.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Regulatory forbearance letter (Bangladesh Bank DOS(CAMS)1157/41(Dividend)/2025-3100 dated 21/05/2025) permitted the Bank to finalize its audited financial statements without recognizing this deficit."
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Investment Deposit Ratio (in %)",
+      "value": 122.25,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Investment-to-Deposit ratio, the Islamic-banking equivalent of LDR. Bangladesh Bank requires <=92%."
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Percentage of Classified Investments against total Investments",
+      "value": 91.75,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "C. Capital to Risk Weighted Assets Ratio (CRAR) (A/B)*100, Solo Basis",
+      "value": 4.92,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported",
+      "metric_note": "Regulatory requirement is 12.50% (10% minimum CRAR + 2.5% capital conservation buffer). First year CAR is available for this bank in this dataset (FY2011-2019 reported CAR directly; FY2020-2023 source tables reported Total Capital Fund only, not the ratio -- see insights.json data_gaps). The Auditors' Report separately notes that if the full assessed provision shortfall (~Tk 50,994 crore) were recognized, CRAR would deteriorate to approximately (80.00%); a Bangladesh Bank DBI letter dated 27/04/2025 separately computes it at (80.39%) in the Auditors' Report's Emphasis of Matter paragraph."
+    },
+    {
+      "normalised_metric_name": "cet1_ratio_pct",
+      "original_metric_name": "D. Common Equity Tier-1 To RWA (A-CET/B)*100, Solo Basis",
+      "value": 3.29,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_ratio_pct",
+      "original_metric_name": "E. Tier-1 Capital to RWA (A-CET/B)*100, Solo Basis",
+      "value": 4.33,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on Assets (ROA)(in %)",
+      "value": -0.59,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "cost_of_fund_pct",
+      "original_metric_name": "Cost of Fund",
+      "value": 9.01,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS) Restated / Net Income Per Share (Tk.)",
+      "value": -3.31,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "pe_ratio",
+      "original_metric_name": "Price Earnings Ratio (Times)",
+      "value": -1.54,
+      "unit": "ratio",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "bank_id": "PRIMEBANK",
+  "bank_name": "Prime Bank PLC",
+  "website": "https://www.primebank.com.bd",
+  "notes": "annual_reports/PRIMEBANK archive (2010-2025, 15 years) was already text-extracted by a parallel session working on this project. Unlike most other banks researched, Prime Bank's annual reports do not contain a single clean multi-year 'Financial Highlights' table for most years; data for 2016-2025 was instead assembled from the 2021 report's unusually complete 'Key Performance Analysis - Tabular Presentation' (covering 2016-2021) and the 2025 report's 'Financial Trend' (covering 2020-2025), each cross-validated against individual years' own audited Balance Sheets, which caught and corrected two small (~0.1-0.3%) discrepancies in the retrospective tables for FY2016-2017. FY2014-2015 data is comparatively thin (only a partial field set located, from a 2-year comparative table in the 2015 report), and FY2011-2013 could not be located at all within the time available. Only Q4/year-end (audited) data was extracted in that pass; Q1/Q2/Q3 unaudited interim data was researched in a later session (see the Q1/Q3 and Q2 source entries below) -- primebank.com.bd's own quarterly/half-yearly archive turned out to be a clean, unblocked, essentially complete 2010-2025 series (48 filings), giving this bank one of the longest and most complete quarterly time series in the whole dataset, spanning further back (to 2010) than its own Q4/annual series (which starts 2014).",
+  "sources": [
+    {
+      "period": "2014-2015 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "primebank-annual-report-2015.txt (\"Financial Highlights - PBL\", p.221)",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_partial",
+      "used_for_years": [2014, 2015],
+      "note": "Only a partial field set located; total equity, total liabilities, and full capital/EPS breakdown not confirmed for either year via this table."
+    },
+    {
+      "period": "2016-2021 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "primebank-annual-report-2021.txt (\"Key Performance Analysis - Tabular Presentation\", p.119-121)",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2016, 2017, 2018, 2019, 2020, 2021],
+      "note": "Total assets for FY2016 and FY2017 were corrected to match those years' own audited Balance Sheets (BDT 272,224mn and BDT 281,275mn respectively) after this retrospective table's figures (BDT 271,439mn and BDT 281,467mn) were found to differ by ~0.1-0.3% when cross-checked. FY2019 also independently cross-validated against that year's own Balance Sheet, exact match."
+    },
+    {
+      "period": "2022-2023 (Q4)",
+      "type": "annual_report_own_balance_sheet",
+      "source_document": "primebank-annual-report-2023.txt (own audited Balance Sheet, Solo basis, and comparative column)",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2022, 2023],
+      "note": "Total shareholders' equity for both years shows a notable (~4%) difference from the 2025 report's later comparative figures (see the FY2022/FY2023 quarterly records' period_notes); the 2023 report's own (earlier, contemporaneous) figures are used here. Income-statement detail (interest income/expense breakdown, operating income/expense split) not extracted for these two years, only balance-sheet aggregates and key ratios; time-boxed given the depth already achieved for 2016-2021 and 2024-2025."
+    },
+    {
+      "period": "2024-2025 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "primebank-annual-report-2025.txt (\"Financial Trend\", p.86-88)",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2024, 2025]
+    },
+    {
+      "period": "2011-2013 (Q4)",
+      "type": "not_yet_available",
+      "status": "not_started",
+      "notes": "Could not locate a usable multi-year summary table or direct balance sheet reference for these years within the time available; the 2010 and 2011-2013 report text files are present in the local archive but were not deep-searched for individual balance sheets."
+    },
+    {
+      "period": "2016-2025 Q1/Q3, 2012 & 2014-2025 Q2 (unaudited interim)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "primebank-unaudited-{q1,h1,q3}-<year>.txt (one file per period, native-text PDFs)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2012, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+      "note": "Found primebank.com.bd's own quarterly/half-yearly disclosure archive at https://www.primebank.com.bd/quarterly-half-yearly-reports (confirmed working, not WAF-blocked): 48 filings spanning 2010-2025 (Q1/Half-Yearly/Q3 every year) plus 2 more for 2026 (Q1, H1), matching the ~50-PDF estimate exactly. These periods' PDFs were genuine text-layer (non-scanned) and extracted cleanly with pdftotext -layout. Each document contains a Consolidated section followed by a Solo (Bank-only) section for both Balance Sheet and Profit & Loss; SOLO is used throughout per project convention. Q3 filings from 2016-2020 and ALL H1 filings show a 4-column P&L (cumulative + discrete-quarter, each with a comparative); the cumulative pair (first two columns) was used -- an initial parser pass mistakenly extracted the discrete-quarter columns for these, caught by re-deriving the Q2/Q3-2024 figures and cross-checking against the annual report's own embedded 'Quarterly Performance' table (see 2024 sources), then fixed and re-validated against every period. nav_per_share genuinely not disclosed in 2012, 2014, 2016, 2017, and the 2018 Q1 filing specifically (present from 2018 H1 onward) -- left null rather than fabricated. 2022 H1's 'borrowings' balance-sheet row lost its label text during extraction (note ref '12a' and the two amounts survived); position plus an exact liabilities-sum reconciliation (borrowings+deposits+other_liabilities=total_liabilities) confirms the value with high confidence."
+    },
+    {
+      "period": "2010-2011, 2012-2013 Q1/Q3, 2015 Q1/Q3, 2025 Q3 (unaudited interim, scanned)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "primebank-unaudited-{q1,h1,q3}-<year>-ocr.txt (Tesseract OCR transcripts, reference only)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2010, 2011, 2012, 2013, 2015, 2025],
+      "note": "These filings' PDFs were image-based (scanned), not text-layer -- 2010-2013 used a dense single-'poster'-page format (2011 H1 was an unusual 25MB/20400px-tall single page, sliced into vertical segments to read), 2015 Q1/Q3 and 2014 Q1/Q3 used an 8-page scanned format, 2025 Q3 was unexpectedly a 7.6MB scanned PDF despite every neighboring quarter being a normal ~0.8MB text PDF. Figures were read directly off high-resolution (150-300 DPI) page renders of the original documents -- NOT trusted from raw OCR text, which was demonstrably unreliable on a first pass (e.g. digit transpositions found and corrected in 2012 Q1 and 2013 Q3 total_liabilities via the balance-sheet identity check; several 2011 Q3/2012 Q3/2013 Q3 P&L figures were mis-transcribed on an initial read and had to be re-verified against a zoomed crop). Every period's balance-sheet identity (assets=liabilities+equity) and P&L arithmetic chain (opincome-opexpense=opprofit; opprofit-provision=PBT; PBT-tax=PAT) reconciles exactly. A best-effort Tesseract OCR transcript of the same pages is kept in annual_reports/PRIMEBANK/ as *-ocr.txt for reference/future re-verification, but is not itself the source of the JSON figures. 2010 Q1 and Q3 are CONSOLIDATED-ONLY (this vintage's Q1/Q3 disclosure format had no separate Solo section at all, unlike its own H1 filing which did); 2013 Q1 is also CONSOLIDATED-ONLY (used an older thin single-page template unlike the taller dual-section format its own Q3 filing used that same year) -- both explicitly flagged per project convention. All other periods in this group are Solo."
+    },
+    {
+      "period": "2013 H1 (unaudited interim, text extraction with cleanup)",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "primebank-unaudited-h1-2013.txt",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2013],
+      "note": "Text-layer PDF, but pdftotext output had a font-kerning glitch inserting spurious spaces inside words (e.g. 'B alance' for 'Balance', 'T otal' for 'Total') that broke section-header detection; fixed with a targeted regex join and re-extracted from the cleaned text (kept as the retained .txt, no OCR needed). Genuine loss half-year, Solo net loss -679,326,543 (EPS -0.66), driven by a large specific loan-loss provision spike; the loss trajectory cross-validates exactly across three independent documents' comparative columns (this filing, 2014 Q1's Jan-Mar'13 comparative, and 2014 Q3's Jan-Sep'13 comparative all agree to within BDT 1)."
+    },
+    {
+      "period": "PDF archive coverage note",
+      "type": "meta",
+      "note": "All 50 PDFs in the archive (2010-2025 x 3 + 2026 Q1/H1) were downloaded and inspected; 2026 H1 was found to also be a scanned/image PDF (8.1MB) and was NOT processed (out of the requested 2010-2025 scope; a genuine gap, not a fabrication) -- left as a future-session item if 2026 quarterly coverage is ever prioritized. Every PDF was deleted after extraction per project policy; only structured JSON + retained source .txt remain."
+    }
+  ]
+}

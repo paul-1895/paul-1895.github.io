@@ -1,0 +1,70 @@
+{
+  "bank_id": "CITYBANK",
+  "generated_at": "2026-08-27",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json or bank_financials/CITYBANK/quarterly/<period>.json.",
+  "risk_signals": [
+    {
+      "category": "asset_quality_strength",
+      "severity": "info",
+      "statement": "NPL ratio fell from 7.6% (FY2015) to 3.6% (FY2023), ticked up marginally to 3.7% (FY2024), then fell to a series-low 2.5% (FY2025) \u2014 City Bank's asset quality did not follow the sector-wide FY2024 deterioration documented elsewhere in this dataset, where median NPL rose from 5.48% to 9.55%. Provision coverage stayed above 100% throughout (110.1% FY2023, 106.8% FY2024, 127.0% FY2025).",
+      "metrics": [
+        "npl_ratio_pct",
+        "provision_coverage_pct"
+      ],
+      "periods": [
+        "2015_Q4",
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "profitability",
+      "severity": "info",
+      "statement": "ROE rose from 17.6% (FY2023) to a series-high 26.1% (FY2024) and remained strong at 24.4% (FY2025); CAR stayed comfortably above regulatory minimums across the same window (15.8% to 16.0% to 15.7%) \u2014 profitability and capital strength continued to move together through the FY2024-2025 period that stressed much of the DSE banking sector.",
+      "metrics": [
+        "roe_pct",
+        "car_pct"
+      ],
+      "periods": [
+        "2018_Q4",
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "earnings_quality_shift",
+      "severity": "warning",
+      "statement": "Reported profit growth in FY2024-2025 masks a sharp change in its source. Net Interest Income fell from 15,831m (FY2023) to 14,490m (FY2024, per the FY2024 report's own contemporaneous figures) to just 2,847m (FY2025) \u2014 a 76.4% YoY drop \u2014 as the average cost of deposits rose from 3.5% (FY2023) to 4.9% (FY2024) to 5.5% (FY2025), outpacing the rise in yield on advances (8.0% to 9.9% to 10.5%). The bank offset this entirely by more than doubling Investment Income (4,713m FY2023 to 16,615m FY2024 to 35,619m FY2025) as Investments grew from 13.1% to 19.2% to 23.9% of total assets over the same three years. Earnings quality has shifted from core lending spread toward interest-rate-sensitive government-securities income, which is a less durable profit source than the loan-book margin it replaced.",
+      "metrics": [
+        "nim_pct",
+        "roe_pct"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "funding_structure",
+      "severity": "info",
+      "statement": "Newly-recovered 2017-2021 interim quarters show City Bank's simple loan-to-deposit ratio (gross loans / customer deposits) running persistently above 100% through its expansion phase -- 101.8% (2017 Q2), 108.9% (2017 Q3), 101.9% (2018 Q2), 105.5% (2018 Q3), 116.7% (2019 Q1), 111.6% (2019 Q2), 106.9% (2019 Q3), 102.3% (2020 Q1), 106.4% (2020 Q2), 105.6% (2021 Q2) -- versus 94-101% in 2012-2016. This is a simple calculated ratio (not the regulatory LDR the bank reports from FY2022 onward on a different basis, e.g. 83.2% for FY2022) but the multi-year direction is consistent with the Tier-II subordinate bond and interbank borrowings lines growing several-fold (from BDT 3.0bn to BDT 9.2bn subordinated debt alone) over the same 2017-2021 window in the underlying quarterly balance sheets -- i.e. loan-book growth during this period was increasingly funded by wholesale borrowing/bonds rather than customer deposits alone.",
+      "metrics": [
+        "ldr_pct"
+      ],
+      "periods": [
+        "2017_Q2",
+        "2017_Q3",
+        "2019_Q1",
+        "2020_Q2",
+        "2021_Q2"
+      ]
+    }
+  ],
+  "historical_context": "City Bank is now one of the clearest positive outliers in this dataset through the FY2024-2025 Bangladesh banking-sector crisis window: NPL improved (3.6% to 2.5%) while the sector median rose from 5.48% to 9.55%, and ROE improved (17.6% to 24.4%) while several DSE banks recorded provisioning-driven losses or balance-sheet insolvency (NBL, AB Bank) in the same window. This confirms and strengthens the pattern already noted alongside BRAC Bank for 2022-2023. However, the composition of City Bank's FY2024-2025 profit changed materially, shifting toward treasury/government-securities income and away from core net interest income (see earnings_quality_shift signal) \u2014 the headline ROE strength is increasingly a treasury-income story. Discrete quarterly cumulative figures also imply Q3 2025 alone had negative net interest income (cumulative-to-Sep 1,455m is below cumulative-to-Jun 1,741m), consistent with the FY2025 annual report's own commentary that funding-cost pressure intensified through the year.",
+  "data_gaps": "2011-2021 Q1/Q2/Q3 now have full quarterly detail (balance sheet + income statement), recovered from the bank's own primary interim financial statements across two backfill sessions (2026-08-27); only 2011-2014 Q4 remain total-assets-only (sourced from later annual reports' summary charts/comparative columns, which did not disclose deposits/loans/equity for those specific year-end dates). Four quarters remain genuine, confirmed-unrecoverable gaps: 2018 Q1 (the bank's own archive links a generic placeholder PDF with no financial content for this slot), and 2020 Q3, 2021 Q1, 2021 Q3 (absent from the bank's live archive and from Wayback Machine across all of its domains -- these interim statements appear to have never been published online). Q1/Q2/Q3 income-statement figures for 2011-2025 are cumulative-from-January, not discrete quarters, as originally published by the bank; ROE/ROA for those interim quarters are calculated from period-end (not average) balances and are NOT annualized (matching this dataset's existing 2022+ interim convention), so are directionally but not precisely comparable to the reported year-end ROE/ROA figures, and should not be compared to each other as a run-rate across quarters within a year. NAV per share is a genuine gap for all interim quarters before 2019 Q1 (the earliest primary filing in the recovered series to include an explicit NAV note); before that, NAV was simply not disclosed in the bank's own one-page interim statements. FY2024 has small, well-documented restatements between the FY2024 report's own figures and the FY2025 report's FY2024 comparative column -- Investments/Total Assets +713m (+0.1-0.5%), Total Equity +303m (+0.66%), Net Interest Income/Operating Income/Operating Expenses each +~253m (bottom-line Operating Profit and PAT unaffected); see sources.json and each 2024 quarter's period_note for the full breakdown. This dataset keeps the contemporaneous FY2024 figures throughout. FY2025's own Key Ratios table also contains an internal Cash Reserve Ratio arithmetic inconsistency (reported 'Surplus' of 23,740 does not equal Actual minus Required reserve) that is not part of this dataset's stored schema; noted in sources.json for visibility only."
+}

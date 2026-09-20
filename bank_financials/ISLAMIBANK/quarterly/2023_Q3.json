@@ -1,0 +1,321 @@
+{
+  "bank_id": "ISLAMIBANK",
+  "bank_name": "Islami Bank Bangladesh PLC",
+  "reporting_date": "2023-09-30",
+  "financial_year": 2023,
+  "quarter": "Q3",
+  "period_note": "SOLO / STANDALONE basis (the report also contains a Consolidated version including two subsidiaries, Islami Bank Securities Ltd and Islami Bank Capital Management Ltd, which is not used here per this dataset's solo-preferred convention). Income-statement items are CUMULATIVE from 1 January 2023 (the filing's own '01 January to 30 September 2023' column; a separate discrete '01 July to 30 September' column also exists in the source and is not used, for consistency with the rest of the series). Source is a scanned/signed copy (Canon scanner) with no text layer; extracted via tesseract OCR and cross-validated internally. Balance sheet ties exactly: total liabilities 1,836,294,174,805 + equity 69,434,696,463 = total assets 1,905,728,871,268, an exact match; the 4 equity sub-lines (paid-up capital, statutory reserve, other reserves, retained earnings) sum exactly to total equity; Note 15.0's 6 other-reserves sub-lines sum exactly to the printed other-reserves total; Note 11.0's 22 other-liabilities sub-lines sum to 155,676,222,459 against a printed total of 155,676,222,461 (a 2-Taka rounding difference, immaterial) -- this Note 11.0 total, plus the separately-printed 'Deferred tax liabilities' balance-sheet line (1,309,429,956), together reproduce total liabilities exactly when combined with placement-from-banks, deposits and the Mudaraba Bond line, so 'other_liabilities' below is recorded as the SUM of the 'Other liabilities' and 'Deferred tax liabilities' balance-sheet lines (156,985,652,417), matching the combining convention already used in 2023_Q2.json and 2024_Q1.json. The balance sheet's 'Mudaraba Bond' (31,000,000,000) is the parent of 'Mudaraba perpetual bond' (11,000,000,000) and 'Mudaraba redeemable subordinated bond' (20,000,000,000), which sum to it exactly and are not additive on top of it. P&L ties exactly: Total operating income (42,280,994,460) minus Total operating expenses (27,334,531,275) reproduces Profit before provision (14,946,463,186, off by Tk 1 rounding); Profit before provision minus Total provision (4,611,205,119) reproduces Total profit before taxes (10,335,258,067) exactly; PBT minus 'Provision for taxation for the period' (6,179,873,404, the full tax charge -- 'Deferred tax' of Tk 123,811,951 is a memo sub-component, not additive) reproduces Net profit after tax (4,155,384,663) exactly. OCR issues found and resolved, none affecting an exported field's reliability: (1) the Commission/exchange/brokerage income cumulative cell was dropped by OCR from its own row (only a stray '6,522,817,927' survived, unlabelled); recovered as Total operating income minus the other three legible components (Net investment income, income from shares, other operating income), which reproduces that exact same stray figure -- independently reconfirmed against Note 17.0's own separately-printed total (6,522,817,927) for the same period, so this is the correct, fully-validated cumulative figure, used below. (2) 'Provision for diminution in value of investments in shares' printed as an implausible 74,671,734 that is inconsistent with Total provision and with the Consolidated section's own figure for the same period (141,987,844); not used, since the schema only stores the already-legible, independently-tying 'Total provision' figure (4,611,205,119), not its sub-components. (3) Note 11.1's per-category Opening-Balance and Closing-Balance rows lost several cells to OCR (notably the 'General Provision for Unclassified Investment' row's own values, and the Off-Balance-Sheet addition's sign); recovered via the Opening+Addition=Closing identity at both the component and total level: Opening Classified (42,073,970,000, independently cross-confirmed against the identical figure printed as the 1-Jan-2023 comparative in 2024_Q2.json's own source document), plus Classified addition during the period (4,051,990,000, printed), reproduces the Classified closing balance (46,125,960,000) exactly; the Off-Balance-Sheet addition was printed as a positive 765,130,000 but must be -765,130,000 (a release, not an addition) for Opening (2,136,030,000) + Addition = Closing (1,370,900,000) to hold -- the same recurring dropped-negative-sign OCR pattern already documented for this source in other quarters; the derived Unclassified/General addition (1,012,880,000, itself backed out from the Total addition of 4,299,740,000 minus the Classified and corrected Off-BS additions) then reproduces a Total Closing balance of 64,180,300,000 that matches Note 11.1's own printed 'e. Closing balance (c+d)' figure exactly (Opening 59,880,560,000 + Total addition 4,299,740,000 = 64,180,300,000), confirming full internal consistency; a separate reference to this same total inside Note 11.0 prints 64,180,203,545 (a ~97,000-Taka OCR discrepancy against Note 11.1's own tying figure), and Note 11.1's self-consistent value is used. This interim filing does not disclose the absolute Classified Investment balance, only the provision held/movement against it (Note 11.1), so classified_loans and npl_pct are not available.",
+  "source": {
+    "source_document": "islamibank-quarterly-2023-q3.txt",
+    "source_path": "annual_reports/ISLAMIBANK/islamibank-quarterly-2023-q3.txt",
+    "source_url": "https://www.islamibankbd.com/public/assets/financial-report/1698561190_3rd%20Quarter%20Financial%20Statements%20(Un-audited)%20September%202023.pdf",
+    "source_page_lines": "Condensed Balance Sheet (Un-Audited) and Condensed Profit & Loss Account (Un-Audited), Solo basis, plus Note 11.1 -- scanned PDF, OCR'd via tesseract (no native text layer; Creator: Canon scanner)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments in shares & securities",
+      "value": 86240.195881,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_investment",
+      "original_metric_name": "Investments (General investments etc. + Bills purchased & discounted)",
+      "value": 1581833.356466,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "General investments etc.",
+      "value": 1410413.028975,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "bills_purchased_discounted",
+      "original_metric_name": "Bills purchased & discounted",
+      "value": 171420.327491,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises",
+      "value": 15948.589202,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other assets",
+      "value": 61391.568838,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total property and assets",
+      "value": 1905728.871268,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits & other accounts",
+      "value": 1491297.080571,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "subordinated_mudaraba_bond",
+      "original_metric_name": "Mudaraba Bond (incl. Mudaraba perpetual bond and Mudaraba redeemable subordinated bond sub-components)",
+      "value": 31000.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Other liabilities (incl. deferred tax liabilities of 1,309,429,956)",
+      "value": 156985.652417,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 1836294.174805,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up capital",
+      "value": 16099.90668,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 21735.466258,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserves",
+      "original_metric_name": "Other reserves",
+      "value": 26549.761443,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained earnings",
+      "value": 5049.562082,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Capital/shareholders' equity",
+      "value": 69434.696463,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off-balance sheet items including contingent liabilities",
+      "value": 249649.196207,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per share",
+      "value": 43.13,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits_cumulative",
+      "original_metric_name": "Profit paid on mudaraba deposits (01 January to 30 September 2023)",
+      "value": 48945.295739,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net investment income (01 January to 30 September 2023)",
+      "value": 26428.753965,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_from_shares_cumulative",
+      "original_metric_name": "Income from investments in shares & securities",
+      "value": 2725.443566,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage_income_cumulative",
+      "original_metric_name": "Commission, exchange & brokerage income (recovered via Total operating income identity after an OCR drop; independently confirmed exact against Note 17.0's own printed total for the same period)",
+      "value": 6522.817927,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_components"
+    },
+    {
+      "normalised_metric_name": "other_operating_income_cumulative",
+      "original_metric_name": "Other operating income",
+      "value": 6603.979002,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income_cumulative",
+      "original_metric_name": "Total operating income",
+      "value": 42280.99446,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses",
+      "value": 27334.531275,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_provision_cumulative",
+      "original_metric_name": "Profit/(loss) before provision",
+      "value": 14946.463186,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge_cumulative",
+      "original_metric_name": "Total provision (investments & off-balance sheet items + diminution in value of shares + other provisions)",
+      "value": 4611.205119,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax_cumulative",
+      "original_metric_name": "Total profit/(loss) before taxes",
+      "value": 10335.258067,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense_cumulative",
+      "original_metric_name": "Provision for taxation for the period (full tax charge; 'Deferred tax' of 123,811,951 is a memo sub-component of this, not additive)",
+      "value": 6179.873404,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net profit/(loss) after tax",
+      "value": 4155.384663,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings Per Share (EPS)",
+      "value": 2.58,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_total_opening",
+      "original_metric_name": "Note 11.1: a. Opening balance (provision for un-classified, classified investment and off-balance sheet items, as at 1 Jan 2023 = 31 Dec 2022 closing)",
+      "value": 59880.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_total_closing",
+      "original_metric_name": "Note 11.1: e. Closing balance (c+d) (as at 30 September 2023)",
+      "value": 64180.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_classified_closing",
+      "original_metric_name": "Note 11.1: Provision for Classified Investment (closing balance, as at 30 September 2023; recovered as Opening 42,073,970,000 + Addition 4,051,990,000, since the printed row merged both columns into one figure)",
+      "value": 46125.96,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_components"
+    },
+    {
+      "normalised_metric_name": "provision_unclassified_closing",
+      "original_metric_name": "Note 11.1: General Provision for Unclassified Investment including OBU (closing balance; recovered as Total closing minus Classified and Off-Balance-Sheet closing, since OCR dropped this row's own values)",
+      "value": 16683.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_components"
+    },
+    {
+      "normalised_metric_name": "provision_off_bs_closing",
+      "original_metric_name": "Note 11.1: Provision for Off-Balance Sheet items (closing balance)",
+      "value": 1370.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_classified_added_cumulative",
+      "original_metric_name": "Note 11.1: d. Provision made during the period -- Provision for Classified Investment (01 Jan to 30 Sep 2023)",
+      "value": 4051.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_total_added_cumulative",
+      "original_metric_name": "Note 11.1: d. Provision made during the period -- Total (01 Jan to 30 Sep 2023)",
+      "value": 4299.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

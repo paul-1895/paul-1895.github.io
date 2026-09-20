@@ -1,0 +1,53 @@
+{
+  "bank_id": "EBL",
+  "generated_at": "2026-08-25",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "resilience_through_2024",
+      "severity": "info",
+      "statement": "Unlike Dhaka Bank, Dutch-Bangla Bank, AB Bank, and Al-Arafah Islami Bank in this dataset, EBL shows no FY2024 stress dip: NPL ratio kept falling from FY2020's 2.72% through most of the period, ROE rose every year from FY2021 (15.51%) to FY2025 (19.13%), and CAR stayed in a tight, healthy 14-15.5% band. FY2025's NPL ratio (2.24%) is the lowest in the full 15-year series.",
+      "metrics": ["npl_ratio_pct", "roe_pct"],
+      "periods": ["2020_Q4", "2024_Q4", "2025_Q4"]
+    },
+    {
+      "category": "early_period_capital_thinness",
+      "severity": "info",
+      "statement": "CAR was noticeably thinner in the early part of the series, bottoming at 10.18% in FY2011 (barely above the regulatory minimum) before climbing steadily to a consistent 12-15.5% range from FY2015 onward — the opposite trajectory from banks in this dataset that weakened over time.",
+      "metrics": ["car_pct"],
+      "periods": ["2011_Q4", "2015_Q4", "2025_Q4"]
+    },
+    {
+      "category": "sustained_profitability",
+      "severity": "info",
+      "statement": "ROE has stayed above 10% in every one of the 15 years, with a high of 19.13% in FY2025 and a low of 10.93% in FY2014 — one of the more consistently profitable banks researched in this dataset.",
+      "metrics": ["roe_pct"],
+      "periods": ["2014_Q4", "2025_Q4"]
+    },
+    {
+      "category": "growth",
+      "severity": "info",
+      "statement": "Total assets grew from BDT 117.6bn (FY2011) to BDT 761.6bn (FY2025), a 6.5x increase (13.9% CAGR), with the fastest acceleration from FY2021 onward (BDT 388.8bn to BDT 761.6bn in 4 years).",
+      "metrics": ["total_assets"],
+      "periods": ["2011_Q4", "2021_Q4", "2025_Q4"]
+    }
+  ],
+  "historical_context": "EBL stands out in this dataset as one of the few banks with no FY2024 sector-stress signal — NPL ratio and ROE both improved through FY2024 and FY2025 while several peers (Dhaka Bank, Dutch-Bangla Bank, AB Bank, Al-Arafah Islami Bank) show a clear NPL spike and profitability dip in FY2024. Combined with a CAR that has stayed comfortably above the regulatory minimum for a decade, this points to EBL being a comparatively resilient credit through the recent Bangladesh banking-sector stress period covered by this dataset.",
+  "data_gaps": "Q4/year-end (audited) data is available for all 15 years 2011-2025. Q1/Q2(Half-Yearly)/Q3 unaudited interim data has now been backfilled for 2017-2026 (30 quarters; 2026 partial through Q2, Q3 2026 not yet due as of the 2026-08-26 retrieval date) — see quarterly/<year>_Q1.json etc. 2011-2016 interim reports were located on ebl.com.bd (~18 more quarters, PDFs downloaded and verified but not yet parsed into this dataset) and remain a genuine gap pending a future session; this is a time-boxing gap, not a source-availability gap. Total liabilities was not directly reported in the annual report's source tables for any year and is calculated as total assets minus shareholders' equity throughout (both Q4 and the new interim quarters), so the balance-sheet-identity check for this bank is definitionally exact rather than an independent cross-check.",
+  "intra_year_patterns": [
+    {
+      "category": "seasonal_q2_bonus_share_issue",
+      "severity": "info",
+      "statement": "EBL's paid-up capital jumps between the Q1 and Q2 (Half-Yearly) interim filings in 8 of the 10 years checked (2017, 2019, 2021, 2022, 2023, 2024, 2025, 2026) — a bonus share issue and cash dividend payment for the prior fiscal year, approved at the AGM, consistently lands in Q2 (Apr-Jun). Paid-up capital is flat Q1-to-Q2 in exactly two years, 2018 and 2020; the 2020 gap coincides with Bangladesh's COVID-19 lockdown period, a plausible AGM-delay explanation. This also explains a recurring artifact: a bank's EPS for a given Q1/H1 is often shown as a smaller '(restated)' figure in later reports' comparative columns than the value the contemporaneous report itself stated, purely from the enlarged post-bonus share count under IAS 33 — the underlying PAT is unchanged (confirmed identical in every instance checked, e.g. 2025_Q1.json's contemporaneous EPS 1.33 vs 2026_Q1.json's comparative-column EPS 1.13 for the same quarter, same PAT 1,805,234,242 both times).",
+      "metrics": ["eps", "equity"],
+      "periods": ["2017_Q1", "2017_Q2", "2019_Q1", "2019_Q2", "2020_Q1", "2020_Q2", "2021_Q2", "2022_Q2", "2023_Q2", "2024_Q2", "2025_Q2", "2026_Q2"]
+    },
+    {
+      "category": "ldr_structural_decline_2025_2026",
+      "severity": "info",
+      "statement": "The loan-to-deposit ratio (calculated) has fallen sharply and steadily from a 96-98% band throughout 2022-2023 to 76.6% by 2026_Q2 — deposits have grown considerably faster than the loan book over the last two years (e.g. total_deposits +24.0% YoY vs gross_loans +3.9% YoY at 2026_Q2), a distinct funding/balance-sheet-mix shift not visible in the Q4-only series, which only shows LDR settling in the high-80s/mid-90s by FY2024-2025 without revealing how much further it continued falling intra-2026.",
+      "metrics": ["ldr_pct", "total_deposits", "gross_loans"],
+      "periods": ["2023_Q1", "2024_Q4", "2025_Q4", "2026_Q1", "2026_Q2"]
+    }
+  ]
+}

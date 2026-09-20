@@ -1,0 +1,157 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2024-09-30",
+  "financial_year": 2024,
+  "quarter": "Q3",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account from National Bank's Q3-2024 unaudited financial statements; plain 'Balance Sheet (Un-audited)'/'Profit and Loss Account (Un-audited)' sections used (Solo+OBU basis). Comparative column (31 Dec 2023) reproduces the known FY2023 equity of 23189.24m exactly. Equity fell further to 5469.19m (Sep 2024) from 12390.74m (Jun 2024) -- STILL POSITIVE but now very thin, less than a quarter of the paid-up capital. The Statement of Changes in Equity in this filing shows a 'Prior year's adjustment' of +152.80m added to opening retained earnings, which reconciles the small (~154m) gap between the discrete Q3 loss (-7075.78m) and the quarter's actual equity decline (-6921.55m). Income-statement items are CUMULATIVE from 1 January 2024 (9-month figures; first of four P&L columns). RESTATEMENT FOUND: this dataset's own later 2025_Q3 filing's comparative column for the same Jan-Sep 2024 period shows Net Profit after taxation of -13,605,707,399 (Taka), materially different from -17,873,515,228 as reported contemporaneously here in the bank's own Q3-2024 filing -- a difference of exactly 4,267,807,829, which equals a tax credit shown in the 2025_Q3 filing's Jan-Jun-2024 comparative deferred-tax line. Per this dataset's standing rule (prefer the contemporaneous figure; record but do not silently apply a later restatement), the -17,873.52m figure from this bank's own Q3-2024 report is used and preferred here; the divergence is also recorded in sources.json. Cross-check against press coverage: The Business Standard (30 Oct 2024, reporting on this same disclosure) cited a CONSOLIDATED nine-month loss of 'Tk1,768 crore' (17,680m) and consolidated EPS of -5.49, both close to but not identical to this SOLO filing's -17,873.52m / -5.55 -- consistent with an expected small solo-vs-consolidated gap, not a data error. As in prior quarters, 'Total operating income' and 'Profit before provision' print without their negative sign despite being losses; corrected via the identity chain and cross-checked against the explicitly-parenthesized 'Profit before taxes' and 'Net Profit after taxation' lines (identical, confirming zero provision and zero tax this period). Source PDF was image-only; text obtained via OCR (tesseract, 300dpi).",
+  "source": {
+    "source_document": "FS SEP-24-10292024184529.pdf (bank's own filename)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-2024-q3-ocr.txt",
+    "source_url": "https://www.nblbd.com/public/assets/financial-statement/1730982513_FS%20SEP-24-10292024184529.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections",
+    "retrieval_date": "2026-08-27",
+    "cross_check_source": "https://www.tbsnews.net/economy/stocks/national-bank-incurs-loss-tk1768cr-nine-months-979786 (The Business Standard, 30 Oct 2024) -- consolidated 9M-2024 loss Tk1,768cr and EPS -5.49, corroborating this filing's solo figures in the same range."
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 489104.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 483634.85,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 5469.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 383677.48,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 427449.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 42888.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off B/S items (Including contingent liabilities)",
+      "value": 41397.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value per share (NAV)",
+      "value": 1.7,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest income (cumulative from Jan 1)",
+      "value": 12107.94,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense_cumulative",
+      "original_metric_name": "Interest paid on deposits and borrowings (cumulative from Jan 1)",
+      "value": 26475.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": -14367.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 5648.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)",
+      "value": 995.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (344.47m) and other operating income (650.95m)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 10150.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": -17873.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_sign_corrected",
+      "note": "Source text printed 17,873,515,228 without a negative sign; confirmed a loss via identity, and equals Profit before taxes and PAT exactly since provision and tax were both zero this period. This is the CONTEMPORANEOUS figure, preferred over a later restated comparative of -13,605,707,399 found in the 2025_Q3 filing -- see period_note."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after taxation (cumulative from Jan 1)",
+      "value": -17873.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "RESTATEMENT: a later report (2025_Q3 filing's Jan-Sep-2024 comparative column) shows -13,605.71m instead. This contemporaneous figure is preferred per this dataset's standing rule; both are recorded in sources.json."
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share-(Re-stated) (cumulative from Jan 1)",
+      "value": -5.55,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

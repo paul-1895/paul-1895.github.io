@@ -1,0 +1,257 @@
+{
+  "bank_id": "ABBANK",
+  "bank_name": "AB Bank PLC",
+  "reporting_date": "2020-09-30",
+  "financial_year": 2020,
+  "quarter": "Q3",
+  "period_note": "Unaudited quarterly financial statements (separate/solo, Bank-only, excludes subsidiaries). Balance sheet is the 30-Sep-2020 snapshot (reported). Income-statement items below are the DISCRETE Jul-Sep 2020 quarter, taken directly from the statement's own 4-column layout (Jan-Sep'20, Jan-Sep'19, Jul-Sep'20, Jul-Sep'19) — the header row is garbled ('Jan - Sept' repeated) but the column order was confirmed unambiguous: this report's own Jan-Sep'19/Jul-Sep'19 comparative columns match this dataset's 2019_Q3.json exactly, including EPS (0.04). This quarter's own discrete net interest income is negative (-106,873,781) — this figure was already independently visible as the 'Jul'20-Sep'20' comparative column in this dataset's 2021_Q3.json, confirming both extractions. Cumulative check closes the loop on the full 2020 series: Q1'20 (41,989,217) + Q2'20 (59,598,379) + this file's discrete Q3'20 (51,743,652) = 153,331,248, matching this report's own 9M cumulative column exactly. This URL was found in a follow-up, more thorough IR-archive search after the initial research pass (which found 2021-2025 Q3 only) — filling the one remaining gap in this bank's Q1-Q3 series.",
+  "source": {
+    "source_document": "BRPD-14-September-2020.pdf",
+    "source_url": "https://abbl.com/wp-content/uploads/2020/11/BRPD-14-September-2020.pdf",
+    "source_page": "Balance Sheet (Separate) p.~6; Profit and Loss Account (Separate) p.~8; Note 7.4 Classification of loans p.~18",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 365243792425,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 341789044808,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 23454747617,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up capital",
+      "value": 7960368300,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 6870848222,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained earnings",
+      "value": 5573536951,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "borrowings",
+      "original_metric_name": "Borrowings from other banks, financial institutions and agents",
+      "value": 22481947438,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "bonds",
+      "original_metric_name": "AB Bank Subordinated Bond",
+      "value": 6100000000,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 272474121655,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deposits_current",
+      "original_metric_name": "Current accounts and other accounts",
+      "value": 28353235521,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deposits_savings",
+      "original_metric_name": "Savings bank deposits",
+      "value": 33338089851,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deposits_fixed",
+      "original_metric_name": "Fixed deposits",
+      "value": 115956374089,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "deposits_other",
+      "original_metric_name": "Other deposits",
+      "value": 90222780261,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Other liabilities",
+      "value": 40732975715,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans, advances and lease/investments",
+      "value": 269341979075,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans_substandard",
+      "original_metric_name": "Sub-Standard (In Bangladesh)",
+      "value": 2414909317,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans_doubtful",
+      "original_metric_name": "Doubtful (In Bangladesh)",
+      "value": 3554989142,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans_bad_loss",
+      "original_metric_name": "Bad/Loss (In Bangladesh)",
+      "value": 42025007125,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans_total",
+      "original_metric_name": "Classified Loan (In Bangladesh 47,994,905,583 + Mumbai Branch 0)",
+      "value": 47994905583,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "unclassified_standard",
+      "original_metric_name": "Standard (In Bangladesh)",
+      "value": 204213018756,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "unclassified_sma",
+      "original_metric_name": "Special Mention Account (In Bangladesh)",
+      "value": 16828751038,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest income/profit on investments (Jul'20-Sep'20)",
+      "value": 4704962453,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income (Jul'20-Sep'20)",
+      "value": -106873781,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income",
+      "original_metric_name": "Total operating income (a) (Jul'20-Sep'20)",
+      "value": 2617919313,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses (b) (Jul'20-Sep'20)",
+      "value": 1449253716,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_for_loans",
+      "original_metric_name": "Total provision (d) (Jul'20-Sep'20)",
+      "value": 1275377448,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Profit before taxation (Jul'20-Sep'20)",
+      "value": -106711852,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax",
+      "original_metric_name": "Net profit after taxation (Jul'20-Sep'20)",
+      "value": 51743652,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (Jul'20-Sep'20)",
+      "value": 0.07,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_9m_cumulative",
+      "original_metric_name": "Net profit after taxation, Jan'20-Sep'20 cumulative",
+      "value": 153331248,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ],
+  "note": "Total Assets = Total Liabilities + Equity reconciles exactly. Interest income minus interest paid = net interest income exactly; PBT minus tax = net profit exactly; Q1+Q2+Q3 2020 (41,989,217 + 59,598,379 + 51,743,652 = 153,331,248) matches the report's own 9M cumulative column exactly."
+}

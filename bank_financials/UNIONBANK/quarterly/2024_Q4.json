@@ -1,0 +1,281 @@
+{
+  "bank_id": "UNIONBANK",
+  "bank_name": "Union Bank PLC",
+  "reporting_date": "2024-12-31",
+  "financial_year": 2024,
+  "quarter": "Q4",
+  "period_note": "Year-end position from the bank's own FY2024 annual report/audited financial statements, Solo (Union Bank PLC has no subsidiary; Basel-III disclosures show the 'Consolidated' column as blank/not-applicable throughout, and the bank itself states it 'is maintaining Capital to Risk Weighted Assets Ratio (CRAR)... on SOLO basis' -- confirmed in the FY2023 report). Shariah-based Islamic bank throughout its history (incorporated 07 March 2013): reports 'Investments' rather than conventional 'Loans and Advances', and 'Classified Investments' rather than 'NPL', consistent with EXIMBANK/FIRSTSBANK/GIB conventions in this dataset. CATASTROPHIC YEAR -- Bangladesh's largest-ever single-bank annual loss, negative equity, negative CRAR, going-concern doubt, and a Qualified Audit Opinion documenting fraud. Source: unionbank-annual-report-2024.txt, 'Independent Auditor's Report and Audited Financial Statement... For the year ended 31 December 2024', audited by Syful Shamsul Alam & Co. (SSAC) (Md. Emran Hoshen, ACA, Partner), signed 13 November 2025 (i.e. audited ~10.5 months after fiscal year-end) -- a QUALIFIED OPINION. Figures above are sourced from this report's own Balance Sheet, Profit and Loss Statement, and Note 12.4 'Regulatory Capital Requirement in Line with Basel-III', all of which extracted cleanly; the report's separate 'Annexure B Financial Highlights' page extracted as badly OCR-garbled/scanned text in this archive (numbers and labels fused/unreadable) and was NOT used for any figure -- the same category of extraction failure documented for FIRSTSBANK's FY2024 report by a concurrent session. \n\nBalance-sheet identity reconciles: Total Liabilities (570,884,764,097) + Total Equity (-246,052,235,580) = Total Assets (324,832,528,517, vs reported 324,832,528,518, 1 Taka rounding). Total Liabilities exceeds Total Assets because Shareholders' Equity is deeply negative. Tier1 (-246,120,726,267) + Tier2 (1,973,400,000) = Total Regulatory Capital (-244,147,326,267) exactly. CRAR = Total Regulatory Capital / Total RWA = -244,147,326,267 / 60,237,664,547 = -405.31% exactly, as the report itself states ('CRAR stands at (405.31)% where total regulatory Capital is BDT (24,414.73) crore and Risk Weighted Assets is BDT 6,023.77 crore'). Minimum Capital Requirement = 10% of RWA (BDT 602.38 crore, matching the Auditor's Report's Basis-for-Qualified-Opinion paragraph exactly); Capital Surplus/(Shortfall) = Total Regulatory Capital - Minimum Requirement = -250,171,092,721 (i.e. -BDT 25,017.11 crore, matching the Auditor's Report's own phrase 'reported a negative capital of Tk. (25,017.11) crore'). profit_before_tax - tax_expense = -257,818,892,682 - 117,792,661 = -257,936,685,343, matching reported Net Profit/(Loss) after Tax (-257,936,685,344) to within 1 Taka; operating_income - operating_expenses = -14,972,037,223 - 3,962,398,575 = -18,934,435,798 = operating_profit exactly. NOTE: this report's raw pdftotext output LOST the parenthesis/negative sign on several P&L rows (Net Investment Income, Profit/(Loss) before Provision and Tax, Deferred Tax); every such figure above was independently re-derived and confirmed negative by reconstructing it from Note 19 (Investments income, 29 line items summed exactly to BDT 5,285,789,385) minus Note 20 (Profit Paid on Deposits, summed exactly to BDT 21,184,832,524), which cross-validates against the reported Total Operating Income to the Taka. \n\nAUDITOR'S QUALIFIED OPINION -- KEY FINDINGS: (1) Required regulatory capital BDT 602.38 crore vs reported negative capital of BDT (25,017.11) crore, CRAR (405.31)%, far below the 12.50% minimum. (2) 74.20% of total Investment portfolio (BDT 20,989.72 crore) concentrated in a SINGLE BORROWER GROUP, confirmed by Bangladesh Bank at a triparty meeting dated 23 April 2025 -- breaching the 15%-of-capital regulatory ceiling under Section 26(B) of the Bank Company Act 1991 (as amended 2023); the report states this group meets the IAS 24 definition of a related party but no related-party disclosure was made (this concentration pattern mirrors the well-documented S. Alam Group exposure found at sibling banks EXIMBANK/FIRSTSBANK/GIB/SIBL in this same Bangladesh Bank resolution program, though this report does not itself name the group). (3) 'Significant irregularities' at Khatunganj and Panthapath branches: unexplained debit entries reclassified as Protested Bills (BDT 7.80 crore); Profit Suspense (BDT 1,920.88 crore) and Compensation (BDT 41.84 crore) totalling BDT 1,962.72 crore inappropriately recognised as income then reversed per Bangladesh Bank letter DBI-7/4(4)/2025-347 (29 April 2025); overstated collateral values; unverifiable borrowers; investments disbursed (BDT 91.76 crore) without prior management sanction. (4) Investment-to-Deposit Ratio 115.63% vs the 92% regulatory ceiling; CRR/SLR breached most months; a BDT 20 crore penalty charged in the P&L. (5) Negative cumulative liquidity gaps across every maturity bucket beyond one month, net liquidity gap BDT -24,605.22 crore; 95.34% of investments maturing within 1 month were already classified/non-recoverable. (6) IT systems for investment management found to have material weaknesses, including manipulated system-generated classified-investment reports. (7) Fixed assets at 37.98% of paid-up capital vs the 30% regulatory ceiling, no Fixed Asset Register or ERP system. (8) Going-concern paragraph: recurring operating losses, capital/liquidity shortfalls, breached CRR/SLR/CRAR/IDR, and -- critically -- 'on October 9, 2025, the Advisory Council of the Interim Government of Bangladesh approved the merger of this bank with other four banks, under the direction of Bangladesh Bank, to form a new state-owned Islamic bank', i.e. the merger was already approved before this FY2024 report was even signed (13 November 2025). Balance sheet signed by 'Deputy Managing Director / Associate of Administrator / Administrator' rather than the usual Managing Director/Directors/Chairman panel, confirming Bangladesh Bank had already placed the bank under administration by the time of signing. \n\nINDEPENDENT CORROBORATION (web research, 2026-08-26): Bangladesh Bank declared Union Bank 'non-viable' under Section 15 of the Bank Resolution Ordinance 2025 effective 5 November 2025 (The Business Standard); DSE suspended trading in Union Bank's shares the same date, alongside EXIM Bank, First Security Islami Bank, Global Islami Bank and Social Islami Bank; shareholders of all five banks will receive no shares in the merged entity as 'the value of assets tied to their existing shareholding is already negative' (The Daily Star); a KPMG review found an NPL ratio of 97.8% as of September 2024 (close to this dataset's 95.34% at the later, 31-December-2024 year-end) and this dataset's FY2024 net loss of BDT -257,936.69m closely matches The Daily Star's independently reported 'Tk 25,790cr' (BDT 257,900m) loss figure -- 'the biggest loss in [Bangladesh] banking history'. Union Bank was merged, together with EXIM Bank, First Security Islami Bank, Global Islami Bank and Social Islami Bank, into a new state-owned entity, Sammilito Islami Bank PLC (Letter of Intent issued by Bangladesh Bank 9 November 2025; Sammilito began operations in a phased rollout starting 2 December 2025 -- 'Bangladesh Bank removed administrators from Global Islami Bank and Union Bank, and these two banks have now merged with Sammilito Islami Bank' per one contemporaneous report -- with fuller integration by 18 August 2026 per this dataset's cross-bank research on the other four merged banks; sources differ somewhat on the exact date full independent operations began, recorded here rather than adjudicated). \n\nsingle_borrower_concentration_amount (BDT 209,897.2m, i.e. Tk 20,989.72 crore) and single_borrower_concentration_pct (74.20%) are exactly as stated in the Auditor's Report; 209,897.2 / 0.7420 = 282,879.0m implied total investment portfolio, reconciling closely with the reported gross Investments figure of 282,874.56m (~0.002% difference, i.e. consistent).",
+  "source": {
+    "source_document": "unionbank-annual-report-2024.txt",
+    "source_path": "annual_reports/UNIONBANK/unionbank-annual-report-2024.txt",
+    "source_url": "https://unionbank.com.bd",
+    "source_page_lines": "1-260 (Independent Auditor's Report, qualified opinion); 594-733 (own Balance Sheet & Profit and Loss Statement); 2818-2846 (Note 12.4 Regulatory Capital Requirement); 2176-2190 (Movement of classified Investments); 2890-2968 (Notes 19-23, Investments income / Profit Paid on Deposits / other P&L notes)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid-up Capital",
+      "value": 10362.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 3028.78,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserve",
+      "original_metric_name": "Other Reserve",
+      "value": 145.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": -259589.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": -246052.24,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 324832.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 570884.76,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 230637.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments",
+      "value": 282874.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments in Shares and Securities",
+      "value": 10178.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets Including Premises, Furniture and Fixtures",
+      "value": 5028.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other Assets",
+      "value": 3122.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet Items Including Contingent Liabilities",
+      "value": 4984.65,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_investments",
+      "original_metric_name": "Amount of Classified Investments",
+      "value": 269702.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Percentage of Classified Investments against total Investments",
+      "value": 95.34,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Total Tier 1 Capital",
+      "value": -246120.73,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Total Tier 2 Capital",
+      "value": 1973.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_regulatory_capital",
+      "original_metric_name": "Total Regulatory Capital (Tier I + Tier II)",
+      "value": -244147.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_risk_weighted_assets",
+      "original_metric_name": "Total Risk Weighted Assets",
+      "value": 60237.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "required_capital",
+      "original_metric_name": "Minimum Capital Requirement",
+      "value": 6023.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "capital_surplus_deficit",
+      "original_metric_name": "Capital Surplus/(Shortfall)",
+      "value": -250171.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital to Risk Weighted Assets Ratio (CRAR)",
+      "value": -405.31,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Total Operating Income",
+      "value": -14972.04,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total Operating Expenses",
+      "value": 3962.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit before Provision and Tax",
+      "value": -18934.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Total Provisions",
+      "value": 238884.46,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total Profit before Taxes",
+      "value": -257818.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Provision for Taxation",
+      "value": 117.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after Tax",
+      "value": -257936.69,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (Tk.)",
+      "value": -248.91,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per share",
+      "value": -237.44,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "single_borrower_concentration_pct",
+      "original_metric_name": "Single borrower/group Investment concentration, % of total Investment portfolio (Auditor's Report)",
+      "value": 74.2,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "single_borrower_concentration_amount",
+      "original_metric_name": "Single borrower/group Investment concentration amount (Auditor's Report)",
+      "value": 209897.2,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "bank_id": "JAMUNABANK",
+  "bank_name": "Jamuna Bank PLC",
+  "reporting_date": "2024-09-30",
+  "financial_year": 2024,
+  "quarter": "Q3",
+  "period_note": "P&L-summary-level only (5 line items); no balance sheet available from this source for this quarter. Sourced from Jamuna Bank's own FY2024 Annual Report's Directors' Report disclosure, \"Variance Between Quarterly Financial Performance and Annual Financial Statements\" (a BSEC-mandated disclosure of the bank's own actually-filed quarterly results) -- this is the DISCRETE quarter's own figures (Quarter-3 column), not cumulative from Jan 1: the table's own four quarterly columns sum exactly to its Annually column for all five rows (verified for every year sourced this way). Source table is already denominated in BDT Million; no conversion applied. 'non_interest_income_combined' is this table's row B (\"Non-interest income\"), which = Investment income + Commission/exchange/brokerage + Other operating income combined -- this is NOT the same quantity as the 'non_interest_income' field in this bank's own annual *_Q4.json files (which excludes investment income as its own separate line); do not compare the two directly. 'operating_profit' = this table's row E, \"Operating profit (C-D)\" = Operating income minus Operating expenses, before loan-loss provisioning, tax, EPS -- this source table does not disclose provisioning, PBT, tax, PAT, or EPS at the quarterly level, so those are not included here. This table's own Annually column for this year was cross-checked against this dataset's already-stored 2024_Q4.json figures during research for this update: net_interest_income, operating_income, operating_expenses and operating_profit annual totals match exactly to the taka for FY2024. Supplemented with operating_profit_cumulative, profit_after_tax_cumulative, eps_cumulative, nav_per_share, nocfs_cumulative sourced from the \"key features of the financial performance\" summary table in this bank's own website interim financial-statement PDF for this same quarter (JBL Solo column; a JBL-consolidated column also appears alongside but is not used, for consistency with this dataset's Solo basis) -- these are cumulative-from-Jan-1 figures (the source table is explicitly framed \"for the period ended\" the quarter-end date), a different convention from the discrete-quarter operating_profit/operating_income/etc. above; both are kept, clearly suffixed.",
+  "source": {
+    "source_document": "jamunabank-annual-report-2024.txt",
+    "source_path": "annual_reports/JAMUNABANK/jamunabank-annual-report-2024.txt",
+    "source_url": "https://www.jamunabankbd.com",
+    "source_page_lines": "8815-8827 (\"VARIANCE BETWEEN QUARTERLY FINANCIAL PERFORMANCE AND ANNUAL FINANCIAL STATEMENTS\")",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income (A)",
+      "value": 1010.41,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_combined",
+      "original_metric_name": "Non-interest income (B)",
+      "value": 3850.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Operating income (A+B)",
+      "value": 4860.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Operating expenses",
+      "value": 1966.58,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Operating profit (C-D)",
+      "value": 2894.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Operating Profit (cumulative from Jan 1, JBL Solo)",
+      "value": 7912.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Profit after taxation (cumulative from Jan 1, JBL Solo)",
+      "value": 4113.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (cumulative from Jan 1, JBL Solo)",
+      "value": 4.66,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "NAV per share (JBL Solo)",
+      "value": 26.31,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nocfs_cumulative",
+      "original_metric_name": "Net Operating Cash Flow per Share (NOCFS) (cumulative from Jan 1, JBL Solo)",
+      "value": 61.11,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

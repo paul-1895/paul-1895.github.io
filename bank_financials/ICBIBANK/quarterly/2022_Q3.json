@@ -1,0 +1,43 @@
+{
+  "bank_id": "ICBIBANK",
+  "bank_name": "ICB Islamic Bank Limited (formerly The Oriental Bank Limited / Al-Baraka Bank Bangladesh Limited)",
+  "reporting_date": "2022-09-30",
+  "financial_year": 2022,
+  "quarter": "Q3",
+  "period_note": "Balance sheet is the period-end snapshot (reported) vs 31-Dec-2021. Income-statement items recorded here are CUMULATIVE from 1 January 2022 (9-month YTD); the source also independently discloses discrete 3-month (Jul-Sep 2022) figures (net loss after tax BDT -86.36m), not stored as separate line items. SOLO/STANDALONE basis. Source PDF is a scanned filing; OCR (pdftoppm 300dpi -> tesseract 5.5.3) quality is good. The rare H1-2022 net profit recorded in 2022_Q2.json (+12.36m) reversed by this quarter: 9M-2022 cumulative is back to a net loss of -73.996m, implying a standalone Q3-2022 loss of approximately -86.36m (matching the source's own discrete-quarter column), consistent with this bank's usual loss-making pattern. Extensively cross-validated: the 9M-2021 comparative column (profit paid on deposits -329,799,995; net investment income -109,647,315; income from shares 4,479,912; commission 4,612,502; other operating income 59,162,770; total operating income -41,392,131; operating profit before provision -339,990,292; provision -30,000,000; tax 1,730,447; NOCFPS -0.15) matches 2021_Q3.json's own figures exactly (one immaterial ~1m-taka cross-report difference in the 9M-2021 operating-expenses comparative, noted but not reconciled given both readings agree to within 0.3%). Income-statement chain closes exactly (A-B=C, C-D=PBT with D printed correctly signed as a recovery this time, PBT-tax=PAT, PAT/664,702,300 shares=EPS -0.11, all matching the filing's own Notes section).",
+  "source": {
+    "source_document": "icbibank-quarterly-2022-q3.txt",
+    "source_path": "annual_reports/ICBIBANK/icbibank-quarterly-2022-q3.txt",
+    "source_url": "https://icbislamic-bd.com/wp-content/uploads/2022/12/Q-3-Financial-Statement-2022.pdf",
+    "source_page_lines": "OCR full-page text: Statement of Financial Position, Off-Balance Sheet items, Statement of Profit or Loss, Statement of Cash Flows, Selective Notes (NAV, EPS, NOCFPS, Taxation, Provision reconciliation)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    { "normalised_metric_name": "paid_up_capital", "original_metric_name": "Paid up capital", "value": 6647.023, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "statutory_reserve", "original_metric_name": "Statutory reserve", "value": 78.81, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "other_reserve", "original_metric_name": "Other reserve", "value": 456.34, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "retained_earnings_deficit", "original_metric_name": "Surplus in profit and loss account / Retained earnings", "value": -19310.24, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_equity", "original_metric_name": "Total Shareholders' equity", "value": -12128.07, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_liabilities", "original_metric_name": "Total liabilities", "value": 23087.23, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_assets", "original_metric_name": "Total assets", "value": 10959.16, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_deposits", "original_metric_name": "Deposits and other accounts", "value": 12474.6, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "borrowings", "original_metric_name": "Borrowing from banks & other financial institutions", "value": 4788.27, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "gross_investments", "original_metric_name": "Investments (General Investments etc. + Bills purchased and discounted)", "value": 8182.85, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "off_balance_sheet_exposures", "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities", "value": 237.06, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "nav_per_share", "original_metric_name": "Net Asset Value (NAV) Per Share", "value": -18.25, "unit": "BDT", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "profit_paid_on_deposits_cumulative", "original_metric_name": "Profit paid on deposits (cumulative from Jan 1)", "value": -298.33, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "net_investment_income_cumulative", "original_metric_name": "Net investment income (cumulative from Jan 1)", "value": -90.9, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "income_from_investments_in_shares_cumulative", "original_metric_name": "Income from investments in shares and securities (cumulative from Jan 1)", "value": 2.18, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "commission_exchange_brokerage_income_cumulative", "original_metric_name": "Commission, Exchange and Brokerage (cumulative from Jan 1)", "value": 24.15, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "other_operating_income_cumulative", "original_metric_name": "Other operating income (cumulative from Jan 1)", "value": 261.07, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "total_operating_income_cumulative", "original_metric_name": "Total operating income (A) (cumulative from Jan 1)", "value": 193.5, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_expenses_cumulative", "original_metric_name": "Total operating expenses (B) (cumulative from Jan 1)", "value": 304.55, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "operating_profit_cumulative", "original_metric_name": "Profit / (loss) before provision (C=A-B) (cumulative from Jan 1)", "value": -111.05, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "provision_charge_cumulative", "original_metric_name": "Total provision (D) (cumulative from Jan 1)", "value": -40.0, "unit": "BDT_million", "currency": "BDT", "basis": "reported", "metric_note": "Negative = net recovery, printed with parentheses in the source consistent with this sign." },
+    { "normalised_metric_name": "profit_before_tax_cumulative", "original_metric_name": "Total profit / (loss) before taxes (C-D) (cumulative from Jan 1)", "value": -71.05, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "tax_expense_cumulative", "original_metric_name": "Minimum Tax (cumulative from Jan 1)", "value": 2.95, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "net_profit_after_tax_cumulative", "original_metric_name": "Net profit/(loss) after taxation (cumulative from Jan 1)", "value": -74.0, "unit": "BDT_million", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "eps_cumulative", "original_metric_name": "Basic Earning per Share (EPS) (cumulative from Jan 1)", "value": -0.11, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported" },
+    { "normalised_metric_name": "nocfps_cumulative", "original_metric_name": "Net Operating Cash Flows per Share (NOCFPS) (cumulative from Jan 1)", "value": -0.6, "unit": "BDT_per_share", "currency": "BDT", "basis": "reported" }
+  ]
+}

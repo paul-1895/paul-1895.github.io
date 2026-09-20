@@ -1,0 +1,97 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2025-12-31",
+  "financial_year": 2025,
+  "quarter": "Q4",
+  "period_note": "UNLIKE every other year in this series, these FY2025 figures are NOT extracted from the bank's own annual report text. pubalibangla.com is now behind a Cloudflare 'Performing security verification' JS challenge that returned HTTP 403 to every retrieval method available to this session (direct curl with multiple User-Agents including Googlebot, WebFetch, the r.jina.ai reader proxy) and HTTP 520 (origin unreachable) to Wayback Machine's live Save-Page-Now trigger; see sources.json for the full attempt log. The FY2025 Annual Report ('Integrated Annual Report 2025') was confirmed to exist at https://pubalibangla.com/assets/pdf/Financial_Reports/annual_reports/Annual_Report_2025.pdf via Google's search index, but its bytes could not be retrieved by this session. Figures below are instead triangulated from press coverage of the bank's own audited FY2025 results as approved at its 43rd AGM (16 June 2026): Daily New Nation (UNB wire) and The Daily Corporate report identical precise figures (Tk 118,013.66 crore total assets, Tk 89,519.49 crore deposits, Tk 71,140.63 / ~71,000 crore loans and advances, Tk 1,079.56 crore net profit after tax, EPS Tk 8.30, ROE 15.51%, CRAR 15.34%), corroborated in rounded form by Bonik Barta (Bangla) and by NPL/dividend headlines repeated across The Daily Star, Financial Express, Dhaka Tribune and The Business Standard (via search-result summaries; direct fetch of tbsnews.net/dhakatribune.com/thedailystar.net/thefinancialexpress.com.bd was itself blocked by their own bot protection, HTTP 403, independent of the Pubali Bank block). total_liabilities and total_equity are NOT from press — no press source gave them — they are from stockanalysis.com (a third-party data aggregator, not the bank or press), the only source offering a complete self-consistent balance-sheet trio (its total_assets of 1,183,578m + total_liabilities 1,112,882m = equity 70,695m by construction). That aggregator's total_assets is 0.29% above the press-reported total_assets (1,180,136.6m) used for the total_assets line item here; the two were not reconciled, and stockanalysis.com's own total_assets/total_liabilities/total_deposits/gross_loans for FY2023 and FY2024 were separately observed to run 0.04-4.8% above this dataset's primary-annual-report-sourced figures for the same years, so its total_liabilities/total_equity for FY2025 should be treated as indicative only. gross_loans uses the press 'Loans and Advances' figure (711,406.3m); stockanalysis.com separately shows a higher 'Gross Loans' of 747,205m and a lower 'Net Loans' of 711,964m for the same year-end, so this may correspond to a net-of-provision figure rather than the face-of-balance-sheet gross figure this dataset otherwise uses for this bank — unresolved pending primary-source access. EPS is reported as both Tk 8.30 (Daily New Nation, used here) and Tk 8.38 (Bonik Barta); the FY2025 dividend is reported as both 15% cash + 15% stock (Bonik Barta, The Daily Corporate) and, in one less-detailed source, 10% cash + 20% stock — neither dividend figure is stored as a line item here since there is no schema field for it. Operating profit (Tk 2,907.57 crore = 29,075.7m) is explicitly reported as CONSOLIDATED by its source and is excluded from line_items to avoid mixing basis with the Solo figures used for FY2015-2024 (see sources.json reporting_basis note) — solo-vs-consolidated purity for FY2025's other figures could not be confirmed either, since no press source specifies a basis for them, unlike prior years where this dataset verified a Solo match directly against the bank's own annual report. Paid-up capital (press: Tk 1,560 crore) and NAV-per-share (Bonik Barta: Tk 54.32) were excluded entirely: back-calculating implied equity from NAVPS x implied share count (~84,739m) conflicts with stockanalysis.com's 70,695m by ~20%, and the capital figure's stated '56% increase' is inconsistent with a single-year 15% stock dividend against FY2024's on-file paid-up capital of 11,568.31m — both numbers likely conflate the FY2025-approved (AGM-approved 16 June 2026, not yet issued as of 31 Dec 2025) stock dividend with the actual 31-Dec-2025 balance-sheet position. This entire year's entry carries materially lower confidence than every other year in this dataset (source_priority 5, secondary source, per methodology) and should be re-extracted from the primary PDF once accessible.",
+  "source": {
+    "source_document": "No primary source document obtained. Figures triangulated from press coverage of Pubali Bank PLC's FY2025 audited/AGM-approved results and the stockanalysis.com data aggregator — see period_note and sources.json for the full list of sources and the extensive log of blocked primary-source retrieval attempts.",
+    "source_path": "N/A - no PDF or text archived; annual_reports/PUBALIBANK/ was not modified for FY2025",
+    "source_url": "https://pubalibangla.com/assets/pdf/Financial_Reports/annual_reports/Annual_Report_2025.pdf (confirmed to exist via Google's search index; every fetch attempt returned HTTP 403 Cloudflare challenge or equivalent block)",
+    "source_page_lines": "N/A",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets (press: Tk 118,013.66 crore)",
+      "value": 1180136.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits (press: Tk 89,519.49 crore)",
+      "value": 895194.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (press: Tk 71,140.63 crore)",
+      "value": 711406.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities (stockanalysis.com aggregator, not press)",
+      "value": 1112882,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Shareholders' Equity (stockanalysis.com aggregator, not press)",
+      "value": 70695,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net profit after tax (press: Tk 1,079.56 crore)",
+      "value": 10795.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (press: Tk 8.30)",
+      "value": 8.30,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "Non-Performing Loan ratio (press, widely corroborated)",
+      "value": 2.20,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Return on Equity (press, single-sourced)",
+      "value": 15.51,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital to Risk-Weighted Assets Ratio / CRAR (press, single-sourced)",
+      "value": 15.34,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

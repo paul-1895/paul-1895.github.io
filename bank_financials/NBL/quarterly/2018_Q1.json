@@ -1,0 +1,153 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2018-03-31",
+  "financial_year": 2018,
+  "quarter": "Q1",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account from National Bank's Q1-2018 unaudited financial statements. Plain 'Balance Sheet (Un-audited)'/'Profit and Loss Account (Un-audited)' sections used. This filing prints 'Net Assets value per share' directly (17.14 current, 17.03 comparative); the comparative matches this dataset's existing FY2017 nav_per_share of 17.03 exactly, confirming the correct Solo section. TOTAL ASSETS (347,380.74m) is directly legible and also matches the 'TOTAL LIABILITIES AND SHAREHOLDERS' EQUITY' grand total line exactly. Deposits, gross loans and investments are all directly legible printed subtotals; the gross_loans comparative (248,467.15m) matches this dataset's existing FY2017 figure exactly. Since this is a Q1 filing there is no cumulative-vs-discrete distinction (2 columns only: Jan-Mar 2018, Jan-Mar 2017 comparative). Net interest income (726.47m), investment income (1231.13m) and operating expenses (1557.19m) all match this dataset's own 2017_Q1.json comparative figures exactly (677.60m, 1737.22m and 1281.50m respectively, appearing here as the prior-year column). Other operating income was initially misread from a garbled cell as 48,840,475; deriving it via the full profit identity chain (Profit before Taxes 565.77m [confirmed by an independent PAT+Tax cross-check] plus Total Provision 250.00m = Profit before Provision 815.77m; minus Total Operating Expenses 1557.19m = Total Operating Income 2372.95m; minus the other three income lines) instead gives 88,640,475 -- which is then independently CONFIRMED EXACTLY by a later filing's own comparative column (2019_Q1.txt's Jan-Mar-2018 column shows 88,640,475 character for character). EPS is calculated (source cell blank) using 2,370,453,494 shares outstanding (paid-up capital 23,704,534,940, unchanged from FY2017 per this filing's own Statement of Changes in Equity). Interest income and interest paid are marked unavailable, the same persistent gap seen in every other quarter processed in this batch.",
+  "source": {
+    "source_document": "1st_Quarter_Financial_Statements_2018.pdf (bank's own filename)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-2018-q1.txt",
+    "source_url": "https://www.nblbd.com/public/assets/financial-statement/1712038172_1st_Quarter_Financial_Statements_2018.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 347380.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 306668.05,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 40712.7,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 261626.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 259982.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 52092.41,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets value per share",
+      "value": 17.14,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Printed directly on the face of the Balance Sheet; comparative (17.03) matches this dataset's existing FY2017 nav_per_share exactly."
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest income",
+      "value": null,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "unavailable",
+      "note": "Source cell corrupted beyond recovery."
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest paid on deposits and borrowings",
+      "value": null,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "unavailable",
+      "note": "Source cell corrupted beyond recovery."
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income",
+      "value": 726.47,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income",
+      "value": 1231.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income",
+      "value": 415.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (326.71m) and other operating income (88.64m, corrected via identity from a misread 48.84m and independently confirmed exact by a later filing's comparative column -- see period_note)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses",
+      "value": 1557.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit before provision",
+      "value": 815.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Source row not printed; derived as Profit before Taxes (565.77m) plus Total Provision (250.00m), consistent with Total Operating Income minus Total Operating Expenses."
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after taxation",
+      "value": 365.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per share (Re-stated)",
+      "value": 0.15,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Source cell blank. Computed as PAT 365.77m / 2370.45m shares outstanding."
+    }
+  ],
+  "fields_derived_via_identity": ["non_interest_income (other operating income component)", "operating_profit", "eps"],
+  "fields_unavailable": ["interest_income", "interest_expense"]
+}

@@ -1,0 +1,199 @@
+{
+  "bank_id": "NRBCBANK",
+  "generated_at": "2026-08-26",
+  "methodology": "Derived from bank_financials/NRBCBANK/quarterly/*.json (FY2013-FY2025 year-end) and ratios_timeseries.json. Every figure is a reported value from NRB Commercial Bank's own audited annual report summary tables, or an explicitly-labelled derivation. Note the basis break: FY2013-FY2019 are consolidated, FY2020-FY2025 solo (0.12% apart at FY2018; FY2025 explicitly labelled 'Solo' in its own source table). Two extraction traps were resolved arithmetically before sourcing FY2013-2024 \u2014 see sources.json. The FY2025 annual report PDF is image-based with no text layer; its figures were read directly from the rendered table image, cross-checked cell-by-cell against the existing FY2024 record (two genuine discrepancies found: Deposit and Profit after tax for FY2024, both documented without altering the existing FY2024 file), and an internal Tier I/Tier II/Regulatory Capital inconsistency within the FY2025 report's own table was found and is recorded rather than silently resolved. No figure is interpolated or estimated.",
+  "risk_signals": [
+    {
+      "category": "fy2024_asset_quality_break_and_earnings_wipeout",
+      "severity": "critical",
+      "statement": "Classified loans went from 7,756m (5.35% of the book) at end-FY2023 to 22,837m (15.47%) at end-FY2024, a 194% increase in one year, while the loan book grew only 1.7%. Profit after tax collapsed to 36m from 1,846m \u2014 a 98.1% fall \u2014 and profit before tax to 44m from 2,528m. For context the reported NPL ratio had never exceeded 5.35% in the bank's eleven prior years. This is the same FY2024 break seen at IFIC, Islami Bank and National Bank, arriving at a much smaller and younger bank.",
+      "metrics": [
+        "classified_loans",
+        "npl_pct",
+        "profit_after_tax",
+        "profit_before_tax",
+        "gross_loans"
+      ],
+      "periods": [
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "capital_shortfall_against_requirement",
+      "severity": "critical",
+      "statement": "NRBC fell into a capital shortfall of 754.81m in FY2024 against its 18,747m requirement including conservation buffer, having reported a 1,753.72m surplus a year earlier. Reported CRAR fell to 12.00% from 13.70%, and the Tier-I ratio to 7.64% from 8.80% \u2014 below the 8.5% Tier-I-plus-buffer expectation. Regulatory capital fell 2,015m in absolute terms (20,008m to 17,992m) as losses ate into Tier-I.",
+      "metrics": [
+        "capital_surplus_deficit",
+        "car_pct",
+        "tier1_ratio_pct",
+        "total_capital",
+        "required_capital"
+      ],
+      "periods": [
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "provision_coverage_halved_as_npls_tripled",
+      "severity": "critical",
+      "statement": "Provision held against classified loans rose from 3,594m to 5,042m in FY2024, a 40% increase, while classified loans themselves rose 194% to 22,837m. Coverage therefore fell from 46.3% to 22.1%, the lowest in the bank's history, leaving 17,794m of unprovided classified exposure against 13,297m of stockholder equity \u2014 1.34 times equity. Fully providing for it would erase the bank's capital.",
+      "metrics": [
+        "provision_classified",
+        "classified_loans",
+        "total_equity"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "net_interest_income_near_zero",
+      "severity": "high",
+      "statement": "Net interest income collapsed to 187m in FY2024 from 3,769m in FY2023 \u2014 a 95% fall \u2014 as interest expense rose 43.3% to 12,294m while interest income was almost flat at 12,481m. The bank stayed marginally profitable only because investment income rose 80.9% to 5,549m. Expressed against the loan book the net interest margin fell from 2.60% to 0.13%.",
+      "metrics": [
+        "net_interest_income",
+        "interest_income",
+        "interest_expense",
+        "investment_income"
+      ],
+      "periods": [
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "equity_fell_for_the_first_time",
+      "severity": "high",
+      "statement": "Stockholder equity fell from 14,180m to 13,297m in FY2024, the first decline in the bank's twelve-year history \u2014 it had risen every year from 4,399m in FY2013. Because the FY2024 profit was only 36m, the fall implies distributions or reserve adjustments exceeding earnings.",
+      "metrics": [
+        "total_equity",
+        "profit_after_tax"
+      ],
+      "periods": [
+        "2013_Q4",
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "very_fast_pre_crisis_growth",
+      "severity": "medium",
+      "statement": "Total assets compounded at 33.6% a year from FY2013 to FY2024, from 9,538m to 230,593m \u2014 a 24-fold increase in eleven years, and the fastest growth of any bank in this dataset. Loans grew from 3,717m to 147,576m over the same span. The FY2024 asset-quality break landed on a book built almost entirely in the preceding decade, and the reported NPL ratio gave little warning: it was still 5.35% the year before the jump to 15.47%.",
+      "metrics": [
+        "total_assets",
+        "gross_loans",
+        "npl_pct"
+      ],
+      "periods": [
+        "2013_Q4",
+        "2018_Q4",
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "deposit_growth_slowed_sharply",
+      "severity": "medium",
+      "statement": "Deposit growth fell to 4.3% in FY2024 (175,670m to 183,282m, per FY2024's own report) from 30.0% in FY2021 and 29.3% in FY2022. Combined with total asset growth of 5.8%, the balance sheet had essentially stopped expanding for the first time in the bank's history \u2014 a marked change for an institution that had compounded assets at 33.6% a year. FY2025 shows renewed growth (see fy2025_partial_recovery_with_deepening_capital_shortfall), though FY2025's own report puts FY2024 deposits at 169,737m instead, a discrepancy documented in sources.json.",
+      "metrics": [
+        "total_deposits",
+        "total_assets"
+      ],
+      "periods": [
+        "2021_Q4",
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "fy2025_capital_shortfall_widened_to_second_consecutive_year",
+      "severity": "critical",
+      "statement": "NRBC's capital shortfall widened to 2,183.36m in FY2025 from 754.81m in FY2024 (2.9x), against a requirement (including conservation buffer) that itself grew to 20,267.10m from 18,747.21m. Reported CRAR fell to 11.15% from 12.00% \u2014 the second straight annual decline after an FY2023 bounce (12.44% at FY2022, 13.70% at FY2023, 12.00% at FY2024, 11.15% at FY2025) \u2014 and now sits 1.35 points below the FY2024 level and well under the ~12.5% full requirement. Tier-1 fell to 7.08% from 7.64%. This is the bank's second consecutive year of an actual (not just marginal) capital deficit.",
+      "metrics": [
+        "capital_surplus_deficit",
+        "car_pct",
+        "tier1_ratio_pct",
+        "required_capital",
+        "total_capital"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2025_partial_recovery_with_deepening_capital_shortfall",
+      "severity": "high",
+      "statement": "Profit after tax recovered to 329.83m in FY2025 from FY2024's 35.88m trough (or 44.77m per FY2025's own restated comparative) \u2014 nominally an 819% increase, but the base was a near-zero crisis year and the FY2025 result itself remains 81-84% below the 1,739.57m-2,083.94m the bank earned every year from FY2021-2023. Meanwhile classified loans grew a further 22.1% to 27,890.61m, faster than the 10.1% growth in the loan book, extending the NPL ratio's unbroken climb every year since FY2020 to a new high of 17.17% (2.93% -> 4.56% -> 4.69% -> 5.35% -> 15.47% -> 17.17% across FY2020-FY2025). The book is growing again (total assets +13.6%, deposits +8.3%) but asset quality has not stabilised and capital adequacy is still deteriorating alongside it (see fy2025_capital_shortfall_widened_to_second_consecutive_year).",
+      "metrics": [
+        "profit_after_tax",
+        "classified_loans",
+        "npl_pct",
+        "gross_loans",
+        "total_assets"
+      ],
+      "periods": [
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2024_deterioration_was_gradual_then_catastrophic_in_q4",
+      "severity": "critical",
+      "statement": "Newly-added Q1-Q3 2024 quarterly data (this session) shows the FY2024 collapse described elsewhere in this file was not spread evenly through the year. Profit after tax was still 335.44m in Q1, 269.79m in Q2 and 93.70m in Q3 -- a weakening trend, but nowhere near the annual-level damage. Almost the entire year's loss landed in Q4 alone: with full-year profit after tax at 44.77m (the internally-reconciling figure; 35.88m per the FY2024 report's own since-flagged inconsistent headline), Q4 alone implies a discrete loss of approximately -654m to -663m (annual minus the 698.93m Q1-Q3 sum). Net interest income shows the same pattern even more starkly: positive and growing through Q1 (825.85m), Q2 (1,046.21m) and Q3 (580.60m), before swinging to -2,265.65m in Q4 alone -- which is also why the deceptively mild full-year figure of 187.02m obscures a genuinely catastrophic single quarter rather than a year of gradually eroding margins.",
+      "metrics": [
+        "profit_after_tax",
+        "net_interest_income",
+        "total_operating_income"
+      ],
+      "periods": [
+        "2024_Q1",
+        "2024_Q2",
+        "2024_Q3",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "fy2025_recovery_driven_by_investment_income_not_lending_margin",
+      "severity": "high",
+      "statement": "Newly-added Q1-Q3 2025 quarterly data (this session) shows the profit recovery described in fy2025_partial_recovery_with_deepening_capital_shortfall is not a lending-margin story. Discrete net interest income stayed compressed all year -- 491.35m in Q1, just 47.78m in Q2, and 58.97m in Q3, versus 825.85m / 1,046.21m / 580.60m in the equivalent 2024 quarters -- while investment income grew every quarter (1,409.51m, then 1,487.80m, then 1,873.89m). Profit after tax was correspondingly weak and backloaded: 51.68m in Q1, falling further to 10.34m in Q2, only partially recovering to 66.63m in Q3. The three quarters combined (128.65m) are barely a third of the full-year 329.83m, implying a discrete Q4 2025 profit of approximately 201.18m -- 61% of the entire year's profit landing in a single quarter.",
+      "metrics": [
+        "profit_after_tax",
+        "net_interest_income",
+        "investment_income"
+      ],
+      "periods": [
+        "2025_Q1",
+        "2025_Q2",
+        "2025_Q3",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2026_net_interest_income_turned_negative",
+      "severity": "high",
+      "statement": "Newly-added Q1-Q2 2026 quarterly data extends the net-interest-margin compression documented in fy2025_recovery_driven_by_investment_income_not_lending_margin into outright negative territory: discrete net interest income was still marginally positive in Q1 2026 (137.17m) but swung NEGATIVE in Q2 2026 alone (-99.31m, interest paid of 3,420.16m exceeded interest income of 3,320.85m) -- the first quarter this dataset has recorded for NRBC where interest expense outright exceeds interest income. Cumulative H1 2026 net interest income was just 37.86m, down from 1,751.00m in the comparable H1 2025 period per this filing's own comparative column (-97.8%). As in FY2024-2025, the bank remained profitable only because investment income kept growing (1,761.93m in Q1 alone, 3,693.16m cumulative through H1) -- discrete Q2 2026 profit after tax was still a positive 361.02m despite the negative net interest income.",
+      "metrics": [
+        "net_interest_income",
+        "investment_income",
+        "profit_after_tax"
+      ],
+      "periods": [
+        "2026_Q1",
+        "2026_Q2"
+      ]
+    }
+  ],
+  "historical_context": "NRB Commercial Bank opened in April 2013 and this thirteen-year series is its entire public history. For eleven of those years it looked like a fast-growing fourth-generation success: total assets compounded at 33.6% a year from 9,538m to 217,993m by FY2023, a 23-fold increase and the fastest growth of any bank in this dataset, with a classified-loan ratio that never exceeded 5.35% and profit after tax rising from 22m to a 2,084m peak in FY2021. FY2024 broke that completely. Classified loans nearly tripled to 22,837m (15.47% of the book) while the book itself grew only 1.7%; profit after tax fell 98.1% to 36m; net interest income fell 95% to 187m as funding costs rose 43.3%; stockholder equity fell for the first time ever; and the bank moved from a 1,753.72m capital surplus to a 754.81m shortfall, with the Tier-I ratio at 7.64%. Provision coverage of classified loans halved to 22.1%, leaving 17,794m unprovided against 13,297m of equity. This is the same FY2024 recognition event visible at IFIC, Islami Bank and National Bank, and NRBC's position sits between the extremes: far worse than Midland Bank's 3.78%, far better than IFIC's 54.97%, and \u2014 unlike Islami Bank \u2014 it did let the loss show in the reported profit rather than holding it back through provisioning. FY2025 did not mark a turnaround so much as a partial, uneven stabilisation: profit after tax recovered to 330m (still 81-84% below the FY2021-2023 range) while the loan book resumed growing (+10.1%) and deposits grew again (+8.3%), but classified loans grew even faster (+22.1%) so the NPL ratio kept climbing to a new high of 17.17%, and the capital position kept eroding \u2014 CRAR fell to 11.15% and the capital shortfall widened 2.9x to 2,183m. Five straight years of rising NPL (2.93% at FY2020 to 17.17% at FY2025, every year higher than the last) and CRAR falling in two of the last three years (13.70% at FY2023 to 11.15% at FY2025), running through the one year profit nominally recovered, is the headline finding of the FY2025 update.",
+  "data_gaps": "This series runs FY2013-FY2025, thirteen years. FY2011 and FY2012 are not applicable \u2014 the bank opened in April 2013. Q1-Q3 interim data was added in a later session for FY2014-2019 (income-statement only, discrete quarters, from each year's own annual report -- no balance-sheet snapshot exists for these interim dates) and FY2020-2025 (full balance sheet + income statement, from the bank's own real interim filings at nrbcommercialbank.com/about/reports, solo basis except FY2021 Q2-Q3 which are consolidated-only -- see quarterly/2021_Q2.json and 2021_Q3.json). FY2013 (the bank's part-year opening year) remains without interim data; FY2026 Q1-Q2 were extracted in a later session (2026-09-12, solo basis, same font-corruption-requiring-visual-read pattern as FY2023-2025) and Q3 2026 is not yet due. See sources.json for the specific gaps within the covered years (illegible off-balance-sheet or NAV cells in a handful of font-corrupted or OCR-corrupted source filings). There is a BASIS BREAK at FY2020: FY2013-FY2019 are consolidated and FY2020-FY2025 solo (0.12% difference at the one year where both are measurable, and FY2025 is explicitly labelled 'Solo' in its own source table). Five of the thirteen years are not sourced from their own report, because those reports are absent from the archive or extract with no usable table. Three extraction traps were resolved before sourcing and are documented in full in sources.json: the FY2020 and FY2022 reports print FY2016-FY2018 total assets INCLUDING off-balance-sheet items (roughly 29% too high, proved exactly); the FY2021 report's only extractable table is a percentage-based horizontal analysis; and the FY2025 report is an image-only PDF with no text layer at all, requiring every figure to be read directly off the rendered table image rather than parsed as text (all cross-checked against the existing FY2024 record and internally against RWA-based ratios). That FY2025 cross-check surfaced two genuine discrepancies against the existing FY2024 record \u2014 Deposit (183,282m vs 169,737m) and Profit after tax (35.88m, which does not reconcile with that report's own PBT-tax, vs 44.77m, which does) \u2014 both left as documented divergences per standing methodology rather than edited into the existing FY2024 file; and one internal inconsistency inside the FY2025 report's own table, where printed Tier I + Tier II (18,870m) does not equal the same table's printed Regulatory Capital total (18,084m), which independently reconciles with the printed CRAR and capital-surplus rows instead. Reported return-on-assets and return-on-equity rows were captured for the first time in FY2025 (2.45% / 0.13%, average-balance basis per the bank's own table); ratios_timeseries.json also carries period-end recomputations for comparability with earlier years, which have none. EPS and NAV per share are likewise available for FY2025 only (0.398 and 16.48 respectively) \u2014 every earlier year's source tables carried no per-share or market-price figures at all, so P/E and price-to-book remain absent throughout, including FY2025 (a P/E of 12.56 is reported but a precise implied market price was not back-derived given rounding in both PE and EPS)."
+}

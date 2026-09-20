@@ -1,0 +1,58 @@
+{
+  "bank_id": "BRACBANK",
+  "generated_at": "2026-08-27",
+  "methodology": "Every insight cites the specific ratio/period pair it is derived from in ratios_timeseries.json.",
+  "risk_signals": [
+    {
+      "category": "asset_quality_strength",
+      "severity": "info",
+      "statement": "NPL ratio has fallen almost every year since 2013 (6.49%) to 2.27% at FY2025 — the lowest in this bank's 15-year record and roughly a third of the 2012-2013 level. This is the opposite direction from AB Bank, Al-Arafah Islami Bank, and (partially) Bank Asia over the comparable recent window.",
+      "metrics": ["npl_ratio_pct"],
+      "periods": ["2013_Q4","2023_Q4","2024_Q4","2025_Q4"]
+    },
+    {
+      "category": "profitability_strength",
+      "severity": "info",
+      "statement": "ROE reached 18.02% at FY2025, its highest level since the 22.16% spike in FY2016, and has risen for three consecutive years (10.22% FY2022 to 11.95% FY2023 to 17.36% FY2024 to 18.02% FY2025) even as loans nearly doubled (BDT 410.7bn to 730.7bn) — growth and profitability have moved together here, not traded off against each other.",
+      "metrics": ["roe_pct"],
+      "periods": ["2022_Q4","2023_Q4","2024_Q4","2025_Q4"]
+    },
+    {
+      "category": "growth_risk",
+      "severity": "moderate",
+      "statement": "Total assets grew from BDT 726.7bn (FY2023) to BDT 930.1bn (FY2024) to BDT 1,179.7bn (FY2025) — 28% and 27% YoY growth in consecutive years, among the fastest expansion rates observed in this dataset so far. NPL ratio kept falling through this expansion (3.38% to 2.63% to 2.27%), so nothing in the data collected suggests underwriting quality has been sacrificed for growth, but rapid multi-year balance-sheet expansion is itself worth monitoring going forward per the project's growth-risk framework.",
+      "metrics": ["total_assets", "npl_ratio_pct"],
+      "periods": ["2023_Q4","2024_Q4","2025_Q4"]
+    },
+    {
+      "category": "seasonality_pattern",
+      "severity": "info",
+      "statement": "With Q1-Q3 now populated for every year 2011-2025, a consistent within-year seasonality is visible: Q1 return ratios are systematically the weakest of the year (e.g. FY2025: Q1 ROA 0.37%/ROE 4.5% (period-end, non-annualized cumulative basis) building to Q2 1.26%/15.7% and a full-year 1.5%/18.0%; the same low-Q1-building-through-the-year shape recurs in nearly every year in the series, e.g. 2018 ROA 1.71%->1.72%->1.81% annualized across Q1-Q3, or 2011 cumulative ROA 0.29%->0.57%->0.84%). This reflects the mechanical effect of cumulative-from-Jan-1 income statements early in the year rather than a genuine Q1 weakness, and should be kept in mind before comparing any single Q1 figure against a full-year or Q4 ratio.",
+      "metrics": ["roa_pct", "roe_pct"],
+      "periods": ["2011_Q1","2011_Q2","2011_Q3","2018_Q1","2018_Q2","2018_Q3","2025_Q1","2025_Q2"]
+    },
+    {
+      "category": "capital_structure_pattern",
+      "severity": "info",
+      "statement": "BRAC Bank issued bonus/rights shares or stock dividends in at least six of the years covered by this dataset (~20% bonus in 2012, ~15% bonus mid-2013, a combined rights+bonus issue in 2014 Q3 lifting paid-up capital 1.6x, ~15% bonus/stock-dividend in H1 2019, a 7.5% stock dividend in mid-2020, and a 10% stock dividend during 2024). Each event triggers a BAS 33 retrospective EPS (and NAV-per-share) restatement in the immediately following filing's comparative column, while underlying reported profit for the comparative period is essentially unchanged (e.g. 2011 H1 PAT restated -2.7%, EPS restated -92% purely from the share-count effect; 2013 H1 PAT unchanged to the taka while EPS fell 1.98->1.80). Per this project's convention, every quarterly/*.json file in this bank retains the contemporaneously-reported EPS rather than a later restated value; anyone joining EPS across years should be aware consecutive years are not always on a like-for-like share count without consulting the restated comparative in the following year's filing.",
+      "metrics": ["eps", "eps_cumulative"],
+      "periods": ["2011_Q2","2012_Q2","2013_Q2","2013_Q3","2014_Q3","2019_Q2","2020_Q3","2025_Q1"]
+    },
+    {
+      "category": "data_quality_pattern",
+      "severity": "low",
+      "statement": "Three small, independent restatement/discrepancy patterns recur across this bank's interim filings and this dataset's own annual-report-sourced Q4 figures, none large enough to be alarming but worth tracking: (1) 2013_Q4.json's total_assets (179,713m) disagrees ~4.3% with the contemporaneous Dec-2013 comparative shown in both the 2014_Q1 and 2014_Q3 interim filings (171,902m solo), which agree with each other exactly -- 2013_Q4.json was sourced from a later (2016) annual-report retrospective summary table rather than a contemporaneous filing, and per project convention the contemporaneous figure is the better one, though 2013_Q4.json itself was left unedited (out of scope for the task that surfaced this); (2) 2022_Q4.json's total_assets/equity (563,271m / 58,418m, sourced from the FY2025 annual report's retrospective table) are ~0.006%/0.05% above the Dec-2022 comparative shown in the contemporaneous 2023_Q1 filing (563,239m / 58,391m), traced mainly to a ~32m difference in 'Other assets'; (3) 2024_Q4.json's deposits/other-liabilities/equity (689,433m / 44,790m / 75,797m) differ from the Dec-2024 comparative shown in the contemporaneous 2025_Q1 filing (688,621m / 45,955m / 75,444m) by three amounts that net to exactly zero, consistent with an internal reclassification between those three captions in the later retrospective table rather than an error (both sources agree on total assets exactly, 930,133m). None of these were corrected at the flagged file, only noted, per this task's scope.",
+      "metrics": ["total_assets", "equity", "total_deposits"],
+      "periods": ["2013_Q4","2014_Q1","2014_Q3","2022_Q4","2023_Q1","2024_Q4","2025_Q1"]
+    },
+    {
+      "category": "covid19_disclosure",
+      "severity": "info",
+      "statement": "This bank's own 2020 interim filings explicitly attribute weaker results to the pandemic in their own words: Q1 2020 cites lower commission/fee income and higher provisioning 'due to COVID-19 pandemic' plus lower operating cash flow from 'large deposit encashment' and the Bangladesh Bank loan-moratorium circular; Q3 2020 attributes the YoY EPS movement to a combination of the pandemic and a newly-imposed 9% lending-rate cap (BRPD circulars). No separate NPL or moratorium-specific quantum was disclosed in either filing beyond this qualitative commentary, so no loan-moratorium BDT figure could be captured as a line item.",
+      "metrics": ["profit_after_tax", "profit_after_tax_cumulative"],
+      "periods": ["2020_Q1","2020_Q3"]
+    }
+  ],
+  "historical_context": "BRAC Bank's trajectory is the strongest and most consistent of the banks processed so far in this dataset: NPL declining almost monotonically since 2013, ROE and CAR both healthy and improving, through a period (FY2024-2025) when the broader Bangladesh banking sector (as seen at AB Bank and Al-Arafah Islami Bank in this dataset) was under visible stress. With Q1-Q3 now populated for every year 2011-2025 (2026 partially, see data_gaps), this is also now one of the most granular single-bank time series in the project, useful both as a within-bank seasonality reference and as a cross-bank comparison anchor.",
+  "data_gaps": "2011 Q4 (annual) is partial (only loans, deposits, ROE, ROA, EPS found). Q4/annual 2017-2020 uses CONSOLIDATED figures (no standalone table found; the FY2020 annual report itself is missing from the local archive) while adjacent years are Standalone/Solo -- do not compare absolute levels across that boundary without adjusting for the bKash/subsidiary consolidation effect. Within the Q1-Q3 series, three quarters (2022_Q1, 2022_Q3, 2024_Q3) are CONSOLIDATED-only because the only recoverable source capture was corrupted beyond the point where the bank's own Solo statement appears -- same basis-mismatch caveat applies. Three quarters (2025_Q3, 2026_Q1, 2026_Q2) are PARTIAL: their primary interim-financial-statement PDFs could not be located on Wayback Machine or the bank's current live site despite the underlying results being disclosed to DSE and covered in the press, so only EPS/PAT/NAV (cross-checked against DSE's own per-quarter EPS table and independent news coverage) are recorded for those three periods -- no balance sheet, deposits, loans, or asset-quality data. NPL ratio, CAR, and ROA/ROE are only available for the specific quarters where the bank's own filing included a ratio-disclosure note (roughly half of Q1-Q3 quarters); where absent, ROA/ROE are calculated on a simplified period-end-assets/equity (not average, not always annualized) basis and flagged accordingly in ratios_timeseries.json, rather than left blank or estimated from other data. 2026_Q3 onward does not yet exist as a reporting period (today's date falls within Q3 2026) and is correctly absent rather than a gap."
+}

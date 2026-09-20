@@ -1,0 +1,153 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2018-06-30",
+  "financial_year": 2018,
+  "quarter": "Q2",
+  "period_note": "Solo (bank-only) Balance Sheet and Profit and Loss Account from National Bank's Half-Yearly 2018 unaudited financial statements -- one of the cleanest filings in this batch, with nearly every Balance Sheet figure directly legible. This filing prints 'Net Assets Value per share (NAV)' directly (17.74 current, 17.03 comparative); the comparative matches this dataset's existing FY2017 nav_per_share exactly. TOTAL ASSETS (376,018.91m), TOTAL LIABILITIES (333,975.13m) and TOTAL SHAREHOLDERS' EQUITY (42,043.78m) are all directly legible and internally consistent (Liabilities + Equity = Assets exactly); the comparative columns for equity (40,370.82m) and gross loans (248,467.15m) both match this dataset's existing FY2017 figures exactly. Deposits and investments subtotals are directly legible and deposits cross-check exactly against Total Liabilities. Paid-up capital remains 23,704,534,940 (confirmed unchanged from Q1 by this filing's own Statement of Changes in Equity). Income-statement items are CUMULATIVE from 1 January 2018. Net interest income (2367.63m), investment income (3020.27m) and commission+other income (933.97m) sum exactly to the printed Total Operating Income (6321.87m). Total operating expenses (3184.84m) for the cumulative-current column is directly legible in the source AND independently equals this dataset's own 2018_Q1 operating_expenses (1557.19m) plus this filing's own discrete Apr-Jun 2018 operating expenses (1627.65m) exactly -- a useful additivity check. Profit before provision (3137.03m) is directly legible and equals Total Operating Income minus Total Operating Expenses exactly. Total provision (800.00m, a clean round number) and Tax (900.00m) both reconcile the reported Profit before Taxes (2337.03m) and PAT (1437.03m) exactly. EPS for the cumulative-current column was not printed (only the restated comparative, 0.41, and discrete quarter figures, 0.45 and 0.21, were legible); it is calculated from PAT and 2,370,453,494 shares outstanding, and the SAME method exactly reproduces the printed discrete Apr-Jun 2018 EPS of 0.45 (from discrete PAT 1071.27m), corroborating the approach. Interest income and interest paid are marked unavailable, the same persistent gap seen in every other quarter processed in this batch.",
+  "source": {
+    "source_document": "FS_June_2018.pdf (bank's own filename)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-h1-2018.txt",
+    "source_url": "https://www.nblbd.com/public/assets/financial-statement/1712038211_FS_June_2018.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 376018.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 333975.13,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": 42043.78,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 290009.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 274674.96,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 60931.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value per share (NAV)",
+      "value": 17.74,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Printed directly on the face of the Balance Sheet; comparative (17.03) matches this dataset's existing FY2017 nav_per_share exactly."
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest income",
+      "value": null,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "unavailable",
+      "note": "Source cell corrupted beyond recovery."
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest paid on deposits and borrowings",
+      "value": null,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "unavailable",
+      "note": "Source cell corrupted beyond recovery."
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": 2367.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 3020.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)",
+      "value": 933.97,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (626.87m) and other operating income (307.10m)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 3184.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Also independently equals this dataset's own 2018_Q1 operating expenses (1557.19m) plus this filing's discrete Apr-Jun 2018 operating expenses (1627.65m) exactly."
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": 3137.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after taxation (cumulative from Jan 1)",
+      "value": 1437.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (Re-stated) (cumulative from Jan 1)",
+      "value": 0.61,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Source cell for the cumulative-current column blank (only restated comparative and discrete-quarter EPS were legible). Computed as PAT 1437.03m / 2370.45m shares; the same method exactly reproduces the printed discrete Apr-Jun 2018 EPS of 0.45, corroborating the approach."
+    }
+  ],
+  "fields_derived_via_identity": ["eps_cumulative"],
+  "fields_unavailable": ["interest_income", "interest_expense"]
+}

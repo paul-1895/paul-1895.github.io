@@ -1,0 +1,129 @@
+{
+  "bank_id": "UCB",
+  "bank_name": "United Commercial Bank PLC",
+  "reporting_date": "2011-03-31",
+  "financial_year": 2011,
+  "quarter": "Q1",
+  "period_note": "Balance sheet is the period-end snapshot (reported, Solo/Standalone -- 'Balance Sheet (Un-audited)' heading without the 'Consolidated' prefix used elsewhere in the same filing, per project convention of preferring Solo over Consolidated). Income-statement items are CUMULATIVE from 1 January 2011 (as published in UCB's own standalone unaudited interim financial statement filed on ucb.com.bd's investor-relations Financial Statements archive) -- flagged via the _cumulative suffix, same convention as FY2013-2025. This PDF ('Balance Sheet (Un-audited) 31 March 2011.pdf') is a clean, fully native-text 26-page document requiring no OCR; every figure below was read directly via pdftotext -layout and independently reconciles (Total Assets = Total Liabilities + Equity to the taka; Total Operating Income/Expenses/Provisions all sum correctly). off_balance_sheet_exposures is NOT separately broken out for Solo in this specific filing (only a single Consolidated 'Off Balance Sheet Items' section is presented, unlike most later years which show both) -- the Consolidated figure (BDT 41,184.54m) is used here instead, on the basis that the very next quarter's filing (Q3 2011) explicitly shows IDENTICAL Solo and Consolidated off-balance-sheet totals (BDT 39,243.03m each), i.e. UCB's small non-bank subsidiaries carry no off-balance-sheet exposure of their own, so Consolidated is a reliable proxy for Solo here; this is recorded as 'reported' (it is a genuinely reported figure, just from the Consolidated section) rather than 'calculated'. nav_per_share is not disclosed in this report (UCB's NAVPS note was not yet introduced in 2011); it is independently computed here as Total Shareholders' Equity / (Paid-up Capital / BDT10 par) = 8,113,977,112 / 290,995,350 shares = 27.88, marked 'calculated' since -- unlike several 2017-era quarters -- no later report's comparative column was found covering this specific period to cross-validate against. nocfps_cumulative is not recorded for this quarter as NOCFPS reporting was not yet introduced (same reasoning as UCB's own FY2013 annual-report-embedded table, which also lacks a NOCFPS row for its earliest years).",
+  "source": {
+    "source_document": "Balance Sheet (Un-audited) 31 March 2011.pdf",
+    "source_path": "annual_reports/UCB/ucb-interim-2011-q1.txt",
+    "source_url": "https://www.ucb.com.bd/reports/financial-reports/Balance%20Sheet%20(Un-audited)%2031%20March%202011.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)', 'Profit and Loss Account (Un-audited)' and 'Cash Flow Statement (Un-audited)' sections of this filing (PDF pp. 8-10 of 26; the bulk of the 26-page document is detailed notes)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investment",
+      "value": 16334.53,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances",
+      "value": 99577.88,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 117243.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 2909.95,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 8113.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 136561.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance sheet Items Including Contingent Liabilities (Consolidated -- see period_note)",
+      "value": 41184.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (cumulative from Jan 1)",
+      "value": 1054.68,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Income from Investment + Commission, Exchange & Brokerage + Other Operating Income (cumulative from Jan 1)",
+      "value": 936.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total Operating Expenses (cumulative from Jan 1)",
+      "value": 810.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit/(Loss) before provision (cumulative from Jan 1)",
+      "value": 1181.58,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after Tax (cumulative from Jan 1)",
+      "value": 276.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earning Per Ordinary Share (EPS) (cumulative from Jan 1)",
+      "value": 0.95,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per share (computed, not disclosed this quarter)",
+      "value": 27.88,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    }
+  ]
+}

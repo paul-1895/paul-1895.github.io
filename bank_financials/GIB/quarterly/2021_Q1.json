@@ -1,0 +1,177 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2021-03-31",
+  "financial_year": 2021,
+  "quarter": "Q1",
+  "period_note": "Unaudited interim financial statements 'As at March 31, 2021', filed under the pre-conversion legal name 'Global Islami Bank Limited' on the header even though the bank's own FY2021 annual report states the conventional-to-Islamic conversion happened later in 2021 (the September-2021 filing for this same bank is still headed 'NRB Global Bank Limited', confirming the conversion fell between Q3 and Q4 2021; this Q1 filing's header naming is likely a later re-save/re-upload artifact on the bank's current website, not evidence the conversion had already happened by March 2021). Terminology is transitional: 'Net interest income' (not yet 'Net Investment Income'), 'Loans and advances/Investments' dual-labelled in places. Balance sheet is the period-end snapshot (reported); comparative column is 31 March 2020 (a year-over-year comparative, not the prior Dec-31 year-end -- confirmed because the comparative total assets of 109,484.40m sits between FY2019's audited 106,405m and FY2020's audited 120,902m, consistent with one quarter's growth past FY2019 year-end, not a full year past FY2020). Income-statement figures are for Jan-Mar 2021, which is both the discrete quarter and the cumulative-from-Jan-1 figure since it is the first quarter (no _cumulative suffix needed/used). 'Investment income' is not printed with a legible value in the source PDF (pdftotext dropped the number, common in this bank's older filings); it is calculated here as Net interest income + Profit paid on deposits, both of which are directly legible: 1,202,609,574 + 2,015,208,995 = 3,217,818,569. All other figures reconcile exactly within this document's own P&L chain (Total Operating Income = Net interest income + non-interest income items; Profit before Provision = Total Operating Income - Total Operating Expenses; PBT = Profit before Provision - Total Provision; PAT = PBT - Tax) and cross-validate exactly against this same period's own figures as independently repeated in the comparative column of the March-2022 filing (total assets, total liabilities, total equity, and every P&L line down to net investment income, total operating income, total operating expenses, profit before provision, total provision, PBT, tax, and PAT all match to the exact Taka). EPS of 0.78 is as directly printed in this filing; a later citation of this same period in the March-2022 filing's own comparative column shows EPS restated to 0.71 (a small, immaterial difference, likely a weighted-average-share-count nuance) -- the contemporaneous 0.78 is used here per project policy. Source PDF text was corrupted by a font/table-rendering issue (garbled digits, dropped values) typical of this bank's older filings; all stored figures were extracted via OCR (tesseract on a 300dpi rasterization of the original PDF pages) and cross-validated via the internal arithmetic chain described above, not read directly from the corrupted pdftotext layer.",
+  "source": {
+    "source_document": "March-Quarter-2021.pdf (downloaded from globalislamibankbd.com, OCR'd; PDF deleted after extraction per project policy)",
+    "source_url": "https://www.globalislamibankbd.com/wp-content/uploads/2023/03/March-Quarter-2021.pdf",
+    "source_page": "Balance Sheet p.1, Off-Balance Sheet Items p.2, Profit and Loss Account p.3 (OCR'd at 300dpi, tesseract)",
+    "retrieval_date": "2026-08-27",
+    "reporting_basis": "Solo / standalone, unaudited"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 120191.69,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General investments etc. + Bills purchased & discounted)",
+      "value": 96338.16,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 105915.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' equity",
+      "value": 7437.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 112753.8,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet exposures including contingent liabilities",
+      "value": 5391.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up capital",
+      "value": 4908.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 1334.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Total Shareholders' equity / (Paid up capital / 10)",
+      "value": 15.15,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income (label present, value illegible in source; derived as Net interest income + Profit paid on deposits)",
+      "value": 3217.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits",
+      "original_metric_name": "Profit paid on deposits",
+      "value": 2015.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income",
+      "value": 1202.61,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Total operating income (A)",
+      "value": 1255.69,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses (B)",
+      "value": 535.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit / (Loss) before provision (C=A-B)",
+      "value": 720.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Total provision (D)",
+      "value": 66.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total profit / (Loss) before taxes (C-D)",
+      "value": 653.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Provision for taxation (Current tax)",
+      "value": 288.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net profit/(Loss) after taxation",
+      "value": 365.51,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS)",
+      "value": 0.78,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "bank_id": "JAMUNABANK",
+  "bank_name": "Jamuna Bank PLC",
+  "reporting_date": "2018-06-30",
+  "financial_year": 2018,
+  "quarter": "Q2",
+  "period_note": "Full Balance Sheet + Profit and Loss Account sourced directly from Jamuna Bank's own website unaudited interim financial statement PDF for this quarter (jamunabankbd.com/financial-statements/) -- richer than the annual-report-embedded 'Variance' table used for other quarters in this dataset. Balance sheet is the period-end snapshot (reported); its comparative column is the immediately preceding audited Dec-31 year-end (BDT 197058.54m total assets), not a prior-year-same-quarter figure -- this is the source document's own comparative convention. SOLO / Bank-only section used (labelled plainly \"JAMUNA BANK LIMITED\" / \"BALANCE SHEET (Un-audited)\" in the source, the second of two balance sheets in the PDF, after a first \"...and its Subsidiaries / Consolidated Balance Sheet\" section which is NOT used here), matching this dataset's Solo main series. Income-statement items are the DISCRETE quarter's own figures (not cumulative): the source document itself prints both a cumulative-from-Jan-1 column and a discrete single-quarter column side by side for Q2/Q3 filings (\"January to June\" vs \"April to June\"); the discrete column is used here for consistency with the embedded-table-sourced quarters elsewhere in this dataset. Cross-validated against the annual-report-embedded 'Variance' table for the same quarter where both sources exist (net_interest_income, operating_income, operating_expenses and operating_profit matched exactly for every overlapping quarter checked: 2016-2017 Q1-Q3). Foundation contribution (BDT 35.11m, 'Contribution to Foundation@3% pre-tax profit') is folded into 'tax_expense' and 'profit_after_tax' is computed as Total profit before taxes (C-D) minus this combined tax_expense, matching this dataset's annual *_Q4.json convention (no separate foundation line carried there). This source document's own 'Net profit after taxation' line is NOT used directly for profit_after_tax because its position relative to the Foundation-contribution line varies between report vintages -- in some quarters it is already net of the Foundation contribution (matching PBT-Tax-Foundation exactly), in others (confirmed for this bank's own 2018 Q2 and Q3 website interim filings) it is only post-tax and a separate 'Retained earnings' line further down is the true post-Foundation bottom line; computing directly from the three independently-reported components (PBT, tax provision, Foundation contribution) sidesteps this label ambiguity. The reported EPS figure is used as-is (verified to already reflect the post-Foundation profit in every quarter checked).",
+  "source": {
+    "source_document": "jamunabankbd.com interim financial statement, 2018 Q2 (Apr-Jun 2018)",
+    "source_path": "(downloaded to scratch, pdftotext'd, transcribed, PDF deleted per project policy -- not part of annual_reports/JAMUNABANK/)",
+    "source_url": "https://jamunabankbd.com/financial-statements/",
+    "source_page_lines": "Balance Sheet (Un-audited) and Profit and Loss Account (Un-audited), JAMUNA BANK LIMITED (Solo) sections",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "cash",
+      "original_metric_name": "Cash",
+      "value": 11792.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "balance_with_other_banks",
+      "original_metric_name": "Balance with other banks and financial institutions",
+      "value": 10531.23,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "money_at_call",
+      "original_metric_name": "Money at call on short notice",
+      "value": 616.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 28938.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans, advances & lease etc",
+      "value": 158474.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed assets including premises, furniture and fixtures",
+      "value": 2577.63,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_assets",
+      "original_metric_name": "Other assets",
+      "value": 3476.3,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total property & assets",
+      "value": 216407.21,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "borrowings",
+      "original_metric_name": "Borrowings from Bangladesh Bank, other banks, financial institutions and agents",
+      "value": 4886.84,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 179405.71,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_liabilities",
+      "original_metric_name": "Other liabilities",
+      "value": 8477.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "subordinated_debt",
+      "original_metric_name": "Subordinated Debt",
+      "value": 7300.0,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 200070.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital (Ordinary shares of Tk. 10 each)",
+      "value": 6141.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 4697.57,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserve",
+      "original_metric_name": "Other reserve",
+      "value": 3064.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "retained_earnings_balance",
+      "original_metric_name": "Retained earnings (balance sheet, cumulative)",
+      "value": 2433.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 16337.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet items including contingent liabilities",
+      "value": 92951.4,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income",
+      "original_metric_name": "Interest income/profit on investment",
+      "value": 3812.64,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense",
+      "original_metric_name": "Interest/profit paid on deposits and borrowings, etc.",
+      "value": 2454.83,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income",
+      "value": 1357.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income",
+      "value": 720.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "commission_exchange_brokerage",
+      "original_metric_name": "Commission, exchange and brokerage",
+      "value": 527.54,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_operating_income",
+      "original_metric_name": "Other operating income",
+      "value": 92.78,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Total operating income (A)",
+      "value": 2698.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses (B)",
+      "value": 1197.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit before provisions (C=A-B)",
+      "value": 1500.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Total provision (D)",
+      "value": 330.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total profit before taxes (C-D)",
+      "value": 1170.46,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Provision for taxation for the period + Contribution to Foundation@3% pre-tax profit (combined)",
+      "value": 479.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Total profit before taxes (C-D) minus combined tax_expense above",
+      "value": 690.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS)",
+      "value": 1.13,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+/* ─── FOOTER ─────────────────────────────────────────────────────── */
+.site-footer {
+  text-align: center;
+  padding: 28px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  letter-spacing: 0.5px;
+  position: relative;
+}
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.site-footer strong { color: var(--accent); }

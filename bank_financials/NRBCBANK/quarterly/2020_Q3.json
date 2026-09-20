@@ -1,0 +1,98 @@
+{
+  "bank_id": "NRBCBANK",
+  "bank_name": "NRB Commercial Bank PLC",
+  "reporting_date": "2020-09-30",
+  "financial_year": 2020,
+  "quarter": "Q3",
+  "period_note": "PARTIAL / MIXED-CONFIDENCE quarter. This bank's own real Q3 2020 interim financial statement PDF exists and was downloaded, but its text layer is badly corrupted (looks like an OCR pass over a scanned copy: e.g. 'Seotembet 2420' for 'September 2020', digits broken up with spurious spaces and stray letters substituted for digits). Two figures survived legible and unambiguous even amid the noise -- Total assets (112,374,166,585, only spurious spacing, no character substitution) and NAV per share (15.94, clean) -- and are recorded here with normal confidence. Every other balance-sheet line (equity, deposits, loans, investments, off-balance-sheet) could only be reconstructed by assuming specific OCR digit-substitutions and back-solving from component sums; that reconstruction was attempted but is NOT reported here because it depends on an unverified assumption about which digit was misread, which would misrepresent an estimate as a reported figure -- recorded as a gap instead, per the 'never fabricate' rule. INCOME STATEMENT for this quarter is therefore taken instead from the FY2020 annual report's own retrospective 'Quarterly Performance' table (discrete Q3,2020 column) -- note this table's Q2,2020 column was already found to diverge from the contemporaneous interim filing on the tax/net-profit line only (see 2020_Q2.json), so the same provenance caveat applies here even though no contemporaneous Q3 interim P&L could be checked against it this time. non_interest_and_investment_income again bundles investment income (the annual-table convention), unlike non_interest_income used in the Q1/Q2 2020 files above.",
+  "source": {
+    "source_document": "nrbcbank-2020-q3-financial-statements.txt",
+    "source_path": "annual_reports/NRBCBANK/nrbcbank-2020-q3-financial-statements.txt",
+    "source_url": "https://www.nrbcommercialbank.com/assets/form/report/third2020.pdf",
+    "source_page_lines": "Solo Balance Sheet, p.5-6 of the PDF (OCR/extraction quality issues, see period_note)",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 112374.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value (NAV) per Share",
+      "value": 15.94,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net Interest Income",
+      "value": -6.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Sourced from the FY2020 annual report's own retrospective table, NOT this quarter's own interim filing -- see period_note."
+    },
+    {
+      "normalised_metric_name": "non_interest_and_investment_income",
+      "original_metric_name": "Non-Interest Income (bank's own ANNUAL-TABLE definition, bundles Investment Income -- see period_note)",
+      "value": 1918.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_income",
+      "original_metric_name": "Operating Income",
+      "value": 1911.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Operating Expenses",
+      "value": 988.65,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Operating Profit",
+      "value": 923.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_expense",
+      "original_metric_name": "Provisions",
+      "value": -53.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Tax Effect",
+      "value": -55.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net profit",
+      "value": 1031.9,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

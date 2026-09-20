@@ -1,0 +1,156 @@
+{
+  "bank_id": "NBL",
+  "bank_name": "National Bank PLC",
+  "reporting_date": "2026-06-30",
+  "financial_year": 2026,
+  "quarter": "Q2",
+  "period_note": "BONUS PERIOD beyond this dataset's normal FY2011-2025 span, included as the most current available data: equity has now fallen to -46909.31m, deteriorating further from -35333.77m just one quarter earlier (Mar 2026) and nearly double the FY2025 year-end figure of -24002.90m. Solo (bank-only) Balance Sheet and Profit and Loss Account from National Bank's 2nd-Quarter 2026 unaudited financial statements ('NATIONAL BANK PLC.' letterhead); plain 'Balance Sheet (Un-audited)'/'Profit and Loss Account (Un-audited)' sections used (Solo+OBU basis). Comparative column (31 Dec 2025) again shows -23966.13m, the same small (~0.15%) divergence from this dataset's audited-annual-report FY2025 figure of -24002.90m already noted in 2026_Q1.json -- not reconciled, audited figure remains authoritative. NAV per share printed correctly as negative this quarter: -14.57. Income-statement items are CUMULATIVE from 1 January 2026 (first of four P&L columns: [Jan-Jun 2026] [Jan-Jun 2025] [Apr-Jun 2026] [Apr-Jun 2025] -- the Jan-Jun 2025 comparative column here reproduces this dataset's own 2025_Q2.json cumulative figures exactly, e.g. PAT -9919,339,256 matches, and the Apr-Jun 2025 discrete comparative of -7,659,921,985 matches 2025_Q2.json's supplementary discrete-quarter figure exactly, cross-confirming both records). As in prior quarters, 'Total operating income' and 'Profit before provision' print without their negative sign despite being losses; corrected via the identity chain and cross-checked against the explicitly-parenthesized 'Profit before taxes' and 'Net Profit after taxation' lines (identical, confirming zero provision and zero tax this half-year). Source PDF was image-only; text obtained via OCR (tesseract, 300dpi). Given equity is negative, ROE is NOT computed for this period.",
+  "source": {
+    "source_document": "Q2_nbplc.pdf (bank's own filename; labelled '2nd Quarter 2026 (Un-audited)' on the bank's financial-statement page)",
+    "source_path": "annual_reports/NBL/nbl-unaudited-2026-q2-ocr.txt",
+    "source_url": "https://www.nblbd.com/public/assets/financial-statement/1785648898_Q2_nbplc.pdf",
+    "source_page_lines": "Solo 'Balance Sheet (Un-audited)' and 'Profit and Loss Account (Un-audited)' sections",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "TOTAL ASSETS",
+      "value": 511241.87,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "TOTAL LIABILITIES",
+      "value": 558151.18,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "TOTAL SHAREHOLDERS' EQUITY",
+      "value": -46909.31,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported",
+      "note": "Confirmed via balance-sheet identity: Total Liabilities 558151.18m + Total Equity -46909.31m = Total Assets 511241.87m exactly."
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts (total)",
+      "value": 338026.91,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and advances (total)",
+      "value": 431795.7,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments (Government + Others)",
+      "value": 12883.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total off B/S items (Including contingent liabilities)",
+      "value": 43082.48,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Assets Value per share (NAV)",
+      "value": -14.57,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_income_cumulative",
+      "original_metric_name": "Interest income (cumulative from Jan 1)",
+      "value": 3018.99,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "interest_expense_cumulative",
+      "original_metric_name": "Interest paid on deposits and borrowings (cumulative from Jan 1)",
+      "value": 23439.27,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net interest income (cumulative from Jan 1)",
+      "value": -20420.28,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investment_income_cumulative",
+      "original_metric_name": "Investment income (cumulative from Jan 1)",
+      "value": 463.6,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Commission, exchange and brokerage + Other operating income (cumulative from Jan 1)",
+      "value": 716.83,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated",
+      "note": "Sum of commission/exchange/brokerage (459.64m) and other operating income (257.19m)."
+    },
+    {
+      "normalised_metric_name": "operating_expenses_cumulative",
+      "original_metric_name": "Total operating expenses (cumulative from Jan 1)",
+      "value": 3708.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Profit before provision (cumulative from Jan 1)",
+      "value": -22948.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_sign_corrected",
+      "note": "Source text printed 22,948,192,853 without a negative sign; confirmed a loss via identity, and equals Profit before taxes and PAT exactly since provision and tax were both zero this half-year."
+    },
+    {
+      "normalised_metric_name": "net_profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit after taxation (cumulative from Jan 1)",
+      "value": -22948.19,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share-(Re-stated) (cumulative from Jan 1)",
+      "value": -7.13,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

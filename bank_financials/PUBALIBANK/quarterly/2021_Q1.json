@@ -1,0 +1,41 @@
+{
+  "bank_id": "PUBALIBANK",
+  "bank_name": "Pubali Bank PLC",
+  "reporting_date": "2021-03-31",
+  "financial_year": 2021,
+  "quarter": "Q1",
+  "period_note": "Recovered via a Wayback Machine capture of DSE's OWN company page (dsebd.org/displayCompany.php?name=PUBALIBANK), NOT the bank's site. This vintage of the table (titled 'Interim Financial Performance: <year>', 2016 onward) gives Turnover/Revenue, Profit for the period, Basic EPS and period-end market price, with Q2/Q3 given BOTH as a discrete quarter figure AND a separate cumulative (Half Yearly / 9 Months) figure side by side -- identical table structure to the one already documented for RUPALIBANK. Sourced from DSE's (dsebd.org) own company-page interim table, NOT the bank's own site (pubalibangla.com, Cloudflare-blocked). Solo/Standalone basis presumed, consistent with this bank's established series basis, but not explicitly labeled solo vs consolidated on the DSE page itself -- flagged as an assumption, not a confirmed fact (same caveat documented for RUPALIBANK's use of this identical source type). TURNOVER/REVENUE DELIBERATELY OMITTED FOR THIS QUARTER (AND FOR Q2/Q3 OF THE SAME YEAR): an earlier Wayback capture of this same URL (2021-06-09, closer to Q1's original filing) shows a materially different Turnover/Revenue figure (785.41 BDT mn) for this identical nominal period (202103) than this source's later capture (5623.83) -- Profit for the period was IDENTICAL (1011.56) across both captures, so the instability is confined to the already-ambiguous Turnover/Revenue field (this dataset's RUPALIBANK sourcing notes already flag this DSE generic-template row as having an unclear definition for banks). Given this directly-observed instability for this specific bank/year, Turnover/Revenue is excluded from all of FY2021's quarter files rather than picking one of two conflicting reported values.",
+  "source": {
+    "source_document": "pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_path": "annual_reports/PUBALIBANK/pubalibank-dse-interim-tables-2011-2026.txt",
+    "source_url": "https://web.archive.org/web/20211102130203id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "source_page_lines": "\"Interim Financial Performance: 2021\" table, Q1 column (period-end 202103); cross-checked against an earlier capture at https://web.archive.org/web/20210609023517id_/https://dsebd.org/displayCompany.php?name=PUBALIBANK",
+    "retrieval_date": "2026-08-27"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "net_profit_after_tax",
+      "original_metric_name": "Profit for the period (mn)",
+      "value": 1011.56,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share (EPS), Basic",
+      "value": 0.98,
+      "unit": "BDT_per_share",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "market_price_per_share",
+      "original_metric_name": "Market price per share at period end",
+      "value": 23.6,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}

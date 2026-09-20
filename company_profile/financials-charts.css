@@ -1,0 +1,183 @@
+/* ============================================================
+   financials-charts.css
+   Line chart section for Company Financials.
+   Sits below the data-entry section on the company profile.
+   Uses the same CSS variable tokens as the rest of the site.
+   ============================================================ */
+
+/* ── Section wrapper ────────────────────────────────────────── */
+#financials-charts-section {
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+}
+
+/* ── Section header ─────────────────────────────────────────── */
+.fch-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.fch-title-icon { font-size: 18px; }
+
+.fch-title {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+
+.fch-subtitle {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-left: auto;
+}
+
+/* ── Chart grid: 3 per row on desktop ───────────────────────── */
+.fch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ── Individual chart card ──────────────────────────────────── */
+.fch-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.fch-card:hover { border-color: var(--border-glow); }
+
+/* ── Card header ────────────────────────────────────────────── */
+.fch-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--border);
+  gap: 8px;
+}
+
+.fch-card-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+}
+
+.fch-card-badge {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  letter-spacing: 0.5px;
+}
+
+/* ── Canvas wrapper ─────────────────────────────────────────── */
+.fch-canvas-wrap {
+  position: relative;
+  padding: 12px 12px 8px;
+  flex: 1;
+}
+
+.fch-canvas-wrap canvas {
+  display: block;
+  width: 100% !important;
+  height: 180px !important;
+}
+
+/* ── Empty state ────────────────────────────────────────────── */
+.fch-empty {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 40px 16px;
+  letter-spacing: 0.3px;
+}
+
+/* ── Stat row below chart ───────────────────────────────────── */
+.fch-stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px 12px;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.fch-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fch-stat-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.fch-stat-value {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.fch-stat-value.gain { color: var(--gain, #22c55e); }
+.fch-stat-value.loss { color: var(--loss, #ef4444); }
+
+/* ── Dividend card spans 2 columns (has 2 lines) ────────────── */
+.fch-card-wide {
+  grid-column: span 2;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+
+/* Tablet: 2 per row */
+@media (max-width: 900px) {
+  .fch-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .fch-card-wide {
+    grid-column: span 2;
+  }
+}
+
+/* Mobile: 1 per row */
+@media (max-width: 560px) {
+  #financials-charts-section {
+    padding: 0 12px;
+  }
+  .fch-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .fch-card-wide {
+    grid-column: span 1;
+  }
+  .fch-canvas-wrap canvas {
+    height: 200px !important;
+  }
+  .fch-subtitle { display: none; }
+}

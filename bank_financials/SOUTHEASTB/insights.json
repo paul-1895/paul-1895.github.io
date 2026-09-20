@@ -1,0 +1,217 @@
+{
+  "bank_id": "SOUTHEASTB",
+  "generated_at": "2026-08-26",
+  "methodology": "Derived from bank_financials/SOUTHEASTB/quarterly/*.json (FY2011-FY2025 year-end, consolidated basis) and ratios_timeseries.json. Every figure quoted below is a reported value from Southeast Bank's own audited annual-report summary tables, or an explicitly-labelled ratio computed from them (provision coverage = provision for classified loans / classified loans; net interest margin proxy = net interest income / period-end interest-earning assets; price-to-book = year-end DSE price / NAV per share; capital surplus % = reported surplus / derived required capital). NPL%, ROA%, ROE%, CRAR%, cost-to-income and LDR are the bank's own reported ratios, not recomputed \u2014 the bank computes ROA/ROE on average balances, so period-end recomputations are stored separately in ratios_timeseries.json and differ. No figure is interpolated or estimated.",
+  "risk_signals": [
+    {
+      "category": "severe_multi_year_asset_quality_collapse",
+      "severity": "critical",
+      "statement": "Classified loans rose for four consecutive years at 40-62% a year, from 9,939.76m (FY2020) to 54,813.65m (FY2024) \u2014 a 451% increase \u2014 taking the reported NPL ratio from 3.10% to 14.82%. The annual increments were +61.33% (FY2021), +40.75% (FY2022), +50.20% (FY2023) and +61.69% (FY2024). Over the same four years gross loans grew only 15.7% (322,251.46m to 372,907.25m), so the NPL build-up is deterioration in the existing book, not dilution by fast growth.",
+      "metrics": [
+        "classified_loans",
+        "npl_ratio_pct",
+        "gross_loans"
+      ],
+      "periods": [
+        "2020_Q4",
+        "2021_Q4",
+        "2022_Q4",
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "fy2025_npl_improvement_not_backed_by_provisions",
+      "severity": "critical",
+      "statement": "The FY2025 headline improvement \u2014 NPL down from 14.82% to 7.51%, classified loans down 48.69% from 54,813.65m to 28,127.54m \u2014 is not corroborated by the provision movement. Provision for classified loans fell 63.1% (30,029.27m to 11,072.11m) while provision for unclassified loans rose 332.8% (2,680.38m to 11,601.19m), which is the signature of exposures being reclassified out of the NPL bucket rather than recovered in cash. Specific provision coverage of NPLs consequently fell from 54.78% to 39.36%, its lowest reading in the entire 15-year series except FY2015 (32.30%). Total loan-loss provisions fell 10,036.35m year on year (32,709.65m to 22,673.30m), and that release is comparable in size to the entire 2,620.96m improvement in profit before tax (1,873.72m to 4,494.68m).",
+      "metrics": [
+        "npl_ratio_pct",
+        "classified_loans",
+        "provision_classified",
+        "provision_unclassified",
+        "provision_coverage_pct",
+        "profit_before_tax"
+      ],
+      "periods": [
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "repeated_regulatory_capital_shortfalls",
+      "severity": "high",
+      "statement": "Southeast Bank has fallen below its Basel minimum capital requirement in three separate years of the series: FY2017 (deficit 1,285.07m, CRAR 10.84%, 3.67% short of requirement), FY2019 (deficit 3,071.28m, CRAR 11.52%, 7.84% short) and FY2024 (deficit 3,062.82m, CRAR 11.64%, 6.86% short). The Tier-1 ratio has never exceeded 9.14% (FY2011) in the whole series and bottomed at 6.79% in FY2017; even after the FY2025 recovery to 13.61% CRAR the Tier-1 ratio is only 9.13%, meaning the capital position leans heavily on Tier-2 instruments (16,819.70m of a 51,096.18m total).",
+      "metrics": [
+        "capital_surplus_deficit",
+        "car_pct",
+        "tier1_ratio_pct",
+        "tier2_capital"
+      ],
+      "periods": [
+        "2017_Q4",
+        "2019_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "structural_net_interest_margin_compression",
+      "severity": "high",
+      "statement": "Net interest income as a share of interest-earning assets has fallen almost without interruption from 1.66% (FY2016) to 0.43% (FY2025), a 74% erosion. In FY2025 the bank earned 33,295.91m of interest income against 31,180.36m of interest expense \u2014 a net interest income of just 2,115.55m on 496,349.88m of earning assets. The bank's own reported spread confirms the squeeze: 5.20% (FY2014) to 1.84% (FY2025). Earnings are now carried by non-interest income (17,702.47m in FY2025, 8.4x the net interest income), which is a materially less stable base.",
+      "metrics": [
+        "net_interest_margin_proxy_pct",
+        "interest_income",
+        "interest_expense",
+        "net_interest_income",
+        "non_interest_income"
+      ],
+      "periods": [
+        "2014_Q4",
+        "2016_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "decade_long_profitability_decline",
+      "severity": "high",
+      "statement": "Return on equity fell from 16.51% (FY2014) to a series low of 1.36% (FY2024), and averaged 6.15% across FY2017-FY2024 \u2014 eight consecutive years of single-digit returns. Return on assets fell from 1.67% (FY2014) to 0.09% (FY2024). FY2024 net profit was 432.64m against 3,836.94m in FY2014, an 88.7% decline in nominal terms while total assets grew 131% over the same span. The FY2025 recovery to 10.16% ROE and 0.61% ROA is the best result since FY2015, but it rests on the provision release described above.",
+      "metrics": [
+        "roe_pct",
+        "roa_pct",
+        "profit_after_tax",
+        "total_assets"
+      ],
+      "periods": [
+        "2014_Q4",
+        "2017_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2024_earnings_near_wipeout_below_operating_line",
+      "severity": "high",
+      "statement": "FY2024 net profit after tax was 432.64m, down 79.7% from 2,133.83m in FY2023 and equivalent to EPS of 0.32 against 1.66 a year earlier. Operating profit actually rose that year, from 8,857.63m to 11,721.29m, so the collapse happened entirely below the operating line: provisioning took profit before tax down to 1,873.72m, and the tax charge then consumed 76.9% of what remained (1,441.08m of 1,873.72m). Southeast Bank's effective tax rate is chronically high \u2014 it ranged from 31.9% to 55.9% in eleven of the fifteen years \u2014 but FY2024's 76.9% is the series peak and FY2017's 72.1% the second, and those are precisely the two years with the heaviest provisioning, consistent with loan-loss provisions being disallowed for tax purposes and taxed profit diverging sharply from accounting profit.",
+      "metrics": [
+        "profit_after_tax",
+        "profit_before_tax",
+        "operating_profit",
+        "eps"
+      ],
+      "periods": [
+        "2023_Q4",
+        "2024_Q4"
+      ]
+    },
+    {
+      "category": "growth_stall_since_2021",
+      "severity": "medium",
+      "statement": "Balance-sheet expansion has essentially stopped. Total assets grew at a 12.75% compound annual rate over FY2011-FY2020 (158,078.59m to 465,293.41m) but only 3.57% a year over FY2020-FY2025 (to 554,424.56m). FY2022 is the only year in the 15-year series in which the balance sheet shrank: total assets fell 0.55% and deposits fell 1.48% (376,700.77m to 371,143.44m). Gross loans grew just 12.17% cumulatively across the four years FY2021-FY2025 (336,329.37m to 377,258.69m), and only 1.17% in FY2025 itself while deposits grew 6.78% \u2014 the bank is taking in funds it is not lending out.",
+      "metrics": [
+        "total_assets",
+        "total_deposits",
+        "gross_loans"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2020_Q4",
+        "2021_Q4",
+        "2022_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "cost_efficiency_deterioration",
+      "severity": "medium",
+      "statement": "The cost-to-income ratio has nearly doubled over the series, from 25.50% (FY2011) to a peak of 47.21% (FY2023), settling at 39.56% in FY2025. Headcount rose from 1,848 to 3,226 and branches from 84 to 137 over the same period, but net profit per branch (net profit after tax divided by year-end branch count) was 22.76m in FY2011, 3.20m in FY2024 and 24.45m in FY2025 \u2014 meaning the branch network delivered essentially no earnings growth across fifteen years of expansion, and none at all in nominal-per-branch terms.",
+      "metrics": [
+        "cost_income_ratio_pct",
+        "num_employees",
+        "num_branches"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "persistent_market_discount_to_book",
+      "severity": "medium",
+      "statement": "The market has de-rated the shares continuously. Price-to-book fell from 1.34x (FY2011, price 31.10 vs NAV 23.29) to 0.35x (FY2025, price 9.00 vs NAV 25.74), and has been below 1.0x in every year since FY2012. Net asset value per share is essentially flat across fifteen years (23.29 to 25.74, +10.5%) while the share price fell 71.1% \u2014 the equity has compounded almost nothing for shareholders over the full period.",
+      "metrics": [
+        "price_to_book",
+        "market_price_per_share",
+        "nav_per_share"
+      ],
+      "periods": [
+        "2011_Q4",
+        "2012_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "fy2020_forbearance_distortion",
+      "severity": "info",
+      "statement": "FY2020's apparent asset-quality strength is a regulatory artefact, not performance: the reported NPL ratio fell to a series-low 3.10% and specific provision coverage spiked to 203.49% because Bangladesh Bank's COVID-era moratorium suspended loan downgrades for the year. The underlying deterioration surfaced immediately once the moratorium lapsed \u2014 classified loans rose 61.33% in FY2021 and kept rising for three more years. Any trend line drawn through FY2020 will understate the deterioration that began before it.",
+      "metrics": [
+        "npl_ratio_pct",
+        "provision_coverage_pct",
+        "classified_loans"
+      ],
+      "periods": [
+        "2019_Q4",
+        "2020_Q4",
+        "2021_Q4"
+      ]
+    },
+    {
+      "category": "loan_deposit_ratio_persistently_high",
+      "severity": "info",
+      "statement": "The credit-deposit ratio has run at 83-86% for most of the last decade \u2014 85.81% (FY2023), 85.49% (FY2024), 83.32% (FY2025) \u2014 versus 76.44% at its FY2013 low. This leaves comparatively little unlent deposit headroom, though the FY2025 easing to 83.32% (deposits +6.78% against loans +1.17%) is a modest improvement in the funding buffer.",
+      "metrics": [
+        "ldr_pct",
+        "total_deposits",
+        "gross_loans"
+      ],
+      "periods": [
+        "2013_Q4",
+        "2023_Q4",
+        "2024_Q4",
+        "2025_Q4"
+      ]
+    },
+    {
+      "category": "q4_loan_loss_provisioning_backloaded_almost_every_year",
+      "severity": "high",
+      "statement": "Newly available Q1-Q3 interim data (from the bank's own embedded 'Evaluation of the Quarterly Financials' disclosure table, FY2016-FY2025) shows that in 7 of the 9 years where a discrete Q4 can be isolated, cumulative net profit after tax at year-end was LOWER than at the 30-September (9-month) mark -- i.e. Southeast Bank posted a discrete fourth-quarter LOSS: FY2017 (9-month 2,367m -> full-year 1,169m, Q4 alone -1,198m), FY2019 (3,276m -> 2,509m, -767m), FY2020 (2,769m -> 2,149m, -620m), FY2021 (3,717m -> 1,784m, -1,933m), FY2022 (3,439m -> 1,752m, -1,687m), FY2023 (3,005m -> 2,134m, -871m) and FY2024 (1,570m -> 433m, -1,137m, the most severe). In every year from FY2020-FY2024 where the provisioning line is separately broken out in this table, the cause is directly visible: cumulative 'Provision for loans and advances/investments and others' jumps sharply in the Q4-only increment versus the first nine months -- FY2020 +3,823m (vs 1,286m in 9 months), FY2021 +4,034m (vs 1,379m), FY2022 +3,688m (vs 2,905m), FY2023 +3,503m (vs 1,841m), FY2024 +4,217m (vs 5,631m, the largest Q4-alone charge in the series). Operating performance before provisioning is NOT the driver -- cumulative 'Profit before provision' increases monotonically every single quarter in every year with no exception -- so this is specifically a year-end provisioning-timing pattern, not weaker underlying operations in Q4. Only FY2016 (Q4 +155m), FY2018 (Q4 +1m, effectively flat) and FY2025 (Q4 +1,393m, still with a further 2,212m Q4 provisioning increment but not enough to erase the quarter's operating profit) broke the pattern. This means any analysis using only Q1-Q3 (or annualizing a 9-month run-rate) would have materially OVERSTATED full-year profitability in most years of this series, and the timing itself -- provisioning decisions concentrated at year-end rather than recognised progressively as asset quality data becomes available intra-year -- is itself a data point on provisioning discipline, independent of the FY2024 and FY2025 asset-quality findings already in this file.",
+      "metrics": [
+        "profit_after_tax_cumulative",
+        "provision_for_loans_and_others_cumulative",
+        "operating_profit_cumulative"
+      ],
+      "periods": [
+        "2017_Q3",
+        "2017_Q4",
+        "2019_Q3",
+        "2019_Q4",
+        "2020_Q3",
+        "2020_Q4",
+        "2021_Q3",
+        "2021_Q4",
+        "2022_Q3",
+        "2022_Q4",
+        "2023_Q3",
+        "2023_Q4",
+        "2024_Q3",
+        "2024_Q4",
+        "2025_Q3",
+        "2025_Q4"
+      ]
+    }
+  ],
+  "historical_context": "Southeast Bank's fifteen-year record divides cleanly into three phases. Through FY2011-FY2014 it was a high-return mid-sized private commercial bank: ROE 10.5-16.5%, NPL 3.5-4.5%, cost-to-income in the mid-20s, and a balance sheet compounding at roughly 13% a year. From FY2015 the returns broke down \u2014 ROE fell below 12% and never recovered to the earlier level, hitting 4.46% as early as FY2017 alongside the first regulatory capital shortfall \u2014 while the balance sheet kept growing, so the bank was getting steadily larger and steadily less profitable at the same time. The third phase, FY2021 onward, is an asset-quality crisis: four straight years of 40-62% annual growth in classified loans took NPLs from 3.10% to 14.82% by FY2024 and all but eliminated earnings (net profit 432.64m, ROE 1.36%), with a second capital shortfall in that year. FY2025 reports a sharp reversal \u2014 NPL halved to 7.51%, ROE back to 10.16%, capital surplus restored \u2014 but the composition of that reversal is the central question for anyone using this data: specific provision coverage fell to 39.36% and total loan-loss provisions were released by 10,036.35m, an amount of the same order as the entire improvement in pre-tax profit. The structural backdrop is worse than the headline ratios suggest: net interest margin has compressed by three quarters since FY2016 to 0.43%, leaving the bank dependent on non-interest income, and the market has priced this accordingly at 0.35x book.",
+  "data_gaps": "Only Q4/year-end (audited) periods are covered; Q1/H1/Q3 unaudited interim data has not been researched for this bank. All figures are CONSOLIDATED (Group) basis \u2014 Southeast Bank publishes no Solo/Standalone multi-year summary table, so unlike most banks in this dataset the series cannot be put on a solo basis without extracting each year's own balance sheet individually; the difference is small (0.17-0.50% on total assets in the two years measured) but it is a real basis inconsistency for cross-bank comparison. Guarantee Business (including ILC) is missing for FY2015 alone, because no multi-year 'at a Glance' table in the archive spans that year. capital_surplus_deficit is deliberately omitted for FY2012: the source table printed the required-capital figure (18,032.77m, exactly 10% of that year's risk-weighted assets) in the surplus row. The FY2011, FY2012, FY2013 and FY2015 annual reports could not be retrieved at all \u2014 southeastbank.com.bd's WAF returns a fake HTTP 200 HTML body in place of every PDF \u2014 so those four years come from comparative columns in later reports rather than from their own documents, each corroborated by at least two independent tables. Every other year is sourced from its own contemporaneous report, except FY2020, whose report is present but whose detailed table extracts as mojibake (subsetted embedded font), so its line items come from the FY2021 report and are validated against the FY2020 report's own readable tables. Where a later report restated a figure \u2014 FY2017 EPS and P/E, FY2018 and FY2019 EPS, FY2019 P/E, FY2020 ROE and unclassified provision, FY2021 Tier-II ratio, FY2023 EPS and cost of deposit, FY2024 ROE \u2014 the earlier contemporaneous value was kept and the discrepancy recorded in that year's period_note and in sources.json. Provision figures are the balance-sheet provisions carried, not the profit-and-loss provision charge for the year, which these summary tables do not report; the year's charge can only be inferred as operating profit minus profit before tax. UPDATE 2026-08-26: Q1/Q2/Q3 interim data has now been researched and added for FY2015-FY2025 (11 years; FY2015 and FY2020 sourced only from an adjacent year's comparative column since their own year's report lacks/loses this table, the other 9 years contemporaneously sourced and cross-checked against the following year's report). Source is the bank's own embedded 'Evaluation of the Quarterly Financials by the Audit Committee and by the Board' disclosure table (see sources.json), not a separately-filed interim financial statement. FY2011-FY2014 remain genuinely unavailable by this route -- the table itself does not exist in any report that far back -- and FY2026 has no annual report yet; both would still require the original DSE-news-archive route for direct interim filings, which has not been attempted. Q1-Q3 balance-sheet items are period-end snapshots; income-statement items and EPS are cumulative from 1 January of that year (not discrete-quarter figures), consistent with how CITYBANK's Q1-Q3 data in this same dataset is presented. The 2015-2019 vintage of this table reports a single combined 'Loans and advances/investments' figure rather than the two split out, so gross_loans (and therefore ldr_pct) is null for those five years' interim periods in ratios_timeseries.json; the combined figure is preserved as loans_and_investments_combined instead."
+}

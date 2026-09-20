@@ -1,0 +1,281 @@
+{
+  "bank_id": "NRBBANK",
+  "bank_name": "NRB Bank PLC",
+  "reporting_date": "2025-12-31",
+  "financial_year": 2025,
+  "quarter": "Q4",
+  "period_note": "Year-end position for FY2025, sourced from the Financial Statement booklet (Adobe InDesign, same compact Consolidated & Separate Financial Statements format as FY2024's, freshly downloaded from nrbbankbd.com/wp-content/uploads/2026/05/, text-extracted and saved as nrbbank-financial-statement-2025.txt under annual_reports/NRBBANK/, source PDF deleted after extraction) and the Basel III Risk-Based Capital Disclosure (Microsoft Word export, saved as nrbbank-basel3-disclosure-2025.txt). No glossy 'Annual Report 2025' (Directors' Report / five-year table / photos) had been published on the bank's investor-relations page as of the FY2025 Financial Statements' own sign-off date (30 April 2026); Authorised Capital, Number of Branches/ATMs/Employees and other narrative-report-only fields are therefore gaps for FY2025 only. Both the Consolidated and Separate Balance Sheets, P&L and off-balance-sheet schedules were read directly from the source (page-image cross-checked against the text extraction to resolve the compact 8-page newspaper layout's non-linear column ordering) -- reporting basis confirmed Solo/Separate per the project's standard method (see sources.json). NPL% is calculated (classified/gross loans) for the same reason as FY2024 (label present, value cell blank in the Basel III disclosure). NOTABLE: Net Interest Income turned NEGATIVE for the first time in the bank's history (Solo: -98.84m, versus +1,165.11m in FY2024) as Interest Paid on deposits/borrowings (7,577.00m) exceeded Interest Income (7,478.15m); Profit after Tax of 108.52m is therefore driven almost entirely by Income from Investments (2,587.93m) and non-fund-based income, not core lending spread. Classified loans fell back to 6,579.98m from FY2024's 10,497.74m (a partial recovery: Additions of 1,484.99m were more than offset by Reductions of 5,402.75m per the Basel III NPA movement schedule) but NPL% (9.05% calculated) remains far above the FY2023 pre-crisis level of 4.98%. A large-loan-exposure note elsewhere in the FY2025 filing states 'Total capital of the Bank was Taka 9,094.53 million as at 31 December 2025' -- this is actually the FY2024 (not FY2025) Total Regulatory Capital figure carried over in error from the prior year's text; the FY2025 filing's own Basel III disclosure gives the correct 31 Dec 2025 Total Regulatory Capital as 10,059.86m, which is the figure used here. specific_provision_balance (1,960.83m, the Basel III disclosure's NPA-provision closing balance) covers ~29.8% of FY2025 classified loans (1,960.83/6,579.98) -- an improvement in coverage ratio from FY2024's ~20.7%, though still leaving a majority of classified exposure unprovided at the specific-provision level; see FY2024's period_note for why a blended coverage ratio is not computed.",
+  "source": {
+    "source_document": "nrbbank-financial-statement-2025.txt (own Consolidated & Separate Financial Statements booklet) and nrbbank-basel3-disclosure-2025.txt",
+    "source_path": "annual_reports/NRBBANK/nrbbank-financial-statement-2025.txt and annual_reports/NRBBANK/nrbbank-basel3-disclosure-2025.txt (originally https://www.nrbbankbd.com/wp-content/uploads/2026/05/Financial-Statement-2025.pdf and https://www.nrbbankbd.com/wp-content/uploads/2026/05/Disclosures-on-Risk-Based-Capital-Basel-III-2025.pdf ; text extracted with pdftotext -layout, page-image cross-checked via pdftoppm for the compact multi-column layout, source PDFs deleted per project cleanup rule)",
+    "source_url": "https://www.nrbbankbd.com/investors-relation/",
+    "source_page_lines": "nrbbank-financial-statement-2025.txt page 2 of 8 (own Solo Balance Sheet and Profit and Loss Account, signed 30 April 2026, 'CONSOLIDATED & SEPARATE FINANCIAL STATEMENTS 2025'); nrbbank-basel3-disclosure-2025.txt pp.5-6 and p.12 (Tier-1/Tier-2/CRAR, Gross NPA movement)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 6905.87,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory Reserve",
+      "value": 1234.77,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "other_reserve",
+      "original_metric_name": "Other Reserve",
+      "value": 42.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "reserve_fund",
+      "original_metric_name": "Statutory Reserve + Other Reserve",
+      "value": 1277.66,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "retained_earnings",
+      "original_metric_name": "Retained Earnings",
+      "value": 686.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' Equity",
+      "value": 8870.35,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and Other Accounts",
+      "value": 88073.36,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans and Advances",
+      "value": 72712.7,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investments",
+      "value": 23524.48,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "fixed_assets",
+      "original_metric_name": "Fixed Assets including premises, furniture and fixtures",
+      "value": 444.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 112507.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "classified_loans",
+      "original_metric_name": "Non Performing / Classified Loans and Advances (NPLs)",
+      "value": 6579.98,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "specific_provision_balance",
+      "original_metric_name": "Specific Provision held against Classified Loans (closing balance)",
+      "value": 1960.83,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Total Off-Balance Sheet Items including contingent liabilities",
+      "value": 17279.92,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_capital",
+      "original_metric_name": "Total Common Equity Tier-1 Capital",
+      "value": 8092.15,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_capital",
+      "original_metric_name": "Total Admissible Tier-2 Capital",
+      "value": 1967.72,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "actual_capital",
+      "original_metric_name": "Eligible Capital / Total Regulatory Capital (Tier-I & Tier-II)",
+      "value": 10059.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "required_capital",
+      "original_metric_name": "Minimum Capital Requirement (MCR)",
+      "value": 7199.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "car_pct",
+      "original_metric_name": "Capital to Risk Weighted Assets Ratio (CRAR)",
+      "value": 13.97,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier1_ratio_pct",
+      "original_metric_name": "Tier 1 Capital Adequacy Ratio",
+      "value": 11.24,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tier2_ratio_pct",
+      "original_metric_name": "Tier-2 Capital Adequacy Ratio",
+      "value": 2.73,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_income",
+      "original_metric_name": "Total Operating Income (A)",
+      "value": 3151.83,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_expenditure",
+      "original_metric_name": "Total Operating Expenses (B)",
+      "value": 2449.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_profit",
+      "original_metric_name": "Profit before Provision (C=A-B)",
+      "value": 702.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total Profit before Tax (E=C-D)",
+      "value": 109.25,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net Profit after Tax (G=E-F)",
+      "value": 108.52,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings per Share (Face value Tk.10)",
+      "value": 0.16,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "ldr_pct",
+      "original_metric_name": "Credit to Deposit Ratio (Gross)",
+      "value": 82.56,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "npl_pct",
+      "original_metric_name": "NPL to Total Loans and Advance",
+      "value": 9.05,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "roe_pct",
+      "original_metric_name": "Return on Equity (calculated, period-end equity)",
+      "value": 1.22,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated_period_end_not_average"
+    },
+    {
+      "normalised_metric_name": "roa_pct",
+      "original_metric_name": "Return on Assets (calculated, period-end assets)",
+      "value": 0.096,
+      "unit": "percent",
+      "currency": "BDT",
+      "basis": "calculated_period_end_not_average"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Net Asset Value per Share (NAVPS)",
+      "value": 12.84,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Liabilities",
+      "value": 103637.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity"
+    }
+  ]
+}

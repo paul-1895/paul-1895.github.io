@@ -1,0 +1,99 @@
+{
+  "bank_id": "MERCANBANK",
+  "bank_name": "Mercantile Bank PLC",
+  "website": "https://www.mblbd.com",
+  "reporting_basis": "SOLO / STANDALONE. Determined 2026-08-26 by matching the total assets this dataset records against the balance sheets in the bank's own annual reports. Evidence: FY2024 total assets of 444,690.30m match the standalone 'BALANCE SHEET' figure (444,690,299,923) in mercanbank-annual-report-2024.txt; the same date's 'CONSOLIDATED BALANCE SHEET' ('MERCANTILE BANK PLC. AND ITS SUBSIDIARIES') reports 447,583,942,554 instead. Independently reconfirmed on FY2025: total assets of 477,887.53m match the standalone Balance Sheet (477,887,528,253) in mercanbank-annual-report-2025.txt vs. 480,976,839,782 on the Consolidated Balance Sheet for the same date. Solo is the basis used for every year in this dataset (2011-2025), consistent with the pre-existing 'Solo basis throughout' note below.",
+  "notes": "annual_reports/MERCANBANK archive (2011-2025, 15 years) was already text-extracted by a parallel session working on this project before this session began processing it. As of 2026-08-26, all 15 years (2011-2025) have been processed into structured financial data. Complete Q4/year-end coverage for 2011-2023 achieved from three overlapping annual reports' 'Financial Highlights' / 'Five Years' Performance' / 'Five-Year Business Summary' tables (balance sheet, income statement, capital, and credit-quality data together for every year); FY2024-2025 added from the FY2024 and FY2025 reports' own 'Five-Year Business Summary' / 'Five-Year Business & Financial Summary' tables, cross-validated against each other's comparative columns and against the underlying audited Balance Sheet, Profit and Loss Account, and Note 7.8/7.9 (loan-loss provisioning) and Note 14.5/14.6 (capital adequacy) disclosures. Solo basis throughout (see reporting_basis field). Only Q4/year-end (audited) data was extracted; Q1/H1/Q3 unaudited interim data was not researched. FY2024 and FY2025 both disclose a large, worsening Bangladesh-Bank-forborne loan-loss provisioning shortfall -- see quarterly/2024_Q4.json and quarterly/2025_Q4.json period_note fields and insights.json for details (required_provision_loans, provision_maintained_loans, provision_shortfall_loans fields).",
+  "sources": [
+    {
+      "period": "2011-2015 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "mercanbank-annual-report-2015.txt (\"Financial Highlights\", p.49)",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2011, 2012, 2013, 2014, 2015],
+      "note": "Total liabilities not directly reported in this table for any year; calculated as total assets minus shareholders' equity throughout the whole dataset (this bank's summary tables never give total liabilities as a distinct line)."
+    },
+    {
+      "period": "2015-2019 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "mercanbank-annual-report-2019.txt (\"Five Years' Performance\", p.58-59)",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2016, 2017, 2018, 2019]
+    },
+    {
+      "period": "2019-2023 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "mercanbank-annual-report-2023.txt (\"Five-Year Business Summary\", p.75-76)",
+      "source_priority": 1, "retrieval_date": "2026-08-25", "status": "extracted_and_validated",
+      "used_for_years": [2020, 2021, 2022, 2023]
+    },
+    {
+      "period": "2024 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "mercanbank-annual-report-2024.txt (\"Five-Year Business Summary\", p.75-76; own Balance Sheet p.279; own Profit and Loss Account p.281; Note 7.8 provisioning, p.319; Note 14.5/14.6 capital adequacy)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2024],
+      "note": "Discloses a loan-loss provisioning shortfall of BDT 17,008.60m against loans/advances (required 38,167.71m vs maintained 21,159.11m per Note 7.8), under Bangladesh Bank regulatory forbearance (Ref. DBI-4/110/2025-655); no dividend declared. required_capital (Minimum Capital Requirement) is directly reported (Note 14.5/14.6), not calculated, for this and all later years. Cross-validated against the FY2023 comparative column (exact match to the already-stored 2023_Q4.json on every field except Paid-up Capital -- see next entry)."
+    },
+    {
+      "period": "2025 (Q4)",
+      "type": "annual_report_summary_table",
+      "source_document": "mercanbank-annual-report-2025.txt (\"Five-Year Business & Financial Summary\", p.72-75; own Balance Sheet p.223-224; own Profit & Loss Account p.225; Note 7.8/7.9 provisioning, p.263-264; Note 14.5/14.6 capital adequacy, p.284-285; Independent Auditors' Report Emphasis of Matter, p.210-211)",
+      "source_priority": 1, "retrieval_date": "2026-08-26", "status": "extracted_and_validated",
+      "used_for_years": [2025],
+      "note": "The FY2024 provisioning shortfall widened and, for the first time, spread to general/unclassified provisioning: total shortfall BDT 21,393.10m (required 33,902.34m vs maintained 12,509.23m per Note 7.8), now escalated to a formal 'Emphasis of Matter' in the Auditors' Report (opinion not modified) citing BDT 2,139.31 crore; Bangladesh Bank forbearance Ref. BSD-2/2203/2026-384; no dividend declared (2nd consecutive year). Same year the Bank executed its largest-ever single-year loan write-off (BDT 20,750.89m per the Directors' Report), which mechanically improved the reported NPL ratio (17.25% -> 15.19%) and reduced both gross loans and provisions held. Cross-validated: this report's FY2024 comparative column reproduces every FY2024 figure in quarterly/2024_Q4.json exactly."
+    },
+    {
+      "period": "FY2023 Paid-up Capital -- source-document internal inconsistency (not a restatement)",
+      "type": "discrepancy_note",
+      "status": "documented_not_corrected",
+      "retrieval_date": "2026-08-26",
+      "notes": "Both the FY2024 and FY2025 annual reports' own 'Five-Year' tables show FY2023 Paid-up Capital as BDT 11,065.23m in their comparative column. This conflicts with (a) the FY2023 report's own audited Balance Sheet, (b) this dataset's already-stored bank_financials/MERCANBANK/quarterly/2023_Q4.json (11,065.75m), and (c) the unchanged Dec-23 raw Balance Sheet comparative (11,065,754,350) printed in both the FY2024 and FY2025 reports' own audited financial statements. Treated as a typo in the bank's own summary-table row (repeated across two report vintages), not a genuine restatement. Per this dataset's policy, the FY2023 stored record is left unchanged."
+    },
+    {
+      "period": "FY2021 Core Capital (Tier I) -- source-document error in later reports (not a restatement; existing 2021_Q4.json is correct and unchanged)",
+      "type": "discrepancy_note",
+      "status": "documented_not_corrected",
+      "retrieval_date": "2026-08-26",
+      "notes": "The FY2024 and FY2025 annual reports' own 'Five-Year' tables both show FY2021 Core Capital (Tier I) as BDT 23,897.10m (mercanbank-annual-report-2024.txt line 3850; mercanbank-annual-report-2025.txt line 3476), 200.00m higher than the BDT 23,697.10m in the FY2023 report's own table (mercanbank-annual-report-2023.txt line 3840) and in this dataset's already-stored quarterly/2021_Q4.json. This is provably a transcription typo, not a restatement: using either later report's OWN companion figures for FY2021 (Tier II Capital 11,887.33m, Total Capital/Regulatory Capital 35,584.43m, unchanged across all three report vintages), Tier I + Tier II must equal Total Capital -- 23,697.10 + 11,887.33 = 35,584.43 (exact match) vs. 23,897.10 + 11,887.33 = 35,784.43 (off by exactly 200.00m from the same report's own Total Capital line). The error appears to have originated in the FY2024 report's five-year table and was then mechanically copied forward into the FY2025 report's five-year table without correction. Per this dataset's policy of preferring the contemporaneous, arithmetically-consistent figure, quarterly/2021_Q4.json (23,697.10m) is left unchanged.",
+      "used_for_years": []
+    },
+    {
+      "period": "FY2021 Loans and Advances (gross_loans) -- immaterial rounding variance across report vintages",
+      "type": "discrepancy_note",
+      "status": "documented_not_corrected",
+      "retrieval_date": "2026-08-26",
+      "notes": "The FY2024 and FY2025 reports' own Five-Year tables show FY2021 Loans and Advances as BDT 266,766.89m, vs. BDT 266,766.60m in the FY2023 report's own table and in this dataset's already-stored quarterly/2021_Q4.json. Difference is BDT 0.29m (~0.0001% of the total), immaterial and far below this dataset's ~0.05% flagging threshold; left unchanged.",
+      "used_for_years": []
+    },
+    {
+      "period": "2011 Q1, 2012 Q3 (solo) -- successfully extracted",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "mercanbank-quarterly-2011-q1-balance-sheet.txt, mercanbank-quarterly-2011-q1-profit-loss.txt, mercanbank-quarterly-2012-q3-balance-sheet.txt, mercanbank-quarterly-2012-q3-profit-loss.txt",
+      "source_path": "annual_reports/MERCANBANK/mercanbank-quarterly-*.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-27",
+      "status": "extracted_and_validated",
+      "used_for_years": [2011, 2012],
+      "note": "mblbd.com's /quarterly-halfyearly archive (~60 PDFs, 2011-2026, confirmed not WAF-blocked) was found and downloaded. Only these two periods yielded fully clean, trustworthy text via pdftotext -layout: both are solo (header 'MERCANTILE BANK LIMITED', no 'AND ITS SUBSIDIARIES'/'CONSOLIDATED' qualifier, consistent with reporting_basis above), and both were manually cross-checked line-by-line against every internal subtotal -- balance-sheet identity, liabilities composition, equity composition, the full operating-income chain, the provision chain, and (2011 Q1) the tax-to-net-profit step -- every single check ties out exactly to the taka with zero discrepancy. 2011-2013 filings on mblbd.com are published as separate single-statement PDFs per period (Balance Sheet / Profit and Loss Account / Cash Flow / Off-Balance-Sheet / Statement of Changes in Equity each as their own file) rather than one combined document; only the Balance Sheet and P&L files were needed."
+    },
+    {
+      "period": "2012 H1, 2016 Q1 (solo) -- successfully extracted in a follow-up session",
+      "type": "unaudited_quarterly_financial_statements",
+      "source_document": "mercanbank-quarterly-2012-h1-balance-sheet.txt, mercanbank-quarterly-2012-h1-profit-loss.txt, mercanbank-quarterly-2016-q1.txt",
+      "source_path": "annual_reports/MERCANBANK/mercanbank-quarterly-2012-h1-*.txt, annual_reports/MERCANBANK/mercanbank-quarterly-2016-q1.txt",
+      "source_priority": 1,
+      "retrieval_date": "2026-08-28",
+      "status": "extracted_and_validated",
+      "used_for_years": [2012, 2016],
+      "note": "Found already-downloaded and pdftotext-extracted in a prior session's scratch working files (not yet committed to the dataset or documented) while re-checking for unprocessed source text per this session's brief; re-verified from scratch rather than trusted as-is. Both periods are solo (2012 H1 header 'MERCANTILE BANK LIMITED'; 2016 Q1 header 'Mercantile Bank Limited' for the solo Balance Sheet/P&L, found after an initial Consolidated Balance Sheet section earlier in the same combined PDF which was correctly excluded) and both were manually cross-checked line-by-line against every internal subtotal -- balance-sheet identity, liabilities composition, equity composition, the full operating-income chain, the expense/provision/tax/net-profit chain, and the retained-earnings appropriation chain (which for 2016 Q1 also ties to the Balance Sheet's own Surplus-in-P&L line) -- every single check ties out exactly to the taka with zero discrepancy in either period. 2016 Q1's Dec-15 comparative column was further cross-checked against this dataset's already-stored quarterly/2015_Q4.json (total_assets, total_liabilities, total_equity, paid_up_capital, gross_loans all match exactly; total_deposits does not, see quarterly/2016_Q1.json period_note for the definitional-difference explanation). 2012 H1's cumulative net profit was cross-checked against quarterly/2012_Q3.json for cumulative consistency. Despite this success, the great majority of the remaining corpus (see next entry) is still not usable -- this bank's interim-filing archive remains genuinely difficult."
+    },
+    {
+      "period": "2011 Q3, 2012 Q1, 2013 Q1/H1/Q3, 2014 Q1/H1/Q3, 2015 Q1/H1/Q3, 2016 H1/Q3, 2017-2026 (all quarters attempted)",
+      "type": "unaudited_quarterly_financial_statements",
+      "status": "attempted_not_usable",
+      "retrieval_date": "2026-08-27",
+      "note": "All corresponding PDFs were successfully downloaded from mblbd.com (confirmed valid, complete PDF files per pdfinfo) and run through pdftotext -layout, but the great majority could not be extracted into trustworthy structured data, for two distinct reasons found across this bank's corpus: (1) SEVERE EMBEDDED-TEXT CORRUPTION in many nominally-text-based PDFs -- not a scan requiring OCR, but text that reads as if a low-quality OCR pass was baked into the PDF at the bank's end: character substitution (0/O, 1/l/I, inserted stray punctuation e.g. \"14,62'1,076,645\"), and in the worst cases (2013 Q1, 2015 Q1/H1/Q3) numeric values completely detached from their row labels, making label-based parsing unrecoverable without a full manual line-by-line reconstruction of every period. This affects the majority of 2013-2015 and several 2020-2025 filings (2020 Q1, 2022 Q1, 2024 Q3, 2025 H1 spot-checked and confirmed corrupted). (2) PERSISTENT DOWNLOAD-LAYER TRUNCATION for a specific subset -- 2018 Q3, 2019 Q1, 2020 Q3, 2020 H1, 2021 Q1/H1/Q3, 2022 Q3, 2023 H1/Q3 failed with an identical 'Invalid XRef entry 0 / expected endstream at EOF' pattern across three independent attempts (two direct re-downloads with different timeouts/concurrency, plus qpdf and Ghostscript repair attempts, both of which only recovered a 1-page stub) -- the truncation point coincides with each file's own total size, indicating the content itself is incomplete as served by mblbd.com (a chunked-transfer response with no Content-Length header was observed for this host), not a client-side timeout. Given this dataset's policy of never fabricating figures, all of these periods are left as gaps rather than guessed at. 2011 Q3, 2016 Q3, 2017 (all quarters), 2018 Q1/H1, 2019 H1/Q3, 2023 Q1, 2024 Q1/H1, 2025 Q1/Q3, 2026 Q1/H1 are scanned-image PDFs (0 lines from pdftotext) not yet OCR'd in this pass -- a genuine time-boxing decision, not a dead end; tesseract OCR combined with the same arithmetic cross-validation approach that worked for the corrupted-text files is a reasonable next step for a future session, prioritizing 2023-2026 first for recency."
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "bank_id": "GIB",
+  "bank_name": "Global Islami Bank PLC (formerly NRB Global Bank Limited)",
+  "reporting_date": "2021-06-30",
+  "financial_year": 2021,
+  "quarter": "Q2",
+  "period_note": "Unaudited interim financial statements 'As at June 30, 2021', headed 'Global Islami Bank Limited' (see the 2021_Q1 note on this naming curiosity). Balance sheet is the period-end snapshot (reported); comparative column is 30 June 2020 (year-over-year, same convention as Q1). Income-statement figures are DISCRETE for the quarter itself (April 1 to June 30, 2021) -- this filing's own header states 'For the period from April 01 to June 30, 2021' with no separate cumulative Jan-Jun column, unlike the bank's later (2022 Q3 onward) filings which show both. 'Investment income' value was not legible in the source (pdftotext dropped it, same issue as Q1); it is derived as Net interest income + Profit paid on deposits (1,286,813,413 + 2,127,858,197 = 3,414,671,610), and this derived figure, together with every other line down to Total Operating Income, Total Operating Expenses, Profit before Provision and Total Provision, is cross-validated exactly against this same discrete quarter as independently repeated in the comparative column of the June-2022 filing. IMPORTANT DISCREPANCY ON PAT: this filing's own tax section (Deferred tax 260,467,299 + Current tax 43,953,601 = Total tax 304,420,900) is internally consistent with its own PBT (229,331,661) and its own directly-printed Net Profit/(Loss) after taxation of (75,089,240) -- a LOSS. However, the June-2022 filing's comparative column for this same period shows the identical Deferred tax (260,467,299) and Current tax (43,953,601) components, yet its own 'total tax' row for that column reads 216,513,698 (not the 304,420,900 that its own listed components sum to) and its PAT row for the same column shows +12,817,962 (a profit) -- i.e. the June-2022 filing's citation of this period is internally INCONSISTENT with its own listed Deferred+Current components, while this contemporaneous June-2021 filing IS internally consistent with its own components. Per project policy (prefer the contemporaneous figure, and additionally prefer the internally-consistent one when the two disagree), the loss of -75,089,240 from this filing's own report is used as the dataset value; the June-2022 filing's apparently-erroneous +12,817,962 citation is recorded here only as a flagged discrepancy, not used. This is GIB's first interim-reported quarterly loss found in this research pass (aside from its known 2013-2014 start-up losses). EPS for the loss quarter was not clearly legible in the OCR text (the printed value appeared to belong to a different, unrelated row); it is calculated here as PAT / (paid-up capital / 10) using the period's own paid-up capital, and flagged as calculated rather than reported.",
+  "source": {
+    "source_document": "June-Quarter-2021.pdf (downloaded from globalislamibankbd.com, OCR'd; PDF deleted after extraction per project policy)",
+    "source_url": "https://www.globalislamibankbd.com/wp-content/uploads/2023/03/June-Quarter-2021.pdf",
+    "source_page": "Balance Sheet p.1, Off-Balance Sheet Items p.2, Profit and Loss Account p.3 (OCR'd at 300dpi, tesseract)",
+    "retrieval_date": "2026-08-27",
+    "reporting_basis": "Solo / standalone, unaudited"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total assets",
+      "value": 126188.17,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Investments (General investments etc. + Bills purchased & discounted)",
+      "value": 100763.07,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_deposits",
+      "original_metric_name": "Deposits and other accounts",
+      "value": 111039.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholders' equity",
+      "value": 7285.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total liabilities",
+      "value": 118902.34,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up capital",
+      "value": 4908.75,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "statutory_reserve",
+      "original_metric_name": "Statutory reserve",
+      "value": 1366.65,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "nav_per_share",
+      "original_metric_name": "Total Shareholders' equity / (Paid up capital / 10)",
+      "value": 14.84,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    },
+    {
+      "normalised_metric_name": "investment_income",
+      "original_metric_name": "Investment income (label present, value illegible in source; derived as Net interest income + Profit paid on deposits), discrete Apr-Jun 2021",
+      "value": 3414.67,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_pl_components"
+    },
+    {
+      "normalised_metric_name": "profit_paid_on_deposits",
+      "original_metric_name": "Profit paid on deposits, discrete Apr-Jun 2021",
+      "value": 2127.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income",
+      "original_metric_name": "Net interest income, discrete Apr-Jun 2021",
+      "value": 1286.81,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_income",
+      "original_metric_name": "Total operating income (A), discrete Apr-Jun 2021",
+      "value": 1369.01,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_expenses",
+      "original_metric_name": "Total operating expenses (B), discrete Apr-Jun 2021",
+      "value": 751.12,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit",
+      "original_metric_name": "Profit / (Loss) before provision (C=A-B), discrete Apr-Jun 2021",
+      "value": 617.89,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "provision_charge",
+      "original_metric_name": "Total provision (D), discrete Apr-Jun 2021",
+      "value": 388.55,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_before_tax",
+      "original_metric_name": "Total profit / (Loss) before taxes (C-D), discrete Apr-Jun 2021",
+      "value": 229.33,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "tax_expense",
+      "original_metric_name": "Deferred tax + Current tax, discrete Apr-Jun 2021 (see period_note for the discrepancy against how a later filing cites this figure)",
+      "value": 304.42,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax",
+      "original_metric_name": "Net profit/(Loss) after taxation, discrete Apr-Jun 2021 -- a LOSS (see period_note: internally consistent within this filing; a later filing's comparative citation of this period is itself internally inconsistent and shows a different, unused figure)",
+      "value": -75.09,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps",
+      "original_metric_name": "Earnings Per Share, discrete Apr-Jun 2021 (not clearly legible in source; calculated as PAT / (paid-up capital / 10))",
+      "value": -0.15,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "calculated"
+    }
+  ]
+}

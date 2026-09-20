@@ -1,0 +1,279 @@
+/* ================================================================
+   tv-seasonals.css — "Seasonals" panel (year x month returns table),
+   toggled from the toolbar's Seasonals button (#seasonalsToggleBtn),
+   rendered into #tvSeasonalsPanel inside candlestick.html.
+
+   Loaded only by candlestick.html, same convention as tv-layout.css:
+   company_profile/company.html shares candlestick-chart.css but has
+   no #tvSeasonalsPanel/#seasonalsToggleBtn in its markup, so none of
+   this applies there.
+
+   Reuses the same --bg-card, --border, --text-primary, --text-secondary,
+   --text-muted, --accent, --gain, --loss, --radius-sm, --radius-lg,
+   --mono and --sans variables as the rest of the chart's CSS files.
+   ================================================================ */
+
+#seasonalsToggleBtn.active {
+  color: var(--accent);
+  background: var(--bg-hover);
+}
+
+.tv-seasonals-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px 20px;
+  margin-bottom: 28px;
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+.tv-seas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.tv-seas-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.tv-seas-view-toggle {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-hover);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.tv-seas-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 26px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tv-seas-icon-btn svg { width: 15px; height: 15px; }
+.tv-seas-icon-btn:hover { color: var(--text-primary); }
+.tv-seas-icon-btn.active {
+  background: var(--bg-card);
+  color: var(--accent);
+}
+
+.tv-seas-title {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tv-seas-title-sep { margin: 0 6px; color: var(--text-muted); }
+
+.tv-seas-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.tv-seas-select {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-hover);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 26px 6px 12px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23a0aec0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.15s;
+}
+.tv-seas-select:hover { border-color: var(--border-glow); }
+
+.tv-seas-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tv-seas-back-btn svg { width: 14px; height: 14px; }
+.tv-seas-back-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  border-color: var(--border-glow);
+}
+
+/* ── Year-range slider ───────────────────────────────────────── */
+.tv-seas-slider-wrap {
+  padding: 6px 10px 20px;
+  margin-bottom: 8px;
+}
+
+.tv-seas-slider {
+  position: relative;
+  height: 4px;
+  margin: 0 8px;
+}
+
+.tv-seas-slider-track {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.tv-seas-slider-range {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  background: var(--text-primary);
+  opacity: 0.85;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
+.tv-seas-slider-range:active { cursor: grabbing; }
+
+.tv-seas-slider-grip {
+  color: var(--bg-card);
+  pointer-events: none;
+}
+
+.tv-seas-slider-handle {
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  margin-left: -7.5px;
+  transform: translateY(-50%);
+  background: var(--text-primary);
+  border: 2px solid var(--bg-card);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  z-index: 1;
+}
+.tv-seas-slider-handle:active { cursor: grabbing; }
+
+.tv-seas-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ── Table ───────────────────────────────────────────────────── */
+.tv-seas-empty {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.tv-seas-table-scroll {
+  overflow-x: auto;
+}
+
+.tv-seas-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.tv-seas-table th {
+  padding: 8px 6px;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.tv-seas-th-date { text-align: left; }
+
+.tv-seas-year-cell {
+  padding: 6px 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  position: sticky;
+  left: 0;
+  background: var(--bg-card);
+}
+
+.tv-seas-cell {
+  padding: 6px 8px;
+  text-align: center;
+  color: var(--text-primary);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+.tv-seas-cell.empty { color: var(--text-muted); }
+.tv-seas-cell.flat  { color: var(--text-muted); background: rgba(128,128,128,0.12); }
+
+.tv-seas-summary-row .tv-seas-year-cell,
+.tv-seas-summary-row .tv-seas-cell {
+  border-top: 2px solid var(--border);
+  font-weight: 600;
+}
+
+.tv-seas-rf-cell { font-size: 11px; }
+.tv-seas-rf { margin: 0 3px; }
+.tv-seas-rf.gain { color: var(--gain); }
+.tv-seas-rf.loss { color: var(--loss); }
+.tv-seas-rf.flat { color: var(--text-muted); }
+
+/* ── Chart view ──────────────────────────────────────────────── */
+.tv-seas-chart-wrap {
+  width: 100%;
+}
+
+#tvSeasChartCanvas {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .tv-seas-header-right { flex-wrap: wrap; }
+}

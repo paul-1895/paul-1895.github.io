@@ -1,0 +1,121 @@
+{
+  "bank_id": "PREMIERBAN",
+  "bank_name": "The Premier Bank PLC",
+  "reporting_date": "2020-03-31",
+  "financial_year": 2020,
+  "quarter": "Q1",
+  "period_note": "Sourced from the Annual Report 2020's own 'Evaluation of quarterly performance' table (the same table that also carries the FY2019 comparator columns used separately for 2019_Q1/Q2/Q3.json). BASIS: SOLO. Every value in this report's own Dec-31-2020 column (Investment 40,021.08, Loans 213,204.68, Paid-up Capital 9,702.98, Total Shareholders' Equity 20,241.36, Total Assets 313,316.22, Off-Balance Items 165,010.62, Net Interest Income 3,190.61, Non-Interest Income 9,985.03, Operating Expenses 6,393.16, Operating Profit 6,782.48, Net Profit After Tax 2,063.64, EPS 2.13) reproduces exactly against this dataset's own independently-sourced FY2020 Solo Q4 figures (bank_financials/PREMIERBAN/quarterly/2020_Q4.json), including the CONTEMPORANEOUS (pre-restatement) Total Assets figure -- see below. This is NOT the Consolidated-vs-Solo mismatch affecting FY2022/2024/2025 -- FY2020 interim data is clean Solo, consistent with the main Q4/annual series. CROSS-CHECK PERFORMED (task requirement): the FY2021 report's own comparator column for 31-Dec-2020 within this same table was checked line-by-line against this report's own contemporaneous figures. RESTATEMENT CONFIRMED (already known): FY2021's comparator shows Total Assets of 315,723.19 for Dec-2020, not this report's own 313,316.22 -- this is the SAME restatement already documented in 2020_Q4.json's period_note (a 0.77% gap first appearing in the FY2021 five-year table); per project convention the contemporaneous 313,316.22-vintage figures are used throughout Q1-Q3 below, not the later-restated ones (Q1-Q3 2020 have not themselves been found restated anywhere -- only the FY2020 annual/Dec-31 figure was). ADDITIONAL DISCREPANCY FOUND: the FY2021 report's comparator column also shows Mar-31-2020 Total Shareholders' Equity of 18,604.45, versus this report's own contemporaneous 19,231.65 (used below). 18,604.45 is suspiciously identical to FY2019's own Dec-31 equity value, strongly suggesting a one-off transcription error in the FY2021 report's own comparative table (it appears someone copied the wrong row) rather than a genuine restatement -- Dec-2020/Sep-2020/Jun-2020 equity all reproduce exactly across both reports, only the Mar-2020 cell is anomalous. Flagged for transparency; not used (this report's own contemporaneous 19,231.65 is used). EPS ALSO DIFFERS in the FY2021 comparator for every 2020 quarter (Mar 0.59 vs this report's 0.62; Jun 1.00 vs 1.12; Sep 1.53 vs 1.65; Dec 1.98 vs 2.13) -- consistent with a further retroactive bonus-share EPS restatement (same mechanism as the FY2019 EPS note above); contemporaneous, not-yet-restated EPS values from THIS report are used below, per project convention.",
+  "source": {
+    "source_document": "premierban-annual-report-2020.txt",
+    "source_path": "annual_reports/PREMIERBAN/premierban-annual-report-2020.txt",
+    "source_url": "https://www.premierbankltd.com",
+    "source_page_lines": "4653-4666 ('Evaluation of quarterly performance' table, current-year 2020 + prior-year 2019 comparator columns, Annual Report 2020 p.97-98)",
+    "retrieval_date": "2026-08-26"
+  },
+  "line_items": [
+    {
+      "normalised_metric_name": "investments_securities",
+      "original_metric_name": "Investment",
+      "value": 36895.74,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "gross_loans",
+      "original_metric_name": "Loans, Advances and Lease/Investments",
+      "value": 190971.86,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "paid_up_capital",
+      "original_metric_name": "Paid up Capital",
+      "value": 9240.94,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_equity",
+      "original_metric_name": "Total Shareholder's equity",
+      "value": 19231.65,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_assets",
+      "original_metric_name": "Total Assets",
+      "value": 264300.44,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_liabilities",
+      "original_metric_name": "Total Assets minus Total Shareholder's equity",
+      "value": 245068.79,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "calculated_from_assets_minus_equity"
+    },
+    {
+      "normalised_metric_name": "off_balance_sheet_exposures",
+      "original_metric_name": "Off Balance Items",
+      "value": 165430.82,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "net_interest_income_cumulative",
+      "original_metric_name": "Net Interest Income (01 Jan 20 to 31 Mar 20, cumulative)",
+      "value": 1243.03,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "non_interest_income_cumulative",
+      "original_metric_name": "Non-Interest Income (01 Jan 20 to 31 Mar 20, cumulative)",
+      "value": 1300.37,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "total_operating_expense_cumulative",
+      "original_metric_name": "Operating Expenses (01 Jan 20 to 31 Mar 20, cumulative)",
+      "value": 1349.14,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "operating_profit_cumulative",
+      "original_metric_name": "Operating Profit (01 Jan 20 to 31 Mar 20, cumulative)",
+      "value": 1194.26,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "profit_after_tax_cumulative",
+      "original_metric_name": "Net Profit After Taxation (01 Jan 20 to 31 Mar 20, cumulative)",
+      "value": 574.29,
+      "unit": "BDT_million",
+      "currency": "BDT",
+      "basis": "reported"
+    },
+    {
+      "normalised_metric_name": "eps_cumulative",
+      "original_metric_name": "Earnings per share (EPS) (01 Jan 20 to 31 Mar 20, cumulative, not restated)",
+      "value": 0.62,
+      "unit": "BDT",
+      "currency": "BDT",
+      "basis": "reported"
+    }
+  ]
+}
