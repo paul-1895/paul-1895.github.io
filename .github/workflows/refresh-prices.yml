@@ -16,11 +16,11 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install scraper dependencies
         working-directory: tools
@@ -29,14 +29,25 @@ jobs:
       - name: Scrape today's prices
         run: node tools/refresh-prices.js
 
+      # The snippet is a PDF; pdftotext reads it. Its own step, and allowed to
+      # fail, so a bad day at old.dsebd.org never holds back the prices.
+      - name: Install pdftotext
+        continue-on-error: true
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+
+      - name: Fetch the daily market snippet
+        continue-on-error: true
+        run: node tools/refresh-market-snippet.js
+
       - name: Commit if anything moved
         run: |
-          if git diff --quiet -- api/stocks.json; then
-            echo "prices unchanged — nothing to commit"
+          if git diff --quiet -- api/stocks.json api/market-snippet.json; then
+            echo "prices and snippet unchanged — nothing to commit"
             exit 0
           fi
           git config user.name  "dse-refresh"
           git config user.email "dse-refresh@users.noreply.github.com"
-          git add api/stocks.json
+          git add -- api/stocks.json
+          if [ -f api/market-snippet.json ]; then git add -- api/market-snippet.json; fi
           git commit -m "prices: $(date -u +%Y-%m-%d)"
           git push
